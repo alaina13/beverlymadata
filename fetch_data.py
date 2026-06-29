@@ -148,7 +148,7 @@ def fetch_calendar() -> list:
             return ""
 
         event_date = ns_text("EventDates")
-        event_time = ns_text("EventTimes")
+        event_time = ns_text("EventTimes").split(" - ")[0].split(" – ")[0].strip()
         location   = ns_text("Location")
         board      = detect_board(title)
 
