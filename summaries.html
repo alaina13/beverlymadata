@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beverly Data — City Council Summaries</title>
+  <style>
+    :root {
+      --navy: #1a2744;
+      --blue: #2d5fa8;
+      --accent: #e8813a;
+      --bg: #f5f6f8;
+      --card-bg: #ffffff;
+      --text: #1e1e1e;
+      --muted: #6b7280;
+      --border: #e2e5ea;
+      --tag-bg: #eef2fb;
+      --tag-text: #2d5fa8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; color: white; text-decoration: none; }
+    .logo span { color: var(--accent); }
+
+    nav { display: flex; gap: 1.25rem; }
+
+    nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    nav a:hover, nav a.active { color: white; border-bottom-color: var(--accent); }
+
+    .hero {
+      background: var(--navy);
+      color: white;
+      padding: 2.5rem 2rem 2rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .hero p { color: rgba(255,255,255,0.72); font-size: 0.95rem; max-width: 560px; }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .main-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .result-count { font-size: 0.875rem; color: var(--muted); }
+
+    .disclaimer {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    #summaries-list { display: flex; flex-direction: column; gap: 1rem; }
+
+    .summary-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.3rem 1.4rem;
+    }
+
+    .summary-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .ai-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+    }
+
+    .summary-headline {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      line-height: 1.35;
+    }
+
+    .summary-bullets {
+      margin: 0 0 0.75rem 1.25rem;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    .summary-bullets li { margin-bottom: 0.3rem; }
+
+    .summary-votes {
+      background: var(--bg);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .summary-votes h4 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .summary-votes ul { margin-left: 1.1rem; font-size: 0.85rem; }
+    .summary-votes li { margin-bottom: 0.25rem; }
+
+    .summary-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .summary-footer a { color: var(--blue); text-decoration: none; font-weight: 500; }
+    .summary-footer a:hover { text-decoration: underline; }
+
+    .state-msg { text-align: center; padding: 3rem 1rem; color: var(--muted); font-size: 0.9rem; }
+
+    .spinner {
+      width: 24px; height: 24px;
+      border: 3px solid var(--border);
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto 0.75rem;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    footer a { color: var(--blue); }
+
+    @media (max-width: 700px) {
+      header { padding: 0 1rem; }
+      nav { gap: 0.75rem; }
+      nav a { font-size: 0.78rem; }
+      .hero { padding: 1.5rem 1rem 1.25rem; }
+      .hero h1 { font-size: 1.35rem; }
+      .container { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/beverlymadata/"><span>Beverly</span> Data</a>
+  <nav>
+    <a href="/beverlymadata/meetings.html">Meetings</a>
+    <a href="/beverlymadata/agendas.html">Agendas</a>
+    <a href="/beverlymadata/summaries.html" class="active">Summaries</a>
+    <a href="/beverlymadata/data.html">City Data</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>City Council Summaries</h1>
+  <p>AI-generated summaries of Beverly City Council meetings from BevCam recordings, with key votes and highlights.</p>
+</div>
+
+<div class="container">
+  <div class="main-header">
+    <span class="result-count" id="sum-result-count">Loading…</span>
+    <p class="disclaimer">AI-generated from BevCam transcripts — verify with source video</p>
+  </div>
+  <div id="summaries-list">
+    <div class="state-msg"><div class="spinner"></div>Loading summaries…</div>
+  </div>
+</div>
+
+<footer>
+  Summaries generated from <a href="https://www.youtube.com/@BevCam" target="_blank">BevCam</a> recordings using AI.
+  Beverly Data is an independent civic project and is not affiliated with the City of Beverly.
+</footer>
+
+<script>
+  function renderSummaries(data) {
+    const list = document.getElementById('summaries-list');
+    document.getElementById('sum-result-count').textContent =
+      `${data.length} City Council meeting${data.length !== 1 ? 's' : ''} summarized`;
+
+    if (!data.length) {
+      list.innerHTML = '<div class="state-msg">No summaries yet — run summarize.py to generate them.</div>';
+      return;
+    }
+
+    list.innerHTML = data.map(item => {
+      const date = item.published ? new Date(item.published).toLocaleDateString('en-US',
+        { month: 'long', day: 'numeric', year: 'numeric' }) : '';
+      const bulletsHtml = (item.bullets || []).slice(0, 5).map(b => `<li>${b}</li>`).join('');
+      const votesHtml = (item.votes || []).length
+        ? `<div class="summary-votes"><h4>Key Votes</h4><ul>${item.votes.map(v => `<li>${v}</li>`).join('')}</ul></div>` : '';
+      const errMsg = item.error
+        ? `<p style="color:var(--muted);font-size:.85rem;font-style:italic">${item.error}</p>` : '';
+
+      return `
+        <div class="summary-card">
+          <div class="summary-meta">
+            <span>${date}</span>
+            <span class="ai-badge">AI Summary</span>
+          </div>
+          <div class="summary-headline">${item.headline || item.title}</div>
+          ${errMsg}
+          ${bulletsHtml ? `<ul class="summary-bullets">${bulletsHtml}</ul>` : ''}
+          ${votesHtml}
+          <div class="summary-footer">
+            <a href="${item.url}" target="_blank">▶ Watch on BevCam / YouTube</a>
+            <span class="disclaimer">AI may misread audio — check source video</span>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  (async () => {
+    try {
+      const res = await fetch('summaries.json?v=' + Date.now());
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      renderSummaries(await res.json());
+    } catch (err) {
+      document.getElementById('summaries-list').innerHTML =
+        `<div class="state-msg">⚠️ Could not load summaries.json<br><small>${err.message}</small></div>`;
+      document.getElementById('sum-result-count').textContent = 'Error';
+    }
+  })();
+</script>
+</body>
+</html>

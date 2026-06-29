@@ -51,12 +51,13 @@
 
     .logo span { color: var(--accent); }
 
-    nav { display: flex; gap: 1.5rem; }
+    nav { display: flex; gap: 1.25rem; }
 
     nav a {
       color: rgba(255,255,255,0.8);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
+      white-space: nowrap;
       font-weight: 500;
       padding: 4px 0;
       border-bottom: 2px solid transparent;
@@ -264,9 +265,10 @@
 <header>
   <a class="logo" href="/beverlymadata/"><span>Beverly</span> Data</a>
   <nav>
-    <a href="/beverlymadata/">Meetings</a>
+    <a href="/beverlymadata/meetings.html">Meetings</a>
+    <a href="/beverlymadata/agendas.html">Agendas</a>
+    <a href="/beverlymadata/summaries.html">Summaries</a>
     <a href="/beverlymadata/data.html" class="active">City Data</a>
-    <a href="https://www.beverlyma.gov/AgendaCenter" target="_blank">Agenda Center ↗</a>
   </nav>
 </header>
 

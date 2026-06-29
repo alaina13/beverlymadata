@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beverly Data — Meetings</title>
+  <title>Beverly Data</title>
   <style>
     :root {
       --navy: #1a2744;
@@ -15,7 +15,6 @@
       --muted: #6b7280;
       --border: #e2e5ea;
       --tag-bg: #eef2fb;
-      --tag-text: #2d5fa8;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,7 +26,6 @@
       line-height: 1.5;
     }
 
-    /* ── Header ── */
     header {
       background: var(--navy);
       color: white;
@@ -51,16 +49,17 @@
 
     .logo span { color: var(--accent); }
 
-    nav { display: flex; gap: 1.5rem; }
+    nav { display: flex; gap: 1.25rem; }
 
     nav a {
       color: rgba(255,255,255,0.8);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       font-weight: 500;
       padding: 4px 0;
       border-bottom: 2px solid transparent;
       transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
     }
 
     nav a:hover, nav a.active {
@@ -68,952 +67,172 @@
       border-bottom-color: var(--accent);
     }
 
-    /* ── Hero ── */
     .hero {
       background: var(--navy);
       color: white;
-      padding: 2.5rem 2rem 2rem;
+      padding: 4rem 2rem 3.5rem;
       border-bottom: 3px solid var(--accent);
+      text-align: center;
     }
 
     .hero h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
     }
+
+    .hero h1 span { color: var(--accent); }
 
     .hero p {
       color: rgba(255,255,255,0.72);
-      font-size: 0.95rem;
-      max-width: 560px;
-    }
-
-    /* ── Layout ── */
-    .container {
-      max-width: 1100px;
+      font-size: 1.05rem;
+      max-width: 520px;
       margin: 0 auto;
-      padding: 2rem 1.5rem;
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 2rem;
-      align-items: start;
     }
 
-    /* Prevent grid children from overflowing on narrow viewports */
-    .container > * { min-width: 0; }
-
-    /* ── Sidebar ── */
-    .sidebar {
-      position: sticky;
-      top: 72px;
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
     }
 
-    .sidebar h2 {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
-    }
-
-    .filter-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .filter-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      width: 100%;
-      text-align: left;
-      padding: 0.45rem 0.7rem;
-      margin-bottom: 2px;
-      border: none;
-      background: transparent;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      cursor: pointer;
-      color: var(--text);
-      transition: background 0.12s;
-    }
-
-    .filter-btn:hover { background: var(--border); }
-    .filter-btn.active { background: var(--tag-bg); color: var(--blue); font-weight: 600; }
-
-    .filter-btn .count {
-      flex-shrink: 0;
-      font-size: 0.75rem;
-      color: var(--muted);
-      background: var(--border);
-      border-radius: 99px;
-      padding: 0 6px;
-      line-height: 1.6;
-    }
-
-    /* ── Main ── */
-    .main-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-    }
-
-    .result-count {
-      font-size: 0.875rem;
-      color: var(--muted);
-    }
-
-    .search-box {
-      padding: 0.45rem 0.8rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.875rem;
-      width: 220px;
-      outline: none;
-      transition: border-color 0.15s;
-    }
-
-    .search-box:focus { border-color: var(--blue); }
-
-    /* ── Cards ── */
-    #meetings-list { display: flex; flex-direction: column; gap: 0.75rem; }
-
-    .meeting-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.1rem 1.2rem;
-      transition: box-shadow 0.15s, border-color 0.15s;
-    }
-
-    .meeting-card:hover {
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      border-color: #c5cdd8;
-    }
-
-    .card-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 0.75rem;
-      margin-bottom: 0.5rem;
-      min-width: 0;
-    }
-
-    .card-top > div { min-width: 0; flex: 1; }
-
-    .card-meta {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-bottom: 0.25rem;
-    }
-
-    .card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.35;
-    }
-
-    .card-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .card-title a:hover { color: var(--blue); }
-
-    .card-desc {
-      font-size: 0.875rem;
-      color: var(--muted);
-      margin-top: 0.4rem;
-      line-height: 1.5;
-    }
-
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.7rem;
-    }
-
-    .tag {
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 99px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .tag.minutes { background: #ecfdf5; color: #059669; }
-    .tag.agenda  { background: #eff6ff; color: #2563eb; }
-
-    .status-badge {
-      flex-shrink: 0;
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 99px;
-      white-space: nowrap;
-    }
-
-    .status-badge.minutes { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
-    .status-badge.agenda  { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
-
-    /* ── Loading / Empty ── */
-    .state-msg {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .spinner {
-      width: 36px;
-      height: 36px;
-      border: 3px solid var(--border);
-      border-top-color: var(--blue);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-      margin: 0 auto 1rem;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ── AI Summary cards ── */
-    .summary-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.2rem 1.3rem;
-      transition: box-shadow 0.15s, border-color 0.15s;
-    }
-
-    .summary-card:hover {
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      border-color: #c5cdd8;
-    }
-
-    .summary-meta {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-bottom: 0.3rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .ai-badge {
-      font-size: 0.68rem;
-      font-weight: 700;
-      background: #fef3c7;
-      color: #92400e;
-      border: 1px solid #fde68a;
-      border-radius: 99px;
-      padding: 1px 7px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .summary-headline {
-      font-size: 1rem;
-      font-weight: 700;
-      line-height: 1.35;
-      margin-bottom: 0.7rem;
-      color: var(--text);
-    }
-
-    .summary-bullets {
-      list-style: none;
-      margin: 0 0 0.8rem;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .summary-bullets li {
-      font-size: 0.875rem;
-      color: #374151;
-      padding-left: 1.1rem;
-      position: relative;
-      line-height: 1.5;
-    }
-
-    .summary-bullets li::before {
-      content: "▸";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 0.75rem;
-      top: 2px;
-    }
-
-    .summary-votes {
-      background: #f8faff;
-      border: 1px solid #dbeafe;
-      border-radius: 7px;
-      padding: 0.6rem 0.8rem;
-      margin-top: 0.7rem;
-    }
-
-    .summary-votes h4 {
+    .section-label {
       font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--blue);
-      margin-bottom: 0.4rem;
-    }
-
-    .summary-votes ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .summary-votes li {
-      font-size: 0.82rem;
-      color: #1e3a5f;
-    }
-
-    .summary-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 0.9rem;
-      padding-top: 0.7rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .summary-footer a {
-      font-size: 0.8rem;
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .summary-footer a:hover { text-decoration: underline; }
-
-    .disclaimer {
-      font-size: 0.75rem;
+      letter-spacing: 0.1em;
       color: var(--muted);
-      font-style: italic;
-    }
-
-    #summaries-list { display: flex; flex-direction: column; gap: 1rem; }
-
-    /* ── Tabs ── */
-    .tabs {
-      display: flex;
-      gap: 0;
-      border-bottom: 2px solid var(--border);
       margin-bottom: 1.25rem;
     }
 
-    .tab-btn {
-      padding: 0.6rem 1rem;
-      border: none;
-      background: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--muted);
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -2px;
-      transition: color 0.15s, border-color 0.15s;
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
     }
 
-    .tab-btn:hover { color: var(--text); }
-    .tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 600; }
-
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
-
-    /* ── Calendar cards ── */
-    .event-card {
+    .nav-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.1rem 1.2rem;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
       display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-      transition: box-shadow 0.15s, border-color 0.15s;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: box-shadow 0.15s, border-color 0.15s, transform 0.1s;
     }
 
-    .event-card:hover {
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      border-color: #c5cdd8;
+    .nav-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.09);
+      border-color: var(--blue);
+      transform: translateY(-1px);
     }
 
-    .event-date-block {
-      flex-shrink: 0;
-      width: 52px;
-      text-align: center;
-      background: var(--navy);
-      color: white;
-      border-radius: 8px;
-      padding: 6px 4px;
-    }
-
-    .event-date-block .month {
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      opacity: 0.8;
-    }
-
-    .event-date-block .day {
-      font-size: 1.5rem;
-      font-weight: 700;
-      line-height: 1.1;
-    }
-
-    .event-date-block .dow {
-      font-size: 0.62rem;
-      opacity: 0.7;
-      text-transform: uppercase;
-    }
-
-    .event-body { flex: 1; min-width: 0; }
-
-    .event-title {
-      font-size: 0.975rem;
-      font-weight: 600;
+    .nav-card-icon {
+      font-size: 1.6rem;
       margin-bottom: 0.25rem;
     }
 
-    .event-title a { color: inherit; text-decoration: none; }
-    .event-title a:hover { color: var(--blue); }
+    .nav-card h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
 
-    .event-detail {
+    .nav-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .nav-card .card-arrow {
+      margin-top: auto;
+      padding-top: 0.75rem;
       font-size: 0.82rem;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 1rem;
-      margin-top: 0.2rem;
-    }
-
-    .event-detail span::before { margin-right: 3px; }
-
-    #calendar-list { display: flex; flex-direction: column; gap: 0.75rem; }
-
-    .event-meet {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.5rem 1rem;
-      margin-top: 0.6rem;
-      padding-top: 0.6rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .meet-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      background: #1a73e8;
-      color: white;
-      text-decoration: none;
-      font-size: 0.8rem;
       font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 6px;
-      transition: background 0.15s;
-      white-space: nowrap;
+      color: var(--blue);
     }
 
-    .meet-btn:hover { background: #1557b0; }
-
-    .meet-dial {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    /* ── Footer ── */
     footer {
       text-align: center;
       padding: 2rem;
       font-size: 0.8rem;
       color: var(--muted);
       border-top: 1px solid var(--border);
-      margin-top: 2rem;
     }
 
     footer a { color: var(--blue); }
 
-    /* ── Responsive ── */
     @media (max-width: 700px) {
-      /* Header */
       header { padding: 0 1rem; }
       nav { gap: 0.75rem; }
-      nav a { font-size: 0.8rem; }
-
-      /* Hero */
-      .hero { padding: 1.5rem 1rem 1.25rem; }
-      .hero h1 { font-size: 1.35rem; }
-
-      /* Layout: single column, sidebar goes below on mobile */
-      .container {
-        grid-template-columns: 1fr;
-        padding: 1rem;
-        gap: 0;
-      }
-
-      /* Sidebar: hide verbose filters, show compact horizontal pills */
-      .sidebar {
-        position: static;
-        margin-bottom: 0;
-      }
-
-      .filter-group { display: none; }
-
-      /* Tabs: scrollable single row, no wrapping */
-      .tabs {
-        overflow-x: auto;
-        white-space: nowrap;
-        display: flex;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-        margin-bottom: 1rem;
-      }
-      .tabs::-webkit-scrollbar { display: none; }
-      .tab-btn {
-        flex-shrink: 0;
-        font-size: 0.85rem;
-        padding: 0.55rem 0.85rem;
-      }
-
-      /* Main header: stack vertically */
-      .main-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-      .search-box { width: 100%; }
-
-      /* Mobile board filter pills — shown only on mobile */
-      .mobile-filters {
-        display: flex;
-        overflow-x: auto;
-        gap: 0.4rem;
-        padding-bottom: 0.6rem;
-        margin-bottom: 0.75rem;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-      }
-      .mobile-filters::-webkit-scrollbar { display: none; }
-      .mobile-pill {
-        flex-shrink: 0;
-        padding: 5px 12px;
-        border-radius: 99px;
-        border: 1.5px solid var(--border);
-        background: white;
-        font-size: 0.78rem;
-        font-weight: 500;
-        cursor: pointer;
-        color: var(--muted);
-        white-space: nowrap;
-        transition: all 0.12s;
-      }
-      .mobile-pill.active {
-        background: var(--navy);
-        border-color: var(--navy);
-        color: white;
-      }
-
-      /* Cards */
-      .meeting-card, .event-card, .summary-card { padding: 0.9rem 1rem; }
-      .summary-footer { flex-direction: column; gap: 0.4rem; align-items: flex-start; }
-    }
-
-    /* Mobile filters hidden on desktop, shown on mobile */
-    @media (min-width: 701px) {
-      .mobile-filters { display: none; }
+      nav a { font-size: 0.78rem; }
+      .hero { padding: 2.5rem 1rem 2rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .container { padding: 2rem 1rem; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <a class="logo" href="/"><span>Beverly</span> Data</a>
+  <a class="logo" href="/beverlymadata/"><span>Beverly</span> Data</a>
   <nav>
-    <a href="/beverlymadata/" class="active">Meetings</a>
+    <a href="/beverlymadata/meetings.html">Meetings</a>
+    <a href="/beverlymadata/agendas.html">Agendas</a>
+    <a href="/beverlymadata/summaries.html">Summaries</a>
     <a href="/beverlymadata/data.html">City Data</a>
-    <a href="https://www.beverlyma.gov/AgendaCenter" target="_blank">Agenda Center ↗</a>
   </nav>
 </header>
 
 <div class="hero">
-  <h1>Beverly, MA — Public Meetings</h1>
-  <p>Agendas and minutes from Beverly's boards and committees, pulled live from the city's agenda center.</p>
+  <h1><span>Beverly</span> Data</h1>
+  <p>An independent civic transparency project for Beverly, MA. Public meetings, financial data, and more — all in one place.</p>
 </div>
 
 <div class="container">
-  <!-- Sidebar filters -->
-  <aside class="sidebar">
-    <div class="filter-group" id="board-filter-group">
-      <h2>Board / Committee</h2>
-      <!-- populated dynamically by JS after data loads -->
-    </div>
+  <p class="section-label">Explore</p>
+  <div class="card-grid">
 
-    <div class="filter-group">
-      <h2>Document Type</h2>
-      <button class="filter-btn active-type" data-type="all">All Types</button>
-      <button class="filter-btn" data-type="minutes">Minutes</button>
-      <button class="filter-btn" data-type="agenda">Agenda</button>
-    </div>
-  </aside>
+    <a class="nav-card" href="/beverlymadata/meetings.html">
+      <div class="nav-card-icon">📅</div>
+      <h2>Upcoming Meetings</h2>
+      <p>Browse scheduled meetings for Beverly's boards and committees, with times, locations, and meeting links.</p>
+      <div class="card-arrow">View meetings →</div>
+    </a>
 
-  <!-- Main content -->
-  <main>
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="upcoming">Upcoming Meetings</button>
-      <button class="tab-btn" data-tab="agendas">Agendas &amp; Minutes</button>
-      <button class="tab-btn" data-tab="summaries">Meeting Summaries</button>
-    </div>
+    <a class="nav-card" href="/beverlymadata/agendas.html">
+      <div class="nav-card-icon">📄</div>
+      <h2>Agendas &amp; Minutes</h2>
+      <p>Search and filter agendas and minutes from every board and committee, pulled live from the city's agenda center.</p>
+      <div class="card-arrow">Browse documents →</div>
+    </a>
 
-    <div class="tab-panel" id="tab-agendas">
-      <div class="mobile-filters" id="mobile-board-filters">
-        <!-- populated dynamically by JS after data loads -->
-      </div>
-      <div class="main-header">
-        <span class="result-count" id="result-count">Loading…</span>
-        <input class="search-box" type="search" id="search" placeholder="Search meetings…" />
-      </div>
-      <div id="meetings-list">
-        <div class="state-msg"><div class="spinner"></div>Fetching meeting data…</div>
-      </div>
-    </div>
+    <a class="nav-card" href="/beverlymadata/summaries.html">
+      <div class="nav-card-icon">🤖</div>
+      <h2>City Council Summaries</h2>
+      <p>AI-generated summaries of City Council meetings from BevCam recordings, with key votes and highlights.</p>
+      <div class="card-arrow">Read summaries →</div>
+    </a>
 
-    <div class="tab-panel active" id="tab-upcoming">
-      <div class="main-header">
-        <span class="result-count" id="cal-result-count">Loading…</span>
-        <input class="search-box" type="search" id="cal-search" placeholder="Search events…" />
-      </div>
-      <div id="calendar-list">
-        <div class="state-msg"><div class="spinner"></div>Fetching calendar…</div>
-      </div>
-    </div>
-    <div class="tab-panel" id="tab-summaries">
-      <div class="main-header">
-        <span class="result-count" id="sum-result-count">Loading…</span>
-        <p class="disclaimer">AI-generated from BevCam transcripts — verify with source video</p>
-      </div>
-      <div id="summaries-list">
-        <div class="state-msg"><div class="spinner"></div>Loading summaries…</div>
-      </div>
-    </div>
+    <a class="nav-card" href="/beverlymadata/data.html">
+      <div class="nav-card-icon">📊</div>
+      <h2>City Data</h2>
+      <p>Ten years of financial trends — tax rates, assessed values, stabilization fund, debt, and sustainability indicators.</p>
+      <div class="card-arrow">Explore data →</div>
+    </a>
 
-
-  </main>
+  </div>
 </div>
 
 <footer>
-  Data sourced from <a href="https://www.beverlyma.gov/AgendaCenter" target="_blank">beverlyma.gov</a> via RSS.
   Beverly Data is an independent civic project and is not affiliated with the City of Beverly.
+  Data sourced from <a href="https://www.beverlyma.gov/AgendaCenter" target="_blank">beverlyma.gov</a> and public records.
 </footer>
 
-<script>
-  // ── Data is served from static JSON files generated by fetch_data.py ──
-
-  let allItems = [];
-  let activeBoard = 'all';
-  let activeType  = 'all';
-  let searchQuery = '';
-
-  function formatDate(dateStr) {
-    const d = new Date(dateStr);
-    if (isNaN(d)) return dateStr;
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  }
-
-  function filteredItems() {
-    return allItems.filter(item => {
-      const boardMatch = activeBoard === 'all' || item.board === activeBoard;
-      const typeMatch  = activeType  === 'all' || item.type === activeType;
-      const q = searchQuery.toLowerCase();
-      const searchMatch = !q || item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q) || item.board.toLowerCase().includes(q);
-      return boardMatch && typeMatch && searchMatch;
-    });
-  }
-
-  function buildBoardFilters() {
-    // Count items per board, sorted by count desc
-    const counts = {};
-    for (const item of allItems) counts[item.board] = (counts[item.board] || 0) + 1;
-    const boards = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-
-    function makeBtn(board, label, count, cls) {
-      const btn = document.createElement('button');
-      btn.className = cls;
-      btn.dataset.board = board;
-      btn.innerHTML = `${label} <span class="count">${count}</span>`;
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('[data-board]').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.mobile-pill[data-board]').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('[data-board="' + board + '"]').forEach(b => b.classList.add('active'));
-        activeBoard = board;
-        renderCards();
-      });
-      return btn;
-    }
-
-    // Sidebar
-    const sidebar = document.getElementById('board-filter-group');
-    sidebar.innerHTML = '<h2>Board / Committee</h2>';
-    const allBtn = makeBtn('all', 'All Boards', allItems.length, 'filter-btn active');
-    allBtn.innerHTML = `All Boards <span class="count">${allItems.length}</span>`;
-    sidebar.appendChild(allBtn);
-    for (const [board, count] of boards) {
-      sidebar.appendChild(makeBtn(board, board, count, 'filter-btn'));
-    }
-
-    // Mobile pills
-    const pills = document.getElementById('mobile-board-filters');
-    pills.innerHTML = '';
-    pills.appendChild(makeBtn('all', 'All', allItems.length, 'mobile-pill active'));
-    for (const [board, count] of boards) {
-      pills.appendChild(makeBtn(board, board, count, 'mobile-pill'));
-    }
-  }
-
-  function renderCards() {
-    const list = document.getElementById('meetings-list');
-    const items = filteredItems();
-    document.getElementById('result-count').textContent =
-      `${items.length} meeting${items.length !== 1 ? 's' : ''}`;
-
-    if (!items.length) {
-      list.innerHTML = '<div class="state-msg">No meetings match your filters.</div>';
-      return;
-    }
-
-    list.innerHTML = items.map(item => `
-      <div class="meeting-card">
-        <div class="card-top">
-          <div>
-            <div class="card-meta">${formatDate(item.pubDate)} · ${item.board}</div>
-            <div class="card-title"><a href="${item.link}" target="_blank">${item.title}</a></div>
-            ${item.desc ? `<div class="card-desc">${item.desc}</div>` : ''}
-          </div>
-          <span class="status-badge ${item.type}">${item.type === 'minutes' ? 'Minutes' : 'Agenda'}</span>
-        </div>
-        <div class="card-tags">
-          <span class="tag ${item.type}">${item.type}</span>
-          <span class="tag">${item.board}</span>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  // ── Event listeners ──
-  document.querySelectorAll('[data-type]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active-type', 'active'));
-      btn.classList.add('active-type', 'active');
-      activeType = btn.dataset.type;
-      renderCards();
-    });
-  });
-
-  document.getElementById('search').addEventListener('input', e => {
-    searchQuery = e.target.value;
-    renderCards();
-  });
-
-  // ── Load agendas & minutes from static JSON ──
-  async function loadFeed() {
-    try {
-      const res = await fetch('meetings.json?v=' + Date.now());
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      allItems = await res.json();
-      buildBoardFilters();
-      renderCards();
-    } catch (err) {
-      document.getElementById('meetings-list').innerHTML =
-        `<div class="state-msg">⚠️ Could not load meetings.json — run fetch_data.py first.<br><small>${err.message}</small></div>`;
-      document.getElementById('result-count').textContent = 'Error';
-    }
-  }
-
-  // ── Calendar ──
-  let allEvents = [];
-  let calSearch = '';
-  let eventOverrides = [];
-
-  function formatEventDate(dateStr) {
-    const d = new Date(dateStr);
-    if (isNaN(d)) return { month: '', day: '?', dow: '' };
-    return {
-      month: d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase(),
-      day:   d.getDate(),
-      dow:   d.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase(),
-    };
-  }
-
-  function findOverride(event) {
-    const eventDateStr = event.eventDate ? new Date(event.eventDate).toISOString().slice(0, 10) : '';
-    return eventOverrides.find(o =>
-      event.title.toLowerCase().includes(o.match.toLowerCase()) &&
-      (!o.date || o.date === eventDateStr)
-    ) || null;
-  }
-
-  function renderCalendar() {
-    const list = document.getElementById('calendar-list');
-    const q = calSearch.toLowerCase();
-    const items = allEvents.filter(e =>
-      !q || e.title.toLowerCase().includes(q) || e.board.toLowerCase().includes(q) ||
-      e.location.toLowerCase().includes(q)
-    );
-    document.getElementById('cal-result-count').textContent =
-      `${items.length} upcoming event${items.length !== 1 ? 's' : ''}`;
-
-    if (!items.length) {
-      list.innerHTML = '<div class="state-msg">No upcoming events found.</div>';
-      return;
-    }
-
-    list.innerHTML = items.map(e => {
-      const { month, day, dow } = formatEventDate(e.eventDate || e.pubDate);
-      const ov = findOverride(e);
-      const meetHtml = ov ? `
-        <div class="event-meet">
-          <a href="${ov.meet_url}" target="_blank" class="meet-btn">📹 Join Google Meet</a>
-          ${ov.dial_in ? `<span class="meet-dial">Or dial: ${ov.dial_in}${ov.dial_pin ? ` &nbsp;PIN: ${ov.dial_pin}` : ''}</span>` : ''}
-        </div>` : '';
-      return `
-        <div class="event-card">
-          <div class="event-date-block">
-            <div class="month">${month}</div>
-            <div class="day">${day}</div>
-            <div class="dow">${dow}</div>
-          </div>
-          <div class="event-body">
-            <div class="event-title"><a href="${e.link}" target="_blank">${e.title}</a></div>
-            <div class="event-detail">
-              ${e.eventTime ? `<span>🕐 ${e.eventTime}</span>` : ''}
-              ${e.location  ? `<span>📍 ${e.location}</span>`  : ''}
-              <span style="color:var(--tag-text);font-weight:600">${e.board}</span>
-            </div>
-            ${meetHtml}
-          </div>
-        </div>`;
-    }).join('');
-  }
-
-  async function loadCalendar() {
-    try {
-      const [calRes, ovRes] = await Promise.all([
-        fetch('calendar.json?v=' + Date.now()),
-        fetch('events.json?v=' + Date.now()).catch(() => null),
-      ]);
-      if (!calRes.ok) throw new Error(`HTTP ${calRes.status}`);
-      allEvents = await calRes.json();
-      if (ovRes && ovRes.ok) eventOverrides = await ovRes.json();
-      renderCalendar();
-    } catch (err) {
-      document.getElementById('calendar-list').innerHTML =
-        `<div class="state-msg">⚠️ Could not load calendar.json — run fetch_data.py first.<br><small>${err.message}</small></div>`;
-      document.getElementById('cal-result-count').textContent = 'Error';
-    }
-  }
-
-  document.getElementById('cal-search').addEventListener('input', e => {
-    calSearch = e.target.value;
-    renderCalendar();
-  });
-
-  // ── AI Summaries ──
-  function renderSummaries(data) {
-    const list = document.getElementById('summaries-list');
-    document.getElementById('sum-result-count').textContent =
-      `${data.length} City Council meeting${data.length !== 1 ? 's' : ''} summarized`;
-
-    if (!data.length) {
-      list.innerHTML = '<div class="state-msg">No summaries yet — run summarize.py to generate them.</div>';
-      return;
-    }
-
-    list.innerHTML = data.map(item => {
-      const date = item.published ? new Date(item.published).toLocaleDateString('en-US',
-        { month: 'long', day: 'numeric', year: 'numeric' }) : '';
-      const bulletsHtml = (item.bullets || []).slice(0, 5).map(b =>
-        `<li>${b}</li>`).join('');
-      const votesHtml = (item.votes || []).length
-        ? `<div class="summary-votes">
-             <h4>Key Votes</h4>
-             <ul>${(item.votes).map(v => `<li>${v}</li>`).join('')}</ul>
-           </div>` : '';
-      const errMsg = item.error
-        ? `<p style="color:var(--muted);font-size:.85rem;font-style:italic">${item.error}</p>` : '';
-
-      return `
-        <div class="summary-card">
-          <div class="summary-meta">
-            <span>${date}</span>
-            <span class="ai-badge">AI Summary</span>
-          </div>
-          <div class="summary-headline">${item.headline || item.title}</div>
-          ${errMsg}
-          ${bulletsHtml ? `<ul class="summary-bullets">${bulletsHtml}</ul>` : ''}
-          ${votesHtml}
-          <div class="summary-footer">
-            <a href="${item.url}" target="_blank">▶ Watch on BevCam / YouTube</a>
-            <span class="disclaimer">AI may misread audio — check source video</span>
-          </div>
-        </div>`;
-    }).join('');
-  }
-
-  async function loadSummaries() {
-    try {
-      const res = await fetch('summaries.json?v=' + Date.now());
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      renderSummaries(data);
-    } catch (err) {
-      document.getElementById('summaries-list').innerHTML =
-        `<div class="state-msg">⚠️ Could not load summaries.json<br><small>${err.message}</small></div>`;
-      document.getElementById('sum-result-count').textContent = 'Error';
-    }
-  }
-
-  // ── Tab switching ──
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-      const sidebar = document.querySelector('.sidebar');
-      if (btn.dataset.tab === 'agendas') {
-        sidebar.style.display = '';
-        document.querySelector('.container').style.gridTemplateColumns = '';
-      } else {
-        sidebar.style.display = 'none';
-        document.querySelector('.container').style.gridTemplateColumns = '1fr';
-      }
-      if (btn.dataset.tab === 'upcoming' && allEvents.length === 0) loadCalendar();
-
-      if (btn.dataset.tab === 'summaries') loadSummaries();
-    });
-  });
-
-
-  loadFeed();
-  loadCalendar();
-</script>
 </body>
 </html>
