@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beverly Data — Property Value Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     :root {
       --navy: #1a2744;
@@ -23,6 +24,10 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
     }
 
     header {
@@ -33,9 +38,8 @@
       align-items: center;
       justify-content: space-between;
       height: 56px;
-      position: sticky;
-      top: 0;
-      z-index: 200;
+      flex-shrink: 0;
+      z-index: 1000;
     }
 
     .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; color: white; text-decoration: none; }
@@ -54,51 +58,61 @@
     }
     nav a:hover, nav a.active { color: white; border-bottom-color: var(--accent); }
 
-    .hero {
+    .subheader {
       background: var(--navy);
-      color: white;
-      padding: 2rem 2rem 1.5rem;
       border-bottom: 3px solid var(--accent);
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
-    .hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.25rem; }
-    .hero p { color: rgba(255,255,255,0.72); font-size: 0.9rem; max-width: 600px; }
+
+    .subheader h1 { font-size: 1.1rem; font-weight: 700; color: white; }
+    .subheader p { font-size: 0.78rem; color: rgba(255,255,255,0.65); }
 
     .stats-bar {
       display: flex;
-      gap: 0;
-      border-bottom: 1px solid var(--border);
       background: white;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
       overflow-x: auto;
     }
 
     .stat-chip {
-      flex: 1;
-      min-width: 140px;
-      padding: 0.9rem 1.25rem;
+      padding: 0.55rem 1.25rem;
       border-right: 1px solid var(--border);
+      white-space: nowrap;
     }
     .stat-chip:last-child { border-right: none; }
-    .stat-num { font-size: 1.3rem; font-weight: 700; color: var(--navy); }
-    .stat-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+    .stat-num { font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+    .stat-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
-    .layout {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      height: calc(100vh - 56px - 58px - 62px);
-      min-height: 500px;
+    .map-wrapper {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      position: relative;
     }
 
-    .sidebar {
+    #map { flex: 1; }
+
+    /* Sidebar panel */
+    .panel {
+      width: 230px;
       background: white;
-      border-right: 1px solid var(--border);
+      border-left: 1px solid var(--border);
       overflow-y: auto;
       padding: 1rem;
+      flex-shrink: 0;
+      z-index: 400;
     }
 
-    .sidebar-section { margin-bottom: 1.25rem; }
-
-    .sidebar-section h3 {
-      font-size: 0.7rem;
+    .panel-section { margin-bottom: 1.25rem; }
+    .panel-section h3 {
+      font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -112,12 +126,12 @@
       justify-content: space-between;
       width: 100%;
       text-align: left;
-      padding: 0.38rem 0.6rem;
+      padding: 0.35rem 0.55rem;
       margin-bottom: 2px;
       border: none;
       background: transparent;
       border-radius: 5px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       cursor: pointer;
       color: var(--text);
       transition: background 0.12s;
@@ -125,84 +139,72 @@
     .filter-btn:hover { background: var(--bg); }
     .filter-btn.active { background: #eef2fb; color: var(--blue); font-weight: 600; }
     .filter-btn .dot {
-      width: 10px; height: 10px;
+      width: 9px; height: 9px;
       border-radius: 50%;
       flex-shrink: 0;
-      margin-right: 7px;
+      margin-right: 6px;
     }
-    .filter-btn .label { flex: 1; display: flex; align-items: center; }
-    .filter-btn .cnt { font-size: 0.7rem; color: var(--muted); }
+    .filter-btn .flabel { flex: 1; display: flex; align-items: center; }
+    .filter-btn .cnt { font-size: 0.68rem; color: var(--muted); }
 
-    .legend-section { margin-top: 1rem; }
-    .legend-bar {
-      height: 12px;
-      border-radius: 6px;
-      background: linear-gradient(to right, #2563eb, #7c3aed, #dc2626, #f97316, #eab308);
-      margin-bottom: 4px;
-    }
-    .legend-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.65rem;
-      color: var(--muted);
-    }
-
-    .sort-select {
+    .color-select {
       width: 100%;
-      padding: 0.4rem 0.6rem;
+      padding: 0.38rem 0.55rem;
       border: 1px solid var(--border);
       border-radius: 6px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       background: white;
       outline: none;
       cursor: pointer;
     }
 
-    .map-area {
-      position: relative;
-      background: #0f172a;
-      overflow: hidden;
+    .legend-bar {
+      height: 10px;
+      border-radius: 5px;
+      background: linear-gradient(to right, #2563eb, #7c3aed, #dc2626, #f97316, #eab308);
+      margin-bottom: 4px;
+      margin-top: 0.5rem;
+    }
+    .legend-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.62rem;
+      color: var(--muted);
     }
 
-    #map-canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
+    /* Tooltip */
+    .leaflet-tooltip-own {
+      background: rgba(15,23,42,0.95) !important;
+      border: 1px solid rgba(255,255,255,0.12) !important;
+      color: white !important;
+      border-radius: 8px !important;
+      padding: 0.55rem 0.75rem !important;
+      font-size: 0.76rem !important;
+      line-height: 1.55 !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+      pointer-events: none !important;
     }
+    .leaflet-tooltip-own::before { display: none !important; }
+    .tt-title { font-weight: 700; font-size: 0.82rem; margin-bottom: 4px; }
+    .tt-row { display: flex; justify-content: space-between; gap: 14px; }
+    .tt-key { color: rgba(255,255,255,0.55); }
+    .tt-val { font-weight: 600; }
 
-    #tooltip {
-      position: absolute;
-      background: rgba(15,23,42,0.95);
-      color: white;
-      padding: 0.6rem 0.8rem;
-      border-radius: 8px;
-      font-size: 0.78rem;
-      pointer-events: none;
-      display: none;
-      max-width: 220px;
-      line-height: 1.5;
-      border: 1px solid rgba(255,255,255,0.1);
-      z-index: 10;
-    }
-    #tooltip strong { font-size: 0.85rem; display: block; margin-bottom: 3px; }
-    #tooltip .tt-row { display: flex; justify-content: space-between; gap: 1rem; }
-    #tooltip .tt-key { color: rgba(255,255,255,0.6); }
-    #tooltip .tt-val { font-weight: 600; }
-
-    #loading-overlay {
+    #loading-msg {
       position: absolute;
       inset: 0;
-      background: #0f172a;
+      background: rgba(15,23,42,0.7);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       color: white;
-      gap: 1rem;
-      z-index: 5;
+      font-size: 0.9rem;
+      z-index: 600;
+      gap: 0.75rem;
+      flex-direction: column;
     }
     .spinner {
-      width: 32px; height: 32px;
+      width: 28px; height: 28px;
       border: 3px solid rgba(255,255,255,0.2);
       border-top-color: var(--accent);
       border-radius: 50%;
@@ -210,54 +212,11 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    .zoom-controls {
-      position: absolute;
-      bottom: 1rem;
-      right: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      z-index: 10;
-    }
-    .zoom-btn {
-      width: 32px; height: 32px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: white;
-      border-radius: 6px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.12s;
-    }
-    .zoom-btn:hover { background: rgba(255,255,255,0.22); }
-
-    .map-hint {
-      position: absolute;
-      bottom: 1rem;
-      left: 1rem;
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.4);
-      z-index: 10;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.78rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      background: white;
-    }
-    footer a { color: var(--blue); }
-
     @media (max-width: 700px) {
       header { padding: 0 1rem; }
-      nav { gap: 0.6rem; }
-      nav a { font-size: 0.75rem; }
-      .layout { grid-template-columns: 1fr; height: auto; }
-      .sidebar { display: none; }
-      .map-area { height: 70vh; }
+      nav { gap: 0.55rem; }
+      nav a { font-size: 0.72rem; }
+      .panel { display: none; }
     }
   </style>
 </head>
@@ -275,224 +234,174 @@
   </nav>
 </header>
 
-<div class="hero">
-  <h1>Property Value Map</h1>
-  <p>FY2026 assessed values for all 13,019 Beverly parcels. Color shows value per acre — the Urban3 metric of land productivity.</p>
-</div>
-
-<div class="stats-bar" id="stats-bar">
-  <div class="stat-chip"><div class="stat-num" id="s-parcels">—</div><div class="stat-label">Parcels shown</div></div>
-  <div class="stat-chip"><div class="stat-num" id="s-total">—</div><div class="stat-label">Total assessed value</div></div>
-  <div class="stat-chip"><div class="stat-num" id="s-avg-vpa">—</div><div class="stat-label">Median value / acre</div></div>
-  <div class="stat-chip"><div class="stat-num" id="s-top">—</div><div class="stat-label">Highest value / acre</div></div>
-</div>
-
-<div class="layout">
-  <aside class="sidebar">
-    <div class="sidebar-section">
-      <h3>Color by</h3>
-      <select class="sort-select" id="color-by">
-        <option value="vpa">Value per acre</option>
-        <option value="total">Total assessed value</option>
-        <option value="land">Land value</option>
-        <option value="bldg">Building value</option>
-      </select>
-    </div>
-
-    <div class="sidebar-section">
-      <h3>Filter by type</h3>
-      <div id="cat-filters"></div>
-    </div>
-
-    <div class="legend-section">
-      <h3 style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.5rem;">Color scale (log)</h3>
-      <div class="legend-bar"></div>
-      <div class="legend-labels" id="legend-labels">
-        <span>Low</span><span>High</span>
-      </div>
-    </div>
-  </aside>
-
-  <div class="map-area">
-    <div id="loading-overlay">
-      <div class="spinner"></div>
-      <div style="font-size:0.9rem;color:rgba(255,255,255,0.7)">Loading 13,019 parcels…</div>
-    </div>
-    <canvas id="map-canvas"></canvas>
-    <div id="tooltip"></div>
-    <div class="zoom-controls">
-      <button class="zoom-btn" id="zoom-in">+</button>
-      <button class="zoom-btn" id="zoom-out">−</button>
-      <button class="zoom-btn" id="zoom-reset" title="Reset view" style="font-size:0.7rem">⌂</button>
-    </div>
-    <div class="map-hint">Scroll to zoom · Drag to pan · Hover for details</div>
+<div class="subheader">
+  <div>
+    <h1>Property Value Map</h1>
+    <p>FY2026 assessed values — colored by value per acre (Urban3 methodology)</p>
   </div>
 </div>
 
-<footer>
-  FY2026 assessment data from the City of Beverly. Beverly Data is an independent civic project and is not affiliated with the City of Beverly.
-  <br>Inspired by <a href="https://urban3.com" target="_blank">Urban3</a>'s value-per-acre analysis methodology.
-</footer>
+<div class="stats-bar">
+  <div class="stat-chip"><div class="stat-num" id="s-parcels">—</div><div class="stat-label">Parcels shown</div></div>
+  <div class="stat-chip"><div class="stat-num" id="s-total">—</div><div class="stat-label">Total assessed value</div></div>
+  <div class="stat-chip"><div class="stat-num" id="s-med">—</div><div class="stat-label">Median value / acre</div></div>
+  <div class="stat-chip"><div class="stat-num" id="s-top">—</div><div class="stat-label">Highest value / acre</div></div>
+</div>
 
+<div class="map-wrapper">
+  <div id="loading-msg"><div class="spinner"></div>Loading 13,019 parcels…</div>
+  <div id="map"></div>
+  <aside class="panel">
+    <div class="panel-section">
+      <h3>Color by</h3>
+      <select class="color-select" id="color-by">
+        <option value="vpa">Value per acre</option>
+        <option value="v">Total assessed value</option>
+        <option value="lv">Land value</option>
+        <option value="bv">Building value</option>
+      </select>
+    </div>
+    <div class="panel-section">
+      <h3>Filter by type</h3>
+      <div id="cat-filters"></div>
+    </div>
+    <div class="panel-section">
+      <h3>Color scale (log)</h3>
+      <div class="legend-bar"></div>
+      <div class="legend-labels" id="legend-labels"><span>Low</span><span>High</span></div>
+    </div>
+  </aside>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const CAT_COLORS = {
-  'Single Family':  '#3b82f6',
-  'Condo':          '#8b5cf6',
-  'Two Family':     '#06b6d4',
-  'Three Family':   '#14b8a6',
-  'Multi-Family':   '#10b981',
-  'Apt 4-8u':       '#22c55e',
-  'Apt 9+u':        '#84cc16',
-  'Commercial':     '#f97316',
-  'Retail':         '#fb923c',
-  'Office':         '#fbbf24',
-  'Industrial':     '#a78bfa',
-  'Vacant Land':    '#6b7280',
-  'Tax Exempt':     '#64748b',
-  'Other':          '#94a3b8',
+  'Single Family': '#3b82f6', 'Condo': '#8b5cf6',
+  'Two Family': '#06b6d4', 'Three Family': '#14b8a6',
+  'Multi-Family': '#10b981', 'Apt 4-8u': '#22c55e', 'Apt 9+u': '#84cc16',
+  'Commercial': '#f97316', 'Retail': '#fb923c', 'Office': '#fbbf24',
+  'Industrial': '#a78bfa', 'Vacant Land': '#6b7280',
+  'Tax Exempt': '#64748b', 'Other': '#94a3b8',
 };
-
-// VPA color: blue (low) → purple → red → orange → yellow (high), log scale
-function vpaColor(val, lo, hi) {
-  if (val <= 0) return 'rgba(100,100,100,0.4)';
-  const t = Math.max(0, Math.min(1, (Math.log(val + 1) - Math.log(lo + 1)) / (Math.log(hi + 1) - Math.log(lo + 1))));
-  // 5-stop gradient
-  const stops = [
-    [37,99,235],    // blue
-    [124,58,237],   // purple
-    [220,38,38],    // red
-    [249,115,22],   // orange
-    [234,179,8],    // yellow
-  ];
-  const seg = t * (stops.length - 1);
-  const i = Math.min(Math.floor(seg), stops.length - 2);
-  const f = seg - i;
-  const [r1,g1,b1] = stops[i];
-  const [r2,g2,b2] = stops[i+1];
-  const r = Math.round(r1 + (r2-r1)*f);
-  const g = Math.round(g1 + (g2-g1)*f);
-  const b = Math.round(b1 + (b2-b1)*f);
-  return `rgba(${r},${g},${b},0.85)`;
-}
 
 function fmt(v) {
   if (v >= 1e9) return '$' + (v/1e9).toFixed(2) + 'B';
   if (v >= 1e6) return '$' + (v/1e6).toFixed(1) + 'M';
   if (v >= 1e3) return '$' + (v/1e3).toFixed(0) + 'K';
-  return '$' + v.toFixed(0);
+  return '$' + Math.round(v);
 }
 
-let allParcels = [], filtered = [];
+// VPA color ramp: blue → purple → red → orange → yellow (log scale)
+function vpaColor(val, lo, hi) {
+  if (!val || val <= 0) return 'rgba(100,100,120,0.5)';
+  const t = Math.max(0, Math.min(1,
+    (Math.log(val + 1) - Math.log(lo + 1)) / (Math.log(hi + 1) - Math.log(lo + 1))
+  ));
+  const stops = [[37,99,235],[124,58,237],[220,38,38],[249,115,22],[234,179,8]];
+  const seg = t * (stops.length - 1);
+  const i = Math.min(Math.floor(seg), stops.length - 2);
+  const f = seg - i;
+  const r = Math.round(stops[i][0] + (stops[i+1][0] - stops[i][0]) * f);
+  const g = Math.round(stops[i][1] + (stops[i+1][1] - stops[i][1]) * f);
+  const b = Math.round(stops[i][2] + (stops[i+1][2] - stops[i][2]) * f);
+  return `rgba(${r},${g},${b},0.82)`;
+}
+
+let allParcels = [], filtered = [], colorBy = 'vpa';
 let activeCategories = new Set();
-let colorBy = 'vpa';
+let lo = 1, hi = 1;
+let circleLayer;
 
-// Map transform state
-let offsetX = 0, offsetY = 0, scale = 1, baseScale = 1;
-let mapW = 1, mapH = 1;
-let minX, maxX, minY, maxY, dataW, dataH;
-let isDragging = false, dragStartX, dragStartY, dragOffX, dragOffY;
+// Init map centered on Beverly
+const map = L.map('map', { zoomControl: true }).setView([42.558, -70.880], 13);
 
-const canvas = document.getElementById('map-canvas');
-const ctx = canvas.getContext('2d');
-const tooltip = document.getElementById('tooltip');
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution: '© <a href="https://carto.com/">CARTO</a> © <a href="https://www.openstreetmap.org/copyright">OSM</a>',
+  subdomains: 'abcd',
+  maxZoom: 19,
+}).addTo(map);
 
-function colorValue(p) {
-  if (colorBy === 'vpa') return p.vpa;
-  if (colorBy === 'total') return p.v;
-  if (colorBy === 'land') return p.lv;
-  if (colorBy === 'bldg') return p.bv;
+// Custom canvas renderer for performance
+const renderer = L.canvas({ padding: 0.5 });
+
+function getColorValue(p) {
+  if (colorBy === 'v') return p.v;
+  if (colorBy === 'lv') return p.lv;
+  if (colorBy === 'bv') return p.bv;
   return p.vpa;
 }
 
 function getColorRange() {
-  const vals = filtered.map(colorValue).filter(v => v > 0);
+  const vals = filtered.map(getColorValue).filter(v => v > 0).sort((a,b) => a-b);
   if (!vals.length) return [1, 1];
-  vals.sort((a,b) => a-b);
-  const lo = vals[Math.floor(vals.length * 0.02)] || 1;
-  const hi = vals[Math.floor(vals.length * 0.98)] || lo + 1;
-  return [lo, hi];
-}
-
-// baseScale: pixels per data-unit at scale=1
-function toScreen(px, py) {
-  return [
-    (px - minX) * baseScale * scale + offsetX,
-    (maxY - py) * baseScale * scale + offsetY,
-  ];
-}
-
-function fromScreen(sx, sy) {
-  return [
-    (sx - offsetX) / (baseScale * scale) + minX,
-    maxY - (sy - offsetY) / (baseScale * scale),
-  ];
-}
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#0f172a';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  const [lo, hi] = getColorRange();
-  const dotSize = Math.max(1.5, Math.min(5, scale * 2.5));
-
-  for (const p of filtered) {
-    const [sx, sy] = toScreen(p.x, p.y);
-    if (sx < -10 || sx > canvas.width + 10 || sy < -10 || sy > canvas.height + 10) continue;
-    ctx.beginPath();
-    ctx.arc(sx, sy, dotSize, 0, Math.PI * 2);
-    ctx.fillStyle = vpaColor(colorValue(p), lo, hi);
-    ctx.fill();
-  }
-
-  updateLegend(lo, hi);
-  updateStats();
-}
-
-function updateLegend(lo, hi) {
-  const el = document.getElementById('legend-labels');
-  const label = colorBy === 'vpa' ? '/acre' : ' total';
-  el.innerHTML = `<span>${fmt(lo)}${label}</span><span>${fmt(hi)}${label}</span>`;
+  return [vals[Math.floor(vals.length * 0.02)] || 1, vals[Math.floor(vals.length * 0.98)] || 2];
 }
 
 function updateStats() {
   const n = filtered.length;
-  const total = filtered.reduce((s,p) => s + p.v, 0);
-  const vpas = filtered.filter(p => p.vpa > 0).map(p => p.vpa).sort((a,b) => a-b);
-  const med = vpas.length ? vpas[Math.floor(vpas.length/2)] : 0;
-  const top = vpas.length ? vpas[vpas.length-1] : 0;
+  const total = filtered.reduce((s,p) => s+p.v, 0);
+  const vpas = filtered.filter(p=>p.vpa>0).map(p=>p.vpa).sort((a,b)=>a-b);
+  const med = vpas[Math.floor(vpas.length/2)] || 0;
+  const top = vpas[vpas.length-1] || 0;
   document.getElementById('s-parcels').textContent = n.toLocaleString();
   document.getElementById('s-total').textContent = fmt(total);
-  document.getElementById('s-avg-vpa').textContent = fmt(med) + '/ac';
-  document.getElementById('s-top').textContent = fmt(top) + '/ac';
+  document.getElementById('s-med').textContent = fmt(med)+'/ac';
+  document.getElementById('s-top').textContent = fmt(top)+'/ac';
+  const label = colorBy === 'v' ? '' : colorBy === 'lv' ? ' land' : colorBy === 'bv' ? ' bldg' : '/ac';
+  document.getElementById('legend-labels').innerHTML =
+    `<span>${fmt(lo)}${label}</span><span>${fmt(hi)}${label}</span>`;
 }
 
-function resetView() {
-  const pad = 0.05;
-  baseScale = Math.min(
-    mapW / dataW * (1 - pad * 2),
-    mapH / dataH * (1 - pad * 2)
-  );
-  scale = 1;
-  offsetX = (mapW - dataW * baseScale) / 2;
-  offsetY = (mapH - dataH * baseScale) / 2;
+function buildTooltip(p) {
+  return `<div class="tt-title">${p.addr || 'Unknown'}</div>
+    <div class="tt-row"><span class="tt-key">Total value</span><span class="tt-val">${fmt(p.v)}</span></div>
+    <div class="tt-row"><span class="tt-key">Land value</span><span class="tt-val">${fmt(p.lv)}</span></div>
+    <div class="tt-row"><span class="tt-key">Bldg value</span><span class="tt-val">${fmt(p.bv)}</span></div>
+    ${p.ls > 0 ? `<div class="tt-row"><span class="tt-key">Lot size</span><span class="tt-val">${p.ls} ac</span></div>` : ''}
+    ${p.vpa > 0 ? `<div class="tt-row"><span class="tt-key">Value/acre</span><span class="tt-val">${fmt(p.vpa)}/ac</span></div>` : ''}
+    <div class="tt-row"><span class="tt-key">Type</span><span class="tt-val">${p.cat}</span></div>
+    <div class="tt-row"><span class="tt-key">Zone</span><span class="tt-val">${p.zone||'—'}</span></div>
+    ${p.yr ? `<div class="tt-row"><span class="tt-key">Built</span><span class="tt-val">${p.yr}</span></div>` : ''}`;
+}
+
+function renderLayer() {
+  if (circleLayer) map.removeLayer(circleLayer);
+  [lo, hi] = getColorRange();
+  updateStats();
+
+  circleLayer = L.layerGroup();
+  for (const p of filtered) {
+    const color = vpaColor(getColorValue(p), lo, hi);
+    const c = L.circleMarker([p.lat, p.lng], {
+      radius: 4,
+      fillColor: color,
+      fillOpacity: 0.85,
+      color: 'transparent',
+      renderer,
+    });
+    c.bindTooltip(buildTooltip(p), {
+      className: 'leaflet-tooltip-own',
+      sticky: true,
+      offset: [10, 0],
+    });
+    circleLayer.addLayer(c);
+  }
+  circleLayer.addTo(map);
 }
 
 function buildFilters() {
   const cats = {};
-  for (const p of allParcels) cats[p.cat] = (cats[p.cat] || 0) + 1;
-  const sorted = Object.entries(cats).sort((a,b) => b[1]-a[1]);
-
+  for (const p of allParcels) cats[p.cat] = (cats[p.cat]||0)+1;
+  const sorted = Object.entries(cats).sort((a,b)=>b[1]-a[1]);
   activeCategories = new Set(Object.keys(cats));
 
   const container = document.getElementById('cat-filters');
   container.innerHTML = '';
 
-  // All button
   const allBtn = document.createElement('button');
   allBtn.className = 'filter-btn active';
-  allBtn.innerHTML = `<span class="label">All types</span><span class="cnt">${allParcels.length.toLocaleString()}</span>`;
   allBtn.dataset.cat = '__all__';
+  allBtn.innerHTML = `<span class="flabel">All types</span><span class="cnt">${allParcels.length.toLocaleString()}</span>`;
   container.appendChild(allBtn);
 
   for (const [cat, cnt] of sorted) {
@@ -500,7 +409,7 @@ function buildFilters() {
     btn.className = 'filter-btn active';
     btn.dataset.cat = cat;
     const color = CAT_COLORS[cat] || '#94a3b8';
-    btn.innerHTML = `<span class="label"><span class="dot" style="background:${color}"></span>${cat}</span><span class="cnt">${cnt.toLocaleString()}</span>`;
+    btn.innerHTML = `<span class="flabel"><span class="dot" style="background:${color}"></span>${cat}</span><span class="cnt">${cnt.toLocaleString()}</span>`;
     container.appendChild(btn);
   }
 
@@ -512,175 +421,50 @@ function buildFilters() {
       const allActive = activeCategories.size === Object.keys(cats).length;
       if (allActive) {
         activeCategories.clear();
-        container.querySelectorAll('.filter-btn:not([data-cat="__all__"])').forEach(b => b.classList.remove('active'));
-        btn.classList.remove('active');
+        container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       } else {
         activeCategories = new Set(Object.keys(cats));
         container.querySelectorAll('.filter-btn').forEach(b => b.classList.add('active'));
       }
     } else {
-      if (activeCategories.has(cat)) {
-        activeCategories.delete(cat);
-        btn.classList.remove('active');
-      } else {
-        activeCategories.add(cat);
-        btn.classList.add('active');
-      }
-      // sync all button
-      const allBtn = container.querySelector('[data-cat="__all__"]');
-      if (activeCategories.size === Object.keys(cats).length) allBtn.classList.add('active');
-      else allBtn.classList.remove('active');
+      if (activeCategories.has(cat)) { activeCategories.delete(cat); btn.classList.remove('active'); }
+      else { activeCategories.add(cat); btn.classList.add('active'); }
+      const ab = container.querySelector('[data-cat="__all__"]');
+      if (activeCategories.size === Object.keys(cats).length) ab.classList.add('active');
+      else ab.classList.remove('active');
     }
-    applyFilter();
+    filtered = allParcels.filter(p => activeCategories.has(p.cat));
+    renderLayer();
   });
 }
 
-function applyFilter() {
-  filtered = allParcels.filter(p => activeCategories.has(p.cat));
-  draw();
-}
-
-// Tooltip / hover
-let hoverTimer;
-canvas.addEventListener('mousemove', e => {
-  clearTimeout(hoverTimer);
-  hoverTimer = setTimeout(() => {
-    if (isDragging) return;
-    const rect = canvas.getBoundingClientRect();
-    const mx = (e.clientX - rect.left) * (canvas.width / rect.width);
-    const my = (e.clientY - rect.top) * (canvas.height / rect.height);
-    const r = Math.max(6, scale * 4);
-    let best = null, bestDist = Infinity;
-    for (const p of filtered) {
-      const [sx, sy] = toScreen(p.x, p.y);
-      const d = (sx - mx)**2 + (sy - my)**2;
-      if (d < r*r && d < bestDist) { bestDist = d; best = p; }
-    }
-    if (best) {
-      const label = colorBy === 'vpa' ? 'Value/acre' : colorBy === 'total' ? 'Total value' : colorBy === 'land' ? 'Land value' : 'Bldg value';
-      tooltip.innerHTML = `
-        <strong>${best.addr || 'Unknown address'}</strong>
-        <div class="tt-row"><span class="tt-key">Total value</span><span class="tt-val">${fmt(best.v)}</span></div>
-        <div class="tt-row"><span class="tt-key">Land value</span><span class="tt-val">${fmt(best.lv)}</span></div>
-        <div class="tt-row"><span class="tt-key">Bldg value</span><span class="tt-val">${fmt(best.bv)}</span></div>
-        <div class="tt-row"><span class="tt-key">Lot size</span><span class="tt-val">${best.ls} ac</span></div>
-        ${best.vpa > 0 ? `<div class="tt-row"><span class="tt-key">Value/acre</span><span class="tt-val">${fmt(best.vpa)}/ac</span></div>` : ''}
-        <div class="tt-row"><span class="tt-key">Type</span><span class="tt-val">${best.cat}</span></div>
-        <div class="tt-row"><span class="tt-key">Zone</span><span class="tt-val">${best.zone || '—'}</span></div>
-        ${best.yr ? `<div class="tt-row"><span class="tt-key">Built</span><span class="tt-val">${best.yr}</span></div>` : ''}
-      `;
-      tooltip.style.display = 'block';
-      const tx = Math.min(e.clientX - rect.left + 12, rect.width - 230);
-      const ty = Math.min(e.clientY - rect.top + 12, rect.height - 220);
-      tooltip.style.left = tx + 'px';
-      tooltip.style.top = ty + 'px';
-    } else {
-      tooltip.style.display = 'none';
-    }
-  }, 30);
-});
-
-canvas.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
-
-// Drag to pan
-canvas.addEventListener('mousedown', e => {
-  isDragging = true;
-  dragStartX = e.clientX;
-  dragStartY = e.clientY;
-  dragOffX = offsetX;
-  dragOffY = offsetY;
-  canvas.style.cursor = 'grabbing';
-});
-
-window.addEventListener('mousemove', e => {
-  if (!isDragging) return;
-  offsetX = dragOffX + (e.clientX - dragStartX);
-  offsetY = dragOffY + (e.clientY - dragStartY);
-  draw();
-});
-
-window.addEventListener('mouseup', () => {
-  isDragging = false;
-  canvas.style.cursor = 'default';
-});
-
-// Scroll to zoom
-canvas.addEventListener('wheel', e => {
-  e.preventDefault();
-  const rect = canvas.getBoundingClientRect();
-  const mx = (e.clientX - rect.left) * (canvas.width / rect.width);
-  const my = (e.clientY - rect.top) * (canvas.height / rect.height);
-  const factor = e.deltaY < 0 ? 1.15 : 1/1.15;
-  offsetX = mx - (mx - offsetX) * factor;
-  offsetY = my - (my - offsetY) * factor;
-  scale *= factor;
-  draw();
-}, { passive: false });
-
-// Zoom buttons
-document.getElementById('zoom-in').addEventListener('click', () => {
-  const cx = canvas.width/2, cy = canvas.height/2;
-  offsetX = cx - (cx - offsetX) * 1.4;
-  offsetY = cy - (cy - offsetY) * 1.4;
-  scale *= 1.4; draw();
-});
-document.getElementById('zoom-out').addEventListener('click', () => {
-  const cx = canvas.width/2, cy = canvas.height/2;
-  offsetX = cx - (cx - offsetX) / 1.4;
-  offsetY = cy - (cy - offsetY) / 1.4;
-  scale /= 1.4; draw();
-});
-document.getElementById('zoom-reset').addEventListener('click', () => { resetView(); draw(); });
-
-// Color-by change
 document.getElementById('color-by').addEventListener('change', e => {
   colorBy = e.target.value;
-  draw();
+  renderLayer();
 });
 
-// Resize handler
-const ro = new ResizeObserver(() => {
-  if (!allParcels.length) return;
-  const area = canvas.parentElement;
-  canvas.width = area.clientWidth * devicePixelRatio;
-  canvas.height = area.clientHeight * devicePixelRatio;
-  canvas.style.width = area.clientWidth + 'px';
-  canvas.style.height = area.clientHeight + 'px';
-  mapW = canvas.width;
-  mapH = canvas.height;
-  resetView();
-  draw();
+// Tile style toggle
+const lightTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '© <a href="https://carto.com/">CARTO</a> © <a href="https://www.openstreetmap.org/copyright">OSM</a>',
+  subdomains: 'abcd', maxZoom: 19,
 });
-ro.observe(canvas.parentElement);
+const darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution: '© <a href="https://carto.com/">CARTO</a> © <a href="https://www.openstreetmap.org/copyright">OSM</a>',
+  subdomains: 'abcd', maxZoom: 19,
+});
+darkTiles.addTo(map);
+L.control.layers({'Dark': darkTiles, 'Light': lightTiles}, {}, {position:'bottomleft'}).addTo(map);
 
-// Load data
 (async () => {
   try {
     const res = await fetch('parcels.json?v=' + Date.now());
     allParcels = await res.json();
-    minX = Infinity; maxX = -Infinity; minY = Infinity; maxY = -Infinity;
-    for (const p of allParcels) {
-      if (p.x < minX) minX = p.x; if (p.x > maxX) maxX = p.x;
-      if (p.y < minY) minY = p.y; if (p.y > maxY) maxY = p.y;
-    }
-    dataW = maxX - minX;
-    dataH = maxY - minY;
-
-    const area = canvas.parentElement;
-    canvas.width = area.clientWidth * devicePixelRatio;
-    canvas.height = area.clientHeight * devicePixelRatio;
-    canvas.style.width = area.clientWidth + 'px';
-    canvas.style.height = area.clientHeight + 'px';
-    mapW = canvas.width;
-    mapH = canvas.height;
-
     filtered = allParcels;
     buildFilters();
-    resetView();
-    draw();
-    document.getElementById('loading-overlay').style.display = 'none';
+    renderLayer();
+    document.getElementById('loading-msg').style.display = 'none';
   } catch (err) {
-    document.getElementById('loading-overlay').innerHTML =
+    document.getElementById('loading-msg').innerHTML =
       `<div style="color:#f87171">⚠️ Could not load parcels.json<br><small>${err.message}</small></div>`;
   }
 })();
