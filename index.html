@@ -1081,6 +1081,14 @@
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
       document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      const sidebar = document.querySelector('.sidebar');
+      if (btn.dataset.tab === 'agendas') {
+        sidebar.style.display = '';
+        document.querySelector('.container').style.gridTemplateColumns = '';
+      } else {
+        sidebar.style.display = 'none';
+        document.querySelector('.container').style.gridTemplateColumns = '1fr';
+      }
       if (btn.dataset.tab === 'upcoming' && allEvents.length === 0) loadCalendar();
 
       if (btn.dataset.tab === 'summaries') loadSummaries();
