@@ -26,6 +26,9 @@ jobs:
       - name: Fetch meeting data
         run: python3 fetch_data.py
 
+      - name: Fetch civic data
+        run: python3 fetch_civic_data.py
+
       - name: Refresh AI summaries (new videos only)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -35,6 +38,6 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add meetings.json calendar.json summaries.json
+          git add meetings.json calendar.json summaries.json civic_data.json
           git diff --staged --quiet || git commit -m "chore: refresh data $(date -u '+%Y-%m-%d')"
           git push

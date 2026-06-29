@@ -1,0 +1,39 @@
+{
+  "updated": "2026-06-29",
+  "tax_rates": {
+    "fiscal_year": 2026,
+    "residential": 10.81,
+    "commercial": 20.98
+  },
+  "school_enrollment": {
+    "school_year": "2025\u201326",
+    "enrollment": 4497
+  },
+  "per_pupil_spending": {
+    "fiscal_year": 2025,
+    "per_pupil_in_district": 18594.61
+  },
+  "sources": {
+    "tax_rates": "Beverly City Assessors Office \u2014 beverlyma.gov/391/City-Assessors",
+    "school_data": "MA DESE School and District Profiles \u2014 profiles.doe.mass.edu",
+    "budget": "Beverly Finance Department \u2014 beverlyma.gov/309/Fiscal-Budgets"
+  },
+  "budget_links": [
+    {
+      "label": "FY2026 Budget (ClearGov)",
+      "url": "https://city-beverly-ma-budget-book.cleargov.com/20282/introduction/transmittal-letter"
+    },
+    {
+      "label": "FY2025 Budget (ClearGov)",
+      "url": "https://city-beverly-ma-budget-book.cleargov.com/15295/introduction/transmittal-letter"
+    },
+    {
+      "label": "FY2027 Proposed Budget (PDF)",
+      "url": "https://www.beverlyma.gov/DocumentCenter/View/7440/Proposed-FY-2027-City-Budget"
+    },
+    {
+      "label": "FY2024 Budget (PDF)",
+      "url": "https://www.beverlyma.gov/DocumentCenter/View/4555/Proposed-Fiscal-Year-2024-Budget"
+    }
+  ]
+}

@@ -410,6 +410,86 @@
 
     #summaries-list { display: flex; flex-direction: column; gap: 1rem; }
 
+    /* ── Data section ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .stat-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .data-section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .doc-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .doc-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--blue);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.12s, border-color 0.12s;
+    }
+
+    .doc-link:hover {
+      background: var(--tag-bg);
+      border-color: var(--blue);
+    }
+
+    .data-sources {
+      margin-top: 2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    .data-sources p { margin-bottom: 0.2rem; }
+
     /* ── Tabs ── */
     .tabs {
       display: flex;
@@ -680,6 +760,7 @@
       <button class="tab-btn active" data-tab="upcoming">Upcoming Meetings</button>
       <button class="tab-btn" data-tab="agendas">Agendas &amp; Minutes</button>
       <button class="tab-btn" data-tab="summaries">Meeting Summaries</button>
+      <button class="tab-btn" data-tab="data">City Data</button>
     </div>
 
     <div class="tab-panel" id="tab-agendas">
@@ -711,6 +792,12 @@
       </div>
       <div id="summaries-list">
         <div class="state-msg"><div class="spinner"></div>Loading summaries…</div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-data">
+      <div id="data-panel">
+        <div class="state-msg"><div class="spinner"></div>Loading data…</div>
       </div>
     </div>
   </main>
@@ -997,8 +1084,68 @@
       if (btn.dataset.tab === 'upcoming' && allEvents.length === 0) loadCalendar();
 
       if (btn.dataset.tab === 'summaries') loadSummaries();
+      if (btn.dataset.tab === 'data') loadCivicData();
     });
   });
+
+  // ── Civic Data tab ──
+  let civicDataLoaded = false;
+
+  function fmt(n, decimals = 0) {
+    return Number(n).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  }
+
+  function renderCivicData(d) {
+    const tx = d.tax_rates || {};
+    const enr = d.school_enrollment || {};
+    const ppx = d.per_pupil_spending || {};
+    const links = d.budget_links || [];
+
+    const stats = [
+      { label: `FY${tx.fiscal_year || ''} Residential Tax Rate`, value: tx.residential ? `$${tx.residential}` : '—', sub: 'per $1,000 of assessed value' },
+      { label: `FY${tx.fiscal_year || ''} Commercial Tax Rate`, value: tx.commercial ? `$${tx.commercial}` : '—', sub: 'per $1,000 of assessed value' },
+      { label: `School Enrollment`, value: enr.enrollment ? fmt(enr.enrollment) : '—', sub: enr.school_year ? `${enr.school_year} school year` : '' },
+      { label: `Per-Pupil Spending`, value: ppx.per_pupil_in_district ? `$${fmt(ppx.per_pupil_in_district, 0)}` : '—', sub: ppx.fiscal_year ? `FY${ppx.fiscal_year}, in-district` : '' },
+    ];
+
+    const statsHtml = stats.map(s => `
+      <div class="stat-card">
+        <div class="stat-label">${s.label}</div>
+        <div class="stat-value">${s.value}</div>
+        ${s.sub ? `<div class="stat-sub">${s.sub}</div>` : ''}
+      </div>`).join('');
+
+    const docsHtml = links.map(l =>
+      `<a class="doc-link" href="${l.url}" target="_blank">📄 ${l.label} ↗</a>`
+    ).join('');
+
+    const src = d.sources || {};
+    const sourcesHtml = Object.values(src).map(s => `<p>${s}</p>`).join('');
+
+    document.getElementById('data-panel').innerHTML = `
+      <div class="stat-grid">${statsHtml}</div>
+      <p class="data-section-title">Budget Documents</p>
+      <div class="doc-links">${docsHtml}</div>
+      <div class="data-sources">
+        <strong>Sources</strong>
+        ${sourcesHtml}
+        ${d.updated ? `<p>Last updated: ${d.updated}</p>` : ''}
+      </div>`;
+  }
+
+  async function loadCivicData() {
+    if (civicDataLoaded) return;
+    civicDataLoaded = true;
+    try {
+      const res = await fetch('civic_data.json?v=' + Date.now());
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      renderCivicData(data);
+    } catch (err) {
+      document.getElementById('data-panel').innerHTML =
+        `<div class="state-msg">⚠️ Could not load civic_data.json — run fetch_civic_data.py first.<br><small>${err.message}</small></div>`;
+    }
+  }
 
   loadFeed();
   loadCalendar();
