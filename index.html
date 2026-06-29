@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beverly Data — Meetings</title>
+  <style>
+    :root {
+      --navy: #1a2744;
+      --blue: #2d5fa8;
+      --accent: #e8813a;
+      --bg: #f5f6f8;
+      --card-bg: #ffffff;
+      --text: #1e1e1e;
+      --muted: #6b7280;
+      --border: #e2e5ea;
+      --tag-bg: #eef2fb;
+      --tag-text: #2d5fa8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: white;
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--accent); }
+
+    nav { display: flex; gap: 1.5rem; }
+
+    nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    nav a:hover, nav a.active {
+      color: white;
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--navy);
+      color: white;
+      padding: 2.5rem 2rem 2rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.95rem;
+      max-width: 560px;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Prevent grid children from overflowing on narrow viewports */
+    .container > * { min-width: 0; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position: sticky;
+      top: 72px;
+    }
+
+    .sidebar h2 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .filter-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.45rem 0.7rem;
+      margin-bottom: 2px;
+      border: none;
+      background: transparent;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: background 0.12s;
+    }
+
+    .filter-btn:hover { background: var(--border); }
+    .filter-btn.active { background: var(--tag-bg); color: var(--blue); font-weight: 600; }
+
+    .filter-btn .count {
+      float: right;
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: var(--border);
+      border-radius: 99px;
+      padding: 0 6px;
+      line-height: 1.6;
+    }
+
+    /* ── Main ── */
+    .main-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .result-count {
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .search-box {
+      padding: 0.45rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      width: 220px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .search-box:focus { border-color: var(--blue); }
+
+    /* ── Cards ── */
+    #meetings-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .meeting-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.2rem;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .meeting-card:hover {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-color: #c5cdd8;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+      min-width: 0;
+    }
+
+    .card-top > div { min-width: 0; flex: 1; }
+
+    .card-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .card-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .card-title a:hover { color: var(--blue); }
+
+    .card-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      line-height: 1.5;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.7rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 99px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .tag.minutes { background: #ecfdf5; color: #059669; }
+    .tag.agenda  { background: #eff6ff; color: #2563eb; }
+
+    .status-badge {
+      flex-shrink: 0;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+
+    .status-badge.minutes { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+    .status-badge.agenda  { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+
+    /* ── Loading / Empty ── */
+    .state-msg {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── AI Summary cards ── */
+    .summary-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem 1.3rem;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .summary-card:hover {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-color: #c5cdd8;
+    }
+
+    .summary-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ai-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+      border-radius: 99px;
+      padding: 1px 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .summary-headline {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 0.7rem;
+      color: var(--text);
+    }
+
+    .summary-bullets {
+      list-style: none;
+      margin: 0 0 0.8rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .summary-bullets li {
+      font-size: 0.875rem;
+      color: #374151;
+      padding-left: 1.1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .summary-bullets li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.75rem;
+      top: 2px;
+    }
+
+    .summary-votes {
+      background: #f8faff;
+      border: 1px solid #dbeafe;
+      border-radius: 7px;
+      padding: 0.6rem 0.8rem;
+      margin-top: 0.7rem;
+    }
+
+    .summary-votes h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--blue);
+      margin-bottom: 0.4rem;
+    }
+
+    .summary-votes ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .summary-votes li {
+      font-size: 0.82rem;
+      color: #1e3a5f;
+    }
+
+    .summary-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .summary-footer a {
+      font-size: 0.8rem;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .summary-footer a:hover { text-decoration: underline; }
+
+    .disclaimer {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    #summaries-list { display: flex; flex-direction: column; gap: 1rem; }
+
+    /* ── Tabs ── */
+    .tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 1.25rem;
+    }
+
+    .tab-btn {
+      padding: 0.6rem 1rem;
+      border: none;
+      background: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 600; }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── Calendar cards ── */
+    .event-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .event-card:hover {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-color: #c5cdd8;
+    }
+
+    .event-date-block {
+      flex-shrink: 0;
+      width: 52px;
+      text-align: center;
+      background: var(--navy);
+      color: white;
+      border-radius: 8px;
+      padding: 6px 4px;
+    }
+
+    .event-date-block .month {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.8;
+    }
+
+    .event-date-block .day {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .event-date-block .dow {
+      font-size: 0.62rem;
+      opacity: 0.7;
+      text-transform: uppercase;
+    }
+
+    .event-body { flex: 1; min-width: 0; }
+
+    .event-title {
+      font-size: 0.975rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .event-title a { color: inherit; text-decoration: none; }
+    .event-title a:hover { color: var(--blue); }
+
+    .event-detail {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin-top: 0.2rem;
+    }
+
+    .event-detail span::before { margin-right: 3px; }
+
+    #calendar-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .event-meet {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 1rem;
+      margin-top: 0.6rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .meet-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: #1a73e8;
+      color: white;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+
+    .meet-btn:hover { background: #1557b0; }
+
+    .meet-dial {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    footer a { color: var(--blue); }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      /* Header */
+      header { padding: 0 1rem; }
+      nav { gap: 0.75rem; }
+      nav a { font-size: 0.8rem; }
+
+      /* Hero */
+      .hero { padding: 1.5rem 1rem 1.25rem; }
+      .hero h1 { font-size: 1.35rem; }
+
+      /* Layout: single column, sidebar goes below on mobile */
+      .container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 0;
+      }
+
+      /* Sidebar: hide verbose filters, show compact horizontal pills */
+      .sidebar {
+        position: static;
+        margin-bottom: 0;
+      }
+
+      .filter-group { display: none; }
+
+      /* Tabs: scrollable single row, no wrapping */
+      .tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        display: flex;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 1rem;
+      }
+      .tabs::-webkit-scrollbar { display: none; }
+      .tab-btn {
+        flex-shrink: 0;
+        font-size: 0.85rem;
+        padding: 0.55rem 0.85rem;
+      }
+
+      /* Main header: stack vertically */
+      .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      .search-box { width: 100%; }
+
+      /* Mobile board filter pills — shown only on mobile */
+      .mobile-filters {
+        display: flex;
+        overflow-x: auto;
+        gap: 0.4rem;
+        padding-bottom: 0.6rem;
+        margin-bottom: 0.75rem;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .mobile-filters::-webkit-scrollbar { display: none; }
+      .mobile-pill {
+        flex-shrink: 0;
+        padding: 5px 12px;
+        border-radius: 99px;
+        border: 1.5px solid var(--border);
+        background: white;
+        font-size: 0.78rem;
+        font-weight: 500;
+        cursor: pointer;
+        color: var(--muted);
+        white-space: nowrap;
+        transition: all 0.12s;
+      }
+      .mobile-pill.active {
+        background: var(--navy);
+        border-color: var(--navy);
+        color: white;
+      }
+
+      /* Cards */
+      .meeting-card, .event-card, .summary-card { padding: 0.9rem 1rem; }
+      .summary-footer { flex-direction: column; gap: 0.4rem; align-items: flex-start; }
+    }
+
+    /* Mobile filters hidden on desktop, shown on mobile */
+    @media (min-width: 701px) {
+      .mobile-filters { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/"><span>Beverly</span> Data</a>
+  <nav>
+    <a href="/" class="active">Meetings</a>
+    <a href="https://www.beverlyma.gov/AgendaCenter" target="_blank">Agenda Center ↗</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Beverly, MA — Public Meetings</h1>
+  <p>Agendas and minutes from Beverly's boards and committees, pulled live from the city's agenda center.</p>
+</div>
+
+<div class="container">
+  <!-- Sidebar filters -->
+  <aside class="sidebar">
+    <div class="filter-group">
+      <h2>Board / Committee</h2>
+      <button class="filter-btn active" data-board="all">All Boards <span class="count" id="count-all">—</span></button>
+      <button class="filter-btn" data-board="City Council">City Council <span class="count" id="count-council">—</span></button>
+      <button class="filter-btn" data-board="School Committee">School Committee <span class="count" id="count-school">—</span></button>
+      <button class="filter-btn" data-board="Planning Board">Planning Board <span class="count" id="count-planning">—</span></button>
+      <button class="filter-btn" data-board="Finance Committee">Finance Committee <span class="count" id="count-finance">—</span></button>
+      <button class="filter-btn" data-board="Other">Other Boards <span class="count" id="count-other">—</span></button>
+    </div>
+
+    <div class="filter-group">
+      <h2>Document Type</h2>
+      <button class="filter-btn active-type" data-type="all">All Types</button>
+      <button class="filter-btn" data-type="minutes">Minutes</button>
+      <button class="filter-btn" data-type="agenda">Agenda</button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="upcoming">Upcoming Meetings</button>
+      <button class="tab-btn" data-tab="agendas">Agendas &amp; Minutes</button>
+      <button class="tab-btn" data-tab="summaries">Meeting Summaries</button>
+    </div>
+
+    <div class="tab-panel" id="tab-agendas">
+      <div class="mobile-filters" id="mobile-board-filters">
+        <button class="mobile-pill active" data-board="all">All</button>
+        <button class="mobile-pill" data-board="City Council">City Council</button>
+        <button class="mobile-pill" data-board="School Committee">School Committee</button>
+        <button class="mobile-pill" data-board="Planning Board">Planning Board</button>
+        <button class="mobile-pill" data-board="Finance Committee">Finance Committee</button>
+        <button class="mobile-pill" data-board="Other">Other Boards</button>
+      </div>
+      <div class="main-header">
+        <span class="result-count" id="result-count">Loading…</span>
+        <input class="search-box" type="search" id="search" placeholder="Search meetings…" />
+      </div>
+      <div id="meetings-list">
+        <div class="state-msg"><div class="spinner"></div>Fetching meeting data…</div>
+      </div>
+    </div>
+
+    <div class="tab-panel active" id="tab-upcoming">
+      <div class="main-header">
+        <span class="result-count" id="cal-result-count">Loading…</span>
+        <input class="search-box" type="search" id="cal-search" placeholder="Search events…" />
+      </div>
+      <div id="calendar-list">
+        <div class="state-msg"><div class="spinner"></div>Fetching calendar…</div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-summaries">
+      <div class="main-header">
+        <span class="result-count" id="sum-result-count">Loading…</span>
+        <p class="disclaimer">AI-generated from BevCam transcripts — verify with source video</p>
+      </div>
+      <div id="summaries-list">
+        <div class="state-msg"><div class="spinner"></div>Loading summaries…</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  Data sourced from <a href="https://www.beverlyma.gov/AgendaCenter" target="_blank">beverlyma.gov</a> via RSS.
+  Beverly Data is an independent civic project and is not affiliated with the City of Beverly.
+</footer>
+
+<script>
+  // ── Data is served from static JSON files generated by fetch_data.py ──
+
+  const SIDEBAR_BUCKETS = {
+    'City Council':     'City Council',
+    'School Committee': 'School Committee',
+    'Planning Board':   'Planning Board',
+    'Finance Committee':'Finance Committee',
+  };
+
+  let allItems = [];
+  let activeBoard = 'all';
+  let activeType  = 'all';
+  let searchQuery = '';
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    if (isNaN(d)) return dateStr;
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function sidebarBucket(board) {
+    return SIDEBAR_BUCKETS[board] ? board : 'Other';
+  }
+
+  function filteredItems() {
+    return allItems.filter(item => {
+      const boardMatch = activeBoard === 'all' || sidebarBucket(item.board) === activeBoard || item.board === activeBoard;
+      const typeMatch  = activeType  === 'all' || item.type === activeType;
+      const q = searchQuery.toLowerCase();
+      const searchMatch = !q || item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q) || item.board.toLowerCase().includes(q);
+      return boardMatch && typeMatch && searchMatch;
+    });
+  }
+
+  function updateCounts() {
+    const buckets = { all: allItems.length, Other: 0 };
+    for (const k of Object.keys(SIDEBAR_BUCKETS)) buckets[k] = 0;
+    for (const item of allItems) {
+      const b = sidebarBucket(item.board);
+      buckets[b] = (buckets[b] || 0) + 1;
+    }
+    document.getElementById('count-all').textContent     = buckets.all;
+    document.getElementById('count-council').textContent  = buckets['City Council'] || 0;
+    document.getElementById('count-school').textContent   = buckets['School Committee'] || 0;
+    document.getElementById('count-planning').textContent = buckets['Planning Board'] || 0;
+    document.getElementById('count-finance').textContent  = buckets['Finance Committee'] || 0;
+    document.getElementById('count-other').textContent    = buckets['Other'] || 0;
+  }
+
+  function renderCards() {
+    const list = document.getElementById('meetings-list');
+    const items = filteredItems();
+    document.getElementById('result-count').textContent =
+      `${items.length} meeting${items.length !== 1 ? 's' : ''}`;
+
+    if (!items.length) {
+      list.innerHTML = '<div class="state-msg">No meetings match your filters.</div>';
+      return;
+    }
+
+    list.innerHTML = items.map(item => `
+      <div class="meeting-card">
+        <div class="card-top">
+          <div>
+            <div class="card-meta">${formatDate(item.pubDate)} · ${item.board}</div>
+            <div class="card-title"><a href="${item.link}" target="_blank">${item.title}</a></div>
+            ${item.desc ? `<div class="card-desc">${item.desc}</div>` : ''}
+          </div>
+          <span class="status-badge ${item.type}">${item.type === 'minutes' ? 'Minutes' : 'Agenda'}</span>
+        </div>
+        <div class="card-tags">
+          <span class="tag ${item.type}">${item.type}</span>
+          <span class="tag">${item.board}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ── Event listeners ──
+  document.querySelectorAll('[data-board]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-board]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeBoard = btn.dataset.board;
+      renderCards();
+    });
+  });
+
+  // Keep mobile pills in sync with sidebar and vice-versa
+  document.querySelectorAll('.mobile-pill[data-board]').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('[data-board]').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.mobile-pill[data-board]').forEach(b => b.classList.remove('active'));
+      // activate matching sidebar btn too
+      document.querySelectorAll('.filter-btn[data-board]').forEach(b => {
+        if (b.dataset.board === pill.dataset.board) b.classList.add('active');
+      });
+      pill.classList.add('active');
+      activeBoard = pill.dataset.board;
+      renderCards();
+    });
+  });
+
+  document.querySelectorAll('[data-type]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active-type', 'active'));
+      btn.classList.add('active-type', 'active');
+      activeType = btn.dataset.type;
+      renderCards();
+    });
+  });
+
+  document.getElementById('search').addEventListener('input', e => {
+    searchQuery = e.target.value;
+    renderCards();
+  });
+
+  // ── Load agendas & minutes from static JSON ──
+  async function loadFeed() {
+    try {
+      const res = await fetch('meetings.json?v=' + Date.now());
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      allItems = await res.json();
+      updateCounts();
+      renderCards();
+    } catch (err) {
+      document.getElementById('meetings-list').innerHTML =
+        `<div class="state-msg">⚠️ Could not load meetings.json — run fetch_data.py first.<br><small>${err.message}</small></div>`;
+      document.getElementById('result-count').textContent = 'Error';
+    }
+  }
+
+  // ── Calendar ──
+  let allEvents = [];
+  let calSearch = '';
+  let eventOverrides = [];
+
+  function formatEventDate(dateStr) {
+    const d = new Date(dateStr);
+    if (isNaN(d)) return { month: '', day: '?', dow: '' };
+    return {
+      month: d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase(),
+      day:   d.getDate(),
+      dow:   d.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase(),
+    };
+  }
+
+  function findOverride(event) {
+    const eventDateStr = event.eventDate ? new Date(event.eventDate).toISOString().slice(0, 10) : '';
+    return eventOverrides.find(o =>
+      event.title.toLowerCase().includes(o.match.toLowerCase()) &&
+      (!o.date || o.date === eventDateStr)
+    ) || null;
+  }
+
+  function renderCalendar() {
+    const list = document.getElementById('calendar-list');
+    const q = calSearch.toLowerCase();
+    const items = allEvents.filter(e =>
+      !q || e.title.toLowerCase().includes(q) || e.board.toLowerCase().includes(q) ||
+      e.location.toLowerCase().includes(q)
+    );
+    document.getElementById('cal-result-count').textContent =
+      `${items.length} upcoming event${items.length !== 1 ? 's' : ''}`;
+
+    if (!items.length) {
+      list.innerHTML = '<div class="state-msg">No upcoming events found.</div>';
+      return;
+    }
+
+    list.innerHTML = items.map(e => {
+      const { month, day, dow } = formatEventDate(e.eventDate || e.pubDate);
+      const ov = findOverride(e);
+      const meetHtml = ov ? `
+        <div class="event-meet">
+          <a href="${ov.meet_url}" target="_blank" class="meet-btn">📹 Join Google Meet</a>
+          ${ov.dial_in ? `<span class="meet-dial">Or dial: ${ov.dial_in}${ov.dial_pin ? ` &nbsp;PIN: ${ov.dial_pin}` : ''}</span>` : ''}
+        </div>` : '';
+      return `
+        <div class="event-card">
+          <div class="event-date-block">
+            <div class="month">${month}</div>
+            <div class="day">${day}</div>
+            <div class="dow">${dow}</div>
+          </div>
+          <div class="event-body">
+            <div class="event-title"><a href="${e.link}" target="_blank">${e.title}</a></div>
+            <div class="event-detail">
+              ${e.eventTime ? `<span>🕐 ${e.eventTime}</span>` : ''}
+              ${e.location  ? `<span>📍 ${e.location}</span>`  : ''}
+              <span style="color:var(--tag-text);font-weight:600">${e.board}</span>
+            </div>
+            ${meetHtml}
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  async function loadCalendar() {
+    try {
+      const [calRes, ovRes] = await Promise.all([
+        fetch('calendar.json?v=' + Date.now()),
+        fetch('events.json?v=' + Date.now()).catch(() => null),
+      ]);
+      if (!calRes.ok) throw new Error(`HTTP ${calRes.status}`);
+      allEvents = await calRes.json();
+      if (ovRes && ovRes.ok) eventOverrides = await ovRes.json();
+      renderCalendar();
+    } catch (err) {
+      document.getElementById('calendar-list').innerHTML =
+        `<div class="state-msg">⚠️ Could not load calendar.json — run fetch_data.py first.<br><small>${err.message}</small></div>`;
+      document.getElementById('cal-result-count').textContent = 'Error';
+    }
+  }
+
+  document.getElementById('cal-search').addEventListener('input', e => {
+    calSearch = e.target.value;
+    renderCalendar();
+  });
+
+  // ── AI Summaries ──
+  function renderSummaries(data) {
+    const list = document.getElementById('summaries-list');
+    document.getElementById('sum-result-count').textContent =
+      `${data.length} City Council meeting${data.length !== 1 ? 's' : ''} summarized`;
+
+    if (!data.length) {
+      list.innerHTML = '<div class="state-msg">No summaries yet — run summarize.py to generate them.</div>';
+      return;
+    }
+
+    list.innerHTML = data.map(item => {
+      const date = item.published ? new Date(item.published).toLocaleDateString('en-US',
+        { month: 'long', day: 'numeric', year: 'numeric' }) : '';
+      const bulletsHtml = (item.bullets || []).slice(0, 5).map(b =>
+        `<li>${b}</li>`).join('');
+      const votesHtml = (item.votes || []).length
+        ? `<div class="summary-votes">
+             <h4>Key Votes</h4>
+             <ul>${(item.votes).map(v => `<li>${v}</li>`).join('')}</ul>
+           </div>` : '';
+      const errMsg = item.error
+        ? `<p style="color:var(--muted);font-size:.85rem;font-style:italic">${item.error}</p>` : '';
+
+      return `
+        <div class="summary-card">
+          <div class="summary-meta">
+            <span>${date}</span>
+            <span class="ai-badge">AI Summary</span>
+          </div>
+          <div class="summary-headline">${item.headline || item.title}</div>
+          ${errMsg}
+          ${bulletsHtml ? `<ul class="summary-bullets">${bulletsHtml}</ul>` : ''}
+          ${votesHtml}
+          <div class="summary-footer">
+            <a href="${item.url}" target="_blank">▶ Watch on BevCam / YouTube</a>
+            <span class="disclaimer">AI may misread audio — check source video</span>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  async function loadSummaries() {
+    try {
+      const res = await fetch('summaries.json?v=' + Date.now());
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      renderSummaries(data);
+    } catch (err) {
+      document.getElementById('summaries-list').innerHTML =
+        `<div class="state-msg">⚠️ Could not load summaries.json<br><small>${err.message}</small></div>`;
+      document.getElementById('sum-result-count').textContent = 'Error';
+    }
+  }
+
+  // ── Tab switching ──
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      if (btn.dataset.tab === 'upcoming' && allEvents.length === 0) loadCalendar();
+
+      if (btn.dataset.tab === 'summaries') loadSummaries();
+    });
+  });
+
+  loadFeed();
+  loadCalendar();
+</script>
+</body>
+</html>
