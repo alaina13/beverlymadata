@@ -138,12 +138,6 @@
     }
     .filter-btn:hover { background: var(--bg); }
     .filter-btn.active { background: #eef2fb; color: var(--blue); font-weight: 600; }
-    .filter-btn .dot {
-      width: 9px; height: 9px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-right: 6px;
-    }
     .filter-btn .flabel { flex: 1; display: flex; align-items: center; }
     .filter-btn .cnt { font-size: 0.68rem; color: var(--muted); }
 
@@ -262,6 +256,10 @@
       </select>
     </div>
     <div class="panel-section">
+      <h3>Filter by value / acre</h3>
+      <div id="vpa-filters"></div>
+    </div>
+    <div class="panel-section">
       <h3>Filter by type</h3>
       <div id="cat-filters"></div>
     </div>
@@ -275,14 +273,6 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const CAT_COLORS = {
-  'Single Family': '#3b82f6', 'Condo': '#8b5cf6',
-  'Two Family': '#06b6d4', 'Three Family': '#14b8a6',
-  'Multi-Family': '#10b981', 'Apt 4-8u': '#22c55e', 'Apt 9+u': '#84cc16',
-  'Commercial': '#f97316', 'Retail': '#fb923c', 'Office': '#fbbf24',
-  'Industrial': '#a78bfa', 'Vacant Land': '#6b7280',
-  'Tax Exempt': '#64748b', 'Other': '#94a3b8',
-};
 
 function fmt(v) {
   if (v >= 1e9) return '$' + (v/1e9).toFixed(2) + 'B';
@@ -308,8 +298,24 @@ function vpaColor(val, lo, hi) {
   return `rgba(${r},${g},${b},0.82)`;
 }
 
+const VPA_BUCKETS = [
+  { label: 'Under $1M',    lo: 0,          hi: 1_000_000 },
+  { label: '$1M – $2M',   lo: 1_000_000,  hi: 2_000_000 },
+  { label: '$2M – $3M',   lo: 2_000_000,  hi: 3_000_000 },
+  { label: '$3M – $4M',   lo: 3_000_000,  hi: 4_000_000 },
+  { label: '$4M – $5M',   lo: 4_000_000,  hi: 5_000_000 },
+  { label: '$5M – $6M',   lo: 5_000_000,  hi: 6_000_000 },
+  { label: '$6M – $7M',   lo: 6_000_000,  hi: 7_000_000 },
+  { label: '$7M – $8M',   lo: 7_000_000,  hi: 8_000_000 },
+  { label: '$8M – $9M',   lo: 8_000_000,  hi: 9_000_000 },
+  { label: '$9M – $10M',  lo: 9_000_000,  hi: 10_000_000 },
+  { label: 'Over $10M',   lo: 10_000_000, hi: Infinity },
+  { label: 'No data',     lo: -1,         hi: 0 },
+];
+
 let allParcels = [], filtered = [], colorBy = 'vpa';
 let activeCategories = new Set();
+let activeVpaBuckets = new Set(VPA_BUCKETS.map((_,i) => i));
 let lo = 1, hi = 1;
 let circleLayer;
 
@@ -385,53 +391,80 @@ function renderLayer() {
   circleLayer.addTo(map);
 }
 
-function buildFilters() {
-  const cats = {};
-  for (const p of allParcels) cats[p.cat] = (cats[p.cat]||0)+1;
-  const sorted = Object.entries(cats).sort((a,b)=>b[1]-a[1]);
-  activeCategories = new Set(Object.keys(cats));
+function vpaBucketIndex(vpa) {
+  if (!vpa || vpa <= 0) return VPA_BUCKETS.length - 1; // 'No data'
+  for (let i = 0; i < VPA_BUCKETS.length - 1; i++) {
+    if (vpa >= VPA_BUCKETS[i].lo && vpa < VPA_BUCKETS[i].hi) return i;
+  }
+  return VPA_BUCKETS.length - 2; // 'Over $10M' catch-all
+}
 
-  const container = document.getElementById('cat-filters');
+function applyFilters() {
+  filtered = allParcels.filter(p =>
+    activeCategories.has(p.cat) && activeVpaBuckets.has(vpaBucketIndex(p.vpa))
+  );
+  renderLayer();
+}
+
+function buildToggleGroup(container, items, activeSet, allKey, getKey, getLabel, onToggle) {
   container.innerHTML = '';
-
   const allBtn = document.createElement('button');
   allBtn.className = 'filter-btn active';
-  allBtn.dataset.cat = '__all__';
-  allBtn.innerHTML = `<span class="flabel">All types</span><span class="cnt">${allParcels.length.toLocaleString()}</span>`;
+  allBtn.dataset.key = allKey;
+  allBtn.innerHTML = `<span class="flabel">All</span><span class="cnt">${allParcels.length.toLocaleString()}</span>`;
   container.appendChild(allBtn);
 
-  for (const [cat, cnt] of sorted) {
+  for (const item of items) {
+    const key = getKey(item);
     const btn = document.createElement('button');
     btn.className = 'filter-btn active';
-    btn.dataset.cat = cat;
-    const color = CAT_COLORS[cat] || '#94a3b8';
-    btn.innerHTML = `<span class="flabel"><span class="dot" style="background:${color}"></span>${cat}</span><span class="cnt">${cnt.toLocaleString()}</span>`;
+    btn.dataset.key = String(key);
+    btn.innerHTML = `<span class="flabel">${getLabel(item)}</span><span class="cnt">${item.cnt.toLocaleString()}</span>`;
     container.appendChild(btn);
   }
 
   container.addEventListener('click', e => {
     const btn = e.target.closest('.filter-btn');
     if (!btn) return;
-    const cat = btn.dataset.cat;
-    if (cat === '__all__') {
-      const allActive = activeCategories.size === Object.keys(cats).length;
-      if (allActive) {
-        activeCategories.clear();
-        container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      } else {
-        activeCategories = new Set(Object.keys(cats));
-        container.querySelectorAll('.filter-btn').forEach(b => b.classList.add('active'));
-      }
+    const key = btn.dataset.key;
+    if (key === allKey) {
+      const allActive = activeSet.size === items.length;
+      if (allActive) { activeSet.clear(); container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); }
+      else { items.forEach(it => activeSet.add(getKey(it))); container.querySelectorAll('.filter-btn').forEach(b => b.classList.add('active')); }
     } else {
-      if (activeCategories.has(cat)) { activeCategories.delete(cat); btn.classList.remove('active'); }
-      else { activeCategories.add(cat); btn.classList.add('active'); }
-      const ab = container.querySelector('[data-cat="__all__"]');
-      if (activeCategories.size === Object.keys(cats).length) ab.classList.add('active');
-      else ab.classList.remove('active');
+      const parsed = isNaN(key) ? key : Number(key);
+      if (activeSet.has(parsed)) { activeSet.delete(parsed); btn.classList.remove('active'); }
+      else { activeSet.add(parsed); btn.classList.add('active'); }
+      const ab = container.querySelector(`[data-key="${allKey}"]`);
+      if (activeSet.size === items.length) ab.classList.add('active'); else ab.classList.remove('active');
     }
-    filtered = allParcels.filter(p => activeCategories.has(p.cat));
-    renderLayer();
+    onToggle();
   });
+}
+
+function buildFilters() {
+  // VPA bucket counts
+  const vpaCounts = new Array(VPA_BUCKETS.length).fill(0);
+  for (const p of allParcels) vpaCounts[vpaBucketIndex(p.vpa)]++;
+  const vpaItems = VPA_BUCKETS.map((b, i) => ({ ...b, cnt: vpaCounts[i], idx: i })).filter(b => b.cnt > 0);
+  buildToggleGroup(
+    document.getElementById('vpa-filters'),
+    vpaItems, activeVpaBuckets, '__vpa_all__',
+    item => item.idx, item => item.label,
+    applyFilters
+  );
+
+  // Category counts
+  const cats = {};
+  for (const p of allParcels) cats[p.cat] = (cats[p.cat]||0)+1;
+  activeCategories = new Set(Object.keys(cats));
+  const catItems = Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([cat,cnt]) => ({ cat, cnt }));
+  buildToggleGroup(
+    document.getElementById('cat-filters'),
+    catItems, activeCategories, '__cat_all__',
+    item => item.cat, item => item.cat,
+    applyFilters
+  );
 }
 
 document.getElementById('color-by').addEventListener('change', e => {
@@ -455,9 +488,8 @@ L.control.layers({'Light': lightTiles, 'Dark': darkTiles}, {}, {position:'bottom
   try {
     const res = await fetch('parcels.json?v=' + Date.now());
     allParcels = await res.json();
-    filtered = allParcels;
     buildFilters();
-    renderLayer();
+    applyFilters();
     document.getElementById('loading-msg').style.display = 'none';
   } catch (err) {
     document.getElementById('loading-msg').innerHTML =
