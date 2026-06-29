@@ -122,7 +122,10 @@
     }
 
     .filter-btn {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
       width: 100%;
       text-align: left;
       padding: 0.45rem 0.7rem;
@@ -140,7 +143,7 @@
     .filter-btn.active { background: var(--tag-bg); color: var(--blue); font-weight: 600; }
 
     .filter-btn .count {
-      float: right;
+      flex-shrink: 0;
       font-size: 0.75rem;
       color: var(--muted);
       background: var(--border);
