@@ -614,7 +614,7 @@
   </div>
 
   <div class="source-note">
-    <strong>Sources:</strong> City of Beverly Financial Forecasting Committee meeting minutes (2016–2025), available through the <a href="https://lfserver.beverlyma.gov/WebLink/Browse.aspx?id=8939&dbid=0&repo=BPL" target="_blank">Beverly Public Library LaserFiche server</a> and the <a href="https://www.beverlyma.gov/AgendaCenter/Financial-Forecasting-Committee-13" target="_blank">Beverly Agenda Center</a>. Ten-year financial data from Beverly Annual Comprehensive Financial Reports (ACFR) FY2014–FY2023. Beverly Data is an independent civic project and is not affiliated with the City of Beverly. All figures are as reported in official documents; errors in source documents are reflected as-is.
+    <strong>Sources:</strong> City of Beverly Financial Forecasting Committee meeting minutes (2016–2025), available through the <a href="https://lfserver.beverlyma.gov/WebLink/Browse.aspx?id=8939&dbid=0&repo=BPL" target="_blank">Beverly Public Library LaserFiche server</a> and the <a href="https://www.beverlyma.gov/AgendaCenter/Financial-Forecasting-Committee-13" target="_blank">Beverly Agenda Center</a>. Financial data from Beverly Annual Comprehensive Financial Reports (ACFR/CAFR) FY2009–FY2023. Beverly Data is an independent civic project and is not affiliated with the City of Beverly. All figures are as reported in official documents; errors in source documents are reflected as-is.
   </div>
 
 </div>
@@ -625,7 +625,7 @@
 </footer>
 
 <script>
-const YEARS = ['FY14','FY15','FY16','FY17','FY18','FY19','FY20','FY21','FY22','FY23'];
+const YEARS = ['FY09','FY10','FY11','FY12','FY13','FY14','FY15','FY16','FY17','FY18','FY19','FY20','FY21','FY22','FY23'];
 
 const chartDefaults = {
   responsive: true,
@@ -645,7 +645,7 @@ new Chart(document.getElementById('levyChart'), {
     labels: YEARS,
     datasets: [{
       label: 'Net Tax Levy',
-      data: [84.36, 87.32, 90.39, 94.72, 99.28, 102.87, 107.15, 111.92, 115.06, 119.12],
+      data: [69.98, 72.75, 75.37, 78.41, 81.04, 84.36, 87.63, 91.00, 94.72, 99.01, 102.87, 107.15, 111.92, 115.06, 119.12],
       backgroundColor: 'rgba(45,95,168,0.15)',
       borderColor: '#2d5fa8',
       borderWidth: 2,
@@ -672,7 +672,7 @@ new Chart(document.getElementById('debtChart'), {
   data: {
     labels: YEARS,
     datasets: [{
-      data: [65.83, 70.80, 86.02, 91.01, 108.22, 99.49, 92.00, 123.01, 114.04, 107.04],
+      data: [60.16, 68.25, 78.36, 74.23, 70.38, 65.83, 70.80, 86.02, 91.01, 108.22, 99.49, 92.00, 123.01, 114.04, 107.04],
       backgroundColor: ctx => ctx.parsed.y > 100 ? 'rgba(220,38,38,0.2)' : 'rgba(45,95,168,0.15)',
       borderColor: ctx => ctx.parsed.y > 100 ? '#dc2626' : '#2d5fa8',
       borderWidth: 2,
@@ -688,7 +688,7 @@ new Chart(document.getElementById('stabChart'), {
   data: {
     labels: YEARS,
     datasets: [{
-      data: [1.75, 5.25, 6.75, 9.38, 12.58, 13.62, 14.77, 15.78, 16.93, 18.64],
+      data: [0.00, 0.55, 0.55, 0.55, 0.75, 1.75, 5.25, 6.75, 9.38, 12.58, 13.62, 14.77, 15.78, 16.93, 18.64],
       borderColor: '#059669',
       backgroundColor: 'rgba(5,150,105,0.08)',
       borderWidth: 2.5,
