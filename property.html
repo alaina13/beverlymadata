@@ -161,7 +161,7 @@
     .legend-bar {
       height: 10px;
       border-radius: 5px;
-      background: linear-gradient(to right, #2563eb, #7c3aed, #dc2626, #f97316, #eab308);
+      background: linear-gradient(to right, #440154, #3b528b, #21918c, #5ec962, #fde725);
       margin-bottom: 4px;
       margin-top: 0.5rem;
     }
@@ -297,7 +297,8 @@ function vpaColor(val, lo, hi) {
   const t = Math.max(0, Math.min(1,
     (Math.log(val + 1) - Math.log(lo + 1)) / (Math.log(hi + 1) - Math.log(lo + 1))
   ));
-  const stops = [[37,99,235],[124,58,237],[220,38,38],[249,115,22],[234,179,8]];
+  // Viridis: colorblind-safe, perceptually uniform (low=purple, high=yellow)
+  const stops = [[68,1,84],[59,82,139],[33,145,140],[94,201,98],[253,231,37]];
   const seg = t * (stops.length - 1);
   const i = Math.min(Math.floor(seg), stops.length - 2);
   const f = seg - i;
@@ -315,11 +316,6 @@ let circleLayer;
 // Init map centered on Beverly
 const map = L.map('map', { zoomControl: true }).setView([42.558, -70.880], 13);
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  attribution: '© <a href="https://carto.com/">CARTO</a> © <a href="https://www.openstreetmap.org/copyright">OSM</a>',
-  subdomains: 'abcd',
-  maxZoom: 19,
-}).addTo(map);
 
 // Custom canvas renderer for performance
 const renderer = L.canvas({ padding: 0.5 });
@@ -452,8 +448,8 @@ const darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x
   attribution: '© <a href="https://carto.com/">CARTO</a> © <a href="https://www.openstreetmap.org/copyright">OSM</a>',
   subdomains: 'abcd', maxZoom: 19,
 });
-darkTiles.addTo(map);
-L.control.layers({'Dark': darkTiles, 'Light': lightTiles}, {}, {position:'bottomleft'}).addTo(map);
+lightTiles.addTo(map);
+L.control.layers({'Light': lightTiles, 'Dark': darkTiles}, {}, {position:'bottomleft'}).addTo(map);
 
 (async () => {
   try {
