@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beverly Data — How We Got Here</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --navy: #1a2744;
+      --blue: #2d5fa8;
+      --accent: #e8813a;
+      --red: #dc2626;
+      --green: #059669;
+      --bg: #f5f6f8;
+      --card-bg: #ffffff;
+      --text: #1e1e1e;
+      --muted: #6b7280;
+      --border: #e2e5ea;
+      --tag-bg: #eef2fb;
+      --tag-text: #2d5fa8;
+      --warn-bg: #fff7ed;
+      --warn-border: #fed7aa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; color: white; text-decoration: none; }
+    .logo span { color: var(--accent); }
+
+    nav { display: flex; gap: 1.25rem; }
+    nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    nav a:hover, nav a.active { color: white; border-bottom-color: var(--accent); }
+
+    .hero {
+      background: var(--navy);
+      color: white;
+      padding: 3rem 2rem 2.5rem;
+      border-bottom: 3px solid var(--accent);
+    }
+    .hero-inner { max-width: 820px; margin: 0 auto; }
+    .hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    .hero p { color: rgba(255,255,255,0.72); font-size: 1rem; max-width: 620px; }
+
+    .stat-row {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .stat-chip {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      padding: 0.75rem 1.25rem;
+    }
+    .stat-chip .val { font-size: 1.6rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .stat-chip .lbl { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 0.2rem; }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    /* Intro summary box */
+    .summary-box {
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-border);
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 3rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .summary-box p + p { margin-top: 0.75rem; }
+
+    /* Section headers */
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 2rem; margin-bottom: 3rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 3px;
+      background: var(--border);
+      border-radius: 3px;
+    }
+
+    .timeline-entry { position: relative; margin-bottom: 2.5rem; }
+    .timeline-entry::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 6px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 2.5px solid white;
+      box-shadow: 0 0 0 2px var(--blue);
+    }
+    .timeline-entry.warn::before { background: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+    .timeline-entry.crisis::before { background: var(--red); box-shadow: 0 0 0 2px var(--red); }
+
+    .timeline-year {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .timeline-entry.warn .timeline-year { color: var(--accent); }
+    .timeline-entry.crisis .timeline-year { color: var(--red); }
+
+    .timeline-heading {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+
+    .timeline-body { font-size: 0.9rem; color: #374151; line-height: 1.65; }
+    .timeline-body p + p { margin-top: 0.6rem; }
+    .timeline-body ul { margin: 0.5rem 0 0.5rem 1.25rem; }
+    .timeline-body li { margin-bottom: 0.25rem; }
+
+    blockquote {
+      margin: 0.75rem 0;
+      padding: 0.7rem 1rem 0.7rem 1rem;
+      border-left: 3px solid var(--blue);
+      background: var(--tag-bg);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.875rem;
+      color: #1e3a6e;
+      font-style: italic;
+      line-height: 1.55;
+    }
+    blockquote.warn { border-left-color: var(--accent); background: var(--warn-bg); color: #92400e; }
+    blockquote cite {
+      display: block;
+      margin-top: 0.3rem;
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    /* Chart section */
+    .chart-section { margin-bottom: 3rem; }
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .chart-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .chart-card.full { grid-column: 1 / -1; }
+    .chart-card h3 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Cost drivers */
+    .driver-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .driver-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.2rem;
+    }
+    .driver-card .driver-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+    .driver-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .driver-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+    /* Gap table */
+    .gap-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-bottom: 3rem; }
+    .gap-table th {
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      padding: 0.5rem 0.75rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .gap-table td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .gap-table tr:last-child td { border-bottom: none; }
+    .gap-table .gap-cell { font-weight: 700; color: var(--red); }
+    .gap-table .year-cell { font-weight: 600; color: var(--navy); }
+
+    /* What's next */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .option-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.2rem;
+      text-align: center;
+    }
+    .option-card .opt-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .option-card h3 { font-size: 0.88rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .option-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    .source-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+    .source-note a { color: var(--blue); }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--blue); }
+
+    @media (max-width: 700px) {
+      header { padding: 0 1rem; }
+      nav { gap: 0.75rem; }
+      nav a { font-size: 0.78rem; }
+      .hero { padding: 2rem 1rem 1.5rem; }
+      .hero h1 { font-size: 1.45rem; }
+      .container { padding: 2rem 1rem; }
+      .chart-grid { grid-template-columns: 1fr; }
+      .driver-grid { grid-template-columns: 1fr; }
+      .options-grid { grid-template-columns: 1fr; }
+      .stat-row { gap: 0.75rem; }
+      .stat-chip .val { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/beverlymadata/"><span>Beverly</span> Data</a>
+  <nav>
+    <a href="/beverlymadata/meetings.html">Meetings</a>
+    <a href="/beverlymadata/agendas.html">Agendas</a>
+    <a href="/beverlymadata/summaries.html">Summaries</a>
+    <a href="/beverlymadata/data.html">City Data</a>
+    <a href="/beverlymadata/history.html" class="active">How We Got Here</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>How We Got Here</h1>
+    <p>Beverly's Financial Forecasting Committee has warned of a structural budget gap for nearly a decade. Here's the timeline of those warnings — and why an override is now on the table.</p>
+    <div class="stat-row">
+      <div class="stat-chip">
+        <div class="val">$3.66M</div>
+        <div class="lbl">FY27 structural deficit</div>
+      </div>
+      <div class="stat-chip">
+        <div class="val">6% vs. 4%</div>
+        <div class="lbl">Expenses vs. revenue growth</div>
+      </div>
+      <div class="stat-chip">
+        <div class="val">9 years</div>
+        <div class="lbl">Of documented warnings</div>
+      </div>
+      <div class="stat-chip">
+        <div class="val">$4.4M</div>
+        <div class="lbl">FY26 projected gap</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="summary-box">
+    <p>Every year since 2016, Beverly's Financial Forecasting Committee has produced a report warning that city expenditures are growing faster than revenues — and that the math only works if something gives. For years, the city managed through a combination of conservative budgeting, one-time fixes, and zeroing out road maintenance funds. Those options are running out.</p>
+    <p>The core problem has never changed: under Proposition 2½, Beverly's tax levy can grow by about 3% per year. But the costs the city can't easily control — health insurance, pension contributions, special education, debt service, and union contracts — have consistently grown at 5–6%. The gap between those two numbers, compounded over a decade, is how Beverly arrived at a projected $3.66 million structural deficit for FY2027.</p>
+  </div>
+
+  <!-- TIMELINE -->
+  <h2 class="section-title">A Decade of Warnings</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-entry">
+      <div class="timeline-year">2016 — FY17 Forecast</div>
+      <div class="timeline-heading">School needs exceed what the city can fund — by $1 million a year</div>
+      <div class="timeline-body">
+        <p>The Financial Forecasting Committee's earliest available minutes document a recurring problem: Beverly Public Schools projected budget needs of approximately $1 million per year more than either the prior or current mayor could actually appropriate. The committee noted this gap would persist unless the city made significant policy changes — like cutting roads and sidewalks funding entirely.</p>
+        <blockquote>
+          "For several years the school forecast is about $1 million more each year than the prior mayor and current mayor could actually fund."
+          <cite>— FFC Minutes, April 2016</cite>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="timeline-entry warn">
+      <div class="timeline-year">2018 — FY19 Forecast</div>
+      <div class="timeline-heading">Finance Director warns of a "debt bubble"</div>
+      <div class="timeline-body">
+        <p>With Beverly's new Middle School and Police Station coming online, Finance Director Bryant Ayles explicitly warned the committee of a coming "debt bubble." Free cash had reached $9 million, but $6 million in one-time expenditures were already committed. The committee established a structural principle that would recur every year after: any budget increase above 3% on the expenditure side creates stress, because that's the ceiling Proposition 2½ effectively sets on revenue growth.</p>
+        <blockquote class="warn">
+          "There would be a 'debt bubble' coming with the Beverly Middle School and other capital projects."
+          <cite>— Finance Director Bryant Ayles, FFC Minutes, May 2018</cite>
+        </blockquote>
+        <p>The school superintendent confirmed the pattern: FY19 needed a 4.5% budget increase — and FY20 would too. "The 4.5% increase in the school budget for FY19 is just one jump," he said. "FY20 will also likely need 4.5% with the rising cost of services, including those mandated."</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry warn">
+      <div class="timeline-year">2019 — FY20 Forecast</div>
+      <div class="timeline-heading">First explicit structural deficit: a $2.1 million gap the committee "could not close"</div>
+      <div class="timeline-body">
+        <p>By 2019, the structural gap had a specific dollar figure attached. A $2.1 million shortfall emerged in the draft forecast and dominated multiple committee meetings. The committee reviewed every option — cuts to services, fee increases, recaptured departmental turn-backs — and found no clear path to closing the gap through ordinary means.</p>
+        <blockquote class="warn">
+          "The expenditures are a driving reason for these deficits, as the traditional revenue increase remains fairly constant at 3%. These increases include salaries, pensions, health care, debt, and school expenditures."
+          <cite>— Finance Director Bryant Ayles, FFC Minutes, March 2019</cite>
+        </blockquote>
+        <p>Budget Analyst Gerard Perry put it plainly: "Any budget increase over 3% causes stress to the process." He added a warning about the Undesignated Fund Balance — the city's financial cushion — cautioning that budget "creep" erodes it year by year.</p>
+        <blockquote class="warn">
+          "It boils down to protecting the Undesignated Fund Balance, and how it can be damaged by 'creep' in budgets."
+          <cite>— Gerard Perry, FFC Minutes, March 2019</cite>
+        </blockquote>
+        <p>Committee member Karen Fogarty added historical context: Beverly had already lived through three years of structural deficits before a five-year period of relative stability. The city had survived those years, she noted, partly because it had already made cuts before the 2008 recession hit.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry warn">
+      <div class="timeline-year">2020 — FY21 Forecast</div>
+      <div class="timeline-heading">Finance officials formally recommend taking the full levy increase — "otherwise, significant cuts"</div>
+      <div class="timeline-body">
+        <p>In January and February 2020, Finance Director Ayles and Budget Analyst Perry — speaking in both their official and personal capacities — made a joint recommendation that the city increase the property tax levy by the full 2.5% each year for the next two to four years.</p>
+        <blockquote class="warn">
+          "Increasing the property tax 2.5% over the next 2–4 years is prudent to meet the needs of the community over the next few years. Otherwise, expenditures will require significant cuts."
+          <cite>— Gerard Perry and Bryant Ayles, FFC Minutes, January 2020</cite>
+        </blockquote>
+        <p>This was not a dramatic warning — it was an acknowledgment that the ordinary tool available to the city under Proposition 2½ needed to be used consistently, every year, just to keep pace. The committee also flagged early COVID-19 uncertainty, which would make the FY21 forecast unusually difficult to produce.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">2021 — FY22 Forecast</div>
+      <div class="timeline-heading">COVID complicates forecasting; revenues found to be chronically underestimated</div>
+      <div class="timeline-body">
+        <p>The pandemic made the FY22 forecast the hardest in committee history. "It's hard to find an area where variables are not affected," one committee member noted. But even amid the uncertainty, the committee identified a structural pattern: Beverly had been systematically underforecasting excise tax revenues by approximately $1.7 million per year — creating the appearance of tighter budgets than actuals, but also meaning the city's structural gap was not improving as much as official forecasts suggested.</p>
+        <blockquote>
+          "Financial forecasts are generally conservative because aggressive projections may snowball quickly, and policymakers' current decisions based on forecast could put the City in a precarious position if revenues came up short."
+          <cite>— Finance Director Bryant Ayles, FFC Minutes, April 2021</cite>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">2023 — FY24–28 Forecast</div>
+      <div class="timeline-heading">Five-year forecast approved; multi-year gap trajectory documented</div>
+      <div class="timeline-body">
+        <p>The committee approved the FY2024–FY2028 financial forecast in December 2023. The five-year window made visible what annual forecasts had documented individually: the gap between expenditure growth and revenue growth was not a one-time event, but a compounding structural problem that would grow larger each year without intervention.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry crisis">
+      <div class="timeline-year">2024 — FY26 Forecast</div>
+      <div class="timeline-heading">$4.4 million deficit projected — override discussed, roads fund zeroed out</div>
+      <div class="timeline-body">
+        <p>The November and December 2024 meetings produced the most alarming numbers yet. Finance Director Ayles projected a $4.39 million deficit for FY26. Chair Kathleen Feldman stated the committee needed to address it immediately, "rather than postpone this."</p>
+        <blockquote class="warn">
+          "There may be a $4.4M deficit, and the committee needs to address this now rather than postpone this."
+          <cite>— Chair Kathleen Feldman, FFC Minutes, November 2024</cite>
+        </blockquote>
+        <p>Budget Analyst Perry identified the only available lever: zero out the roads and sidewalks appropriation ($1.25 million). That still wouldn't close the gap. "There will be no way to balance next year's budget without zeroing [the roads and sidewalks fund] out. This will not resolve the projected $4.39M shortfall," he said.</p>
+        <p>An override was formally discussed for the first time in these minutes. The committee's assessment was sobering: a prior override attempt had failed even when a school closure was threatened. Councilor Houseman noted: "Last time around, even with the potential loss of a school, an override was not approved." The committee agreed to include override planning as a long-term discussion item going forward.</p>
+        <p>The full scope of cost pressures was laid out: health insurance now costs the city $30 million annually, with possible annual increases of 14–15%. The Essex North Shore Technical School assessment was rising 9.4%. Special education out-of-district tuitions were "a challenge and not easy to predict" — a single unexpected placement can cost $400,000–$500,000 per year. The Briscoe School sale proceeds, used to fill previous gaps, would be exhausted by the end of FY28.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry crisis">
+      <div class="timeline-year">2025 — FY27 Forecast</div>
+      <div class="timeline-heading">$3.66 million structural deficit confirmed; override planning added to agenda</div>
+      <div class="timeline-body">
+        <p>The December 2025 meetings confirmed the structural deficit for FY27 at $3.66 million. Finance Director Ayles described the dynamic precisely: expenses are growing at 6% annually while revenues grow at 4%. Compounded over time, that gap widens every year. The two options on the table — cutting services (potentially eliminating up to 45 full-time positions) or raising revenues — were both deeply painful. The committee's general sentiment was opposition to service cuts and a preference for exploring revenue options first.</p>
+        <blockquote class="warn">
+          "The structural $3.66 million deficit continues to grow annually due to expenses increasing at a higher rate than the revenues, at 6% and 4% respectively."
+          <cite>— Finance Director Bryant Ayles, FFC Minutes, December 2025</cite>
+        </blockquote>
+        <p>Revenue concepts the committee agreed to explore included raising the trash fee to $325 per household (currently covering only 32% of sanitation costs, which would generate $2.7M annually), adjusting school fees, and increasing parking revenue. Override planning was explicitly added as a long-term revenue topic for the December 9, 2025 meeting.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CHARTS -->
+  <h2 class="section-title">The Numbers Behind the Story</h2>
+  <div class="chart-section">
+    <div class="chart-grid">
+      <div class="chart-card full">
+        <h3>Tax Levy vs. Expenditure Pressure (FY2014–FY2023, $ millions)</h3>
+        <canvas id="levyChart" height="100"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Outstanding Debt ($ millions)</h3>
+        <canvas id="debtChart" height="140"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>Stabilization Fund ($ millions)</h3>
+        <canvas id="stabChart" height="140"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- COST DRIVERS -->
+  <h2 class="section-title">What's Driving the Gap</h2>
+  <div class="driver-grid">
+    <div class="driver-card">
+      <div class="driver-icon">🏥</div>
+      <h3>Health Insurance</h3>
+      <p>Now costs the city $30M annually. Beverly is self-insured (Blue Cross / Harvard Pilgrim). Annual increases of 6% are budgeted, but 14–15% spikes are possible. This single line item can swing the entire budget.</p>
+    </div>
+    <div class="driver-card">
+      <div class="driver-icon">🎓</div>
+      <h3>Special Education</h3>
+      <p>Out-of-district tuitions are Beverly's most unpredictable cost. A single residential placement runs $400K–$500K per year. Collaborative programs cost $50K–$120K. Every student who moves into Beverly before April 1 is the district's financial responsibility.</p>
+    </div>
+    <div class="driver-card">
+      <div class="driver-icon">🏛️</div>
+      <h3>Debt Service</h3>
+      <p>Beverly's debt load surged when the Middle School, Police Station, and High School projects were financed simultaneously. Debt service peaked at $123M in FY2021 and is now declining — but City Hall renovations and school roof projects are on the horizon.</p>
+    </div>
+    <div class="driver-card">
+      <div class="driver-icon">👷</div>
+      <h3>Pension &amp; OPEB</h3>
+      <p>Beverly's pension system is 75.3% funded with an unfunded liability of $65.6M, targeted for full funding by 2032. Other Post-Employment Benefits (OPEB) present a larger long-term concern: only $3M in trust against a $200M liability.</p>
+    </div>
+    <div class="driver-card">
+      <div class="driver-icon">🔧</div>
+      <h3>Essex North Shore Tech</h3>
+      <p>Beverly sends 223+ students to Essex North Shore Technical School. The FY26 assessment was $3.97M, with a 9.4% increase anticipated for FY27 (+$376K). If enrollment rises to 240 under a new lottery, costs rise further.</p>
+    </div>
+    <div class="driver-card">
+      <div class="driver-icon">🛣️</div>
+      <h3>Roads &amp; Sidewalks</h3>
+      <p>The roads and sidewalks appropriation has been repeatedly reduced or zeroed out to balance budgets. The city estimates $8M per year is needed to adequately maintain infrastructure — a gap that accumulates as deferred maintenance every year the fund goes unspent.</p>
+    </div>
+  </div>
+
+  <!-- GAP TABLE -->
+  <h2 class="section-title">The Deficit Trajectory</h2>
+  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;">Projected gaps as documented in FFC reports. Gaps in prior years were closed through one-time measures, conservative budgeting, and fund transfers.</p>
+  <table class="gap-table">
+    <thead>
+      <tr>
+        <th>Fiscal Year</th>
+        <th>Projected Gap</th>
+        <th>How It Was Addressed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="year-cell">FY2017–19</td>
+        <td class="gap-cell">~$1M/yr (schools)</td>
+        <td>School appropriations held below requested levels; deferred positions</td>
+      </tr>
+      <tr>
+        <td class="year-cell">FY2020</td>
+        <td class="gap-cell">~$2.1M</td>
+        <td>Departmental turn-backs, conservative budgeting, fund transfers</td>
+      </tr>
+      <tr>
+        <td class="year-cell">FY2021–22</td>
+        <td class="gap-cell">Uncertain (COVID)</td>
+        <td>Federal relief funds, one-time revenues, conservative spending</td>
+      </tr>
+      <tr>
+        <td class="year-cell">FY2026</td>
+        <td class="gap-cell">$4.39M</td>
+        <td>Roads &amp; sidewalks fund zeroed out; Briscoe sale proceeds; fee adjustments</td>
+      </tr>
+      <tr>
+        <td class="year-cell">FY2027</td>
+        <td class="gap-cell">$3.66M (structural)</td>
+        <td>Under discussion — trash fee increase, school fees, parking, override</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- WHAT'S NEXT -->
+  <h2 class="section-title">What Comes Next</h2>
+  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;">The Financial Forecasting Committee identified three broad options for closing the FY27 gap. None of them are easy.</p>
+  <div class="options-grid">
+    <div class="option-card">
+      <div class="opt-icon">✂️</div>
+      <h3>Cut Services</h3>
+      <p>Closing the gap through cuts alone would mean eliminating up to 45 full-time city positions. The committee's general sentiment was opposition to this path.</p>
+    </div>
+    <div class="option-card">
+      <div class="opt-icon">💰</div>
+      <h3>Raise Fees</h3>
+      <p>Trash fee at $325/household would generate $2.7M. School fee adjustments and parking revenue increases could help. Together these may not close the full gap.</p>
+    </div>
+    <div class="option-card">
+      <div class="opt-icon">🗳️</div>
+      <h3>Override</h3>
+      <p>A Proposition 2½ override would permanently raise the tax levy above the cap. Beverly's last override attempt failed. Override planning was added to the FFC agenda in December 2025.</p>
+    </div>
+  </div>
+
+  <div class="source-note">
+    <strong>Sources:</strong> City of Beverly Financial Forecasting Committee meeting minutes (2016–2025), available through the <a href="https://lfserver.beverlyma.gov/WebLink/Browse.aspx?id=8939&dbid=0&repo=BPL" target="_blank">Beverly Public Library LaserFiche server</a> and the <a href="https://www.beverlyma.gov/AgendaCenter/Financial-Forecasting-Committee-13" target="_blank">Beverly Agenda Center</a>. Ten-year financial data from Beverly Annual Comprehensive Financial Reports (ACFR) FY2014–FY2023. Beverly Data is an independent civic project and is not affiliated with the City of Beverly. All figures are as reported in official documents; errors in source documents are reflected as-is.
+  </div>
+
+</div>
+
+<footer>
+  Beverly Data is an independent civic project and is not affiliated with the City of Beverly.
+  Data sourced from official city documents and public records. <a href="/beverlymadata/">← Back to home</a>
+</footer>
+
+<script>
+const YEARS = ['FY14','FY15','FY16','FY17','FY18','FY19','FY20','FY21','FY22','FY23'];
+
+const chartDefaults = {
+  responsive: true,
+  plugins: { legend: { display: false }, tooltip: { callbacks: {
+    label: ctx => ' $' + ctx.parsed.y.toFixed(2) + 'M'
+  }}},
+  scales: {
+    x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+    y: { grid: { color: '#f0f0f0' }, ticks: { font: { size: 11 }, callback: v => '$' + v + 'M' } }
+  }
+};
+
+// Tax levy chart
+new Chart(document.getElementById('levyChart'), {
+  type: 'bar',
+  data: {
+    labels: YEARS,
+    datasets: [{
+      label: 'Net Tax Levy',
+      data: [84.36, 87.32, 90.39, 94.72, 99.28, 102.87, 107.15, 111.92, 115.06, 119.12],
+      backgroundColor: 'rgba(45,95,168,0.15)',
+      borderColor: '#2d5fa8',
+      borderWidth: 2,
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    plugins: {
+      ...chartDefaults.plugins,
+      legend: { display: false },
+      annotation: {},
+    },
+    scales: {
+      ...chartDefaults.scales,
+      y: { ...chartDefaults.scales.y, min: 75, ticks: { font: { size: 11 }, callback: v => '$' + v + 'M' } }
+    }
+  }
+});
+
+// Debt chart
+new Chart(document.getElementById('debtChart'), {
+  type: 'bar',
+  data: {
+    labels: YEARS,
+    datasets: [{
+      data: [65.83, 70.80, 86.02, 91.01, 108.22, 99.49, 92.00, 123.01, 114.04, 107.04],
+      backgroundColor: ctx => ctx.parsed.y > 100 ? 'rgba(220,38,38,0.2)' : 'rgba(45,95,168,0.15)',
+      borderColor: ctx => ctx.parsed.y > 100 ? '#dc2626' : '#2d5fa8',
+      borderWidth: 2,
+      borderRadius: 4,
+    }]
+  },
+  options: chartDefaults
+});
+
+// Stabilization fund chart
+new Chart(document.getElementById('stabChart'), {
+  type: 'line',
+  data: {
+    labels: YEARS,
+    datasets: [{
+      data: [1.75, 5.25, 6.75, 9.38, 12.58, 13.62, 14.77, 15.78, 16.93, 18.64],
+      borderColor: '#059669',
+      backgroundColor: 'rgba(5,150,105,0.08)',
+      borderWidth: 2.5,
+      fill: true,
+      tension: 0.3,
+      pointRadius: 3,
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    plugins: {
+      ...chartDefaults.plugins,
+      tooltip: { callbacks: { label: ctx => ' $' + ctx.parsed.y.toFixed(2) + 'M' } }
+    }
+  }
+});
+</script>
+</body>
+</html>
