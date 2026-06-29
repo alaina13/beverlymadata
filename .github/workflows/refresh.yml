@@ -14,11 +14,11 @@ jobs:
       contents: write  # needed to commit updated JSON files back
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.2.2
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5.6.0
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install dependencies
         run: pip install anthropic youtube-transcript-api feedparser
