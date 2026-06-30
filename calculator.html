@@ -229,7 +229,7 @@
 
 <div class="hero">
   <h1>Override Calculator</h1>
-  <p>Beverly faces a projected $3.66M structural deficit in FY2027. Explore what different override amounts would mean for the city's budget — and for your tax bill.</p>
+  <p>Beverly faces a projected ~$7M structural deficit in FY2027. Explore what different override amounts would mean for the city's budget — and for your tax bill.</p>
 </div>
 
 <div class="container">
@@ -283,7 +283,7 @@
 
   <div class="chart-card">
     <h2>Revenue vs. Expenditure Trajectory</h2>
-    <p>Projected levy revenue and total expenditures through FY2035. Override raises the levy permanently in FY2027.</p>
+    <p>Projected total revenues (levy + state aid + local receipts) and total expenditures through FY2035. Override raises the levy — and total revenues — permanently in FY2027.</p>
     <canvas id="projChart" height="80"></canvas>
   </div>
 
@@ -323,12 +323,14 @@
   const RES_AV      = 9.854e9;   // residential AV
   const RES_RATE_26 = 10.67;     // $/1,000 AV FY2026 estimated
   const EXP_GROWTH  = 0.06;      // expenditure growth rate
-  const REV_GROWTH  = 0.025;     // levy growth rate (Prop 2½ limit)
+  const REV_GROWTH  = 0.025;     // total revenue growth rate (Prop 2½ + state aid + receipts)
   const AV_GROWTH   = 0.04;      // assessed value growth rate
   const BASE_EXP    = 186.91e6;  // FY2023 total expenditures (from ACFR)
-  const FY26_EXP    = BASE_EXP * Math.pow(1 + EXP_GROWTH, 3); // grow to FY2026
+  const FY26_EXP    = BASE_EXP * Math.pow(1 + EXP_GROWTH, 3); // ~$222M in FY2026
+  // Total revenues (levy + state aid ~$50M + local receipts ~$40M) ≈ expenditures in FY2026
+  // The structural gap emerges from exp growing 6%/yr vs revenues ~2.5%/yr
+  const BASE_REVENUE = FY26_EXP; // FY2026 roughly balanced; ~$222M total revenues
   const HOUSING_UNITS = 15400;
-  const FISCAL_GAP  = 3.66e6;    // FY2027 projected structural deficit
 
   const YEARS = ['FY26','FY27','FY28','FY29','FY30','FY31','FY32','FY33','FY34','FY35'];
   const N = YEARS.length;
@@ -342,35 +344,36 @@
   function fmtRate(r) { return '$' + r.toFixed(2); }
 
   function project(overrideAmt) {
-    const levies = [], exps = [], gaps = [];
-    let av = TOTAL_AV;
+    const levies = [], revenues = [], exps = [], gaps = [];
+    let revenue = BASE_REVENUE;
     let levy = BASE_LEVY;
     let exp = FY26_EXP;
 
     for (let i = 0; i < N; i++) {
-      const yr = i; // 0=FY26
-      levy = levy * (1 + REV_GROWTH);
-      av   = av   * (1 + AV_GROWTH);
-      exp  = exp  * (1 + EXP_GROWTH);
-
-      // Override kicks in FY27 (i=1)
-      if (i === 1) levy += overrideAmt;
+      // i=0 is FY26 (base year — use values as-is); growth applies starting FY27
+      if (i > 0) {
+        revenue = revenue * (1 + REV_GROWTH);
+        levy    = levy    * (1 + REV_GROWTH);
+        exp     = exp     * (1 + EXP_GROWTH);
+      }
+      // Override kicks in FY27 (i=1), permanently raises levy and total revenues
+      if (i === 1) { revenue += overrideAmt; levy += overrideAmt; }
 
       levies.push(levy / 1e6);
+      revenues.push(revenue / 1e6);
       exps.push(exp / 1e6);
-      gaps.push((levy - exp) / 1e6);
+      gaps.push((revenue - exp) / 1e6);
     }
-    return { levies, exps, gaps };
+    return { levies, revenues, exps, gaps };
   }
 
   function yearsUntilGap(overrideAmt) {
-    let levy = BASE_LEVY, exp = FY26_EXP;
-    let overrideApplied = false;
+    let revenue = BASE_REVENUE, exp = FY26_EXP;
     for (let i = 1; i <= 20; i++) {
-      levy = levy * (1 + REV_GROWTH);
-      exp  = exp  * (1 + EXP_GROWTH);
-      if (i === 1 && !overrideApplied) { levy += overrideAmt; overrideApplied = true; }
-      if (levy < exp) return i;
+      revenue = revenue * (1 + REV_GROWTH);
+      exp     = exp     * (1 + EXP_GROWTH);
+      if (i === 1) revenue += overrideAmt;
+      if (revenue < exp) return i;
     }
     return 20;
   }
@@ -385,7 +388,7 @@
       labels: YEARS,
       datasets: [
         {
-          label: 'Levy Revenue',
+          label: 'Total Revenues',
           data: [],
           borderColor: '#2d5fa8',
           backgroundColor: 'rgba(45,95,168,0.07)',
@@ -456,7 +459,7 @@
     document.getElementById('override-val').textContent = '$' + (overrideAmt/1e6).toFixed(2) + 'M';
     document.getElementById('home-val').textContent     = '$' + (homeVal/1e3).toFixed(0) + 'K';
 
-    const { levies, exps, gaps } = project(overrideAmt);
+    const { levies, revenues, exps, gaps } = project(overrideAmt);
 
     // New rate after override (applied to FY27 AV)
     const fy27AV     = TOTAL_AV * (1 + AV_GROWTH);
@@ -474,7 +477,7 @@
     const yrs = yearsUntilGap(overrideAmt);
 
     // Stats
-    const newLevy = (BASE_LEVY * Math.pow(1 + REV_GROWTH, 2) + overrideAmt) / 1e6;
+    const newLevy = (BASE_LEVY * (1 + REV_GROWTH) + overrideAmt) / 1e6;
     document.getElementById('new-levy').textContent  = '$' + newLevy.toFixed(1) + 'M';
     document.getElementById('levy-change').textContent = `up $${(newLevy - BASE_LEVY/1e6).toFixed(1)}M from FY2026`;
     document.getElementById('new-rate').textContent  = fmtRate(newRate);
@@ -507,7 +510,7 @@
     document.getElementById('per-hh').textContent    = fmt(overrideAmt / HOUSING_UNITS, 0) + '/yr';
 
     // Charts
-    projChart.data.datasets[0].data = levies;
+    projChart.data.datasets[0].data = revenues;
     projChart.data.datasets[1].data = exps;
     projChart.update();
     gapChart.data.datasets[0].data = gaps;
