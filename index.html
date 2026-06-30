@@ -88,7 +88,100 @@
       color: rgba(255,255,255,0.72);
       font-size: 1.05rem;
       max-width: 520px;
-      margin: 0 auto;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-stat-row {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hero-stat { text-align: center; }
+
+    .hero-stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Featured cards */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .featured-card {
+      background: var(--navy);
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
+      text-decoration: none;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .featured-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    .featured-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(26,39,68,0.18);
+    }
+
+    .featured-card .fc-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.1rem;
+    }
+
+    .featured-card h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.3;
+    }
+
+    .featured-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .featured-card .fc-arrow {
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
     }
 
     .container {
@@ -173,7 +266,10 @@
       nav a { font-size: 0.78rem; }
       .hero { padding: 2.5rem 1rem 2rem; }
       .hero h1 { font-size: 1.8rem; }
+      .hero-stat-row { gap: 1.5rem; }
+      .hero-stat-num { font-size: 1.5rem; }
       .container { padding: 2rem 1rem; }
+      .featured-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -195,9 +291,43 @@
 <div class="hero">
   <h1><span>Beverly</span> Data</h1>
   <p>An independent civic transparency project for Beverly, MA. Public meetings, financial data, and more — all in one place.</p>
+  <div class="hero-stat-row">
+    <div class="hero-stat">
+      <div class="hero-stat-num">~$7M</div>
+      <div class="hero-stat-label">FY2027 structural deficit</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">6%</div>
+      <div class="hero-stat-label">Annual expenditure growth</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">2.5%</div>
+      <div class="hero-stat-label">Prop 2½ revenue cap</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">$130M</div>
+      <div class="hero-stat-label">FY2026 tax levy</div>
+    </div>
+  </div>
 </div>
 
 <div class="container">
+  <p class="section-label">Featured</p>
+  <div class="featured-grid">
+    <a class="featured-card" href="/beverlymadata/calculator.html">
+      <div class="fc-eyebrow">Interactive Tool</div>
+      <h2>Override Calculator</h2>
+      <p>Beverly faces a projected ~$7M structural deficit in FY2027. Explore what different override amounts would cost your household — and how long the fix would last.</p>
+      <div class="fc-arrow">Calculate your impact →</div>
+    </a>
+    <a class="featured-card" href="/beverlymadata/history.html">
+      <div class="fc-eyebrow">Fiscal History</div>
+      <h2>How We Got Here</h2>
+      <p>Nine years of Financial Forecasting Committee warnings — how Beverly went from a structurally balanced budget to a growing gap that reserves can no longer cover.</p>
+      <div class="fc-arrow">Read the story →</div>
+    </a>
+  </div>
+
   <p class="section-label">Explore</p>
   <div class="card-grid">
 
