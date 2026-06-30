@@ -234,6 +234,15 @@
       margin-bottom: 1.5rem;
     }
 
+    .impact-card.featured { grid-column: span 1; }
+
+    .featured-num {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--accent-text);
+      line-height: 1;
+    }
+
     .impact-card {
       background: white;
       border: 1px solid var(--border);
@@ -397,7 +406,12 @@
   </div>
 
   <div class="impact-grid">
-    <div class="impact-card highlight">
+    <div class="impact-card highlight featured" id="tax-card">
+      <div class="impact-label">Your annual tax change</div>
+      <div class="impact-num featured-num" id="tax-change">—</div>
+      <div class="impact-sub" id="tax-monthly">per month</div>
+    </div>
+    <div class="impact-card">
       <div class="impact-label">New annual levy</div>
       <div class="impact-num accent" id="new-levy">—</div>
       <div class="impact-sub" id="levy-change">up from $130.2M today</div>
@@ -406,11 +420,6 @@
       <div class="impact-label">New residential rate</div>
       <div class="impact-num" id="new-rate">—</div>
       <div class="impact-sub" id="rate-change">per $1,000 assessed value</div>
-    </div>
-    <div class="impact-card">
-      <div class="impact-label">Your annual tax change</div>
-      <div class="impact-num" id="tax-change">—</div>
-      <div class="impact-sub" id="tax-monthly">per month</div>
     </div>
     <div class="impact-card good" id="gap-card">
       <div class="impact-label">FY27 gap after override</div>
@@ -421,11 +430,6 @@
       <div class="impact-label">Years until gap returns</div>
       <div class="impact-num" id="years-out">—</div>
       <div class="impact-sub">at 6% exp. / 2.5% rev. growth</div>
-    </div>
-    <div class="impact-card">
-      <div class="impact-label">Override per household</div>
-      <div class="impact-num" id="per-hh">—</div>
-      <div class="impact-sub">~15,400 housing units in Beverly</div>
     </div>
   </div>
 
@@ -657,7 +661,6 @@
     }
 
     document.getElementById('years-out').textContent = overrideAmt === 0 ? 'Already here' : (yrs >= 20 ? '20+ yrs' : yrs + ' yrs');
-    document.getElementById('per-hh').textContent    = fmt(overrideAmt / HOUSING_UNITS, 0) + '/yr';
 
     // Charts
     projChart.data.datasets[0].data = revenues;
