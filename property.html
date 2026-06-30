@@ -310,7 +310,6 @@
   <div class="stat-chip"><div class="stat-num" id="s-total">—</div><div class="stat-label">Total assessed value</div></div>
   <div class="stat-chip"><div class="stat-num" id="s-med">—</div><div class="stat-label">Median value / acre</div></div>
   <div class="stat-chip"><div class="stat-num" id="s-top">—</div><div class="stat-label">Highest value / acre</div></div>
-  <div class="stat-chip"><div class="stat-num" id="s-density">—</div><div class="stat-label">Redevelopment potential / yr</div></div>
 </div>
 
 <p class="sr-only">This page shows a visual map of 13,019 Beverly parcels colored by assessed value metrics. The statistics bar above summarizes the currently visible data. Use the Override Calculator page to search for a specific address and see its assessed value.</p>
@@ -328,7 +327,6 @@
         <option value="bv">Building value</option>
         <option value="tax">Annual tax revenue</option>
         <option value="taxpa">Tax revenue per acre</option>
-        <option value="density">Redevelopment revenue potential</option>
       </select>
     </div>
     <div class="panel-section">
@@ -338,9 +336,6 @@
         Underperforming parcels
       </label>
       <p style="font-size:0.7rem;color:var(--muted);margin-top:4px;line-height:1.4;">High-density zones with value/acre below city median. Shown in <strong style="color:#ef4444">red</strong>.</p>
-      <p style="font-size:0.7rem;color:var(--muted);margin-top:6px;line-height:1.4;">
-        <strong>Redevelopment potential</strong> (modeled on the <a href="https://www.aei.org/the-property-tax-atlas/" target="_blank" rel="noopener" style="color:var(--blue);">AEI Property Tax Atlas</a> methodology): for underperforming parcels in residential zones with enough nearby Missing Middle housing to benchmark against, this estimates extra annual tax revenue if the lot matched that comparable built density. <strong>This is a theoretical ceiling, not a forecast</strong> — it ignores zoning dimensional limits, infrastructure capacity, and owner intent, and is capped at 1 acre per site to reflect realistic single-lot infill scale.
-      </p>
     </div>
     <div class="panel-section">
       <h3 id="vpa-filters-label">Filter by value / acre</h3>
@@ -416,43 +411,6 @@ const CAT_GROUP_NOTE = {
 
 function parcelGroup(p) { return CAT_GROUP[p.cat] || p.cat; }
 
-// ── Density revenue potential ────────────────────────────────────────────────
-// Modeled on AEI's Property Tax Atlas "light-touch density" methodology, scoped
-// to Beverly's already-flagged underperforming parcels. For each underperforming
-// parcel, estimate additional annual tax revenue if it were redeveloped to match
-// the tax-per-acre already achieved by comparable Missing Middle housing built
-// in the same zone. This is a theoretical ceiling, not a forecast — see the
-// methodology note in the panel for caveats.
-const MM_CATS = new Set(['Condo', 'Two Family', 'Three Family', 'Multi-Family', 'Apt 4-8u']);
-const DENSITY_RESIDENTIAL_ZONES = new Set(['R6', 'R10', 'R15', 'RMD', 'RHD']);
-const DENSITY_MIN_COMPS = 20;       // minimum Missing Middle comps required to trust a zone benchmark
-const DENSITY_LOT_CAP_AC = 1.0;     // cap lot size considered, to keep estimates at realistic single-site infill scale
-
-function computeDensityPotential(parcels) {
-  const zoneTaxpa = {};
-  for (const p of parcels) {
-    if (!DENSITY_RESIDENTIAL_ZONES.has(p.zone)) continue;
-    if (!MM_CATS.has(p.cat) || !(p.taxpa > 0)) continue;
-    (zoneTaxpa[p.zone] = zoneTaxpa[p.zone] || []).push(p.taxpa);
-  }
-  const benchmarks = {};
-  for (const z in zoneTaxpa) {
-    const vals = zoneTaxpa[z].slice().sort((a, b) => a - b);
-    if (vals.length >= DENSITY_MIN_COMPS) benchmarks[z] = vals[Math.floor(vals.length / 2)];
-  }
-  for (const p of parcels) {
-    p.densityPotential = 0;
-    if (!p.under) continue;
-    const benchmark = benchmarks[p.zone];
-    if (!benchmark) continue;
-    const ls = Math.min(p.ls || 0, DENSITY_LOT_CAP_AC);
-    if (ls <= 0) continue;
-    const gap = benchmark - (p.taxpa || 0);
-    if (gap > 0) p.densityPotential = Math.round(gap * ls);
-  }
-  return benchmarks;
-}
-
 let allParcels = [], filtered = [], colorBy = 'vpa';
 let activeGroups = new Set();
 let activeVpaBuckets = new Set(VPA_BUCKETS.map((_,i) => i));
@@ -472,7 +430,6 @@ function getColorValue(p) {
   if (colorBy === 'bv') return p.bv;
   if (colorBy === 'tax') return p.tax;
   if (colorBy === 'taxpa') return p.taxpa;
-  if (colorBy === 'density') return p.densityPotential;
   return p.vpa;
 }
 
@@ -488,13 +445,11 @@ function updateStats() {
   const vpas = filtered.filter(p=>p.vpa>0).map(p=>p.vpa).sort((a,b)=>a-b);
   const med = vpas[Math.floor(vpas.length/2)] || 0;
   const top = vpas[vpas.length-1] || 0;
-  const densityTotal = filtered.reduce((s,p) => s + (p.densityPotential || 0), 0);
   document.getElementById('s-parcels').textContent = n.toLocaleString();
   document.getElementById('s-total').textContent = fmt(total);
   document.getElementById('s-med').textContent = fmt(med)+'/ac';
   document.getElementById('s-top').textContent = fmt(top)+'/ac';
-  document.getElementById('s-density').textContent = fmt(densityTotal);
-  const label = colorBy === 'v' ? '' : colorBy === 'lv' ? ' land' : colorBy === 'bv' ? ' bldg' : (colorBy === 'tax' || colorBy === 'density') ? '/yr' : '/ac';
+  const label = colorBy === 'v' ? '' : colorBy === 'lv' ? ' land' : colorBy === 'bv' ? ' bldg' : colorBy === 'tax' ? '/yr' : '/ac';
   document.getElementById('legend-labels').innerHTML =
     `<span>${fmt(lo)}${label}</span><span>${fmt(hi)}${label}</span>`;
 }
@@ -511,8 +466,7 @@ function buildTooltip(p) {
     <div class="tt-row"><span class="tt-key">Type</span><span class="tt-val">${p.cat}</span></div>
     <div class="tt-row"><span class="tt-key">Zone</span><span class="tt-val">${p.zone||'—'}</span></div>
     ${p.yr ? `<div class="tt-row"><span class="tt-key">Built</span><span class="tt-val">${p.yr}</span></div>` : ''}
-    ${p.under ? `<div style="margin-top:5px;color:#ef4444;font-weight:600;font-size:0.72rem;">⚠ Underperforming site</div>` : ''}
-    ${p.densityPotential > 0 ? `<div class="tt-row"><span class="tt-key">Redevelopment potential</span><span class="tt-val">+${fmt(p.densityPotential)}/yr</span></div>` : ''}`;
+    ${p.under ? `<div style="margin-top:5px;color:#ef4444;font-weight:600;font-size:0.72rem;">⚠ Underperforming site</div>` : ''}`;
 }
 
 function renderLayer() {
@@ -660,7 +614,6 @@ L.control.layers({'Light': lightTiles, 'Dark': darkTiles}, {}, {position:'bottom
   try {
     const res = await fetch('/beverlymadata/parcels.json');
     allParcels = await res.json();
-    computeDensityPotential(allParcels);
     buildFilters();
     applyFilters();
     document.getElementById('loading-msg').style.display = 'none';
