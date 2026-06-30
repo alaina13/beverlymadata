@@ -131,11 +131,21 @@
     .stat-num { font-size: 1.05rem; font-weight: 700; color: var(--navy); }
     .stat-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
+    /* main wraps everything below header; needs to fill remaining height */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 0;
+    }
+
     .map-wrapper {
       flex: 1;
       display: flex;
       overflow: hidden;
       position: relative;
+      min-height: 0;
     }
 
     #map { flex: 1; }
