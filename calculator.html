@@ -62,6 +62,82 @@
 
     .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
 
+    /* Address lookup */
+    .lookup-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .lookup-card h2 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--navy); }
+    .lookup-card .lookup-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem; }
+
+    .lookup-input-wrap {
+      position: relative;
+    }
+
+    #addr-input {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      font-size: 0.95rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+      font-family: inherit;
+      color: var(--text);
+      transition: border-color 0.15s;
+    }
+
+    #addr-input:focus { border-color: var(--blue); }
+
+    #addr-results {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0; right: 0;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+      z-index: 50;
+      max-height: 240px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    #addr-results.open { display: block; }
+
+    .addr-result {
+      padding: 0.65rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.88rem;
+    }
+
+    .addr-result:last-child { border-bottom: none; }
+    .addr-result:hover { background: #f5f6f8; }
+
+    .addr-result-addr { font-weight: 600; color: var(--navy); }
+    .addr-result-val { color: var(--muted); white-space: nowrap; font-size: 0.82rem; }
+
+    .lookup-selected {
+      margin-top: 0.75rem;
+      padding: 0.6rem 0.9rem;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: 8px;
+      font-size: 0.83rem;
+      color: var(--green);
+      display: none;
+    }
+
+    .lookup-selected.visible { display: block; }
+
     /* Slider card */
     .slider-card {
       background: white;
@@ -233,6 +309,16 @@
 </div>
 
 <div class="container">
+
+  <div class="lookup-card">
+    <h2>Find your home's assessed value</h2>
+    <p class="lookup-sub">Search your address to auto-fill the home value below. Uses FY2026 Beverly assessment data.</p>
+    <div class="lookup-input-wrap">
+      <input type="text" id="addr-input" placeholder="e.g. 123 Cabot St" autocomplete="off" />
+      <div id="addr-results"></div>
+    </div>
+    <div class="lookup-selected" id="lookup-selected"></div>
+  </div>
 
   <div class="slider-card">
     <h2>Set override amount</h2>
@@ -521,6 +607,79 @@
   document.getElementById('override-slider').addEventListener('input', update);
   document.getElementById('home-slider').addEventListener('input', update);
   requestAnimationFrame(update);
+
+  // ── Address lookup ─────────────────────────────────────────────────────────
+  let parcels = null;
+
+  async function loadParcels() {
+    if (parcels) return parcels;
+    const res = await fetch('/beverlymadata/parcels.json');
+    parcels = await res.json();
+    return parcels;
+  }
+
+  function fmtDollar(v) {
+    if (v >= 1e6) return '$' + (v / 1e6).toFixed(2) + 'M';
+    return '$' + v.toLocaleString();
+  }
+
+  const addrInput   = document.getElementById('addr-input');
+  const addrResults = document.getElementById('addr-results');
+  const lookupSel   = document.getElementById('lookup-selected');
+  const homeSlider  = document.getElementById('home-slider');
+
+  let searchTimeout;
+
+  addrInput.addEventListener('input', () => {
+    clearTimeout(searchTimeout);
+    const q = addrInput.value.trim();
+    if (q.length < 2) { addrResults.classList.remove('open'); return; }
+    searchTimeout = setTimeout(() => doSearch(q), 180);
+  });
+
+  async function doSearch(q) {
+    const data = await loadParcels();
+    const upper = q.toUpperCase();
+    const hits = data
+      .filter(p => p.addr && p.addr.includes(upper) && p.v > 0)
+      .slice(0, 8);
+
+    addrResults.innerHTML = '';
+    if (!hits.length) {
+      addrResults.innerHTML = '<div class="addr-result" style="color:var(--muted)">No results found</div>';
+    } else {
+      hits.forEach(p => {
+        const el = document.createElement('div');
+        el.className = 'addr-result';
+        el.innerHTML = `<span class="addr-result-addr">${p.addr}</span><span class="addr-result-val">${fmtDollar(p.v)} assessed</span>`;
+        el.addEventListener('mousedown', e => {
+          e.preventDefault();
+          selectParcel(p);
+        });
+        addrResults.appendChild(el);
+      });
+    }
+    addrResults.classList.add('open');
+  }
+
+  function selectParcel(p) {
+    addrInput.value = p.addr;
+    addrResults.classList.remove('open');
+    // Clamp to slider range [200000, 2000000]
+    const clamped = Math.max(200000, Math.min(2000000, p.v));
+    homeSlider.value = clamped;
+    lookupSel.textContent = `Using ${p.addr} — assessed at ${fmtDollar(p.v)}`;
+    lookupSel.classList.add('visible');
+    update();
+  }
+
+  addrInput.addEventListener('blur', () => {
+    setTimeout(() => addrResults.classList.remove('open'), 150);
+  });
+
+  addrInput.addEventListener('keydown', e => {
+    if (e.key === 'Escape') addrResults.classList.remove('open');
+  });
 </script>
 </body>
 </html>
