@@ -290,6 +290,7 @@
   </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
 
 <header>
   <a class="logo" href="/beverlymadata/"><span>Beverly</span> Data</a>
@@ -302,11 +303,11 @@
     <a href="/beverlymadata/property.html">Property Map</a>
     <a href="/beverlymadata/calculator.html">Override Calculator</a>
   </nav>
-  <button class="menu-btn" aria-label="Toggle menu" onclick="var n=this.closest('header').querySelector('nav');n.classList.toggle('open');this.querySelector('i').className='fa-solid '+(n.classList.contains('open')?'fa-xmark':'fa-bars')">
+  <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="var n=this.closest('header').querySelector('nav');var open=n.classList.toggle('open');this.setAttribute('aria-expanded',open);this.querySelector('i').className='fa-solid '+(open?'fa-xmark':'fa-bars')">
     <i class="fa-solid fa-bars" aria-hidden="true"></i>
   </button>
 </header>
-
+<main id="main">
 <div class="hero">
   <h1>City Meeting Summaries</h1>
   <p>AI-generated summaries of Beverly City Council and School Committee meetings from BevCam recordings, with key votes and highlights.</p>
@@ -322,7 +323,7 @@
     <div class="state-msg"><div class="spinner"></div>Loading summaries…</div>
   </div>
 </div>
-
+</main>
 <footer>
   Summaries generated from <a href="https://www.youtube.com/@BevCam" target="_blank">BevCam</a> recordings using AI.
   Beverly Data is an independent civic project and is not affiliated with the City of Beverly.

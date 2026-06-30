@@ -329,6 +329,7 @@
   </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
 
 <header>
   <a class="logo" href="/beverlymadata/"><span>Beverly</span> Data</a>
@@ -341,11 +342,11 @@
     <a href="/beverlymadata/property.html">Property Map</a>
     <a href="/beverlymadata/calculator.html">Override Calculator</a>
   </nav>
-  <button class="menu-btn" aria-label="Toggle menu" onclick="var n=this.closest('header').querySelector('nav');n.classList.toggle('open');this.querySelector('i').className='fa-solid '+(n.classList.contains('open')?'fa-xmark':'fa-bars')">
+  <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="var n=this.closest('header').querySelector('nav');var open=n.classList.toggle('open');this.setAttribute('aria-expanded',open);this.querySelector('i').className='fa-solid '+(open?'fa-xmark':'fa-bars')">
     <i class="fa-solid fa-bars" aria-hidden="true"></i>
   </button>
 </header>
-
+<main id="main">
 <div class="hero">
   <h1><span>Beverly</span> Data</h1>
   <p>An independent civic transparency project for Beverly, MA. Public meetings, financial data, and more — all in one place.</p>
@@ -419,7 +420,7 @@
 
   </div>
 </div>
-
+</main>
 <footer>
   Beverly Data is an independent civic project and is not affiliated with the City of Beverly.
   Data sourced from <a href="https://www.beverlyma.gov/AgendaCenter" target="_blank">beverlyma.gov</a> and public records.
