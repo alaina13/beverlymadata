@@ -1,5 +1,21 @@
 [
   {
+    "title": "Zoning Board of Appeals Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2751",
+    "pubDate": "2026-06-29T18:36:52-05:00",
+    "desc": "Zoning Board of Appeals Meeting Agenda Update: Minutes added or updated",
+    "board": "Zoning Board of Appeals",
+    "type": "minutes"
+  },
+  {
+    "title": "Beverly License Board - Agenda - July 2, 2026",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2828",
+    "pubDate": "2026-06-29T15:32:57-05:00",
+    "desc": "",
+    "board": "Other",
+    "type": "agenda"
+  },
+  {
     "title": "Commission on Disabilities Meeting Agenda",
     "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2756",
     "pubDate": "2026-06-28T07:14:52-05:00",
@@ -173,30 +189,6 @@
     "pubDate": "2026-06-16T11:58:41-05:00",
     "desc": "",
     "board": "Other",
-    "type": "agenda"
-  },
-  {
-    "title": "Stormwater Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2801",
-    "pubDate": "2026-06-15T18:36:04-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda"
-  },
-  {
-    "title": "Salem and Beverly Water Supply Board Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2800",
-    "pubDate": "2026-06-15T10:41:20-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda"
-  },
-  {
-    "title": "Harbor Management Authority Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2799",
-    "pubDate": "2026-06-15T10:38:13-05:00",
-    "desc": "",
-    "board": "Harbor Management Authority",
     "type": "agenda"
   }
 ]

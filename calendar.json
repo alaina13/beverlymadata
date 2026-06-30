@@ -40,12 +40,22 @@
     "sortDate": "2026-07-01T00:00:00+00:00"
   },
   {
-    "title": "Parking & Traffic Commission Meeting",
+    "title": "Beverly License Board Meeting - July 2, 2026",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3813",
+    "pubDate": "2026-06-29T15:36:07-05:00",
+    "eventDate": "July 2, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-07-02T00:00:00+00:00"
+  },
+  {
+    "title": "CANCELLED Parking & Traffic Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3535",
-    "pubDate": "2025-12-08T14:12:29-05:00",
+    "pubDate": "2026-06-29T16:31:52-05:00",
     "eventDate": "July 7, 2026",
     "eventTime": "08:30 AM",
-    "location": "Beverly City Hall, 3rd Floor Council Chambers<br>191 Cabot StreetBeverly, MA 01915",
+    "location": "",
     "board": "Other",
     "sortDate": "2026-07-07T00:00:00+00:00"
   },
