@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beverly Data — Override Calculator</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --navy: #1a2744;
+      --blue: #2d5fa8;
+      --accent: #e8813a;
+      --bg: #f5f6f8;
+      --card-bg: #ffffff;
+      --text: #1e1e1e;
+      --muted: #6b7280;
+      --border: #e2e5ea;
+      --green: #059669;
+      --red: #dc2626;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; color: white; text-decoration: none; }
+    .logo span { color: var(--accent); }
+    nav { display: flex; gap: 1.25rem; }
+    nav a {
+      color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.875rem;
+      font-weight: 500; padding: 4px 0; border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s; white-space: nowrap;
+    }
+    nav a:hover, nav a.active { color: white; border-bottom-color: var(--accent); }
+
+    .hero {
+      background: var(--navy);
+      color: white;
+      padding: 2rem 2rem 1.5rem;
+      border-bottom: 3px solid var(--accent);
+    }
+    .hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .hero p { color: rgba(255,255,255,0.7); font-size: 0.92rem; max-width: 620px; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Slider card */
+    .slider-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .slider-card h2 { font-size: 1rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--navy); }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .slider-label { font-size: 0.85rem; color: var(--muted); min-width: 110px; }
+
+    input[type=range] {
+      flex: 1;
+      -webkit-appearance: none;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--border);
+      outline: none;
+      cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid white;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+
+    .slider-val {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 70px;
+      text-align: right;
+    }
+
+    /* Impact grid */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .impact-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.4rem;
+    }
+
+    .impact-card.highlight { border-color: var(--accent); background: #fff8f3; }
+    .impact-card.good { border-color: var(--green); background: #f0fdf4; }
+    .impact-card.bad { border-color: var(--red); background: #fef2f2; }
+
+    .impact-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .impact-num {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .impact-num.accent { color: var(--accent); }
+    .impact-num.green { color: var(--green); }
+    .impact-num.red { color: var(--red); }
+
+    .impact-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    /* Chart card */
+    .chart-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .chart-card h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+
+    .chart-card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Assumptions box */
+    .assumptions {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .assumptions strong { color: var(--text); }
+
+    .assumptions ul { margin: 0.4rem 0 0 1.1rem; }
+    .assumptions li { margin-bottom: 0.2rem; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+    footer a { color: var(--blue); }
+
+    @media (max-width: 700px) {
+      header { padding: 0 1rem; }
+      nav { gap: 0.6rem; }
+      nav a { font-size: 0.72rem; }
+      .container { padding: 1rem; }
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+      .slider-row { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/beverlymadata/"><span>Beverly</span> Data</a>
+  <nav>
+    <a href="/beverlymadata/meetings.html">Meetings</a>
+    <a href="/beverlymadata/agendas.html">Agendas</a>
+    <a href="/beverlymadata/summaries.html">Summaries</a>
+    <a href="/beverlymadata/data.html">City Data</a>
+    <a href="/beverlymadata/history.html">How We Got Here</a>
+    <a href="/beverlymadata/property.html">Property Map</a>
+    <a href="/beverlymadata/calculator.html" class="active">Override Calculator</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Override Calculator</h1>
+  <p>Beverly faces a projected $3.66M structural deficit in FY2027. Explore what different override amounts would mean for the city's budget — and for your tax bill.</p>
+</div>
+
+<div class="container">
+
+  <div class="slider-card">
+    <h2>Set override amount</h2>
+    <div class="slider-row">
+      <span class="slider-label">Override amount</span>
+      <input type="range" id="override-slider" min="0" max="6" step="0.25" value="3.66" />
+      <span class="slider-val" id="override-val">$3.66M</span>
+    </div>
+    <div class="slider-row">
+      <span class="slider-label">Your home value</span>
+      <input type="range" id="home-slider" min="200000" max="2000000" step="10000" value="680200" />
+      <span class="slider-val" id="home-val">$680K</span>
+    </div>
+  </div>
+
+  <div class="impact-grid">
+    <div class="impact-card highlight">
+      <div class="impact-label">New annual levy</div>
+      <div class="impact-num accent" id="new-levy">—</div>
+      <div class="impact-sub" id="levy-change">up from $130.2M today</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-label">New residential rate</div>
+      <div class="impact-num" id="new-rate">—</div>
+      <div class="impact-sub" id="rate-change">per $1,000 assessed value</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-label">Your annual tax change</div>
+      <div class="impact-num" id="tax-change">—</div>
+      <div class="impact-sub" id="tax-monthly">per month</div>
+    </div>
+    <div class="impact-card good" id="gap-card">
+      <div class="impact-label">FY27 gap after override</div>
+      <div class="impact-num green" id="gap-after">—</div>
+      <div class="impact-sub" id="gap-sub">—</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-label">Years until gap returns</div>
+      <div class="impact-num" id="years-out">—</div>
+      <div class="impact-sub">at 6% exp. / 4% rev. growth</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-label">Override per household</div>
+      <div class="impact-num" id="per-hh">—</div>
+      <div class="impact-sub">~15,400 housing units in Beverly</div>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h2>Revenue vs. Expenditure Trajectory</h2>
+    <p>Projected levy revenue and total expenditures through FY2035. Override raises the levy permanently in FY2027.</p>
+    <canvas id="projChart" height="80"></canvas>
+  </div>
+
+  <div class="chart-card">
+    <h2>Annual Budget Gap / Surplus</h2>
+    <p>Difference between levy revenue and expenditures each year. Below zero means a structural deficit.</p>
+    <canvas id="gapChart" height="60"></canvas>
+  </div>
+
+  <div class="assumptions">
+    <strong>Assumptions & methodology</strong>
+    <ul>
+      <li>FY2026 base levy: $130.2M (FY2023 levy of $119.1M grown at 3%/yr)</li>
+      <li>FY2026 total assessed value: $11.65B (residential $9.85B, commercial $0.78B)</li>
+      <li>Residential tax rate: $10.67/$1,000 AV; Commercial: $20.93/$1,000 AV (estimated FY2026)</li>
+      <li>Expenditure growth: 6%/yr (FFC estimate, driven by health insurance, SPED, debt service)</li>
+      <li>Revenue growth without override: ~3–4%/yr (Prop 2½ limit + new growth)</li>
+      <li>Override permanently raises the levy limit; future growth still capped at 2.5%/yr</li>
+      <li>Assessed value assumed to grow ~4%/yr; tax rate impact calculated on projected AV</li>
+      <li>Beverly has ~15,400 housing units (2020 Census)</li>
+      <li>Tax bill impact calculated on your selected home value using the residential rate increase</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  Projections are estimates for illustrative purposes. Actual figures depend on annual budget decisions, new growth, and state aid.
+  Data from Beverly Financial Forecasting Committee minutes and City of Beverly ACFRs.
+  <a href="/beverlymadata/history.html">← Read the fiscal history</a>
+</footer>
+
+<script>
+  // ── Constants ──────────────────────────────────────────────────────────────
+  const BASE_LEVY   = 130.2e6;   // FY2026 estimated levy
+  const TOTAL_AV    = 11.648e9;  // FY2026 total assessed value
+  const RES_AV      = 9.854e9;   // residential AV
+  const RES_RATE_26 = 10.67;     // $/1,000 AV FY2026 estimated
+  const EXP_GROWTH  = 0.06;      // expenditure growth rate
+  const REV_GROWTH  = 0.025;     // levy growth rate (Prop 2½ limit)
+  const AV_GROWTH   = 0.04;      // assessed value growth rate
+  const BASE_EXP    = 186.91e6;  // FY2023 total expenditures (from ACFR)
+  const FY26_EXP    = BASE_EXP * Math.pow(1 + EXP_GROWTH, 3); // grow to FY2026
+  const HOUSING_UNITS = 15400;
+  const FISCAL_GAP  = 3.66e6;    // FY2027 projected structural deficit
+
+  const YEARS = ['FY26','FY27','FY28','FY29','FY30','FY31','FY32','FY33','FY34','FY35'];
+  const N = YEARS.length;
+
+  function fmt(v, dec=1) {
+    if (Math.abs(v) >= 1e6) return (v>=0?'':'−') + '$' + (Math.abs(v)/1e6).toFixed(dec) + 'M';
+    if (Math.abs(v) >= 1e3) return (v>=0?'':'−') + '$' + (Math.abs(v)/1e3).toFixed(0) + 'K';
+    return (v>=0?'':'−') + '$' + Math.abs(v).toFixed(0);
+  }
+
+  function fmtRate(r) { return '$' + r.toFixed(2); }
+
+  function project(overrideAmt) {
+    const levies = [], exps = [], gaps = [];
+    let av = TOTAL_AV;
+    let levy = BASE_LEVY;
+    let exp = FY26_EXP;
+
+    for (let i = 0; i < N; i++) {
+      const yr = i; // 0=FY26
+      levy = levy * (1 + REV_GROWTH);
+      av   = av   * (1 + AV_GROWTH);
+      exp  = exp  * (1 + EXP_GROWTH);
+
+      // Override kicks in FY27 (i=1)
+      if (i === 1) levy += overrideAmt;
+
+      levies.push(levy / 1e6);
+      exps.push(exp / 1e6);
+      gaps.push((levy - exp) / 1e6);
+    }
+    return { levies, exps, gaps };
+  }
+
+  function yearsUntilGap(overrideAmt) {
+    let levy = BASE_LEVY, exp = FY26_EXP;
+    let overrideApplied = false;
+    for (let i = 1; i <= 20; i++) {
+      levy = levy * (1 + REV_GROWTH);
+      exp  = exp  * (1 + EXP_GROWTH);
+      if (i === 1 && !overrideApplied) { levy += overrideAmt; overrideApplied = true; }
+      if (levy < exp) return i;
+    }
+    return 20;
+  }
+
+  // ── Charts ─────────────────────────────────────────────────────────────────
+  const projCtx = document.getElementById('projChart').getContext('2d');
+  const gapCtx  = document.getElementById('gapChart').getContext('2d');
+
+  const projChart = new Chart(projCtx, {
+    type: 'line',
+    data: {
+      labels: YEARS,
+      datasets: [
+        {
+          label: 'Levy Revenue',
+          data: [],
+          borderColor: '#2d5fa8',
+          backgroundColor: 'rgba(45,95,168,0.07)',
+          borderWidth: 2.5,
+          fill: false,
+          tension: 0.2,
+          pointRadius: 3,
+        },
+        {
+          label: 'Total Expenditures',
+          data: [],
+          borderColor: '#dc2626',
+          backgroundColor: 'rgba(220,38,38,0.07)',
+          borderWidth: 2.5,
+          fill: false,
+          tension: 0.2,
+          pointRadius: 3,
+        },
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: true, position: 'top', labels: { font: { size: 11 }, boxWidth: 14 } },
+        tooltip: { callbacks: { label: ctx => ' $' + ctx.parsed.y.toFixed(1) + 'M' } },
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+        y: { grid: { color: '#f0f0f0' }, ticks: { font: { size: 11 }, callback: v => '$' + v + 'M' } },
+      }
+    }
+  });
+
+  const gapChart = new Chart(gapCtx, {
+    type: 'bar',
+    data: {
+      labels: YEARS,
+      datasets: [{
+        label: 'Budget gap (surplus = positive)',
+        data: [],
+        backgroundColor: ctx => (ctx.parsed?.y ?? 0) >= 0 ? 'rgba(5,150,105,0.25)' : 'rgba(220,38,38,0.25)',
+        borderColor: ctx => (ctx.parsed?.y ?? 0) >= 0 ? '#059669' : '#dc2626',
+        borderWidth: 1.5,
+        borderRadius: 3,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ' $' + ctx.parsed.y.toFixed(2) + 'M' } },
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+        y: {
+          grid: { color: '#f0f0f0' },
+          ticks: { font: { size: 11 }, callback: v => '$' + v + 'M' }
+        },
+      }
+    }
+  });
+
+  // ── Update ─────────────────────────────────────────────────────────────────
+  function update() {
+    const overrideAmt = parseFloat(document.getElementById('override-slider').value) * 1e6;
+    const homeVal     = parseFloat(document.getElementById('home-slider').value);
+
+    document.getElementById('override-val').textContent = '$' + (overrideAmt/1e6).toFixed(2) + 'M';
+    document.getElementById('home-val').textContent     = '$' + (homeVal/1e3).toFixed(0) + 'K';
+
+    const { levies, exps, gaps } = project(overrideAmt);
+
+    // New rate after override (applied to FY27 AV)
+    const fy27AV     = TOTAL_AV * (1 + AV_GROWTH);
+    const fy27ResAV  = RES_AV   * (1 + AV_GROWTH);
+    const addedRate  = (overrideAmt / fy27ResAV) * 1000; // only on residential
+    const newRate    = RES_RATE_26 * (1 + REV_GROWTH) + addedRate;
+    const rateChange = addedRate;
+
+    // Tax bill impact
+    const annualChange = homeVal * rateChange / 1000;
+    const monthChange  = annualChange / 12;
+
+    // Gap after override in FY27
+    const gapAfter = gaps[1] * 1e6;
+    const yrs = yearsUntilGap(overrideAmt);
+
+    // Stats
+    const newLevy = (BASE_LEVY * Math.pow(1 + REV_GROWTH, 2) + overrideAmt) / 1e6;
+    document.getElementById('new-levy').textContent  = '$' + newLevy.toFixed(1) + 'M';
+    document.getElementById('levy-change').textContent = `up $${(newLevy - BASE_LEVY/1e6).toFixed(1)}M from FY2026`;
+    document.getElementById('new-rate').textContent  = fmtRate(newRate);
+    document.getElementById('rate-change').textContent = `+$${rateChange.toFixed(2)} from FY2026 rate`;
+
+    document.getElementById('tax-change').textContent = annualChange > 0 ? '+' + fmt(annualChange, 0) + '/yr' : 'No change';
+    document.getElementById('tax-monthly').textContent = annualChange > 0 ? `+${fmt(monthChange, 0)}/month` : '';
+
+    const gapCard = document.getElementById('gap-card');
+    const gapEl   = document.getElementById('gap-after');
+    const gapSub  = document.getElementById('gap-sub');
+    if (gapAfter >= 0) {
+      gapCard.className = 'impact-card good';
+      gapEl.className   = 'impact-num green';
+      gapEl.textContent = '+' + fmt(Math.abs(gapAfter));
+      gapSub.textContent = 'Surplus in FY2027';
+    } else if (Math.abs(gapAfter) < 500000) {
+      gapCard.className = 'impact-card good';
+      gapEl.className   = 'impact-num green';
+      gapEl.textContent = fmt(gapAfter);
+      gapSub.textContent = 'Near-balanced in FY2027';
+    } else {
+      gapCard.className = 'impact-card bad';
+      gapEl.className   = 'impact-num red';
+      gapEl.textContent = fmt(gapAfter);
+      gapSub.textContent = 'Remaining gap in FY2027';
+    }
+
+    document.getElementById('years-out').textContent = overrideAmt === 0 ? 'Already here' : (yrs >= 20 ? '20+ yrs' : yrs + ' yrs');
+    document.getElementById('per-hh').textContent    = fmt(overrideAmt / HOUSING_UNITS, 0) + '/yr';
+
+    // Charts
+    projChart.data.datasets[0].data = levies;
+    projChart.data.datasets[1].data = exps;
+    projChart.update();
+    gapChart.data.datasets[0].data = gaps;
+    gapChart.update();
+  }
+
+  window._calcUpdate = update;
+  document.getElementById('override-slider').addEventListener('input', update);
+  document.getElementById('home-slider').addEventListener('input', update);
+  requestAnimationFrame(update);
+</script>
+</body>
+</html>
