@@ -371,22 +371,38 @@ function vpaColor(val, lo, hi) {
 }
 
 const VPA_BUCKETS = [
-  { label: 'Under $1M',    lo: 0,          hi: 1_000_000 },
-  { label: '$1M – $2M',   lo: 1_000_000,  hi: 2_000_000 },
-  { label: '$2M – $3M',   lo: 2_000_000,  hi: 3_000_000 },
-  { label: '$3M – $4M',   lo: 3_000_000,  hi: 4_000_000 },
-  { label: '$4M – $5M',   lo: 4_000_000,  hi: 5_000_000 },
-  { label: '$5M – $6M',   lo: 5_000_000,  hi: 6_000_000 },
-  { label: '$6M – $7M',   lo: 6_000_000,  hi: 7_000_000 },
-  { label: '$7M – $8M',   lo: 7_000_000,  hi: 8_000_000 },
-  { label: '$8M – $9M',   lo: 8_000_000,  hi: 9_000_000 },
-  { label: '$9M – $10M',  lo: 9_000_000,  hi: 10_000_000 },
+  { label: 'Under $2M',   lo: 0,          hi: 2_000_000 },
+  { label: '$2M – $5M',   lo: 2_000_000,  hi: 5_000_000 },
+  { label: '$5M – $10M',  lo: 5_000_000,  hi: 10_000_000 },
   { label: 'Over $10M',   lo: 10_000_000, hi: Infinity },
   { label: 'No data',     lo: -1,         hi: 0 },
 ];
 
+// Maps raw parcel category to a display group
+const CAT_GROUP = {
+  'Single Family':  'Single Family',
+  'Condo':          'Missing Middle',
+  'Two Family':     'Missing Middle',
+  'Three Family':   'Missing Middle',
+  'Multi-Family':   'Missing Middle',
+  'Apt 4-8u':       'Missing Middle',
+  'Apt 9+u':        'High Density',
+  'Retail':         'Commercial',
+  'Office':         'Commercial',
+  'Commercial':     'Commercial',
+  'Industrial':     'Industrial',
+  'Tax Exempt':     'Tax Exempt',
+  'Other':          'Other / Vacant',
+  'Vacant Land':    'Other / Vacant',
+};
+const CAT_GROUP_NOTE = {
+  'Missing Middle': 'Includes condos, duplexes, triplexes, and small apt buildings. Note: condo category may include buildings with 9+ units.',
+};
+
+function parcelGroup(p) { return CAT_GROUP[p.cat] || p.cat; }
+
 let allParcels = [], filtered = [], colorBy = 'vpa';
-let activeCategories = new Set();
+let activeGroups = new Set();
 let activeVpaBuckets = new Set(VPA_BUCKETS.map((_,i) => i));
 let lo = 1, hi = 1;
 let circleLayer;
@@ -480,9 +496,12 @@ function vpaBucketIndex(vpa) {
 }
 
 function applyFilters() {
-  filtered = allParcels.filter(p =>
-    activeCategories.has(p.cat) && activeVpaBuckets.has(vpaBucketIndex(p.vpa))
-  );
+  const showUnder = document.getElementById('show-under').checked;
+  filtered = allParcels.filter(p => {
+    // When "underperforming" is checked, those parcels always show regardless of filters
+    if (showUnder && p.under) return true;
+    return activeGroups.has(parcelGroup(p)) && activeVpaBuckets.has(vpaBucketIndex(p.vpa));
+  });
   renderLayer();
 }
 
@@ -491,7 +510,7 @@ function setActive(btn, isActive) {
   btn.setAttribute('aria-pressed', String(isActive));
 }
 
-function buildToggleGroup(container, items, activeSet, allKey, getKey, getLabel, onToggle) {
+function buildToggleGroup(container, items, activeSet, allKey, getKey, getLabel, onToggle, getNote) {
   container.innerHTML = '';
   const allBtn = document.createElement('button');
   allBtn.className = 'filter-btn active';
@@ -506,7 +525,9 @@ function buildToggleGroup(container, items, activeSet, allKey, getKey, getLabel,
     btn.className = 'filter-btn active';
     btn.setAttribute('aria-pressed', 'true');
     btn.dataset.key = String(key);
+    const note = getNote && getNote(item);
     btn.innerHTML = `<span class="flabel">${getLabel(item)}</span><span class="cnt">${item.cnt.toLocaleString()}</span>`;
+    if (note) btn.title = note;
     container.appendChild(btn);
   }
 
@@ -541,16 +562,22 @@ function buildFilters() {
     applyFilters
   );
 
-  // Category counts
-  const cats = {};
-  for (const p of allParcels) cats[p.cat] = (cats[p.cat]||0)+1;
-  activeCategories = new Set(Object.keys(cats));
-  const catItems = Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([cat,cnt]) => ({ cat, cnt }));
+  // Group counts (collapsed categories)
+  const groups = {};
+  for (const p of allParcels) {
+    const g = parcelGroup(p);
+    groups[g] = (groups[g] || 0) + 1;
+  }
+  const GROUP_ORDER = ['Single Family','Missing Middle','High Density','Commercial','Industrial','Tax Exempt','Other / Vacant'];
+  activeGroups = new Set(Object.keys(groups));
+  const groupItems = GROUP_ORDER.filter(g => groups[g]).map(g => ({ group: g, cnt: groups[g], note: CAT_GROUP_NOTE[g] || null }));
   buildToggleGroup(
     document.getElementById('cat-filters'),
-    catItems, activeCategories, '__cat_all__',
-    item => item.cat, item => item.cat,
-    applyFilters
+    groupItems, activeGroups, '__cat_all__',
+    item => item.group,
+    item => item.note ? `${item.group} ⓘ` : item.group,
+    applyFilters,
+    item => item.note
   );
 }
 
@@ -559,7 +586,7 @@ document.getElementById('color-by').addEventListener('change', e => {
   renderLayer();
 });
 
-document.getElementById('show-under').addEventListener('change', () => renderLayer());
+document.getElementById('show-under').addEventListener('change', () => applyFilters());
 
 // Tile style toggle
 const lightTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
