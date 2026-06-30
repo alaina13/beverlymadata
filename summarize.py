@@ -9,6 +9,8 @@ Usage:
     ANTHROPIC_API_KEY=sk-... python3 summarize.py --max 5
 """
 
+from __future__ import annotations
+
 import argparse
 import json
 import os
@@ -30,8 +32,17 @@ CHANNEL_RSS  = f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL_ID
 OUTPUT_FILE  = Path(__file__).parent / "summaries.json"
 CLAUDE_MODEL = "claude-haiku-4-5-20251001"   # fast + cheap for summarization
 
-# Only include videos whose title matches (case-insensitive)
-TITLE_FILTER = re.compile(r"city council", re.IGNORECASE)
+# Only include videos whose title matches one of these governing bodies
+BODY_FILTERS = [
+    ("City Council",     re.compile(r"city council", re.IGNORECASE)),
+    ("School Committee", re.compile(r"school committee", re.IGNORECASE)),
+]
+
+def detect_body(title: str) -> str | None:
+    for name, pattern in BODY_FILTERS:
+        if pattern.search(title):
+            return name
+    return None
 
 def parse_summary(raw: str) -> dict:
     """Parse Claude's markdown response into structured fields."""
@@ -83,7 +94,7 @@ def parse_summary(raw: str) -> dict:
 
 
 SUMMARY_PROMPT = """\
-You are summarizing a Beverly, MA City Council meeting for residents who want a quick overview.
+You are summarizing a Beverly, MA {body} meeting for residents who want a quick overview.
 
 Below is the auto-generated transcript. Please produce:
 1. A one-sentence headline (what was the most significant thing that happened?)
@@ -100,7 +111,7 @@ TRANSCRIPT:
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def fetch_channel_videos(max_videos: int) -> list[dict]:
-    """Return list of {video_id, title, published, url} from channel RSS."""
+    """Return list of {video_id, title, published, url, body} from channel RSS."""
     print(f"  Fetching channel RSS feed…")
     req = urllib.request.Request(CHANNEL_RSS, headers={"User-Agent": "BeverlyData/1.0"})
     with urllib.request.urlopen(req, timeout=15) as resp:
@@ -118,13 +129,14 @@ def fetch_channel_videos(max_videos: int) -> list[dict]:
         title     = entry.findtext("atom:title",    namespaces=ns, default="")
         published = entry.findtext("atom:published", namespaces=ns, default="")
         url       = f"https://www.youtube.com/watch?v={video_id}"
-        if TITLE_FILTER.search(title):
+        body = detect_body(title)
+        if body:
             videos.append({"video_id": video_id, "title": title,
-                           "published": published, "url": url})
+                           "published": published, "url": url, "body": body})
         if len(videos) >= max_videos:
             break
 
-    print(f"  Found {len(videos)} City Council video(s) in feed")
+    print(f"  Found {len(videos)} matching video(s) in feed")
     return videos
 
 
@@ -141,7 +153,7 @@ def fetch_transcript(video_id: str):
         return None
 
 
-def summarize(client: anthropic.Anthropic, transcript: str) -> dict:
+def summarize(client: anthropic.Anthropic, transcript: str, body: str) -> dict:
     """Call Claude and return {headline, bullets, votes}."""
     # Truncate very long transcripts to avoid huge token bills
     words = transcript.split()
@@ -153,7 +165,7 @@ def summarize(client: anthropic.Anthropic, transcript: str) -> dict:
         max_tokens=1024,
         messages=[{
             "role": "user",
-            "content": SUMMARY_PROMPT.format(transcript=transcript),
+            "content": SUMMARY_PROMPT.format(transcript=transcript, body=body),
         }],
     )
     raw = message.content[0].text
@@ -227,7 +239,7 @@ def main():
         print(f"    Transcript: {word_count:,} words")
         print("    Summarizing with Claude…")
 
-        result = summarize(client, transcript)
+        result = summarize(client, transcript, video["body"])
         summaries[vid] = {**video, **result}
         new_count += 1
 

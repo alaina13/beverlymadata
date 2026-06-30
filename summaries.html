@@ -119,6 +119,39 @@
       color: var(--tag-text);
     }
 
+    .meta-badges { display: flex; align-items: center; gap: 0.5rem; }
+
+    .body-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: #eef2fb;
+      color: var(--navy);
+    }
+    .body-badge.school { background: #fdf2f8; color: #be185d; }
+
+    .filter-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-pill {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: white;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .filter-pill:hover { border-color: var(--blue); color: var(--blue); }
+    .filter-pill.active { background: var(--navy); border-color: var(--navy); color: white; }
+
     .summary-headline {
       font-size: 1.05rem;
       font-weight: 700;
@@ -235,8 +268,8 @@
 </header>
 
 <div class="hero">
-  <h1>City Council Summaries</h1>
-  <p>AI-generated summaries of Beverly City Council meetings from BevCam recordings, with key votes and highlights.</p>
+  <h1>City Meeting Summaries</h1>
+  <p>AI-generated summaries of Beverly City Council and School Committee meetings from BevCam recordings, with key votes and highlights.</p>
 </div>
 
 <div class="container">
@@ -244,6 +277,7 @@
     <span class="result-count" id="sum-result-count">Loading…</span>
     <p class="disclaimer">AI-generated from BevCam transcripts — verify with source video</p>
   </div>
+  <div class="filter-row" id="filter-row"></div>
   <div id="summaries-list">
     <div class="state-msg"><div class="spinner"></div>Loading summaries…</div>
   </div>
@@ -255,19 +289,44 @@
 </footer>
 
 <script>
+  let allSummaries = [];
+  let activeBody = 'All';
+
+  function renderFilters(data) {
+    const counts = {};
+    for (const item of data) counts[item.body || 'City Council'] = (counts[item.body || 'City Council'] || 0) + 1;
+    const bodies = ['All', ...Object.keys(counts).sort()];
+    const row = document.getElementById('filter-row');
+    row.innerHTML = bodies.map(b => {
+      const cnt = b === 'All' ? data.length : counts[b];
+      return `<button class="filter-pill${b === activeBody ? ' active' : ''}" data-body="${b}">${b} (${cnt})</button>`;
+    }).join('');
+    row.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeBody = btn.dataset.body;
+        renderFilters(allSummaries);
+        renderSummaries(allSummaries);
+      });
+    });
+  }
+
   function renderSummaries(data) {
     const list = document.getElementById('summaries-list');
-    document.getElementById('sum-result-count').textContent =
-      `${data.length} City Council meeting${data.length !== 1 ? 's' : ''} summarized`;
+    const filtered = activeBody === 'All' ? data : data.filter(item => (item.body || 'City Council') === activeBody);
 
-    if (!data.length) {
-      list.innerHTML = '<div class="state-msg">No summaries yet — run summarize.py to generate them.</div>';
+    document.getElementById('sum-result-count').textContent =
+      `${filtered.length} meeting${filtered.length !== 1 ? 's' : ''} summarized`;
+
+    if (!filtered.length) {
+      list.innerHTML = '<div class="state-msg">No summaries yet for this filter.</div>';
       return;
     }
 
-    list.innerHTML = data.map(item => {
+    list.innerHTML = filtered.map(item => {
       const date = item.published ? new Date(item.published).toLocaleDateString('en-US',
         { month: 'long', day: 'numeric', year: 'numeric' }) : '';
+      const body = item.body || 'City Council';
+      const bodyClass = body === 'School Committee' ? 'school' : '';
       const bulletsHtml = (item.bullets || []).slice(0, 5).map(b => `<li>${b}</li>`).join('');
       const votesHtml = (item.votes || []).length
         ? `<div class="summary-votes"><h4>Key Votes</h4><ul>${item.votes.map(v => `<li>${v}</li>`).join('')}</ul></div>` : '';
@@ -278,7 +337,10 @@
         <div class="summary-card">
           <div class="summary-meta">
             <span>${date}</span>
-            <span class="ai-badge">AI Summary</span>
+            <div class="meta-badges">
+              <span class="body-badge ${bodyClass}">${body}</span>
+              <span class="ai-badge">AI Summary</span>
+            </div>
           </div>
           <div class="summary-headline">${item.headline || item.title}</div>
           ${errMsg}
@@ -294,9 +356,11 @@
 
   (async () => {
     try {
-      const res = await fetch('summaries.json?v=' + Date.now());
+      const res = await fetch('/beverlymadata/summaries.json');
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      renderSummaries(await res.json());
+      allSummaries = await res.json();
+      renderFilters(allSummaries);
+      renderSummaries(allSummaries);
     } catch (err) {
       document.getElementById('summaries-list').innerHTML =
         `<div class="state-msg">⚠️ Could not load summaries.json<br><small>${err.message}</small></div>`;
