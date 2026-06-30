@@ -347,7 +347,7 @@
     </div>
     <div class="slider-row">
       <span class="slider-label">Your home value</span>
-      <input type="range" id="home-slider" min="200000" max="20000000" step="10000" value="680200" />
+      <input type="range" id="home-slider" min="200000" max="2000000" step="10000" value="680200" />
       <span class="slider-val" id="home-val">$680K</span>
     </div>
   </div>
@@ -682,7 +682,7 @@
     addrInput.value = p.addr;
     addrResults.classList.remove('open');
     // Clamp to slider range [200000, 2000000]
-    const clamped = Math.max(200000, Math.min(20000000, p.v));
+    const clamped = Math.max(200000, Math.min(2000000, p.v));
     homeSlider.value = clamped;
     lookupSel.textContent = `Using ${p.addr} — assessed at ${fmtDollar(p.v)}`;
     lookupSel.classList.add('visible');
