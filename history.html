@@ -11,12 +11,13 @@
       --navy: #1a2744;
       --blue: #2d5fa8;
       --accent: #e8813a;
+      --accent-text: #a85014; /* darkened for 4.5:1 contrast on light backgrounds */
       --red: #dc2626;
       --green: #059669;
       --bg: #f5f6f8;
       --card-bg: #ffffff;
       --text: #1e1e1e;
-      --muted: #6b7280;
+      --muted: #5d6472;
       --border: #e2e5ea;
       --tag-bg: #eef2fb;
       --tag-text: #2d5fa8;
@@ -25,6 +26,45 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--navy);
+      color: white;
+      padding: 0.6rem 1.1rem;
+      z-index: 1000;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 0 0 6px 0;
+      transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+    input[type=range]:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 4px;
+    }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -332,7 +372,7 @@
     <a href="/beverlymadata/calculator.html">Override Calculator</a>
   </nav>
   <button class="menu-btn" aria-label="Toggle menu" onclick="var n=this.closest('header').querySelector('nav');n.classList.toggle('open');this.querySelector('i').className='fa-solid '+(n.classList.contains('open')?'fa-xmark':'fa-bars')">
-    <i class="fa-solid fa-bars"></i>
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
   </button>
 </header>
 
