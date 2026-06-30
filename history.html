@@ -525,21 +525,21 @@
   <div class="chart-section">
     <div class="chart-grid">
       <div class="chart-card full">
-        <h3>Net Tax Levy vs. Total Expenditures ($ millions)</h3>
+        <h3 id="levyChart-title">Net Tax Levy vs. Total Expenditures ($ millions)</h3>
         <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.75rem;font-style:italic;">
           Under Proposition 2½, Beverly's tax levy can only grow ~3% per year. Total expenditures — driven by health insurance, pensions, school costs, and debt service — have grown faster. The widening gap between these two lines is the structural deficit. In years where expenditures exceeded the levy, the city covered the difference through state aid, local receipts, and one-time reserves.
         </p>
-        <canvas id="levyChart" height="100"></canvas>
+        <canvas id="levyChart" height="100" role="img" aria-labelledby="levyChart-title" aria-describedby="levyChart-data"></canvas>
       </div>
       <div class="chart-card full">
-        <h3>Outstanding Debt ($ millions)</h3>
+        <h3 id="debtChart-title">Outstanding Debt ($ millions)</h3>
         <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.5rem;font-style:italic;">Bars shown in <span style="color:#dc2626;font-weight:700;">red</span> indicate years where total debt exceeded $100M — the threshold at which Beverly's Finance Director flagged debt service as a growing budget pressure.</p>
-        <canvas id="debtChart" height="80"></canvas>
+        <canvas id="debtChart" height="80" role="img" aria-labelledby="debtChart-title" aria-describedby="debtChart-data"></canvas>
       </div>
       <div class="chart-card full">
-        <h3>Stabilization Fund ($ millions)</h3>
+        <h3 id="stabChart-title">Stabilization Fund ($ millions)</h3>
         <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.75rem;font-style:italic;">Beverly's stabilization fund — a rainy day reserve — grew from near zero in FY2009 to $18.6M by FY2023, built primarily through annual free cash transfers. The FFC has noted this cushion as a finite resource: drawing it down to cover structural deficits buys time but doesn't solve the underlying gap. Once depleted, the city would face immediate hard choices with no buffer.</p>
-        <canvas id="stabChart" height="80"></canvas>
+        <canvas id="stabChart" height="80" role="img" aria-labelledby="stabChart-title" aria-describedby="stabChart-data"></canvas>
       </div>
     </div>
   </div>
@@ -693,6 +693,23 @@
 <script>
 const YEARS = ['FY09','FY10','FY11','FY12','FY13','FY14','FY15','FY16','FY17','FY18','FY19','FY20','FY21','FY22','FY23'];
 
+// Builds a visually-hidden data table after a chart's canvas so screen reader
+// users get the same underlying numbers sighted users get from the chart.
+function addChartDataTable(canvasId, labels, datasets) {
+  const canvas = document.getElementById(canvasId);
+  const table = document.createElement('table');
+  table.id = canvasId + '-data';
+  table.className = 'sr-only';
+  let thead = '<thead><tr><th scope="col">Fiscal Year</th>' +
+    datasets.map(d => `<th scope="col">${d.label}</th>`).join('') + '</tr></thead>';
+  let tbody = '<tbody>' + labels.map((yr, i) =>
+    '<tr><th scope="row">' + yr + '</th>' +
+    datasets.map(d => `<td>$${d.data[i].toFixed(2)}M</td>`).join('') + '</tr>'
+  ).join('') + '</tbody>';
+  table.innerHTML = thead + tbody;
+  canvas.insertAdjacentElement('afterend', table);
+}
+
 const chartDefaults = {
   responsive: true,
   plugins: { legend: { display: false }, tooltip: { callbacks: {
@@ -705,36 +722,37 @@ const chartDefaults = {
 };
 
 // Tax levy vs expenditure chart (mixed: bar for levy, line for expenditures)
+const levyChartData = {
+  labels: YEARS,
+  datasets: [
+    {
+      type: 'bar',
+      label: 'Net Tax Levy',
+      data: [69.98, 72.75, 75.37, 78.41, 81.04, 84.36, 87.63, 91.00, 94.72, 99.01, 102.87, 107.15, 111.92, 115.06, 119.12],
+      backgroundColor: 'rgba(45,95,168,0.15)',
+      borderColor: '#2d5fa8',
+      borderWidth: 2,
+      borderRadius: 4,
+      order: 2,
+    },
+    {
+      type: 'line',
+      label: 'Total Expenditures',
+      // Total primary government expenditures from ACFR statistical tables (FY09-FY23, $ millions)
+      data: [116.27, 119.83, 121.06, 122.89, 125.44, 130.18, 133.85, 138.72, 144.21, 151.03, 156.44, 162.97, 168.30, 177.54, 186.91],
+      borderColor: '#e8813a',
+      backgroundColor: 'rgba(232,129,58,0.08)',
+      borderWidth: 2.5,
+      pointRadius: 3,
+      tension: 0.25,
+      fill: false,
+      order: 1,
+    }
+  ]
+};
 new Chart(document.getElementById('levyChart'), {
   type: 'bar',
-  data: {
-    labels: YEARS,
-    datasets: [
-      {
-        type: 'bar',
-        label: 'Net Tax Levy',
-        data: [69.98, 72.75, 75.37, 78.41, 81.04, 84.36, 87.63, 91.00, 94.72, 99.01, 102.87, 107.15, 111.92, 115.06, 119.12],
-        backgroundColor: 'rgba(45,95,168,0.15)',
-        borderColor: '#2d5fa8',
-        borderWidth: 2,
-        borderRadius: 4,
-        order: 2,
-      },
-      {
-        type: 'line',
-        label: 'Total Expenditures',
-        // Total primary government expenditures from ACFR statistical tables (FY09-FY23, $ millions)
-        data: [116.27, 119.83, 121.06, 122.89, 125.44, 130.18, 133.85, 138.72, 144.21, 151.03, 156.44, 162.97, 168.30, 177.54, 186.91],
-        borderColor: '#e8813a',
-        backgroundColor: 'rgba(232,129,58,0.08)',
-        borderWidth: 2.5,
-        pointRadius: 3,
-        tension: 0.25,
-        fill: false,
-        order: 1,
-      }
-    ]
-  },
+  data: levyChartData,
   options: {
     ...chartDefaults,
     plugins: {
@@ -751,21 +769,23 @@ new Chart(document.getElementById('levyChart'), {
     }
   }
 });
+addChartDataTable('levyChart', YEARS, levyChartData.datasets);
 
 // Debt chart
+const debtChartData = {
+  labels: YEARS,
+  datasets: [{
+    label: 'Outstanding Debt',
+    data: [60.16, 68.25, 78.36, 74.23, 70.38, 65.83, 70.80, 86.02, 91.01, 108.22, 99.49, 92.00, 123.01, 114.04, 107.04],
+    backgroundColor: ctx => ctx.parsed.y > 100 ? 'rgba(220,38,38,0.2)' : 'rgba(45,95,168,0.15)',
+    borderColor: ctx => ctx.parsed.y > 100 ? '#dc2626' : '#2d5fa8',
+    borderWidth: 2,
+    borderRadius: 4,
+  }]
+};
 new Chart(document.getElementById('debtChart'), {
   type: 'bar',
-  data: {
-    labels: YEARS,
-    datasets: [{
-      label: 'Outstanding Debt',
-      data: [60.16, 68.25, 78.36, 74.23, 70.38, 65.83, 70.80, 86.02, 91.01, 108.22, 99.49, 92.00, 123.01, 114.04, 107.04],
-      backgroundColor: ctx => ctx.parsed.y > 100 ? 'rgba(220,38,38,0.2)' : 'rgba(45,95,168,0.15)',
-      borderColor: ctx => ctx.parsed.y > 100 ? '#dc2626' : '#2d5fa8',
-      borderWidth: 2,
-      borderRadius: 4,
-    }]
-  },
+  data: debtChartData,
   options: {
     ...chartDefaults,
     plugins: {
@@ -784,22 +804,25 @@ new Chart(document.getElementById('debtChart'), {
     }
   }
 });
+addChartDataTable('debtChart', YEARS, debtChartData.datasets);
 
 // Stabilization fund chart
+const stabChartData = {
+  labels: YEARS,
+  datasets: [{
+    label: 'Stabilization Fund Balance',
+    data: [0.00, 0.55, 0.55, 0.55, 0.75, 1.75, 5.25, 6.75, 9.38, 12.58, 13.62, 14.77, 15.78, 16.93, 18.64],
+    borderColor: '#059669',
+    backgroundColor: 'rgba(5,150,105,0.08)',
+    borderWidth: 2.5,
+    fill: true,
+    tension: 0.3,
+    pointRadius: 3,
+  }]
+};
 new Chart(document.getElementById('stabChart'), {
   type: 'line',
-  data: {
-    labels: YEARS,
-    datasets: [{
-      data: [0.00, 0.55, 0.55, 0.55, 0.75, 1.75, 5.25, 6.75, 9.38, 12.58, 13.62, 14.77, 15.78, 16.93, 18.64],
-      borderColor: '#059669',
-      backgroundColor: 'rgba(5,150,105,0.08)',
-      borderWidth: 2.5,
-      fill: true,
-      tension: 0.3,
-      pointRadius: 3,
-    }]
-  },
+  data: stabChartData,
   options: {
     ...chartDefaults,
     plugins: {
@@ -808,6 +831,7 @@ new Chart(document.getElementById('stabChart'), {
     }
   }
 });
+addChartDataTable('stabChart', YEARS, stabChartData.datasets);
 </script>
 </body>
 </html>

@@ -389,33 +389,33 @@
   <div class="chart-grid">
 
     <div class="chart-card">
-      <div class="chart-title">Property Tax Rates</div>
+      <div class="chart-title" id="taxRateChart-title">Property Tax Rates</div>
       <div class="chart-sub">$/1,000 of assessed value · residential vs. commercial</div>
-      <div class="chart-wrap"><canvas id="taxRateChart"></canvas></div>
+      <div class="chart-wrap"><canvas id="taxRateChart" role="img" aria-labelledby="taxRateChart-title" aria-describedby="taxRateChart-data"></canvas></div>
     </div>
 
     <div class="chart-card">
-      <div class="chart-title">Total Tax Levy</div>
+      <div class="chart-title" id="taxLevyChart-title">Total Tax Levy</div>
       <div class="chart-sub">Millions · net of abatements &amp; exemptions</div>
-      <div class="chart-wrap"><canvas id="taxLevyChart"></canvas></div>
+      <div class="chart-wrap"><canvas id="taxLevyChart" role="img" aria-labelledby="taxLevyChart-title" aria-describedby="taxLevyChart-data"></canvas></div>
     </div>
 
     <div class="chart-card">
-      <div class="chart-title">Stabilization Fund Balance</div>
+      <div class="chart-title" id="stabilChart-title">Stabilization Fund Balance</div>
       <div class="chart-sub">Millions · rainy-day reserve fund</div>
-      <div class="chart-wrap"><canvas id="stabilChart"></canvas></div>
+      <div class="chart-wrap"><canvas id="stabilChart" role="img" aria-labelledby="stabilChart-title" aria-describedby="stabilChart-data"></canvas></div>
     </div>
 
     <div class="chart-card">
-      <div class="chart-title">Outstanding Debt</div>
+      <div class="chart-title" id="debtChart-title">Outstanding Debt</div>
       <div class="chart-sub">Millions · all governmental &amp; business-type activities</div>
-      <div class="chart-wrap"><canvas id="debtChart"></canvas></div>
+      <div class="chart-wrap"><canvas id="debtChart" role="img" aria-labelledby="debtChart-title" aria-describedby="debtChart-data"></canvas></div>
     </div>
 
     <div class="chart-card full">
-      <div class="chart-title">Total Assessed Property Value</div>
+      <div class="chart-title" id="valueChart-title">Total Assessed Property Value</div>
       <div class="chart-sub">Billions · residential, commercial, industrial, and personal property</div>
-      <div class="chart-wrap tall"><canvas id="valueChart"></canvas></div>
+      <div class="chart-wrap tall"><canvas id="valueChart" role="img" aria-labelledby="valueChart-title" aria-describedby="valueChart-data"></canvas></div>
     </div>
 
   </div>
@@ -555,6 +555,24 @@
     },
   };
 
+  // Builds a visually-hidden data table after a chart's canvas so screen reader
+  // users get the same underlying numbers sighted users get from the chart.
+  function addChartDataTable(id, labels, datasets, yFmt) {
+    const canvas = document.getElementById(id);
+    const table = document.createElement('table');
+    table.id = id + '-data';
+    table.className = 'sr-only';
+    const fmt = v => yFmt ? yFmt(v) : v;
+    const thead = '<thead><tr><th scope="col">Year</th>' +
+      datasets.map(d => `<th scope="col">${d.label || 'Value'}</th>`).join('') + '</tr></thead>';
+    const tbody = '<tbody>' + labels.map((yr, i) =>
+      '<tr><th scope="row">' + yr + '</th>' +
+      datasets.map(d => `<td>${fmt(d.data[i])}</td>`).join('') + '</tr>'
+    ).join('') + '</tbody>';
+    table.innerHTML = thead + tbody;
+    canvas.insertAdjacentElement('afterend', table);
+  }
+
   function line(id, labels, datasets, yFmt) {
     new Chart(document.getElementById(id), {
       type: 'line',
@@ -571,6 +589,7 @@
         },
       },
     });
+    addChartDataTable(id, labels, datasets, yFmt);
   }
 
   function bar(id, labels, data, color, yFmt) {
@@ -592,6 +611,7 @@
         },
       },
     });
+    addChartDataTable(id, labels, [{ label: 'Value', data }], yFmt);
   }
 
   const m = v => '$' + (v/1e6).toFixed(1) + 'M';
