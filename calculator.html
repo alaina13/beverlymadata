@@ -279,10 +279,24 @@
     }
     footer a { color: var(--blue); }
 
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      line-height: 1;
+    }
     @media (max-width: 700px) {
       header { padding: 0 1rem; }
-      nav { gap: 0.6rem; }
-      nav a { font-size: 0.72rem; }
+      .menu-btn { display: block; }
+      nav { display: none; position: absolute; top: 56px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 0.75rem 1.5rem 1.25rem; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); z-index: 99; }
+      nav.open { display: flex; }
+      nav a { padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.92rem; white-space: normal; }
+      nav a:last-child { border-bottom: none; }
       .container { padding: 1rem; }
       .impact-grid { grid-template-columns: 1fr 1fr; }
       .slider-row { flex-wrap: wrap; }
@@ -302,6 +316,9 @@
     <a href="/beverlymadata/property.html">Property Map</a>
     <a href="/beverlymadata/calculator.html" class="active">Override Calculator</a>
   </nav>
+  <button class="menu-btn" aria-label="Toggle menu" onclick="var n=this.closest('header').querySelector('nav');n.classList.toggle('open');this.querySelector('i').className='fa-solid '+(n.classList.contains('open')?'fa-xmark':'fa-bars')">
+    <i class="fa-solid fa-bars"></i>
+  </button>
 </header>
 
 <div class="hero">
@@ -326,7 +343,7 @@
     <div class="slider-row">
       <span class="slider-label">Override amount</span>
       <input type="range" id="override-slider" min="0" max="15" step="0.25" value="7.75" />
-      <span class="slider-val" id="override-val">$3.66M</span>
+      <span class="slider-val" id="override-val">$7.75M</span>
     </div>
     <div class="slider-row">
       <span class="slider-label">Your home value</span>
@@ -359,7 +376,7 @@
     <div class="impact-card">
       <div class="impact-label">Years until gap returns</div>
       <div class="impact-num" id="years-out">—</div>
-      <div class="impact-sub">at 6% exp. / 4% rev. growth</div>
+      <div class="impact-sub">at 6% exp. / 2.5% rev. growth</div>
     </div>
     <div class="impact-card">
       <div class="impact-label">Override per household</div>
@@ -376,7 +393,7 @@
 
   <div class="chart-card">
     <h2>Annual Budget Gap / Surplus</h2>
-    <p>Difference between levy revenue and expenditures each year. Below zero means a structural deficit.</p>
+    <p>Difference between total revenues and expenditures each year. Below zero means a structural deficit.</p>
     <canvas id="gapChart" height="60"></canvas>
   </div>
 
@@ -387,7 +404,7 @@
       <li>FY2026 total assessed value: $11.65B (residential $9.85B, commercial $0.78B)</li>
       <li>Residential tax rate: $10.67/$1,000 AV; Commercial: $20.93/$1,000 AV (estimated FY2026)</li>
       <li>Expenditure growth: 6%/yr (FFC estimate, driven by health insurance, SPED, debt service)</li>
-      <li>Revenue growth without override: ~3–4%/yr (Prop 2½ limit + new growth)</li>
+      <li>Revenue growth without override: ~2.5%/yr (Prop 2½ limit; new growth and state aid assumed roughly offsetting)</li>
       <li>Override permanently raises the levy limit; future growth still capped at 2.5%/yr</li>
       <li>Assessed value assumed to grow ~4%/yr; tax rate impact calculated on projected AV</li>
       <li>Beverly has ~15,400 housing units (2020 Census)</li>
@@ -419,6 +436,7 @@
   const BASE_REVENUE = FY26_EXP; // FY2026 roughly balanced; ~$222M total revenues
   const HOUSING_UNITS = 15400;
 
+
   const YEARS = ['FY26','FY27','FY28','FY29','FY30','FY31','FY32','FY33','FY34','FY35'];
   const N = YEARS.length;
 
@@ -431,27 +449,24 @@
   function fmtRate(r) { return '$' + r.toFixed(2); }
 
   function project(overrideAmt) {
-    const levies = [], revenues = [], exps = [], gaps = [];
+    const revenues = [], exps = [], gaps = [];
     let revenue = BASE_REVENUE;
-    let levy = BASE_LEVY;
     let exp = FY26_EXP;
 
     for (let i = 0; i < N; i++) {
       // i=0 is FY26 (base year — use values as-is); growth applies starting FY27
       if (i > 0) {
         revenue = revenue * (1 + REV_GROWTH);
-        levy    = levy    * (1 + REV_GROWTH);
         exp     = exp     * (1 + EXP_GROWTH);
       }
-      // Override kicks in FY27 (i=1), permanently raises levy and total revenues
-      if (i === 1) { revenue += overrideAmt; levy += overrideAmt; }
+      // Override kicks in FY27 (i=1), permanently raises total revenues
+      if (i === 1) revenue += overrideAmt;
 
-      levies.push(levy / 1e6);
       revenues.push(revenue / 1e6);
       exps.push(exp / 1e6);
       gaps.push((revenue - exp) / 1e6);
     }
-    return { levies, revenues, exps, gaps };
+    return { revenues, exps, gaps };
   }
 
   function yearsUntilGap(overrideAmt) {
@@ -546,7 +561,7 @@
     document.getElementById('override-val').textContent = '$' + (overrideAmt/1e6).toFixed(2) + 'M';
     document.getElementById('home-val').textContent     = homeVal >= 1e6 ? '$' + (homeVal/1e6).toFixed(2).replace(/\.?0+$/, '') + 'M' : '$' + (homeVal/1e3).toFixed(0) + 'K';
 
-    const { levies, revenues, exps, gaps } = project(overrideAmt);
+    const { revenues, exps, gaps } = project(overrideAmt);
 
     // New rate after override (applied to FY27 AV)
     const fy27AV     = TOTAL_AV * (1 + AV_GROWTH);
