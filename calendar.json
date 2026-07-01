@@ -1,35 +1,5 @@
 [
   {
-    "title": "Affordable Housing Trust Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3812",
-    "pubDate": "2026-06-26T11:39:53-05:00",
-    "eventDate": "June 30, 2026",
-    "eventTime": "11:30 AM",
-    "location": "",
-    "board": "Affordable Housing Trust",
-    "sortDate": "2026-06-30T00:00:00+00:00"
-  },
-  {
-    "title": "Board of Trustees Beverly Public Library Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3810",
-    "pubDate": "2026-06-25T17:16:14-05:00",
-    "eventDate": "June 30, 2026",
-    "eventTime": "06:00 PM",
-    "location": "32 Essex St.Beverly, MA 01915",
-    "board": "Library Board of Trustees",
-    "sortDate": "2026-06-30T00:00:00+00:00"
-  },
-  {
-    "title": "Conservation Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3600",
-    "pubDate": "2026-06-25T12:24:36-05:00",
-    "eventDate": "June 30, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Conservation Commission",
-    "sortDate": "2026-06-30T00:00:00+00:00"
-  },
-  {
     "title": "Open Space and Recreation Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3493",
     "pubDate": "2026-06-18T16:21:15-05:00",
@@ -43,6 +13,16 @@
     "title": "Beverly License Board Meeting - July 2, 2026",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3813",
     "pubDate": "2026-06-29T15:36:07-05:00",
+    "eventDate": "July 2, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-07-02T00:00:00+00:00"
+  },
+  {
+    "title": "Waste Reduction Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3814",
+    "pubDate": "2026-06-30T16:11:40-05:00",
     "eventDate": "July 2, 2026",
     "eventTime": "06:30 PM",
     "location": "Beverly, MA 01915",
