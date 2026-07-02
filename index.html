@@ -317,8 +317,12 @@
       .menu-btn { display: block; }
       nav { display: none; position: absolute; top: 56px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 0.75rem 1.5rem 1.25rem; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); z-index: 99; }
       nav.open { display: flex; }
-      nav a { padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.92rem; white-space: normal; }
-      nav a:last-child { border-bottom: none; }
+      .nav-group { position: static; }
+      .nav-group-btn { display: none; }
+      .nav-dropdown { display: block; position: static; background: none; box-shadow: none; padding: 0; border-radius: 0; min-width: 0; }
+      .nav-dropdown a, nav > a { display: block; padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.92rem; color: rgba(255,255,255,0.8); white-space: normal; }
+      .nav-dropdown a:hover, nav > a:hover { background: none; }
+      .nav-dropdown a.active, nav > a.active { color: white; background: none; }
       .hero { padding: 2.5rem 1rem 2rem; }
       .hero h1 { font-size: 1.8rem; }
       .hero-stat-row { gap: 1.5rem; }
@@ -334,14 +338,28 @@
 <header>
   <a class="logo" href="/beverlymadata/"><span>Beverly</span> Data</a>
   <nav>
-    <a href="/beverlymadata/meetings.html">Meetings</a>
-    <a href="/beverlymadata/agendas.html">Agendas</a>
-    <a href="/beverlymadata/summaries.html">Summaries</a>
-    <a href="/beverlymadata/data.html">City Data</a>
-    <a href="/beverlymadata/budget.html">Budget Explorer</a>
-    <a href="/beverlymadata/history.html">How We Got Here</a>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">
+        Meetings <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+      </button>
+      <div class="nav-dropdown">
+      <a href="/beverlymadata/meetings.html">Meetings</a>
+      <a href="/beverlymadata/agendas.html">Agendas</a>
+      <a href="/beverlymadata/summaries.html">Summaries</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">
+        Finance <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+      </button>
+      <div class="nav-dropdown">
+      <a href="/beverlymadata/data.html">City Data</a>
+      <a href="/beverlymadata/budget.html">Budget Explorer</a>
+      <a href="/beverlymadata/history.html">How We Got Here</a>
+      <a href="/beverlymadata/calculator.html">Override Calculator</a>
+      </div>
+    </div>
     <a href="/beverlymadata/property.html">Property Map</a>
-    <a href="/beverlymadata/calculator.html">Override Calculator</a>
   </nav>
   <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="var n=this.closest('header').querySelector('nav');var open=n.classList.toggle('open');this.setAttribute('aria-expanded',open);this.querySelector('i').className='fa-solid '+(open?'fa-xmark':'fa-bars')">
     <i class="fa-solid fa-bars" aria-hidden="true"></i>
@@ -434,5 +452,30 @@
   Data sourced from <a href="https://www.beverlyma.gov/AgendaCenter" target="_blank">beverlyma.gov</a> and public records.
 </footer>
 
+<script>
+(function() {
+  document.querySelectorAll('.nav-group-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var group = btn.closest('.nav-group');
+      var isOpen = group.classList.contains('open');
+      document.querySelectorAll('.nav-group').forEach(function(g) {
+        g.classList.remove('open');
+        g.querySelector('.nav-group-btn').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        group.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.nav-group').forEach(function(g) {
+      g.classList.remove('open');
+      g.querySelector('.nav-group-btn').setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+</script>
 </body>
 </html>
