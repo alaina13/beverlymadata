@@ -13,6 +13,7 @@
       --accent: #e8813a;
       --accent-text: #a85014; /* darkened for 4.5:1 contrast on light backgrounds */
       --red: #dc2626;
+      --warn-text: #92400e;
       --green: #059669;
       --bg: #f5f6f8;
       --card-bg: #ffffff;
@@ -134,11 +135,11 @@
     .nav-dropdown a {
       display: block; padding: 0.55rem 1.1rem;
       font-size: 0.875rem; font-weight: 500;
-      color: #1a2744; text-decoration: none;
+      color: var(--navy); text-decoration: none;
       transition: background 0.1s; white-space: nowrap;
     }
-    .nav-dropdown a:hover { background: #f5f6f8; }
-    .nav-dropdown a.active { color: #2d5fa8; background: #eef2fb; font-weight: 700; }
+    .nav-dropdown a:hover { background: var(--bg); }
+    .nav-dropdown a.active { color: var(--blue); background: var(--tag-bg); font-weight: 700; }
 
     .hero {
       background: var(--navy);
@@ -254,11 +255,11 @@
       background: var(--tag-bg);
       border-radius: 0 6px 6px 0;
       font-size: 0.875rem;
-      color: #1e3a6e;
+      color: var(--navy);
       font-style: italic;
       line-height: 1.55;
     }
-    blockquote.warn { border-left-color: var(--accent); background: var(--warn-bg); color: #92400e; }
+    blockquote.warn { border-left-color: var(--accent); background: var(--warn-bg); color: var(--warn-text); }
     blockquote cite {
       display: block;
       margin-top: 0.3rem;
