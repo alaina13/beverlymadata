@@ -111,10 +111,18 @@
       padding: 4px 0; cursor: pointer; white-space: nowrap;
       transition: color 0.15s, border-color 0.15s; font-family: inherit;
     }
-    .nav-group-btn i { font-size: 0.65rem; transition: transform 0.15s; }
+    .nav-group-btn::after {
+      content: ''; display: inline-block;
+      width: 5px; height: 5px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-2px);
+      transition: transform 0.15s;
+      margin-left: 1px;
+    }
     .nav-group-btn:hover, .nav-group-btn.active { color: white; border-bottom-color: var(--accent); }
     .nav-group.open .nav-group-btn { color: white; border-bottom-color: var(--accent); }
-    .nav-group.open .nav-group-btn i { transform: rotate(180deg); }
+    .nav-group.open .nav-group-btn::after { transform: rotate(-135deg) translateY(2px); }
 
     .nav-dropdown {
       display: none; position: absolute; top: calc(100% + 10px); left: 0;
@@ -400,7 +408,7 @@
   <nav>
     <div class="nav-group">
       <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">
-        Meetings <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        Meetings
       </button>
       <div class="nav-dropdown">
       <a href="/beverlymadata/meetings.html">Meetings</a>
@@ -410,7 +418,7 @@
     </div>
     <div class="nav-group">
       <button class="nav-group-btn active" aria-haspopup="true" aria-expanded="false">
-        Finance <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        Finance
       </button>
       <div class="nav-dropdown">
       <a href="/beverlymadata/data.html">City Data</a>
