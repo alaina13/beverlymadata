@@ -92,23 +92,48 @@
 
     .logo span { color: var(--accent); }
 
-    nav { display: flex; gap: 1.25rem; }
+    nav { display: flex; gap: 1rem; align-items: center; }
 
-    nav a {
+    nav > a {
       color: rgba(255,255,255,0.8);
       text-decoration: none;
       font-size: 0.875rem;
-      white-space: nowrap;
       font-weight: 500;
       padding: 4px 0;
       border-bottom: 2px solid transparent;
       transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
     }
+    nav > a:hover, nav > a.active { color: white; border-bottom-color: var(--accent); }
 
-    nav a:hover, nav a.active {
-      color: white;
-      border-bottom-color: var(--accent);
+    .nav-group { position: relative; }
+    .nav-group-btn {
+      display: flex; align-items: center; gap: 0.3rem;
+      background: none; border: none; border-bottom: 2px solid transparent;
+      color: rgba(255,255,255,0.8); font-size: 0.875rem; font-weight: 500;
+      padding: 4px 0; cursor: pointer; white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s; font-family: inherit;
     }
+    .nav-group-btn i { font-size: 0.65rem; transition: transform 0.15s; }
+    .nav-group-btn:hover, .nav-group-btn.active { color: white; border-bottom-color: var(--accent); }
+    .nav-group.open .nav-group-btn { color: white; border-bottom-color: var(--accent); }
+    .nav-group.open .nav-group-btn i { transform: rotate(180deg); }
+
+    .nav-dropdown {
+      display: none; position: absolute; top: calc(100% + 10px); left: 0;
+      background: white; border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+      min-width: 200px; z-index: 200; padding: 0.4rem 0;
+    }
+    .nav-group.open .nav-dropdown { display: block; }
+    .nav-dropdown a {
+      display: block; padding: 0.55rem 1.1rem;
+      font-size: 0.875rem; font-weight: 500;
+      color: #1a2744; text-decoration: none;
+      transition: background 0.1s; white-space: nowrap;
+    }
+    .nav-dropdown a:hover { background: #f5f6f8; }
+    .nav-dropdown a.active { color: #2d5fa8; background: #eef2fb; font-weight: 700; }
 
     .hero {
       background: var(--navy);
