@@ -1,5 +1,13 @@
 [
   {
+    "title": "Board of Trustees Beverly Public Library Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2762",
+    "pubDate": "2026-07-01T11:01:13-05:00",
+    "desc": "Board of Trustees Beverly Public Library Meeting Agenda Update: Minutes added or updated",
+    "board": "Library Board of Trustees",
+    "type": "minutes"
+  },
+  {
     "title": "Conservation Commission Meeting Agenda",
     "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2786",
     "pubDate": "2026-07-01T09:22:40-05:00",
@@ -181,22 +189,6 @@
     "pubDate": "2026-06-18T09:07:38-05:00",
     "desc": "",
     "board": "Zoning Board of Appeals",
-    "type": "agenda"
-  },
-  {
-    "title": "Council on Aging Awards Committee Meeting",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2810",
-    "pubDate": "2026-06-17T17:29:46-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda"
-  },
-  {
-    "title": "Council on Aging Board of Directors Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2809",
-    "pubDate": "2026-06-17T17:28:53-05:00",
-    "desc": "",
-    "board": "Other",
     "type": "agenda"
   }
 ]
