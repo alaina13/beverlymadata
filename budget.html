@@ -268,6 +268,9 @@
           <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All categories
         </button>
         <h2 id="donut-heading">Spending by Category</h2>
+        <p id="donut-hint" style="font-size:0.78rem;color:var(--muted);margin-bottom:0.75rem;">
+          <i class="fa-solid fa-hand-pointer" aria-hidden="true"></i> Click a slice or category to drill down
+        </p>
         <div class="donut-wrap">
           <canvas id="donutChart" role="img" aria-labelledby="donut-heading" aria-describedby="donut-data" height="320"></canvas>
           <div class="donut-center" id="donut-center">
@@ -706,6 +709,7 @@ function updateTrendHighlight() {
 function updateBackBtn() {
   const btn = document.getElementById('back-btn');
   btn.classList.toggle('visible', !!activeCatKey);
+  document.getElementById('donut-hint').style.display = activeCatKey ? 'none' : '';
 }
 
 // ── Render all ────────────────────────────────────────────────────────────────
