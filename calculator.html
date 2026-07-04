@@ -679,7 +679,7 @@
     const fy27AV     = TOTAL_AV * (1 + AV_GROWTH);
     const fy27ResAV  = RES_AV   * (1 + AV_GROWTH);
     const addedRate  = (overrideAmt / fy27ResAV) * 1000; // only on residential
-    const newRate    = RES_RATE_26 * (1 + REV_GROWTH) + addedRate;
+    const newRate    = RES_RATE_27 * (1 + REV_GROWTH) + addedRate;
     const rateChange = addedRate;
 
     // Tax bill impact
@@ -707,17 +707,17 @@
       gapCard.className = 'impact-card good';
       gapEl.className   = 'impact-num green';
       gapEl.textContent = '+' + fmt(Math.abs(gapAfter));
-      gapSub.textContent = 'Surplus in FY2027';
+      gapSub.textContent = 'Surplus in FY2028';
     } else if (Math.abs(gapAfter) < 500000) {
       gapCard.className = 'impact-card good';
       gapEl.className   = 'impact-num green';
       gapEl.textContent = fmt(gapAfter);
-      gapSub.textContent = 'Near-balanced in FY2027';
+      gapSub.textContent = 'Near-balanced in FY2028';
     } else {
       gapCard.className = 'impact-card bad';
       gapEl.className   = 'impact-num red';
       gapEl.textContent = fmt(gapAfter);
-      gapSub.textContent = 'Remaining gap in FY2027';
+      gapSub.textContent = 'Remaining gap in FY2028';
     }
 
     document.getElementById('years-out').textContent = overrideAmt === 0 ? 'Already here' : (yrs >= 20 ? '20+ yrs' : yrs + ' yrs');
