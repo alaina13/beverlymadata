@@ -6,135 +6,8 @@
   <script src="https://kit.fontawesome.com/56a48e0c30.js" crossorigin="anonymous"></script>
   <title>Beverly Data — Override Calculator</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="/beverlymadata/styles.css" />
   <style>
-    :root {
-      --navy: #1a2744;
-      --blue: #2d5fa8;
-      --accent: #e8813a;
-      --accent-text: #a85014; /* darkened for 4.5:1 contrast on light backgrounds */
-      --bg: #f5f6f8;
-      --card-bg: #ffffff;
-      --text: #1e1e1e;
-      --muted: #5d6472;
-      --border: #e2e5ea;
-      --green: #059669;
-      --red: #dc2626;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    .sr-only {
-      position: absolute;
-      width: 1px; height: 1px;
-      padding: 0; margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--navy);
-      color: white;
-      padding: 0.6rem 1.1rem;
-      z-index: 1000;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: 0 0 6px 0;
-      transition: top 0.15s;
-    }
-    .skip-link:focus { top: 0; }
-
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible,
-    select:focus-visible,
-    [tabindex]:focus-visible {
-      outline: 2px solid var(--blue);
-      outline-offset: 2px;
-    }
-    input[type=range]:focus-visible {
-      outline: 2px solid var(--blue);
-      outline-offset: 4px;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    header {
-      background: var(--navy);
-      color: white;
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; color: white; text-decoration: none; }
-    .logo span { color: var(--accent); }
-    nav { display: flex; gap: 1rem; align-items: center; }
-
-    nav > a {
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      padding: 4px 0;
-      border-bottom: 2px solid transparent;
-      transition: color 0.15s, border-color 0.15s;
-      white-space: nowrap;
-    }
-    nav > a:hover, nav > a.active { color: white; border-bottom-color: var(--accent); }
-
-    .nav-group { position: relative; }
-    .nav-group-btn {
-      display: flex; align-items: center; gap: 0.3rem;
-      background: none; border: none; border-bottom: 2px solid transparent;
-      color: rgba(255,255,255,0.8); font-size: 0.875rem; font-weight: 500;
-      padding: 4px 0; cursor: pointer; white-space: nowrap;
-      transition: color 0.15s, border-color 0.15s; font-family: inherit;
-    }
-    .nav-group-btn::after {
-      content: ''; display: inline-block;
-      width: 5px; height: 5px;
-      border-right: 1.5px solid currentColor;
-      border-bottom: 1.5px solid currentColor;
-      transform: rotate(45deg) translateY(-2px);
-      transition: transform 0.15s;
-      margin-left: 1px;
-    }
-    .nav-group-btn:hover, .nav-group-btn.active { color: white; border-bottom-color: var(--accent); }
-    .nav-group.open .nav-group-btn { color: white; border-bottom-color: var(--accent); }
-    .nav-group.open .nav-group-btn::after { transform: rotate(-135deg) translateY(2px); }
-
-    .nav-dropdown {
-      display: none; position: absolute; top: calc(100% + 10px); left: 0;
-      background: white; border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.18);
-      min-width: 200px; z-index: 200; padding: 0.4rem 0;
-    }
-    .nav-group.open .nav-dropdown { display: block; }
-    .nav-dropdown a {
-      display: block; padding: 0.55rem 1.1rem;
-      font-size: 0.875rem; font-weight: 500;
-      color: var(--navy); text-decoration: none;
-      transition: background 0.1s; white-space: nowrap;
-    }
-    .nav-dropdown a:hover { background: var(--bg); }
-    .nav-dropdown a.active { color: var(--blue); background: var(--tag-bg); font-weight: 700; }
-
     .hero {
       background: var(--navy);
       color: white;
@@ -362,37 +235,10 @@
     .assumptions li { margin-bottom: 0.2rem; }
 
     footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.78rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
       margin-top: 1rem;
     }
-    footer a { color: var(--blue); }
 
-
-    .menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.25rem;
-      cursor: pointer;
-      padding: 0.5rem;
-      line-height: 1;
-    }
     @media (max-width: 700px) {
-      header { padding: 0 1rem; }
-      .menu-btn { display: block; }
-      nav { display: none; position: absolute; top: 56px; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 0.75rem 1.5rem 1.25rem; gap: 0; border-top: 1px solid rgba(255,255,255,0.1); z-index: 99; }
-      nav.open { display: flex; }
-      .nav-group { position: static; }
-      .nav-group-btn { display: none; }
-      .nav-dropdown { display: block; position: static; background: none; box-shadow: none; padding: 0; border-radius: 0; min-width: 0; }
-      .nav-dropdown a, nav > a { display: block; padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.92rem; color: rgba(255,255,255,0.8); white-space: normal; }
-      .nav-dropdown a:hover, nav > a:hover { background: none; }
-      .nav-dropdown a.active, nav > a.active { color: white; background: none; }
       .container { padding: 1rem; }
       .impact-grid { grid-template-columns: 1fr 1fr; }
       .slider-row { flex-wrap: wrap; }
@@ -534,7 +380,7 @@
 <script>
   // ── Constants ──────────────────────────────────────────────────────────────
   const BASE_LEVY    = 139.634e6;  // FY2027 levy (FFC Financial Forecast FY2026–2030, Dec 2025)
-  const TOTAL_AV     = 12.1e9;     // FY2027 total assessed value (estimated; ~4% growth from FY2026)
+  const TOTAL_AV     = 12.1e9;     // FY2027 total assessed value (estimated based on FY2026 actuals)
   const RES_AV       = 10.25e9;    // FY2027 residential AV (estimated)
   const RES_RATE_27  = 10.97;      // $/1,000 AV FY2027 (estimated)
   const EXP_GROWTH   = 0.06;       // expenditure growth rate
@@ -858,30 +704,6 @@
     }
   });
 </script>
-<script>
-(function() {
-  document.querySelectorAll('.nav-group-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var group = btn.closest('.nav-group');
-      var isOpen = group.classList.contains('open');
-      document.querySelectorAll('.nav-group').forEach(function(g) {
-        g.classList.remove('open');
-        g.querySelector('.nav-group-btn').setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) {
-        group.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-  document.addEventListener('click', function() {
-    document.querySelectorAll('.nav-group').forEach(function(g) {
-      g.classList.remove('open');
-      g.querySelector('.nav-group-btn').setAttribute('aria-expanded', 'false');
-    });
-  });
-})();
-</script>
+<script src="/beverlymadata/nav.js"></script>
 </body>
 </html>
