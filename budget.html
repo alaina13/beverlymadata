@@ -182,7 +182,7 @@
 <main id="main">
 <div class="hero">
   <h1>Budget Explorer</h1>
-  <p>See where Beverly's money goes, by department, year, and category. Data from Beverly's published operating budgets (FY2021–FY2025).</p>
+  <p>See where Beverly's money goes, by department, year, and category. Data from Beverly's published operating budgets (FY2021–FY2027).</p>
 </div>
 
 <div class="container">
@@ -190,9 +190,11 @@
     <button class="year-tab" role="tab" data-year="FY2021" aria-selected="false">FY2021</button>
     <button class="year-tab" role="tab" data-year="FY2022" aria-selected="false">FY2022</button>
     <button class="year-tab" role="tab" data-year="FY2023" aria-selected="false">FY2023</button>
-    <button class="year-tab active" role="tab" data-year="FY2024" aria-selected="true">FY2024</button>
+    <button class="year-tab" role="tab" data-year="FY2024" aria-selected="false">FY2024</button>
     <button class="year-tab" role="tab" data-year="FY2025" aria-selected="false">FY2025</button>
-    <span class="year-tab-note">FY2021–2024 = Actual · FY2025 = Budgeted</span>
+    <button class="year-tab active" role="tab" data-year="FY2026" aria-selected="true">FY2026</button>
+    <button class="year-tab" role="tab" data-year="FY2027" aria-selected="false">FY2027</button>
+    <span class="year-tab-note">FY2021–2024 = Actual · FY2025–2026 = Adopted · FY2027 = Proposed</span>
   </div>
 
   <div class="total-callout">
@@ -236,7 +238,7 @@
           <thead><tr><th>Year</th><th>Amount</th></tr></thead>
           <tbody id="trend-table-body"></tbody>
         </table>
-        <p class="source-note">Source: City of Beverly FY2025 Proposed Operating Budget. FY2021–2023 reflect actuals; FY2024–2025 are budgeted figures.</p>
+        <p class="source-note">Sources: City of Beverly annual operating budgets. FY2021–2024 reflect actuals; FY2025–2026 are adopted budgets; FY2027 is the Mayor's proposed budget (submitted June 2026).</p>
       </div>
     </div>
 
@@ -256,25 +258,33 @@
 <script>
 // ── Data ─────────────────────────────────────────────────────────────────────
 
-const YEARS = ['FY2021','FY2022','FY2023','FY2024','FY2025'];
+const YEARS = ['FY2021','FY2022','FY2023','FY2024','FY2025','FY2026','FY2027'];
 
 // Top-level categories with multi-year totals
 const CATEGORIES = [
   {
     key: 'Public Schools',
     color: '#2d5fa8',
-    totals: { FY2021: 65275397, FY2022: 67274220, FY2023: 71623467, FY2024: 75546718, FY2025: 81848003 },
+    totals: { FY2021: 65275397, FY2022: 67274220, FY2023: 71623467, FY2024: 75546718, FY2025: 81848003, FY2026: 89339332, FY2027: 94532754 },
     items: {
       FY2025: [
         { name: 'Beverly Public Schools', value: 78267064 },
         { name: 'Essex North Shore Agri. & Tech.', value: 3580939 },
+      ],
+      FY2026: [
+        { name: 'Beverly Public Schools', value: 85372614 },
+        { name: 'Essex North Shore Agri. & Tech.', value: 3966718 },
+      ],
+      FY2027: [
+        { name: 'Beverly Public Schools', value: 89876235 },
+        { name: 'Essex North Shore Agri. & Tech.', value: 4656519 },
       ],
     },
   },
   {
     key: 'Employee Benefits',
     color: '#6b5fb7',
-    totals: { FY2021: 22885426, FY2022: 23494916, FY2023: 24454192, FY2024: 25656739, FY2025: 26399008 },
+    totals: { FY2021: 22885426, FY2022: 23494916, FY2023: 24454192, FY2024: 25656739, FY2025: 26399008, FY2026: 27545381, FY2027: 29311834 },
     items: {
       FY2025: [
         { name: 'Annuities & Pensions', value: 13851674 },
@@ -284,12 +294,28 @@ const CATEGORIES = [
         { name: 'Life Insurance', value: 70000 },
         { name: 'Unemployment', value: 18500 },
       ],
+      FY2026: [
+        { name: 'Annuities & Pensions', value: 14339582 },
+        { name: 'Health Insurance', value: 12137299 },
+        { name: 'Payroll Tax', value: 535000 },
+        { name: 'Workers\' Compensation', value: 445000 },
+        { name: 'Life Insurance', value: 70000 },
+        { name: 'Unemployment', value: 18500 },
+      ],
+      FY2027: [
+        { name: 'Annuities & Pensions', value: 15008236 },
+        { name: 'Health Insurance', value: 13224398 },
+        { name: 'Payroll Tax', value: 577200 },
+        { name: 'Workers\' Compensation', value: 365000 },
+        { name: 'Life Insurance', value: 70000 },
+        { name: 'Unemployment', value: 67000 },
+      ],
     },
   },
   {
     key: 'Public Safety',
     color: '#e8813a',
-    totals: { FY2021: 16957167, FY2022: 17619438, FY2023: 19613190, FY2024: 19931674, FY2025: 20542436 },
+    totals: { FY2021: 16957167, FY2022: 17619438, FY2023: 19613190, FY2024: 19931674, FY2025: 20542436, FY2026: 21578822, FY2027: 22494501 },
     items: {
       FY2025: [
         { name: 'Police Department', value: 10225848 },
@@ -302,12 +328,34 @@ const CATEGORIES = [
         { name: 'City Electrician', value: 80987 },
         { name: 'Sealer of Weights & Measures', value: 36717 },
       ],
+      FY2026: [
+        { name: 'Police Department', value: 10720097 },
+        { name: 'Fire Department', value: 8395132 },
+        { name: 'Public Safety Dispatch', value: 1079750 },
+        { name: 'Building Commissioner', value: 642305 },
+        { name: 'Harbormaster', value: 375500 },
+        { name: 'Animal Control', value: 172284 },
+        { name: 'City Electrician', value: 91760 },
+        { name: 'Emergency Management', value: 63350 },
+        { name: 'Sealer of Weights & Measures', value: 38644 },
+      ],
+      FY2027: [
+        { name: 'Police Department', value: 11106403 },
+        { name: 'Fire Department', value: 8824522 },
+        { name: 'Public Safety Dispatch', value: 1292017 },
+        { name: 'Building Commissioner', value: 568041 },
+        { name: 'Harbormaster', value: 383477 },
+        { name: 'City Electrician', value: 94800 },
+        { name: 'Animal Control', value: 121967 },
+        { name: 'Emergency Management', value: 63350 },
+        { name: 'Sealer of Weights & Measures', value: 39923 },
+      ],
     },
   },
   {
     key: 'Debt Service',
     color: '#dc2626',
-    totals: { FY2021: 9488906, FY2022: 10855709, FY2023: 8196761, FY2024: 9043724, FY2025: 9043723 },
+    totals: { FY2021: 9488906, FY2022: 10855709, FY2023: 8196761, FY2024: 9043724, FY2025: 9043723, FY2026: 8789183, FY2027: 8940461 },
     items: {
       FY2025: [
         { name: 'Long Term Principal', value: 4410000 },
@@ -315,12 +363,14 @@ const CATEGORIES = [
         { name: 'Short Term Principal', value: 1863012 },
         { name: 'Short Term Interest', value: 100000 },
       ],
+      FY2026: [{ name: 'Debt Service', value: 8789183 }],
+      FY2027: [{ name: 'Debt Service', value: 8940461 }],
     },
   },
   {
     key: 'Public Works',
     color: '#16a34a',
-    totals: { FY2021: 7561793, FY2022: 8263117, FY2023: 8561868, FY2024: 9343053, FY2025: 9762040 },
+    totals: { FY2021: 7561793, FY2022: 8263117, FY2023: 8561868, FY2024: 9343053, FY2025: 9762040, FY2026: 10250263, FY2027: 9721023 },
     items: {
       FY2025: [
         { name: 'Sanitation', value: 2310000 },
@@ -333,12 +383,36 @@ const CATEGORIES = [
         { name: 'Electric Division', value: 584911 },
         { name: 'Cemetery', value: 267720 },
       ],
+      FY2026: [
+        { name: 'Sanitation Transfer', value: 2520045 },
+        { name: 'Parks & Forestry', value: 1347744 },
+        { name: 'Highway', value: 1049991 },
+        { name: 'Maintenance Division', value: 1133710 },
+        { name: 'Municipal Garage', value: 832753 },
+        { name: 'Snow & Ice', value: 800000 },
+        { name: 'Public Works Admin', value: 868463 },
+        { name: 'Engineering', value: 899094 },
+        { name: 'Electric Division', value: 535743 },
+        { name: 'Cemetery', value: 262720 },
+      ],
+      FY2027: [
+        { name: 'Parks & Forestry', value: 1410728 },
+        { name: 'Electric Division', value: 1224202 },
+        { name: 'Sanitation Transfer', value: 1450000 },
+        { name: 'Maintenance Division', value: 1117076 },
+        { name: 'Municipal Garage', value: 887634 },
+        { name: 'Public Works Admin', value: 878667 },
+        { name: 'Engineering', value: 796342 },
+        { name: 'Snow & Ice', value: 800000 },
+        { name: 'Highway', value: 893654 },
+        { name: 'Cemetery', value: 262720 },
+      ],
     },
   },
   {
     key: 'General Government',
     color: '#0891b2',
-    totals: { FY2021: 6256051, FY2022: 6806802, FY2023: 7197777, FY2024: 8967689, FY2025: 9832242 },
+    totals: { FY2021: 6256051, FY2022: 6806802, FY2023: 7197777, FY2024: 8967689, FY2025: 9832242, FY2026: 8638597, FY2027: 8065950 },
     items: {
       FY2025: [
         { name: 'Reserve for Appropriation', value: 1725000 },
@@ -358,51 +432,99 @@ const CATEGORIES = [
         { name: 'Licensing Board', value: 5900 },
         { name: 'Conservation Commission', value: 3500 },
       ],
+      FY2026: [
+        { name: 'Reserve for Appropriation', value: 1101260 },
+        { name: 'Accountant / Finance', value: 1832120 },
+        { name: 'Information Technology', value: 1093348 },
+        { name: 'Executive Office', value: 964451 },
+        { name: 'Planning Department', value: 784544 },
+        { name: 'Solicitor\'s Office', value: 557185 },
+        { name: 'Treasurer-Collector', value: 425060 },
+        { name: 'Procurement', value: 394685 },
+        { name: 'Assessors', value: 416165 },
+        { name: 'Human Resources', value: 272600 },
+        { name: 'City Council & Clerk', value: 797179 },
+      ],
+      FY2027: [
+        { name: 'Reserve for Appropriation', value: 915000 },
+        { name: 'Accountant / Finance', value: 1817284 },
+        { name: 'Information Technology', value: 1131485 },
+        { name: 'Planning Department', value: 577221 },
+        { name: 'Executive Office', value: 809138 },
+        { name: 'Solicitor\'s Office', value: 540774 },
+        { name: 'Treasurer-Collector', value: 452386 },
+        { name: 'Procurement', value: 368271 },
+        { name: 'Assessors', value: 451036 },
+        { name: 'Human Resources', value: 237395 },
+        { name: 'City Council & Clerk', value: 765960 },
+      ],
     },
   },
   {
     key: 'Other Transfers',
     color: '#94a3b8',
-    totals: { FY2021: 7232102, FY2022: 9355266, FY2023: 8765041, FY2024: 2145000, FY2025: 1295000 },
+    totals: { FY2021: 7232102, FY2022: 9355266, FY2023: 8765041, FY2024: 2145000, FY2025: 1295000, FY2026: 87500, FY2027: 90781 },
     items: {
       FY2025: [{ name: 'Non-Departmental Transfers', value: 1295000 }],
+      FY2026: [{ name: 'Transfer to OPEB Trust', value: 87500 }],
+      FY2027: [{ name: 'Transfer to OPEB Trust', value: 90781 }],
     },
   },
   {
     key: 'Culture & Recreation',
     color: '#d97706',
-    totals: { FY2021: 2228236, FY2022: 2430237, FY2023: 2605902, FY2024: 2685774, FY2025: 2775168 },
+    totals: { FY2021: 2228236, FY2022: 2430237, FY2023: 2605902, FY2024: 2685774, FY2025: 2775168, FY2026: 2788591, FY2027: 2770770 },
     items: {
       FY2025: [
         { name: 'Beverly Public Library', value: 2275952 },
         { name: 'Recreation', value: 499216 },
+      ],
+      FY2026: [
+        { name: 'Beverly Public Library', value: 2366767 },
+        { name: 'Recreation', value: 421824 },
+      ],
+      FY2027: [
+        { name: 'Beverly Public Library', value: 2325891 },
+        { name: 'Recreation', value: 444879 },
       ],
     },
   },
   {
     key: 'State & County Assessments',
     color: '#9ca3af',
-    totals: { FY2021: 1732243, FY2022: 1976004, FY2023: 2095100, FY2024: 2181460, FY2025: 2252589 },
+    totals: { FY2021: 1732243, FY2022: 1976004, FY2023: 2095100, FY2024: 2181460, FY2025: 2252589, FY2026: 2390731, FY2027: 2850733 },
     items: {
       FY2025: [{ name: 'Cherry Sheet Assessments', value: 2252589 }],
+      FY2026: [{ name: 'Cherry Sheet Assessments', value: 2390731 }],
+      FY2027: [{ name: 'Cherry Sheet Assessments', value: 2850733 }],
     },
   },
   {
     key: 'Health & Human Services',
     color: '#ec4899',
-    totals: { FY2021: 1579301, FY2022: 1503056, FY2023: 1750527, FY2024: 2024669, FY2025: 2254701 },
+    totals: { FY2021: 1579301, FY2022: 1503056, FY2023: 1750527, FY2024: 2024669, FY2025: 2254701, FY2026: 2308066, FY2027: 2105608 },
     items: {
       FY2025: [
         { name: 'Council on Aging', value: 855823 },
         { name: 'Health Department', value: 785381 },
         { name: 'Veterans Services', value: 613497 },
       ],
+      FY2026: [
+        { name: 'Council on Aging', value: 866858 },
+        { name: 'Health Department', value: 825238 },
+        { name: 'Veterans Services', value: 615970 },
+      ],
+      FY2027: [
+        { name: 'Council on Aging', value: 793438 },
+        { name: 'Health Department', value: 736351 },
+        { name: 'Veterans Services', value: 575819 },
+      ],
     },
   },
 ];
 
 // ── State ─────────────────────────────────────────────────────────────────────
-let activeYear = 'FY2025';
+let activeYear = 'FY2026';
 let activeCatKey = null; // null = show all categories
 
 // ── Chart instances ───────────────────────────────────────────────────────────
@@ -433,8 +555,7 @@ function renderDonut() {
   let labels, data, colors;
 
   if (cat) {
-    // Use FY2025 items for drill-down (best detail); for other years show single bar
-    const items = cat.items.FY2025 || [];
+    const items = cat.items[activeYear] || cat.items.FY2025 || [];
     labels = items.map(i => i.name);
     data = items.map(i => i.value);
     // Generate shades of the category color
@@ -510,7 +631,7 @@ function renderList() {
 
   let items;
   if (cat) {
-    const subItems = cat.items.FY2025 || [];
+    const subItems = cat.items[activeYear] || cat.items.FY2025 || [];
     items = subItems.map(i => ({
       name: i.name, value: i.value,
       color: hexWithAlpha(cat.color, 1),
