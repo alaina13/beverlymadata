@@ -228,9 +228,6 @@
           Underperforming parcels
         </label>
         <p style="font-size:0.7rem;color:var(--muted);margin-top:4px;line-height:1.4;">Value/acre below city median. Shown in <strong style="color:#ef4444">red</strong>.</p>
-        <div style="margin-top:0.5rem;">
-          <button class="color-btn" id="net-neg-btn" onclick="toggleNetNeg()">Net negative only</button>
-        </div>
       </div>
       <div class="panel-section">
         <button class="section-toggle" aria-expanded="false" onclick="toggleSection(this)">
@@ -322,12 +319,6 @@
     return '$' + Math.round(v);
   }
 
-  function toggleNetNeg() {
-    netNegOnly = !netNegOnly;
-    document.getElementById('net-neg-btn').classList.toggle('active', netNegOnly);
-    applyFilter();
-  }
-
   function toggleSection(btn) {
     const expanded = btn.getAttribute('aria-expanded') === 'true';
     btn.setAttribute('aria-expanded', String(!expanded));
@@ -350,19 +341,12 @@
 
   function parcelGroup(cat) { return CAT_GROUPS[cat] || 'Other / Vacant'; }
 
-  let netNegOnly = false;
-
   function filterExpr() {
-    const parts = [];
-    if (activeGroups.size < GROUP_ORDER.length) {
-      const cats = Object.entries(CAT_GROUPS)
-        .filter(([, g]) => activeGroups.has(g))
-        .map(([c]) => c);
-      parts.push(['in', ['get', 'cat'], ['literal', cats]]);
-    }
-    if (netNegOnly) parts.push(['<', ['coalesce', ['get', 'net'], 0], 0]);
-    if (parts.length === 0) return null;
-    return parts.length === 1 ? parts[0] : ['all', ...parts];
+    if (activeGroups.size === GROUP_ORDER.length) return null;
+    const cats = Object.entries(CAT_GROUPS)
+      .filter(([, g]) => activeGroups.has(g))
+      .map(([c]) => c);
+    return ['in', ['get', 'cat'], ['literal', cats]];
   }
 
   function applyFilter() {
@@ -379,8 +363,7 @@
     const visible = expr
       ? allFeatures.filter(f => {
           const g = parcelGroup(f.properties.cat);
-          const netOk = !netNegOnly || (f.properties.net != null && f.properties.net < 0);
-          return activeGroups.has(g) && netOk;
+          return activeGroups.has(g);
         })
       : allFeatures;
 
