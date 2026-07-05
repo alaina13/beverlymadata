@@ -1770,13 +1770,13 @@ blockquote cite {
 /* --- property.html --- */
 
 /* Address search */
-.search-box {
+.map-search-box {
   position: relative;
   padding: 0.75rem 0.75rem 0;
   flex-shrink: 0;
 }
 
-.search-box .search-icon {
+.map-search-box .search-icon {
   position: absolute;
   left: 1.25rem;
   top: 50%;
