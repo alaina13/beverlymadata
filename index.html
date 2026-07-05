@@ -59,10 +59,19 @@
       letter-spacing: 0.06em;
     }
 
+    .hero-stat-connector {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.38);
+      margin-top: 2rem;
+      margin-bottom: -0.75rem;
+    }
+
     /* Featured cards */
     .featured-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
       margin-bottom: 2.5rem;
     }
@@ -190,6 +199,10 @@
       color: var(--blue);
     }
 
+    @media (max-width: 900px) {
+      .featured-grid { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 700px) {
       .hero { padding: 2.5rem 1rem 2rem; }
       .hero h1 { font-size: 1.8rem; }
@@ -237,7 +250,8 @@
 <main id="main">
 <div class="hero">
   <h1><span>Beverly</span> Data</h1>
-  <p>An independent civic transparency project for Beverly, MA. Public meetings, financial data, and more, all in one place.</p>
+  <p>Beverly's budget gap isn't a spending problem. It's a math problem: costs grow at 6% a year, but property tax revenue is capped at 2.5%. That gap compounds every year.</p>
+  <div class="hero-stat-connector">What the numbers show</div>
   <div class="hero-stat-row">
     <div class="hero-stat">
       <div class="hero-stat-num">$7.1M</div>
@@ -272,6 +286,12 @@
       <h2>How We Got Here</h2>
       <p>Nine years of Financial Forecasting Committee warnings: how Beverly went from a structurally balanced budget to a growing gap that reserves can no longer cover.</p>
       <div class="fc-arrow">Read the story →</div>
+    </a>
+    <a class="featured-card" href="/beverlymadata/whats-next.html">
+      <div class="fc-eyebrow">Options &amp; Context</div>
+      <h2>What Comes Next</h2>
+      <p>The override is one lever. But the math doesn't reset after a vote. Explore what a tax override does, what it can't fix, and how the pattern of growth shapes Beverly's long-term fiscal health.</p>
+      <div class="fc-arrow">Explore the options →</div>
     </a>
   </div>
 
@@ -319,6 +339,7 @@
 <footer>
   Beverly Data is an independent civic project and is not affiliated with the City of Beverly. Created with the assistance of AI.
   Data sourced from <a href="https://www.beverlyma.gov/AgendaCenter" target="_blank">beverlyma.gov</a> and public records.
+  <span style="display:block;margin-top:0.4rem;opacity:0.55;font-size:0.8em;">Financial data last updated July 2026 (FY2027 FFC Report, December 2025).</span>
 </footer>
 
 <script src="/beverlymadata/nav.js"></script>
