@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/56a48e0c30.js" crossorigin="anonymous"></script>
+  <title>Beverly Data — Revenue per Acre (3D)</title>
+  <link rel="stylesheet" href="/beverlymadata/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3/dist/maplibre-gl.css" />
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+
+    header { position: relative; z-index: 10; flex-shrink: 0; }
+
+    #map-container {
+      position: absolute;
+      top: 56px; /* header height */
+      left: 0; right: 0; bottom: 0;
+    }
+
+    #map { width: 100%; height: 100%; }
+
+    .map-overlay {
+      position: absolute;
+      z-index: 5;
+      background: rgba(26, 39, 68, 0.92);
+      color: white;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .map-header {
+      top: 1rem; left: 1rem;
+      max-width: 340px;
+    }
+
+    .map-header h1 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin: 0 0 0.3rem;
+      letter-spacing: -0.02em;
+    }
+
+    .map-header p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+      margin: 0 0 0.75rem;
+    }
+
+    .map-header a {
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .map-header a:hover { text-decoration: underline; }
+
+    .legend {
+      bottom: 2rem; left: 1rem;
+      min-width: 180px;
+    }
+
+    .legend-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 0.6rem;
+    }
+
+    .legend-bar {
+      height: 10px;
+      border-radius: 5px;
+      background: linear-gradient(to right, #4a6fa5, #1a2744, #e8813a);
+      margin-bottom: 0.4rem;
+    }
+
+    .legend-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .tooltip {
+      position: absolute;
+      z-index: 20;
+      background: rgba(26, 39, 68, 0.95);
+      color: white;
+      border-radius: 8px;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.8rem;
+      pointer-events: none;
+      max-width: 220px;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: none;
+    }
+
+    .tooltip-addr {
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      font-size: 0.82rem;
+      line-height: 1.3;
+    }
+
+    .tooltip-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.2rem;
+    }
+
+    .tooltip-row span:last-child {
+      color: white;
+      font-weight: 600;
+    }
+
+    .tooltip-cat {
+      font-size: 0.7rem;
+      color: var(--accent);
+      margin-top: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .controls {
+      top: 1rem; right: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0.75rem;
+    }
+
+    .control-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 0.25rem;
+    }
+
+    .control-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      border-radius: 6px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.12s;
+    }
+
+    .control-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .control-btn:hover:not(.active) { background: rgba(255,255,255,0.18); }
+
+    @media (max-width: 600px) {
+      .map-header { max-width: calc(100vw - 2rem); }
+      .controls { display: none; }
+    }
+  </style>
+</head>
+<body>
+<a href="#map" class="skip-link">Skip to map</a>
+
+<header>
+  <a class="logo" href="/beverlymadata/"><span>Beverly</span> Data</a>
+  <nav>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">Meetings</button>
+      <div class="nav-dropdown">
+        <a href="/beverlymadata/meetings.html">Meetings</a>
+        <a href="/beverlymadata/agendas.html">Agendas</a>
+        <a href="/beverlymadata/summaries.html">Summaries</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn active" aria-haspopup="true" aria-expanded="false">Finance</button>
+      <div class="nav-dropdown">
+        <a href="/beverlymadata/data.html">City Data</a>
+        <a href="/beverlymadata/budget.html">Budget Explorer</a>
+        <a href="/beverlymadata/history.html">How We Got Here</a>
+        <a href="/beverlymadata/whats-next.html">What's Next</a>
+        <a href="/beverlymadata/calculator.html">Override Calculator</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">Maps</button>
+      <div class="nav-dropdown">
+      <a href="/beverlymadata/property.html">Property Map</a>
+      <a href="/beverlymadata/extrusion.html">Revenue per Acre 3D</a>
+      </div>
+    </div>
+    <a href="/beverlymadata/sources.html">Sources</a>
+    <a href="/beverlymadata/about.html">About</a>
+  </nav>
+  <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="var n=this.closest('header').querySelector('nav');var open=n.classList.toggle('open');this.setAttribute('aria-expanded',open);this.querySelector('i').className='fa-solid '+(open?'fa-xmark':'fa-bars')">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+  </button>
+</header>
+
+<div id="map-container">
+  <div id="map" role="img" aria-label="3D extrusion map of Beverly MA parcels colored and extruded by tax revenue per acre"></div>
+
+  <div class="map-overlay map-header">
+    <h1>Revenue per Acre &mdash; 3D View</h1>
+    <p>Each column represents one parcel. Height and color show annual tax revenue per acre. Taller and warmer means more fiscal productivity.</p>
+    <a href="/beverlymadata/property.html">View 2D map instead &rarr;</a>
+  </div>
+
+  <div class="map-overlay controls">
+    <div class="control-label">Color by</div>
+    <button class="control-btn active" id="btn-taxpa" onclick="setMode('taxpa')">Tax / acre</button>
+    <button class="control-btn" id="btn-vpa" onclick="setMode('vpa')">Value / acre</button>
+  </div>
+
+  <div class="map-overlay legend" id="legend">
+    <div class="legend-title" id="legend-title">Annual tax per acre</div>
+    <div class="legend-bar"></div>
+    <div class="legend-labels">
+      <span>Low</span>
+      <span id="legend-mid"></span>
+      <span>High</span>
+    </div>
+  </div>
+
+  <div class="tooltip" id="tooltip"></div>
+</div>
+
+<script src="https://unpkg.com/maplibre-gl@3/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/deck.gl@9.0.14/dist.min.js"></script>
+<script>
+  const CAP_TAXPA = 102409;
+  const CAP_VPA   = 3000000;
+
+  let parcels = [];
+  let mode = 'taxpa';
+  let deckOverlay = null;
+
+  function fmt$(v) {
+    if (v >= 1e6) return '$' + (v/1e6).toFixed(1) + 'M';
+    if (v >= 1e3) return '$' + Math.round(v/1e3) + 'K';
+    return '$' + Math.round(v);
+  }
+
+  // Color: low=#4a6fa5 (blue-gray), mid=#1a2744 (navy), high=#e8813a (accent)
+  function getColor(value, cap) {
+    const t = Math.min(value, cap) / cap;
+    // two-segment interpolation
+    if (t < 0.5) {
+      const s = t / 0.5;
+      return [
+        Math.round(74  + (26  - 74)  * s),
+        Math.round(111 + (39  - 111) * s),
+        Math.round(165 + (68  - 165) * s),
+        220
+      ];
+    } else {
+      const s = (t - 0.5) / 0.5;
+      return [
+        Math.round(26  + (232 - 26)  * s),
+        Math.round(39  + (129 - 39)  * s),
+        Math.round(68  + (58  - 68)  * s),
+        220
+      ];
+    }
+  }
+
+  function getElevation(p) {
+    const val = mode === 'taxpa' ? (p.taxpa || 0) : (p.vpa || 0);
+    const cap = mode === 'taxpa' ? CAP_TAXPA : CAP_VPA;
+    return (Math.min(val, cap) / cap) * 350;
+  }
+
+  function buildLayer() {
+    const cap = mode === 'taxpa' ? CAP_TAXPA : CAP_VPA;
+    return new deck.ColumnLayer({
+      id: 'parcels',
+      data: parcels,
+      diskResolution: 6,
+      radius: 16,
+      extruded: true,
+      pickable: true,
+      getPosition: d => [d.lng, d.lat],
+      getElevation: d => getElevation(d),
+      getFillColor: d => {
+        const val = mode === 'taxpa' ? (d.taxpa || 0) : (d.vpa || 0);
+        return getColor(val, cap);
+      },
+      updateTriggers: { getElevation: mode, getFillColor: mode },
+      onHover: ({ object, x, y }) => showTooltip(object, x, y),
+    });
+  }
+
+  function showTooltip(p, x, y) {
+    const el = document.getElementById('tooltip');
+    if (!p) { el.style.display = 'none'; return; }
+    el.style.display = 'block';
+    el.style.left = (x + 14) + 'px';
+    el.style.top  = (y - 10) + 'px';
+    el.innerHTML = `
+      <div class="tooltip-addr">${p.addr || 'Unknown address'}</div>
+      <div class="tooltip-row"><span>Tax / acre</span><span>${fmt$(p.taxpa || 0)}</span></div>
+      <div class="tooltip-row"><span>Value / acre</span><span>${fmt$(p.vpa || 0)}</span></div>
+      <div class="tooltip-row"><span>Total value</span><span>${fmt$(p.v || 0)}</span></div>
+      <div class="tooltip-cat">${p.cat || ''}</div>
+    `;
+  }
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('btn-taxpa').classList.toggle('active', m === 'taxpa');
+    document.getElementById('btn-vpa').classList.toggle('active', m === 'vpa');
+    document.getElementById('legend-title').textContent =
+      m === 'taxpa' ? 'Annual tax per acre' : 'Assessed value per acre';
+    document.getElementById('legend-mid').textContent =
+      m === 'taxpa' ? fmt$(CAP_TAXPA / 2) : fmt$(CAP_VPA / 2);
+    if (deckOverlay) deckOverlay.setProps({ layers: [buildLayer()] });
+  }
+
+  const map = new maplibregl.Map({
+    container: 'map',
+    style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+    center: [-70.88, 42.558],
+    zoom: 13,
+    pitch: 55,
+    bearing: -15,
+    antialias: true,
+  });
+
+  map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+  document.getElementById('legend-mid').textContent = fmt$(CAP_TAXPA / 2);
+
+  fetch('/beverlymadata/parcels.json')
+    .then(r => r.json())
+    .then(data => {
+      parcels = data.filter(p => p.lat && p.lng && p.taxpa > 0);
+
+      deckOverlay = new deck.MapboxOverlay({ layers: [buildLayer()] });
+      map.addControl(deckOverlay);
+    });
+</script>
+<script src="/beverlymadata/nav.js"></script>
+</body>
+</html>
