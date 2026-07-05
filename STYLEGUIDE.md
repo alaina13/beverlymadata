@@ -91,6 +91,42 @@ Used in hero sections for key numbers. Value in accent orange, label in muted wh
 - Nav includes: Meetings dropdown, Finance dropdown, Property Map, Sources, About.
 - All pages link to Sources and About in the nav.
 
+### Charts and Graphs
+
+**Library:** Chart.js 4.4 (`chart.umd.min.js` via jsDelivr CDN).
+
+**General principles:**
+- Charts support the data; they do not replace it. Every chart should have a title, a subtitle explaining the unit and scope, and a data table fallback for screen readers.
+- Use the site color palette. Do not introduce new colors for charts without adding them to the palette.
+- All charts must be `responsive: true` and `maintainAspectRatio: false` with a defined container height.
+- Gridlines: horizontal only on line and bar charts, color `#e2e5ea`. No vertical gridlines.
+- Tick labels: `font-size: 11px`, color `var(--muted)`.
+- Tooltips: format values consistently with axis labels (same units, same precision).
+- Legends: only shown when a chart has more than one dataset. `boxWidth: 12`, `font-size: 11`.
+
+**Line charts:**
+- Used for trends over time (tax rates, levy growth, deficit trajectory).
+- Beverly Data navy (`#1a2744`) for the primary series. Accent orange (`#e8813a`) for a secondary or projected series.
+- No fill under the line unless the fill meaningfully adds information.
+- Points shown; no point labels on the chart itself (use tooltips).
+
+**Bar charts:**
+- Used for comparisons across categories or years.
+- `borderRadius: 4` on bars. Never use 3D or shadow effects.
+- Single-series bars: use navy or blue. Multi-series: navy + accent, or navy + muted.
+- Horizontal bar charts for category comparisons where labels are long (e.g., peer city comparisons).
+- Beverly highlighted in accent orange when shown alongside peer cities.
+
+**Donut charts:**
+- Used for part-to-whole relationships (e.g., budget breakdown by department).
+- Maximum 6 segments. Combine smaller categories into "Other" if needed.
+- No labels directly on the chart; use a legend or data table below.
+- Center text optional for a key total figure.
+
+**Accessibility:**
+- Every `<canvas>` has `role="img"`, `aria-labelledby` pointing to the chart title, and `aria-describedby` pointing to a visually hidden data table.
+- Data tables are generated programmatically alongside every chart (`addChartDataTable`).
+
 ### Icons
 Font Awesome 6 (kit `56a48e0c30`). Use semantic icons that match the content. Prefer `fa-circle-info` for neutral informational callouts. Never use checkmarks to imply correctness or approval.
 
