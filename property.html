@@ -217,6 +217,10 @@
         <h3>Color scale</h3>
         <div class="legend-bar" id="legend-bar"></div>
         <div class="legend-labels" id="legend-labels"><span>Low</span><span>High</span></div>
+        <div style="display:flex;align-items:center;gap:0.4rem;margin-top:0.6rem;">
+          <div style="width:14px;height:14px;border-radius:3px;background:#94a3b8;flex-shrink:0;"></div>
+          <span style="font-size:0.65rem;color:var(--muted);">Tax exempt</span>
+        </div>
       </div>
     </div>
   </div>
@@ -261,11 +265,13 @@
     default: 'linear-gradient(to right, #4caf50, #cddc39, #ffc107, #f44336, #9c27b0)',
   };
 
+  const TAX_EXEMPT_COLOR = '#94a3b8'; // slate gray
+
   function colorExpr(mode) {
     const stops = COLOR_STOPS[mode];
-    const expr = ['interpolate', ['linear'], ['coalesce', ['get', mode], 0]];
-    stops.forEach(([v, c]) => { expr.push(v, c); });
-    return expr;
+    const interp = ['interpolate', ['linear'], ['coalesce', ['get', mode], 0]];
+    stops.forEach(([v, c]) => { interp.push(v, c); });
+    return ['case', ['==', ['get', 'cat'], 'Tax Exempt'], TAX_EXEMPT_COLOR, interp];
   }
 
   function fmt(v) {
