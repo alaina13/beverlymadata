@@ -241,7 +241,7 @@
 <script src="https://unpkg.com/deck.gl@9.0.14/dist.min.js"></script>
 <script>
   const CAP_TAXPA = 102409;
-  const CAP_VPA   = 3000000;
+  const CAP_VPA   = 9400000;
 
   let parcels = [];
   let mode = 'taxpa';
@@ -279,7 +279,7 @@
   function getElevation(p) {
     const val = mode === 'taxpa' ? (p.taxpa || 0) : (p.vpa || 0);
     const cap = mode === 'taxpa' ? CAP_TAXPA : CAP_VPA;
-    return (Math.min(val, cap) / cap) * 350;
+    return Math.sqrt(Math.min(val, cap) / cap) * 350;
   }
 
   function buildLayer() {
@@ -325,6 +325,7 @@
       m === 'taxpa' ? 'Annual tax per acre' : 'Assessed value per acre';
     document.getElementById('legend-mid').textContent =
       m === 'taxpa' ? fmt$(CAP_TAXPA / 2) : fmt$(CAP_VPA / 2);
+
     if (deckOverlay) deckOverlay.setProps({ layers: [buildLayer()] });
   }
 
