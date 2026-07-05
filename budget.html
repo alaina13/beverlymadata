@@ -7,138 +7,6 @@
   <title>Open Beverly — Budget Explorer</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" href="/styles.css" />
-  <style>
-    .hero {
-      background: var(--navy); color: white;
-      padding: 2.5rem 2rem 2rem;
-      border-bottom: 3px solid var(--accent);
-    }
-    .hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .hero p { color: rgba(255,255,255,0.72); font-size: 0.95rem; max-width: 580px; }
-
-    .container { max-width: 1060px; margin: 0 auto; padding: 2rem 1.5rem; }
-
-    /* Year tabs */
-    .year-tabs {
-      display: flex; gap: 0.4rem; margin-bottom: 1.5rem; flex-wrap: wrap;
-      align-items: center;
-    }
-    .year-tab {
-      padding: 0.4rem 1rem; border-radius: 6px;
-      border: 1px solid var(--border); background: white;
-      font-size: 0.85rem; font-weight: 600; color: var(--muted);
-      cursor: pointer; transition: all 0.12s;
-    }
-    .year-tab:hover { border-color: var(--blue); color: var(--blue); }
-    .year-tab.active { background: var(--navy); border-color: var(--navy); color: white; }
-    .year-tab-note { font-size: 0.78rem; color: var(--muted); margin-left: 0.5rem; font-style: italic; }
-
-    /* Total callout */
-    .total-callout {
-      font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem;
-    }
-    .total-callout strong { font-size: 1.4rem; color: var(--navy); font-weight: 800; }
-
-    /* Main grid */
-    .explorer-grid {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    .chart-card {
-      background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.5rem;
-    }
-
-    .chart-card h2 {
-      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.06em; color: var(--muted); margin-bottom: 1rem;
-    }
-
-    .donut-wrap {
-      position: relative; max-width: 320px; margin: 0 auto;
-    }
-
-    .donut-center {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center; pointer-events: none;
-    }
-    .donut-center-label { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-    .donut-center-value { font-size: 1.5rem; font-weight: 800; color: var(--navy); line-height: 1.15; }
-    .donut-center-pct { font-size: 0.85rem; color: var(--accent-text); font-weight: 700; }
-
-    .back-btn {
-      display: none; align-items: center; gap: 0.4rem;
-      background: none; border: none; color: var(--blue);
-      font-size: 0.85rem; font-weight: 600; cursor: pointer;
-      margin-bottom: 0.75rem; padding: 0;
-    }
-    .back-btn.visible { display: flex; }
-
-    /* Category list */
-    .cat-list { display: flex; flex-direction: column; gap: 0; }
-
-    .cat-item {
-      display: flex; align-items: center; gap: 0.75rem;
-      padding: 0.7rem 0.85rem; border-radius: 8px;
-      cursor: pointer; transition: background 0.1s;
-      border: 1px solid transparent;
-    }
-    .cat-item:hover { background: var(--bg); }
-    .cat-item.active { background: var(--tag-bg); border-color: var(--blue); }
-
-    .cat-swatch {
-      width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0;
-    }
-
-    .cat-info { flex: 1; min-width: 0; }
-    .cat-name { font-size: 0.875rem; font-weight: 600; color: var(--text); }
-    .cat-sub { font-size: 0.75rem; color: var(--muted); }
-
-    .cat-right { text-align: right; flex-shrink: 0; }
-    .cat-amount { font-size: 0.875rem; font-weight: 700; color: var(--navy); }
-    .cat-pct { font-size: 0.72rem; color: var(--muted); }
-
-    .cat-arrow { color: var(--muted); font-size: 0.75rem; flex-shrink: 0; }
-    .cat-arrow.hidden { visibility: hidden; }
-
-    /* Trend chart */
-    .trend-card {
-      background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem;
-    }
-    .trend-header {
-      display: flex; align-items: baseline; gap: 0.75rem;
-      margin-bottom: 1rem; flex-wrap: wrap;
-    }
-    .trend-title {
-      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.06em; color: var(--muted);
-    }
-    .trend-subject {
-      font-size: 1rem; font-weight: 700; color: var(--navy);
-    }
-
-    .source-note {
-      font-size: 0.75rem; color: var(--muted); font-style: italic;
-      margin-top: 1rem;
-    }
-
-    footer { margin-top: 2rem; }
-
-    @media (max-width: 820px) {
-      .explorer-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 700px) {
-      .hero { padding: 1.5rem 1rem 1.25rem; }
-      .hero h1 { font-size: 1.35rem; }
-      .container { padding: 1rem; }
-    }
-  </style>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -180,12 +48,12 @@
 </header>
 
 <main id="main">
-<div class="hero">
+<div class="budget-hero">
   <h1>Budget Explorer</h1>
   <p>See where Beverly's money goes, by department, year, and category. Data from Beverly's published operating budgets (FY2021–FY2027).</p>
 </div>
 
-<div class="container">
+<div class="budget-container">
   <div class="year-tabs" role="tablist" aria-label="Fiscal year">
     <button class="year-tab" role="tab" data-year="FY2021" aria-selected="false">FY2021</button>
     <button class="year-tab" role="tab" data-year="FY2022" aria-selected="false">FY2022</button>

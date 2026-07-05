@@ -7,194 +7,6 @@
   <title>Open Beverly — Capital Plan</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" href="/styles.css" />
-  <style>
-    body { line-height: 1.6; }
-
-    .hero {
-      background: var(--navy);
-      color: white;
-      padding: 3rem 2rem 2.5rem;
-      border-bottom: 3px solid var(--accent);
-    }
-    .hero-inner { max-width: 820px; margin: 0 auto; }
-    .hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-    .hero p { color: rgba(255,255,255,0.72); font-size: 1rem; max-width: 660px; margin: 0; }
-
-    .container {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--navy);
-      letter-spacing: -0.02em;
-      margin: 2.5rem 0 0.75rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border);
-    }
-
-    .section-title:first-of-type { margin-top: 0; }
-
-    .body-text {
-      font-size: 0.95rem;
-      color: var(--text);
-      line-height: 1.75;
-      margin-bottom: 1rem;
-    }
-
-    .structural-box {
-      background: #f0f4fb;
-      border-left: 4px solid var(--blue);
-      border-radius: 0 8px 8px 0;
-      padding: 1.1rem 1.4rem;
-      margin: 1.5rem 0;
-    }
-    .structural-box p {
-      font-size: 0.9rem;
-      color: var(--text);
-      line-height: 1.7;
-      margin: 0 0 0.6rem;
-    }
-    .structural-box p:last-child { margin-bottom: 0; }
-
-    /* Project tables */
-    .fund-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin: 2rem 0 0.5rem;
-    }
-
-    .project-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.875rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .project-table th {
-      text-align: left;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--muted);
-      padding: 0.5rem 0.75rem;
-      border-bottom: 2px solid var(--border);
-    }
-
-    .project-table td {
-      padding: 0.65rem 0.75rem;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-      color: var(--text);
-    }
-
-    .project-table tr:last-child td { border-bottom: none; }
-
-    .project-table .cost {
-      font-weight: 700;
-      color: var(--navy);
-      white-space: nowrap;
-    }
-
-    .project-table .note {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .tbd { color: var(--muted); font-style: italic; font-weight: 400; }
-
-    /* Debt chart */
-    .chart-wrap {
-      position: relative;
-      height: 280px;
-      margin: 1.5rem 0 0.5rem;
-    }
-
-    .chart-note {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 0.5rem;
-      line-height: 1.5;
-    }
-
-    /* Pressure callout */
-    .pressure-box {
-      background: var(--warn-bg);
-      border-left: 4px solid var(--accent);
-      border-radius: 0 8px 8px 0;
-      padding: 1.1rem 1.4rem;
-      margin: 1.5rem 0;
-    }
-    .pressure-box p {
-      font-size: 0.9rem;
-      color: #6b4c1e;
-      line-height: 1.7;
-      margin: 0 0 0.6rem;
-    }
-    .pressure-box p:last-child { margin-bottom: 0; }
-
-    /* TBD items */
-    .tbd-list {
-      list-style: none;
-      padding: 0;
-      margin: 0.75rem 0 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
-    }
-
-    .tbd-list li {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.6rem 0.9rem;
-      font-size: 0.85rem;
-      color: var(--text);
-    }
-
-    .tbd-list li span {
-      display: block;
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 0.15rem;
-    }
-
-    .source-line {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 2.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-      line-height: 1.6;
-    }
-
-    .source-line a { color: var(--blue); }
-
-    .back-to-top {
-      display: block;
-      text-align: right;
-      font-size: 0.875rem;
-      color: #3f4550;
-      text-decoration: none;
-      margin-top: 1.5rem;
-    }
-    .back-to-top:hover { text-decoration: underline; }
-
-    @media (max-width: 700px) {
-      .hero { padding: 2rem 1rem 1.5rem; }
-      .hero h1 { font-size: 1.45rem; }
-      .container { padding: 2rem 1rem; }
-      .tbd-list { grid-template-columns: 1fr; }
-      .project-table .note { display: none; }
-    }
-  </style>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -231,14 +43,14 @@
 </header>
 
 <main id="main">
-<div class="hero">
+<div class="capital-hero">
   <div class="hero-inner">
     <h1>The Capital Plan</h1>
     <p>Beverly's annual budget covers day-to-day city operations. But there is a parallel set of obligations: buildings, roads, water systems, and equipment that require large, one-time investments the operating budget cannot absorb. The city finances these through long-term borrowing, and the debt service is growing.</p>
   </div>
 </div>
 
-<div class="container">
+<div class="capital-container">
 
   <h2 class="section-title">What is the Capital Plan?</h2>
 

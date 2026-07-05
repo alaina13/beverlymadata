@@ -6,151 +6,6 @@
   <script src="https://kit.fontawesome.com/56a48e0c30.js" crossorigin="anonymous"></script>
   <title>Open Beverly — What's Next</title>
   <link rel="stylesheet" href="/styles.css" />
-  <style>
-    body { line-height: 1.6; }
-
-    .hero {
-      background: var(--navy); color: white;
-      padding: 3rem 2rem 2.5rem;
-      border-bottom: 3px solid var(--accent);
-    }
-    .hero-inner { max-width: 820px; margin: 0 auto; }
-    .hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-    .hero p { color: rgba(255,255,255,0.72); font-size: 1rem; max-width: 620px; }
-
-    .stat-row { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
-    .stat-chip {
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 10px; padding: 0.75rem 1.25rem;
-    }
-    .stat-chip .val { font-size: 1.6rem; font-weight: 800; color: var(--accent); line-height: 1; }
-    .stat-chip .lbl { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 0.2rem; }
-
-    .container { max-width: 820px; margin: 0 auto; padding: 3rem 1.5rem; }
-
-    .section-title {
-      font-size: 1.35rem; font-weight: 800; color: var(--navy);
-      margin-bottom: 1.5rem; padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border);
-    }
-
-    /* Options grid */
-    .options-grid {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      gap: 1rem; margin-bottom: 3rem;
-    }
-    .option-card {
-      background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: 10px; padding: 1.1rem 1.2rem; text-align: center;
-    }
-    .option-card .opt-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
-    .option-card h3 { font-size: 0.88rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
-    .option-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
-
-    /* Driver / path cards */
-    .driver-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 3rem; }
-    .driver-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.2rem; }
-    .driver-card .driver-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
-    .driver-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
-    .driver-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
-
-    /* Structural / explainer box */
-    .structural-box {
-      background: var(--tag-bg); border: 1px solid #c7d7f5;
-      border-left: 5px solid var(--blue); border-radius: 10px;
-      padding: 1.5rem 1.75rem; margin-bottom: 3rem;
-    }
-    .structural-box h2 { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: 0.75rem; }
-    .structural-box p { font-size: 0.9rem; line-height: 1.7; color: #1e2d4a; margin-bottom: 0.65rem; }
-    .structural-box p:last-child { margin-bottom: 0; }
-    .structural-box .not-waste {
-      background: white; border: 1px solid #c7d7f5; border-radius: 8px;
-      padding: 0.8rem 1rem; margin-top: 0.75rem;
-      font-size: 0.875rem; color: var(--navy);
-      display: flex; gap: 0.6rem; align-items: flex-start; line-height: 1.6;
-    }
-    .structural-box .not-waste .check { color: var(--green); flex-shrink: 0; font-size: 1.05rem; }
-
-    /* Page jump nav */
-    .page-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .page-nav a {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--navy);
-      background: white;
-      border: 1.5px solid var(--navy);
-      border-bottom: 1.5px solid var(--navy);
-      border-radius: 999px;
-      padding: 0.35rem 0.85rem;
-      text-decoration: none;
-    }
-
-    .page-nav a:hover {
-      background: var(--navy);
-      color: white;
-      border-bottom-color: var(--navy);
-    }
-
-    .back-to-top {
-      display: block;
-      text-align: right;
-      font-size: 0.875rem;
-      color: #3f4550;
-      text-decoration: none;
-      margin-top: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .back-to-top:hover { color: var(--blue); }
-
-    /* Breadcrumb back link */
-    .back-link {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.82rem; color: var(--blue); text-decoration: none;
-      margin-bottom: 2rem; font-weight: 500;
-    }
-    .back-link:hover { text-decoration: underline; }
-
-    /* Footnotes */
-    .fn-ref {
-      color: var(--blue); text-decoration: none;
-      font-size: 0.7em; vertical-align: super; line-height: 0; font-weight: 700;
-    }
-    .fn-ref:hover { text-decoration: underline; }
-    .footnotes { margin-bottom: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
-    .footnotes h3 {
-      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.75rem;
-    }
-    .footnotes ol { margin: 0; padding-left: 1.4rem; }
-    .footnotes li { font-size: 0.78rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.5rem; }
-    .footnotes li a { color: var(--blue); }
-    .fn-back { font-size: 0.7rem; text-decoration: none; color: var(--muted); margin-left: 0.3rem; }
-    .fn-back:hover { color: var(--blue); }
-
-    .source-note {
-      font-size: 0.78rem; color: var(--muted); font-style: italic;
-      border-top: 1px solid var(--border); padding-top: 1.5rem;
-      margin-top: 1rem; line-height: 1.6;
-    }
-    .source-note a { color: var(--blue); }
-
-    @media (max-width: 700px) {
-      .hero { padding: 2rem 1rem 1.5rem; }
-      .hero h1 { font-size: 1.45rem; }
-      .container { padding: 2rem 1rem; }
-      .options-grid { grid-template-columns: 1fr; }
-      .driver-grid { grid-template-columns: 1fr; }
-      .stat-row { gap: 0.75rem; }
-      .stat-chip .val { font-size: 1.3rem; }
-    }
-  </style>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -191,7 +46,7 @@
 </header>
 
 <main id="main">
-<div class="hero">
+<div class="whatsnext-hero">
   <div class="hero-inner">
     <h1>What's Next</h1>
     <p>Beverly's structural deficit is documented and growing. Here are the options the city is weighing to close it (service cuts, fee increases, an override, and longer-term structural reforms), plus answers to common questions from residents.</p>
@@ -208,7 +63,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="whatsnext-container">
 
   <a class="back-link" href="/history.html">← How We Got Here</a>
 
