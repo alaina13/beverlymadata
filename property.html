@@ -340,6 +340,8 @@ let activeGroups = new Set();
 let activeVpaBuckets = new Set(VPA_BUCKETS.map((_,i) => i));
 let lo = 1, hi = 1;
 let circleLayer;
+let geoLookup = {}; // addr -> GeoJSON feature
+let geoLoaded = false;
 
 // Init map centered on Beverly
 const map = L.map('map', { zoomControl: true }).setView([42.558, -70.880], 13);
@@ -399,24 +401,51 @@ function renderLayer() {
   updateStats();
 
   const showUnder = document.getElementById('show-under').checked;
-  circleLayer = L.layerGroup();
-  for (const p of filtered) {
-    const isUnder = showUnder && p.under;
-    const color = isUnder ? '#ef4444' : vpaColor(getColorValue(p), lo, hi);
-    const c = L.circleMarker([p.lat, p.lng], {
-      radius: isUnder ? 5 : 4,
-      fillColor: color,
-      fillOpacity: isUnder ? 0.9 : 0.85,
-      color: isUnder ? '#b91c1c' : 'transparent',
-      weight: isUnder ? 1.5 : 0,
+
+  if (geoLoaded) {
+    // Polygon mode using parcels_geo.geojson
+    const filteredAddrs = new Set(filtered.map(p => (p.addr || '').toUpperCase().trim()));
+    const filteredMap = {};
+    for (const p of filtered) filteredMap[(p.addr || '').toUpperCase().trim()] = p;
+
+    circleLayer = L.geoJSON(Object.values(geoLookup), {
+      filter: f => filteredAddrs.has((f.properties.addr || '').toUpperCase().trim()),
+      style: f => {
+        const addr = (f.properties.addr || '').toUpperCase().trim();
+        const p = filteredMap[addr];
+        if (!p) return { fillColor: 'rgba(100,100,120,0.4)', weight: 0.3, color: '#aaa', fillOpacity: 0.5 };
+        const isUnder = showUnder && p.under;
+        return {
+          fillColor: isUnder ? '#ef4444' : vpaColor(getColorValue(p), lo, hi),
+          fillOpacity: isUnder ? 0.9 : 0.82,
+          color: isUnder ? '#b91c1c' : 'rgba(0,0,0,0.15)',
+          weight: 0.5,
+        };
+      },
+      onEachFeature: (f, layer) => {
+        const addr = (f.properties.addr || '').toUpperCase().trim();
+        const p = filteredMap[addr];
+        if (p) layer.bindTooltip(buildTooltip(p), { className: 'leaflet-tooltip-own', sticky: true, offset: [10, 0] });
+      },
       renderer,
     });
-    c.bindTooltip(buildTooltip(p), {
-      className: 'leaflet-tooltip-own',
-      sticky: true,
-      offset: [10, 0],
-    });
-    circleLayer.addLayer(c);
+  } else {
+    // Fallback: circle markers
+    circleLayer = L.layerGroup();
+    for (const p of filtered) {
+      const isUnder = showUnder && p.under;
+      const color = isUnder ? '#ef4444' : vpaColor(getColorValue(p), lo, hi);
+      const c = L.circleMarker([p.lat, p.lng], {
+        radius: isUnder ? 5 : 4,
+        fillColor: color,
+        fillOpacity: isUnder ? 0.9 : 0.85,
+        color: isUnder ? '#b91c1c' : 'transparent',
+        weight: isUnder ? 1.5 : 0,
+        renderer,
+      });
+      c.bindTooltip(buildTooltip(p), { className: 'leaflet-tooltip-own', sticky: true, offset: [10, 0] });
+      circleLayer.addLayer(c);
+    }
   }
   circleLayer.addTo(map);
 }
@@ -536,14 +565,23 @@ L.control.layers({'Light': lightTiles, 'Dark': darkTiles}, {}, {position:'bottom
 
 (async () => {
   try {
-    const res = await fetch('/beverlymadata/parcels.json');
-    allParcels = await res.json();
+    const [parcelsRes, geoRes] = await Promise.all([
+      fetch('/beverlymadata/parcels.json'),
+      fetch('/beverlymadata/parcels_geo.geojson'),
+    ]);
+    allParcels = await parcelsRes.json();
+    const geo = await geoRes.json();
+    for (const f of geo.features) {
+      const addr = (f.properties.addr || '').toUpperCase().trim();
+      if (addr) geoLookup[addr] = f;
+    }
+    geoLoaded = true;
     buildFilters();
     applyFilters();
     document.getElementById('loading-msg').style.display = 'none';
   } catch (err) {
     document.getElementById('loading-msg').innerHTML =
-      `<div style="color:#f87171">⚠️ Could not load parcels.json<br><small>${err.message}</small></div>`;
+      `<div style="color:#f87171">⚠️ Could not load map data<br><small>${err.message}</small></div>`;
   }
 })();
 </script></main>
