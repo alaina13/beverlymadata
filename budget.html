@@ -192,9 +192,9 @@
     <button class="year-tab" role="tab" data-year="FY2023" aria-selected="false">FY2023</button>
     <button class="year-tab" role="tab" data-year="FY2024" aria-selected="false">FY2024</button>
     <button class="year-tab" role="tab" data-year="FY2025" aria-selected="false">FY2025</button>
-    <button class="year-tab active" role="tab" data-year="FY2026" aria-selected="true">FY2026</button>
-    <button class="year-tab" role="tab" data-year="FY2027" aria-selected="false">FY2027</button>
-    <span class="year-tab-note">FY2021–2024 = Actual · FY2025–2026 = Adopted · FY2027 = Proposed</span>
+    <button class="year-tab" role="tab" data-year="FY2026" aria-selected="false">FY2026</button>
+    <button class="year-tab active" role="tab" data-year="FY2027" aria-selected="true">FY2027</button>
+    <span class="year-tab-note">FY2021–2024 = Actual · FY2025–2027 = Adopted</span>
   </div>
 
   <div class="total-callout">
@@ -524,7 +524,7 @@ const CATEGORIES = [
 ];
 
 // ── State ─────────────────────────────────────────────────────────────────────
-let activeYear = 'FY2026';
+let activeYear = 'FY2027';
 let activeCatKey = null; // null = show all categories
 
 // ── Chart instances ───────────────────────────────────────────────────────────
