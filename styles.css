@@ -639,7 +639,7 @@ footer a { color: var(--blue); }
 
 
 /* --- budget.html --- */
-.budget-hero { padding: 2.5rem 2rem 2rem; }
+.budget-hero { background: var(--navy); color: white; padding: 2.5rem 2rem 2rem; }
 .budget-hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.4rem; }
 .budget-hero p { color: rgba(255,255,255,0.72); font-size: 0.95rem; max-width: 580px; }
 
@@ -754,7 +754,7 @@ footer a { color: var(--blue); }
 
 
 /* --- calculator.html --- */
-.calc-hero { padding: 2rem 2rem 1.5rem; }
+.calc-hero { background: var(--navy); color: white; padding: 2rem 2rem 1.5rem; }
 .calc-hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
 .calc-hero p { color: rgba(255,255,255,0.7); font-size: 0.92rem; max-width: 620px; }
 
@@ -1154,7 +1154,7 @@ input[type=range]::-webkit-slider-thumb {
 /* data.html uses a different --green shade, scoped locally */
 .data-page { --green: #2e7d32; }
 
-.data-hero { padding: 2.5rem 2rem 2rem; }
+.data-hero { background: var(--navy); color: white; padding: 2.5rem 2rem 2rem; }
 .data-hero h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.4rem; }
 .data-hero p { color: rgba(255,255,255,0.72); font-size: 0.95rem; max-width: 600px; }
 
