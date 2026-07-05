@@ -1796,6 +1796,8 @@ blockquote cite {
   background: var(--bg);
   color: var(--text);
   outline: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 #addr-search:focus {
