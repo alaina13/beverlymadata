@@ -342,11 +342,17 @@
   function parcelGroup(cat) { return CAT_GROUPS[cat] || 'Other / Vacant'; }
 
   function filterExpr() {
-    if (activeGroups.size === GROUP_ORDER.length) return null;
-    const cats = Object.entries(CAT_GROUPS)
-      .filter(([, g]) => activeGroups.has(g))
-      .map(([c]) => c);
-    return ['in', ['get', 'cat'], ['literal', cats]];
+    const parts = [];
+    if (showUnder) {
+      parts.push(['==', ['get', 'under'], true]);
+    } else if (activeGroups.size < GROUP_ORDER.length) {
+      const cats = Object.entries(CAT_GROUPS)
+        .filter(([, g]) => activeGroups.has(g))
+        .map(([c]) => c);
+      parts.push(['in', ['get', 'cat'], ['literal', cats]]);
+    }
+    if (parts.length === 0) return null;
+    return parts.length === 1 ? parts[0] : ['all', ...parts];
   }
 
   function applyFilter() {
@@ -359,13 +365,11 @@
   }
 
   function updateStats() {
-    const expr = filterExpr();
-    const visible = expr
-      ? allFeatures.filter(f => {
-          const g = parcelGroup(f.properties.cat);
-          return activeGroups.has(g);
-        })
-      : allFeatures;
+    const visible = showUnder
+      ? allFeatures.filter(f => f.properties.under === true)
+      : activeGroups.size < GROUP_ORDER.length
+        ? allFeatures.filter(f => activeGroups.has(parcelGroup(f.properties.cat)))
+        : allFeatures;
 
     const n = visible.length;
     const total = visible.reduce((s, f) => s + (f.properties.v || 0), 0);
@@ -521,6 +525,7 @@
   document.getElementById('show-under').addEventListener('change', e => {
     showUnder = e.target.checked;
     updateColorMode();
+    applyFilter();
   });
 </script>
 <script src="/beverlymadata/nav.js"></script>
