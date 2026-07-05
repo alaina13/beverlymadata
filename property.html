@@ -275,16 +275,18 @@
   }
 
   map.once('style.load', () => {
-    // Mute road colors from the positron basemap so they don't compete with parcel choropleth
-    const roadLayerPattern = /road|tunnel|bridge|motorway|highway|street/i;
+    // Mute all basemap layers except water so they don't compete with parcel choropleth
+    const waterPattern = /water|ocean|lake|river|stream/i;
     map.getStyle().layers.forEach(layer => {
-      if (!roadLayerPattern.test(layer.id)) return;
+      if (waterPattern.test(layer.id)) return;
       if (layer.type === 'line') {
         map.setPaintProperty(layer.id, 'line-color', '#d4d4d4');
       } else if (layer.type === 'fill') {
-        map.setPaintProperty(layer.id, 'fill-color', '#e8e8e8');
+        if (!waterPattern.test(layer.id)) {
+          map.setPaintProperty(layer.id, 'fill-color', '#e8e8e8');
+        }
       } else if (layer.type === 'symbol') {
-        try { map.setPaintProperty(layer.id, 'text-color', '#999999'); } catch {}
+        try { map.setPaintProperty(layer.id, 'text-color', '#aaaaaa'); } catch {}
       }
     });
 
