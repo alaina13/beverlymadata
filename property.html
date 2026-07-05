@@ -279,7 +279,7 @@
       }
     });
 
-    fetch('/beverlymadata/parcels_geo.geojson')
+    fetch('/parcels_geo.geojson')
       .then(r => r.json())
       .then(geo => {
         allFeatures = geo.features.filter(f => f.geometry);

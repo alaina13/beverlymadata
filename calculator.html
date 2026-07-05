@@ -352,7 +352,7 @@
 
   async function loadParcels() {
     if (parcels) return parcels;
-    const res = await fetch('/beverlymadata/parcels.json');
+    const res = await fetch('/parcels.json');
     parcels = await res.json();
     return parcels;
   }

@@ -137,7 +137,7 @@
 
   (async () => {
     try {
-      const res = await fetch('/beverlymadata/summaries.json');
+      const res = await fetch('/summaries.json');
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       allSummaries = await res.json();
       renderFilters(allSummaries);
