@@ -278,7 +278,7 @@
     return lerpColor(COLOR_STOPS[i], COLOR_STOPS[i + 1], scaled - i);
   }
 
-  const MAX_H = 4000;
+  const MAX_H = 500;
 
   function computeRanks() {
     const byTaxpa = [...parcels].sort((a, b) => (a.taxpa || 0) - (b.taxpa || 0));
@@ -362,8 +362,8 @@
     container: 'map',
     style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
     center: [-70.88, 42.558],
-    zoom: 13,
-    pitch: 70,
+    zoom: 14,
+    pitch: 60,
     bearing: -15,
     antialias: true,
   });
