@@ -44,6 +44,11 @@
 
 <div id="app">
   <div id="sidebar">
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+      <input id="addr-search" type="search" placeholder="Search address…" autocomplete="off" aria-label="Search parcel by address" />
+      <ul id="search-results" role="listbox" aria-label="Address suggestions"></ul>
+    </div>
     <div class="stats-bar">
       <div class="stat-chip"><div class="stat-num" id="s-parcels">—</div><div class="stat-label">Parcels</div></div>
       <div class="stat-chip"><div class="stat-num" id="s-med">—</div><div class="stat-label">Median val/ac</div></div>
@@ -283,6 +288,7 @@
       .then(r => r.json())
       .then(geo => {
         allFeatures = geo.features.filter(f => f.geometry);
+        allFeatures.forEach((f, i) => { f.id = i; });
 
         map.addSource('parcels', { type: 'geojson', data: geo });
 
@@ -368,6 +374,102 @@
     showUnder = e.target.checked;
     updateColorMode();
     applyFilter();
+  });
+
+  // Address search
+  let searchIndex = []; // built after geojson loads
+  let selectedId = null;
+
+  function buildSearchIndex() {
+    searchIndex = allFeatures
+      .filter(f => f.properties.addr)
+      .map(f => {
+        const coords = f.geometry.coordinates[0];
+        const lng = coords.reduce((s, c) => s + c[0], 0) / coords.length;
+        const lat = coords.reduce((s, c) => s + c[1], 0) / coords.length;
+        return { addr: f.properties.addr, id: f.id, lng, lat, props: f.properties };
+      });
+  }
+
+  function clearSelected() {
+    if (selectedId !== null) {
+      map.setFeatureState({ source: 'parcels', id: selectedId }, { selected: false });
+      selectedId = null;
+    }
+  }
+
+  const searchInput = document.getElementById('addr-search');
+  const resultsList = document.getElementById('search-results');
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toUpperCase();
+    resultsList.innerHTML = '';
+    if (q.length < 2) { resultsList.hidden = true; return; }
+    const matches = searchIndex.filter(p => p.addr.includes(q)).slice(0, 8);
+    if (!matches.length) { resultsList.hidden = true; return; }
+    matches.forEach(p => {
+      const li = document.createElement('li');
+      li.role = 'option';
+      li.textContent = p.addr;
+      li.addEventListener('mousedown', () => {
+        searchInput.value = p.addr;
+        resultsList.hidden = true;
+        clearSelected();
+        map.flyTo({ center: [p.lng, p.lat], zoom: 17, duration: 800 });
+        selectedId = p.id;
+        map.once('idle', () => {
+          map.setFeatureState({ source: 'parcels', id: selectedId }, { selected: true });
+        });
+        // Show tooltip-style panel
+        showParcelPanel(p.props, p.addr);
+      });
+      resultsList.appendChild(li);
+    });
+    resultsList.hidden = false;
+  });
+
+  searchInput.addEventListener('blur', () => { setTimeout(() => { resultsList.hidden = true; }, 150); });
+  searchInput.addEventListener('focus', () => { if (resultsList.children.length) resultsList.hidden = false; });
+
+  function showParcelPanel(p, addr) {
+    const netVal = p.net != null ? (p.net >= 0 ? '+' : '') + fmt(p.net) : 'N/A';
+    const netColor = p.net > 0 ? '#2e7d32' : p.net < 0 ? '#c62828' : '#999';
+    let panel = document.getElementById('parcel-panel');
+    if (!panel) {
+      panel = document.createElement('div');
+      panel.id = 'parcel-panel';
+      panel.className = 'parcel-panel';
+      document.getElementById('sidebar').appendChild(panel);
+    }
+    panel.innerHTML = `
+      <button class="parcel-panel-close" aria-label="Close" onclick="document.getElementById('parcel-panel').remove();clearSelected();">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="parcel-panel-addr">${addr}</div>
+      <div class="parcel-panel-cat">${p.cat || ''}</div>
+      <div class="tooltip-row"><span>Value / acre</span><span>${fmt(p.vpa)}</span></div>
+      <div class="tooltip-row"><span>Tax / acre</span><span>${fmt(p.taxpa)}</span></div>
+      <div class="tooltip-row"><span>Total value</span><span>${fmt(p.v)}</span></div>
+      <div class="tooltip-row"><span>Annual tax</span><span>${fmt(p.tax)}</span></div>
+      <div class="tooltip-row"><span>Road cost</span><span>${fmt(p.road_cost)}</span></div>
+      <div class="tooltip-row"><span>Net fiscal</span><span style="color:${netColor};font-weight:700">${netVal}</span></div>
+    `;
+    panel.hidden = false;
+  }
+
+  // Wire selected state into the hover layer after layers exist
+  const _origBuild = buildCatFilters;
+  // highlight selected parcel with a dedicated paint expression (set after map loads)
+  map.once('idle', () => {
+    if (map.getLayer('parcels-hover')) {
+      map.setPaintProperty('parcels-hover', 'fill-opacity', [
+        'case',
+        ['boolean', ['feature-state', 'selected'], false], 0.45,
+        ['boolean', ['feature-state', 'hover'], false], 0.3,
+        0,
+      ]);
+    }
+    buildSearchIndex();
   });
 </script>
 <script src="/nav.js"></script>

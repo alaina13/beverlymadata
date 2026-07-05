@@ -1768,6 +1768,113 @@ blockquote cite {
 
 
 /* --- property.html --- */
+
+/* Address search */
+.search-box {
+  position: relative;
+  padding: 0.75rem 0.75rem 0;
+  flex-shrink: 0;
+}
+
+.search-box .search-icon {
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-15%);
+  color: var(--muted);
+  font-size: 0.75rem;
+  pointer-events: none;
+}
+
+#addr-search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.45rem 0.6rem 0.45rem 2rem;
+  font-size: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+}
+
+#addr-search:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px rgba(30,58,95,0.12);
+}
+
+#search-results {
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  top: calc(100% - 4px);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+#search-results[hidden] { display: none; }
+
+#search-results li {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+}
+
+#search-results li:last-child { border-bottom: none; }
+#search-results li:hover { background: var(--tag-bg); }
+
+/* Parcel detail panel */
+.parcel-panel {
+  margin: 0.75rem;
+  padding: 0.75rem;
+  background: var(--tag-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  position: relative;
+  font-size: 0.78rem;
+}
+
+.parcel-panel-close {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.75rem;
+  padding: 2px 4px;
+  line-height: 1;
+}
+
+.parcel-panel-close:hover { color: var(--text); }
+
+.parcel-panel-addr {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--navy);
+  margin-bottom: 0.15rem;
+  padding-right: 1.5rem;
+}
+
+.parcel-panel-cat {
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
 .property-page html,
 .property-page body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .property-page header { position: relative; z-index: 10; flex-shrink: 0; }
