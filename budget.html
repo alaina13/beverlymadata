@@ -609,6 +609,9 @@ function renderDonut() {
             },
           },
         },
+        onHover: (e, elements) => {
+          document.getElementById('donut-center').style.opacity = elements.length ? '0' : '1';
+        },
         onClick: (e, elements) => {
           if (!elements.length) return;
           const idx = elements[0].index;
