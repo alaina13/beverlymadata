@@ -122,7 +122,7 @@
   const COLOR_STOPS = {
     vpa:   [[0,'#d0ead0'],[500000,'#4caf50'],[2000000,'#cddc39'],[4000000,'#ffc107'],[7000000,'#f44336'],[9400000,'#9c27b0']],
     taxpa: [[0,'#d0ead0'],[12000,'#4caf50'],[34000,'#cddc39'],[55000,'#ffc107'],[80000,'#f44336'],[102409,'#9c27b0']],
-    net:   [[-3200,'#f44336'],[0,'#ffc107'],[2000,'#cddc39'],[10000,'#4caf50'],[50000,'#1a9850'],[200000,'#9c27b0']],
+    net:   [[-4500,'#f44336'],[0,'#ffc107'],[3000,'#cddc39'],[10000,'#4caf50'],[50000,'#1a9850'],[200000,'#9c27b0']],
     v:     [[0,'#d0ead0'],[200000,'#4caf50'],[800000,'#cddc39'],[2000000,'#ffc107'],[5000000,'#f44336'],[15000000,'#9c27b0']],
     tax:   [[0,'#d0ead0'],[2000,'#4caf50'],[8000,'#cddc39'],[20000,'#ffc107'],[60000,'#f44336'],[200000,'#9c27b0']],
   };
@@ -345,6 +345,8 @@
             <div class="tooltip-row"><span>Total value</span><span>${fmt(p.v)}</span></div>
             <div class="tooltip-row"><span>Annual tax</span><span>${fmt(p.tax)}</span></div>
             <div class="tooltip-row"><span>Road cost</span><span>${fmt(p.road_cost)}</span></div>
+            <div class="tooltip-row"><span>Water cost</span><span>${fmt(p.water_cost)}</span></div>
+            <div class="tooltip-row"><span>Sewer cost</span><span>${fmt(p.sewer_cost)}</span></div>
             <div class="tooltip-row"><span>Net fiscal</span><span style="color:${netColor};font-weight:700">${netVal}</span></div>
             <div class="tooltip-cat">${p.cat || ''}</div>
           `;
@@ -448,6 +450,8 @@
       <div class="tooltip-row"><span>Total value</span><span>${fmt(p.v)}</span></div>
       <div class="tooltip-row"><span>Annual tax</span><span>${fmt(p.tax)}</span></div>
       <div class="tooltip-row"><span>Road cost</span><span>${fmt(p.road_cost)}</span></div>
+      <div class="tooltip-row"><span>Water cost</span><span>${fmt(p.water_cost)}</span></div>
+      <div class="tooltip-row"><span>Sewer cost</span><span>${fmt(p.sewer_cost)}</span></div>
       <div class="tooltip-row"><span>Net fiscal</span><span style="color:${netColor};font-weight:700">${netVal}</span></div>
     `;
     panel.hidden = false;
