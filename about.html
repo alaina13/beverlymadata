@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/56a48e0c30.js" crossorigin="anonymous"></script>
+  <title>About — Beverly Data</title>
+  <link rel="stylesheet" href="/beverlymadata/styles.css" />
+  <style>
+    .page-header {
+      background: var(--navy);
+      color: white;
+      padding: 3rem 2rem 2.5rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .page-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.95rem;
+      max-width: 600px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+
+    .about-section {
+      margin-bottom: 3rem;
+    }
+
+    .about-section h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-section p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 0.85rem;
+    }
+
+    .about-section p:last-child { margin-bottom: 0; }
+
+    .about-section a { color: var(--blue); text-decoration: none; }
+    .about-section a:hover { text-decoration: underline; }
+
+    .link-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.85rem;
+    }
+
+    .link-btn {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--blue);
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid #d0daf0;
+    }
+
+    .link-btn:hover {
+      background: #dde6f7;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 2rem 1rem 3rem; }
+      .page-header { padding: 2rem 1rem 1.75rem; }
+      .page-header h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+  <a class="logo" href="/beverlymadata/"><span>Beverly</span> Data</a>
+  <nav>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">
+        Meetings
+      </button>
+      <div class="nav-dropdown">
+      <a href="/beverlymadata/meetings.html">Meetings</a>
+      <a href="/beverlymadata/agendas.html">Agendas</a>
+      <a href="/beverlymadata/summaries.html">Summaries</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">
+        Finance
+      </button>
+      <div class="nav-dropdown">
+      <a href="/beverlymadata/data.html">City Data</a>
+      <a href="/beverlymadata/budget.html">Budget Explorer</a>
+      <a href="/beverlymadata/history.html">How We Got Here</a>
+      <a href="/beverlymadata/whats-next.html">What's Next</a>
+      <a href="/beverlymadata/calculator.html">Override Calculator</a>
+      </div>
+    </div>
+    <a href="/beverlymadata/property.html">Property Map</a>
+    <a href="/beverlymadata/sources.html">Sources</a>
+    <a href="/beverlymadata/about.html">About</a>
+  </nav>
+  <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="var n=this.closest('header').querySelector('nav');var open=n.classList.toggle('open');this.setAttribute('aria-expanded',open);this.querySelector('i').className='fa-solid '+(open?'fa-xmark':'fa-bars')">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+  </button>
+</header>
+
+<main id="main">
+<div class="page-header">
+  <h1>About</h1>
+  <p>Who made this site, why, and how.</p>
+</div>
+
+<div class="container">
+
+  <div class="about-section">
+    <h2>About this site</h2>
+    <p>This website was created by Alaina Pitt, a Beverly homeowner and parent. As debates swirled around Beverly's budget, the City Hall renovation, trash fees, and the structural deficit, I wanted to find the data behind the claims being made. These debates have sparked real interest in how Beverly's finances work, and this site is meant to be a resource for that curiosity. I built it for myself and for fellow Beverly residents who want to dig into the numbers. The analysis aims to be factual and nonpartisan, though it does reflect a particular framework: one focused on long-term fiscal sustainability and what the numbers reveal about how a city grows.</p>
+    <p>Beverly Data is an independent civic project. I am not on any city boards or commissions and am not affiliated with any advocacy group related to Beverly.</p>
+  </div>
+
+  <div class="about-section">
+    <h2>How I use AI</h2>
+    <p>This site was built with significant help from Claude, an AI assistant made by Anthropic. I use it for drafting content, data processing, and building the site itself. Claude has processed a substantial volume of primary source documentation, including nine years of Financial Forecasting Committee meeting minutes, annual financial reports, budget documents, and property parcel data covering the entire city.</p>
+    <p>I review and edit AI-generated content before it goes up. The exception is the meeting summaries, which are generated automatically from BevCam recordings and published without manual review. Those summaries can contain errors: mishearing names, misattributing statements, or missing context. Treat them as a starting point, not a record.</p>
+    <p>If something looks wrong anywhere on the site, I want to know.</p>
+    <div class="link-row">
+      <a class="link-btn" href="https://github.com/alaina13/beverlymadata/issues/new?title=Correction%3A+" target="_blank"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> Submit a correction</a>
+      <a class="link-btn" href="https://github.com/alaina13/beverlymadata/issues/new?title=Bias%3A+" target="_blank"><i class="fa-solid fa-flag" aria-hidden="true"></i> Flag a bias concern</a>
+    </div>
+  </div>
+
+  <div class="about-section">
+    <h2>Sources &amp; methodology</h2>
+    <p>All data sources and citations are documented on the <a href="/beverlymadata/sources.html">Sources page</a>, including primary city documents, state law, and external references. That page also explains which figures are drawn directly from official documents and which are calculated by Beverly Data.</p>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  Beverly Data is an independent civic project and is not affiliated with the City of Beverly. Created with the assistance of AI.
+  Data sourced from <a href="https://www.beverlyma.gov/AgendaCenter" target="_blank">beverlyma.gov</a> and public records.
+</footer>
+
+<script src="/beverlymadata/nav.js"></script>
+</body>
+</html>
