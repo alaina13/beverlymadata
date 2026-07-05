@@ -42,14 +42,16 @@
   </button>
 </header>
 
+<div class="map-page-wrap">
+<div class="map-stats-bar">
+  <div class="stat-chip"><div class="stat-num" id="s-parcels">—</div><div class="stat-label">Parcels</div></div>
+  <div class="stat-chip"><div class="stat-num" id="s-med">—</div><div class="stat-label">Median val/ac</div></div>
+  <div class="stat-chip"><div class="stat-num" id="s-total">—</div><div class="stat-label">Total value</div></div>
+  <div class="stat-chip"><div class="stat-num" id="s-top">—</div><div class="stat-label">Top val/ac</div></div>
+</div>
+
 <div id="app">
   <div id="sidebar">
-    <div class="stats-bar">
-      <div class="stat-chip"><div class="stat-num" id="s-parcels">—</div><div class="stat-label">Parcels</div></div>
-      <div class="stat-chip"><div class="stat-num" id="s-med">—</div><div class="stat-label">Median val/ac</div></div>
-      <div class="stat-chip"><div class="stat-num" id="s-total">—</div><div class="stat-label">Total value</div></div>
-      <div class="stat-chip"><div class="stat-num" id="s-top">—</div><div class="stat-label">Top val/ac</div></div>
-    </div>
     <div class="search-box">
       <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
       <input id="addr-search" type="search" placeholder="Search address…" autocomplete="off" aria-label="Search parcel by address" />
@@ -61,7 +63,7 @@
         <h3>Color by</h3>
         <button class="color-btn active" data-mode="vpa">Value per acre</button>
         <button class="color-btn" data-mode="taxpa">Tax per acre</button>
-        <button class="color-btn" data-mode="net">Net revenue (after road cost)</button>
+        <button class="color-btn" data-mode="net">Net revenue (after infrastructure)</button>
         <button class="color-btn" data-mode="v">Total assessed value</button>
         <button class="color-btn" data-mode="tax">Annual tax revenue</button>
       </div>
@@ -97,6 +99,7 @@
     <div id="loading-msg"><div class="spinner"></div>Loading parcels…</div>
     <div class="tooltip" id="tooltip"></div>
   </div>
+</div>
 </div>
 
 <script src="https://unpkg.com/maplibre-gl@3/dist/maplibre-gl.js"></script>

@@ -1879,10 +1879,32 @@ blockquote cite {
 .property-page body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 .property-page header { position: relative; z-index: 10; flex-shrink: 0; }
 
-#app {
-  position: absolute;
-  top: 56px; left: 0; right: 0; bottom: 0;
+.map-page-wrap {
   display: flex;
+  flex-direction: column;
+  height: calc(100vh - 56px);
+}
+
+.map-stats-bar {
+  background: var(--navy);
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.map-stats-bar .stat-chip {
+  flex: 1;
+  padding: 0.6rem 1.25rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.map-stats-bar .stat-chip:last-child { border-right: none; }
+
+#app {
+  flex: 1;
+  display: flex;
+  min-height: 0;
 }
 
 #sidebar {
@@ -1896,14 +1918,6 @@ blockquote cite {
   flex-direction: column;
 }
 
-.stats-bar {
-  background: var(--navy);
-  padding: 0.75rem 1rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  flex-shrink: 0;
-}
 
 .stat-chip .stat-num { font-size: 0.95rem; font-weight: 700; color: white; }
 .stat-chip .stat-label { font-size: 0.62rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.05em; }
