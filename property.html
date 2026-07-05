@@ -4,93 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/56a48e0c30.js" crossorigin="anonymous"></script>
-  <title>Beverly Data — Property Value Map</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <title>Beverly Data — Property Map</title>
   <link rel="stylesheet" href="/beverlymadata/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3/dist/maplibre-gl.css" />
   <style>
-    body {
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+    header { position: relative; z-index: 10; flex-shrink: 0; }
+
+    #app {
+      position: absolute;
+      top: 56px; left: 0; right: 0; bottom: 0;
+      display: flex;
+    }
+
+    /* Sidebar */
+    #sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      background: white;
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      z-index: 5;
       display: flex;
       flex-direction: column;
-      height: 100vh;
-      overflow: hidden;
     }
-
-    header {
-      flex-shrink: 0;
-      position: static;
-      z-index: 1000;
-    }
-
-    .subheader {
-      background: var(--navy);
-      border-bottom: 3px solid var(--accent);
-      padding: 0.6rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .subheader h1 { font-size: 1.1rem; font-weight: 700; color: white; }
-    .subheader p { font-size: 0.78rem; color: rgba(255,255,255,0.65); }
 
     .stats-bar {
-      display: flex;
-      background: white;
-      border-bottom: 1px solid var(--border);
+      background: var(--navy);
+      padding: 0.75rem 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
       flex-shrink: 0;
-      overflow-x: auto;
     }
 
-    .stat-chip {
-      padding: 0.55rem 1.25rem;
-      border-right: 1px solid var(--border);
-      white-space: nowrap;
-    }
-    .stat-chip:last-child { border-right: none; }
-    .stat-num { font-size: 1.05rem; font-weight: 700; color: var(--navy); }
-    .stat-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-chip .stat-num { font-size: 0.95rem; font-weight: 700; color: white; }
+    .stat-chip .stat-label { font-size: 0.62rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.05em; }
 
-    /* main wraps everything below header; needs to fill remaining height */
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      min-height: 0;
-    }
-
-    .map-wrapper {
-      flex: 1;
-      display: flex;
-      overflow: hidden;
-      position: relative;
-      min-height: 0;
-    }
-
-    #map { flex: 1; }
-
-    /* Sidebar panel */
-    .panel {
-      width: 230px;
-      background: white;
-      border-left: 1px solid var(--border);
-      overflow-y: auto;
-      padding: 1rem;
-      flex-shrink: 0;
-      z-index: 400;
-    }
+    .sidebar-body { padding: 1rem; flex: 1; }
 
     .panel-section { margin-bottom: 1.25rem; }
     .panel-section h3 {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--muted);
       margin-bottom: 0.5rem;
+    }
+
+    .color-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.35rem 0.6rem;
+      margin-bottom: 2px;
+      border: 1px solid transparent;
+      background: transparent;
+      border-radius: 5px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: background 0.1s;
+    }
+    .color-btn:hover { background: var(--bg); }
+    .color-btn.active {
+      background: #eef2fb;
+      color: var(--blue);
+      font-weight: 600;
+      border-color: #c7d4f0;
     }
 
     .filter-btn {
@@ -99,36 +81,24 @@
       justify-content: space-between;
       width: 100%;
       text-align: left;
-      padding: 0.35rem 0.55rem;
+      padding: 0.3rem 0.55rem;
       margin-bottom: 2px;
       border: none;
       background: transparent;
       border-radius: 5px;
-      font-size: 0.8rem;
+      font-size: 0.76rem;
       cursor: pointer;
       color: var(--text);
-      transition: background 0.12s;
+      transition: background 0.1s;
     }
     .filter-btn:hover { background: var(--bg); }
     .filter-btn.active { background: #eef2fb; color: var(--blue); font-weight: 600; }
-    .filter-btn .flabel { flex: 1; display: flex; align-items: center; }
-    .filter-btn .cnt { font-size: 0.68rem; color: var(--muted); }
-
-    .color-select {
-      width: 100%;
-      padding: 0.38rem 0.55rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 0.8rem;
-      background: white;
-      outline: none;
-      cursor: pointer;
-    }
+    .filter-btn .cnt { font-size: 0.65rem; color: var(--muted); }
 
     .legend-bar {
       height: 10px;
       border-radius: 5px;
-      background: linear-gradient(to right, #440154, #3b528b, #21918c, #5ec962, #fde725);
+      background: linear-gradient(to right, #4caf50, #cddc39, #ffc107, #f44336, #9c27b0);
       margin-bottom: 4px;
       margin-top: 0.5rem;
     }
@@ -139,36 +109,41 @@
       color: var(--muted);
     }
 
+    /* Map */
+    #map { flex: 1; }
+
     /* Tooltip */
-    .leaflet-tooltip-own {
-      background: rgba(15,23,42,0.95) !important;
-      border: 1px solid rgba(255,255,255,0.12) !important;
-      color: white !important;
-      border-radius: 8px !important;
-      padding: 0.55rem 0.75rem !important;
-      font-size: 0.76rem !important;
-      line-height: 1.55 !important;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
-      pointer-events: none !important;
+    .tooltip {
+      position: absolute;
+      z-index: 20;
+      background: rgba(255,255,255,0.97);
+      color: #1a2744;
+      border-radius: 8px;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.78rem;
+      pointer-events: none;
+      max-width: 230px;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      display: none;
     }
-    .leaflet-tooltip-own::before { display: none !important; }
-    .tt-title { font-weight: 700; font-size: 0.82rem; margin-bottom: 4px; }
-    .tt-row { display: flex; justify-content: space-between; gap: 14px; }
-    .tt-key { color: rgba(255,255,255,0.55); }
-    .tt-val { font-weight: 600; }
+    .tooltip-addr { font-weight: 700; margin-bottom: 0.35rem; font-size: 0.82rem; line-height: 1.3; }
+    .tooltip-row { display: flex; justify-content: space-between; gap: 1rem; color: #555; margin-bottom: 0.18rem; }
+    .tooltip-row span:last-child { color: #1a2744; font-weight: 600; }
+    .tooltip-cat { font-size: 0.68rem; color: var(--accent); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; }
 
     #loading-msg {
       position: absolute;
       inset: 0;
-      background: rgba(15,23,42,0.7);
+      background: rgba(15,23,42,0.6);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-size: 0.9rem;
-      z-index: 600;
-      gap: 0.75rem;
+      z-index: 30;
       flex-direction: column;
+      gap: 0.75rem;
     }
     .spinner {
       width: 28px; height: 28px;
@@ -179,41 +154,36 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-
     @media (max-width: 700px) {
-      .panel { display: none; }
+      #sidebar { display: none; }
     }
   </style>
 </head>
 <body>
-<a href="#main" class="skip-link">Skip to main content</a>
+<a href="#app" class="skip-link">Skip to map</a>
 
 <header>
   <a class="logo" href="/beverlymadata/"><span>Beverly</span> Data</a>
   <nav>
     <div class="nav-group">
-      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">
-        Meetings
-      </button>
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">Meetings</button>
       <div class="nav-dropdown">
-      <a href="/beverlymadata/meetings.html">Meetings</a>
-      <a href="/beverlymadata/agendas.html">Agendas</a>
-      <a href="/beverlymadata/summaries.html">Summaries</a>
+        <a href="/beverlymadata/meetings.html">Meetings</a>
+        <a href="/beverlymadata/agendas.html">Agendas</a>
+        <a href="/beverlymadata/summaries.html">Summaries</a>
       </div>
     </div>
     <div class="nav-group">
-      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">
-        Finance
-      </button>
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">Finance</button>
       <div class="nav-dropdown">
-      <a href="/beverlymadata/data.html">City Data</a>
-      <a href="/beverlymadata/budget.html">Budget Explorer</a>
-      <a href="/beverlymadata/history.html">How We Got Here</a>
-      <a href="/beverlymadata/whats-next.html">What's Next</a>
-      <a href="/beverlymadata/calculator.html">Override Calculator</a>
+        <a href="/beverlymadata/data.html">City Data</a>
+        <a href="/beverlymadata/budget.html">Budget Explorer</a>
+        <a href="/beverlymadata/history.html">How We Got Here</a>
+        <a href="/beverlymadata/whats-next.html">What's Next</a>
+        <a href="/beverlymadata/calculator.html">Override Calculator</a>
       </div>
     </div>
-    <a href="/beverlymadata/property.html" class="active">Property Map</a>
+    <a href="/beverlymadata/property.html" class="active">Map</a>
     <a href="/beverlymadata/sources.html">Sources</a>
     <a href="/beverlymadata/about.html">About</a>
   </nav>
@@ -221,370 +191,286 @@
     <i class="fa-solid fa-bars" aria-hidden="true"></i>
   </button>
 </header>
-<main id="main">
-<div class="subheader">
-  <div>
-    <h1>Property Value Map</h1>
-    <p>FY2026 assessed values, colored by value per acre (Urban3 methodology). Data: <a href="https://www.mass.gov/info-details/massgis-data-property-tax-parcels" target="_blank" style="color:rgba(255,255,255,0.75);text-decoration:underline;">MassGIS Property Tax Parcels</a></p>
+
+<div id="app">
+  <div id="sidebar">
+    <div class="stats-bar">
+      <div class="stat-chip"><div class="stat-num" id="s-parcels">—</div><div class="stat-label">Parcels</div></div>
+      <div class="stat-chip"><div class="stat-num" id="s-med">—</div><div class="stat-label">Median val/ac</div></div>
+      <div class="stat-chip"><div class="stat-num" id="s-total">—</div><div class="stat-label">Total value</div></div>
+      <div class="stat-chip"><div class="stat-num" id="s-top">—</div><div class="stat-label">Top val/ac</div></div>
+    </div>
+    <div class="sidebar-body">
+      <div class="panel-section">
+        <h3>Color by</h3>
+        <button class="color-btn active" data-mode="vpa">Value per acre</button>
+        <button class="color-btn" data-mode="taxpa">Tax per acre</button>
+        <button class="color-btn" data-mode="net">Net fiscal contribution</button>
+        <button class="color-btn" data-mode="v">Total assessed value</button>
+        <button class="color-btn" data-mode="tax">Annual tax revenue</button>
+      </div>
+      <div class="panel-section">
+        <h3>Filter by type</h3>
+        <div id="cat-filters"></div>
+      </div>
+      <div class="panel-section">
+        <h3>Color scale</h3>
+        <div class="legend-bar" id="legend-bar"></div>
+        <div class="legend-labels" id="legend-labels"><span>Low</span><span>High</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;flex:1;">
+    <div id="map" role="img" aria-label="Interactive map of Beverly parcels"></div>
+    <div id="loading-msg"><div class="spinner"></div>Loading parcels…</div>
+    <div class="tooltip" id="tooltip"></div>
   </div>
 </div>
 
-<div class="stats-bar">
-  <div class="stat-chip"><div class="stat-num" id="s-parcels">—</div><div class="stat-label">Parcels shown</div></div>
-  <div class="stat-chip"><div class="stat-num" id="s-total">—</div><div class="stat-label">Total assessed value</div></div>
-  <div class="stat-chip"><div class="stat-num" id="s-med">—</div><div class="stat-label">Median value / acre</div></div>
-  <div class="stat-chip"><div class="stat-num" id="s-top">—</div><div class="stat-label">Highest value / acre</div></div>
-</div>
-
-<p class="sr-only">This page shows a visual map of 13,019 Beverly parcels colored by assessed value metrics. The statistics bar above summarizes the currently visible data. Use the Override Calculator page to search for a specific address and see its assessed value.</p>
-<div class="map-wrapper">
-  <div id="loading-msg"><div class="spinner"></div>Loading 13,019 parcels…</div>
-  <div id="map" role="application" aria-label="Interactive map of Beverly property values. Use the search on the Override Calculator page to look up a specific address, or refer to the statistics bar above for summary figures."></div>
-  <aside class="panel" aria-label="Map filters and legend">
-    <div class="panel-section">
-      <h3 id="color-by-label">Color by</h3>
-      <label for="color-by" class="sr-only">Color parcels by</label>
-      <select class="color-select" id="color-by" aria-labelledby="color-by-label">
-        <option value="vpa">Value per acre</option>
-        <option value="v">Total assessed value</option>
-        <option value="lv">Land value</option>
-        <option value="bv">Building value</option>
-        <option value="tax">Annual tax revenue</option>
-        <option value="taxpa">Tax revenue per acre</option>
-      </select>
-    </div>
-    <div class="panel-section">
-      <h3>Highlight</h3>
-      <label style="display:flex;align-items:center;gap:8px;font-size:0.82rem;cursor:pointer;">
-        <input type="checkbox" id="show-under" style="width:14px;height:14px;cursor:pointer;">
-        Underperforming parcels
-      </label>
-      <p style="font-size:0.7rem;color:var(--muted);margin-top:4px;line-height:1.4;">High-density zones with value/acre below city median. Shown in <strong style="color:#ef4444">red</strong>.</p>
-    </div>
-    <div class="panel-section">
-      <h3 id="vpa-filters-label">Filter by value / acre</h3>
-      <div id="vpa-filters" role="group" aria-labelledby="vpa-filters-label"></div>
-    </div>
-    <div class="panel-section">
-      <h3 id="cat-filters-label">Filter by type</h3>
-      <div id="cat-filters" role="group" aria-labelledby="cat-filters-label"></div>
-    </div>
-    <div class="panel-section">
-      <h3>Color scale (log)</h3>
-      <div class="legend-bar" role="img" aria-label="Color scale from purple (low value) through teal and green to yellow (high value)"></div>
-      <div class="legend-labels" id="legend-labels"><span>Low</span><span>High</span></div>
-    </div>
-  </aside>
-</div>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/maplibre-gl@3/dist/maplibre-gl.js"></script>
 <script>
-
-function fmt(v) {
-  if (v >= 1e9) return '$' + (v/1e9).toFixed(2) + 'B';
-  if (v >= 1e6) return '$' + (v/1e6).toFixed(1) + 'M';
-  if (v >= 1e3) return '$' + (v/1e3).toFixed(0) + 'K';
-  return '$' + Math.round(v);
-}
-
-// VPA color ramp: blue → purple → red → orange → yellow (log scale)
-function vpaColor(val, lo, hi) {
-  if (!val || val <= 0) return 'rgba(100,100,120,0.5)';
-  const t = Math.max(0, Math.min(1,
-    (Math.log(val + 1) - Math.log(lo + 1)) / (Math.log(hi + 1) - Math.log(lo + 1))
-  ));
-  // Viridis: colorblind-safe, perceptually uniform (low=purple, high=yellow)
-  const stops = [[68,1,84],[59,82,139],[33,145,140],[94,201,98],[253,231,37]];
-  const seg = t * (stops.length - 1);
-  const i = Math.min(Math.floor(seg), stops.length - 2);
-  const f = seg - i;
-  const r = Math.round(stops[i][0] + (stops[i+1][0] - stops[i][0]) * f);
-  const g = Math.round(stops[i][1] + (stops[i+1][1] - stops[i][1]) * f);
-  const b = Math.round(stops[i][2] + (stops[i+1][2] - stops[i][2]) * f);
-  return `rgba(${r},${g},${b},0.82)`;
-}
-
-const VPA_BUCKETS = [
-  { label: 'Under $2M',   lo: 0,          hi: 2_000_000 },
-  { label: '$2M – $5M',   lo: 2_000_000,  hi: 5_000_000 },
-  { label: '$5M – $10M',  lo: 5_000_000,  hi: 10_000_000 },
-  { label: 'Over $10M',   lo: 10_000_000, hi: Infinity },
-  { label: 'No data',     lo: -1,         hi: 0 },
-];
-
-// Maps raw parcel category to a display group
-const CAT_GROUP = {
-  'Single Family':  'Single Family',
-  'Condo':          'Missing Middle',
-  'Two Family':     'Missing Middle',
-  'Three Family':   'Missing Middle',
-  'Multi-Family':   'Missing Middle',
-  'Apt 4-8u':       'Missing Middle',
-  'Apt 9+u':        'High Density',
-  'Retail':         'Commercial',
-  'Office':         'Commercial',
-  'Commercial':     'Commercial',
-  'Industrial':     'Industrial',
-  'Tax Exempt':     'Tax Exempt',
-  'Other':          'Other / Vacant',
-  'Vacant Land':    'Other / Vacant',
-};
-const CAT_GROUP_NOTE = {
-  'Missing Middle': 'Includes condos, duplexes, triplexes, and small apt buildings. Note: condo category may include buildings with 9+ units.',
-};
-
-function parcelGroup(p) { return CAT_GROUP[p.cat] || p.cat; }
-
-let allParcels = [], filtered = [], colorBy = 'vpa';
-let activeGroups = new Set();
-let activeVpaBuckets = new Set(VPA_BUCKETS.map((_,i) => i));
-let lo = 1, hi = 1;
-let circleLayer;
-let geoLookup = {}; // addr -> GeoJSON feature
-let geoLoaded = false;
-
-// Init map centered on Beverly
-const map = L.map('map', { zoomControl: true }).setView([42.558, -70.880], 13);
-
-
-// Custom canvas renderer for performance
-const renderer = L.canvas({ padding: 0.5 });
-
-function getColorValue(p) {
-  if (colorBy === 'v') return p.v;
-  if (colorBy === 'lv') return p.lv;
-  if (colorBy === 'bv') return p.bv;
-  if (colorBy === 'tax') return p.tax;
-  if (colorBy === 'taxpa') return p.taxpa;
-  return p.vpa;
-}
-
-function getColorRange() {
-  const vals = filtered.map(getColorValue).filter(v => v > 0).sort((a,b) => a-b);
-  if (!vals.length) return [1, 1];
-  return [vals[Math.floor(vals.length * 0.02)] || 1, vals[Math.floor(vals.length * 0.98)] || 2];
-}
-
-function updateStats() {
-  const n = filtered.length;
-  const total = filtered.reduce((s,p) => s+p.v, 0);
-  const vpas = filtered.filter(p=>p.vpa>0).map(p=>p.vpa).sort((a,b)=>a-b);
-  const med = vpas[Math.floor(vpas.length/2)] || 0;
-  const top = vpas[vpas.length-1] || 0;
-  document.getElementById('s-parcels').textContent = n.toLocaleString();
-  document.getElementById('s-total').textContent = fmt(total);
-  document.getElementById('s-med').textContent = fmt(med)+'/ac';
-  document.getElementById('s-top').textContent = fmt(top)+'/ac';
-  const label = colorBy === 'v' ? '' : colorBy === 'lv' ? ' land' : colorBy === 'bv' ? ' bldg' : colorBy === 'tax' ? '/yr' : '/ac';
-  document.getElementById('legend-labels').innerHTML =
-    `<span>${fmt(lo)}${label}</span><span>${fmt(hi)}${label}</span>`;
-}
-
-function buildTooltip(p) {
-  return `<div class="tt-title">${p.addr || 'Unknown'}</div>
-    <div class="tt-row"><span class="tt-key">Total value</span><span class="tt-val">${fmt(p.v)}</span></div>
-    <div class="tt-row"><span class="tt-key">Land value</span><span class="tt-val">${fmt(p.lv)}</span></div>
-    <div class="tt-row"><span class="tt-key">Bldg value</span><span class="tt-val">${fmt(p.bv)}</span></div>
-    ${p.ls > 0 ? `<div class="tt-row"><span class="tt-key">Lot size</span><span class="tt-val">${p.ls} ac</span></div>` : ''}
-    ${p.vpa > 0 ? `<div class="tt-row"><span class="tt-key">Value/acre</span><span class="tt-val">${fmt(p.vpa)}/ac</span></div>` : ''}
-    ${p.tax > 0 ? `<div class="tt-row"><span class="tt-key">Annual tax</span><span class="tt-val">${fmt(p.tax)}/yr</span></div>` : ''}
-    ${p.taxpa > 0 ? `<div class="tt-row"><span class="tt-key">Tax/acre</span><span class="tt-val">${fmt(p.taxpa)}/ac</span></div>` : ''}
-    <div class="tt-row"><span class="tt-key">Type</span><span class="tt-val">${p.cat}</span></div>
-    <div class="tt-row"><span class="tt-key">Zone</span><span class="tt-val">${p.zone||'—'}</span></div>
-    ${p.yr ? `<div class="tt-row"><span class="tt-key">Built</span><span class="tt-val">${p.yr}</span></div>` : ''}
-    ${p.under ? `<div style="margin-top:5px;color:#ef4444;font-weight:600;font-size:0.72rem;">⚠ Underperforming site</div>` : ''}`;
-}
-
-function renderLayer() {
-  if (circleLayer) map.removeLayer(circleLayer);
-  [lo, hi] = getColorRange();
-  updateStats();
-
-  const showUnder = document.getElementById('show-under').checked;
-
-  if (geoLoaded) {
-    // Polygon mode using parcels_geo.geojson
-    const filteredAddrs = new Set(filtered.map(p => (p.addr || '').toUpperCase().trim()));
-    const filteredMap = {};
-    for (const p of filtered) filteredMap[(p.addr || '').toUpperCase().trim()] = p;
-
-    circleLayer = L.geoJSON(Object.values(geoLookup), {
-      filter: f => filteredAddrs.has((f.properties.addr || '').toUpperCase().trim()),
-      style: f => {
-        const addr = (f.properties.addr || '').toUpperCase().trim();
-        const p = filteredMap[addr];
-        if (!p) return { fillColor: 'rgba(100,100,120,0.4)', weight: 0.3, color: '#aaa', fillOpacity: 0.5 };
-        const isUnder = showUnder && p.under;
-        return {
-          fillColor: isUnder ? '#ef4444' : vpaColor(getColorValue(p), lo, hi),
-          fillOpacity: isUnder ? 0.9 : 0.82,
-          color: isUnder ? '#b91c1c' : 'rgba(0,0,0,0.15)',
-          weight: 0.5,
-        };
-      },
-      onEachFeature: (f, layer) => {
-        const addr = (f.properties.addr || '').toUpperCase().trim();
-        const p = filteredMap[addr];
-        if (p) layer.bindTooltip(buildTooltip(p), { className: 'leaflet-tooltip-own', sticky: true, offset: [10, 0] });
-      },
-      renderer,
-    });
-  } else {
-    // Fallback: circle markers
-    circleLayer = L.layerGroup();
-    for (const p of filtered) {
-      const isUnder = showUnder && p.under;
-      const color = isUnder ? '#ef4444' : vpaColor(getColorValue(p), lo, hi);
-      const c = L.circleMarker([p.lat, p.lng], {
-        radius: isUnder ? 5 : 4,
-        fillColor: color,
-        fillOpacity: isUnder ? 0.9 : 0.85,
-        color: isUnder ? '#b91c1c' : 'transparent',
-        weight: isUnder ? 1.5 : 0,
-        renderer,
-      });
-      c.bindTooltip(buildTooltip(p), { className: 'leaflet-tooltip-own', sticky: true, offset: [10, 0] });
-      circleLayer.addLayer(c);
-    }
-  }
-  circleLayer.addTo(map);
-}
-
-function vpaBucketIndex(vpa) {
-  if (!vpa || vpa <= 0) return VPA_BUCKETS.length - 1; // 'No data'
-  for (let i = 0; i < VPA_BUCKETS.length - 1; i++) {
-    if (vpa >= VPA_BUCKETS[i].lo && vpa < VPA_BUCKETS[i].hi) return i;
-  }
-  return VPA_BUCKETS.length - 2; // 'Over $10M' catch-all
-}
-
-function applyFilters() {
-  const showUnder = document.getElementById('show-under').checked;
-  filtered = allParcels.filter(p => {
-    // When "underperforming" is checked, those parcels always show regardless of filters
-    if (showUnder && p.under) return true;
-    return activeGroups.has(parcelGroup(p)) && activeVpaBuckets.has(vpaBucketIndex(p.vpa));
-  });
-  renderLayer();
-}
-
-function setActive(btn, isActive) {
-  btn.classList.toggle('active', isActive);
-  btn.setAttribute('aria-pressed', String(isActive));
-}
-
-function buildToggleGroup(container, items, activeSet, allKey, getKey, getLabel, onToggle, getNote) {
-  container.innerHTML = '';
-  const allBtn = document.createElement('button');
-  allBtn.className = 'filter-btn active';
-  allBtn.setAttribute('aria-pressed', 'true');
-  allBtn.dataset.key = allKey;
-  allBtn.innerHTML = `<span class="flabel">All</span><span class="cnt">${allParcels.length.toLocaleString()}</span>`;
-  container.appendChild(allBtn);
-
-  for (const item of items) {
-    const key = getKey(item);
-    const btn = document.createElement('button');
-    btn.className = 'filter-btn active';
-    btn.setAttribute('aria-pressed', 'true');
-    btn.dataset.key = String(key);
-    const note = getNote && getNote(item);
-    btn.innerHTML = `<span class="flabel">${getLabel(item)}</span><span class="cnt">${item.cnt.toLocaleString()}</span>`;
-    if (note) btn.title = note;
-    container.appendChild(btn);
-  }
-
-  container.addEventListener('click', e => {
-    const btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-    const key = btn.dataset.key;
-    if (key === allKey) {
-      const allActive = activeSet.size === items.length;
-      if (allActive) { activeSet.clear(); container.querySelectorAll('.filter-btn').forEach(b => setActive(b, false)); }
-      else { items.forEach(it => activeSet.add(getKey(it))); container.querySelectorAll('.filter-btn').forEach(b => setActive(b, true)); }
-    } else {
-      const parsed = isNaN(key) ? key : Number(key);
-      if (activeSet.has(parsed)) { activeSet.delete(parsed); setActive(btn, false); }
-      else { activeSet.add(parsed); setActive(btn, true); }
-      const ab = container.querySelector(`[data-key="${allKey}"]`);
-      setActive(ab, activeSet.size === items.length);
-    }
-    onToggle();
-  });
-}
-
-function buildFilters() {
-  // VPA bucket counts
-  const vpaCounts = new Array(VPA_BUCKETS.length).fill(0);
-  for (const p of allParcels) vpaCounts[vpaBucketIndex(p.vpa)]++;
-  const vpaItems = VPA_BUCKETS.map((b, i) => ({ ...b, cnt: vpaCounts[i], idx: i })).filter(b => b.cnt > 0);
-  buildToggleGroup(
-    document.getElementById('vpa-filters'),
-    vpaItems, activeVpaBuckets, '__vpa_all__',
-    item => item.idx, item => item.label,
-    applyFilters
-  );
-
-  // Group counts (collapsed categories)
-  const groups = {};
-  for (const p of allParcels) {
-    const g = parcelGroup(p);
-    groups[g] = (groups[g] || 0) + 1;
-  }
+  const CAT_GROUPS = {
+    'Single Family': 'Single Family',
+    'Condo': 'Missing Middle',
+    'Two Family': 'Missing Middle',
+    'Three Family': 'Missing Middle',
+    'Multi-Family': 'Missing Middle',
+    'Apt 4-8u': 'Missing Middle',
+    'Apt 9+u': 'High Density',
+    'Retail': 'Commercial',
+    'Office': 'Commercial',
+    'Commercial': 'Commercial',
+    'Industrial': 'Industrial',
+    'Tax Exempt': 'Tax Exempt',
+    'Other': 'Other / Vacant',
+    'Vacant Land': 'Other / Vacant',
+  };
   const GROUP_ORDER = ['Single Family','Missing Middle','High Density','Commercial','Industrial','Tax Exempt','Other / Vacant'];
-  activeGroups = new Set(Object.keys(groups));
-  const groupItems = GROUP_ORDER.filter(g => groups[g]).map(g => ({ group: g, cnt: groups[g], note: CAT_GROUP_NOTE[g] || null }));
-  buildToggleGroup(
-    document.getElementById('cat-filters'),
-    groupItems, activeGroups, '__cat_all__',
-    item => item.group,
-    item => item.note ? `${item.group} ⓘ` : item.group,
-    applyFilters,
-    item => item.note
-  );
-}
 
-document.getElementById('color-by').addEventListener('change', e => {
-  colorBy = e.target.value;
-  renderLayer();
-});
+  const COLOR_STOPS = {
+    vpa:   [[0,'#d0ead0'],[500000,'#4caf50'],[2000000,'#cddc39'],[4000000,'#ffc107'],[7000000,'#f44336'],[9400000,'#9c27b0']],
+    taxpa: [[0,'#d0ead0'],[12000,'#4caf50'],[34000,'#cddc39'],[55000,'#ffc107'],[80000,'#f44336'],[102409,'#9c27b0']],
+    net:   [[-3200,'#f44336'],[0,'#ffc107'],[2000,'#cddc39'],[10000,'#4caf50'],[50000,'#1a9850'],[200000,'#9c27b0']],
+    v:     [[0,'#d0ead0'],[200000,'#4caf50'],[800000,'#cddc39'],[2000000,'#ffc107'],[5000000,'#f44336'],[15000000,'#9c27b0']],
+    tax:   [[0,'#d0ead0'],[2000,'#4caf50'],[8000,'#cddc39'],[20000,'#ffc107'],[60000,'#f44336'],[200000,'#9c27b0']],
+  };
 
-document.getElementById('show-under').addEventListener('change', () => applyFilters());
+  const LEGEND_BAR = {
+    net: 'linear-gradient(to right, #f44336, #ffc107, #4caf50, #9c27b0)',
+    default: 'linear-gradient(to right, #4caf50, #cddc39, #ffc107, #f44336, #9c27b0)',
+  };
 
-// Tile style toggle
-const lightTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-  attribution: '© <a href="https://carto.com/">CARTO</a> © <a href="https://www.openstreetmap.org/copyright">OSM</a>',
-  subdomains: 'abcd', maxZoom: 19,
-});
-const darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  attribution: '© <a href="https://carto.com/">CARTO</a> © <a href="https://www.openstreetmap.org/copyright">OSM</a>',
-  subdomains: 'abcd', maxZoom: 19,
-});
-lightTiles.addTo(map);
-L.control.layers({'Light': lightTiles, 'Dark': darkTiles}, {}, {position:'bottomleft'}).addTo(map);
-
-(async () => {
-  try {
-    const [parcelsRes, geoRes] = await Promise.all([
-      fetch('/beverlymadata/parcels.json'),
-      fetch('/beverlymadata/parcels_geo.geojson'),
-    ]);
-    allParcels = await parcelsRes.json();
-    const geo = await geoRes.json();
-    for (const f of geo.features) {
-      const addr = (f.properties.addr || '').toUpperCase().trim();
-      if (addr) geoLookup[addr] = f;
-    }
-    geoLoaded = true;
-    buildFilters();
-    applyFilters();
-    document.getElementById('loading-msg').style.display = 'none';
-  } catch (err) {
-    document.getElementById('loading-msg').innerHTML =
-      `<div style="color:#f87171">⚠️ Could not load map data<br><small>${err.message}</small></div>`;
+  function colorExpr(mode) {
+    const stops = COLOR_STOPS[mode];
+    const expr = ['interpolate', ['linear'], ['coalesce', ['get', mode], 0]];
+    stops.forEach(([v, c]) => { expr.push(v, c); });
+    return expr;
   }
-})();
-</script></main>
+
+  function fmt(v) {
+    if (v == null) return 'N/A';
+    if (v >= 1e9) return '$' + (v/1e9).toFixed(2) + 'B';
+    if (v >= 1e6) return '$' + (v/1e6).toFixed(1) + 'M';
+    if (v >= 1e3) return '$' + Math.round(v/1e3) + 'K';
+    return '$' + Math.round(v);
+  }
+
+  let mode = 'vpa';
+  let activeGroups = new Set(GROUP_ORDER);
+  let allFeatures = [];
+
+  const map = new maplibregl.Map({
+    container: 'map',
+    style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+    center: [-70.88, 42.558],
+    zoom: 13,
+    antialias: true,
+  });
+
+  map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+  function parcelGroup(cat) { return CAT_GROUPS[cat] || 'Other / Vacant'; }
+
+  function filterExpr() {
+    if (activeGroups.size === GROUP_ORDER.length) return null;
+    const cats = Object.entries(CAT_GROUPS)
+      .filter(([, g]) => activeGroups.has(g))
+      .map(([c]) => c);
+    return ['in', ['get', 'cat'], ['literal', cats]];
+  }
+
+  function applyFilter() {
+    if (!map.getLayer('parcels-fill')) return;
+    const expr = filterExpr();
+    map.setFilter('parcels-fill', expr);
+    map.setFilter('parcels-outline', expr);
+    map.setFilter('parcels-hover', expr);
+    updateStats();
+  }
+
+  function updateStats() {
+    const expr = filterExpr();
+    const visible = expr
+      ? allFeatures.filter(f => {
+          const g = parcelGroup(f.properties.cat);
+          return activeGroups.has(g);
+        })
+      : allFeatures;
+
+    const n = visible.length;
+    const total = visible.reduce((s, f) => s + (f.properties.v || 0), 0);
+    const vpas = visible.map(f => f.properties.vpa || 0).filter(v => v > 0).sort((a,b)=>a-b);
+    const med = vpas[Math.floor(vpas.length / 2)] || 0;
+    const top = vpas[vpas.length - 1] || 0;
+
+    document.getElementById('s-parcels').textContent = n.toLocaleString();
+    document.getElementById('s-total').textContent = fmt(total);
+    document.getElementById('s-med').textContent = fmt(med);
+    document.getElementById('s-top').textContent = fmt(top);
+  }
+
+  function buildCatFilters() {
+    const counts = {};
+    for (const f of allFeatures) {
+      const g = parcelGroup(f.properties.cat);
+      counts[g] = (counts[g] || 0) + 1;
+    }
+
+    const container = document.getElementById('cat-filters');
+    container.innerHTML = '';
+
+    // All button
+    const allBtn = document.createElement('button');
+    allBtn.className = 'filter-btn active';
+    allBtn.dataset.group = '__all__';
+    allBtn.innerHTML = `<span>All</span><span class="cnt">${allFeatures.length.toLocaleString()}</span>`;
+    container.appendChild(allBtn);
+
+    for (const g of GROUP_ORDER) {
+      if (!counts[g]) continue;
+      const btn = document.createElement('button');
+      btn.className = 'filter-btn active';
+      btn.dataset.group = g;
+      btn.innerHTML = `<span>${g}</span><span class="cnt">${counts[g].toLocaleString()}</span>`;
+      container.appendChild(btn);
+    }
+
+    container.addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      const g = btn.dataset.group;
+      const allBtns = container.querySelectorAll('.filter-btn[data-group]');
+      const groupBtns = container.querySelectorAll('.filter-btn:not([data-group="__all__"])');
+
+      if (g === '__all__') {
+        const allOn = activeGroups.size === GROUP_ORDER.length;
+        if (allOn) {
+          activeGroups.clear();
+          allBtns.forEach(b => b.classList.remove('active'));
+        } else {
+          GROUP_ORDER.forEach(x => activeGroups.add(x));
+          allBtns.forEach(b => b.classList.add('active'));
+        }
+      } else {
+        if (activeGroups.has(g)) activeGroups.delete(g);
+        else activeGroups.add(g);
+        btn.classList.toggle('active', activeGroups.has(g));
+        const allActive = activeGroups.size === GROUP_ORDER.filter(x => counts[x]).length;
+        container.querySelector('[data-group="__all__"]').classList.toggle('active', allActive);
+      }
+      applyFilter();
+    });
+  }
+
+  map.on('load', () => {
+    fetch('/beverlymadata/parcels_geo.geojson')
+      .then(r => r.json())
+      .then(geo => {
+        allFeatures = geo.features.filter(f => f.geometry);
+
+        map.addSource('parcels', { type: 'geojson', data: geo });
+
+        map.addLayer({
+          id: 'parcels-fill',
+          type: 'fill',
+          source: 'parcels',
+          paint: { 'fill-color': colorExpr('vpa'), 'fill-opacity': 0.85 },
+        });
+
+        map.addLayer({
+          id: 'parcels-outline',
+          type: 'line',
+          source: 'parcels',
+          paint: { 'line-color': 'rgba(0,0,0,0.12)', 'line-width': 0.4 },
+        });
+
+        map.addLayer({
+          id: 'parcels-hover',
+          type: 'fill',
+          source: 'parcels',
+          paint: {
+            'fill-color': '#1a2744',
+            'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 0.3, 0],
+          },
+        });
+
+        buildCatFilters();
+        updateStats();
+        document.getElementById('loading-msg').style.display = 'none';
+
+        // Hover tooltip
+        let hoveredId = null;
+        map.on('mousemove', 'parcels-fill', e => {
+          if (!e.features.length) return;
+          if (hoveredId !== null) map.setFeatureState({ source: 'parcels', id: hoveredId }, { hover: false });
+          hoveredId = e.features[0].id;
+          map.setFeatureState({ source: 'parcels', id: hoveredId }, { hover: true });
+
+          const p = e.features[0].properties;
+          const netVal = p.net != null ? (p.net >= 0 ? '+' : '') + fmt(p.net) : 'N/A';
+          const netColor = p.net > 0 ? '#2e7d32' : p.net < 0 ? '#c62828' : '#999';
+
+          const el = document.getElementById('tooltip');
+          el.style.display = 'block';
+          el.style.left = (e.point.x + 14) + 'px';
+          el.style.top  = (e.point.y - 10) + 'px';
+          el.innerHTML = `
+            <div class="tooltip-addr">${p.addr || 'Unknown'}</div>
+            <div class="tooltip-row"><span>Value / acre</span><span>${fmt(p.vpa)}</span></div>
+            <div class="tooltip-row"><span>Tax / acre</span><span>${fmt(p.taxpa)}</span></div>
+            <div class="tooltip-row"><span>Total value</span><span>${fmt(p.v)}</span></div>
+            <div class="tooltip-row"><span>Annual tax</span><span>${fmt(p.tax)}</span></div>
+            <div class="tooltip-row"><span>Road cost</span><span>${fmt(p.road_cost)}</span></div>
+            <div class="tooltip-row"><span>Net fiscal</span><span style="color:${netColor};font-weight:700">${netVal}</span></div>
+            <div class="tooltip-cat">${p.cat || ''}</div>
+          `;
+          map.getCanvas().style.cursor = 'pointer';
+        });
+
+        map.on('mouseleave', 'parcels-fill', () => {
+          if (hoveredId !== null) map.setFeatureState({ source: 'parcels', id: hoveredId }, { hover: false });
+          hoveredId = null;
+          document.getElementById('tooltip').style.display = 'none';
+          map.getCanvas().style.cursor = '';
+        });
+      });
+  });
+
+  // Color-by buttons
+  document.querySelectorAll('.color-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      mode = btn.dataset.mode;
+      if (map.getLayer('parcels-fill')) {
+        map.setPaintProperty('parcels-fill', 'fill-color', colorExpr(mode));
+      }
+      document.getElementById('legend-bar').style.background =
+        mode === 'net' ? LEGEND_BAR.net : LEGEND_BAR.default;
+    });
+  });
+</script>
 <script src="/beverlymadata/nav.js"></script>
 </body>
 </html>
