@@ -156,6 +156,11 @@
   const BASE_EXP     = 182.792e6;  // FY2027 total expenditures (FFC report); gap = -$3.92M
   const HOUSING_UNITS = 15400;
 
+  // FY2028 expenditure anchored to FFC forecast so gap = exactly $7.107M at 0 override
+  const FY28_DEFICIT = 7.107e6;
+  const FY28_REV_NO_OVERRIDE = BASE_REVENUE * (1 + REV_GROWTH);
+  const FY28_EXP = FY28_REV_NO_OVERRIDE + FY28_DEFICIT;
+
   // FY2027 is now the base year (index 0); override kicks in FY2028 (index 1)
   const YEARS = ['FY27','FY28','FY29','FY30','FY31','FY32','FY33','FY34','FY35','FY36'];
   const N = YEARS.length;
@@ -170,18 +175,23 @@
 
   function project(overrideAmt) {
     const revenues = [], exps = [], gaps = [];
-    let revenue = BASE_REVENUE;
-    let exp = BASE_EXP;
 
-    for (let i = 0; i < N; i++) {
-      // i=0 is FY27 (base year — use values as-is); growth applies starting FY28
-      if (i > 0) {
-        revenue = revenue * (1 + REV_GROWTH);
-        exp     = exp     * (1 + EXP_GROWTH);
-      }
-      // Override kicks in FY28 (i=1), permanently raises total revenues
-      if (i === 1) revenue += overrideAmt;
+    // FY27 (i=0): known base year
+    revenues.push(BASE_REVENUE / 1e6);
+    exps.push(BASE_EXP / 1e6);
+    gaps.push((BASE_REVENUE - BASE_EXP) / 1e6);
 
+    // FY28 (i=1): anchored to FFC forecast expenditure, override applied here
+    let rev28 = FY28_REV_NO_OVERRIDE + overrideAmt;
+    revenues.push(rev28 / 1e6);
+    exps.push(FY28_EXP / 1e6);
+    gaps.push((rev28 - FY28_EXP) / 1e6);
+
+    // FY29+ (i=2+): grow from FY28 figures
+    let revenue = rev28, exp = FY28_EXP;
+    for (let i = 2; i < N; i++) {
+      revenue = revenue * (1 + REV_GROWTH);
+      exp     = exp     * (1 + EXP_GROWTH);
       revenues.push(revenue / 1e6);
       exps.push(exp / 1e6);
       gaps.push((revenue - exp) / 1e6);
@@ -190,11 +200,12 @@
   }
 
   function yearsUntilGap(overrideAmt) {
-    let revenue = BASE_REVENUE, exp = BASE_EXP;
+    let revenue = FY28_REV_NO_OVERRIDE + overrideAmt;
+    let exp = FY28_EXP;
+    if (revenue < exp) return 0;
     for (let i = 1; i <= 20; i++) {
       revenue = revenue * (1 + REV_GROWTH);
       exp     = exp     * (1 + EXP_GROWTH);
-      if (i === 1) revenue += overrideAmt;
       if (revenue < exp) return i;
     }
     return 20;
