@@ -71,6 +71,30 @@
     }
     .structural-box .not-waste .check { color: var(--green); flex-shrink: 0; font-size: 1.05rem; }
 
+    /* Page jump nav */
+    .page-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .page-nav a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--blue);
+      background: var(--tag-bg);
+      border: 1px solid #d0daf0;
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+      text-decoration: none;
+      transition: background 0.12s;
+    }
+
+    .page-nav a:hover {
+      background: #dde6f7;
+    }
+
     /* Breadcrumb back link */
     .back-link {
       display: inline-flex; align-items: center; gap: 0.4rem;
@@ -165,10 +189,6 @@
         <div class="val">3</div>
         <div class="lbl">Options on the table</div>
       </div>
-      <div class="stat-chip">
-        <div class="val">10–20%</div>
-        <div class="lbl">Potential GIC health insurance savings</div>
-      </div>
     </div>
   </div>
 </div>
@@ -177,8 +197,16 @@
 
   <a class="back-link" href="/beverlymadata/history.html">← How We Got Here</a>
 
+  <!-- JUMP LINKS -->
+  <nav class="page-nav" aria-label="Page sections">
+    <a href="#options">The Three Options</a>
+    <a href="#other-paths">Other Paths Forward</a>
+    <a href="#city-hall">City Hall Renovation</a>
+    <a href="#land-use">Land Use</a>
+  </nav>
+
   <!-- OPTIONS -->
-  <h2 class="section-title">The Three Options</h2>
+  <h2 class="section-title" id="options">The Three Options</h2>
   <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;">The Financial Forecasting Committee identified three broad options for closing the current structural gap. None of them are easy.</p>
   <div class="options-grid">
     <div class="option-card">
@@ -199,7 +227,7 @@
   </div>
 
   <!-- BEYOND THE OVERRIDE -->
-  <h2 class="section-title">Beyond the Override: Other Paths Forward</h2>
+  <h2 class="section-title" id="other-paths">Beyond the Override: Other Paths Forward</h2>
   <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.25rem;">Closing a structural deficit isn't only about cutting costs or raising the levy. Beverly has several other levers available, some requiring policy decisions, others requiring longer-term investment.</p>
 
   <div class="driver-grid" style="margin-bottom:1.5rem;">
@@ -207,7 +235,7 @@
     <div class="driver-card" style="grid-column: 1 / -1; border-left: 4px solid var(--blue);">
       <div class="driver-icon"><i class="fa-solid fa-hospital"></i></div>
       <h3>Join the Group Insurance Commission (GIC)</h3>
-      <p>Beverly is self-insured and spent $30 million on health insurance in FY2026 (the most recent reported figure), the city's single largest controllable cost. The Massachusetts Group Insurance Commission offers state-negotiated plans that typically run 10–20% cheaper than self-insured models. Switching would require union negotiations (unions must approve the move), but could save several million dollars annually without cutting a single employee or service. Beverly's own FFC minutes flagged this as an option as far back as 2019. It's probably the highest-leverage structural fix available that doesn't require a ballot question.</p>
+      <p>Beverly is self-insured and spent $30 million on health insurance in FY2026 (the most recent reported figure), the city's single largest controllable cost. The Massachusetts Group Insurance Commission offers state-negotiated plans that have saved other municipalities millions of dollars in health insurance costs. Switching would require union negotiations (unions must approve the move), but could save several million dollars annually without cutting a single employee or service. Beverly's own FFC minutes flagged this as an option as far back as 2019. It's probably the highest-leverage structural fix available that doesn't require a ballot question.</p>
     </div>
 
     <div class="driver-card" style="border-left: 4px solid var(--accent);">
@@ -237,22 +265,8 @@
 
   </div>
 
-  <!-- LAND USE -->
-  <h2 class="section-title">Land Use Is Fiscal Policy</h2>
-  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.25rem;">The options above address the immediate gap, but what about Beverly's long-term fiscal health?</p>
-
-  <div class="structural-box">
-    <p>Land use is part of the answer. Not all development generates the same tax revenue per acre. A mixed-use block on Cabot Street (dense, walkable, close to the commuter rail) produces far more tax revenue per acre than an acre of single-family homes in a low-density subdivision that requires the same roads, fire coverage, and school services. This is not a value judgment about neighborhoods; it is how the math works.</p>
-    <p>New subdivisions and road extensions also come with long-term maintenance obligations (roads to repave, water lines to maintain, sidewalks to repair) on a roughly 20-30 year cycle. If the tax revenue generated by that development does not cover those future costs, the gap becomes a liability on the city's books. Beverly's roads fund shortfall is one visible example of how that cycle plays out.</p>
-    <p>This framework, measuring the fiscal productivity of land rather than just its assessed value, is the basis of the revenue-per-acre analysis on the <a href="/beverlymadata/property.html">Property Map</a>. It is also the core argument of Strong Towns, a nonprofit think tank focused on municipal fiscal resilience, whose work informed the framing here.<a href="#fn-1" id="fnref-1" class="fn-ref">[1]</a></p>
-    <div class="not-waste">
-      <span class="check"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span>
-      <span>The type and location of development affects how much tax revenue Beverly collects per acre. That relationship is part of the long-term fiscal picture, separate from the immediate question of the deficit.</span>
-    </div>
-  </div>
-
   <!-- CITY HALL RENOVATION -->
-  <h2 class="section-title">What About the City Hall Renovation?</h2>
+  <h2 class="section-title" id="city-hall">What About the City Hall Renovation?</h2>
   <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.25rem;">Many residents have asked whether cancelling the $28 million City Hall renovation<a href="#fn-2" id="fnref-2" class="fn-ref">[2]</a> would close the budget gap. The short answer is no, and here is why.</p>
 
   <div class="structural-box">
@@ -269,6 +283,20 @@
     <p>Some residents argue that the ~$1.9M/yr in annual debt service Beverly will owe once bonds are issued is money that <em>could</em> have gone to the operating budget instead, making the projects effectively competing. This is a more sophisticated version of the argument, and it deserves a direct answer.</p>
     <p>The fungibility argument has two problems. Once a borrowing is authorized under Massachusetts law (MGL Ch. 44), bond proceeds are legally restricted to the capital purpose they were approved for; they cannot be redirected to pay salaries or benefits. The money is not fungible at the point of issuance. Beyond that, cancelling the project today does not deposit any money into the general fund. It avoids a future obligation, but it does not generate cash for FY2027 or FY2028, when the deficit is happening now.</p>
     <p><strong>Where the concern is legitimate:</strong> the debt service will compound an already difficult operating picture. A ~$1.9M/yr recurring obligation phased in starting around FY2029, layered on top of a structural gap that is already growing, makes an eventual override or other fix larger than it would otherwise need to be. That's a real fiscal tradeoff, and it's fair to ask whether the <em>timing</em> of the renovation is right given Beverly's financial situation, even if cancellation wouldn't close the existing gap.</p>
+  </div>
+
+  <!-- LAND USE -->
+  <h2 class="section-title" id="land-use">Land Use Is Fiscal Policy</h2>
+  <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.25rem;">The options above address the immediate gap, but what about Beverly's long-term fiscal health?</p>
+
+  <div class="structural-box">
+    <p>Land use is part of the answer. Not all development generates the same tax revenue per acre. A mixed-use block on Cabot Street (dense, walkable, close to the commuter rail) produces far more tax revenue per acre than an acre of single-family homes in a low-density subdivision that requires the same roads, fire coverage, and school services. This is not a value judgment about neighborhoods; it is how the math works.</p>
+    <p>New subdivisions and road extensions also come with long-term maintenance obligations (roads to repave, water lines to maintain, sidewalks to repair) on a roughly 20-30 year cycle. If the tax revenue generated by that development does not cover those future costs, the gap becomes a liability on the city's books. Beverly's roads fund shortfall is one visible example of how that cycle plays out.</p>
+    <p>This framework, measuring the fiscal productivity of land rather than just its assessed value, is the basis of the revenue-per-acre analysis on the <a href="/beverlymadata/property.html">Property Map</a>. It is also the core argument of Strong Towns, a nonprofit think tank focused on municipal fiscal resilience, whose work informed the framing here.<a href="#fn-1" id="fnref-1" class="fn-ref">[1]</a></p>
+    <div class="not-waste">
+      <span class="check"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span>
+      <span>The type and location of development affects how much tax revenue Beverly collects per acre. That relationship is part of the long-term fiscal picture, separate from the immediate question of the deficit.</span>
+    </div>
   </div>
 
   <div class="footnotes">
