@@ -301,7 +301,7 @@
     if (!showUnder) return base;
     return ['case',
       ['==', ['get', 'cat'], 'Tax Exempt'], TAX_EXEMPT_COLOR,
-      ['==', ['get', 'under'], true], UNDER_COLOR,
+      ['boolean', ['get', 'under'], false], UNDER_COLOR,
       interp
     ];
   }
@@ -344,7 +344,7 @@
   function filterExpr() {
     const parts = [];
     if (showUnder) {
-      parts.push(['==', ['get', 'under'], true]);
+      parts.push(['boolean', ['get', 'under'], false]);
     } else if (activeGroups.size < GROUP_ORDER.length) {
       const cats = Object.entries(CAT_GROUPS)
         .filter(([, g]) => activeGroups.has(g))
