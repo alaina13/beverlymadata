@@ -187,12 +187,14 @@
 
   function parcelGroup(cat) { return CAT_GROUPS[cat] || 'Other / Vacant'; }
 
+  const HAS_CATEGORY = ['!=', ['get', 'cat'], null];
+
   function filterExpr() {
-    if (activeGroups.size === GROUP_ORDER.length) return null;
+    if (activeGroups.size === GROUP_ORDER.length) return HAS_CATEGORY;
     const cats = Object.entries(CAT_GROUPS)
       .filter(([, g]) => activeGroups.has(g))
       .map(([c]) => c);
-    return ['in', ['get', 'cat'], ['literal', cats]];
+    return ['all', HAS_CATEGORY, ['in', ['get', 'cat'], ['literal', cats]]];
   }
 
   function applyFilter() {
@@ -302,6 +304,7 @@
           id: 'parcels-fill',
           type: 'fill',
           source: 'parcels',
+          filter: HAS_CATEGORY,
           paint: { 'fill-color': colorExpr('vpa'), 'fill-opacity': 0.85 },
         });
 
@@ -309,6 +312,7 @@
           id: 'parcels-outline',
           type: 'line',
           source: 'parcels',
+          filter: HAS_CATEGORY,
           paint: { 'line-color': 'rgba(0,0,0,0.12)', 'line-width': 0.4 },
         });
 
@@ -316,6 +320,7 @@
           id: 'parcels-hover',
           type: 'fill',
           source: 'parcels',
+          filter: HAS_CATEGORY,
           paint: {
             'fill-color': '#1a2744',
             'fill-opacity': ['case', ['boolean', ['feature-state', 'hover'], false], 0.3, 0],
