@@ -300,9 +300,8 @@
     const base = ['case', ['==', ['get', 'cat'], 'Tax Exempt'], TAX_EXEMPT_COLOR, interp];
     if (!showUnder) return base;
     return ['case',
-      ['==', ['get', 'cat'], 'Tax Exempt'], TAX_EXEMPT_COLOR,
       ['boolean', ['get', 'under'], false], UNDER_COLOR,
-      interp
+      '#e2e8f0'
     ];
   }
 
@@ -342,17 +341,11 @@
   function parcelGroup(cat) { return CAT_GROUPS[cat] || 'Other / Vacant'; }
 
   function filterExpr() {
-    const parts = [];
-    if (showUnder) {
-      parts.push(['boolean', ['get', 'under'], false]);
-    } else if (activeGroups.size < GROUP_ORDER.length) {
-      const cats = Object.entries(CAT_GROUPS)
-        .filter(([, g]) => activeGroups.has(g))
-        .map(([c]) => c);
-      parts.push(['in', ['get', 'cat'], ['literal', cats]]);
-    }
-    if (parts.length === 0) return null;
-    return parts.length === 1 ? parts[0] : ['all', ...parts];
+    if (activeGroups.size === GROUP_ORDER.length) return null;
+    const cats = Object.entries(CAT_GROUPS)
+      .filter(([, g]) => activeGroups.has(g))
+      .map(([c]) => c);
+    return ['in', ['get', 'cat'], ['literal', cats]];
   }
 
   function applyFilter() {
@@ -365,11 +358,9 @@
   }
 
   function updateStats() {
-    const visible = showUnder
-      ? allFeatures.filter(f => f.properties.under === true)
-      : activeGroups.size < GROUP_ORDER.length
-        ? allFeatures.filter(f => activeGroups.has(parcelGroup(f.properties.cat)))
-        : allFeatures;
+    const visible = activeGroups.size < GROUP_ORDER.length
+      ? allFeatures.filter(f => activeGroups.has(parcelGroup(f.properties.cat)))
+      : allFeatures;
 
     const n = visible.length;
     const total = visible.reduce((s, f) => s + (f.properties.v || 0), 0);
