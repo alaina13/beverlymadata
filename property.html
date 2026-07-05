@@ -110,7 +110,7 @@
     }
 
     /* Map */
-    #map { flex: 1; }
+    #map { position: absolute; inset: 0; }
 
     /* Tooltip */
     .tooltip {
@@ -410,7 +410,7 @@
     });
   }
 
-  map.on('load', () => {
+  map.once('style.load', () => {
     fetch('/beverlymadata/parcels_geo.geojson')
       .then(r => r.json())
       .then(geo => {
