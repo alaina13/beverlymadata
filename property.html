@@ -44,17 +44,18 @@
 
 <div id="app">
   <div id="sidebar">
-    <div class="search-box">
-      <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-      <input id="addr-search" type="search" placeholder="Search address…" autocomplete="off" aria-label="Search parcel by address" />
-      <ul id="search-results" role="listbox" aria-label="Address suggestions"></ul>
-    </div>
     <div class="stats-bar">
       <div class="stat-chip"><div class="stat-num" id="s-parcels">—</div><div class="stat-label">Parcels</div></div>
       <div class="stat-chip"><div class="stat-num" id="s-med">—</div><div class="stat-label">Median val/ac</div></div>
       <div class="stat-chip"><div class="stat-num" id="s-total">—</div><div class="stat-label">Total value</div></div>
       <div class="stat-chip"><div class="stat-num" id="s-top">—</div><div class="stat-label">Top val/ac</div></div>
     </div>
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+      <input id="addr-search" type="search" placeholder="Search address…" autocomplete="off" aria-label="Search parcel by address" />
+      <ul id="search-results" role="listbox" aria-label="Address suggestions"></ul>
+    </div>
+    <div id="parcel-panel" class="parcel-panel" hidden></div>
     <div class="sidebar-body">
       <div class="panel-section">
         <h3>Color by</h3>
@@ -318,6 +319,7 @@
 
         buildCatFilters();
         updateStats();
+        buildSearchIndex();
         document.getElementById('loading-msg').style.display = 'none';
 
         // Hover tooltip
@@ -434,13 +436,7 @@
   function showParcelPanel(p, addr) {
     const netVal = p.net != null ? (p.net >= 0 ? '+' : '') + fmt(p.net) : 'N/A';
     const netColor = p.net > 0 ? '#2e7d32' : p.net < 0 ? '#c62828' : '#999';
-    let panel = document.getElementById('parcel-panel');
-    if (!panel) {
-      panel = document.createElement('div');
-      panel.id = 'parcel-panel';
-      panel.className = 'parcel-panel';
-      document.getElementById('sidebar').appendChild(panel);
-    }
+    const panel = document.getElementById('parcel-panel');
     panel.innerHTML = `
       <button class="parcel-panel-close" aria-label="Close" onclick="document.getElementById('parcel-panel').remove();clearSelected();">
         <i class="fa-solid fa-xmark"></i>
@@ -457,9 +453,6 @@
     panel.hidden = false;
   }
 
-  // Wire selected state into the hover layer after layers exist
-  const _origBuild = buildCatFilters;
-  // highlight selected parcel with a dedicated paint expression (set after map loads)
   map.once('idle', () => {
     if (map.getLayer('parcels-hover')) {
       map.setPaintProperty('parcels-hover', 'fill-opacity', [
@@ -469,7 +462,6 @@
         0,
       ]);
     }
-    buildSearchIndex();
   });
 </script>
 <script src="/nav.js"></script>
