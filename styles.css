@@ -1890,16 +1890,10 @@ blockquote cite {
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-
-.map-stats-bar .stat-chip {
-  flex: 1;
-  padding: 0.6rem 1.25rem;
-  border-right: 1px solid rgba(255,255,255,0.1);
-}
-
-.map-stats-bar .stat-chip:last-child { border-right: none; }
 
 #app {
   flex: 1;
