@@ -222,8 +222,15 @@
         <button class="color-btn" data-mode="tax">Annual tax revenue</button>
       </div>
       <div class="panel-section">
-        <h3>Filter</h3>
-        <button class="color-btn" id="net-neg-btn" onclick="toggleNetNeg()">Net negative only</button>
+        <h3>Highlight</h3>
+        <label style="display:flex;align-items:center;gap:8px;font-size:0.82rem;cursor:pointer;">
+          <input type="checkbox" id="show-under" style="width:14px;height:14px;cursor:pointer;">
+          Underperforming parcels
+        </label>
+        <p style="font-size:0.7rem;color:var(--muted);margin-top:4px;line-height:1.4;">Value/acre below city median. Shown in <strong style="color:#ef4444">red</strong>.</p>
+        <div style="margin-top:0.5rem;">
+          <button class="color-btn" id="net-neg-btn" onclick="toggleNetNeg()">Net negative only</button>
+        </div>
       </div>
       <div class="panel-section">
         <button class="section-toggle" aria-expanded="false" onclick="toggleSection(this)">
@@ -286,11 +293,25 @@
 
   const TAX_EXEMPT_COLOR = '#94a3b8'; // slate gray
 
+  let showUnder = false;
+  const UNDER_COLOR = '#ef4444';
+
   function colorExpr(mode) {
     const stops = COLOR_STOPS[mode];
     const interp = ['interpolate', ['linear'], ['coalesce', ['get', mode], 0]];
     stops.forEach(([v, c]) => { interp.push(v, c); });
-    return ['case', ['==', ['get', 'cat'], 'Tax Exempt'], TAX_EXEMPT_COLOR, interp];
+    const base = ['case', ['==', ['get', 'cat'], 'Tax Exempt'], TAX_EXEMPT_COLOR, interp];
+    if (!showUnder) return base;
+    return ['case',
+      ['==', ['get', 'cat'], 'Tax Exempt'], TAX_EXEMPT_COLOR,
+      ['==', ['get', 'under'], true], UNDER_COLOR,
+      interp
+    ];
+  }
+
+  function updateColorMode() {
+    if (!map.getLayer('parcels-fill')) return;
+    map.setPaintProperty('parcels-fill', 'fill-color', colorExpr(mode));
   }
 
   function fmt(v) {
@@ -503,17 +524,20 @@
   });
 
   // Color-by buttons
-  document.querySelectorAll('.color-btn').forEach(btn => {
+  document.querySelectorAll('[data-mode]').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('[data-mode]').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       mode = btn.dataset.mode;
-      if (map.getLayer('parcels-fill')) {
-        map.setPaintProperty('parcels-fill', 'fill-color', colorExpr(mode));
-      }
+      updateColorMode();
       document.getElementById('legend-bar').style.background =
         mode === 'net' ? LEGEND_BAR.net : LEGEND_BAR.default;
     });
+  });
+
+  document.getElementById('show-under').addEventListener('change', e => {
+    showUnder = e.target.checked;
+    updateColorMode();
   });
 </script>
 <script src="/beverlymadata/nav.js"></script>
