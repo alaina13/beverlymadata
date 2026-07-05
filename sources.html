@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/56a48e0c30.js" crossorigin="anonymous"></script>
+  <title>Sources — Beverly Data</title>
+  <link rel="stylesheet" href="/beverlymadata/styles.css" />
+  <style>
+    .page-header {
+      background: var(--navy);
+      color: white;
+      padding: 3rem 2rem 2.5rem;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .page-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.95rem;
+      max-width: 600px;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+
+    .bib-section {
+      margin-bottom: 3rem;
+    }
+
+    .bib-section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .bib-entry {
+      display: grid;
+      grid-template-columns: 1.75rem 1fr;
+      gap: 0 0.75rem;
+      margin-bottom: 1.5rem;
+      align-items: start;
+    }
+
+    .bib-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      padding-top: 0.15rem;
+      text-align: right;
+    }
+
+    .bib-body {}
+
+    .bib-title {
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+      line-height: 1.4;
+    }
+
+    .bib-meta {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .bib-meta a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .bib-meta a:hover { text-decoration: underline; }
+
+    .bib-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: var(--tag-bg);
+      color: var(--blue);
+      border-radius: 4px;
+      padding: 0.1rem 0.45rem;
+      margin-top: 0.35rem;
+    }
+
+    .bib-tag.tag-official { background: #eef6ee; color: #2e7d32; }
+    .bib-tag.tag-law { background: #fef3e2; color: #b45309; }
+    .bib-tag.tag-external { background: var(--tag-bg); color: var(--blue); }
+
+    .used-in {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .used-in a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .used-in a:hover { text-decoration: underline; }
+
+    .disclaimer-box {
+      background: var(--warn-bg);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      color: #6b4c1e;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 2rem 1rem 3rem; }
+      .page-header { padding: 2rem 1rem 1.75rem; }
+      .page-header h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+  <a class="logo" href="/beverlymadata/"><span>Beverly</span> Data</a>
+  <nav>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">
+        Meetings
+      </button>
+      <div class="nav-dropdown">
+      <a href="/beverlymadata/meetings.html">Meetings</a>
+      <a href="/beverlymadata/agendas.html">Agendas</a>
+      <a href="/beverlymadata/summaries.html">Summaries</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">
+        Finance
+      </button>
+      <div class="nav-dropdown">
+      <a href="/beverlymadata/data.html">City Data</a>
+      <a href="/beverlymadata/budget.html">Budget Explorer</a>
+      <a href="/beverlymadata/history.html">How We Got Here</a>
+      <a href="/beverlymadata/whats-next.html">What's Next</a>
+      <a href="/beverlymadata/calculator.html">Override Calculator</a>
+      </div>
+    </div>
+    <a href="/beverlymadata/property.html">Property Map</a>
+    <a href="/beverlymadata/sources.html">Sources</a>
+  </nav>
+  <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="var n=this.closest('header').querySelector('nav');var open=n.classList.toggle('open');this.setAttribute('aria-expanded',open);this.querySelector('i').className='fa-solid '+(open?'fa-xmark':'fa-bars')">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+  </button>
+</header>
+
+<main id="main">
+<div class="page-header">
+  <h1>Sources</h1>
+  <p>All primary sources, reports, and external references cited or used in Beverly Data. Last reviewed July 2026.</p>
+</div>
+
+<div class="container">
+
+  <div class="disclaimer-box">
+    Beverly Data is an independent civic project, not affiliated with the City of Beverly. All figures are drawn from the official documents listed here. Errors present in source documents are reflected as-is. Where Beverly Data makes illustrative estimates (e.g., debt service projections), those are noted as estimates in the text.
+  </div>
+
+  <!-- ── PRIMARY CITY DOCUMENTS ── -->
+  <div class="bib-section">
+    <div class="bib-section-title">Primary City Documents</div>
+
+    <div class="bib-entry">
+      <div class="bib-num">1</div>
+      <div class="bib-body">
+        <div class="bib-title">City of Beverly Financial Forecasting Committee (FFC) — Meeting Minutes, 2016–2025</div>
+        <div class="bib-meta">
+          Beverly Financial Forecasting Committee. Meeting minutes for fiscal years 2016–2025, including formal financial forecast presentations.<br>
+          Available via <a href="https://lfserver.beverlyma.gov/WebLink/Browse.aspx?id=8939&dbid=0&repo=BPL" target="_blank">Beverly Public Library LaserFiche server</a> and <a href="https://www.beverlyma.gov/AgendaCenter/Financial-Forecasting-Committee-13" target="_blank">Beverly Agenda Center</a>.
+          <div class="used-in">Used in: <a href="/beverlymadata/history.html">How We Got Here</a>, <a href="/beverlymadata/whats-next.html">What's Next</a>, <a href="/beverlymadata/calculator.html">Override Calculator</a></div>
+        </div>
+        <span class="bib-tag tag-official">Official city document</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">2</div>
+      <div class="bib-body">
+        <div class="bib-title">City of Beverly Financial Forecast FY2026–2030</div>
+        <div class="bib-meta">
+          Beverly Financial Forecasting Committee. Prepared December 2025. Source for FY2027 baseline levy ($139.6M), total revenues ($178.9M), total expenditures ($182.8M), and FY2028 projected deficit ($7,107,323). Also source for the 6%/yr expenditure growth and 4%/yr revenue growth figures used in the Override Calculator model.
+          <div class="used-in">Used in: <a href="/beverlymadata/calculator.html">Override Calculator</a>, <a href="/beverlymadata/index.html">Homepage</a>, <a href="/beverlymadata/history.html">How We Got Here</a></div>
+        </div>
+        <span class="bib-tag tag-official">Official city document</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">3</div>
+      <div class="bib-body">
+        <div class="bib-title">Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009–FY2023</div>
+        <div class="bib-meta">
+          City of Beverly, Office of the Finance Director. Annual Comprehensive Financial Reports (formerly CAFRs) including 10-year statistical tables, balance sheets, revenue/expenditure summaries, and debt schedules.
+          <div class="used-in">Used in: <a href="/beverlymadata/data.html">City Data</a>, <a href="/beverlymadata/history.html">How We Got Here</a></div>
+        </div>
+        <span class="bib-tag tag-official">Official city document</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">4</div>
+      <div class="bib-body">
+        <div class="bib-title">City of Beverly Adopted Budget, FY2025 and FY2026</div>
+        <div class="bib-meta">
+          City of Beverly, Office of the Mayor / Finance Director. Interactive versions published via ClearGov.<br>
+          <a href="https://city-beverly-ma-budget-book.cleargov.com/20282/introduction/transmittal-letter" target="_blank">FY2026 Adopted Budget (ClearGov)</a> &middot; <a href="https://city-beverly-ma-budget-book.cleargov.com/15295/introduction/transmittal-letter" target="_blank">FY2025 Adopted Budget (ClearGov)</a>
+          <div class="used-in">Used in: <a href="/beverlymadata/budget.html">Budget Explorer</a></div>
+        </div>
+        <span class="bib-tag tag-official">Official city document</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">5</div>
+      <div class="bib-body">
+        <div class="bib-title">City of Beverly Proposed Budget, FY2024 and FY2027</div>
+        <div class="bib-meta">
+          City of Beverly, Office of the Mayor / Finance Director.<br>
+          <a href="https://www.beverlyma.gov/DocumentCenter/View/7440/Proposed-FY-2027-City-Budget" target="_blank">FY2027 Proposed Budget (PDF)</a> &middot; <a href="https://www.beverlyma.gov/DocumentCenter/View/4555/Proposed-Fiscal-Year-2024-Budget" target="_blank">FY2024 Proposed Budget (PDF)</a>
+          <div class="used-in">Used in: <a href="/beverlymadata/budget.html">Budget Explorer</a></div>
+        </div>
+        <span class="bib-tag tag-official">Official city document</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">6</div>
+      <div class="bib-body">
+        <div class="bib-title">Beverly City Council — Vote to Authorize City Hall Renovation Borrowing, January 2026</div>
+        <div class="bib-meta">
+          City of Beverly City Council. Voted 7–2 in January 2026 to authorize borrowing $28 million for the City Hall renovation, with construction planned through fall 2028. Beverly Data searched Massachusetts Municipal Finance Oversight Board (MFOB) meeting minutes for 2025–2026 and did not find Beverly listed, suggesting the city did not use the state qualified bond program; bonds may not yet have been issued as of July 2026.
+          <div class="used-in">Used in: <a href="/beverlymadata/whats-next.html">What's Next</a></div>
+        </div>
+        <span class="bib-tag tag-official">Official city document</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">7</div>
+      <div class="bib-body">
+        <div class="bib-title">Beverly Tax Rate History — City Assessors Office</div>
+        <div class="bib-meta">
+          City of Beverly, City Assessors Office. Residential and commercial tax rates by fiscal year.<br>
+          <a href="https://www.beverlyma.gov/391/City-Assessors" target="_blank">beverlyma.gov/391/City-Assessors</a>
+          <div class="used-in">Used in: <a href="/beverlymadata/data.html">City Data</a></div>
+        </div>
+        <span class="bib-tag tag-official">Official city document</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">8</div>
+      <div class="bib-body">
+        <div class="bib-title">MassGIS Property Tax Parcel Data — FY2026 Assessed Values</div>
+        <div class="bib-meta">
+          Massachusetts Office of Geographic Information (MassGIS). FY2026 property tax parcel shapefile data including assessed values, land use classification, and parcel geometry for Beverly. Used to compute value per acre, tax per acre, and parcel-level mapping.<br>
+          <a href="https://www.mass.gov/info-details/massgis-data-property-tax-parcels" target="_blank">mass.gov — MassGIS Property Tax Parcels</a>
+          <div class="used-in">Used in: <a href="/beverlymadata/property.html">Property Map</a>
+    <a href="/beverlymadata/sources.html">Sources</a></div>
+        </div>
+        <span class="bib-tag tag-official">State agency data</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── STATE LAW & POLICY ── -->
+  <div class="bib-section">
+    <div class="bib-section-title">State Law &amp; Policy</div>
+
+    <div class="bib-entry">
+      <div class="bib-num">9</div>
+      <div class="bib-body">
+        <div class="bib-title">Massachusetts General Laws Chapter 59, §21C — Proposition 2½</div>
+        <div class="bib-meta">
+          The enabling statute for Proposition 2½. Limits the annual increase in a municipality's property tax levy to 2.5% of the prior year's levy, plus new growth. Override elections and debt exclusion procedures are also specified here.
+          <div class="used-in">Used in: <a href="/beverlymadata/history.html">How We Got Here</a>, <a href="/beverlymadata/whats-next.html">What's Next</a>, <a href="/beverlymadata/calculator.html">Override Calculator</a></div>
+        </div>
+        <span class="bib-tag tag-law">State law</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">10</div>
+      <div class="bib-body">
+        <div class="bib-title">Massachusetts General Laws Chapter 44 — Municipal Finance</div>
+        <div class="bib-meta">
+          Governs municipal borrowing in Massachusetts. Requires that bond proceeds be used exclusively for the capital purpose for which they were authorized; operating budget transfers are not permitted. Relevant to the City Hall renovation discussion.
+          <div class="used-in">Used in: <a href="/beverlymadata/whats-next.html">What's Next</a></div>
+        </div>
+        <span class="bib-tag tag-law">State law</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">11</div>
+      <div class="bib-body">
+        <div class="bib-title">Massachusetts Secretary of State, Elections Division — Override Election Records</div>
+        <div class="bib-meta">
+          Public records of Proposition 2½ override elections statewide, by city and town.<br>
+          <a href="https://www.sec.state.ma.us" target="_blank">sec.state.ma.us</a>. Beverly Data has not independently verified every listed city's override history; readers should confirm via the Secretary of State's override database.
+          <div class="used-in">Used in: <a href="/beverlymadata/history.html">How We Got Here</a></div>
+        </div>
+        <span class="bib-tag tag-law">State agency</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">12</div>
+      <div class="bib-body">
+        <div class="bib-title">Massachusetts Department of Elementary and Secondary Education (DESE) — District Profiles</div>
+        <div class="bib-meta">
+          School enrollment figures and per-pupil spending by district.<br>
+          <a href="https://profiles.doe.mass.edu" target="_blank">profiles.doe.mass.edu</a>
+          <div class="used-in">Used in: <a href="/beverlymadata/data.html">City Data</a></div>
+        </div>
+        <span class="bib-tag tag-law">State agency</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── EXTERNAL REFERENCES ── -->
+  <div class="bib-section">
+    <div class="bib-section-title">External References</div>
+
+    <div class="bib-entry">
+      <div class="bib-num">13</div>
+      <div class="bib-body">
+        <div class="bib-title">Strong Towns — "Roads and Debt"</div>
+        <div class="bib-meta">
+          Strong Towns (strongtowns.org). Published January 26, 2016. Explains the revenue-per-acre framework: how infrastructure-intensive, low-density development generates insufficient tax revenue to cover its long-term maintenance costs, creating a structural fiscal liability. Strong Towns is a nonprofit think tank focused on the financial resilience of cities and towns.<br>
+          <a href="https://archive.strongtowns.org/journal/2016/1/26/roads-and-debt" target="_blank">archive.strongtowns.org — Roads and Debt</a>
+          <div class="used-in">Used in: <a href="/beverlymadata/whats-next.html">What's Next</a></div>
+        </div>
+        <span class="bib-tag tag-external">External reference</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">14</div>
+      <div class="bib-body">
+        <div class="bib-title">Massachusetts Municipal Association (MMA) — Annual Budget Survey</div>
+        <div class="bib-meta">
+          Massachusetts Municipal Association. Annual survey of city and town finance officers, consistently identifying Proposition 2½ revenue constraints as a leading fiscal pressure across the Commonwealth.<br>
+          <a href="https://www.mma.org" target="_blank">mma.org</a>
+          <div class="used-in">Used in: <a href="/beverlymadata/history.html">How We Got Here</a></div>
+        </div>
+        <span class="bib-tag tag-external">External reference</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">15</div>
+      <div class="bib-body">
+        <div class="bib-title">Government Finance Officers Association (GFOA) — Capital Maintenance Guidance</div>
+        <div class="bib-meta">
+          GFOA best practice guidance recommending consistent capital maintenance funding to avoid higher long-term replacement costs. The principle that deferred maintenance on public buildings compounds over time, often costing 3–4x more if delayed, is documented in GFOA and facility management literature.
+          <div class="used-in">Used in: <a href="/beverlymadata/whats-next.html">What's Next</a>, <a href="/beverlymadata/data.html">City Data</a></div>
+        </div>
+        <span class="bib-tag tag-external">External reference</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</main>
+
+<footer>
+  Beverly Data is an independent civic project and is not affiliated with the City of Beverly. Created with the assistance of AI.
+  Data sourced from <a href="https://www.beverlyma.gov/AgendaCenter" target="_blank">beverlyma.gov</a> and public records.
+</footer>
+
+<script src="/beverlymadata/nav.js"></script>
+</body>
+</html>
