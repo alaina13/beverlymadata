@@ -226,6 +226,7 @@
     <div class="control-label">Color by</div>
     <button class="control-btn active" id="btn-taxpa" onclick="setMode('taxpa')">Tax / acre</button>
     <button class="control-btn" id="btn-vpa" onclick="setMode('vpa')">Value / acre</button>
+    <button class="control-btn" id="btn-net" onclick="setMode('net')">Net fiscal</button>
   </div>
 
   <div class="map-overlay legend" id="legend">
@@ -277,17 +278,24 @@
     return lerpColor(COLOR_STOPS[i], COLOR_STOPS[i + 1], scaled - i);
   }
 
+  const MAX_H = 4000;
+
   function computeRanks() {
     const byTaxpa = [...parcels].sort((a, b) => (a.taxpa || 0) - (b.taxpa || 0));
     byTaxpa.forEach((p, i) => { p.rankTaxpa = i / (byTaxpa.length - 1); });
 
     const byVpa = [...parcels].filter(p => p.vpa > 0).sort((a, b) => a.vpa - b.vpa);
     byVpa.forEach((p, i) => { p.rankVpa = i / (byVpa.length - 1); });
+
+    const byNet = [...parcels].filter(p => p.net != null).sort((a, b) => a.net - b.net);
+    byNet.forEach((p, i) => { p.rankNet = i / (byNet.length - 1); });
   }
 
   function getElevation(p) {
-    const rank = mode === 'taxpa' ? (p.rankTaxpa || 0) : (p.rankVpa || 0);
-    return rank * 800;
+    const rank = mode === 'taxpa' ? (p.rankTaxpa || 0)
+               : mode === 'vpa'   ? (p.rankVpa   || 0)
+                                  : (p.rankNet   || 0);
+    return rank * MAX_H;
   }
 
   function buildLayer() {
@@ -302,6 +310,10 @@
       getPosition: d => [d.lng, d.lat],
       getElevation: d => getElevation(d),
       getFillColor: d => {
+        if (mode === 'net') {
+          const rank = d.rankNet || 0;
+          return getColor(rank, 1);
+        }
         const val = mode === 'taxpa' ? (d.taxpa || 0) : (d.vpa || 0);
         return getColor(val, cap);
       },
@@ -316,11 +328,15 @@
     el.style.display = 'block';
     el.style.left = (x + 14) + 'px';
     el.style.top  = (y - 10) + 'px';
+    const netVal = p.net != null ? (p.net >= 0 ? '+' : '') + fmt$(p.net) : 'N/A';
+    const netColor = p.net != null ? (p.net >= 0 ? '#4caf50' : '#f44336') : '#999';
     el.innerHTML = `
       <div class="tooltip-addr">${p.addr || 'Unknown address'}</div>
       <div class="tooltip-row"><span>Tax / acre</span><span>${fmt$(p.taxpa || 0)}</span></div>
       <div class="tooltip-row"><span>Value / acre</span><span>${fmt$(p.vpa || 0)}</span></div>
-      <div class="tooltip-row"><span>Total value</span><span>${fmt$(p.v || 0)}</span></div>
+      <div class="tooltip-row"><span>Total tax</span><span>${fmt$(p.tax || 0)}</span></div>
+      <div class="tooltip-row"><span>Road cost</span><span>${p.road_cost != null ? fmt$(p.road_cost) : 'N/A'}</span></div>
+      <div class="tooltip-row"><span>Net</span><span style="color:${netColor};font-weight:700">${netVal}</span></div>
       <div class="tooltip-cat">${p.cat || ''}</div>
     `;
   }
@@ -329,10 +345,15 @@
     mode = m;
     document.getElementById('btn-taxpa').classList.toggle('active', m === 'taxpa');
     document.getElementById('btn-vpa').classList.toggle('active', m === 'vpa');
+    document.getElementById('btn-net').classList.toggle('active', m === 'net');
     document.getElementById('legend-title').textContent =
-      m === 'taxpa' ? 'Annual tax per acre' : 'Assessed value per acre';
+      m === 'taxpa' ? 'Annual tax per acre'
+    : m === 'vpa'   ? 'Assessed value per acre'
+                    : 'Net fiscal contribution';
     document.getElementById('legend-mid').textContent =
-      m === 'taxpa' ? fmt$(CAP_TAXPA / 2) : fmt$(CAP_VPA / 2);
+      m === 'taxpa' ? fmt$(CAP_TAXPA / 2)
+    : m === 'vpa'   ? fmt$(CAP_VPA / 2)
+                    : 'Average';
 
     if (deckOverlay) deckOverlay.setProps({ layers: [buildLayer()] });
   }
@@ -342,7 +363,7 @@
     style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
     center: [-70.88, 42.558],
     zoom: 13,
-    pitch: 55,
+    pitch: 70,
     bearing: -15,
     antialias: true,
   });
