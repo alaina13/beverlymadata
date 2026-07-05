@@ -222,6 +222,10 @@
         <button class="color-btn" data-mode="tax">Annual tax revenue</button>
       </div>
       <div class="panel-section">
+        <h3>Filter</h3>
+        <button class="color-btn" id="net-neg-btn" onclick="toggleNetNeg()">Net negative only</button>
+      </div>
+      <div class="panel-section">
         <button class="section-toggle" aria-expanded="false" onclick="toggleSection(this)">
           <h3 style="margin:0;">Filter by type</h3>
           <i class="fa-solid fa-chevron-down" style="font-size:0.65rem;color:var(--muted);transition:transform 0.2s;"></i>
@@ -297,6 +301,12 @@
     return '$' + Math.round(v);
   }
 
+  function toggleNetNeg() {
+    netNegOnly = !netNegOnly;
+    document.getElementById('net-neg-btn').classList.toggle('active', netNegOnly);
+    applyFilter();
+  }
+
   function toggleSection(btn) {
     const expanded = btn.getAttribute('aria-expanded') === 'true';
     btn.setAttribute('aria-expanded', String(!expanded));
@@ -319,12 +329,19 @@
 
   function parcelGroup(cat) { return CAT_GROUPS[cat] || 'Other / Vacant'; }
 
+  let netNegOnly = false;
+
   function filterExpr() {
-    if (activeGroups.size === GROUP_ORDER.length) return null;
-    const cats = Object.entries(CAT_GROUPS)
-      .filter(([, g]) => activeGroups.has(g))
-      .map(([c]) => c);
-    return ['in', ['get', 'cat'], ['literal', cats]];
+    const parts = [];
+    if (activeGroups.size < GROUP_ORDER.length) {
+      const cats = Object.entries(CAT_GROUPS)
+        .filter(([, g]) => activeGroups.has(g))
+        .map(([c]) => c);
+      parts.push(['in', ['get', 'cat'], ['literal', cats]]);
+    }
+    if (netNegOnly) parts.push(['<', ['coalesce', ['get', 'net'], 0], 0]);
+    if (parts.length === 0) return null;
+    return parts.length === 1 ? parts[0] : ['all', ...parts];
   }
 
   function applyFilter() {
@@ -341,7 +358,8 @@
     const visible = expr
       ? allFeatures.filter(f => {
           const g = parcelGroup(f.properties.cat);
-          return activeGroups.has(g);
+          const netOk = !netNegOnly || (f.properties.net != null && f.properties.net < 0);
+          return activeGroups.has(g) && netOk;
         })
       : allFeatures;
 
