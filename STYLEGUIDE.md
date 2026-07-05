@@ -1,4 +1,4 @@
-# Beverly Data — Style Guide
+# Open Beverly — Style Guide
 
 A reference for writing style and design principles used across this site. This guide exists to keep the site consistent, credible, and accessible to Beverly residents regardless of their background in municipal finance.
 
@@ -29,7 +29,7 @@ A reference for writing style and design principles used across this site. This 
 
 ### Sourcing Standards
 - All quantitative figures must come from an official city document, state agency, peer-reviewed source, or credible news reporting, and must be cited.
-- Distinguish clearly between figures drawn directly from official documents and figures calculated by Beverly Data.
+- Distinguish clearly between figures drawn directly from official documents and figures calculated by Open Beverly.
 - Estimates must be labeled as estimates, with methodology explained.
 - If a source cannot be found, soften the language rather than asserting the claim.
 - The Beverly Beat is an acceptable source for local reporting. Attribute quotes and facts to it explicitly.
@@ -112,7 +112,7 @@ Used in hero sections for key numbers. Value in accent orange, label in muted wh
 
 **Line charts:**
 - Used for trends over time (tax rates, levy growth, deficit trajectory).
-- Beverly Data navy (`#1a2744`) for the primary series. Accent orange (`#e8813a`) for a secondary or projected series.
+- Open Beverly navy (`#1a2744`) for the primary series. Accent orange (`#e8813a`) for a secondary or projected series.
 - No fill under the line unless the fill meaningfully adds information.
 - Points shown; no point labels on the chart itself (use tooltips).
 
