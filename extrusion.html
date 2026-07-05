@@ -279,7 +279,7 @@
   function getElevation(p) {
     const val = mode === 'taxpa' ? (p.taxpa || 0) : (p.vpa || 0);
     const cap = mode === 'taxpa' ? CAP_TAXPA : CAP_VPA;
-    return Math.sqrt(Math.min(val, cap) / cap) * 350;
+    return Math.log1p(Math.min(val, cap) / cap * Math.E) / Math.log1p(Math.E) * 350;
   }
 
   function buildLayer() {
