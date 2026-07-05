@@ -4,6 +4,12 @@ A reference for writing style and design principles used across this site. This 
 
 ---
 
+## Editorial Process
+
+- **Always confirm copy with Alaina before pushing.** Draft content for review first. Do not commit and push prose changes until the copy has been explicitly approved.
+
+---
+
 ## Writing Style
 
 ### Voice and Tone
