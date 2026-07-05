@@ -480,6 +480,9 @@ function renderDonut() {
         plugins: {
           legend: { display: false },
           tooltip: {
+            backgroundColor: 'rgba(17,24,39,0.92)',
+            titleColor: '#fff',
+            bodyColor: '#fff',
             callbacks: {
               label: ctx => ` ${fmt(ctx.raw)}  (${(ctx.raw / yearTotal * 100).toFixed(1)}%)`,
             },
