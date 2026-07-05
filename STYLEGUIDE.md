@@ -22,7 +22,7 @@ A reference for writing style and design principles used across this site. This 
 - **No relative dates.** Use absolute dates (e.g., "December 2025" not "last year").
 
 ### Sourcing Standards
-- All quantitative figures must come from an official city document, state agency, peer-reviewed source, or credible news reporting — and be cited.
+- All quantitative figures must come from an official city document, state agency, peer-reviewed source, or credible news reporting, and must be cited.
 - Distinguish clearly between figures drawn directly from official documents and figures calculated by Beverly Data.
 - Estimates must be labeled as estimates, with methodology explained.
 - If a source cannot be found, soften the language rather than asserting the claim.
@@ -68,7 +68,7 @@ A reference for writing style and design principles used across this site. This 
 Used for explainer content: context, caveats, background information. Blue left border. Used when the content is explanatory rather than data.
 
 **Callout box** (`.not-waste` inside `.structural-box`)
-Neutral info icon (`fa-circle-info`), white background with blue border. Used to summarize the key takeaway of a section without advocating. Never use a checkmark; never use language that tells the reader what to conclude.
+Note: the class name is a legacy artifact from the City Hall section; it is used broadly as a general neutral callout. Neutral info icon (`fa-circle-info`), white background with blue border. Used to summarize the key context of a section without advocating. Never use a checkmark; never use language that directs the reader to a conclusion.
 
 **AI notice** (`.ai-notice`)
 Amber background, orange left border. Used only for AI-generated content warnings (meeting summaries page). Prominent, not dismissible.
