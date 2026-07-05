@@ -213,11 +213,6 @@
         </p>
         <div class="donut-wrap">
           <canvas id="donutChart" role="img" aria-labelledby="donut-heading" aria-describedby="donut-data" height="320"></canvas>
-          <div class="donut-center" id="donut-center">
-            <div class="donut-center-label" id="center-label">Total</div>
-            <div class="donut-center-value" id="center-value"></div>
-            <div class="donut-center-pct" id="center-pct"></div>
-          </div>
         </div>
         <table id="donut-data" class="sr-only">
           <caption>Budget breakdown</caption>
@@ -527,6 +522,40 @@ const CATEGORIES = [
 let activeYear = 'FY2027';
 let activeCatKey = null; // null = show all categories
 
+// Center text drawn on canvas so tooltip always renders above it
+let donutCenter = { label: 'Total', value: '', pct: '' };
+const centerTextPlugin = {
+  id: 'centerText',
+  afterDraw(chart) {
+    const { ctx, chartArea: { width, height, left, top } } = chart;
+    const cx = left + width / 2;
+    const cy = top + height / 2;
+    ctx.save();
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    const lineH = 22;
+    const yBase = cy - (donutCenter.pct ? lineH : lineH / 2);
+
+    ctx.font = '600 11px system-ui, sans-serif';
+    ctx.fillStyle = '#6b7280';
+    ctx.letterSpacing = '0.05em';
+    ctx.fillText(donutCenter.label.toUpperCase(), cx, yBase);
+
+    ctx.font = '800 26px system-ui, sans-serif';
+    ctx.fillStyle = '#1e3a5f';
+    ctx.letterSpacing = '0';
+    ctx.fillText(donutCenter.value, cx, yBase + lineH * 1.25);
+
+    if (donutCenter.pct) {
+      ctx.font = '700 13px system-ui, sans-serif';
+      ctx.fillStyle = '#e8813a';
+      ctx.fillText(donutCenter.pct, cx, yBase + lineH * 2.6);
+    }
+    ctx.restore();
+  },
+};
+
 // ── Chart instances ───────────────────────────────────────────────────────────
 let donutChart = null;
 let trendChart = null;
@@ -571,10 +600,10 @@ function renderDonut() {
 
   const yearTotal = cat ? (cat.totals[activeYear] || 0) : grandTotal;
 
-  // Update center
-  document.getElementById('center-label').textContent = cat ? cat.key : 'Total';
-  document.getElementById('center-value').textContent = fmt(yearTotal);
-  document.getElementById('center-pct').textContent = cat
+  // Update center text (drawn on canvas by plugin)
+  donutCenter.label = cat ? cat.key : 'Total';
+  donutCenter.value = fmt(yearTotal);
+  donutCenter.pct = cat
     ? (((cat.totals[activeYear] || 0) / grandTotal * 100).toFixed(1) + '% of budget')
     : '';
 
@@ -609,9 +638,6 @@ function renderDonut() {
             },
           },
         },
-        onHover: (e, elements) => {
-          document.getElementById('donut-center').style.opacity = elements.length ? '0' : '1';
-        },
         onClick: (e, elements) => {
           if (!elements.length) return;
           const idx = elements[0].index;
@@ -621,6 +647,7 @@ function renderDonut() {
           }
         },
       },
+      plugins: [centerTextPlugin],
     });
   }
 }
