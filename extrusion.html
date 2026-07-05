@@ -250,8 +250,6 @@
   let parcels = [];
   let mode = 'taxpa';
   let deckOverlay = null;
-  let avgTaxpa = 0;
-  let avgVpa = 0;
 
   function fmt$(v) {
     if (v >= 1e6) return '$' + (v/1e6).toFixed(1) + 'M';
@@ -279,53 +277,37 @@
     return lerpColor(COLOR_STOPS[i], COLOR_STOPS[i + 1], scaled - i);
   }
 
+  function computeRanks() {
+    const byTaxpa = [...parcels].sort((a, b) => (a.taxpa || 0) - (b.taxpa || 0));
+    byTaxpa.forEach((p, i) => { p.rankTaxpa = i / (byTaxpa.length - 1); });
+
+    const byVpa = [...parcels].filter(p => p.vpa > 0).sort((a, b) => a.vpa - b.vpa);
+    byVpa.forEach((p, i) => { p.rankVpa = i / (byVpa.length - 1); });
+  }
+
   function getElevation(p) {
-    const val = mode === 'taxpa' ? (p.taxpa || 0) : (p.vpa || 0);
-    const cap = mode === 'taxpa' ? CAP_TAXPA : CAP_VPA;
-    return Math.log1p(Math.min(val, cap) / cap * Math.E) / Math.log1p(Math.E) * 800;
+    const rank = mode === 'taxpa' ? (p.rankTaxpa || 0) : (p.rankVpa || 0);
+    return rank * 800;
   }
 
-  function getAvg() {
-    return mode === 'taxpa' ? avgTaxpa : avgVpa;
-  }
-
-  function buildLayers() {
+  function buildLayer() {
     const cap = mode === 'taxpa' ? CAP_TAXPA : CAP_VPA;
-    const avg = getAvg();
-
-    const above = parcels.filter(d => (mode === 'taxpa' ? d.taxpa : d.vpa) >= avg);
-    const below = parcels.filter(d => (mode === 'taxpa' ? d.taxpa : d.vpa) < avg);
-
-    const common = {
+    return new deck.ColumnLayer({
+      id: 'parcels',
+      data: parcels,
       diskResolution: 6,
       radius: 20,
       extruded: true,
       pickable: true,
-      updateTriggers: { getElevation: mode, getFillColor: mode, getPosition: mode },
+      getPosition: d => [d.lng, d.lat],
+      getElevation: d => getElevation(d),
+      getFillColor: d => {
+        const val = mode === 'taxpa' ? (d.taxpa || 0) : (d.vpa || 0);
+        return getColor(val, cap);
+      },
+      updateTriggers: { getElevation: mode, getFillColor: mode },
       onHover: ({ object, x, y }) => showTooltip(object, x, y),
-    };
-
-    return [
-      new deck.ColumnLayer({
-        ...common,
-        id: 'above-avg',
-        data: above,
-        getPosition: d => [d.lng, d.lat],
-        getElevation: d => getElevation(d),
-        getFillColor: d => {
-          const val = mode === 'taxpa' ? (d.taxpa || 0) : (d.vpa || 0);
-          return getColor(val, cap);
-        },
-      }),
-      new deck.ColumnLayer({
-        ...common,
-        id: 'below-avg',
-        data: below,
-        getPosition: d => [d.lng, d.lat, -getElevation(d)],
-        getElevation: d => getElevation(d),
-        getFillColor: d => [76, 175, 80, 180],
-      }),
-    ];
+    });
   }
 
   function showTooltip(p, x, y) {
@@ -352,7 +334,7 @@
     document.getElementById('legend-mid').textContent =
       m === 'taxpa' ? fmt$(CAP_TAXPA / 2) : fmt$(CAP_VPA / 2);
 
-    if (deckOverlay) deckOverlay.setProps({ layers: buildLayers() });
+    if (deckOverlay) deckOverlay.setProps({ layers: [buildLayer()] });
   }
 
   const map = new maplibregl.Map({
@@ -373,12 +355,9 @@
     .then(r => r.json())
     .then(data => {
       parcels = data.filter(p => p.lat && p.lng && p.taxpa > 0);
+      computeRanks();
 
-      avgTaxpa = parcels.reduce((s, p) => s + (p.taxpa || 0), 0) / parcels.length;
-      const vpaList = parcels.filter(p => p.vpa > 0);
-      avgVpa = vpaList.reduce((s, p) => s + p.vpa, 0) / vpaList.length;
-
-      deckOverlay = new deck.MapboxOverlay({ layers: buildLayers() });
+      deckOverlay = new deck.MapboxOverlay({ layers: [buildLayer()] });
       map.addControl(deckOverlay);
     });
 </script>
