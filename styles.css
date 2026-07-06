@@ -1772,15 +1772,15 @@ blockquote cite {
 /* Address search */
 .map-search-box {
   position: relative;
-  padding: 0.75rem 0.75rem 0;
   flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .map-search-box .search-icon {
   position: absolute;
-  left: 1.25rem;
+  left: 0.85rem;
   top: 50%;
-  transform: translateY(-15%);
+  transform: translateY(-50%);
   color: var(--muted);
   font-size: 0.75rem;
   pointer-events: none;
@@ -1789,10 +1789,10 @@ blockquote cite {
 #addr-search {
   width: 100%;
   box-sizing: border-box;
-  padding: 0.45rem 0.6rem 0.45rem 2rem;
+  padding: 0.6rem 0.75rem 0.6rem 2.1rem;
   font-size: 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border: none;
+  border-radius: 0;
   background: var(--bg);
   color: var(--text);
   outline: none;
@@ -1801,8 +1801,7 @@ blockquote cite {
 }
 
 #addr-search:focus {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 2px rgba(30,58,95,0.12);
+  background: #f0f4ff;
 }
 
 #search-results {
