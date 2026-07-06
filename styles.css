@@ -1822,7 +1822,8 @@ blockquote cite {
   overflow-y: auto;
 }
 
-#search-results[hidden] { display: none; }
+#search-results[hidden],
+#search-results:empty { display: none; }
 
 #search-results li {
   padding: 0.5rem 0.75rem;
