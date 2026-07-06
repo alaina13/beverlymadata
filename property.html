@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3/dist/maplibre-gl.css" />
   <meta property="og:title" content="Property Map — Open Beverly" />
-  <meta property="og:description" content="Beverly parcels mapped by assessed value, tax revenue, and cost recovery ratio per acre." />
+  <meta property="og:description" content="Beverly parcels mapped by assessed value, tax revenue, and net fiscal contribution per acre." />
   <meta property="og:image" content="https://openbeverly.org/preview.png" />
   <meta property="og:url" content="https://openbeverly.org/" />
   <meta property="og:type" content="website" />
@@ -68,7 +68,7 @@
         <h3>Color by</h3>
         <button class="color-btn active" data-mode="vpa">Value per acre</button>
         <button class="color-btn" data-mode="taxpa">Tax per acre</button>
-        <button class="color-btn" data-mode="cr">Cost recovery ratio</button>
+        <button class="color-btn" data-mode="net">Net revenue (after infrastructure)</button>
         <button class="color-btn" data-mode="v">Total assessed value</button>
         <button class="color-btn" data-mode="tax">Annual tax revenue</button>
       </div>
@@ -130,13 +130,13 @@
   const COLOR_STOPS = {
     vpa:   [[0,'#d0ead0'],[500000,'#4caf50'],[2000000,'#cddc39'],[4000000,'#ffc107'],[7000000,'#f44336'],[9400000,'#9c27b0']],
     taxpa: [[0,'#d0ead0'],[12000,'#4caf50'],[34000,'#cddc39'],[55000,'#ffc107'],[80000,'#f44336'],[102409,'#9c27b0']],
-    cr:    [[0,'#f44336'],[50,'#ff5722'],[100,'#ffc107'],[150,'#cddc39'],[300,'#4caf50'],[1000,'#9c27b0']],
+    net:   [[-4500,'#f44336'],[0,'#ffc107'],[3000,'#cddc39'],[10000,'#4caf50'],[50000,'#1a9850'],[200000,'#9c27b0']],
     v:     [[0,'#d0ead0'],[200000,'#4caf50'],[800000,'#cddc39'],[2000000,'#ffc107'],[5000000,'#f44336'],[15000000,'#9c27b0']],
     tax:   [[0,'#d0ead0'],[2000,'#4caf50'],[8000,'#cddc39'],[20000,'#ffc107'],[60000,'#f44336'],[200000,'#9c27b0']],
   };
 
   const LEGEND_BAR = {
-    cr: 'linear-gradient(to right, #f44336, #ffc107, #4caf50, #9c27b0)',
+    net: 'linear-gradient(to right, #f44336, #ffc107, #4caf50, #9c27b0)',
     default: 'linear-gradient(to right, #4caf50, #cddc39, #ffc107, #f44336, #9c27b0)',
   };
 
@@ -303,12 +303,7 @@
       .then(r => r.json())
       .then(geo => {
         allFeatures = geo.features.filter(f => f.geometry);
-        allFeatures.forEach((f, i) => {
-          f.id = i;
-          const p = f.properties;
-          const infra = (p.road_cost || 0) + (p.water_cost || 0) + (p.sewer_cost || 0);
-          p.cr = (infra > 0 && p.tax != null) ? Math.round(p.tax / infra * 100) : null;
-        });
+        allFeatures.forEach((f, i) => { f.id = i; });
 
         map.addSource('parcels', { type: 'geojson', data: geo });
 
@@ -353,8 +348,8 @@
           map.setFeatureState({ source: 'parcels', id: hoveredId }, { hover: true });
 
           const p = e.features[0].properties;
-          const crVal = p.cr != null ? p.cr + '%' : 'N/A';
-          const crColor = p.cr > 100 ? '#2e7d32' : p.cr < 100 ? '#c62828' : '#999';
+          const netVal = p.net != null ? (p.net >= 0 ? '+' : '') + fmt(p.net) : 'N/A';
+          const netColor = p.net > 0 ? '#2e7d32' : p.net < 0 ? '#c62828' : '#999';
 
           const el = document.getElementById('tooltip');
           el.style.display = 'block';
@@ -369,7 +364,7 @@
             <div class="tooltip-row"><span>Road cost</span><span>${fmt(p.road_cost)}</span></div>
             <div class="tooltip-row"><span>Water cost</span><span>${fmt(p.water_cost)}</span></div>
             <div class="tooltip-row"><span>Sewer cost</span><span>${fmt(p.sewer_cost)}</span></div>
-            <div class="tooltip-row"><span>Cost recovery</span><span style="color:${crColor};font-weight:700">${crVal}</span></div>
+            <div class="tooltip-row"><span>Net fiscal</span><span style="color:${netColor};font-weight:700">${netVal}</span></div>
             <div class="tooltip-cat">${p.cat || ''}</div>
           `;
           map.getCanvas().style.cursor = 'pointer';
@@ -392,7 +387,7 @@
       mode = btn.dataset.mode;
       updateColorMode();
       document.getElementById('legend-bar').style.background =
-        mode === 'cr' ? LEGEND_BAR.cr : LEGEND_BAR.default;
+        mode === 'net' ? LEGEND_BAR.net : LEGEND_BAR.default;
     });
   });
 
@@ -458,8 +453,8 @@
   searchInput.addEventListener('focus', () => { if (resultsList.children.length) resultsList.hidden = false; });
 
   function showParcelPanel(p, addr) {
-    const crVal = p.cr != null ? p.cr + '%' : 'N/A';
-    const crColor = p.cr > 100 ? '#2e7d32' : p.cr < 100 ? '#c62828' : '#999';
+    const netVal = p.net != null ? (p.net >= 0 ? '+' : '') + fmt(p.net) : 'N/A';
+    const netColor = p.net > 0 ? '#2e7d32' : p.net < 0 ? '#c62828' : '#999';
     const panel = document.getElementById('parcel-panel');
     panel.innerHTML = `
       <button class="parcel-panel-close" aria-label="Close" onclick="document.getElementById('parcel-panel').remove();clearSelected();">
@@ -474,7 +469,7 @@
       <div class="tooltip-row"><span>Road cost</span><span>${fmt(p.road_cost)}</span></div>
       <div class="tooltip-row"><span>Water cost</span><span>${fmt(p.water_cost)}</span></div>
       <div class="tooltip-row"><span>Sewer cost</span><span>${fmt(p.sewer_cost)}</span></div>
-      <div class="tooltip-row"><span>Cost recovery</span><span style="color:${crColor};font-weight:700">${crVal}</span></div>
+      <div class="tooltip-row"><span>Net fiscal</span><span style="color:${netColor};font-weight:700">${netVal}</span></div>
     `;
     panel.hidden = false;
   }
