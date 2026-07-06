@@ -161,11 +161,9 @@
       <div class="bib-body">
         <div class="bib-title">MassGIS Property Tax Parcel Data — FY2026 Assessed Values</div>
         <div class="bib-meta">
-          Massachusetts Office of Geographic Information (MassGIS). FY2026 property tax parcel shapefile data including assessed values, land use classification, and parcel geometry for Beverly. Used to compute value per acre, tax per acre, and parcel-level mapping.<br>
+          Massachusetts Office of Geographic Information (MassGIS). FY2026 property tax parcel shapefile data including assessed values, land use classification, lot size (acres), and parcel geometry for Beverly. Used to compute value per acre, tax per parcel, and the net revenue model described in the methodology section below.<br>
           <a href="https://www.mass.gov/info-details/massgis-data-property-tax-parcels" target="_blank">mass.gov — MassGIS Property Tax Parcels</a>
-          <div class="used-in">Used in: <a href="/property.html">Property Map</a>
-    <a href="/sources.html">Sources</a>
-    <a href="/about.html">About</a></div>
+          <div class="used-in">Used in: <a href="/property.html">Property Map</a></div>
         </div>
         <span class="bib-tag tag-official">State agency data</span>
       </div>
@@ -176,9 +174,9 @@
       <div class="bib-body">
         <div class="bib-title">City of Beverly 2025 Draft Capital Expenditure Plan</div>
         <div class="bib-meta">
-          City of Beverly, Office of the Mayor. Draft 10-year capital plan covering General Fund and Enterprise Fund projects FY2025–FY2034, including a debt service schedule. Source for all project tables and debt projections on the Capital Plan page.<br>
+          City of Beverly, Office of the Mayor. Draft 10-year capital plan covering General Fund and Enterprise Fund projects FY2025–FY2034, including debt service schedules for the General Fund, Water Fund, and Sewer Fund. Source for infrastructure program descriptions and annual cost targets used in the net revenue methodology: water main replacement ($1M/yr), gate valve replacement ($200K/yr), sewer pump station improvements ($500K/yr need), and sewer system rehabilitation ($3M+/yr need). Also source for all project tables and debt projections on the Capital Plan page.<br>
           Available via <a href="https://www.beverlyma.gov/181/Engineering" target="_blank">beverlyma.gov — Engineering Department</a>.
-          <div class="used-in">Used in: <a href="/capital.html">Capital Plan</a></div>
+          <div class="used-in">Used in: <a href="/capital.html">Capital Plan</a>, <a href="/property.html">Property Map</a></div>
         </div>
         <span class="bib-tag tag-official">Official city document</span>
       </div>
@@ -287,6 +285,32 @@
     </div>
 
     <div class="bib-entry">
+      <div class="bib-num">20</div>
+      <div class="bib-body">
+        <div class="bib-title">MassDOT Road Inventory — 2024 Data, City of Beverly</div>
+        <div class="bib-meta">
+          Massachusetts Department of Transportation, Office of Transportation Planning. Annual road inventory database. Beverly-specific extract: 130.65 city-accepted centerline miles (310.27 lane miles) of local roads. Used to convert a per-mile maintenance benchmark into a city-level annual road cost total.<br>
+          <a href="https://www.mass.gov/info-details/massdot-road-inventory" target="_blank">mass.gov — MassDOT Road Inventory</a>
+          <div class="used-in">Used in: <a href="/property.html">Property Map</a></div>
+        </div>
+        <span class="bib-tag tag-law">State agency data</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
+      <div class="bib-num">21</div>
+      <div class="bib-body">
+        <div class="bib-title">Massachusetts Municipal Association — Local Road Maintenance Cost Benchmark</div>
+        <div class="bib-meta">
+          Massachusetts Municipal Association (MMA). Statewide benchmark for local road lifecycle maintenance cost: approximately $22,833 per centerline mile per year. This figure represents annualized full lifecycle cost (routine maintenance, resurfacing, and reconstruction on a long-term cycle), not a single-year operating budget. Applied to Beverly's 130.65 city-accepted centerline miles to derive a total annual road cost of $2,983,131.<br>
+          <a href="https://www.mma.org" target="_blank">mma.org</a>
+          <div class="used-in">Used in: <a href="/property.html">Property Map</a></div>
+        </div>
+        <span class="bib-tag tag-external">External reference</span>
+      </div>
+    </div>
+
+    <div class="bib-entry">
       <div class="bib-num">17</div>
       <div class="bib-body">
         <div class="bib-title">National Research Council — <em>Investments in Federal Facilities: Asset Management Strategies for the 21st Century</em></div>
@@ -336,6 +360,7 @@
         <li><strong>Override Calculator projections</strong> — the 10-year levy, gap, and tax rate trajectories are calculated by Open Beverly using the FFC's base-year figures and stated growth assumptions (6%/yr expenditures, 2.5%/yr revenue). The model uses constant rates for readability; actual outcomes will vary. The FY2028 deficit figure ($7,107,323) is drawn directly from the FFC forecast.</li>
         <li><strong>City Hall debt service estimate (~$1.9M/yr)</strong> — Open Beverly's illustrative calculation, based on $28M principal at 4.5% over 25 years. Actual debt service depends on final bond terms and market rates at issuance.</li>
         <li><strong>Revenue per acre (property map)</strong> — computed by Open Beverly from MassGIS parcel data using the pre-calculated annual tax field divided by parcel area in acres. Methodology follows the Urban3 revenue-per-acre framework.</li>
+        <li><strong>Net revenue per parcel (property map)</strong> — Open Beverly estimates the city's annual infrastructure cost attributable to each parcel and subtracts it from the parcel's annual tax bill. Infrastructure costs covered: roads, water, and sewer. Road cost uses the MMA lifecycle benchmark ($22,833/centerline mile/yr) applied to Beverly's 130.65 city-accepted miles (MassDOT 2024), yielding $2,983,131/yr total. Water and sewer costs use Beverly's enterprise fund operating budgets as reported in city financial documents ($6,567,369 water; $10,109,609 sewer), which include both operating and debt service. All three cost pools are allocated to parcels proportionally by effective acreage, using a minimum floor of 0.05 acres per parcel so that condos with no recorded lot size absorb a small but nonzero cost share. Net revenue = annual tax minus allocated road, water, and sewer cost. This is an estimate, not an official city calculation. It does not include school costs, public safety, or other general fund expenditures.</li>
         <li><strong>FY2027 total assessed value (~$12.1B)</strong> — estimated by Open Beverly from FY2026 actuals; not a published city figure.</li>
       </ul>
 
