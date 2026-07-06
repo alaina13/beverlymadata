@@ -69,6 +69,7 @@
         <button class="color-btn active" data-mode="vpa">Value per acre</button>
         <button class="color-btn" data-mode="taxpa">Tax per acre</button>
         <button class="color-btn" data-mode="net">Net revenue (after infrastructure)</button>
+        <button class="color-btn" data-mode="netpa">Net revenue per acre</button>
         <button class="color-btn" data-mode="v">Total assessed value</button>
         <button class="color-btn" data-mode="tax">Annual tax revenue</button>
       </div>
@@ -134,12 +135,14 @@
     vpa:   [[0,'#d0ead0'],[500000,'#4caf50'],[2000000,'#cddc39'],[4000000,'#ffc107'],[7000000,'#f44336'],[9400000,'#9c27b0']],
     taxpa: [[0,'#d0ead0'],[12000,'#4caf50'],[34000,'#cddc39'],[55000,'#ffc107'],[80000,'#f44336'],[102409,'#9c27b0']],
     net:   [[-4500,'#f44336'],[0,'#ffc107'],[3000,'#cddc39'],[10000,'#4caf50'],[50000,'#1a9850'],[200000,'#9c27b0']],
+    netpa: [[-5000,'#f44336'],[0,'#ffc107'],[8000,'#cddc39'],[25000,'#4caf50'],[80000,'#1a9850'],[300000,'#9c27b0']],
     v:     [[0,'#d0ead0'],[200000,'#4caf50'],[800000,'#cddc39'],[2000000,'#ffc107'],[5000000,'#f44336'],[15000000,'#9c27b0']],
     tax:   [[0,'#d0ead0'],[2000,'#4caf50'],[8000,'#cddc39'],[20000,'#ffc107'],[60000,'#f44336'],[200000,'#9c27b0']],
   };
 
   const LEGEND_BAR = {
-    net: 'linear-gradient(to right, #f44336, #ffc107, #4caf50, #9c27b0)',
+    net:   'linear-gradient(to right, #f44336, #ffc107, #4caf50, #9c27b0)',
+    netpa: 'linear-gradient(to right, #f44336, #ffc107, #4caf50, #9c27b0)',
     default: 'linear-gradient(to right, #4caf50, #cddc39, #ffc107, #f44336, #9c27b0)',
   };
 
@@ -306,7 +309,11 @@
       .then(r => r.json())
       .then(geo => {
         allFeatures = geo.features.filter(f => f.geometry);
-        allFeatures.forEach((f, i) => { f.id = i; });
+        allFeatures.forEach((f, i) => {
+          f.id = i;
+          const p = f.properties;
+          p.netpa = (p.ls > 0 && p.net != null) ? Math.round(p.net / p.ls) : null;
+        });
 
         map.addSource('parcels', { type: 'geojson', data: geo });
 
@@ -358,16 +365,17 @@
           el.style.display = 'block';
           el.style.left = (e.point.x + 14) + 'px';
           el.style.top  = (e.point.y - 10) + 'px';
+          const infraCost = (p.road_cost != null) ? fmt((p.road_cost||0)+(p.water_cost||0)+(p.sewer_cost||0)) : 'N/A';
+          const netpaVal = p.netpa != null ? (p.netpa >= 0 ? '+' : '') + fmt(p.netpa) + '/ac' : 'N/A';
           el.innerHTML = `
             <div class="tooltip-addr">${p.addr || 'Unknown'}</div>
             <div class="tooltip-row"><span>Value / acre</span><span>${fmt(p.vpa)}</span></div>
             <div class="tooltip-row"><span>Tax / acre</span><span>${fmt(p.taxpa)}</span></div>
             <div class="tooltip-row"><span>Total value</span><span>${fmt(p.v)}</span></div>
             <div class="tooltip-row"><span>Annual tax</span><span>${fmt(p.tax)}</span></div>
-            <div class="tooltip-row"><span>Road cost</span><span>${fmt(p.road_cost)}</span></div>
-            <div class="tooltip-row"><span>Water cost</span><span>${fmt(p.water_cost)}</span></div>
-            <div class="tooltip-row"><span>Sewer cost</span><span>${fmt(p.sewer_cost)}</span></div>
+            <div class="tooltip-row"><span>Infrastructure cost</span><span>${infraCost}</span></div>
             <div class="tooltip-row"><span>Net fiscal</span><span style="color:${netColor};font-weight:700">${netVal}</span></div>
+            <div class="tooltip-row"><span>Net / acre</span><span style="color:${netColor};font-weight:700">${netpaVal}</span></div>
             <div class="tooltip-cat">${p.cat || ''}</div>
           `;
           map.getCanvas().style.cursor = 'pointer';
@@ -390,7 +398,7 @@
       mode = btn.dataset.mode;
       updateColorMode();
       document.getElementById('legend-bar').style.background =
-        mode === 'net' ? LEGEND_BAR.net : LEGEND_BAR.default;
+        LEGEND_BAR[mode] || LEGEND_BAR.default;
     });
   });
 
@@ -469,10 +477,9 @@
       <div class="tooltip-row"><span>Tax / acre</span><span>${fmt(p.taxpa)}</span></div>
       <div class="tooltip-row"><span>Total value</span><span>${fmt(p.v)}</span></div>
       <div class="tooltip-row"><span>Annual tax</span><span>${fmt(p.tax)}</span></div>
-      <div class="tooltip-row"><span>Road cost</span><span>${fmt(p.road_cost)}</span></div>
-      <div class="tooltip-row"><span>Water cost</span><span>${fmt(p.water_cost)}</span></div>
-      <div class="tooltip-row"><span>Sewer cost</span><span>${fmt(p.sewer_cost)}</span></div>
+      <div class="tooltip-row"><span>Infrastructure cost</span><span>${(p.road_cost != null) ? fmt((p.road_cost||0)+(p.water_cost||0)+(p.sewer_cost||0)) : 'N/A'}</span></div>
       <div class="tooltip-row"><span>Net fiscal</span><span style="color:${netColor};font-weight:700">${netVal}</span></div>
+      <div class="tooltip-row"><span>Net / acre</span><span style="color:${netColor};font-weight:700">${p.netpa != null ? (p.netpa >= 0 ? '+' : '') + fmt(p.netpa) + '/ac' : 'N/A'}</span></div>
     `;
     panel.hidden = false;
   }
