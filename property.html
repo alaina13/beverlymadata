@@ -100,6 +100,9 @@
   </div>
 
   <div style="position:relative;flex:1;">
+    <button class="mob-controls-btn" id="mob-controls-btn" aria-label="Map controls">
+      <i class="fa-solid fa-sliders" aria-hidden="true"></i> Controls
+    </button>
     <div id="map" role="img" aria-label="Interactive map of Beverly parcels"></div>
     <div id="loading-msg"><div class="spinner"></div>Loading parcels…</div>
     <div class="tooltip" id="tooltip"></div>
@@ -484,6 +487,26 @@
       ]);
     }
   });
+</script>
+<div class="mob-sidebar-backdrop" id="mob-backdrop"></div>
+<script>
+  (function() {
+    const btn = document.getElementById('mob-controls-btn');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('mob-backdrop');
+    function openSidebar() {
+      sidebar.classList.add('mob-open');
+      backdrop.classList.add('visible');
+    }
+    function closeSidebar() {
+      sidebar.classList.remove('mob-open');
+      backdrop.classList.remove('visible');
+    }
+    btn.addEventListener('click', () => {
+      sidebar.classList.contains('mob-open') ? closeSidebar() : openSidebar();
+    });
+    backdrop.addEventListener('click', closeSidebar);
+  })();
 </script>
 <script src="/nav.js"></script>
 </body>
