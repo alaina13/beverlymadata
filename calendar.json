@@ -28,5 +28,15 @@
     "location": "City Hall Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-07-09T00:00:00+00:00"
+  },
+  {
+    "title": "Planning Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3628",
+    "pubDate": "2026-01-16T11:13:48-05:00",
+    "eventDate": "July 21, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Planning Board",
+    "sortDate": "2026-07-21T00:00:00+00:00"
   }
 ]
