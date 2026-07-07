@@ -59,6 +59,10 @@ Do not push prose changes unilaterally.
 - Commit messages: `fix:`, `rewrite:`, `feat:`, `chore:` prefixes.
 - `.claude/` is gitignored — do not track it.
 
+## Efficiency
+
+- For the same mechanical edit repeated across many files (e.g. inserting an identical line in every footer), use a scripted Bash edit (`sed`/`perl`) across all files at once, then verify with a single `git diff`. Don't Read + Edit each file individually when the change is identical everywhere — that burns tokens on redundant file content.
+
 ## Financial model (FY2027 base, FFC Dec 2025)
 
 - Structural deficit FY2027: $3,921,385
