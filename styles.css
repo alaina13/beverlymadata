@@ -2060,6 +2060,20 @@ blockquote cite {
   color: var(--text);
 }
 
+.mob-sidebar-close {
+  display: none;
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  text-align: left;
+}
+
 /* Backdrop for mobile sidebar */
 .mob-sidebar-backdrop {
   display: none;
@@ -2100,6 +2114,7 @@ blockquote cite {
   #sidebar.mob-open { display: flex; }
 
   .mob-controls-btn { display: flex; }
+  .mob-sidebar-close { display: block; }
 }
 
 

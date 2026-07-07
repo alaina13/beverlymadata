@@ -63,6 +63,7 @@
       <ul id="search-results" role="listbox" aria-label="Address suggestions"></ul>
     </div>
     <div id="parcel-panel" class="parcel-panel" hidden></div>
+    <button class="mob-sidebar-close" id="mob-sidebar-close" aria-label="Close controls">✕ Close</button>
     <div class="sidebar-body">
       <div class="panel-section">
         <h3>Color by</h3>
@@ -363,8 +364,14 @@
 
           const el = document.getElementById('tooltip');
           el.style.display = 'block';
-          el.style.left = (e.point.x + 14) + 'px';
-          el.style.top  = (e.point.y - 10) + 'px';
+          const mapW = map.getCanvas().offsetWidth;
+          const mapH = map.getCanvas().offsetHeight;
+          const tipW = el.offsetWidth || 220;
+          const tipH = el.offsetHeight || 160;
+          const x = (e.point.x + 14 + tipW > mapW) ? e.point.x - tipW - 14 : e.point.x + 14;
+          const y = (e.point.y - 10 + tipH > mapH) ? e.point.y - tipH + 10 : e.point.y - 10;
+          el.style.left = x + 'px';
+          el.style.top  = y + 'px';
           const infraCost = (p.road_cost != null) ? fmt((p.road_cost||0)+(p.water_cost||0)+(p.sewer_cost||0)) : 'N/A';
           const netpaVal = p.netpa != null ? (p.netpa >= 0 ? '+' : '') + fmt(p.netpa) + '/ac' : 'N/A';
           el.innerHTML = `
@@ -513,6 +520,8 @@
       sidebar.classList.contains('mob-open') ? closeSidebar() : openSidebar();
     });
     backdrop.addEventListener('click', closeSidebar);
+    document.getElementById('mob-sidebar-close').addEventListener('click', closeSidebar);
+    window._closeSidebar = closeSidebar;
   })();
 </script>
 <script src="/nav.js"></script>
