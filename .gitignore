@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 .DS_Store
 beverly_revenue_per_acre.csv
+.claude/
