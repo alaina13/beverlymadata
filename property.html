@@ -475,7 +475,7 @@
     const netColor = p.net > 0 ? '#2e7d32' : p.net < 0 ? '#c62828' : '#999';
     const panel = document.getElementById('parcel-panel');
     panel.innerHTML = `
-      <button class="parcel-panel-close" aria-label="Close" onclick="document.getElementById('parcel-panel').remove();clearSelected();">
+      <button class="parcel-panel-close" aria-label="Close" onclick="const _p=document.getElementById('parcel-panel');_p.hidden=true;_p.innerHTML='';clearSelected();">
         <i class="fa-solid fa-xmark"></i>
       </button>
       <div class="parcel-panel-addr">${addr}</div>

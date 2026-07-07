@@ -304,7 +304,6 @@
     const { revenues, exps, gaps } = project(overrideAmt);
 
     // New rate after override (applied to FY27 AV)
-    const fy27AV     = TOTAL_AV * (1 + AV_GROWTH);
     const fy27ResAV  = RES_AV   * (1 + AV_GROWTH);
     const addedRate  = (overrideAmt / fy27ResAV) * 1000; // only on residential
     const newRate    = RES_RATE_27 * (1 + REV_GROWTH) + addedRate;
@@ -369,6 +368,7 @@
   async function loadParcels() {
     if (parcels) return parcels;
     const res = await fetch('/parcels.json');
+    if (!res.ok) throw new Error('Failed to load parcels');
     parcels = await res.json();
     return parcels;
   }
@@ -419,7 +419,14 @@
   });
 
   async function doSearch(q) {
-    const data = await loadParcels();
+    let data;
+    try {
+      data = await loadParcels();
+    } catch (e) {
+      addrResults.innerHTML = '<div class="addr-result" role="status" style="color:var(--muted)">Address search unavailable</div>';
+      addrResults.hidden = false;
+      return;
+    }
     const upper = q.toUpperCase();
     const hits = data
       .filter(p => p.addr && p.addr.includes(upper) && p.v > 0)
