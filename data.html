@@ -56,11 +56,21 @@
   <p>Key financial indicators for Beverly, drawn from Annual Comprehensive Financial Reports (ACFRs) filed with the state, FY2009–FY2023.</p>
 </div>
 
+<div class="page-with-toc">
+<nav class="toc" aria-label="Table of contents">
+  <div class="toc-label">On this page</div>
+  <a href="#current-snapshot" class="toc-link">Current Snapshot</a>
+  <a href="#new-growth" class="toc-link">New Growth &amp; the Tax Levy</a>
+  <a href="#trends" class="toc-link">Trends: FY2009–FY2023</a>
+  <a href="#sustainability" class="toc-link">Financial Sustainability Indicators</a>
+  <a href="#comparison" class="toc-link">North Shore Comparison</a>
+  <a href="#budget-documents" class="toc-link">Budget Documents</a>
+</nav>
 <div class="data-container">
 
   <!-- ── Current snapshot ── -->
   <div class="section-header">
-    <h2>Current Snapshot</h2>
+    <h2 id="current-snapshot">Current Snapshot</h2>
     <p>FY2023 unless noted. Tax rates from Beverly City Assessors (FY2026).</p>
   </div>
 
@@ -104,20 +114,15 @@
 
   <!-- ── Free Cash / Stabilization explainer ── -->
   <div class="structural-box" style="margin-bottom:2rem;">
-    <div class="not-waste">
-      <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-      <div>
-        <strong>Free cash and the stabilization fund are not the same thing.</strong>
-        Free cash is the unspent balance from the prior fiscal year, certified annually by the Massachusetts Department of Revenue. It is generated when actual revenues exceed estimates or when budgeted spending goes unspent. Beverly has certified approximately $10–11M in free cash each year from FY2023 through FY2026. Free cash can be appropriated for one-time uses — capital projects, reserve transfers, or gap-filling — but cannot be treated as a permanent revenue source.
-        The stabilization fund is a formal reserve account that the city builds up over time by transferring free cash into it. Beverly grew its stabilization fund from near zero in FY2009 to $18.6M by FY2023. City policy targets keeping the fund at 3–8% of the general fund. Unlike free cash, the stabilization fund requires a two-thirds vote of the City Council to appropriate.
-        Beverly has used both to help balance budgets during years of structural pressure. The Financial Forecasting Committee noted in December 2025 that this strategy has limits: drawing reserves down to cover recurring gaps eventually exhausts the buffer without fixing the underlying math.
-      </div>
-    </div>
+    <h2>Free cash and the stabilization fund are not the same thing</h2>
+    <p>Free cash is the unspent balance from the prior fiscal year, certified annually by the Massachusetts Department of Revenue. It is generated when actual revenues exceed estimates or when budgeted spending goes unspent. Beverly has certified approximately $10–11M in free cash each year from FY2023 through FY2026. Free cash can be appropriated for one-time uses, such as capital projects, reserve transfers, or gap-filling, but cannot be treated as a permanent revenue source.</p>
+    <p>The stabilization fund is a formal reserve account that the city builds up over time by transferring free cash into it. Beverly grew its stabilization fund from near zero in FY2009 to $18.6M by FY2023. City policy targets keeping the fund at 3–8% of the general fund. Unlike free cash, the stabilization fund requires a two-thirds vote of the City Council to appropriate.</p>
+    <p>Beverly has used both to help balance budgets during years of structural pressure. The Financial Forecasting Committee noted in December 2025 that this strategy has limits: drawing reserves down to cover recurring gaps eventually exhausts the buffer without fixing the underlying math.</p>
   </div>
 
   <!-- ── Charts ── -->
   <div class="section-header">
-    <h2>Trends: FY2009 – FY2023</h2>
+    <h2 id="trends">Trends: FY2009 – FY2023</h2>
     <p>Source: Beverly Annual Comprehensive Financial Reports (ACFRs)</p>
   </div>
 
@@ -155,13 +160,60 @@
 
   </div>
 
+  <!-- ── New Growth & the Tax Levy ── -->
+  <div class="section-header">
+    <h2 id="new-growth">New Growth &amp; the Tax Levy</h2>
+    <p>Certified figures from the Massachusetts Department of Revenue Tax Rate Recapitulation and Levy Limit worksheets for Beverly (municipal code 030), FY2020–FY2026.</p>
+  </div>
+
+  <p class="body-text">"New growth" is the amount a city is allowed to add to its tax levy limit each year from new construction and other real additions to the tax base, separate from the standard 2.5% increase Proposition 2&frac12; allows on the existing base. Beverly's certified new growth averaged $1.63 million per year from FY2020 through FY2026, ranging from $1.37 million (FY2022) to $2.10 million (FY2024). New growth is added to the levy limit as a flat dollar amount; it does not compound into the 2.5% base increase. See <a href="/concepts.html">Key Concepts</a> for full definitions of levy limit and new growth.</p>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="chart-title" id="newGrowthChart-title">Certified New Growth by Year</div>
+      <div class="chart-sub">Dollars added to the levy limit from new construction, FY2020–FY2026</div>
+      <div class="chart-wrap"><canvas id="newGrowthChart" role="img" aria-labelledby="newGrowthChart-title" aria-describedby="newGrowthChart-data"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title" id="levyChart-title">Total Tax Levy</div>
+      <div class="chart-sub">FY2020–FY2026, per DOR Tax Rate Recap sheets</div>
+      <div class="chart-wrap"><canvas id="levyChart" role="img" aria-labelledby="levyChart-title" aria-describedby="levyChart-data"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-card table-scroll">
+    <table class="sustain-table">
+      <caption class="sr-only">Certified Tax Levy, Rates &amp; New Growth, FY2020–FY2026</caption>
+      <thead>
+        <tr>
+          <th>Fiscal Year</th>
+          <th>Tax Levy</th>
+          <th>New Growth</th>
+          <th>2.5% Base Increase</th>
+          <th>Residential Rate</th>
+          <th>Comm/Ind/Personal Rate</th>
+          <th>Total Valuation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>FY2020</td><td>$108,024,247.67</td><td>$1,849,252</td><td>$2,589,901</td><td>$12.83</td><td>$24.73</td><td>$7.48B</td></tr>
+        <tr><td>FY2021</td><td>$112,093,155.07</td><td>$1,401,259</td><td>$2,701,532</td><td>$12.70</td><td>$24.86</td><td>$7.83B</td></tr>
+        <tr><td>FY2022</td><td>$115,210,686.84</td><td>$1,367,782</td><td>$2,804,102</td><td>$12.17</td><td>$23.90</td><td>$8.44B</td></tr>
+        <tr><td>FY2023</td><td>$119,417,892.74</td><td>$1,562,156</td><td>$2,908,399</td><td>$11.26</td><td>$22.07</td><td>$9.47B</td></tr>
+        <tr><td>FY2024</td><td>$124,470,712.25</td><td>$2,101,783</td><td>$3,020,163</td><td>$11.23</td><td>$21.94</td><td>$9.93B</td></tr>
+        <tr><td>FY2025</td><td>$129,833,221.14</td><td>$1,533,967</td><td>$3,146,983</td><td>$10.99</td><td>$21.44</td><td>$10.60B</td></tr>
+        <tr><td>FY2026</td><td>$135,398,111.71</td><td>$1,599,307</td><td>$3,264,007</td><td>$10.81</td><td>$20.98</td><td>$11.30B</td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <!-- ── Financial sustainability ── -->
   <div class="section-header">
-    <h2>Financial Sustainability Indicators</h2>
+    <h2 id="sustainability">Financial Sustainability Indicators</h2>
     <p>Derived from ACFR data using the Government Finance Officers Association (GFOA) financial sustainability framework.</p>
   </div>
 
-  <div class="chart-card">
+  <div class="chart-card table-scroll">
     <table class="sustain-table">
       <thead>
         <tr>
@@ -242,7 +294,7 @@
 
   <!-- ── North Shore Comparison ── -->
   <div class="section-header">
-    <h2>North Shore Comparison</h2>
+    <h2 id="comparison">North Shore Comparison</h2>
     <p>How Beverly's property tax burden compares to neighboring communities. Sorted by effective tax rate.</p>
   </div>
   <div class="chart-grid">
@@ -262,7 +314,7 @@
 
   <!-- ── Budget docs ── -->
   <div class="section-header">
-    <h2>Budget Documents</h2>
+    <h2 id="budget-documents">Budget Documents</h2>
   </div>
   <div class="doc-links">
     <a class="doc-link" href="https://city-beverly-ma-budget-book.cleargov.com/20282/introduction/transmittal-letter" target="_blank">📄 FY2026 Adopted Budget (ClearGov interactive) ↗</a>
@@ -275,11 +327,13 @@
     <strong>Data sources</strong><br>
     Tax rates and assessed values: Beverly City Assessors Office — beverlyma.gov/391/City-Assessors<br>
     Financial statements and 10-year statistical tables: Beverly Annual Comprehensive Financial Reports (ACFRs) FY2018–FY2023<br>
+    Tax levy, rates, valuation, and new growth (FY2020–FY2026): Massachusetts Department of Revenue Tax Rate Recapitulation and Levy Limit worksheets, Beverly (municipal code 030)<br>
     Financial sustainability indicators: ACFR data analyzed using GFOA sustainability framework<br>
     School enrollment & per-pupil spending: MA Department of Elementary and Secondary Education — profiles.doe.mass.edu<br>
     Open Beverly is an independent civic project. All data sourced from public records.
   </div>
 
+</div>
 </div>
 </main>
 <footer>
@@ -411,6 +465,17 @@
     borderColor: COLORS.navy, backgroundColor: 'rgba(26,39,68,0.1)', fill: true, tension: 0.3, pointRadius: 3,
   }], v => '$' + v.toFixed(2) + 'B');
 
+  // ── New Growth & the Tax Levy (DOR-certified, FY2020–FY2026) ────────────────
+  const YEARS2 = ['FY2020','FY2021','FY2022','FY2023','FY2024','FY2025','FY2026'];
+
+  bar('newGrowthChart', YEARS2,
+    [1849252, 1401259, 1367782, 1562156, 2101783, 1533967, 1599307],
+    COLORS.accent, v => '$' + (v/1e6).toFixed(2) + 'M');
+
+  bar('levyChart', YEARS2,
+    [108024247.67, 112093155.07, 115210686.84, 119417892.74, 124470712.25, 129833221.14, 135398111.71],
+    COLORS.blue, m);
+
   // ── North Shore Comparison ─────────────────────────────────────────────────
   // Source: AEI Property Tax Atlas, jurisdiction-level data 2024-25
   const PEERS = [
@@ -477,5 +542,6 @@
   })();
 </script>
 <script src="/nav.js"></script>
+<script src="/toc.js"></script>
 </body>
 </html>
