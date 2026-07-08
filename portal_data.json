@@ -1,0 +1,3982 @@
+[
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2009",
+  "value": 10.86,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2009",
+  "value": 19.41,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2009",
+  "value": 69980000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2009",
+  "value": 0,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2009",
+  "value": 60160000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2009",
+  "value": 5840000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2010",
+  "value": 11.63,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2010",
+  "value": 20.58,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2010",
+  "value": 72750000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2010",
+  "value": 550000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2010",
+  "value": 68250000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2010",
+  "value": 5650000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2011",
+  "value": 12.41,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2011",
+  "value": 22.59,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2011",
+  "value": 75370000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2011",
+  "value": 550000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2011",
+  "value": 78360000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2011",
+  "value": 5480000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2012",
+  "value": 12.97,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2012",
+  "value": 23.59,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2012",
+  "value": 78410000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2012",
+  "value": 550000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2012",
+  "value": 74230000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2012",
+  "value": 5440000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2013",
+  "value": 13.64,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2013",
+  "value": 24.86,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2013",
+  "value": 81040000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2013",
+  "value": 750000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2013",
+  "value": 70380000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2013",
+  "value": 5350000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2014",
+  "value": 14.16,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2014",
+  "value": 25.78,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2014",
+  "value": 84360000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2014",
+  "value": 1750000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2014",
+  "value": 65830000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2014",
+  "value": 5350000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2015",
+  "value": 14.11,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2015",
+  "value": 25.7,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2015",
+  "value": 87630000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2015",
+  "value": 5250000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2015",
+  "value": 70800000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2015",
+  "value": 5590000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2016",
+  "value": 14.39,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2016",
+  "value": 26.41,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2016",
+  "value": 91000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2016",
+  "value": 6750000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2016",
+  "value": 86020000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2016",
+  "value": 5670000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2017",
+  "value": 14.28,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2017",
+  "value": 26.83,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2017",
+  "value": 94720000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2017",
+  "value": 9380000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2017",
+  "value": 91010000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2017",
+  "value": 5910000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2018",
+  "value": 13.6,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2018",
+  "value": 25.72,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2018",
+  "value": 99010000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2018",
+  "value": 12580000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2018",
+  "value": 108220000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2018",
+  "value": 6510000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2019",
+  "value": 13.21,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2019",
+  "value": 25.41,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2019",
+  "value": 102870000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2019",
+  "value": 13620000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2019",
+  "value": 99490000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2019",
+  "value": 6980000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2020",
+  "value": 12.83,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2020",
+  "value": 24.73,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2020",
+  "value": 107150000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2020",
+  "value": 14770000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2020",
+  "value": 92000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2020",
+  "value": 7480000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2021",
+  "value": 12.7,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2021",
+  "value": 24.86,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2021",
+  "value": 111920000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2021",
+  "value": 15780000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2021",
+  "value": 123010000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2021",
+  "value": 7830000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2022",
+  "value": 12.17,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2022",
+  "value": 23.9,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2022",
+  "value": 115060000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2022",
+  "value": 16930000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2022",
+  "value": 114040000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2022",
+  "value": 8440000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2023",
+  "value": 11.26,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2023",
+  "value": 22.07,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Revenue",
+  "metric": "Total Tax Levy",
+  "period": "FY2023",
+  "value": 119120000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Reserves",
+  "metric": "Stabilization Fund Balance",
+  "period": "FY2023",
+  "value": 18640000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Debt",
+  "metric": "Outstanding Debt",
+  "period": "FY2023",
+  "value": 107040000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Fiscal History",
+  "category": "Property Value",
+  "metric": "Total Assessed Value",
+  "period": "FY2023",
+  "value": 9470000000,
+  "unit": "$",
+  "source": "Beverly Annual Comprehensive Financial Reports (ACFRs), FY2009-FY2023",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Total Revenues",
+  "period": "FY2018",
+  "value": 186900000.0,
+  "unit": "$",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Total Revenues",
+  "period": "FY2019",
+  "value": 181500000.0,
+  "unit": "$",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Total Revenues",
+  "period": "FY2020",
+  "value": 185800000.0,
+  "unit": "$",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Total Revenues",
+  "period": "FY2021",
+  "value": 198000000.0,
+  "unit": "$",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Total Revenues",
+  "period": "FY2022",
+  "value": 199000000.0,
+  "unit": "$",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Total Revenues",
+  "period": "FY2023",
+  "value": 213200000.0,
+  "unit": "$",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Net Position",
+  "period": "FY2018",
+  "value": -119900000.0,
+  "unit": "$",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Net Position",
+  "period": "FY2019",
+  "value": -156100000.0,
+  "unit": "$",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Net Position",
+  "period": "FY2020",
+  "value": -132100000.0,
+  "unit": "$",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Net Position",
+  "period": "FY2021",
+  "value": -143100000.0,
+  "unit": "$",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Net Position",
+  "period": "FY2022",
+  "value": -131100000.0,
+  "unit": "$",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Net Position",
+  "period": "FY2023",
+  "value": -114300000.0,
+  "unit": "$",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Financial Assets-to-Liabilities Ratio",
+  "period": "FY2018",
+  "value": 0.165,
+  "unit": "ratio",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Financial Assets-to-Liabilities Ratio",
+  "period": "FY2019",
+  "value": 0.158,
+  "unit": "ratio",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Financial Assets-to-Liabilities Ratio",
+  "period": "FY2020",
+  "value": 0.147,
+  "unit": "ratio",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Financial Assets-to-Liabilities Ratio",
+  "period": "FY2021",
+  "value": 0.152,
+  "unit": "ratio",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Financial Assets-to-Liabilities Ratio",
+  "period": "FY2022",
+  "value": 0.162,
+  "unit": "ratio",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Financial Assets-to-Liabilities Ratio",
+  "period": "FY2023",
+  "value": 0.178,
+  "unit": "ratio",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Net Debt-to-Total Revenues Ratio",
+  "period": "FY2018",
+  "value": 2.4,
+  "unit": "ratio",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Net Debt-to-Total Revenues Ratio",
+  "period": "FY2019",
+  "value": 2.51,
+  "unit": "ratio",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Net Debt-to-Total Revenues Ratio",
+  "period": "FY2020",
+  "value": 3.05,
+  "unit": "ratio",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Net Debt-to-Total Revenues Ratio",
+  "period": "FY2021",
+  "value": 2.88,
+  "unit": "ratio",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Net Debt-to-Total Revenues Ratio",
+  "period": "FY2022",
+  "value": 2.69,
+  "unit": "ratio",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Net Debt-to-Total Revenues Ratio",
+  "period": "FY2023",
+  "value": 2.4,
+  "unit": "ratio",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Interest-to-Total Revenues",
+  "period": "FY2018",
+  "value": 1.6,
+  "unit": "%",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Interest-to-Total Revenues",
+  "period": "FY2019",
+  "value": 1.7,
+  "unit": "%",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Interest-to-Total Revenues",
+  "period": "FY2020",
+  "value": 1.8,
+  "unit": "%",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Interest-to-Total Revenues",
+  "period": "FY2021",
+  "value": 1.3,
+  "unit": "%",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Interest-to-Total Revenues",
+  "period": "FY2022",
+  "value": 1.2,
+  "unit": "%",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "Interest-to-Total Revenues",
+  "period": "FY2023",
+  "value": 1.1,
+  "unit": "%",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "State Transfers-to-Total Revenues",
+  "period": "FY2018",
+  "value": 25.7,
+  "unit": "%",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "State Transfers-to-Total Revenues",
+  "period": "FY2019",
+  "value": 19.1,
+  "unit": "%",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "State Transfers-to-Total Revenues",
+  "period": "FY2020",
+  "value": 21.2,
+  "unit": "%",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "State Transfers-to-Total Revenues",
+  "period": "FY2021",
+  "value": 23.3,
+  "unit": "%",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "State Transfers-to-Total Revenues",
+  "period": "FY2022",
+  "value": 22.1,
+  "unit": "%",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "Financial Sustainability",
+  "category": "GFOA Indicators",
+  "metric": "State Transfers-to-Total Revenues",
+  "period": "FY2023",
+  "value": 22.2,
+  "unit": "%",
+  "source": "ACFR data analyzed using GFOA Financial Sustainability Framework",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Effective Tax Rate",
+  "period": "Swampscott",
+  "value": 1.024,
+  "unit": "% of market value",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Median Annual Tax Bill",
+  "period": "Swampscott",
+  "value": 8804,
+  "unit": "$",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Effective Tax Rate",
+  "period": "Ipswich",
+  "value": 0.984,
+  "unit": "% of market value",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Median Annual Tax Bill",
+  "period": "Ipswich",
+  "value": 8519,
+  "unit": "$",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Effective Tax Rate",
+  "period": "Salem",
+  "value": 0.976,
+  "unit": "% of market value",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Median Annual Tax Bill",
+  "period": "Salem",
+  "value": 6556,
+  "unit": "$",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Effective Tax Rate",
+  "period": "Beverly",
+  "value": 0.968,
+  "unit": "% of market value",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Median Annual Tax Bill",
+  "period": "Beverly",
+  "value": 7185,
+  "unit": "$",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Effective Tax Rate",
+  "period": "Danvers",
+  "value": 0.954,
+  "unit": "% of market value",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Median Annual Tax Bill",
+  "period": "Danvers",
+  "value": 7073,
+  "unit": "$",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Effective Tax Rate",
+  "period": "Lynn",
+  "value": 0.945,
+  "unit": "% of market value",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Median Annual Tax Bill",
+  "period": "Lynn",
+  "value": 5551,
+  "unit": "$",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Effective Tax Rate",
+  "period": "Newburyport",
+  "value": 0.909,
+  "unit": "% of market value",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Median Annual Tax Bill",
+  "period": "Newburyport",
+  "value": 8931,
+  "unit": "$",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Effective Tax Rate",
+  "period": "Gloucester",
+  "value": 0.855,
+  "unit": "% of market value",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Median Annual Tax Bill",
+  "period": "Gloucester",
+  "value": 6500,
+  "unit": "$",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Effective Tax Rate",
+  "period": "Marblehead",
+  "value": 0.831,
+  "unit": "% of market value",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Median Annual Tax Bill",
+  "period": "Marblehead",
+  "value": 8528,
+  "unit": "$",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Effective Tax Rate",
+  "period": "Peabody",
+  "value": 0.81,
+  "unit": "% of market value",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "North Shore Comparison",
+  "category": "Peer Cities",
+  "metric": "Median Annual Tax Bill",
+  "period": "Peabody",
+  "value": 5743,
+  "unit": "$",
+  "source": "AEI Property Tax Atlas, jurisdiction-level data 2024-25",
+  "note": ""
+ },
+ {
+  "dataset": "Civic Data",
+  "category": "Tax Rates",
+  "metric": "Residential Tax Rate",
+  "period": "FY2026",
+  "value": 10.81,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office \u2014 beverlyma.gov/391/City-Assessors",
+  "note": ""
+ },
+ {
+  "dataset": "Civic Data",
+  "category": "Tax Rates",
+  "metric": "Commercial Tax Rate",
+  "period": "FY2026",
+  "value": 20.98,
+  "unit": "$/$1,000 assessed value",
+  "source": "Beverly City Assessors Office \u2014 beverlyma.gov/391/City-Assessors",
+  "note": ""
+ },
+ {
+  "dataset": "Civic Data",
+  "category": "Schools",
+  "metric": "School Enrollment",
+  "period": "2025\u201326",
+  "value": 4497,
+  "unit": "students",
+  "source": "MA DESE School and District Profiles \u2014 profiles.doe.mass.edu",
+  "note": ""
+ },
+ {
+  "dataset": "Civic Data",
+  "category": "Schools",
+  "metric": "Per-Pupil Spending (In-District)",
+  "period": "FY2025",
+  "value": 18594.61,
+  "unit": "$",
+  "source": "MA DESE School and District Profiles \u2014 profiles.doe.mass.edu",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Public Schools (Total)",
+  "period": "FY2021",
+  "value": 65275397,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Public Schools (Total)",
+  "period": "FY2022",
+  "value": 67274220,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Public Schools (Total)",
+  "period": "FY2023",
+  "value": 71623467,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Public Schools (Total)",
+  "period": "FY2024",
+  "value": 75546718,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Public Schools (Total)",
+  "period": "FY2025",
+  "value": 81848003,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Public Schools (Total)",
+  "period": "FY2026",
+  "value": 89339332,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Public Schools (Total)",
+  "period": "FY2027",
+  "value": 94532754,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Beverly Public Schools",
+  "period": "FY2025",
+  "value": 78267064,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Essex North Shore Agri. & Tech.",
+  "period": "FY2025",
+  "value": 3580939,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Beverly Public Schools",
+  "period": "FY2026",
+  "value": 85372614,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Essex North Shore Agri. & Tech.",
+  "period": "FY2026",
+  "value": 3966718,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Beverly Public Schools",
+  "period": "FY2027",
+  "value": 89876235,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Schools",
+  "metric": "Essex North Shore Agri. & Tech.",
+  "period": "FY2027",
+  "value": 4656519,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Employee Benefits (Total)",
+  "period": "FY2021",
+  "value": 22885426,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Employee Benefits (Total)",
+  "period": "FY2022",
+  "value": 23494916,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Employee Benefits (Total)",
+  "period": "FY2023",
+  "value": 24454192,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Employee Benefits (Total)",
+  "period": "FY2024",
+  "value": 25656739,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Employee Benefits (Total)",
+  "period": "FY2025",
+  "value": 26399008,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Employee Benefits (Total)",
+  "period": "FY2026",
+  "value": 27545381,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Employee Benefits (Total)",
+  "period": "FY2027",
+  "value": 29311834,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Annuities & Pensions",
+  "period": "FY2025",
+  "value": 13851674,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Health Insurance",
+  "period": "FY2025",
+  "value": 11460984,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Payroll Tax",
+  "period": "FY2025",
+  "value": 507850,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Workers' Compensation",
+  "period": "FY2025",
+  "value": 490000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Life Insurance",
+  "period": "FY2025",
+  "value": 70000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Unemployment",
+  "period": "FY2025",
+  "value": 18500,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Annuities & Pensions",
+  "period": "FY2026",
+  "value": 14339582,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Health Insurance",
+  "period": "FY2026",
+  "value": 12137299,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Payroll Tax",
+  "period": "FY2026",
+  "value": 535000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Workers' Compensation",
+  "period": "FY2026",
+  "value": 445000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Life Insurance",
+  "period": "FY2026",
+  "value": 70000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Unemployment",
+  "period": "FY2026",
+  "value": 18500,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Annuities & Pensions",
+  "period": "FY2027",
+  "value": 15008236,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Health Insurance",
+  "period": "FY2027",
+  "value": 13224398,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Payroll Tax",
+  "period": "FY2027",
+  "value": 577200,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Workers' Compensation",
+  "period": "FY2027",
+  "value": 365000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Life Insurance",
+  "period": "FY2027",
+  "value": 70000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Employee Benefits",
+  "metric": "Unemployment",
+  "period": "FY2027",
+  "value": 67000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Public Safety (Total)",
+  "period": "FY2021",
+  "value": 16957167,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Public Safety (Total)",
+  "period": "FY2022",
+  "value": 17619438,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Public Safety (Total)",
+  "period": "FY2023",
+  "value": 19613190,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Public Safety (Total)",
+  "period": "FY2024",
+  "value": 19931674,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Public Safety (Total)",
+  "period": "FY2025",
+  "value": 20542436,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Public Safety (Total)",
+  "period": "FY2026",
+  "value": 21578822,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Public Safety (Total)",
+  "period": "FY2027",
+  "value": 22494501,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Police Department",
+  "period": "FY2025",
+  "value": 10225848,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Fire Department",
+  "period": "FY2025",
+  "value": 7965853,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Public Safety Dispatch",
+  "period": "FY2025",
+  "value": 988704,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Building Commissioner",
+  "period": "FY2025",
+  "value": 605658,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Harbormaster",
+  "period": "FY2025",
+  "value": 375300,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Animal Control",
+  "period": "FY2025",
+  "value": 182581,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Emergency Management",
+  "period": "FY2025",
+  "value": 80788,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "City Electrician",
+  "period": "FY2025",
+  "value": 80987,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Sealer of Weights & Measures",
+  "period": "FY2025",
+  "value": 36717,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Police Department",
+  "period": "FY2026",
+  "value": 10720097,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Fire Department",
+  "period": "FY2026",
+  "value": 8395132,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Public Safety Dispatch",
+  "period": "FY2026",
+  "value": 1079750,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Building Commissioner",
+  "period": "FY2026",
+  "value": 642305,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Harbormaster",
+  "period": "FY2026",
+  "value": 375500,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Animal Control",
+  "period": "FY2026",
+  "value": 172284,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "City Electrician",
+  "period": "FY2026",
+  "value": 91760,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Emergency Management",
+  "period": "FY2026",
+  "value": 63350,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Sealer of Weights & Measures",
+  "period": "FY2026",
+  "value": 38644,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Police Department",
+  "period": "FY2027",
+  "value": 11106403,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Fire Department",
+  "period": "FY2027",
+  "value": 8824522,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Public Safety Dispatch",
+  "period": "FY2027",
+  "value": 1292017,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Building Commissioner",
+  "period": "FY2027",
+  "value": 568041,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Harbormaster",
+  "period": "FY2027",
+  "value": 383477,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "City Electrician",
+  "period": "FY2027",
+  "value": 94800,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Animal Control",
+  "period": "FY2027",
+  "value": 121967,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Emergency Management",
+  "period": "FY2027",
+  "value": 63350,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Safety",
+  "metric": "Sealer of Weights & Measures",
+  "period": "FY2027",
+  "value": 39923,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Debt Service (Total)",
+  "period": "FY2021",
+  "value": 9488906,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Debt Service (Total)",
+  "period": "FY2022",
+  "value": 10855709,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Debt Service (Total)",
+  "period": "FY2023",
+  "value": 8196761,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Debt Service (Total)",
+  "period": "FY2024",
+  "value": 9043724,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Debt Service (Total)",
+  "period": "FY2025",
+  "value": 9043723,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Debt Service (Total)",
+  "period": "FY2026",
+  "value": 8789183,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Debt Service (Total)",
+  "period": "FY2027",
+  "value": 8940461,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Long Term Principal",
+  "period": "FY2025",
+  "value": 4410000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Long Term Interest",
+  "period": "FY2025",
+  "value": 2670711,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Short Term Principal",
+  "period": "FY2025",
+  "value": 1863012,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Short Term Interest",
+  "period": "FY2025",
+  "value": 100000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Debt Service",
+  "period": "FY2026",
+  "value": 8789183,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Debt Service",
+  "metric": "Debt Service",
+  "period": "FY2027",
+  "value": 8940461,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Public Works (Total)",
+  "period": "FY2021",
+  "value": 7561793,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Public Works (Total)",
+  "period": "FY2022",
+  "value": 8263117,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Public Works (Total)",
+  "period": "FY2023",
+  "value": 8561868,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Public Works (Total)",
+  "period": "FY2024",
+  "value": 9343053,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Public Works (Total)",
+  "period": "FY2025",
+  "value": 9762040,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Public Works (Total)",
+  "period": "FY2026",
+  "value": 10250263,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Public Works (Total)",
+  "period": "FY2027",
+  "value": 9721023,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Sanitation",
+  "period": "FY2025",
+  "value": 2310000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Highway & Maintenance",
+  "period": "FY2025",
+  "value": 2003011,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Parks & Forestry",
+  "period": "FY2025",
+  "value": 1295774,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Engineering",
+  "period": "FY2025",
+  "value": 925837,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Municipal Garage",
+  "period": "FY2025",
+  "value": 811672,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Snow & Ice",
+  "period": "FY2025",
+  "value": 800000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Public Works Admin",
+  "period": "FY2025",
+  "value": 763115,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Electric Division",
+  "period": "FY2025",
+  "value": 584911,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Cemetery",
+  "period": "FY2025",
+  "value": 267720,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Sanitation Transfer",
+  "period": "FY2026",
+  "value": 2520045,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Parks & Forestry",
+  "period": "FY2026",
+  "value": 1347744,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Highway",
+  "period": "FY2026",
+  "value": 1049991,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Maintenance Division",
+  "period": "FY2026",
+  "value": 1133710,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Municipal Garage",
+  "period": "FY2026",
+  "value": 832753,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Snow & Ice",
+  "period": "FY2026",
+  "value": 800000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Public Works Admin",
+  "period": "FY2026",
+  "value": 868463,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Engineering",
+  "period": "FY2026",
+  "value": 899094,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Electric Division",
+  "period": "FY2026",
+  "value": 535743,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Cemetery",
+  "period": "FY2026",
+  "value": 262720,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Parks & Forestry",
+  "period": "FY2027",
+  "value": 1410728,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Electric Division",
+  "period": "FY2027",
+  "value": 1224202,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Sanitation Transfer",
+  "period": "FY2027",
+  "value": 1450000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Maintenance Division",
+  "period": "FY2027",
+  "value": 1117076,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Municipal Garage",
+  "period": "FY2027",
+  "value": 887634,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Public Works Admin",
+  "period": "FY2027",
+  "value": 878667,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Engineering",
+  "period": "FY2027",
+  "value": 796342,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Snow & Ice",
+  "period": "FY2027",
+  "value": 800000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Highway",
+  "period": "FY2027",
+  "value": 893654,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Public Works",
+  "metric": "Cemetery",
+  "period": "FY2027",
+  "value": 262720,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "General Government (Total)",
+  "period": "FY2021",
+  "value": 6256051,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "General Government (Total)",
+  "period": "FY2022",
+  "value": 6806802,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "General Government (Total)",
+  "period": "FY2023",
+  "value": 7197777,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "General Government (Total)",
+  "period": "FY2024",
+  "value": 8967689,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "General Government (Total)",
+  "period": "FY2025",
+  "value": 9832242,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "General Government (Total)",
+  "period": "FY2026",
+  "value": 8638597,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "General Government (Total)",
+  "period": "FY2027",
+  "value": 8065950,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Reserve for Appropriation",
+  "period": "FY2025",
+  "value": 1725000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Accountant / Finance",
+  "period": "FY2025",
+  "value": 1739353,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Information Technology",
+  "period": "FY2025",
+  "value": 1086788,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Executive Office",
+  "period": "FY2025",
+  "value": 1047642,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Planning Department",
+  "period": "FY2025",
+  "value": 820019,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Solicitor's Office",
+  "period": "FY2025",
+  "value": 658875,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Treasurer-Collector",
+  "period": "FY2025",
+  "value": 413174,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Procurement",
+  "period": "FY2025",
+  "value": 400789,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Public Property",
+  "period": "FY2025",
+  "value": 447500,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Assessors",
+  "period": "FY2025",
+  "value": 397252,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Elections",
+  "period": "FY2025",
+  "value": 285201,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Human Resources",
+  "period": "FY2025",
+  "value": 269638,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "City Clerk",
+  "period": "FY2025",
+  "value": 231111,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Clerk of Committees",
+  "period": "FY2025",
+  "value": 300500,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Licensing Board",
+  "period": "FY2025",
+  "value": 5900,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Conservation Commission",
+  "period": "FY2025",
+  "value": 3500,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Reserve for Appropriation",
+  "period": "FY2026",
+  "value": 1101260,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Accountant / Finance",
+  "period": "FY2026",
+  "value": 1832120,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Information Technology",
+  "period": "FY2026",
+  "value": 1093348,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Executive Office",
+  "period": "FY2026",
+  "value": 964451,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Planning Department",
+  "period": "FY2026",
+  "value": 784544,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Solicitor's Office",
+  "period": "FY2026",
+  "value": 557185,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Treasurer-Collector",
+  "period": "FY2026",
+  "value": 425060,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Procurement",
+  "period": "FY2026",
+  "value": 394685,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Assessors",
+  "period": "FY2026",
+  "value": 416165,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Human Resources",
+  "period": "FY2026",
+  "value": 272600,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "City Council & Clerk",
+  "period": "FY2026",
+  "value": 797179,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Reserve for Appropriation",
+  "period": "FY2027",
+  "value": 915000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Accountant / Finance",
+  "period": "FY2027",
+  "value": 1817284,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Information Technology",
+  "period": "FY2027",
+  "value": 1131485,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Planning Department",
+  "period": "FY2027",
+  "value": 577221,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Executive Office",
+  "period": "FY2027",
+  "value": 809138,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Solicitor's Office",
+  "period": "FY2027",
+  "value": 540774,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Treasurer-Collector",
+  "period": "FY2027",
+  "value": 452386,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Procurement",
+  "period": "FY2027",
+  "value": 368271,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Assessors",
+  "period": "FY2027",
+  "value": 451036,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "Human Resources",
+  "period": "FY2027",
+  "value": 237395,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "General Government",
+  "metric": "City Council & Clerk",
+  "period": "FY2027",
+  "value": 765960,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Other Transfers",
+  "metric": "Other Transfers (Total)",
+  "period": "FY2021",
+  "value": 7232102,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Other Transfers",
+  "metric": "Other Transfers (Total)",
+  "period": "FY2022",
+  "value": 9355266,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Other Transfers",
+  "metric": "Other Transfers (Total)",
+  "period": "FY2023",
+  "value": 8765041,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Other Transfers",
+  "metric": "Other Transfers (Total)",
+  "period": "FY2024",
+  "value": 2145000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Other Transfers",
+  "metric": "Other Transfers (Total)",
+  "period": "FY2025",
+  "value": 1295000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Other Transfers",
+  "metric": "Other Transfers (Total)",
+  "period": "FY2026",
+  "value": 87500,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Other Transfers",
+  "metric": "Other Transfers (Total)",
+  "period": "FY2027",
+  "value": 90781,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Other Transfers",
+  "metric": "Non-Departmental Transfers",
+  "period": "FY2025",
+  "value": 1295000,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Other Transfers",
+  "metric": "Transfer to OPEB Trust",
+  "period": "FY2026",
+  "value": 87500,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Other Transfers",
+  "metric": "Transfer to OPEB Trust",
+  "period": "FY2027",
+  "value": 90781,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Culture & Recreation (Total)",
+  "period": "FY2021",
+  "value": 2228236,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Culture & Recreation (Total)",
+  "period": "FY2022",
+  "value": 2430237,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Culture & Recreation (Total)",
+  "period": "FY2023",
+  "value": 2605902,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Culture & Recreation (Total)",
+  "period": "FY2024",
+  "value": 2685774,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Culture & Recreation (Total)",
+  "period": "FY2025",
+  "value": 2775168,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Culture & Recreation (Total)",
+  "period": "FY2026",
+  "value": 2788591,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Culture & Recreation (Total)",
+  "period": "FY2027",
+  "value": 2770770,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Beverly Public Library",
+  "period": "FY2025",
+  "value": 2275952,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Recreation",
+  "period": "FY2025",
+  "value": 499216,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Beverly Public Library",
+  "period": "FY2026",
+  "value": 2366767,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Recreation",
+  "period": "FY2026",
+  "value": 421824,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Beverly Public Library",
+  "period": "FY2027",
+  "value": 2325891,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Culture & Recreation",
+  "metric": "Recreation",
+  "period": "FY2027",
+  "value": 444879,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "State & County Assessments",
+  "metric": "State & County Assessments (Total)",
+  "period": "FY2021",
+  "value": 1732243,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "State & County Assessments",
+  "metric": "State & County Assessments (Total)",
+  "period": "FY2022",
+  "value": 1976004,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "State & County Assessments",
+  "metric": "State & County Assessments (Total)",
+  "period": "FY2023",
+  "value": 2095100,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "State & County Assessments",
+  "metric": "State & County Assessments (Total)",
+  "period": "FY2024",
+  "value": 2181460,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "State & County Assessments",
+  "metric": "State & County Assessments (Total)",
+  "period": "FY2025",
+  "value": 2252589,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "State & County Assessments",
+  "metric": "State & County Assessments (Total)",
+  "period": "FY2026",
+  "value": 2390731,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "State & County Assessments",
+  "metric": "State & County Assessments (Total)",
+  "period": "FY2027",
+  "value": 2850733,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "State & County Assessments",
+  "metric": "Cherry Sheet Assessments",
+  "period": "FY2025",
+  "value": 2252589,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "State & County Assessments",
+  "metric": "Cherry Sheet Assessments",
+  "period": "FY2026",
+  "value": 2390731,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "State & County Assessments",
+  "metric": "Cherry Sheet Assessments",
+  "period": "FY2027",
+  "value": 2850733,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Health & Human Services (Total)",
+  "period": "FY2021",
+  "value": 1579301,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Health & Human Services (Total)",
+  "period": "FY2022",
+  "value": 1503056,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Health & Human Services (Total)",
+  "period": "FY2023",
+  "value": 1750527,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Health & Human Services (Total)",
+  "period": "FY2024",
+  "value": 2024669,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Health & Human Services (Total)",
+  "period": "FY2025",
+  "value": 2254701,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Health & Human Services (Total)",
+  "period": "FY2026",
+  "value": 2308066,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Health & Human Services (Total)",
+  "period": "FY2027",
+  "value": 2105608,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Council on Aging",
+  "period": "FY2025",
+  "value": 855823,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Health Department",
+  "period": "FY2025",
+  "value": 785381,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Veterans Services",
+  "period": "FY2025",
+  "value": 613497,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Council on Aging",
+  "period": "FY2026",
+  "value": 866858,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Health Department",
+  "period": "FY2026",
+  "value": 825238,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Veterans Services",
+  "period": "FY2026",
+  "value": 615970,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Council on Aging",
+  "period": "FY2027",
+  "value": 793438,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Health Department",
+  "period": "FY2027",
+  "value": 736351,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Budget",
+  "category": "Health & Human Services",
+  "metric": "Veterans Services",
+  "period": "FY2027",
+  "value": 575819,
+  "unit": "$",
+  "source": "Beverly Adopted/Proposed City Budgets, FY2021-FY2027 (ClearGov, beverlyma.gov)",
+  "note": ""
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "City Hall renovation",
+  "period": "2025 Plan",
+  "value": "$26,500,000",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Includes $1\u20131.5M temporary relocation costs during construction. $1.5M already set aside in free cash."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Public Services Buildings (new facility)",
+  "period": "2025 Plan",
+  "value": "$50,000,000+",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Rough preliminary estimate. Current Park Street facility is nearly 100 years old and cannot be expanded. Site has not yet been identified."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "School roofs and HVAC (per building)",
+  "period": "2025 Plan",
+  "value": "$7,500,000 each",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Six elementary schools plus the high school. Roofs from 1996\u20132003 renovations are approaching end of useful life. MSBA reimbursement possible but uncertain."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Myles McPherson Youth Center",
+  "period": "2025 Plan",
+  "value": "$7,300,000",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Construction began FY2025. Funded through ARPA funds, state and federal earmarks. No additional free cash or debt planned."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Beverly Golf and Tennis Club renovation",
+  "period": "2025 Plan",
+  "value": "$16,000,000+",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Major systems overhaul. Intended to be funded through Golf and Tennis revenues, CPA funds, and grants, but full cost likely exceeds what the enterprise fund can support."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Lynch Park Carriage House",
+  "period": "2025 Plan",
+  "value": "$7,000,000\u2013$10,000,000",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Two-phase reconstruction. Funding mix: state historic preservation grants, CPA funds, Recreation Enterprise Fund, and General Fund debt."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Senior Center (exterior envelope and HVAC)",
+  "period": "2025 Plan",
+  "value": "$3,000,000",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Window and door replacement, weatherization, and full HVAC replacement. Expected within 2\u20134 years."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Annual road and sidewalk paving",
+  "period": "2025 Plan",
+  "value": "$3,000,000\u2013$4,000,000/yr",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Combination of city appropriation, free cash, gas tax revenue, and grants (Complete Streets, MassWorks)."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "North Beverly and Beverly Farms fire station roofs",
+  "period": "2025 Plan",
+  "value": "$2,500,000+",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Roof replacements planned within 5 years. Heat pump installation to follow."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Fire pumper truck",
+  "period": "2025 Plan",
+  "value": "$850,000+",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "New Ferrara pumper ordered in FY2024. Engine 3 replacement anticipated around FY2027."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Public Services vehicles",
+  "period": "2025 Plan",
+  "value": "$580,000/yr",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Ongoing annual equipment replacement: one-ton trucks, medium-duty trucks, front-end loaders, backhoes."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Public safety communications equipment",
+  "period": "2025 Plan",
+  "value": "$500,000",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Dispatch and radio infrastructure serving police, fire, and DPW. Many components no longer manufacturer-supported."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Fuel depot replacement",
+  "period": "2025 Plan",
+  "value": "$650,000",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Serves all city vehicles. Work going to bid."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Salt shed roof",
+  "period": "2025 Plan",
+  "value": "$175,000",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": ""
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "GAR Hall painting",
+  "period": "2025 Plan",
+  "value": "$75,000",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Facade restoration completed; paint showing wear."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Upgrading of key intersections",
+  "period": "2025 Plan",
+  "value": "TBD",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Dunham Road / Rte. 128 interchange design approved at $850K in FY2024. Brimbal/Dunham roundabout construction estimated at $7M."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Parking infrastructure",
+  "period": "2025 Plan",
+  "value": "TBD",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Downtown and waterfront lots. $2M BAN outstanding on recently purchased Bow/Federal St. lot."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "City cemeteries",
+  "period": "2025 Plan",
+  "value": "TBD",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Fencing replacement and Cole Street cemetery buildout. Three active cemeteries nearing capacity."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Bass River dredging",
+  "period": "2025 Plan",
+  "value": "Unknown",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Two-phase project. Significant logistical challenges; feasibility study underway for ocean disposal site."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Coastal parks and resources",
+  "period": "2025 Plan",
+  "value": "TBD",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Seawall and shoreline work at Lynch Park, Obear Park, and Dane Street Beach. Grant funding being pursued."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "General Fund",
+  "metric": "Bookmobile",
+  "period": "2025 Plan",
+  "value": "TBD",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Replacement vehicle needed within 5\u201310 years."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "Enterprise Fund (Water/Sewer)",
+  "metric": "Water meter replacement (citywide)",
+  "period": "2025 Plan",
+  "value": "$8,000,000",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "All city water meters are over 20 years old. New system enables real-time leak detection. Requires separate loan authorization."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "Enterprise Fund (Water/Sewer)",
+  "metric": "Sewer system evaluation and rehabilitation",
+  "period": "2025 Plan",
+  "value": "$2,500,000\u2013$3,000,000/yr",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "DEP-mandated work on 25 sewer subsections. Current annual appropriation is $1.7M, below the required pace."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "Enterprise Fund (Water/Sewer)",
+  "metric": "Dane Street sewer line",
+  "period": "2025 Plan",
+  "value": "$3,000,000\u2013$5,000,000",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Key sewer line runs under Dane and Independence Park beaches. High priority: failure consequences are severe."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "Enterprise Fund (Water/Sewer)",
+  "metric": "Folly Hill water tower recoating",
+  "period": "2025 Plan",
+  "value": "$2,000,000",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Interior and exterior recoating needed within 5 years. Debt obligation of the water fund."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "Enterprise Fund (Water/Sewer)",
+  "metric": "Citywide water main replacement",
+  "period": "2025 Plan",
+  "value": "$1,000,000/yr",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Beverly has about 200 miles of water pipe. Industry standard is to replace 1% per year."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "Enterprise Fund (Water/Sewer)",
+  "metric": "Sewer pump station improvements",
+  "period": "2025 Plan",
+  "value": "$500,000/yr + $400,000 one-time",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "35 stations in operation. Two stations need immediate overhaul; $400K appropriation likely needed."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "Enterprise Fund (Water/Sewer)",
+  "metric": "Water and sewer vehicles",
+  "period": "2025 Plan",
+  "value": "$350,000/yr",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Ongoing equipment replacement for water and sewer operations."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "Enterprise Fund (Water/Sewer)",
+  "metric": "Citywide gate valve replacement",
+  "period": "2025 Plan",
+  "value": "$200,000/yr",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Nearly 4,000 valves in the water system, some over 100 years old. About 50 replacements per year at $4,000 each."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "Enterprise Fund (Water/Sewer)",
+  "metric": "Pershing Ave pump station",
+  "period": "2025 Plan",
+  "value": "TBD",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Building envelope repairs complete. Pumping equipment nearing end of service life; design estimate in progress."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "Enterprise Fund (Water/Sewer)",
+  "metric": "MS4 stormwater mandates",
+  "period": "2025 Plan",
+  "value": "$300,000+/yr",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Federally mandated stormwater quality program. Full cost still being scoped by consultants."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "Enterprise Fund (Water/Sewer)",
+  "metric": "Drainage repairs and extensions",
+  "period": "2025 Plan",
+  "value": "$100,000\u2013$150,000/yr",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Small drainage improvement projects constructed by DPS crews."
+ },
+ {
+  "dataset": "Capital Plan",
+  "category": "Enterprise Fund (Water/Sewer)",
+  "metric": "Brook drainage maintenance",
+  "period": "2025 Plan",
+  "value": "$50,000/yr",
+  "unit": "est. cost (text)",
+  "source": "City of Beverly 2025 Draft Capital Expenditure Plan, submitted by Mayor Michael P. Cahill to City Council, January 30, 2025",
+  "note": "Clearing and maintaining brooks in flood-prone areas."
+ }
+]

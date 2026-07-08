@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/56a48e0c30.js" crossorigin="anonymous"></script>
+  <title>Open Beverly — Data Portal</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <meta property="og:title" content="Data Portal — Open Beverly" />
+  <meta property="og:description" content="Every fiscal and budget figure published on Open Beverly, in one searchable table." />
+  <meta property="og:image" content="https://openbeverly.org/preview.png" />
+  <meta property="og:url" content="https://openbeverly.org/" />
+  <meta property="og:type" content="website" />
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+  <a class="logo" href="/">Open <span>Beverly</span></a>
+  <nav>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">Meetings</button>
+      <div class="nav-dropdown">
+        <a href="/meetings.html">Meetings</a>
+        <a href="/agendas.html">Agendas</a>
+        <a href="/summaries.html">Summaries</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">Finance</button>
+      <div class="nav-dropdown">
+        <a href="/data.html">City Data</a>
+        <a href="/budget.html">Budget Explorer</a>
+        <a href="/history.html">How We Got Here</a>
+        <a href="/whats-next.html">What's Next</a>
+        <a href="/calculator.html">Override Calculator</a>
+        <a href="/capital.html">Capital Plan</a>
+      </div>
+    </div>
+    <a href="/property.html">Map</a>
+    <a href="/sources.html">Sources</a>
+    <a href="/about.html">About</a>
+  </nav>
+  <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="var n=this.closest('header').querySelector('nav');var open=n.classList.toggle('open');this.setAttribute('aria-expanded',open);this.querySelector('i').className='fa-solid '+(open?'fa-xmark':'fa-bars')">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+  </button>
+</header>
+
+<div class="hero">
+  <h1>Data Portal</h1>
+  <p>Every fiscal and budget figure published on Open Beverly, in one searchable table: no narrative, just the numbers, their period, and where each one comes from.</p>
+</div>
+
+<div class="portal-container">
+  <aside class="sidebar">
+    <div class="filter-group" id="dataset-filter-group">
+      <h2>Dataset</h2>
+    </div>
+    <div class="filter-group" id="year-filter-group">
+      <h2>Fiscal Year</h2>
+    </div>
+    <div class="filter-group" id="category-filter-group">
+      <h2>Category</h2>
+    </div>
+  </aside>
+
+  <main id="main">
+    <div class="mobile-filters" id="mobile-dataset-filters"></div>
+    <div class="mobile-filters" id="mobile-year-filters"></div>
+    <div class="main-header">
+      <span class="result-count" id="result-count">Loading…</span>
+      <label for="search" class="sr-only">Search data</label>
+      <input class="search-box" type="search" id="search" placeholder="Search metric, period, source…" />
+    </div>
+    <div class="table-scroll">
+      <table class="portal-table" id="portal-table">
+        <thead>
+          <tr>
+            <th data-key="dataset"><button class="portal-th-btn" data-key="dataset">Dataset <span class="sort-icon" aria-hidden="true">&#8645;</span></button></th>
+            <th data-key="category"><button class="portal-th-btn" data-key="category">Category <span class="sort-icon" aria-hidden="true">&#8645;</span></button></th>
+            <th data-key="metric"><button class="portal-th-btn" data-key="metric">Metric <span class="sort-icon" aria-hidden="true">&#8645;</span></button></th>
+            <th data-key="period"><button class="portal-th-btn" data-key="period">Period <span class="sort-icon" aria-hidden="true">&#8645;</span></button></th>
+            <th data-key="value"><button class="portal-th-btn" data-key="value">Value <span class="sort-icon" aria-hidden="true">&#8645;</span></button></th>
+            <th data-key="unit"><button class="portal-th-btn" data-key="unit">Unit <span class="sort-icon" aria-hidden="true">&#8645;</span></button></th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody id="portal-tbody">
+          <tr><td colspan="7"><div class="state-msg"><div class="spinner"></div>Loading data…</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<footer>
+  Open Beverly is an independent civic project and is not affiliated with the City of Beverly. Created with the assistance of AI.
+  <a href="/about.html#feedback">Feedback</a>
+</footer>
+
+<script>
+  let allRows = [];
+  let activeDataset = 'all';
+  let activeCategory = 'all';
+  let activeYear = 'all';
+  let searchQuery = '';
+  let sortKey = null;
+  let sortDir = 1;
+
+  const FY_RE = /^FY(\d{4})$/;
+
+  function numericValue(row) {
+    if (typeof row.value === 'number') return row.value;
+    const m = String(row.value).replace(/,/g, '').match(/[\d.]+/);
+    return m ? parseFloat(m[0]) : -Infinity;
+  }
+
+  function fmtValue(row) {
+    const v = row.value;
+    if (typeof v !== 'number') return v;
+    if (row.unit === '$') {
+      const opts = { style: 'currency', currency: 'USD', maximumFractionDigits: Number.isInteger(v) ? 0 : 2 };
+      return new Intl.NumberFormat('en-US', opts).format(v);
+    }
+    if (row.unit.indexOf('%') !== -1) return v + '%';
+    if (row.unit === 'ratio') return v.toFixed(3);
+    return v.toLocaleString();
+  }
+
+  function filteredRows(opts) {
+    opts = opts || {};
+    const q = searchQuery.toLowerCase();
+    return allRows.filter(r => {
+      const datasetMatch = opts.skipDataset || activeDataset === 'all' || r.dataset === activeDataset;
+      const categoryMatch = opts.skipCategory || activeCategory === 'all' || r.category === activeCategory;
+      const yearMatch = opts.skipYear || activeYear === 'all' || r.period === activeYear;
+      const searchMatch = !q ||
+        r.metric.toLowerCase().includes(q) ||
+        r.category.toLowerCase().includes(q) ||
+        String(r.period).toLowerCase().includes(q) ||
+        r.source.toLowerCase().includes(q) ||
+        (r.note && r.note.toLowerCase().includes(q));
+      return datasetMatch && categoryMatch && yearMatch && searchMatch;
+    });
+  }
+
+  function sortedRows(rows) {
+    if (!sortKey) return rows;
+    const copy = rows.slice();
+    copy.sort((a, b) => {
+      let av, bv;
+      if (sortKey === 'value') { av = numericValue(a); bv = numericValue(b); }
+      else { av = String(a[sortKey]).toLowerCase(); bv = String(b[sortKey]).toLowerCase(); }
+      if (av < bv) return -1 * sortDir;
+      if (av > bv) return 1 * sortDir;
+      return 0;
+    });
+    return copy;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  function renderTable() {
+    const rows = sortedRows(filteredRows());
+    document.getElementById('result-count').textContent =
+      `${rows.length} row${rows.length !== 1 ? 's' : ''}`;
+
+    document.querySelectorAll('.portal-th-btn').forEach(btn => {
+      btn.classList.toggle('sorted', btn.dataset.key === sortKey);
+      const icon = btn.querySelector('.sort-icon');
+      if (btn.dataset.key === sortKey) {
+        icon.innerHTML = sortDir === 1 ? '&#8593;' : '&#8595;';
+      } else {
+        icon.innerHTML = '&#8645;';
+      }
+    });
+
+    const tbody = document.getElementById('portal-tbody');
+    if (!rows.length) {
+      tbody.innerHTML = '<tr><td colspan="7"><div class="state-msg">No rows match your filters.</div></td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = rows.map(r => `
+      <tr>
+        <td><span class="tag">${escapeHtml(r.dataset)}</span></td>
+        <td>${escapeHtml(r.category)}</td>
+        <td class="metric-cell">${escapeHtml(r.metric)}${r.note ? `<div class="note-cell">${escapeHtml(r.note)}</div>` : ''}</td>
+        <td>${escapeHtml(r.period)}</td>
+        <td class="num">${escapeHtml(fmtValue(r))}</td>
+        <td>${escapeHtml(r.unit)}</td>
+        <td class="source-cell">${escapeHtml(r.source)}</td>
+      </tr>`).join('');
+  }
+
+  function makeFilterBtn(value, label, count, cls, onClick) {
+    const btn = document.createElement('button');
+    btn.className = cls;
+    btn.innerHTML = cls.indexOf('filter-btn') !== -1
+      ? `${label} <span class="count">${count}</span>`
+      : label;
+    btn.addEventListener('click', onClick);
+    return btn;
+  }
+
+  function buildDatasetFilters() {
+    const counts = {};
+    for (const r of allRows) counts[r.dataset] = (counts[r.dataset] || 0) + 1;
+    const datasets = Object.keys(counts).sort();
+
+    const group = document.getElementById('dataset-filter-group');
+    group.innerHTML = '<h2>Dataset</h2>';
+    group.appendChild(makeFilterBtn('all', 'All Datasets', allRows.length,
+      'filter-btn' + (activeDataset === 'all' ? ' active' : ''), () => setDataset('all')));
+    for (const d of datasets) {
+      group.appendChild(makeFilterBtn(d, d, counts[d],
+        'filter-btn' + (activeDataset === d ? ' active' : ''), () => setDataset(d)));
+    }
+
+    const pills = document.getElementById('mobile-dataset-filters');
+    pills.innerHTML = '';
+    pills.appendChild(makeFilterBtn('all', 'All', allRows.length,
+      'mobile-pill' + (activeDataset === 'all' ? ' active' : ''), () => setDataset('all')));
+    for (const d of datasets) {
+      pills.appendChild(makeFilterBtn(d, d, counts[d],
+        'mobile-pill' + (activeDataset === d ? ' active' : ''), () => setDataset(d)));
+    }
+  }
+
+  function buildCategoryFilters() {
+    const scoped = filteredRows({ skipCategory: true });
+    const counts = {};
+    for (const r of scoped) counts[r.category] = (counts[r.category] || 0) + 1;
+    const categories = Object.keys(counts).sort();
+
+    const group = document.getElementById('category-filter-group');
+    group.innerHTML = '<h2>Category</h2>';
+    group.appendChild(makeFilterBtn('all', 'All Categories', scoped.length,
+      'filter-btn' + (activeCategory === 'all' ? ' active' : ''), () => setCategory('all')));
+    for (const c of categories) {
+      group.appendChild(makeFilterBtn(c, c, counts[c],
+        'filter-btn' + (activeCategory === c ? ' active' : ''), () => setCategory(c)));
+    }
+  }
+
+  function buildYearFilters() {
+    const scoped = filteredRows({ skipYear: true });
+    const counts = {};
+    for (const r of scoped) {
+      if (FY_RE.test(r.period)) counts[r.period] = (counts[r.period] || 0) + 1;
+    }
+    // most recent fiscal year first
+    const years = Object.keys(counts).sort((a, b) => b.localeCompare(a));
+
+    const group = document.getElementById('year-filter-group');
+    group.innerHTML = '<h2>Fiscal Year</h2>';
+    group.appendChild(makeFilterBtn('all', 'All Years', scoped.length,
+      'filter-btn' + (activeYear === 'all' ? ' active' : ''), () => setYear('all')));
+    for (const y of years) {
+      group.appendChild(makeFilterBtn(y, y, counts[y],
+        'filter-btn' + (activeYear === y ? ' active' : ''), () => setYear(y)));
+    }
+
+    const pills = document.getElementById('mobile-year-filters');
+    pills.innerHTML = '';
+    pills.appendChild(makeFilterBtn('all', 'All Years', scoped.length,
+      'mobile-pill' + (activeYear === 'all' ? ' active' : ''), () => setYear('all')));
+    for (const y of years) {
+      pills.appendChild(makeFilterBtn(y, y.replace('FY', ''), counts[y],
+        'mobile-pill' + (activeYear === y ? ' active' : ''), () => setYear(y)));
+    }
+  }
+
+  function setDataset(d) {
+    activeDataset = d;
+    activeCategory = 'all';
+    activeYear = 'all';
+    buildDatasetFilters();
+    buildCategoryFilters();
+    buildYearFilters();
+    renderTable();
+  }
+
+  function setCategory(c) {
+    activeCategory = c;
+    buildCategoryFilters();
+    buildYearFilters();
+    renderTable();
+  }
+
+  function setYear(y) {
+    activeYear = y;
+    buildCategoryFilters();
+    buildYearFilters();
+    renderTable();
+  }
+
+  document.getElementById('search').addEventListener('input', e => {
+    searchQuery = e.target.value;
+    renderTable();
+  });
+
+  document.querySelectorAll('.portal-th-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.key;
+      if (sortKey === key) sortDir *= -1;
+      else { sortKey = key; sortDir = 1; }
+      renderTable();
+    });
+  });
+
+  (async () => {
+    try {
+      const res = await fetch('portal_data.json?v=' + Date.now());
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      allRows = await res.json();
+      buildDatasetFilters();
+      buildCategoryFilters();
+      buildYearFilters();
+      renderTable();
+    } catch (err) {
+      document.getElementById('portal-tbody').innerHTML =
+        `<tr><td colspan="7"><div class="state-msg">⚠️ Could not load portal_data.json.<br><small>${err.message}</small></div></td></tr>`;
+      document.getElementById('result-count').textContent = 'Error';
+    }
+  })();
+</script>
+<script src="/nav.js"></script>
+</body>
+</html>
