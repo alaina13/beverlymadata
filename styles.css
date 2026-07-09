@@ -49,6 +49,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
+summary:focus-visible,
 [tabindex]:focus-visible {
   outline: 2px solid var(--blue);
   outline-offset: 2px;
@@ -398,6 +399,39 @@ footer a { color: var(--blue); }
   margin-bottom: 0.5rem;
 }
 .footnotes li a { color: var(--blue); }
+
+/* ── Shared: progressive-disclosure <details> toggle (footnotes, assumptions) ── */
+.disclosure-summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.disclosure-summary::-webkit-details-marker { display: none; }
+.disclosure-summary .fa-chevron-down { transition: transform 0.15s; color: var(--muted); font-size: 0.75rem; }
+details[open] > .disclosure-summary .fa-chevron-down { transform: rotate(180deg); }
+.footnotes details[open] ol, .assumptions details[open] ul { margin-top: 0.75rem; }
+
+.timeline-summary { align-items: flex-start; }
+.timeline-summary:hover .timeline-heading { color: var(--blue); }
+.timeline-summary .fa-chevron-down {
+  color: var(--blue);
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+details[open] > .timeline-summary .fa-chevron-down { transform: rotate(180deg); }
+.timeline-body { margin-top: 0.75rem; }
+
+.timeline-hint {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
 .fn-back {
   font-size: 0.7rem;
   text-decoration: none;
