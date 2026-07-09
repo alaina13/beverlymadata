@@ -61,12 +61,18 @@
 
   <div class="timeline-entry">
     <div class="timeline-year">July 8, 2026</div>
-    <div class="timeline-heading">Simplified language on the History and Key Concepts pages</div>
+    <div class="timeline-heading">Readability rewrite and accessibility fixes</div>
     <div class="timeline-body">
       <p>Rewrote explanatory text for easier reading. No figures, quotes, or sourcing changed.</p>
       <ul>
         <li>History page ("How We Got Here"): simplified the structural deficit explainer, the year-by-year narrative, and chart captions.</li>
         <li>Key Concepts page: simplified glossary definitions for structural deficit, General Fund, Enterprise Fund, free cash, stabilization fund, ACFR, FFC, levy limit, new growth, debt exclusion, and excess levy capacity.</li>
+      </ul>
+      <p>Accessibility fixes:</p>
+      <ul>
+        <li>Added the screen-reader chart data table pattern (used on every other chart page) to the Override Calculator's two charts.</li>
+        <li>Added an aria-live region to the property map's parcel detail panel so screen readers announce updates when a parcel is selected.</li>
+        <li>Added site-wide support for prefers-reduced-motion, disabling non-functional animations and transitions for users who request reduced motion at the OS level.</li>
       </ul>
     </div>
   </div>
