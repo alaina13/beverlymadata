@@ -317,6 +317,20 @@ footer a { color: var(--blue); }
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* ── Reduced motion: honor OS-level preference, except functional loading spinners ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .spinner, .property-spinner {
+    animation-duration: 0.7s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
+
 /* ── Shared: .tag (agendas.html) ── */
 .tag {
   font-size: 0.7rem;

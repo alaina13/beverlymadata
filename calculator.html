@@ -114,15 +114,25 @@
   </div>
 
   <div class="chart-card">
-    <h2>Revenue vs. Expenditure Trajectory</h2>
+    <h2 id="projChart-title">Revenue vs. Expenditure Trajectory</h2>
     <p>Projected total revenues (levy + state aid + local receipts) and total expenditures through FY2036. An override raises the levy and total revenues permanently in FY2028.</p>
-    <canvas id="projChart" height="80"></canvas>
+    <canvas id="projChart" height="80" role="img" aria-labelledby="projChart-title" aria-describedby="projChart-data"></canvas>
+    <table id="projChart-data" class="sr-only">
+      <caption>Projected total revenues and expenditures by fiscal year, in millions</caption>
+      <thead><tr><th scope="col">Fiscal year</th><th scope="col">Total revenues</th><th scope="col">Total expenditures</th></tr></thead>
+      <tbody></tbody>
+    </table>
   </div>
 
   <div class="chart-card">
-    <h2>Annual Budget Gap / Surplus</h2>
+    <h2 id="gapChart-title">Annual Budget Gap / Surplus</h2>
     <p>Difference between total revenues and expenditures each year. Below zero means a structural deficit.</p>
-    <canvas id="gapChart" height="60"></canvas>
+    <canvas id="gapChart" height="60" role="img" aria-labelledby="gapChart-title" aria-describedby="gapChart-data"></canvas>
+    <table id="gapChart-data" class="sr-only">
+      <caption>Annual budget gap or surplus by fiscal year, in millions</caption>
+      <thead><tr><th scope="col">Fiscal year</th><th scope="col">Gap (surplus positive)</th></tr></thead>
+      <tbody></tbody>
+    </table>
   </div>
 
   <div class="assumptions">
@@ -356,6 +366,17 @@
     projChart.update();
     gapChart.data.datasets[0].data = gaps;
     gapChart.update();
+
+    // Screen-reader data tables (mirror the chart data above)
+    updateChartTable('projChart-data', YEARS, revenues.map((v, i) => [v, exps[i]]));
+    updateChartTable('gapChart-data', YEARS, gaps.map(v => [v]));
+  }
+
+  function updateChartTable(tableId, labels, rows) {
+    const tbody = document.querySelector('#' + tableId + ' tbody');
+    tbody.innerHTML = labels.map((yr, i) =>
+      '<tr><th scope="row">' + yr + '</th>' + rows[i].map(v => `<td>$${v.toFixed(1)}M</td>`).join('') + '</tr>'
+    ).join('');
   }
 
   window._calcUpdate = update;
