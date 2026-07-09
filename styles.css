@@ -1062,6 +1062,18 @@ input[type=range]::-webkit-slider-thumb {
   margin-bottom: 1rem;
 }
 
+.revenue-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.6rem 1.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 1rem 0 2rem;
+}
+
+.revenue-legend strong { color: var(--text); }
+
 .capital-structural-box {
   background: #f0f4fb;
   border-left: 4px solid var(--blue);

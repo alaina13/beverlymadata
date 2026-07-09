@@ -61,6 +61,7 @@
   <div class="toc-label">On this page</div>
   <a href="#current-snapshot" class="toc-link">Current Snapshot</a>
   <a href="#new-growth" class="toc-link">New Growth &amp; the Tax Levy</a>
+  <a href="#revenue-by-source" class="toc-link">Revenue by Source</a>
   <a href="#trends" class="toc-link">Trends: FY2009–FY2023</a>
   <a href="#sustainability" class="toc-link">Financial Sustainability Indicators</a>
   <a href="#comparison" class="toc-link">North Shore Comparison</a>
@@ -207,6 +208,58 @@
     </table>
   </div>
 
+  <!-- ── Revenue by Source ── -->
+  <div class="section-header">
+    <h2 id="revenue-by-source">Revenue by Source</h2>
+    <p>Massachusetts Department of Revenue, Division of Local Services, Municipal Databank. Beverly (municipal code 030), FY2016–FY2026.</p>
+  </div>
+
+  <p class="body-text">Beverly's total municipal revenue grew from $134.8 million in FY2016 to $200.9 million in FY2026, an increase of 49.1%. The tax levy is consistently the largest source, ranging from 65.1% to 69.3% of total revenue over the period. State aid's share rose from 11.1% in FY2016 to 12.3% in FY2026. Enterprise and Community Preservation Act (CPA) funds declined from 12.4% to 10.7% of the total over the same period.</p>
+
+  <div class="chart-card full">
+    <div class="chart-title" id="revenueChart-title">Revenue Composition by Source</div>
+    <div class="chart-sub">FY2016–FY2026 · stacked, in millions</div>
+    <div class="chart-wrap tall"><canvas id="revenueChart" role="img" aria-labelledby="revenueChart-title" aria-describedby="revenueChart-data"></canvas></div>
+  </div>
+
+  <div class="revenue-legend">
+    <div><strong>Tax Levy</strong> — property tax revenue, within limits set by Proposition 2&frac12;.</div>
+    <div><strong>State Aid</strong> — local aid Beverly receives from the Commonwealth.</div>
+    <div><strong>Local Receipts</strong> — revenue from local fees, excise taxes, fines, and other non-property-tax sources.</div>
+    <div><strong>Enterprise &amp; CPA Funds</strong> — revenue from self-supporting enterprise operations and the Community Preservation Act surcharge.</div>
+    <div><strong>All Other</strong> — remaining revenue not captured in the categories above.</div>
+  </div>
+
+  <div class="chart-card table-scroll">
+    <table class="sustain-table">
+      <caption class="sr-only">Revenue by Source as a Percentage of Total, FY2016–FY2026</caption>
+      <thead>
+        <tr>
+          <th>Fiscal Year</th>
+          <th>Tax Levy</th>
+          <th>State Aid</th>
+          <th>Local Receipts</th>
+          <th>Enterprise &amp; CPA Funds</th>
+          <th>All Other</th>
+          <th>Total Revenue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>FY2016</td><td>67.7%</td><td>11.1%</td><td>6.0%</td><td>12.4%</td><td>2.9%</td><td>$134.8M</td></tr>
+        <tr><td>FY2017</td><td>67.8%</td><td>11.1%</td><td>6.3%</td><td>12.2%</td><td>2.6%</td><td>$139.8M</td></tr>
+        <tr><td>FY2018</td><td>68.9%</td><td>10.9%</td><td>6.4%</td><td>11.9%</td><td>1.9%</td><td>$144.2M</td></tr>
+        <tr><td>FY2019</td><td>65.1%</td><td>10.2%</td><td>6.1%</td><td>12.9%</td><td>5.8%</td><td>$159.1M</td></tr>
+        <tr><td>FY2020</td><td>69.3%</td><td>11.3%</td><td>5.9%</td><td>12.6%</td><td>0.9%</td><td>$155.8M</td></tr>
+        <tr><td>FY2021</td><td>68.7%</td><td>11.4%</td><td>4.7%</td><td>11.5%</td><td>3.6%</td><td>$163.1M</td></tr>
+        <tr><td>FY2022</td><td>68.8%</td><td>11.4%</td><td>5.3%</td><td>11.5%</td><td>3.0%</td><td>$167.5M</td></tr>
+        <tr><td>FY2023</td><td>66.4%</td><td>11.8%</td><td>5.7%</td><td>11.8%</td><td>4.3%</td><td>$179.9M</td></tr>
+        <tr><td>FY2024</td><td>67.8%</td><td>12.4%</td><td>5.7%</td><td>11.0%</td><td>3.1%</td><td>$183.7M</td></tr>
+        <tr><td>FY2025</td><td>66.9%</td><td>12.1%</td><td>6.2%</td><td>10.4%</td><td>4.4%</td><td>$194.1M</td></tr>
+        <tr><td>FY2026</td><td>67.4%</td><td>12.3%</td><td>6.2%</td><td>10.7%</td><td>3.4%</td><td>$200.9M</td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <!-- ── Financial sustainability ── -->
   <div class="section-header">
     <h2 id="sustainability">Financial Sustainability Indicators</h2>
@@ -328,6 +381,7 @@
     Tax rates and assessed values: Beverly City Assessors Office — beverlyma.gov/391/City-Assessors<br>
     Financial statements and 10-year statistical tables: Beverly Annual Comprehensive Financial Reports (ACFRs) FY2018–FY2023<br>
     Tax levy, rates, valuation, and new growth (FY2020–FY2026): Massachusetts Department of Revenue Tax Rate Recapitulation and Levy Limit worksheets, Beverly (municipal code 030)<br>
+    Revenue by source (FY2016–FY2026): Massachusetts Department of Revenue, Division of Local Services, Municipal Databank, Beverly (municipal code 030)<br>
     Financial sustainability indicators: ACFR data analyzed using GFOA sustainability framework<br>
     School enrollment & per-pupil spending: MA Department of Elementary and Secondary Education — profiles.doe.mass.edu<br>
     Open Beverly is an independent civic project. All data sourced from public records.
@@ -475,6 +529,56 @@
   bar('levyChart', YEARS2,
     [108024247.67, 112093155.07, 115210686.84, 119417892.74, 124470712.25, 129833221.14, 135398111.71],
     COLORS.blue, m);
+
+  // ── Revenue by Source (DLS Municipal Databank, FY2016–FY2026) ───────────────
+  (function() {
+    const years = ['FY2016','FY2017','FY2018','FY2019','FY2020','FY2021','FY2022','FY2023','FY2024','FY2025','FY2026'];
+    const series = {
+      'Tax Levy':              [91227113, 94790787, 99371140, 103575222, 108024248, 112093155, 115210687, 119417893, 124470712, 129833221, 135398112],
+      'State Aid':             [14922712, 15541545, 15764994, 16184036, 17542026, 18574490, 19159025, 21212189, 22859688, 23543495, 24632195],
+      'Local Receipts':        [8044367, 8854749, 9205367, 9680717, 9247867, 7655153, 8853100, 10301283, 10443219, 11942078, 12473622],
+      'Enterprise & CPA Funds':[16645100, 17000635, 17162884, 20521699, 19653972, 18812447, 19237025, 21240235, 20131908, 20227572, 21578644],
+      'All Other':             [3918398, 3628965, 2723675, 9173319, 1364482, 5949947, 5038002, 7687783, 5786057, 8554626, 6798481],
+    };
+    const colors = {
+      'Tax Levy': COLORS.blue,
+      'State Aid': COLORS.accent,
+      'Local Receipts': COLORS.green,
+      'Enterprise & CPA Funds': '#6b5fb7',
+      'All Other': '#94a3b8',
+    };
+    const datasets = Object.keys(series).map(key => ({
+      label: key,
+      data: series[key].map(v => +(v / 1e6).toFixed(2)),
+      backgroundColor: colors[key],
+      borderRadius: 0,
+    }));
+    new Chart(document.getElementById('revenueChart'), {
+      type: 'bar',
+      data: { labels: years, datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } },
+          tooltip: {
+            callbacks: {
+              label: ctx => {
+                const yearTotal = ctx.chart.data.datasets.reduce((s, d) => s + d.data[ctx.dataIndex], 0);
+                const pct = (ctx.parsed.y / yearTotal * 100).toFixed(1);
+                return ` ${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}M (${pct}%)`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: { stacked: true, grid: { display: false }, ticks: { font: { size: 11 } } },
+          y: { stacked: true, grid: { color: '#eee' }, ticks: { font: { size: 11 }, callback: v => '$' + v + 'M' } },
+        },
+      },
+    });
+    addChartDataTable('revenueChart', years, datasets, v => '$' + v.toFixed(2) + 'M');
+  })();
 
   // ── North Shore Comparison ─────────────────────────────────────────────────
   // Source: AEI Property Tax Atlas, jurisdiction-level data 2024-25
