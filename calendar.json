@@ -1,15 +1,5 @@
 [
   {
-    "title": "South Essex Sewerage District Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3815",
-    "pubDate": "2026-07-02T13:25:58-05:00",
-    "eventDate": "July 8, 2026",
-    "eventTime": "01:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-07-08T00:00:00+00:00"
-  },
-  {
     "title": "Design Review Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3484",
     "pubDate": "2026-07-07T09:36:53-05:00",
@@ -18,6 +8,26 @@
     "location": "City Hall Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-07-09T00:00:00+00:00"
+  },
+  {
+    "title": "Beverly Regional Airport Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3817",
+    "pubDate": "2026-07-08T16:15:17-05:00",
+    "eventDate": "July 13, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-07-13T00:00:00+00:00"
+  },
+  {
+    "title": "Harbor Management Authority Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3816",
+    "pubDate": "2026-07-08T16:13:32-05:00",
+    "eventDate": "July 15, 2026",
+    "eventTime": "06:45 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Harbor Management Authority",
+    "sortDate": "2026-07-15T00:00:00+00:00"
   },
   {
     "title": "Planning Board Meeting",
@@ -30,6 +40,16 @@
     "sortDate": "2026-07-21T00:00:00+00:00"
   },
   {
+    "title": "Historic Districts Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3524",
+    "pubDate": "2025-12-08T14:08:25-05:00",
+    "eventDate": "July 22, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly City Hall, Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
+    "board": "Historic District Commission",
+    "sortDate": "2026-07-22T00:00:00+00:00"
+  },
+  {
     "title": "Zoning Board of Appeals Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3799",
     "pubDate": "2026-06-17T10:42:12-05:00",
@@ -40,13 +60,13 @@
     "sortDate": "2026-07-22T00:00:00+00:00"
   },
   {
-    "title": "Historic Districts Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3524",
-    "pubDate": "2025-12-08T14:08:25-05:00",
-    "eventDate": "July 22, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly City Hall, Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
-    "board": "Historic District Commission",
-    "sortDate": "2026-07-22T00:00:00+00:00"
+    "title": "Economic and Community Development Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3663",
+    "pubDate": "2026-02-17T15:42:41-05:00",
+    "eventDate": "July 23, 2026",
+    "eventTime": "08:30 AM",
+    "location": "City Hall, 3rd Floor Council Chambers<br>191 Cabot StreetBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-07-23T00:00:00+00:00"
   }
 ]
