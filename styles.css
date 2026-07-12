@@ -1503,6 +1503,21 @@ input[type=range]::-webkit-slider-thumb {
   line-height: 1.8;
 }
 
+/* ── Shared: .condition-badge (pavement.html) ── */
+.condition-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 99px;
+  border: 1.5px solid;
+}
+
+.condition-badge.poor      { color: var(--red);   border-color: var(--red);   background: #fef2f2; }
+.condition-badge.fair      { color: var(--accent-text); border-color: var(--accent); background: var(--warn-bg); }
+.condition-badge.good      { color: var(--blue);  border-color: var(--blue);  background: var(--tag-bg); }
+.condition-badge.excellent { color: var(--green); border-color: var(--green); background: #ecfdf5; }
+
 @media (max-width: 700px) {
   .data-container { padding: 1rem; }
   .chart-grid { grid-template-columns: 1fr; }
