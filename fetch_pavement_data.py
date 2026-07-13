@@ -54,7 +54,8 @@ def fetch_all_segments():
 
 
 def title_case(name):
-    return name.title() if name else name
+    name = name.strip() if name else name
+    return name.title() if name else None
 
 
 def clean_segment(a):
