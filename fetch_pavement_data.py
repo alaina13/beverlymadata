@@ -59,6 +59,7 @@ def title_case(name):
 
 def clean_segment(a):
     return {
+        "ss_id": a.get("ss_id"),
         "street": title_case(a.get("streetname")),
         "from": title_case(a.get("fromstreetname")),
         "to": title_case(a.get("tostreetname")),

@@ -124,11 +124,13 @@
     <p>The city's Pavement Condition Index (PCI) runs from 0 (failed) to 100 (excellent) and is grouped into six tiers: Excellent (86&ndash;100), Good (71&ndash;85), Fair (56&ndash;70), Poor (41&ndash;55), Very Poor (26&ndash;40), and Serious (17&ndash;25).</p>
     <p>The city's inventory includes a "pci_2025" field with decimal values (for example, 87.89) that appear to be a deterioration-model projection rather than a fresh physical survey: every segment in the dataset shares the same underlying survey date. This page uses each segment's 2024 PCI value, the most recent figure tied to an actual assessment, as the current condition.</p>
     <p>The city's GIS system was last updated on July 9, 2026, though the underlying assessments are current through the 2024 survey cycle. Some fields in the data schema, including repair priority, estimated repair cost, and maintenance notes, exist but were not populated for any segment as of this page's last data pull.</p>
+    <p>Address search matches each property to its nearest surveyed pavement segment, using the city's parcel location data. This is a distance-based estimate, not an exact address-to-segment mapping from the city: for most addresses the match is within a few dozen feet of the property, but on long streets with sparse survey coverage, or for addresses on private ways and unaccepted streets, no confident match exists. About 93% of parcel addresses match within 150 meters of a surveyed segment; the rest fall back to full street-level results.</p>
   </div>
 
   <div class="sources">
     <strong>Data sources</strong><br>
     Citywide Pavement Condition Index (PCI) inventory: City of Beverly GIS (BeverlyGIS), Beverly Streets ArcGIS web application, streets_cyvl_update feature layer, accessed July 13, 2026.<br>
+    Property addresses: City of Beverly Assessor's parcel data. Address-to-segment matching is an Open Beverly estimate based on nearest surveyed segment to each parcel's location, not a city-provided join.<br>
     Open Beverly is an independent civic project. All data sourced from public records.
   </div>
 
@@ -150,10 +152,14 @@
   }
 
   function normalizeStreetName(s) { return s.toLowerCase().replace(/\./g, '').trim(); }
+  function normalizeAddress(s) { return s.toLowerCase().replace(/\./g, '').replace(/\s+/g, ' ').trim(); }
+  function titleCaseAddress(s) { return s.replace(/\w+/g, w => w.charAt(0).toUpperCase() + w.slice(1)); }
 
   // ── Citywide PCI data (source: City of Beverly GIS, streets_cyvl_update) ──
   let SEGMENTS = [];
   const STREET_MAP = {};
+  const SEGMENTS_BY_ID = {};
+  let ADDRESS_INDEX = {};
 
   const searchInput = document.getElementById('streetSearchInput');
   const searchResults = document.getElementById('streetSearchResults');
@@ -163,6 +169,7 @@
       const key = normalizeStreetName(s.street);
       if (!STREET_MAP[key]) STREET_MAP[key] = { name: s.street, segments: [] };
       STREET_MAP[key].segments.push(s);
+      if (s.ss_id) SEGMENTS_BY_ID[s.ss_id] = s;
     });
   }
 
@@ -228,32 +235,114 @@
     </div>`;
   }
 
-  searchInput.addEventListener('input', () => {
-    const q = normalizeStreetName(searchInput.value);
-    if (q.length < 2) { searchResults.innerHTML = ''; return; }
+  function streetAveragePci(streetSegs) {
+    const withPci = streetSegs.filter(s => s.pci !== null);
+    return withPci.length ? withPci.reduce((sum, s) => sum + s.pci, 0) / withPci.length : null;
+  }
+
+  function renderAddressResult(addrKey, match) {
+    const seg = SEGMENTS_BY_ID[match.ss_id];
+    if (!seg) return '';
+    const streetEntry = STREET_MAP[normalizeStreetName(seg.street)];
+    const streetSegs = streetEntry ? streetEntry.segments : [seg];
+    const avgPci = streetAveragePci(streetSegs);
+    const range = (seg.from && seg.to) ? `${escapeHtml(seg.from)} to ${escapeHtml(seg.to)}` : escapeHtml(seg.street);
+
+    const summaryRow = `<div class="street-result-row street-result-stats">
+      ${seg.condition ? `<span class="pci-badge ${PCI_CLASS[seg.condition]}">${escapeHtml(seg.condition)}</span>` : ''}
+      <span class="street-result-detail">PCI ${seg.pci ?? '—'} &middot; ${range}</span>
+    </div>`;
+
+    const avgRow = `<div class="street-result-row">
+      <span class="street-result-detail">Street average PCI ${avgPci !== null ? avgPci.toFixed(0) : '—'} across ${streetSegs.length} segment${streetSegs.length === 1 ? '' : 's'} on ${escapeHtml(seg.street)}</span>
+    </div>`;
+
+    let otherSegments = '';
+    if (streetSegs.length > 1) {
+      const sorted = streetSegs.slice().sort((a, b) => (a.pci ?? 999) - (b.pci ?? 999));
+      otherSegments = `<div class="assumptions street-more-segments">
+        <details>
+          <summary class="disclosure-summary"><strong>Show all ${streetSegs.length} segments on ${escapeHtml(seg.street)}</strong><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+          <div class="table-scroll"><table class="sustain-table street-segment-table">
+            <thead><tr><th>Segment</th><th>PCI</th><th>Condition</th></tr></thead>
+            <tbody>${sorted.map(segRow).join('')}</tbody>
+          </table></div>
+        </details>
+      </div>`;
+    } else {
+      otherSegments = `<div class="street-result-row"><span class="street-result-detail">This is the only tracked segment on ${escapeHtml(seg.street)}.</span></div>`;
+    }
+
+    return `<div class="street-result-card">
+      <div class="street-result-name">${escapeHtml(titleCaseAddress(addrKey))}</div>
+      ${summaryRow}
+      ${avgRow}
+      ${otherSegments}
+    </div>`;
+  }
+
+  function searchStreetsByName(q) {
     const matches = Object.values(STREET_MAP).filter(e =>
       normalizeStreetName(e.name).split(/\s+/).some(word => word.startsWith(q))
     );
-    if (!matches.length) {
-      searchResults.innerHTML = `<div class="street-search-empty">No data on file for "${escapeHtml(searchInput.value)}." This tool covers 581 streets in the city's PCI inventory; some very short or private ways may not be tracked.</div>`;
+    matches.sort((a, b) => a.name.localeCompare(b.name));
+    return matches;
+  }
+
+  function runAddressSearch(rawQuery) {
+    const q = normalizeAddress(rawQuery);
+    const addrMatches = Object.keys(ADDRESS_INDEX).filter(key => key.startsWith(q)).sort();
+
+    if (addrMatches.length) {
+      searchResults.innerHTML = addrMatches.slice(0, 8).map(key => renderAddressResult(key, ADDRESS_INDEX[key])).join('');
       return;
     }
-    matches.sort((a, b) => a.name.localeCompare(b.name));
+
+    // No exact address match — fall back to the street-level result for the street portion of the query.
+    const streetPortion = normalizeStreetName(rawQuery.replace(/^\s*\d+[A-Za-z]?(?:\s*-\s*\d+[A-Za-z]?)?\s*/, ''));
+    const streetEntry = streetPortion.length >= 2 ? STREET_MAP[streetPortion] : null;
+    if (streetEntry) {
+      const note = `<div class="street-search-empty">No exact match for that address. Showing tracked segments on ${escapeHtml(streetEntry.name)} instead.</div>`;
+      searchResults.innerHTML = note + renderStreetResult(streetEntry);
+      return;
+    }
+
+    searchResults.innerHTML = `<div class="street-search-empty">No data on file for "${escapeHtml(rawQuery)}." This tool covers 581 streets in the city's PCI inventory; some very short or private ways may not be tracked.</div>`;
+  }
+
+  searchInput.addEventListener('input', () => {
+    const raw = searchInput.value;
+    if (raw.trim().length < 2) { searchResults.innerHTML = ''; return; }
+
+    if (/^\s*\d/.test(raw)) {
+      runAddressSearch(raw);
+      return;
+    }
+
+    const q = normalizeStreetName(raw);
+    const matches = searchStreetsByName(q);
+    if (!matches.length) {
+      searchResults.innerHTML = `<div class="street-search-empty">No data on file for "${escapeHtml(raw)}." This tool covers 581 streets in the city's PCI inventory; some very short or private ways may not be tracked.</div>`;
+      return;
+    }
     searchResults.innerHTML = matches.slice(0, 15).map(renderStreetResult).join('');
   });
 
-  fetch('/pavement_pci.json')
-    .then(r => r.json())
-    .then(data => {
-      SEGMENTS = data.segments.filter(s => s.street);
+  Promise.all([
+    fetch('/pavement_pci.json').then(r => r.json()),
+    fetch('/pavement_address_index.json').then(r => r.json()).catch(() => ({ addresses: {} })),
+  ])
+    .then(([pciData, addrData]) => {
+      SEGMENTS = pciData.segments.filter(s => s.street);
+      ADDRESS_INDEX = addrData.addresses || {};
       buildStreetMap();
       renderWorstTable();
       searchInput.disabled = false;
-      searchInput.placeholder = 'e.g. Cabot Street, Hale Street, Wellman…';
+      searchInput.placeholder = 'e.g. 191 Cabot St, Hale Street, Wellman…';
     })
     .catch(err => {
       searchInput.placeholder = 'Street data failed to load — try refreshing';
-      console.error('Failed to load pavement_pci.json', err);
+      console.error('Failed to load pavement data', err);
     });
 </script>
 <script src="/nav.js"></script>
