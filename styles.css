@@ -1644,6 +1644,30 @@ input[type=range]::-webkit-slider-thumb {
 .paving-badge.planned     { color: var(--blue); border-color: var(--blue); background: var(--tag-bg); }
 .paving-badge.considering { color: var(--muted); border-color: var(--border); background: #f8fafc; }
 
+/* ── Shared: .pci-badge, 6-tier city PCI scale (pavement.html) ── */
+.pci-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 99px;
+  border: 1.5px solid;
+  white-space: nowrap;
+}
+
+.pci-badge.excellent { color: var(--green); border-color: var(--green); background: #ecfdf5; }
+.pci-badge.good       { color: var(--blue); border-color: var(--blue); background: var(--tag-bg); }
+.pci-badge.fair       { color: var(--accent-text); border-color: var(--accent); background: var(--warn-bg); }
+.pci-badge.poor       { color: #c2410c; border-color: #ea580c; background: #fff7ed; }
+.pci-badge.verypoor   { color: var(--red); border-color: var(--red); background: #fef2f2; }
+.pci-badge.serious    { color: #fff; border-color: #7f1d1d; background: #7f1d1d; }
+
+.street-result-stats { margin-top: 0.5rem; }
+.street-segment-table { font-size: 0.8rem; }
+.street-segment-table th, .street-segment-table td { padding: 0.4rem 0.6rem; }
+.street-more-segments { margin-top: 0.6rem; }
+.search-loading-note { color: rgba(255, 255, 255, 0.7); font-size: 0.82rem; margin-top: 0.5rem; }
+
 @media (max-width: 700px) {
   .repave-list-grid { column-count: 1; }
 }
