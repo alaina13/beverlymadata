@@ -72,6 +72,8 @@
   <a href="#overview" class="toc-link">Overview</a>
   <a href="#street-search" class="toc-link">Search Your Street</a>
   <a href="#condition-breakdown" class="toc-link">Condition Breakdown</a>
+  <a href="#road-class" class="toc-link">Condition by Road Class</a>
+  <a href="#below-standard" class="toc-link">Below-Standard Mileage</a>
   <a href="#worst-rated" class="toc-link">Worst-Rated Streets</a>
   <a href="#methodology" class="toc-link">Methodology &amp; Scope</a>
 </nav>
@@ -116,6 +118,41 @@
     </div>
   </div>
 
+  <!-- ── Condition by road class ── -->
+  <div class="section-header">
+    <h2 id="road-class">Condition by Road Class</h2>
+    <p>Average PCI by the city's functional road classification, citywide.</p>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card full">
+      <div class="chart-title" id="roadClassChart-title">Average PCI by Road Class</div>
+      <div class="chart-sub">Citywide, all tracked segments</div>
+      <div class="chart-wrap"><canvas id="roadClassChart" role="img" aria-labelledby="roadClassChart-title" aria-describedby="roadClassChart-data"></canvas></div>
+    </div>
+  </div>
+  <p class="chart-note" id="roadClassNote"></p>
+
+  <!-- ── Below-standard mileage ── -->
+  <div class="section-header">
+    <h2 id="below-standard">Below-Standard Mileage</h2>
+    <p>Tracked road miles rated Poor, Very Poor, or Serious (PCI 55 or below).</p>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-label">Miles Rated Poor or Worse</div>
+      <div class="stat-value" id="belowStandardMiles">—</div>
+      <div class="stat-sub" id="belowStandardShare">&nbsp;</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Annual Upkeep Benchmark</div>
+      <div class="stat-value" id="belowStandardCost">—</div>
+      <div class="stat-sub">Not a repair-cost estimate — see note below</div>
+    </div>
+  </div>
+  <p class="chart-note">Open Beverly doesn't have a reliable estimate of what it would cost to repair these specific <span id="belowStandardMilesInline">—</span>. Actual repair cost depends heavily on what treatment each segment needs, resurfacing is far cheaper than full reconstruction, and the city's data doesn't specify which each segment requires. The figure above is a different, related measure: a statewide benchmark for the ongoing cost of routine upkeep, resurfacing, and reconstruction, averaged over a road's lifetime, applied to this mileage. It shows how much of the city's overall road-upkeep need is tied up in below-standard streets, not what it would cost to fix them today. See the <a href="/capital.html">Capital Plan</a> for the city's actual road paving budget, and <a href="/sources.html">Sources</a> for the underlying MMA benchmark.</p>
+
   <!-- ── Worst-rated streets ── -->
   <div class="section-header">
     <h2 id="worst-rated">Worst-Rated Streets, Citywide</h2>
@@ -149,12 +186,14 @@
     <p>The city's inventory includes a "pci_2025" field with decimal values (for example, 87.89) that appear to be a deterioration-model projection rather than a fresh physical survey: every segment in the dataset shares the same underlying survey date. This page uses each segment's 2024 PCI value, the most recent figure tied to an actual assessment, as the current condition.</p>
     <p>The city's GIS system was last updated on July 9, 2026, though the underlying assessments are current through the 2024 survey cycle. Some fields in the data schema, including repair priority, estimated repair cost, and maintenance notes, exist but were not populated for any segment as of this page's last data pull.</p>
     <p>Address search matches each property to its nearest surveyed pavement segment, using the city's parcel location data. This is a distance-based estimate, not an exact address-to-segment mapping from the city: for most addresses the match is within a few dozen feet of the property, but on long streets with sparse survey coverage, or for addresses on private ways and unaccepted streets, no confident match exists. About 93% of parcel addresses match within 150 meters of a surveyed segment; the rest fall back to full street-level results.</p>
+    <p>The city's data labels two segments (under 0.1 combined miles) "UMA" rather than "Urban Minor Arterial." The Condition by Road Class chart groups these with Urban Minor Arterial.</p>
   </div>
 
   <div class="sources">
     <strong>Data sources</strong><br>
     Citywide Pavement Condition Index (PCI) inventory: City of Beverly GIS (BeverlyGIS), Beverly Streets ArcGIS web application, streets_cyvl_update feature layer, accessed July 13, 2026.<br>
     Property addresses: City of Beverly Assessor's parcel data. Address-to-segment matching is an Open Beverly estimate based on nearest surveyed segment to each parcel's location, not a city-provided join.<br>
+    Lifecycle-maintenance cost benchmark: Massachusetts Municipal Association (MMA), approximately $22,833 per centerline mile per year, also used in Open Beverly's <a href="/property.html">property map</a> net-revenue estimate. See <a href="/sources.html">Sources</a>.<br>
     Open Beverly is an independent civic project. All data sourced from public records.
   </div>
 
@@ -296,6 +335,97 @@
       },
       plugins: [conditionCenterTextPlugin],
     });
+  }
+
+  // Builds a visually-hidden data table after a chart's canvas so screen reader
+  // users get the same underlying numbers sighted users get from the chart.
+  function addChartDataTable(id, rowHeader, labels, datasets, fmt) {
+    const canvas = document.getElementById(id);
+    const table = document.createElement('table');
+    table.id = id + '-data';
+    table.className = 'sr-only';
+    const thead = `<thead><tr><th scope="col">${rowHeader}</th>` +
+      datasets.map(d => `<th scope="col">${d.label}</th>`).join('') + '</tr></thead>';
+    const tbody = '<tbody>' + labels.map((label, i) =>
+      `<tr><th scope="row">${label}</th>` +
+      datasets.map(d => `<td>${fmt ? fmt(d.data[i]) : d.data[i]}</td>`).join('') + '</tr>'
+    ).join('') + '</tbody>';
+    table.innerHTML = thead + tbody;
+    canvas.insertAdjacentElement('afterend', table);
+  }
+
+  let CONDITION_RANGES = {};
+
+  function pciToConditionTier(pci) {
+    for (const tier of CONDITION_ORDER) {
+      const [min, max] = CONDITION_RANGES[tier];
+      if (pci >= min && pci <= max) return tier;
+    }
+    return null;
+  }
+
+  // The source data labels two segments "UMA" instead of "Urban Minor Arterial"
+  // (under 0.1 combined miles); folded into the full name for this chart.
+  const ROAD_CLASS_ORDER = ['Local', 'Urban Collector', 'Urban Minor Arterial', 'Principal Arterial'];
+  function normalizeRoadClass(c) { return c === 'UMA' ? 'Urban Minor Arterial' : c; }
+
+  function renderRoadClassChart() {
+    const totals = {};
+    ROAD_CLASS_ORDER.forEach(c => { totals[c] = { sum: 0, count: 0 }; });
+    SEGMENTS.forEach(s => {
+      const cls = normalizeRoadClass(s.functional_class);
+      if (s.pci === null || !totals[cls]) return;
+      totals[cls].sum += s.pci;
+      totals[cls].count += 1;
+    });
+
+    const labels = ROAD_CLASS_ORDER;
+    const data = labels.map(c => totals[c].count ? totals[c].sum / totals[c].count : 0);
+    const colors = data.map(avg => CONDITION_COLORS[pciToConditionTier(avg)] || getCssVar('--muted'));
+
+    new Chart(document.getElementById('roadClassChart'), {
+      type: 'bar',
+      data: { labels, datasets: [{ label: 'Average PCI', data, backgroundColor: colors, borderRadius: 4, borderSkipped: false }] },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: ctx => ` Average PCI ${ctx.parsed.y.toFixed(1)} (${totals[labels[ctx.dataIndex]].count} segments)` } },
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+          y: { min: 0, max: 100, grid: { color: '#f0f0f0' }, ticks: { font: { size: 11 } } },
+        },
+      },
+    });
+    addChartDataTable('roadClassChart', 'Road Class', labels, [{ label: 'Average PCI', data }], v => v.toFixed(1));
+
+    const local = data[labels.indexOf('Local')];
+    const arterial = data[labels.indexOf('Principal Arterial')];
+    document.getElementById('roadClassNote').textContent =
+      `Local streets, which make up ${totals['Local'].count.toLocaleString()} of the city's ${SEGMENTS.length.toLocaleString()} tracked segments, average a PCI of ${local.toFixed(1)}, in the ${pciToConditionTier(local)} tier. Principal arterials average ${arterial.toFixed(1)}, in the ${pciToConditionTier(arterial)} tier.`;
+  }
+
+  const MMA_COST_PER_MILE_PER_YEAR = 22833; // MMA statewide lifecycle-maintenance benchmark; see Sources.
+
+  function renderBelowStandard() {
+    const withPci = SEGMENTS.filter(s => s.condition);
+    let totalMiles = 0, belowMiles = 0;
+    withPci.forEach(s => {
+      const miles = (s.length_ft || 0) / 5280;
+      totalMiles += miles;
+      if (s.pci !== null && s.pci <= 55) belowMiles += miles;
+    });
+    const pct = totalMiles ? (belowMiles / totalMiles * 100) : 0;
+    const annualCost = belowMiles * MMA_COST_PER_MILE_PER_YEAR;
+
+    const costLabel = '$' + (annualCost / 1e6).toFixed(2) + 'M/yr';
+    const milesLabel = belowMiles.toFixed(1) + ' mi';
+    document.getElementById('belowStandardMiles').textContent = milesLabel;
+    document.getElementById('belowStandardShare').textContent = `${pct.toFixed(1)}% of tracked miles, PCI 55 or below`;
+    document.getElementById('belowStandardCost').textContent = costLabel;
+    document.getElementById('belowStandardMilesInline').textContent = milesLabel;
   }
 
   function renderWorstTable() {
@@ -481,8 +611,11 @@
     .then(([pciData, addrData]) => {
       SEGMENTS = pciData.segments.filter(s => s.street);
       ADDRESS_INDEX = addrData.addresses || {};
+      CONDITION_RANGES = pciData.condition_ranges || {};
       buildStreetMap();
       renderConditionBreakdown();
+      renderRoadClassChart();
+      renderBelowStandard();
       renderWorstTable();
       searchInput.disabled = false;
       searchInput.placeholder = 'e.g. 191 Cabot St, Hale Street, Wellman…';
