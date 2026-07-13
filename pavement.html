@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/56a48e0c30.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <title>Open Beverly — Pavement Conditions</title>
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -70,6 +71,7 @@
   <div class="toc-label">On this page</div>
   <a href="#overview" class="toc-link">Overview</a>
   <a href="#street-search" class="toc-link">Search Your Street</a>
+  <a href="#condition-breakdown" class="toc-link">Condition Breakdown</a>
   <a href="#worst-rated" class="toc-link">Worst-Rated Streets</a>
   <a href="#methodology" class="toc-link">Methodology &amp; Scope</a>
 </nav>
@@ -90,6 +92,28 @@
     </div>
     <div id="streetSearchResults" class="street-search-results" aria-live="polite"></div>
     <p class="street-search-hint" id="streetSearchHint">Covers 581 streets and 1,694 tracked segments citywide, from the city's own pavement condition inventory. Streets with multiple blocks may vary in condition block to block; see <a href="#methodology" class="street-search-hint-link">Methodology &amp; Scope</a>.</p>
+  </div>
+
+  <!-- ── Condition breakdown ── -->
+  <div class="section-header">
+    <h2 id="condition-breakdown">Condition Breakdown</h2>
+    <p>How the city's tracked road miles are distributed across the six PCI condition tiers, citywide.</p>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="donut-wrap">
+        <canvas id="conditionDonut" role="img" aria-labelledby="condition-breakdown" aria-describedby="conditionDonut-data" height="280"></canvas>
+      </div>
+      <table id="conditionDonut-data" class="sr-only">
+        <caption>Road miles by pavement condition tier</caption>
+        <thead><tr><th>Condition</th><th>Miles</th><th>Share</th></tr></thead>
+        <tbody id="conditionDonut-tbody"></tbody>
+      </table>
+    </div>
+    <div class="chart-card">
+      <div class="cat-list" id="conditionList" role="list" aria-label="Road miles by condition tier"></div>
+    </div>
   </div>
 
   <!-- ── Worst-rated streets ── -->
@@ -170,6 +194,107 @@
       if (!STREET_MAP[key]) STREET_MAP[key] = { name: s.street, segments: [] };
       STREET_MAP[key].segments.push(s);
       if (s.ss_id) SEGMENTS_BY_ID[s.ss_id] = s;
+    });
+  }
+
+  const CONDITION_ORDER = ['Excellent', 'Good', 'Fair', 'Poor', 'Very Poor', 'Serious'];
+
+  function getCssVar(name) {
+    return getComputedStyle(document.body).getPropertyValue(name).trim();
+  }
+
+  const CONDITION_COLORS = {
+    Excellent: getCssVar('--green'),
+    Good: getCssVar('--blue'),
+    Fair: getCssVar('--accent'),
+    Poor: '#ea580c',
+    'Very Poor': getCssVar('--red'),
+    Serious: '#7f1d1d',
+  };
+
+  const conditionDonutCenter = { label: 'Tracked', value: '' };
+
+  const conditionCenterTextPlugin = {
+    id: 'conditionCenterText',
+    afterDraw(chart) {
+      const { ctx, chartArea: { width, height, left, top } } = chart;
+      const cx = left + width / 2;
+      const cy = top + height / 2;
+      ctx.save();
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      ctx.font = '600 11px system-ui, sans-serif';
+      ctx.fillStyle = '#6b7280';
+      ctx.letterSpacing = '0.05em';
+      ctx.fillText(conditionDonutCenter.label.toUpperCase(), cx, cy - 13);
+
+      ctx.font = '800 22px system-ui, sans-serif';
+      ctx.fillStyle = '#1e3a5f';
+      ctx.letterSpacing = '0';
+      ctx.fillText(conditionDonutCenter.value, cx, cy + 11);
+      ctx.restore();
+    }
+  };
+
+  function renderConditionBreakdown() {
+    const withPci = SEGMENTS.filter(s => s.condition && CONDITION_COLORS[s.condition]);
+    const totalsByCondition = {};
+    CONDITION_ORDER.forEach(c => { totalsByCondition[c] = { miles: 0, count: 0 }; });
+    let totalMiles = 0;
+    withPci.forEach(s => {
+      const miles = (s.length_ft || 0) / 5280;
+      totalsByCondition[s.condition].miles += miles;
+      totalsByCondition[s.condition].count += 1;
+      totalMiles += miles;
+    });
+
+    const labels = CONDITION_ORDER;
+    const data = labels.map(c => totalsByCondition[c].miles);
+    const colors = labels.map(c => CONDITION_COLORS[c]);
+
+    conditionDonutCenter.value = totalMiles.toFixed(0) + ' mi';
+
+    document.getElementById('conditionDonut-tbody').innerHTML = labels.map(c => {
+      const t = totalsByCondition[c];
+      const pct = totalMiles ? (t.miles / totalMiles * 100) : 0;
+      return `<tr><td>${c}</td><td>${t.miles.toFixed(1)}</td><td>${pct.toFixed(1)}%</td></tr>`;
+    }).join('');
+
+    document.getElementById('conditionList').innerHTML = labels.map(c => {
+      const t = totalsByCondition[c];
+      const pct = totalMiles ? (t.miles / totalMiles * 100) : 0;
+      return `<div class="cat-item static" role="listitem">
+        <div class="cat-swatch" style="background:${CONDITION_COLORS[c]}" aria-hidden="true"></div>
+        <div class="cat-info">
+          <div class="cat-name">${c}</div>
+          <div class="cat-sub">${t.count} segment${t.count === 1 ? '' : 's'}</div>
+        </div>
+        <div class="cat-right">
+          <div class="cat-amount">${t.miles.toFixed(1)} mi</div>
+          <div class="cat-pct">${pct.toFixed(1)}%</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    new Chart(document.getElementById('conditionDonut'), {
+      type: 'doughnut',
+      data: { labels, datasets: [{ data, backgroundColor: colors, borderWidth: 2, borderColor: '#fff', hoverOffset: 6 }] },
+      options: {
+        cutout: '62%',
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: 'rgba(17,24,39,0.92)',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            callbacks: {
+              label: ctx => ` ${ctx.parsed.toFixed(1)} mi (${(ctx.parsed / totalMiles * 100).toFixed(1)}%)`,
+            },
+          },
+        },
+      },
+      plugins: [conditionCenterTextPlugin],
     });
   }
 
@@ -281,9 +406,30 @@
     </div>`;
   }
 
+  // Matches a (possibly multi-word) query against a street name: earlier query
+  // words must match a name word exactly, the last query word only needs to be
+  // a prefix, so "cabot s" and "cabot st" both match "Cabot St" while typing.
+  function nameMatchesQuery(name, qWords) {
+    const nameWords = name.split(/\s+/);
+    for (let start = 0; start <= nameWords.length - qWords.length; start++) {
+      let ok = true;
+      for (let j = 0; j < qWords.length; j++) {
+        const isLast = j === qWords.length - 1;
+        const nameWord = nameWords[start + j];
+        if (isLast ? !nameWord.startsWith(qWords[j]) : nameWord !== qWords[j]) {
+          ok = false;
+          break;
+        }
+      }
+      if (ok) return true;
+    }
+    return false;
+  }
+
   function searchStreetsByName(q) {
+    const qWords = q.split(/\s+/).filter(Boolean);
     const matches = Object.values(STREET_MAP).filter(e =>
-      normalizeStreetName(e.name).split(/\s+/).some(word => word.startsWith(q))
+      nameMatchesQuery(normalizeStreetName(e.name), qWords)
     );
     matches.sort((a, b) => a.name.localeCompare(b.name));
     return matches;
@@ -336,6 +482,7 @@
       SEGMENTS = pciData.segments.filter(s => s.street);
       ADDRESS_INDEX = addrData.addresses || {};
       buildStreetMap();
+      renderConditionBreakdown();
       renderWorstTable();
       searchInput.disabled = false;
       searchInput.placeholder = 'e.g. 191 Cabot St, Hale Street, Wellman…';

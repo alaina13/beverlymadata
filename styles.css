@@ -776,6 +776,9 @@ details[open] > .timeline-summary .fa-chevron-down { transform: rotate(180deg); 
 .cat-arrow { color: var(--muted); font-size: 0.75rem; flex-shrink: 0; }
 .cat-arrow.hidden { visibility: hidden; }
 
+.cat-item.static { cursor: default; }
+.cat-item.static:hover { background: none; }
+
 .trend-card {
   background: var(--card-bg); border: 1px solid var(--border);
   border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem;
