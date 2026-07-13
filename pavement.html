@@ -64,12 +64,24 @@
 <div class="page-with-toc">
 <nav class="toc" aria-label="Table of contents">
   <div class="toc-label">On this page</div>
+  <a href="#street-search" class="toc-link">Search Your Street</a>
   <a href="#overview" class="toc-link">Overview</a>
   <a href="#snapshot" class="toc-link">Current Snapshot</a>
   <a href="#roads" class="toc-link">Roads Assessed by MassDOT</a>
   <a href="#methodology" class="toc-link">Methodology &amp; Scope</a>
 </nav>
 <div class="data-container">
+
+  <!-- ── Street search ── -->
+  <div class="street-search" id="street-search">
+    <label for="streetSearchInput" class="street-search-label">Search your street</label>
+    <div class="street-search-input-wrap">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="text" id="streetSearchInput" placeholder="e.g. Cabot Street, Hale Street, Wellman&hellip;" autocomplete="off" aria-describedby="streetSearchHint">
+    </div>
+    <div id="streetSearchResults" class="street-search-results" aria-live="polite"></div>
+    <p class="street-search-hint" id="streetSearchHint">Covers streets in Beverly's active paving program and MassDOT's arterial/collector condition survey. Most local residential streets aren't tracked in either source; see <a href="#methodology" class="street-search-hint-link">Methodology &amp; Scope</a>. We'll add more streets as new data becomes available.</p>
+  </div>
 
   <!-- ── Overview ── -->
   <div class="section-header">
@@ -140,7 +152,7 @@
   <div class="section-header">
     <h2 id="methodology">Methodology &amp; Scope</h2>
   </div>
-  <div class="structural-box" style="margin-bottom:2rem;">
+  <div class="structural-box">
     <h2>What this data does and doesn't cover</h2>
     <p>MassDOT's Pavement Serviceability Index (PSI) runs from 0 (impassable) to 5 (free of distress) and combines cracking, rutting, and ride quality, measured as International Roughness Index (IRI). The Interstate system is surveyed annually; other federal-aid roads follow a biennial schedule.</p>
     <p>This dataset only covers roads classified as arterial or collector under the Federal Functional Classification system. It excludes locally classified roads, which make up most of Beverly's residential street network and are not part of MassDOT's assessment program. Yankee Division Highway (Route 128) is included as its own row in the table above: it is a state-owned, limited-access highway rather than a surface street, and its condition is not representative of Beverly's other roads.</p>
@@ -152,6 +164,7 @@
     Pavement Serviceability Index and condition ratings: Massachusetts Department of Transportation (MassDOT) Highway Division, Pavement Inventory 2024, via MassDOT ArcGIS open data services.<br>
     Total city road mileage (160 mi): Beverly capital planning estimate, as cited on the <a href="/capital.html">Capital Plan</a> page.<br>
     City's most recent citywide survey: City of Beverly Engineering Department, Street Map with Pavement Condition Index (PCI), Fall 2021 (<a href="https://www.beverlyma.gov/DocumentCenter/View/2980/2021-City-of-Beverly-Pavement-Condition-Index-PCI-Map-PDF" target="_blank">PDF</a>).<br>
+    Street-level paving status: City of Beverly Engineering Department, <a href="https://www.beverlyma.gov/195/Street-Paving" target="_blank">Street Paving</a> page, accessed July 13, 2026.<br>
     Open Beverly is an independent civic project. All data sourced from public records.
   </div>
 
@@ -177,13 +190,13 @@
 
   // Builds a visually-hidden data table after a chart's canvas so screen reader
   // users get the same underlying numbers sighted users get from the chart.
-  function addChartDataTable(id, labels, datasets, yFmt) {
+  function addChartDataTable(id, labels, datasets, yFmt, rowHeader) {
     const canvas = document.getElementById(id);
     const table = document.createElement('table');
     table.id = id + '-data';
     table.className = 'sr-only';
     const fmt = v => yFmt ? yFmt(v) : v;
-    const thead = '<thead><tr><th scope="col">Condition</th>' +
+    const thead = '<thead><tr><th scope="col">' + (rowHeader || 'Category') + '</th>' +
       datasets.map(d => `<th scope="col">${d.label || 'Value'}</th>`).join('') + '</tr></thead>';
     const tbody = '<tbody>' + labels.map((l, i) =>
       '<tr><th scope="row">' + l + '</th>' +
@@ -218,7 +231,7 @@
       },
     },
   });
-  addChartDataTable('conditionChart', CONDITIONS, [{ label: 'Miles', data: MILES_BY_CONDITION }], v => v.toFixed(1) + ' mi');
+  addChartDataTable('conditionChart', CONDITIONS, [{ label: 'Miles', data: MILES_BY_CONDITION }], v => v.toFixed(1) + ' mi', 'Condition');
 
   // ── Roads table (source: MassDOT Pavement Inventory 2024, City=Beverly) ────
   const ROADS = [
@@ -250,6 +263,155 @@
       <td>${r.date}</td>
     </tr>
   `).join('');
+
+  // ── Street search (source: MassDOT Pavement Inventory 2024 + City of Beverly Street Paving page, July 13, 2026) ──
+  const PAVING_LABEL = {
+    done: 'Repaved', progress: 'Repaving Now', planned: 'Planned 2026', considering: 'Under Consideration (2027+)',
+  };
+
+  const PAVING = [
+    { name: 'Park Street', detail: 'Pleasant St to Broadway', status: 'done' },
+    { name: 'Broadway', detail: 'Park St to Cabot St', status: 'done' },
+    { name: 'Thorndike Street', detail: 'Cabot St to Endicott St', status: 'done' },
+    { name: 'Endicott Street', detail: null, status: 'done' },
+    { name: 'Abbott Street', detail: 'Endicott St to Lovett St', status: 'done' },
+    { name: 'Hale Street', detail: 'Monument Sq to Lothrop St', status: 'done' },
+    { name: 'Bancroft Street', detail: null, status: 'done' },
+    { name: 'Lothrop Street', detail: 'Lakeshore Ave to Corning St', status: 'done' },
+    { name: 'Cross Lane', detail: 'Lakeshore Ave to Boyles St', status: 'done' },
+    { name: 'Boyles Street', detail: 'Cross Ln to the substation', status: 'done' },
+    { name: 'Wellman Street', detail: null, status: 'progress' },
+    { name: 'Webber Avenue', detail: null, status: 'progress' },
+    { name: 'Congress Street', detail: 'Cabot St to Wellman St', status: 'progress' },
+    { name: 'School Street', detail: 'River St to Porter St', status: 'progress' },
+    { name: 'River Street', detail: 'School St to Pleasant St', status: 'progress' },
+    { name: 'Pleasant Street', detail: 'River St to Park St', status: 'progress' },
+    { name: 'Monument Square', detail: null, status: 'progress' },
+    { name: 'Goodyear Street', detail: 'Reclaim', status: 'planned' },
+    { name: 'Belmont Street', detail: 'Reclaim', status: 'planned' },
+    { name: 'Conway Street', detail: 'Reclaim', status: 'planned' },
+    { name: 'Overlook Avenue', detail: 'Reclaim', status: 'planned' },
+    { name: 'Echo Avenue', detail: 'Reclaim', status: 'planned' },
+    { name: 'Summit Avenue', detail: 'Reclaim', status: 'planned' },
+    { name: 'Cox Court', detail: 'Reclaim', status: 'planned' },
+    { name: 'Ellingwood Court', detail: 'Grind', status: 'planned' },
+    { name: 'Prospect Street', detail: 'Reclaim', status: 'planned' },
+    { name: 'Pierce Avenue', detail: 'Reclaim', status: 'planned' },
+    { name: 'Sargent Street', detail: 'Reclaim', status: 'planned' },
+    { name: 'Filmore Street', detail: 'Reclaim', status: 'planned' },
+    { name: 'Lincoln Street', detail: 'Reclaim', status: 'planned' },
+    { name: 'Wilson Street', detail: 'Reclaim', status: 'planned' },
+    { name: 'Prescott Street', detail: 'Reclaim', status: 'planned' },
+    { name: 'Millbrook Road', detail: 'Reclaim', status: 'planned' },
+    { name: 'Hickory Lane', detail: 'Reclaim', status: 'planned' },
+    { name: 'Sonning Road', detail: null, status: 'considering' },
+    { name: 'Longmeadow Road', detail: null, status: 'considering' },
+    { name: 'Shortmeadow Road', detail: null, status: 'considering' },
+    { name: 'Edgewood Road', detail: null, status: 'considering' },
+    { name: 'Guild Road', detail: null, status: 'considering' },
+    { name: 'Davis Road', detail: null, status: 'considering' },
+    { name: 'Winslow Road', detail: null, status: 'considering' },
+    { name: 'Lovett Street', detail: null, status: 'considering' },
+    { name: 'Swan Street', detail: null, status: 'considering' },
+    { name: 'Mason Street', detail: null, status: 'considering' },
+    { name: 'Lyman Street', detail: null, status: 'considering' },
+    { name: 'Ames Street', detail: null, status: 'considering' },
+    { name: 'Pickman Road', detail: null, status: 'considering' },
+    { name: 'Berkley Avenue', detail: null, status: 'considering' },
+    { name: 'Raymond Avenue', detail: null, status: 'considering' },
+    { name: 'Pillow Lace Lane', detail: null, status: 'considering' },
+    { name: 'Noble Hill Road', detail: null, status: 'considering' },
+    { name: 'Walcott Road', detail: null, status: 'considering' },
+    { name: 'Friend Street', detail: null, status: 'considering' },
+    { name: 'Williams Street', detail: null, status: 'considering' },
+    { name: 'Matthies Street', detail: null, status: 'considering' },
+    { name: 'Sturtevant Street', detail: null, status: 'considering' },
+    { name: 'Cedar Street', detail: null, status: 'considering' },
+    { name: 'Middle Street', detail: null, status: 'considering' },
+    { name: 'Larcom Avenue', detail: null, status: 'considering' },
+    { name: 'Glidden Street', detail: null, status: 'considering' },
+    { name: 'Blake Street', detail: null, status: 'considering' },
+    { name: 'McKay Street', detail: null, status: 'considering' },
+    { name: 'Tozer Road', detail: null, status: 'considering' },
+    { name: 'Water Street', detail: null, status: 'considering' },
+    { name: 'Front Street', detail: null, status: 'considering' },
+    { name: 'Cottage Lane', detail: null, status: 'considering' },
+    { name: 'South Street', detail: null, status: 'considering' },
+    { name: 'Davis Street', detail: null, status: 'considering' },
+    { name: 'Country Drive', detail: null, status: 'considering' },
+    { name: 'Longview Drive', detail: null, status: 'considering' },
+    { name: 'Hill Street', detail: null, status: 'considering' },
+    { name: 'Snell Road', detail: null, status: 'considering' },
+    { name: 'Tudor Road', detail: null, status: 'considering' },
+    { name: 'Windsor Road', detail: null, status: 'considering' },
+    { name: 'Alden Road', detail: null, status: 'considering' },
+    { name: 'Morgan Road', detail: null, status: 'considering' },
+    { name: 'Museum Road', detail: null, status: 'considering' },
+    { name: 'Tyler Road', detail: null, status: 'considering' },
+    { name: 'Crestline Circle', detail: null, status: 'considering' },
+    { name: 'Paramatta Road', detail: null, status: 'considering' },
+    { name: 'Oceanside Drive', detail: null, status: 'considering' },
+    { name: 'Evergreen Drive', detail: null, status: 'considering' },
+    { name: 'Berrywood Lane', detail: null, status: 'considering' },
+    { name: 'Michael Road', detail: null, status: 'considering' },
+    { name: 'Elnew Avenue', detail: null, status: 'considering' },
+    { name: 'Red Rock Lane', detail: null, status: 'considering' },
+    { name: 'Norge Road', detail: null, status: 'considering' },
+    { name: 'Devon Road', detail: null, status: 'considering' },
+    { name: 'Somerset Avenue', detail: null, status: 'considering' },
+    { name: 'Scenna Road', detail: null, status: 'considering' },
+  ];
+
+  function normalizeStreetName(s) { return s.toLowerCase().replace(/\./g, '').trim(); }
+
+  const STREET_INDEX = {};
+  ROADS.forEach(r => {
+    const key = normalizeStreetName(r.name);
+    STREET_INDEX[key] = STREET_INDEX[key] || { name: r.name };
+    STREET_INDEX[key].condition = r;
+  });
+  PAVING.forEach(p => {
+    const key = normalizeStreetName(p.name);
+    STREET_INDEX[key] = STREET_INDEX[key] || { name: p.name };
+    STREET_INDEX[key].paving = p;
+  });
+  const STREET_LIST = Object.values(STREET_INDEX).sort((a, b) => a.name.localeCompare(b.name));
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  function renderStreetResult(entry) {
+    let rows = '';
+    if (entry.paving) {
+      rows += `<div class="street-result-row">
+        <span class="paving-badge ${entry.paving.status}">${PAVING_LABEL[entry.paving.status]}</span>
+        ${entry.paving.detail ? `<span class="street-result-detail">${escapeHtml(entry.paving.detail)}</span>` : ''}
+      </div>`;
+    }
+    if (entry.condition) {
+      const c = entry.condition;
+      rows += `<div class="street-result-row">
+        <span class="condition-badge ${CONDITION_CLASS[c.condition]}">${c.condition}</span>
+        <span class="street-result-detail">PSI ${c.psi.toFixed(2)} &middot; ${c.owner} &middot; MassDOT survey ${c.date}</span>
+      </div>`;
+    }
+    return `<div class="street-result-card"><div class="street-result-name">${escapeHtml(entry.name)}</div>${rows}</div>`;
+  }
+
+  const searchInput = document.getElementById('streetSearchInput');
+  const searchResults = document.getElementById('streetSearchResults');
+
+  searchInput.addEventListener('input', () => {
+    const q = normalizeStreetName(searchInput.value);
+    if (q.length < 2) { searchResults.innerHTML = ''; return; }
+    const matches = STREET_LIST.filter(e => normalizeStreetName(e.name).split(/\s+/).some(word => word.startsWith(q)));
+    if (!matches.length) {
+      searchResults.innerHTML = `<div class="street-search-empty">No paving program or state condition data on file for "${escapeHtml(searchInput.value)}." This tool covers streets in the city's active paving program and MassDOT's arterial/collector survey, not the full road network. We'll add more streets as new data becomes available.</div>`;
+      return;
+    }
+    searchResults.innerHTML = matches.slice(0, 12).map(renderStreetResult).join('');
+  });
 </script>
 <script src="/nav.js"></script>
 <script src="/toc.js"></script>

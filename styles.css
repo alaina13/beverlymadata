@@ -1518,6 +1518,136 @@ input[type=range]::-webkit-slider-thumb {
 .condition-badge.good      { color: var(--blue);  border-color: var(--blue);  background: var(--tag-bg); }
 .condition-badge.excellent { color: var(--green); border-color: var(--green); background: #ecfdf5; }
 
+/* ── Shared: .repave-list (pavement.html) ── */
+.repave-list {
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.9;
+}
+.repave-list li { padding-left: 1.1rem; position: relative; }
+.repave-list li::before { content: '\2022'; position: absolute; left: 0; color: var(--muted); }
+
+.repave-list-grid { column-count: 2; column-gap: 2rem; }
+
+.repave-status-icon.done     { color: var(--green); }
+.repave-status-icon.progress { color: var(--accent); }
+.repave-status-icon.planned  { color: var(--blue); }
+
+.repave-count { color: var(--muted); font-weight: 400; }
+.repave-update-note { margin-top: 0.75rem; }
+.repave-planned-card { margin-top: 1.25rem; margin-bottom: 1.5rem; }
+.repave-assumptions { margin-top: 1rem; }
+
+.chart-note-text { font-size: 0.78rem; color: var(--muted); margin: 0.5rem 0 1.5rem; }
+.quote-attribution { font-size: 0.82rem; color: var(--muted); }
+
+/* ── Shared: .street-search (pavement.html) ── */
+.street-search {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.street-search-label {
+  color: white;
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: block;
+  margin-bottom: 0.7rem;
+}
+
+.street-search-input-wrap { position: relative; }
+
+.street-search-input-wrap i {
+  position: absolute;
+  left: 0.95rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+}
+
+.street-search-input-wrap input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.6rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text);
+}
+
+.street-search-input-wrap input:focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.street-search-hint {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.78rem;
+  margin-top: 0.6rem;
+}
+
+.street-search-hint-link { color: inherit; }
+
+.street-search-results {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.street-search-empty {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  padding: 0.5rem 0.1rem;
+}
+
+.street-result-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.street-result-name {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.street-result-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.83rem;
+  color: var(--text);
+  margin-top: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.street-result-detail { color: var(--muted); }
+
+.paving-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 99px;
+  border: 1.5px solid;
+  white-space: nowrap;
+}
+
+.paving-badge.done        { color: var(--green); border-color: var(--green); background: #ecfdf5; }
+.paving-badge.progress    { color: var(--accent-text); border-color: var(--accent); background: var(--warn-bg); }
+.paving-badge.planned     { color: var(--blue); border-color: var(--blue); background: var(--tag-bg); }
+.paving-badge.considering { color: var(--muted); border-color: var(--border); background: #f8fafc; }
+
+@media (max-width: 700px) {
+  .repave-list-grid { column-count: 1; }
+}
+
 @media (max-width: 700px) {
   .data-container { padding: 1rem; }
   .chart-grid { grid-template-columns: 1fr; }
