@@ -66,6 +66,24 @@ def clean_desc(raw_desc: str, title: str) -> str:
     clean = re.sub(r"\s*\(PDF\)", "", raw_desc, flags=re.I).strip()
     return clean if clean and clean != title else ""
 
+def extract_doc_id(url: str):
+    """Trailing numeric AgendaCenter document ID from a beverlyma.gov URL, or None."""
+    m = re.search(r"(\d+)/?$", url)
+    return int(m.group(1)) if m else None
+
+AGENDA_DOWNLOAD_RE = re.compile(r'class="agendaDownload"[^>]*href="([^"]*)"')
+
+def fetch_event_agenda_doc_id(event_link: str):
+    """Scrape an event's Calendar.aspx page for its 'Download Agenda' link, if posted."""
+    try:
+        req = urllib.request.Request(event_link, headers={"User-Agent": "BeverlyData/1.0"})
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            html = resp.read().decode("utf-8", errors="replace")
+        m = AGENDA_DOWNLOAD_RE.search(html)
+        return extract_doc_id(m.group(1)) if m else None
+    except Exception:
+        return None
+
 def parse_date(date_str: str):
     """Return ISO date string or empty string."""
     if not date_str:
@@ -114,6 +132,7 @@ def fetch_agendas() -> list:
                 "desc":     desc,
                 "board":    board,
                 "type":     doc_type,
+                "docId":    extract_doc_id(link),
             })
 
     # Sort newest first
@@ -168,14 +187,15 @@ def fetch_calendar() -> list:
             continue
 
         events.append({
-            "title":      title,
-            "link":       link,
-            "pubDate":    parse_date(pub_date),
-            "eventDate":  event_date,
-            "eventTime":  event_time,
-            "location":   location,
-            "board":      board,
-            "sortDate":   sort_dt.isoformat(),
+            "title":       title,
+            "link":        link,
+            "pubDate":     parse_date(pub_date),
+            "eventDate":   event_date,
+            "eventTime":   event_time,
+            "location":    location,
+            "board":       board,
+            "sortDate":    sort_dt.isoformat(),
+            "agendaDocId": fetch_event_agenda_doc_id(link) if link else None,
         })
 
     events.sort(key=lambda x: x["sortDate"])

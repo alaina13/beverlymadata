@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/56a48e0c30.js" crossorigin="anonymous"></script>
-  <title>Open Beverly — Upcoming Meetings</title>
+  <title>Open Beverly — Meetings</title>
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:title" content="Meetings — Open Beverly" />
-  <meta property="og:description" content="Beverly city board and committee meetings." />
+  <meta property="og:description" content="Beverly city board and committee meetings, agendas, and minutes." />
   <meta property="og:image" content="https://openbeverly.org/preview.png" />
   <meta property="og:url" content="https://openbeverly.org/" />
   <meta property="og:type" content="website" />
@@ -28,7 +28,6 @@
       </button>
       <div class="nav-dropdown">
       <a href="/meetings.html" class="active">Meetings</a>
-      <a href="/agendas.html">Agendas</a>
       <a href="/summaries.html">Summaries</a>
       </div>
     </div>
@@ -61,40 +60,59 @@
 </header>
 
 <div class="hero">
-  <h1>Upcoming Meetings</h1>
-  <p>Scheduled meetings for Beverly's boards and committees.</p>
+  <h1>Meetings</h1>
+  <p>Scheduled meetings for Beverly's boards and committees, plus agendas and minutes from the city's agenda center. Document links open on beverlyma.gov.</p>
 </div>
 
-<div class="meetings-container">
+<main id="main">
+<section class="upcoming-section">
+  <h2 class="section-title">Upcoming Meetings</h2>
+  <div class="main-header">
+    <span class="result-count" id="cal-result-count">Loading…</span>
+  </div>
+  <div id="calendar-list">
+    <div class="state-msg"><div class="spinner"></div>Fetching calendar…</div>
+  </div>
+</section>
+
+<div class="agendas-container" id="archive">
+  <h2 class="section-title">Agendas &amp; Minutes Archive</h2>
   <aside class="sidebar">
-    <div class="filter-group" id="board-filter-group">
+    <div class="filter-group" id="archive-board-filter-group">
       <h2>Board / Committee</h2>
+    </div>
+    <div class="filter-group">
+      <h2>Document Type</h2>
+      <button class="filter-btn active-type active" data-type="all">All Types <span class="count" id="type-all-count"></span></button>
+      <button class="filter-btn" data-type="minutes">Minutes</button>
+      <button class="filter-btn" data-type="agenda">Agenda</button>
     </div>
   </aside>
 
-  <main id="main">
-    <div class="mobile-filters" id="mobile-board-filters"></div>
+  <div>
+    <div class="mobile-filters" id="mobile-archive-board-filters"></div>
     <div class="main-header">
-      <span class="result-count" id="cal-result-count">Loading…</span>
-      <label for="cal-search" class="sr-only">Search events</label><input class="search-box" type="search" id="cal-search" placeholder="Search events…" />
+      <span class="result-count" id="archive-result-count">Loading…</span>
+      <label for="archive-search" class="sr-only">Search agendas and minutes</label><input class="search-box" type="search" id="archive-search" placeholder="Search agendas and minutes…" />
     </div>
-    <div id="calendar-list">
-      <div class="state-msg"><div class="spinner"></div>Fetching calendar…</div>
+    <div id="meetings-list">
+      <div class="state-msg"><div class="spinner"></div>Fetching meeting data…</div>
     </div>
-  </main>
+  </div>
 </div>
+</main>
 
 <footer>
- 
+
   Open Beverly is an independent civic project and is not affiliated with the City of Beverly. Created with the assistance of AI.
   <a href="/about.html#feedback">Feedback</a>
 </footer>
 
 <script>
+  // ── Upcoming Meetings ────────────────────────────────────────────────────
   let allEvents = [];
   let eventOverrides = [];
-  let activeBoard = 'all';
-  let calSearch = '';
+  let agendaDocsById = {};
 
   function formatEventDate(dateStr) {
     const d = new Date(dateStr);
@@ -114,71 +132,31 @@
     ) || null;
   }
 
-  function filteredEvents() {
-    const q = calSearch.toLowerCase();
-    return allEvents.filter(e => {
-      const boardMatch = activeBoard === 'all' || e.board === activeBoard;
-      const searchMatch = !q || e.title.toLowerCase().includes(q) ||
-        e.board.toLowerCase().includes(q) || (e.location || '').toLowerCase().includes(q);
-      return boardMatch && searchMatch;
-    });
-  }
-
-  function buildBoardFilters() {
-    const counts = {};
-    for (const e of allEvents) counts[e.board] = (counts[e.board] || 0) + 1;
-    const boards = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-
-    function makeBtn(board, label, count, cls) {
-      const btn = document.createElement('button');
-      btn.className = cls;
-      btn.dataset.board = board;
-      btn.innerHTML = cls === 'filter-btn'
-        ? `${label} <span class="count">${count}</span>`
-        : label;
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('[data-board]').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('[data-board="' + board + '"]').forEach(b => b.classList.add('active'));
-        activeBoard = board;
-        renderCalendar();
-      });
-      return btn;
-    }
-
-    const sidebar = document.getElementById('board-filter-group');
-    sidebar.innerHTML = '<h2>Board / Committee</h2>';
-    sidebar.appendChild(makeBtn('all', 'All Boards', allEvents.length, 'filter-btn active'));
-    for (const [board, count] of boards) {
-      sidebar.appendChild(makeBtn(board, board, count, 'filter-btn'));
-    }
-
-    const pills = document.getElementById('mobile-board-filters');
-    pills.innerHTML = '';
-    pills.appendChild(makeBtn('all', 'All', allEvents.length, 'mobile-pill active'));
-    for (const [board, count] of boards) {
-      pills.appendChild(makeBtn(board, board, count, 'mobile-pill'));
-    }
-  }
-
-  function renderCalendar() {
+  function renderUpcoming() {
     const list = document.getElementById('calendar-list');
-    const items = filteredEvents();
     document.getElementById('cal-result-count').textContent =
-      `${items.length} upcoming event${items.length !== 1 ? 's' : ''}`;
+      `${allEvents.length} upcoming event${allEvents.length !== 1 ? 's' : ''}`;
 
-    if (!items.length) {
-      list.innerHTML = '<div class="state-msg">No events match your filters.</div>';
+    if (!allEvents.length) {
+      list.innerHTML = '<div class="state-msg">No upcoming events found.</div>';
       return;
     }
 
-    list.innerHTML = items.map(e => {
+    list.innerHTML = allEvents.map(e => {
       const { month, day, dow } = formatEventDate(e.eventDate || e.pubDate);
-      const ov = findOverride(e);
-      const meetHtml = ov ? `
-        <div class="event-meet">
-          <a href="${ov.meet_url}" target="_blank" class="meet-btn">📹 Join Google Meet</a>
-          ${ov.dial_in ? `<span class="meet-dial">Or dial: ${ov.dial_in}${ov.dial_pin ? ` &nbsp;PIN: ${ov.dial_pin}` : ''}</span>` : ''}
-        </div>` : '';
+      const ov  = findOverride(e);
+      const doc = e.agendaDocId != null ? agendaDocsById[e.agendaDocId] : null;
+
+      const links = [];
+      if (ov) {
+        links.push(`<a href="${ov.meet_url}" target="_blank" class="meet-btn">📹 Join Google Meet</a>`);
+        if (ov.dial_in) links.push(`<span class="meet-dial">Or dial: ${ov.dial_in}${ov.dial_pin ? ` &nbsp;PIN: ${ov.dial_pin}` : ''}</span>`);
+      }
+      if (doc) {
+        links.push(`<a href="${doc.link}" target="_blank" class="meet-btn">📄 View ${doc.type === 'minutes' ? 'Minutes' : 'Agenda'}</a>`);
+      }
+      const metaHtml = links.length ? `<div class="event-meet">${links.join('')}</div>` : '';
+
       return `
         <div class="event-card">
           <div class="event-date-block">
@@ -193,32 +171,141 @@
               ${e.location  ? `<span>📍 ${e.location}</span>`  : ''}
               <span style="color:var(--tag-text);font-weight:600">${e.board}</span>
             </div>
-            ${meetHtml}
+            ${metaHtml}
           </div>
         </div>`;
     }).join('');
   }
 
-  document.getElementById('cal-search').addEventListener('input', e => {
-    calSearch = e.target.value;
-    renderCalendar();
+  // ── Agendas & Minutes Archive ────────────────────────────────────────────
+  let allDocs = [];
+  let archiveBoard  = 'all';
+  let archiveType   = 'all';
+  let archiveSearch = '';
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    if (isNaN(d)) return dateStr;
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function filteredDocs() {
+    return allDocs.filter(item => {
+      const boardMatch  = archiveBoard === 'all' || item.board === archiveBoard;
+      const typeMatch   = archiveType  === 'all' || item.type  === archiveType;
+      const q = archiveSearch.toLowerCase();
+      const searchMatch = !q || item.title.toLowerCase().includes(q) ||
+        item.desc.toLowerCase().includes(q) || item.board.toLowerCase().includes(q);
+      return boardMatch && typeMatch && searchMatch;
+    });
+  }
+
+  function buildArchiveBoardFilters() {
+    const counts = {};
+    for (const item of allDocs) counts[item.board] = (counts[item.board] || 0) + 1;
+    const boards = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+
+    function makeBtn(board, label, count, cls) {
+      const btn = document.createElement('button');
+      btn.className = cls;
+      btn.dataset.board = board;
+      btn.innerHTML = cls === 'filter-btn'
+        ? `${label} <span class="count">${count}</span>`
+        : label;
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-board]').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('[data-board="' + board + '"]').forEach(b => b.classList.add('active'));
+        archiveBoard = board;
+        renderArchive();
+      });
+      return btn;
+    }
+
+    const sidebar = document.getElementById('archive-board-filter-group');
+    sidebar.innerHTML = '<h2>Board / Committee</h2>';
+    sidebar.appendChild(makeBtn('all', 'All Boards', allDocs.length, 'filter-btn active'));
+    for (const [board, count] of boards) sidebar.appendChild(makeBtn(board, board, count, 'filter-btn'));
+
+    const pills = document.getElementById('mobile-archive-board-filters');
+    pills.innerHTML = '';
+    pills.appendChild(makeBtn('all', 'All', allDocs.length, 'mobile-pill active'));
+    for (const [board, count] of boards) pills.appendChild(makeBtn(board, board, count, 'mobile-pill'));
+  }
+
+  function renderArchive() {
+    const list = document.getElementById('meetings-list');
+    const items = filteredDocs();
+    document.getElementById('archive-result-count').textContent =
+      `${items.length} document${items.length !== 1 ? 's' : ''}`;
+
+    if (!items.length) {
+      list.innerHTML = '<div class="state-msg">No agendas or minutes match your filters.</div>';
+      return;
+    }
+
+    list.innerHTML = items.map(item => `
+      <div class="meeting-card">
+        <div class="card-top">
+          <div>
+            <div class="card-meta">${formatDate(item.pubDate)} · ${item.board}</div>
+            <div class="card-title"><a href="${item.link}" target="_blank">${item.title}</a></div>
+            ${item.desc ? `<div class="card-desc">${item.desc}</div>` : ''}
+          </div>
+          <span class="status-badge ${item.type}">${item.type === 'minutes' ? 'Minutes' : 'Agenda'}</span>
+        </div>
+        <div class="card-tags">
+          <span class="tag ${item.type}">${item.type}</span>
+          <span class="tag">${item.board}</span>
+        </div>
+      </div>`).join('');
+  }
+
+  document.querySelectorAll('[data-type]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active-type', 'active'));
+      btn.classList.add('active-type', 'active');
+      archiveType = btn.dataset.type;
+      renderArchive();
+    });
   });
 
+  document.getElementById('archive-search').addEventListener('input', e => {
+    archiveSearch = e.target.value;
+    renderArchive();
+  });
+
+  // ── Load ─────────────────────────────────────────────────────────────────
   (async () => {
     try {
-      const [calRes, ovRes] = await Promise.all([
+      const [calRes, ovRes, docsRes] = await Promise.all([
         fetch('calendar.json?v=' + Date.now()),
         fetch('events.json?v=' + Date.now()).catch(() => null),
+        fetch('meetings.json?v=' + Date.now()),
       ]);
-      if (!calRes.ok) throw new Error(`HTTP ${calRes.status}`);
+      if (!calRes.ok) throw new Error(`calendar.json HTTP ${calRes.status}`);
+      if (!docsRes.ok) throw new Error(`meetings.json HTTP ${docsRes.status}`);
+
       allEvents = await calRes.json();
       if (ovRes && ovRes.ok) eventOverrides = await ovRes.json();
-      buildBoardFilters();
-      renderCalendar();
+      allDocs = await docsRes.json();
+      agendaDocsById = Object.fromEntries(
+        allDocs.filter(d => d.docId != null).map(d => [d.docId, d])
+      );
+
+      renderUpcoming();
+      buildArchiveBoardFilters();
+      renderArchive();
+
+      if (location.hash === '#archive') {
+        document.getElementById('archive').scrollIntoView();
+      }
     } catch (err) {
       document.getElementById('calendar-list').innerHTML =
-        `<div class="state-msg">⚠️ Could not load calendar.json — run fetch_data.py first.<br><small>${err.message}</small></div>`;
+        `<div class="state-msg">⚠️ Could not load meeting data — run fetch_data.py first.<br><small>${err.message}</small></div>`;
       document.getElementById('cal-result-count').textContent = 'Error';
+      document.getElementById('meetings-list').innerHTML =
+        `<div class="state-msg">⚠️ Could not load meeting data.<br><small>${err.message}</small></div>`;
+      document.getElementById('archive-result-count').textContent = 'Error';
     }
   })();
 </script>

@@ -1,11 +1,48 @@
 [
   {
-    "title": "South Essex Sewerage Board Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2836",
-    "pubDate": "2026-07-13T08:57:41-05:00",
+    "title": "Salem and Beverly Water Supply Board Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2840",
+    "pubDate": "2026-07-13T12:47:21-05:00",
     "desc": "",
     "board": "Other",
-    "type": "agenda"
+    "type": "agenda",
+    "docId": 2840
+  },
+  {
+    "title": "Beverly Housing Authority Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2839",
+    "pubDate": "2026-07-13T12:44:44-05:00",
+    "desc": "",
+    "board": "Other",
+    "type": "agenda",
+    "docId": 2839
+  },
+  {
+    "title": "Board of Health Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2838",
+    "pubDate": "2026-07-13T12:38:00-05:00",
+    "desc": "",
+    "board": "Board of Health",
+    "type": "agenda",
+    "docId": 2838
+  },
+  {
+    "title": "South Essex Sewerage District Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2837",
+    "pubDate": "2026-07-13T12:35:23-05:00",
+    "desc": "",
+    "board": "Other",
+    "type": "agenda",
+    "docId": 2837
+  },
+  {
+    "title": "Design Review Board Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2781",
+    "pubDate": "2026-07-13T09:37:18-05:00",
+    "desc": "Design Review Board Meeting Agenda Update: Minutes added or updated",
+    "board": "Other",
+    "type": "minutes",
+    "docId": 2781
   },
   {
     "title": "Beverly Regional Airport Commission Mission Statement Subcommittee Meeting Agenda",
@@ -13,7 +50,8 @@
     "pubDate": "2026-07-09T12:01:05-05:00",
     "desc": "",
     "board": "Other",
-    "type": "agenda"
+    "type": "agenda",
+    "docId": 2835
   },
   {
     "title": "Beverly Golf & Tennis Commission Meeting Agenda",
@@ -21,7 +59,8 @@
     "pubDate": "2026-07-09T11:49:23-05:00",
     "desc": "",
     "board": "Other",
-    "type": "agenda"
+    "type": "agenda",
+    "docId": 2834
   },
   {
     "title": "Beverly Regional Airport Commission Meeting Agenda",
@@ -29,7 +68,8 @@
     "pubDate": "2026-07-08T16:15:08-05:00",
     "desc": "",
     "board": "Other",
-    "type": "agenda"
+    "type": "agenda",
+    "docId": 2833
   },
   {
     "title": "Harbor Management Authority Meeting Agenda",
@@ -37,7 +77,8 @@
     "pubDate": "2026-07-08T16:13:18-05:00",
     "desc": "",
     "board": "Harbor Management Authority",
-    "type": "agenda"
+    "type": "agenda",
+    "docId": 2832
   },
   {
     "title": "Design Review Board Meeting Agenda",
@@ -45,7 +86,8 @@
     "pubDate": "2026-07-07T09:36:41-05:00",
     "desc": "",
     "board": "Other",
-    "type": "agenda"
+    "type": "agenda",
+    "docId": 2831
   },
   {
     "title": "Historic Districts Commission Meeting Agenda",
@@ -53,7 +95,8 @@
     "pubDate": "2026-07-03T09:38:42-05:00",
     "desc": "Historic Districts Commission Meeting Agenda Update: Minutes added or updated",
     "board": "Historic District Commission",
-    "type": "minutes"
+    "type": "minutes",
+    "docId": 2767
   },
   {
     "title": "Historic Districts Commission Meeting Agenda",
@@ -61,7 +104,8 @@
     "pubDate": "2026-07-03T09:38:31-05:00",
     "desc": "Historic Districts Commission Meeting Agenda Update: Minutes added or updated",
     "board": "Historic District Commission",
-    "type": "minutes"
+    "type": "minutes",
+    "docId": 2724
   },
   {
     "title": "South Essex Sewerage District Meeting Agenda",
@@ -69,7 +113,8 @@
     "pubDate": "2026-07-02T13:25:46-05:00",
     "desc": "",
     "board": "Other",
-    "type": "agenda"
+    "type": "agenda",
+    "docId": 2830
   },
   {
     "title": "Board of Trustees Beverly Public Library Meeting Agenda",
@@ -77,7 +122,8 @@
     "pubDate": "2026-07-01T11:01:13-05:00",
     "desc": "Board of Trustees Beverly Public Library Meeting Agenda Update: Minutes added or updated",
     "board": "Library Board of Trustees",
-    "type": "minutes"
+    "type": "minutes",
+    "docId": 2762
   },
   {
     "title": "Conservation Commission Meeting Agenda",
@@ -85,30 +131,7 @@
     "pubDate": "2026-07-01T09:22:40-05:00",
     "desc": "Conservation Commission Meeting Agenda Update: Minutes added or updated",
     "board": "Conservation Commission",
-    "type": "minutes"
-  },
-  {
-    "title": "Waste Reduction Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2829",
-    "pubDate": "2026-06-30T16:11:24-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda"
-  },
-  {
-    "title": "Zoning Board of Appeals Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2751",
-    "pubDate": "2026-06-29T18:36:52-05:00",
-    "desc": "Zoning Board of Appeals Meeting Agenda Update: Minutes added or updated",
-    "board": "Zoning Board of Appeals",
-    "type": "minutes"
-  },
-  {
-    "title": "Beverly License Board - Agenda - July 2, 2026",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2828",
-    "pubDate": "2026-06-29T15:32:57-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda"
+    "type": "minutes",
+    "docId": 2786
   }
 ]
