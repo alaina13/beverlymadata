@@ -2116,6 +2116,9 @@ blockquote cite {
 .meet-btn:hover { background: #1e4a8a; }
 .meet-dial { font-size: 0.8rem; color: var(--muted); }
 
+.meet-btn.outline { background: transparent; color: var(--blue); border: 1.5px solid var(--blue); padding: 0.32rem 0.85rem; }
+.meet-btn.outline:hover { background: var(--tag-bg); }
+
 @media (max-width: 700px) {
   .upcoming-section { padding: 1rem; }
 }

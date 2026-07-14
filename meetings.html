@@ -132,6 +132,59 @@
     ) || null;
   }
 
+  const DEFAULT_EVENT_DURATION_MS = 60 * 60 * 1000;
+
+  function eventStartEnd(event) {
+    if (!event.eventDate) return null;
+    const start = new Date(event.eventTime ? `${event.eventDate} ${event.eventTime}` : event.eventDate);
+    if (isNaN(start)) return null;
+    return { start, end: new Date(start.getTime() + DEFAULT_EVENT_DURATION_MS) };
+  }
+
+  function pad2(n) { return String(n).padStart(2, '0'); }
+
+  function icsLocal(d) {
+    return `${d.getFullYear()}${pad2(d.getMonth() + 1)}${pad2(d.getDate())}T${pad2(d.getHours())}${pad2(d.getMinutes())}00`;
+  }
+
+  function icsEscape(s) {
+    return String(s).replace(/([,;])/g, '\\$1').replace(/\n/g, '\\n');
+  }
+
+  function icsFileUrl(event, start, end) {
+    const lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Open Beverly//Meetings//EN',
+      'BEGIN:VEVENT',
+      `UID:${encodeURIComponent(event.link)}@openbeverly.org`,
+      `DTSTAMP:${icsLocal(new Date())}`,
+      `DTSTART:${icsLocal(start)}`,
+      `DTEND:${icsLocal(end)}`,
+      `SUMMARY:${icsEscape(event.title)}`,
+      event.location ? `LOCATION:${icsEscape(event.location)}` : '',
+      `DESCRIPTION:${icsEscape(`${event.board} meeting. Details: ${event.link}`)}`,
+      'END:VEVENT',
+      'END:VCALENDAR',
+    ].filter(Boolean).join('\r\n');
+    return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(lines);
+  }
+
+  function googleCalUrl(event, start, end) {
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: event.title,
+      dates: `${icsLocal(start)}/${icsLocal(end)}`,
+      location: event.location || '',
+      details: `${event.board} meeting. Details: ${event.link}`,
+    });
+    return 'https://www.google.com/calendar/render?' + params.toString();
+  }
+
+  function icsFileName(title) {
+    return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) + '.ics';
+  }
+
   function renderUpcoming() {
     const list = document.getElementById('calendar-list');
     document.getElementById('cal-result-count').textContent =
@@ -154,6 +207,11 @@
       }
       if (doc) {
         links.push(`<a href="${doc.link}" target="_blank" class="meet-btn">📄 View ${doc.type === 'minutes' ? 'Minutes' : 'Agenda'}</a>`);
+      }
+      const startEnd = eventStartEnd(e);
+      if (startEnd) {
+        links.push(`<a href="${googleCalUrl(e, startEnd.start, startEnd.end)}" target="_blank" class="meet-btn outline">🗓️ Google Calendar</a>`);
+        links.push(`<a href="${icsFileUrl(e, startEnd.start, startEnd.end)}" download="${icsFileName(e.title)}" class="meet-btn outline">⬇️ .ics</a>`);
       }
       const metaHtml = links.length ? `<div class="event-meet">${links.join('')}</div>` : '';
 
