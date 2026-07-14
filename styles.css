@@ -1911,7 +1911,7 @@ blockquote cite {
 
 .featured-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   margin-bottom: 2.5rem;
 }
@@ -2037,10 +2037,6 @@ blockquote cite {
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--blue);
-}
-
-@media (max-width: 900px) {
-  .featured-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 700px) {
