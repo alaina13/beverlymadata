@@ -1,27 +1,5 @@
 [
   {
-    "title": "Beverly Regional Airport Commission Mission Statement Subcommittee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3819",
-    "pubDate": "2026-07-09T12:01:15-05:00",
-    "eventDate": "July 13, 2026",
-    "eventTime": "05:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-07-13T00:00:00+00:00",
-    "agendaDocId": 2835
-  },
-  {
-    "title": "Beverly Regional Airport Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3817",
-    "pubDate": "2026-07-08T16:15:17-05:00",
-    "eventDate": "July 13, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-07-13T00:00:00+00:00",
-    "agendaDocId": 2833
-  },
-  {
     "title": "Beverly Golf & Tennis Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3818",
     "pubDate": "2026-07-09T11:51:09-05:00",
@@ -129,6 +107,17 @@
     "location": "City Hall, 3rd Floor Council Chambers<br>191 Cabot StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-07-23T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Conservation Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3601",
+    "pubDate": "2026-02-11T15:34:16-05:00",
+    "eventDate": "July 28, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Conservation Commission",
+    "sortDate": "2026-07-28T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
