@@ -1,16 +1,5 @@
 [
   {
-    "title": "Beverly Golf & Tennis Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3818",
-    "pubDate": "2026-07-09T11:51:09-05:00",
-    "eventDate": "July 14, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-07-14T00:00:00+00:00",
-    "agendaDocId": 2834
-  },
-  {
     "title": "South Essex Sewerage District Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3820",
     "pubDate": "2026-07-13T12:35:33-05:00",
@@ -64,6 +53,17 @@
     "board": "Other",
     "sortDate": "2026-07-16T00:00:00+00:00",
     "agendaDocId": 2839
+  },
+  {
+    "title": "Deficit Reduction Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3824",
+    "pubDate": "2026-07-14T12:05:59-05:00",
+    "eventDate": "July 20, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-07-20T00:00:00+00:00",
+    "agendaDocId": 2841
   },
   {
     "title": "Planning Board Meeting",
