@@ -86,7 +86,7 @@
                 <i class="fa-solid fa-chevron-down"></i>
               </button>
             </div>
-            <div class="layer-row-body">
+            <div class="layer-row-body" id="parcel-layer-body">
               <div class="layer-subsection">
                 <h4>Color by</h4>
                 <button class="color-btn active" data-mode="vpa">Value per acre</button>
@@ -304,6 +304,8 @@
       if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', zoningOn ? 'visible' : 'none');
     });
     if (map.getLayer('overlay-outline')) map.setLayoutProperty('overlay-outline', 'visibility', overlayOn ? 'visible' : 'none');
+
+    document.getElementById('parcel-layer-body').classList.toggle('layer-disabled', !parcelsOn);
   }
 
   document.getElementById('layer-parcels-vis').addEventListener('change', e => {

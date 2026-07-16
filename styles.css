@@ -2364,6 +2364,7 @@ blockquote cite {
 .layer-row-header .section-toggle { font-size: 0.82rem; font-weight: 600; color: var(--text); }
 .layer-row-header .section-toggle i { font-size: 0.65rem; color: var(--muted); transition: transform 0.2s; }
 .layer-row-body { padding: 0.75rem; border-top: 1px solid var(--border); }
+.layer-row-body.layer-disabled { opacity: 0.45; pointer-events: none; }
 
 .layer-subsection { margin-bottom: 0.9rem; }
 .layer-subsection:last-child { margin-bottom: 0; }
