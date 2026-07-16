@@ -1,5 +1,32 @@
 [
   {
+    "title": "Historic Districts Commission Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2844",
+    "pubDate": "2026-07-15T11:50:57-05:00",
+    "desc": "",
+    "board": "Historic District Commission",
+    "type": "agenda",
+    "docId": 2844
+  },
+  {
+    "title": "Zoning Board of Appeals Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2843",
+    "pubDate": "2026-07-15T11:08:37-05:00",
+    "desc": "",
+    "board": "Zoning Board of Appeals",
+    "type": "agenda",
+    "docId": 2843
+  },
+  {
+    "title": "Planning Board Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2842",
+    "pubDate": "2026-07-15T10:52:52-05:00",
+    "desc": "",
+    "board": "Planning Board",
+    "type": "agenda",
+    "docId": 2842
+  },
+  {
     "title": "Deficit Reduction Committee Meeting Agenda",
     "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2841",
     "pubDate": "2026-07-14T12:05:48-05:00",
@@ -124,23 +151,5 @@
     "board": "Other",
     "type": "agenda",
     "docId": 2830
-  },
-  {
-    "title": "Board of Trustees Beverly Public Library Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2762",
-    "pubDate": "2026-07-01T11:01:13-05:00",
-    "desc": "Board of Trustees Beverly Public Library Meeting Agenda Update: Minutes added or updated",
-    "board": "Library Board of Trustees",
-    "type": "minutes",
-    "docId": 2762
-  },
-  {
-    "title": "Conservation Commission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2786",
-    "pubDate": "2026-07-01T09:22:40-05:00",
-    "desc": "Conservation Commission Meeting Agenda Update: Minutes added or updated",
-    "board": "Conservation Commission",
-    "type": "minutes",
-    "docId": 2786
   }
 ]
