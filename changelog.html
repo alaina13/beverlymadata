@@ -69,13 +69,91 @@
 <div class="timeline">
 
   <div class="timeline-entry">
+    <div class="timeline-year">July 16, 2026</div>
+    <div class="timeline-heading">Property map layer panel</div>
+    <div class="timeline-body">
+      <p>Rebuilt the property map sidebar as a layer panel with collapsible rows instead of stacked, always-visible sections.</p>
+      <ul>
+        <li>Added a zoning overlay (zoning districts, overlay/historic districts) sourced from BeverlyGIS.</li>
+        <li>Parcel value and zoning districts are mutually exclusive fills so their color palettes never compete; overlay/historic districts render as outlines that can stack on top of either.</li>
+      </ul>
+      <p>Fixes:</p>
+      <ul>
+        <li>Disabled the parcel value controls (color-by, underperforming toggle, filter-by-type) when the Parcel value layer is hidden, since they previously had no visible effect while that layer was off.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="timeline-entry">
+    <div class="timeline-year">July 15, 2026</div>
+    <div class="timeline-heading">Daily tracking for the Street Paving page</div>
+    <div class="timeline-body">
+      <p>Added daily tracking of the City of Beverly's Street Paving page, recording a new history entry only when the page's content changes.</p>
+    </div>
+  </div>
+
+  <div class="timeline-entry">
+    <div class="timeline-year">July 13, 2026</div>
+    <div class="timeline-heading">Pavement Conditions rebuilt on city data, Meetings and Agendas merged</div>
+    <div class="timeline-body">
+      <p>Rebuilt the Pavement Conditions page around the City of Beverly Engineering/GIS Department's own pavement condition inventory (1,694 segments across all 6 wards), replacing the MassDOT arterial-only survey used at launch.</p>
+      <ul>
+        <li>Search by street name or address, matching each address to its nearest surveyed segment and showing the street average alongside it.</li>
+        <li>Added a donut chart of road miles by condition tier.</li>
+        <li>Added a bar chart of average condition by road classification, plus below-standard mileage compared against the Massachusetts Municipal Association's statewide annual upkeep benchmark.</li>
+        <li>Renamed the page and moved it into a new Infrastructure nav section alongside the Capital Plan.</li>
+        <li>Featured as an interactive tool on the homepage.</li>
+      </ul>
+      <p>Merged the Meetings and Agendas pages: upcoming meetings now link directly to their agenda or minutes, matched by AgendaCenter document ID. Added one-click Google Calendar and downloadable .ics links to each event. The agendas archive moved to a section on the same page.</p>
+      <p>Fixes:</p>
+      <ul>
+        <li>Fixed multi-word street search on the Pavement Conditions page.</li>
+        <li>Fixed whitespace-only street names appearing in pavement search results.</li>
+        <li>Narrowed Upcoming Meetings cards to match content width.</li>
+        <li>Forced the homepage featured tools grid to a fixed 2x2 layout.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="timeline-entry">
+    <div class="timeline-year">July 12, 2026</div>
+    <div class="timeline-heading">Added Pavement Conditions page</div>
+    <div class="timeline-body">
+      <p>Added the Pavement Conditions page using MassDOT's Pavement Serviceability Index survey for Beverly's arterial and collector roads (26.8 of approximately 160 total city road miles), since the city had not published its own road-by-road condition data at the time. Cross-linked from the Capital Plan page and added to the Finance nav.</p>
+      <p>Corrected the page same day to cite the city's own Fall 2021 PCI survey, which does exist but is outdated, rather than implying no city data had ever existed. Rebuilt the next day around the city's own live pavement data; see July 13, 2026.</p>
+    </div>
+  </div>
+
+  <div class="timeline-entry">
+    <div class="timeline-year">July 10, 2026</div>
+    <div class="timeline-heading">Site favicon</div>
+    <div class="timeline-body">
+      <p>Added a favicon (OB monogram, navy/orange brand colors) with icon and apple-touch-icon links on every page.</p>
+    </div>
+  </div>
+
+  <div class="timeline-entry">
+    <div class="timeline-year">July 9, 2026</div>
+    <div class="timeline-heading">Revenue by Source on City Data page</div>
+    <div class="timeline-body">
+      <p>Added a Revenue by Source section to the City Data page: a stacked bar chart and percentage breakdown table of Beverly's municipal revenue by category (Tax Levy, State Aid, Local Receipts, Enterprise & CPA Funds, All Other) for FY2016-FY2026, sourced from the MA DLS Municipal Databank.</p>
+    </div>
+  </div>
+
+  <div class="timeline-entry">
     <div class="timeline-year">July 8, 2026</div>
-    <div class="timeline-heading">Readability rewrite and accessibility fixes</div>
+    <div class="timeline-heading">Readability rewrite, deficit trajectory chart, and accessibility fixes</div>
     <div class="timeline-body">
       <p>Rewrote explanatory text for easier reading. No figures, quotes, or sourcing changed.</p>
       <ul>
         <li>History page ("How We Got Here"): simplified the structural deficit explainer, the year-by-year narrative, and chart captions.</li>
         <li>Key Concepts page: simplified glossary definitions for structural deficit, General Fund, Enterprise Fund, free cash, stabilization fund, ACFR, FFC, levy limit, new growth, debt exclusion, and excess levy capacity.</li>
+        <li>About page: tightened copy to a more direct, first-person voice, lowering the reading level from grade 12.2 to 9.9 (Flesch-Kincaid). No facts changed.</li>
+      </ul>
+      <p>New features:</p>
+      <ul>
+        <li>Added a revenue-vs-expenditure trajectory chart to the Deficit Trajectory section on the History page.</li>
+        <li>Converted the History page's yearly timeline entries into collapsible details, replacing the wall-of-text layout. Applied the same pattern to the Override Calculator's assumptions list.</li>
       </ul>
       <p>Accessibility fixes:</p>
       <ul>
