@@ -75,36 +75,76 @@
     <button class="mob-sidebar-close" id="mob-sidebar-close" aria-label="Close controls">✕ Close</button>
     <div class="sidebar-body">
       <div class="panel-section">
-        <h3>Color by</h3>
-        <button class="color-btn active" data-mode="vpa">Value per acre</button>
-        <button class="color-btn" data-mode="taxpa">Tax per acre</button>
-        <button class="color-btn" data-mode="net">Net revenue (after infrastructure)</button>
-        <button class="color-btn" data-mode="netpa">Net revenue per acre</button>
-        <button class="color-btn" data-mode="v">Total assessed value</button>
-        <button class="color-btn" data-mode="tax">Annual tax revenue</button>
-      </div>
-      <div class="panel-section">
-        <h3>Highlight</h3>
-        <label style="display:flex;align-items:center;gap:8px;font-size:0.82rem;cursor:pointer;">
-          <input type="checkbox" id="show-under" style="width:14px;height:14px;cursor:pointer;">
-          Underperforming parcels
-        </label>
-        <p style="font-size:0.7rem;color:var(--muted);margin-top:4px;line-height:1.4;">Value/acre below city median. Shown in <strong style="color:#ef4444">red</strong>.</p>
-      </div>
-      <div class="panel-section">
-        <button class="section-toggle" aria-expanded="false" onclick="toggleSection(this)">
-          <h3 style="margin:0;">Filter by type</h3>
-          <i class="fa-solid fa-chevron-down" style="font-size:0.65rem;color:var(--muted);transition:transform 0.2s;"></i>
-        </button>
-        <div id="cat-filters" style="display:none;margin-top:0.5rem;"></div>
-      </div>
-      <div class="panel-section">
-        <h3>Color scale</h3>
-        <div class="legend-bar" id="legend-bar"></div>
-        <div class="legend-labels" id="legend-labels"><span>Low</span><span>High</span></div>
-        <div style="display:flex;align-items:center;gap:0.4rem;margin-top:0.6rem;">
-          <div style="width:14px;height:14px;border-radius:3px;background:#94a3b8;flex-shrink:0;"></div>
-          <span style="font-size:0.65rem;color:var(--muted);">Tax exempt</span>
+        <h3>Layers</h3>
+        <div class="layer-list">
+
+          <div class="layer-row">
+            <div class="layer-row-header">
+              <input type="checkbox" id="layer-parcels-vis" checked aria-label="Show parcel value layer">
+              <button class="section-toggle" aria-expanded="true" onclick="toggleLayerRow(this)">
+                <span>Parcel value</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+            <div class="layer-row-body">
+              <div class="layer-subsection">
+                <h4>Color by</h4>
+                <button class="color-btn active" data-mode="vpa">Value per acre</button>
+                <button class="color-btn" data-mode="taxpa">Tax per acre</button>
+                <button class="color-btn" data-mode="net">Net revenue (after infrastructure)</button>
+                <button class="color-btn" data-mode="netpa">Net revenue per acre</button>
+                <button class="color-btn" data-mode="v">Total assessed value</button>
+                <button class="color-btn" data-mode="tax">Annual tax revenue</button>
+              </div>
+              <div class="layer-subsection">
+                <label class="toggle-row">
+                  <input type="checkbox" id="show-under">
+                  Underperforming parcels
+                </label>
+                <p class="layer-hint">Value/acre below city median. Shown in <strong style="color:#ef4444">red</strong>.</p>
+              </div>
+              <div class="layer-subsection">
+                <button class="section-toggle" aria-expanded="false" onclick="toggleSection(this)">
+                  <h4 style="margin:0;">Filter by type</h4>
+                  <i class="fa-solid fa-chevron-down" style="font-size:0.65rem;color:var(--muted);transition:transform 0.2s;"></i>
+                </button>
+                <div id="cat-filters" style="display:none;margin-top:0.5rem;"></div>
+              </div>
+              <div class="layer-subsection">
+                <h4>Color scale</h4>
+                <div class="legend-bar" id="legend-bar"></div>
+                <div class="legend-labels" id="legend-labels"><span>Low</span><span>High</span></div>
+                <div class="zoning-legend-item" style="margin-top:0.6rem;"><span class="zoning-swatch" style="background:#94a3b8"></span>Tax exempt</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="layer-row">
+            <div class="layer-row-header">
+              <input type="checkbox" id="layer-zoning-vis" aria-label="Show zoning districts layer">
+              <button class="section-toggle" aria-expanded="false" onclick="toggleLayerRow(this)">
+                <span>Zoning districts</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+            <div class="layer-row-body" style="display:none;">
+              <div id="zoning-legend" class="zoning-legend"></div>
+            </div>
+          </div>
+
+          <div class="layer-row">
+            <div class="layer-row-header">
+              <input type="checkbox" id="layer-overlay-vis" aria-label="Show overlay and historic districts layer">
+              <button class="section-toggle" aria-expanded="false" onclick="toggleLayerRow(this)">
+                <span>Overlay &amp; historic districts</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+            <div class="layer-row-body" style="display:none;">
+              <div id="overlay-legend" class="zoning-legend"></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -140,6 +180,41 @@
     'Vacant Land': 'Other / Vacant',
   };
   const GROUP_ORDER = ['Single Family','Missing Middle','High Density','Commercial','Industrial','Tax Exempt','Other / Vacant'];
+
+  const ZONE_GROUPS = {
+    R90: 'Residential (Low Density)', R45: 'Residential (Low Density)', R22: 'Residential (Low Density)',
+    R15: 'Residential (Urban)', R10: 'Residential (Urban)', R6: 'Residential (Urban)',
+    RMD: 'Residential (Multifamily)', RHD: 'Residential (Multifamily)', RSD: 'Residential (Multifamily)',
+    CN: 'Commercial', CG: 'Commercial', CC: 'Commercial', CC2: 'Commercial', BHD: 'Commercial',
+    IG: 'Industrial', IR: 'Industrial',
+    MOSR: 'Institutional / Open Space', HD: 'Institutional / Open Space',
+    WDR: 'Waterfront',
+  };
+  const ZONE_GROUP_ORDER = ['Residential (Low Density)','Residential (Urban)','Residential (Multifamily)','Commercial','Industrial','Institutional / Open Space','Waterfront'];
+  const ZONE_GROUP_COLORS = {
+    'Residential (Low Density)': '#cddc39',
+    'Residential (Urban)': '#8bc34a',
+    'Residential (Multifamily)': '#558b2f',
+    'Commercial': '#fb8c00',
+    'Industrial': '#8e24aa',
+    'Institutional / Open Space': '#29b6f6',
+    'Waterfront': '#00897b',
+  };
+
+  const OVERLAY_LABELS = {
+    MBTA: 'MBTA Communities Overlay',
+    MMU: 'Mandatory Mixed Use Overlay',
+    WPOD: 'Water Protection Overlay',
+    IROD: 'Industrial Restricted Overlay',
+    DPOD: 'Depot Parking Overlay',
+    SGOD: 'Smart Growth Overlay',
+    NHL: 'National Register Historic District',
+    LHD: 'Local Historic District',
+  };
+  const OVERLAY_COLORS = {
+    MBTA: '#e53935', MMU: '#1e88e5', WPOD: '#00897b', IROD: '#8e24aa',
+    DPOD: '#d81b60', SGOD: '#43a047', NHL: '#6d4c41', LHD: '#a1887f',
+  };
 
   const COLOR_STOPS = {
     vpa:   [[0,'#d0ead0'],[500000,'#4caf50'],[2000000,'#cddc39'],[4000000,'#ffc107'],[7000000,'#f44336'],[9400000,'#9c27b0']],
@@ -191,6 +266,55 @@
     btn.setAttribute('aria-expanded', String(!expanded));
     btn.nextElementSibling.style.display = expanded ? 'none' : 'block';
   }
+
+  function toggleLayerRow(btn) {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    btn.closest('.layer-row').querySelector('.layer-row-body').style.display = expanded ? 'none' : 'block';
+  }
+
+  function zoningFillColorExpr() {
+    const expr = ['match', ['get', 'code']];
+    Object.entries(ZONE_GROUPS).forEach(([code, group]) => { expr.push(code, ZONE_GROUP_COLORS[group]); });
+    expr.push('#cccccc');
+    return expr;
+  }
+
+  function overlayLineColorExpr() {
+    const expr = ['match', ['get', 'code']];
+    Object.entries(OVERLAY_COLORS).forEach(([code, color]) => { expr.push(code, color); });
+    expr.push('#333333');
+    return expr;
+  }
+
+  document.getElementById('zoning-legend').innerHTML =
+    ZONE_GROUP_ORDER.map(g => `<div class="zoning-legend-item"><span class="zoning-swatch" style="background:${ZONE_GROUP_COLORS[g]}"></span>${g}</div>`).join('');
+
+  document.getElementById('overlay-legend').innerHTML =
+    Object.keys(OVERLAY_LABELS).map(code => `<div class="zoning-legend-item"><span class="zoning-swatch outline" style="border-color:${OVERLAY_COLORS[code]}"></span>${OVERLAY_LABELS[code]}</div>`).join('');
+
+  function applyLayerVisibility() {
+    const parcelsOn = document.getElementById('layer-parcels-vis').checked;
+    const zoningOn = document.getElementById('layer-zoning-vis').checked;
+    const overlayOn = document.getElementById('layer-overlay-vis').checked;
+    ['parcels-fill', 'parcels-outline', 'parcels-hover'].forEach(id => {
+      if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', parcelsOn ? 'visible' : 'none');
+    });
+    ['zoning-fill', 'zoning-outline'].forEach(id => {
+      if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', zoningOn ? 'visible' : 'none');
+    });
+    if (map.getLayer('overlay-outline')) map.setLayoutProperty('overlay-outline', 'visibility', overlayOn ? 'visible' : 'none');
+  }
+
+  document.getElementById('layer-parcels-vis').addEventListener('change', e => {
+    if (e.target.checked) document.getElementById('layer-zoning-vis').checked = false;
+    applyLayerVisibility();
+  });
+  document.getElementById('layer-zoning-vis').addEventListener('change', e => {
+    if (e.target.checked) document.getElementById('layer-parcels-vis').checked = false;
+    applyLayerVisibility();
+  });
+  document.getElementById('layer-overlay-vis').addEventListener('change', applyLayerVisibility);
 
   let mode = 'vpa';
   let activeGroups = new Set(GROUP_ORDER);
@@ -403,6 +527,56 @@
           document.getElementById('tooltip').style.display = 'none';
           map.getCanvas().style.cursor = '';
         });
+      });
+
+    fetch('/zoning.geojson')
+      .then(r => r.json())
+      .then(geo => {
+        map.addSource('zoning', { type: 'geojson', data: geo });
+
+        map.addLayer({
+          id: 'zoning-fill',
+          type: 'fill',
+          source: 'zoning',
+          filter: ['==', ['get', 'kind'], 'district'],
+          layout: { visibility: 'none' },
+          paint: { 'fill-color': zoningFillColorExpr(), 'fill-opacity': 0.5 },
+        });
+
+        map.addLayer({
+          id: 'zoning-outline',
+          type: 'line',
+          source: 'zoning',
+          filter: ['==', ['get', 'kind'], 'district'],
+          layout: { visibility: 'none' },
+          paint: { 'line-color': 'rgba(0,0,0,0.35)', 'line-width': 1 },
+        });
+
+        map.addLayer({
+          id: 'overlay-outline',
+          type: 'line',
+          source: 'zoning',
+          filter: ['==', ['get', 'kind'], 'overlay'],
+          layout: { visibility: 'none' },
+          paint: { 'line-color': overlayLineColorExpr(), 'line-width': 2.5, 'line-dasharray': [2, 1.5] },
+        });
+
+        function showZoningPopup(e) {
+          const p = e.features[0].properties;
+          const label = p.classification ? `${p.label} (${p.classification})` : p.label;
+          new maplibregl.Popup({ closeButton: true, maxWidth: '220px' })
+            .setLngLat(e.lngLat)
+            .setHTML(`<strong>${p.code}</strong><br>${label}`)
+            .addTo(map);
+        }
+        map.on('click', 'zoning-fill', showZoningPopup);
+        map.on('click', 'overlay-outline', showZoningPopup);
+        ['zoning-fill', 'overlay-outline'].forEach(id => {
+          map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
+          map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
+        });
+
+        applyLayerVisibility();
       });
   });
 
