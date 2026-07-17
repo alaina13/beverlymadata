@@ -1,5 +1,23 @@
 [
   {
+    "title": "Commission on Disabilities Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2845",
+    "pubDate": "2026-07-16T15:51:27-05:00",
+    "desc": "",
+    "board": "Commission on Disabilities",
+    "type": "agenda",
+    "docId": 2845
+  },
+  {
+    "title": "Harbor Management Authority Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2799",
+    "pubDate": "2026-07-16T09:23:24-05:00",
+    "desc": "Harbor Management Authority Meeting Agenda Update: Minutes added or updated",
+    "board": "Harbor Management Authority",
+    "type": "minutes",
+    "docId": 2799
+  },
+  {
     "title": "Historic Districts Commission Meeting Agenda",
     "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2844",
     "pubDate": "2026-07-15T11:50:57-05:00",
@@ -142,14 +160,5 @@
     "board": "Historic District Commission",
     "type": "minutes",
     "docId": 2724
-  },
-  {
-    "title": "South Essex Sewerage District Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2830",
-    "pubDate": "2026-07-02T13:25:46-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2830
   }
 ]

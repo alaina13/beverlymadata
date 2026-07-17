@@ -1,27 +1,5 @@
 [
   {
-    "title": "Salem and Beverly Water Supply Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3822",
-    "pubDate": "2026-07-13T12:47:32-05:00",
-    "eventDate": "July 16, 2026",
-    "eventTime": "09:00 AM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-07-16T00:00:00+00:00",
-    "agendaDocId": 2840
-  },
-  {
-    "title": "Beverly Housing Authority Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3823",
-    "pubDate": "2026-07-13T12:44:56-05:00",
-    "eventDate": "July 16, 2026",
-    "eventTime": "11:00 AM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-07-16T00:00:00+00:00",
-    "agendaDocId": 2839
-  },
-  {
     "title": "Deficit Reduction Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3824",
     "pubDate": "2026-07-14T12:05:59-05:00",
@@ -75,6 +53,17 @@
     "board": "Other",
     "sortDate": "2026-07-23T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "Commission on Disabilities Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3825",
+    "pubDate": "2026-07-16T15:51:41-05:00",
+    "eventDate": "July 23, 2026",
+    "eventTime": "12:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Commission on Disabilities",
+    "sortDate": "2026-07-23T00:00:00+00:00",
+    "agendaDocId": 2845
   },
   {
     "title": "Conservation Commission Meeting",
