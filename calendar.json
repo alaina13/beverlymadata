@@ -22,6 +22,17 @@
     "agendaDocId": 2842
   },
   {
+    "title": "Board of Health Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3826",
+    "pubDate": "2026-07-17T10:35:32-05:00",
+    "eventDate": "July 22, 2026",
+    "eventTime": "05:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Board of Health",
+    "sortDate": "2026-07-22T00:00:00+00:00",
+    "agendaDocId": 2846
+  },
+  {
     "title": "Historic Districts Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3524",
     "pubDate": "2026-07-15T11:51:08-05:00",
@@ -46,13 +57,13 @@
   {
     "title": "Economic and Community Development Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3663",
-    "pubDate": "2026-02-17T15:42:41-05:00",
+    "pubDate": "2026-07-17T10:40:04-05:00",
     "eventDate": "July 23, 2026",
     "eventTime": "08:30 AM",
     "location": "City Hall, 3rd Floor Council Chambers<br>191 Cabot StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-07-23T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2847
   },
   {
     "title": "Commission on Disabilities Meeting",

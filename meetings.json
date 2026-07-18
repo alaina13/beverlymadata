@@ -1,5 +1,41 @@
 [
   {
+    "title": "Corrected agenda (Item #2 address)",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2849",
+    "pubDate": "2026-07-17T13:14:59-05:00",
+    "desc": "",
+    "board": "Other",
+    "type": "agenda",
+    "docId": 2849
+  },
+  {
+    "title": "Corrected Agenda (Item #2 address)",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2848",
+    "pubDate": "2026-07-17T13:12:40-05:00",
+    "desc": "",
+    "board": "Other",
+    "type": "agenda",
+    "docId": 2848
+  },
+  {
+    "title": "Economic & Community Development Council Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2847",
+    "pubDate": "2026-07-17T10:39:53-05:00",
+    "desc": "",
+    "board": "Other",
+    "type": "agenda",
+    "docId": 2847
+  },
+  {
+    "title": "Board of Health Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2846",
+    "pubDate": "2026-07-17T10:35:21-05:00",
+    "desc": "",
+    "board": "Board of Health",
+    "type": "agenda",
+    "docId": 2846
+  },
+  {
     "title": "Commission on Disabilities Meeting Agenda",
     "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2845",
     "pubDate": "2026-07-16T15:51:27-05:00",
@@ -142,23 +178,5 @@
     "board": "Other",
     "type": "agenda",
     "docId": 2831
-  },
-  {
-    "title": "Historic Districts Commission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2767",
-    "pubDate": "2026-07-03T09:38:42-05:00",
-    "desc": "Historic Districts Commission Meeting Agenda Update: Minutes added or updated",
-    "board": "Historic District Commission",
-    "type": "minutes",
-    "docId": 2767
-  },
-  {
-    "title": "Historic Districts Commission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2724",
-    "pubDate": "2026-07-03T09:38:31-05:00",
-    "desc": "Historic Districts Commission Meeting Agenda Update: Minutes added or updated",
-    "board": "Historic District Commission",
-    "type": "minutes",
-    "docId": 2724
   }
 ]
