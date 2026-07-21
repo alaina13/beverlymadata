@@ -1,16 +1,5 @@
 [
   {
-    "title": "Deficit Reduction Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3824",
-    "pubDate": "2026-07-14T12:05:59-05:00",
-    "eventDate": "July 20, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-07-20T00:00:00+00:00",
-    "agendaDocId": 2841
-  },
-  {
     "title": "Planning Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3628",
     "pubDate": "2026-07-15T10:53:14-05:00",
@@ -77,6 +66,17 @@
     "agendaDocId": 2845
   },
   {
+    "title": "Veterans Advisory Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3827",
+    "pubDate": "2026-07-20T13:13:53-05:00",
+    "eventDate": "July 23, 2026",
+    "eventTime": "05:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-07-23T00:00:00+00:00",
+    "agendaDocId": 2850
+  },
+  {
     "title": "Conservation Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3601",
     "pubDate": "2026-02-11T15:34:16-05:00",
@@ -85,6 +85,17 @@
     "location": "Beverly, MA 01915",
     "board": "Conservation Commission",
     "sortDate": "2026-07-28T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Parking & Traffic Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3536",
+    "pubDate": "2025-12-08T14:12:29-05:00",
+    "eventDate": "August 4, 2026",
+    "eventTime": "08:30 AM",
+    "location": "Beverly City Hall, 3rd Floor Council Chambers<br>191 Cabot StreetBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-08-04T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
