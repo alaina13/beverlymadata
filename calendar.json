@@ -1,16 +1,5 @@
 [
   {
-    "title": "Planning Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3628",
-    "pubDate": "2026-07-15T10:53:14-05:00",
-    "eventDate": "July 21, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Planning Board",
-    "sortDate": "2026-07-21T00:00:00+00:00",
-    "agendaDocId": 2842
-  },
-  {
     "title": "Board of Health Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3826",
     "pubDate": "2026-07-17T10:35:32-05:00",
@@ -86,6 +75,17 @@
     "board": "Conservation Commission",
     "sortDate": "2026-07-28T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "Deficit Reduction Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3828",
+    "pubDate": "2026-07-21T09:57:59-05:00",
+    "eventDate": "July 29, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-07-29T00:00:00+00:00",
+    "agendaDocId": 2851
   },
   {
     "title": "Parking & Traffic Commission Meeting",
