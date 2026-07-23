@@ -1,38 +1,5 @@
 [
   {
-    "title": "Board of Health Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3826",
-    "pubDate": "2026-07-17T10:35:32-05:00",
-    "eventDate": "July 22, 2026",
-    "eventTime": "05:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Board of Health",
-    "sortDate": "2026-07-22T00:00:00+00:00",
-    "agendaDocId": 2846
-  },
-  {
-    "title": "Historic Districts Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3524",
-    "pubDate": "2026-07-15T11:51:08-05:00",
-    "eventDate": "July 22, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly City Hall, Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
-    "board": "Historic District Commission",
-    "sortDate": "2026-07-22T00:00:00+00:00",
-    "agendaDocId": 2844
-  },
-  {
-    "title": "Zoning Board of Appeals Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3799",
-    "pubDate": "2026-07-15T11:08:48-05:00",
-    "eventDate": "July 22, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Zoning Board of Appeals",
-    "sortDate": "2026-07-22T00:00:00+00:00",
-    "agendaDocId": 2843
-  },
-  {
     "title": "Economic and Community Development Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3663",
     "pubDate": "2026-07-17T10:40:04-05:00",
@@ -96,6 +63,17 @@
     "location": "Beverly City Hall, 3rd Floor Council Chambers<br>191 Cabot StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-08-04T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Design Review Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3485",
+    "pubDate": "2026-05-28T11:12:32-05:00",
+    "eventDate": "August 6, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-08-06T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
