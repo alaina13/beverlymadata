@@ -1,17 +1,15 @@
 {
-  "updated": "2026-07-23",
+  "updated": "2026-07-24",
   "tax_rates": {
     "fiscal_year": 2026,
     "residential": 10.81,
     "commercial": 20.98
   },
-  "school_enrollment": {
-    "school_year": "2025\u201326",
-    "enrollment": 4497
-  },
+  "school_enrollment": {},
   "per_pupil_spending": {
-    "fiscal_year": 2025,
-    "per_pupil_in_district": 18594.61
+    "fiscal_year": 2024,
+    "per_pupil_in_district": 18595,
+    "fallback": true
   },
   "sources": {
     "tax_rates": "Beverly City Assessors Office \u2014 beverlyma.gov/391/City-Assessors",
