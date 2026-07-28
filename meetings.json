@@ -97,50 +97,5 @@
     "board": "Planning Board",
     "type": "agenda",
     "docId": 2842
-  },
-  {
-    "title": "Salem and Beverly Water Supply Board Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2840",
-    "pubDate": "2026-07-13T12:47:21-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2840
-  },
-  {
-    "title": "Beverly Housing Authority Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2839",
-    "pubDate": "2026-07-13T12:44:44-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2839
-  },
-  {
-    "title": "Board of Health Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2838",
-    "pubDate": "2026-07-13T12:38:00-05:00",
-    "desc": "",
-    "board": "Board of Health",
-    "type": "agenda",
-    "docId": 2838
-  },
-  {
-    "title": "South Essex Sewerage District Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2837",
-    "pubDate": "2026-07-13T12:35:23-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2837
-  },
-  {
-    "title": "Design Review Board Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2781",
-    "pubDate": "2026-07-13T09:37:18-05:00",
-    "desc": "Design Review Board Meeting Agenda Update: Minutes added or updated",
-    "board": "Other",
-    "type": "minutes",
-    "docId": 2781
   }
 ]
