@@ -52,17 +52,25 @@
 </header>
 
 <div class="map-page-wrap">
-<div class="map-stats-bar">
-  <div class="stat-chip"><div class="stat-num">6</div><div class="stat-label">Public lots</div></div>
-  <div class="stat-chip"><div class="stat-num">$0.50/hr</div><div class="stat-label">Public lot rate</div></div>
-  <div class="stat-chip"><div class="stat-num">3</div><div class="stat-label">On-street zones</div></div>
-  <div class="stat-chip"><div class="stat-num">24/7</div><div class="stat-label">MBTA garage</div></div>
-</div>
-
 <div id="app">
   <div id="sidebar">
     <button class="mob-sidebar-close" id="mob-sidebar-close" aria-label="Close controls">✕ Close</button>
     <div class="sidebar-body">
+      <div class="panel-section">
+        <h3>Where are you headed?</h3>
+        <div class="street-search-input-wrap dest-search-wrap">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input type="text" id="destSearchInput" placeholder="e.g. Cabot Theatre, City Hall…" autocomplete="off" aria-describedby="destSearchHint">
+        </div>
+        <div id="destSearchResults" class="street-search-results" aria-live="polite"></div>
+        <p class="layer-hint" id="destSearchHint">Sorts the list below by distance and drops a pin at your destination.</p>
+      </div>
+      <div class="panel-section">
+        <h3>When are you arriving?</h3>
+        <input type="date" id="arrivalDateInput" class="arrival-input">
+        <select id="arrivalTimeInput" class="arrival-input"></select>
+        <p class="layer-hint">Shows whether each spot is free, paid, or restricted at that time, based on the city's posted hours. Doesn't account for holidays or declared snow bans.</p>
+      </div>
       <div class="panel-section">
         <h3>Filter</h3>
         <div id="parking-filters"></div>
@@ -72,7 +80,7 @@
       </div>
       <div class="panel-section">
         <p class="layer-hint">Pin locations for the six public lots are Open Beverly's estimate, matched to the nearest city-owned parcel near each cross street named by the city. They are not official surveyed coordinates. On-street zone boundaries aren't mapped here; see the city's official parking map for exact boundaries.</p>
-        <p class="source-line">Source: <a href="https://www.parkbeverly.com/visitors" target="_blank" rel="noopener">parkbeverly.com</a> (City of Beverly Parking Program, Passport Labs), accessed July 27, 2026. <a href="https://www.parkbeverly.com/s/Downtown-District-2024" target="_blank" rel="noopener">Official parking map</a>.</p>
+        <p class="source-line">Source: <a href="https://www.parkbeverly.com/visitors" target="_blank" rel="noopener">parkbeverly.com</a> (City of Beverly Parking Program, Passport Labs), accessed July 27, 2026. <a href="https://www.parkbeverly.com/s/Downtown-District-2024" target="_blank" rel="noopener">Official parking map</a>. After-hours, Sunday/holiday, and City Hall Lot rules: <a href="https://ecode360.com/29283081" target="_blank" rel="noopener">City of Beverly Code of Ordinances, Ch. 270, Art. VII, § 270-66</a>, accessed July 28, 2026.</p>
       </div>
     </div>
   </div>
@@ -100,6 +108,19 @@
   ];
   let activeFilter = 'all';
 
+  const DEST_COLOR = '#e8813a';
+
+  // Curated downtown destinations (source: OpenStreetMap Nominatim, accessed July 2026).
+  const DESTINATIONS = [
+    { id: 'cabot-theatre', name: 'Cabot Theatre', address: '286 Cabot St', lat: 42.5514713, lng: -70.8790758 },
+    { id: 'city-hall-dest', name: 'Beverly City Hall', address: '191 Cabot St', lat: 42.5477637, lng: -70.8785257 },
+    { id: 'public-library', name: 'Beverly Public Library', address: '32 Essex St', lat: 42.5509176, lng: -70.8766929 },
+    { id: 'beverly-common', name: 'Beverly Common', address: 'Cabot St / Essex St', lat: 42.5501856, lng: -70.8750039 },
+  ];
+  let activeDestination = null;
+  let destinationMarker = null;
+  let arrivalDate = new Date();
+
   let PARKING = null;
   const markers = {};
 
@@ -114,6 +135,10 @@
   });
 
   map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+  function isFreeOffHoursSchedule(scheduleType) {
+    return scheduleType === 'standard-lot' || scheduleType === 'metered-mon-sat';
+  }
 
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -139,6 +164,7 @@
         <div class="tooltip-row"><span>Rate</span><span>${escapeHtml(lot.rate)}</span></div>
         <div class="tooltip-row"><span>Hours</span><span>${escapeHtml(lot.hours)}</span></div>
         <div class="tooltip-row"><span>Pay by</span><span>${escapeHtml(lot.payment)}</span></div>
+        ${isFreeOffHoursSchedule(lot.scheduleType) ? '<div class="tooltip-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
       ` : lot.restriction ? `<div class="tooltip-row"><strong>${escapeHtml(lot.restriction)}</strong></div>`
         : '<div class="tooltip-row"><span class="tbd">Rules not yet confirmed</span></div>'}
     `;
@@ -203,12 +229,144 @@
     return [[minLng, minLat], [maxLng, maxLat]];
   }
 
+  function haversineMiles(lat1, lng1, lat2, lng2) {
+    const R = 3958.8;
+    const toRad = d => d * Math.PI / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLng = toRad(lng2 - lng1);
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(a));
+  }
+
+  function itemPoint(kind, item) {
+    if (kind === 'zone') {
+      return item.geometry ? lineMidpoint(item.geometry) : null;
+    }
+    if (item.geometry) return polygonCentroid(item.geometry);
+    if (item.lat != null && item.lng != null) return [item.lng, item.lat];
+    return null;
+  }
+
+  function lineMidpoint(geometry) {
+    const b = lineBounds(geometry);
+    return [(b[0][0] + b[1][0]) / 2, (b[0][1] + b[1][1]) / 2];
+  }
+
+  function distToDestination(kind, item) {
+    if (!activeDestination) return null;
+    const pt = itemPoint(kind, item);
+    return pt ? haversineMiles(activeDestination.lat, activeDestination.lng, pt[1], pt[0]) : null;
+  }
+
+  function distRowHtml(dist) {
+    if (dist == null) return '';
+    const label = dist < 0.1 ? 'Less than 0.1 mi' : dist.toFixed(1) + ' mi';
+    return `<div class="street-result-row street-result-detail dest-dist">${label} from ${escapeHtml(activeDestination.name)}</div>`;
+  }
+
+  // Availability rules sourced from City of Beverly Code of Ordinances, Ch. 270, Art. VII, § 270-66 (accessed July 28, 2026).
+  function formatTime(date) {
+    return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  }
+
+  function getAvailability(scheduleType, rate, date) {
+    const day = date.getDay(); // 0 Sun ... 6 Sat
+    const mins = date.getHours() * 60 + date.getMinutes();
+    const weekday = day >= 1 && day <= 6; // Mon-Sat
+    const in8to8 = mins >= 8 * 60 && mins < 20 * 60;
+    const t = formatTime(date);
+
+    if (scheduleType === 'standard-lot' || scheduleType === 'metered-mon-sat') {
+      return weekday && in8to8
+        ? { state: 'paid', label: `${rate} at ${t}` }
+        : { state: 'free', label: `Free at ${t}` };
+    }
+    if (scheduleType === 'metered-daily') {
+      return in8to8
+        ? { state: 'paid', label: `${rate} at ${t}` }
+        : { state: 'free', label: `Free at ${t}` };
+    }
+    if (scheduleType === 'red-zone-permit') {
+      return weekday && in8to8
+        ? { state: 'permit', label: `2-hr limit at ${t}` }
+        : { state: 'free', label: `No permit at ${t}` };
+    }
+    if (scheduleType === 'city-hall-lot') {
+      const mondayIndex = (day + 6) % 7; // Mon=0 ... Sun=6
+      const weekMins = mondayIndex * 1440 + mins;
+      const closedEnd = 4 * 1440 + 16 * 60;   // Friday 4pm
+      const friMeterEnd = 4 * 1440 + 20 * 60; // Friday 8pm
+      const satStart = 5 * 1440 + 8 * 60;     // Saturday 8am
+      const satEnd = 5 * 1440 + 20 * 60;      // Saturday 8pm
+      if (weekMins < closedEnd) return { state: 'closed', label: `Closed at ${t}` };
+      if (weekMins < friMeterEnd || (weekMins >= satStart && weekMins < satEnd)) return { state: 'paid', label: `Metered at ${t}` };
+      return { state: 'free', label: `Free at ${t}` };
+    }
+    if (scheduleType === 'library-lot') {
+      return { state: 'closed', label: 'Library patrons only' };
+    }
+    if (scheduleType === 'garage-24-7') {
+      const weekdayRate = day >= 1 && day <= 5;
+      return { state: 'paid', label: weekdayRate ? `$4 at ${t} (Mon–Fri)` : `$2 at ${t} (Sat–Sun)` };
+    }
+    return null;
+  }
+
+  function availBadgeHtml(avail) {
+    if (!avail) return '';
+    return `<div class="street-result-row"><span class="pci-badge avail-${avail.state}">${escapeHtml(avail.label)}</span></div>`;
+  }
+
+  function normalizeQuery(s) { return s.toLowerCase().replace(/\./g, '').trim(); }
+
+  function searchDestinations(raw) {
+    const qWords = normalizeQuery(raw).split(/\s+/).filter(Boolean);
+    if (!qWords.length) return [];
+    return DESTINATIONS.filter(d => {
+      const nameWords = normalizeQuery(d.name).split(/\s+/);
+      return qWords.every(qw => nameWords.some(nw => nw.startsWith(qw)));
+    });
+  }
+
+  function makeDestMarkerEl() {
+    const el = document.createElement('div');
+    el.style.width = '22px';
+    el.style.height = '22px';
+    el.style.borderRadius = '50% 50% 50% 0';
+    el.style.transform = 'rotate(-45deg)';
+    el.style.background = DEST_COLOR;
+    el.style.border = '2px solid white';
+    el.style.boxShadow = '0 1px 4px rgba(0,0,0,0.4)';
+    return el;
+  }
+
+  function selectDestination(dest) {
+    activeDestination = dest;
+    if (destinationMarker) destinationMarker.remove();
+    destinationMarker = new maplibregl.Marker({ element: makeDestMarkerEl(), anchor: 'bottom' })
+      .setLngLat([dest.lng, dest.lat])
+      .addTo(map);
+    map.flyTo({ center: [dest.lng, dest.lat], zoom: 16, duration: 800 });
+    destSearchInput.value = dest.name;
+    destSearchResults.innerHTML = '';
+    if (PARKING) renderList();
+  }
+
+  function clearDestination() {
+    activeDestination = null;
+    if (destinationMarker) { destinationMarker.remove(); destinationMarker = null; }
+    destSearchInput.value = '';
+    destSearchResults.innerHTML = '';
+    if (PARKING) renderList();
+  }
+
   function zonePopupHtml(zone) {
     return `
       <div class="tooltip-addr"><span class="zoning-swatch" style="background:${zone.color};display:inline-block;margin-right:0.4rem;"></span>${escapeHtml(zone.name)}</div>
       <div class="tooltip-cat">${escapeHtml(zone.area)}</div>
       <div class="tooltip-row"><span>Rate</span><span>${escapeHtml(zone.rate)}</span></div>
       <div class="tooltip-row"><span>Hours</span><span>${escapeHtml(zone.hours)}</span></div>
+      ${isFreeOffHoursSchedule(zone.scheduleType) ? '<div class="tooltip-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
     `;
   }
 
@@ -240,34 +398,42 @@
     }
   }
 
-  function lotCardHtml(lot) {
+  function lotCardHtml(lot, dist, avail) {
     const clickable = lotHasLocation(lot);
     return `<div class="street-result-card" data-id="${lot.id}" data-kind="lot" ${clickable ? 'tabindex="0" role="button"' : ''}>
       <div class="street-result-name">${escapeHtml(lot.name)}</div>
+      ${availBadgeHtml(avail)}
+      ${distRowHtml(dist)}
       ${lot.note ? `<div class="street-result-row street-result-detail">${escapeHtml(lot.note)}</div>` : ''}
       ${lot.rate ? `
         <div class="street-result-row"><span class="street-result-detail">${escapeHtml(lot.rate)} · ${escapeHtml(lot.hours)}</span></div>
         <div class="street-result-row"><span class="street-result-detail">${escapeHtml(lot.payment)}</span></div>
+        ${isFreeOffHoursSchedule(lot.scheduleType) ? '<div class="street-result-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
       ` : lot.restriction ? `<div class="street-result-row"><strong>${escapeHtml(lot.restriction)}</strong></div>`
         : '<div class="street-result-row"><span class="tbd">Rules not yet confirmed</span></div>'}
       ${!clickable && lot.boundaryNote ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(lot.boundaryNote)}</span></div>` : ''}
     </div>`;
   }
 
-  function zoneCardHtml(zone) {
+  function zoneCardHtml(zone, dist, avail) {
     const clickable = !!zone.geometry;
     return `<div class="street-result-card" data-id="${zone.id}" data-kind="zone" ${clickable ? 'tabindex="0" role="button"' : ''}>
       <div class="street-result-name"><span class="zoning-swatch" style="background:${zone.color};display:inline-block;margin-right:0.4rem;"></span>${escapeHtml(zone.name)}</div>
+      ${availBadgeHtml(avail)}
+      ${distRowHtml(dist)}
       <div class="street-result-row street-result-detail">${escapeHtml(zone.area)}</div>
       <div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.rate)} · ${escapeHtml(zone.hours)}</span></div>
+      ${isFreeOffHoursSchedule(zone.scheduleType) ? '<div class="street-result-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
       ${zone.note ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.note)}</span></div>` : ''}
       ${zone.payment ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.payment)}</span></div>` : ''}
     </div>`;
   }
 
-  function garageCardHtml(g) {
+  function garageCardHtml(g, dist, avail) {
     return `<div class="street-result-card" data-id="${g.id}" data-kind="garage" tabindex="0" role="button">
       <div class="street-result-name">${escapeHtml(g.name)}</div>
+      ${availBadgeHtml(avail)}
+      ${distRowHtml(dist)}
       <div class="street-result-row street-result-detail">${escapeHtml(g.address)}</div>
       <div class="street-result-row"><span class="street-result-detail">${escapeHtml(g.hours)}</span></div>
       <div class="street-result-row"><span class="street-result-detail">${escapeHtml(g.rate)}</span></div>
@@ -293,17 +459,42 @@
 
   function renderList() {
     const list = document.getElementById('parking-list');
-    let html = '';
+    let items = [];
     if (activeFilter === 'all' || activeFilter === 'lots') {
-      html += PARKING.lots.map(lotCardHtml).join('');
+      items.push(...PARKING.lots.map(data => ({ kind: 'lot', data })));
     }
     if (activeFilter === 'all' || activeFilter === 'zones') {
-      html += PARKING.zones.map(zoneCardHtml).join('');
+      items.push(...PARKING.zones.map(data => ({ kind: 'zone', data })));
     }
     if (activeFilter === 'all' || activeFilter === 'garage') {
-      html += garageCardHtml(PARKING.garage);
+      items.push({ kind: 'garage', data: PARKING.garage });
     }
+
+    let noticeHtml = '';
+    if (activeDestination) {
+      items.forEach(it => { it.dist = distToDestination(it.kind, it.data); });
+      items.sort((a, b) => {
+        if (a.dist == null && b.dist == null) return 0;
+        if (a.dist == null) return 1;
+        if (b.dist == null) return -1;
+        return a.dist - b.dist;
+      });
+      noticeHtml = `<div class="dest-active-bar">
+        <span class="layer-hint">Sorted by distance to ${escapeHtml(activeDestination.name)}</span>
+        <button class="link-btn small" id="clearDestBtn" type="button">Clear</button>
+      </div>`;
+    }
+
+    items.forEach(it => { it.avail = getAvailability(it.data.scheduleType, it.data.rate, arrivalDate); });
+
+    let html = noticeHtml + items.map(it => {
+      if (it.kind === 'lot') return lotCardHtml(it.data, it.dist, it.avail);
+      if (it.kind === 'zone') return zoneCardHtml(it.data, it.dist, it.avail);
+      return garageCardHtml(it.data, it.dist, it.avail);
+    }).join('');
     list.innerHTML = html;
+    const clearBtn = document.getElementById('clearDestBtn');
+    if (clearBtn) clearBtn.addEventListener('click', clearDestination);
     list.querySelectorAll('.street-result-card[data-kind="lot"]').forEach(card => {
       card.addEventListener('click', () => {
         const lot = PARKING.lots.find(l => l.id === card.dataset.id);
@@ -343,6 +534,72 @@
       markers[PARKING.garage.id].getElement().style.display = showGarage ? '' : 'none';
     }
   }
+
+  const destSearchInput = document.getElementById('destSearchInput');
+  const destSearchResults = document.getElementById('destSearchResults');
+
+  function destResultHtml(dest) {
+    return `<button class="color-btn" data-dest-id="${dest.id}" type="button">${escapeHtml(dest.name)} <span class="street-result-detail">${escapeHtml(dest.address)}</span></button>`;
+  }
+
+  destSearchInput.addEventListener('input', () => {
+    const raw = destSearchInput.value;
+    if (!raw.trim()) {
+      destSearchResults.innerHTML = '';
+      if (activeDestination) clearDestination();
+      return;
+    }
+    const matches = searchDestinations(raw);
+    destSearchResults.innerHTML = matches.length
+      ? matches.map(destResultHtml).join('')
+      : `<div class="tbd">No match for that destination yet. Try Cabot Theatre, City Hall, the Public Library, or Beverly Common.</div>`;
+  });
+
+  destSearchResults.addEventListener('click', e => {
+    const btn = e.target.closest('[data-dest-id]');
+    if (!btn) return;
+    const dest = DESTINATIONS.find(d => d.id === btn.dataset.destId);
+    if (dest) selectDestination(dest);
+  });
+
+  function pad2(n) { return String(n).padStart(2, '0'); }
+  function dateOnlyString(d) {
+    return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+  }
+  function minutesToLabel(totalMin) {
+    const h = Math.floor(totalMin / 60);
+    const m = totalMin % 60;
+    const ampm = h < 12 ? 'AM' : 'PM';
+    const h12 = h % 12 === 0 ? 12 : h % 12;
+    return `${h12}:${pad2(m)} ${ampm}`;
+  }
+  function roundToQuarterHour(d) {
+    const rounded = new Date(d);
+    rounded.setSeconds(0, 0);
+    rounded.setMinutes(Math.round(rounded.getMinutes() / 15) * 15);
+    return rounded;
+  }
+
+  const arrivalDateInput = document.getElementById('arrivalDateInput');
+  const arrivalTimeInput = document.getElementById('arrivalTimeInput');
+
+  const QUARTER_HOUR_OPTIONS = [];
+  for (let t = 0; t < 24 * 60; t += 15) QUARTER_HOUR_OPTIONS.push(t);
+  arrivalTimeInput.innerHTML = QUARTER_HOUR_OPTIONS.map(t => `<option value="${t}">${minutesToLabel(t)}</option>`).join('');
+
+  arrivalDate = roundToQuarterHour(arrivalDate);
+  arrivalDateInput.value = dateOnlyString(arrivalDate);
+  arrivalTimeInput.value = String(arrivalDate.getHours() * 60 + arrivalDate.getMinutes());
+
+  function updateArrivalFromInputs() {
+    const [y, mo, da] = arrivalDateInput.value.split('-').map(Number);
+    const totalMin = Number(arrivalTimeInput.value);
+    const d = new Date(y, (mo || 1) - 1, da || 1, Math.floor(totalMin / 60), totalMin % 60, 0, 0);
+    arrivalDate = isNaN(d) ? new Date() : d;
+    if (PARKING) renderList();
+  }
+  arrivalDateInput.addEventListener('input', updateArrivalFromInputs);
+  arrivalTimeInput.addEventListener('change', updateArrivalFromInputs);
 
   document.getElementById('loading-msg').style.display = 'block';
 

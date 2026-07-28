@@ -2387,6 +2387,34 @@ blockquote cite {
 
 #map { position: absolute; inset: 0; }
 
+.dest-search-wrap input { border: 1px solid var(--border); }
+
+.dest-active-bar { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.75rem; }
+.dest-active-bar .layer-hint { margin-top: 0; }
+.link-btn.small { padding: 0.3rem 0.6rem; font-size: 0.75rem; }
+
+.dest-dist { color: var(--blue); font-weight: 600; }
+
+.free-note { color: var(--green); font-weight: 600; }
+.free-note i { margin-right: 0.3rem; }
+
+.arrival-input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.pci-badge.avail-free    { color: var(--green); border-color: var(--green); background: #ecfdf5; }
+.pci-badge.avail-paid    { color: var(--blue); border-color: var(--blue); background: var(--tag-bg); }
+.pci-badge.avail-permit  { color: var(--accent-text); border-color: var(--accent); background: var(--warn-bg); }
+.pci-badge.avail-closed  { color: var(--red); border-color: var(--red); background: #fef2f2; }
+
 .tooltip {
   position: absolute;
   z-index: 20;
