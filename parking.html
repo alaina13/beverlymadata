@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/56a48e0c30.js" crossorigin="anonymous"></script>
+  <title>Open Beverly — Downtown Parking</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3/dist/maplibre-gl.css" />
+</head>
+<body>
+<a href="#app" class="skip-link">Skip to map</a>
+
+<header>
+  <a class="logo" href="/">Open <span>Beverly</span></a>
+  <nav>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">Meetings</button>
+      <div class="nav-dropdown">
+        <a href="/meetings.html">Meetings</a>
+        <a href="/summaries.html">Summaries</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">Finance</button>
+      <div class="nav-dropdown">
+        <a href="/data.html">City Data</a>
+        <a href="/budget.html">Budget Explorer</a>
+        <a href="/history.html">How We Got Here</a>
+        <a href="/whats-next.html">What's Next</a>
+        <a href="/calculator.html">Override Calculator</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">Infrastructure</button>
+      <div class="nav-dropdown">
+      <a href="/capital.html">Capital Plan</a>
+      <a href="/pavement.html">Pavement Conditions</a>
+      </div>
+    </div>
+    <a href="/property.html">Map</a>
+    <a href="/sources.html">Sources</a>
+    <a href="/about.html">About</a>
+  </nav>
+  <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="var n=this.closest('header').querySelector('nav');var open=n.classList.toggle('open');this.setAttribute('aria-expanded',open);this.querySelector('i').className='fa-solid '+(open?'fa-xmark':'fa-bars')">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+  </button>
+</header>
+
+<div class="map-page-wrap">
+<div class="map-stats-bar">
+  <div class="stat-chip"><div class="stat-num">6</div><div class="stat-label">Public lots</div></div>
+  <div class="stat-chip"><div class="stat-num">$0.50/hr</div><div class="stat-label">Public lot rate</div></div>
+  <div class="stat-chip"><div class="stat-num">3</div><div class="stat-label">On-street zones</div></div>
+  <div class="stat-chip"><div class="stat-num">24/7</div><div class="stat-label">MBTA garage</div></div>
+</div>
+
+<div id="app">
+  <div id="sidebar">
+    <button class="mob-sidebar-close" id="mob-sidebar-close" aria-label="Close controls">✕ Close</button>
+    <div class="sidebar-body">
+      <div class="panel-section">
+        <h3>Filter</h3>
+        <div id="parking-filters"></div>
+      </div>
+      <div class="panel-section">
+        <div id="parking-list"></div>
+      </div>
+      <div class="panel-section">
+        <p class="layer-hint">Pin locations for the six public lots are Open Beverly's estimate, matched to the nearest city-owned parcel near each cross street named by the city. They are not official surveyed coordinates. On-street zone boundaries aren't mapped here; see the city's official parking map for exact boundaries.</p>
+        <p class="source-line">Source: <a href="https://www.parkbeverly.com/visitors" target="_blank" rel="noopener">parkbeverly.com</a> (City of Beverly Parking Program, Passport Labs), accessed July 27, 2026. <a href="https://www.parkbeverly.com/s/Downtown-District-2024" target="_blank" rel="noopener">Official parking map</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;flex:1;">
+    <button class="mob-controls-btn" id="mob-controls-btn" aria-label="Map controls">
+      <i class="fa-solid fa-sliders" aria-hidden="true"></i> Controls
+    </button>
+    <div id="map" role="img" aria-label="Interactive map of downtown Beverly parking locations"></div>
+    <div id="loading-msg"><div class="spinner"></div>Loading parking data…</div>
+  </div>
+</div>
+</div>
+
+<script src="https://unpkg.com/maplibre-gl@3/dist/maplibre-gl.js"></script>
+<script>
+  const LOT_COLOR = '#1e5fbf';
+  const GARAGE_COLOR = '#1a2744';
+
+  const FILTERS = [
+    { id: 'all', label: 'All' },
+    { id: 'lots', label: 'Public Lots' },
+    { id: 'zones', label: 'On-Street Zones' },
+    { id: 'garage', label: 'MBTA Garage' },
+  ];
+  let activeFilter = 'all';
+
+  let PARKING = null;
+  const markers = {};
+
+  const map = new maplibregl.Map({
+    container: 'map',
+    style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+    center: [-70.8815, 42.5485],
+    zoom: 15,
+    minZoom: 13,
+    maxBounds: [[-70.93034, 42.53107], [-70.78528, 42.59951]],
+    antialias: true,
+  });
+
+  map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  function makeMarkerEl(color) {
+    const el = document.createElement('div');
+    el.style.width = '18px';
+    el.style.height = '18px';
+    el.style.borderRadius = '50%';
+    el.style.background = color;
+    el.style.border = '2px solid white';
+    el.style.boxShadow = '0 1px 4px rgba(0,0,0,0.4)';
+    el.style.cursor = 'pointer';
+    return el;
+  }
+
+  function lotPopupHtml(lot) {
+    return `
+      <div class="tooltip-addr">${escapeHtml(lot.name)}</div>
+      ${lot.note ? `<div class="tooltip-cat">${escapeHtml(lot.note)}</div>` : ''}
+      ${lot.rate ? `
+        <div class="tooltip-row"><span>Rate</span><span>${escapeHtml(lot.rate)}</span></div>
+        <div class="tooltip-row"><span>Hours</span><span>${escapeHtml(lot.hours)}</span></div>
+        <div class="tooltip-row"><span>Pay by</span><span>${escapeHtml(lot.payment)}</span></div>
+      ` : lot.restriction ? `<div class="tooltip-row"><strong>${escapeHtml(lot.restriction)}</strong></div>`
+        : '<div class="tooltip-row"><span class="tbd">Rules not yet confirmed</span></div>'}
+    `;
+  }
+
+  function polygonCentroid(geometry) {
+    const coords = geometry.coordinates[0];
+    const lng = coords.reduce((s, c) => s + c[0], 0) / coords.length;
+    const lat = coords.reduce((s, c) => s + c[1], 0) / coords.length;
+    return [lng, lat];
+  }
+
+  let lotPopup = null;
+
+  function openLotPopup(lot, lngLat) {
+    if (lotPopup) lotPopup.remove();
+    lotPopup = new maplibregl.Popup({ closeButton: true, maxWidth: '240px' })
+      .setLngLat(lngLat)
+      .setHTML(lotPopupHtml(lot))
+      .addTo(map);
+  }
+
+  function garagePopupHtml(g) {
+    return `
+      <div class="tooltip-addr">${escapeHtml(g.name)}</div>
+      <div class="tooltip-cat">${escapeHtml(g.address)}</div>
+      <div class="tooltip-row"><span>Hours</span><span>${escapeHtml(g.hours)}</span></div>
+      <div class="tooltip-row"><span>Rate</span><span>${escapeHtml(g.rate)}</span></div>
+      <div class="tooltip-row"><span>Snow ban</span><span>${escapeHtml(g.snow)}</span></div>
+      <div class="tooltip-row"><span>Pay by</span><span>${escapeHtml(g.payment)}</span></div>
+    `;
+  }
+
+  function flyToPin(id, lng, lat) {
+    map.flyTo({ center: [lng, lat], zoom: 17, duration: 800 });
+    const m = markers[id];
+    if (m) map.once('idle', () => m.togglePopup());
+  }
+
+  function flyToGarage(g) {
+    if (g.geometry) {
+      const [lng, lat] = polygonCentroid(g.geometry);
+      map.flyTo({ center: [lng, lat], zoom: 17, duration: 800 });
+      map.once('idle', () => {
+        if (lotPopup) lotPopup.remove();
+        lotPopup = new maplibregl.Popup({ closeButton: true, maxWidth: '240px' })
+          .setLngLat([lng, lat])
+          .setHTML(garagePopupHtml(g))
+          .addTo(map);
+      });
+    } else {
+      flyToPin(g.id, g.lng, g.lat);
+    }
+  }
+
+  function lineBounds(geometry) {
+    let minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity;
+    geometry.coordinates.forEach(line => line.forEach(([lng, lat]) => {
+      minLng = Math.min(minLng, lng); maxLng = Math.max(maxLng, lng);
+      minLat = Math.min(minLat, lat); maxLat = Math.max(maxLat, lat);
+    }));
+    return [[minLng, minLat], [maxLng, maxLat]];
+  }
+
+  function zonePopupHtml(zone) {
+    return `
+      <div class="tooltip-addr"><span class="zoning-swatch" style="background:${zone.color};display:inline-block;margin-right:0.4rem;"></span>${escapeHtml(zone.name)}</div>
+      <div class="tooltip-cat">${escapeHtml(zone.area)}</div>
+      <div class="tooltip-row"><span>Rate</span><span>${escapeHtml(zone.rate)}</span></div>
+      <div class="tooltip-row"><span>Hours</span><span>${escapeHtml(zone.hours)}</span></div>
+    `;
+  }
+
+  function flyToZone(zone) {
+    if (!zone.geometry) return;
+    const bounds = lineBounds(zone.geometry);
+    map.fitBounds(bounds, { padding: 60, duration: 800 });
+    const mid = [(bounds[0][0] + bounds[1][0]) / 2, (bounds[0][1] + bounds[1][1]) / 2];
+    map.once('idle', () => {
+      if (lotPopup) lotPopup.remove();
+      lotPopup = new maplibregl.Popup({ closeButton: true, maxWidth: '240px' })
+        .setLngLat(mid)
+        .setHTML(zonePopupHtml(zone))
+        .addTo(map);
+    });
+  }
+
+  function lotHasLocation(lot) {
+    return !!lot.geometry || (lot.lat != null && lot.lng != null);
+  }
+
+  function flyToLot(lot) {
+    if (lot.geometry) {
+      const [lng, lat] = polygonCentroid(lot.geometry);
+      map.flyTo({ center: [lng, lat], zoom: 17, duration: 800 });
+      map.once('idle', () => openLotPopup(lot, [lng, lat]));
+    } else if (lot.lat != null && lot.lng != null) {
+      flyToPin(lot.id, lot.lng, lot.lat);
+    }
+  }
+
+  function lotCardHtml(lot) {
+    const clickable = lotHasLocation(lot);
+    return `<div class="street-result-card" data-id="${lot.id}" data-kind="lot" ${clickable ? 'tabindex="0" role="button"' : ''}>
+      <div class="street-result-name">${escapeHtml(lot.name)}</div>
+      ${lot.note ? `<div class="street-result-row street-result-detail">${escapeHtml(lot.note)}</div>` : ''}
+      ${lot.rate ? `
+        <div class="street-result-row"><span class="street-result-detail">${escapeHtml(lot.rate)} · ${escapeHtml(lot.hours)}</span></div>
+        <div class="street-result-row"><span class="street-result-detail">${escapeHtml(lot.payment)}</span></div>
+      ` : lot.restriction ? `<div class="street-result-row"><strong>${escapeHtml(lot.restriction)}</strong></div>`
+        : '<div class="street-result-row"><span class="tbd">Rules not yet confirmed</span></div>'}
+      ${!clickable && lot.boundaryNote ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(lot.boundaryNote)}</span></div>` : ''}
+    </div>`;
+  }
+
+  function zoneCardHtml(zone) {
+    const clickable = !!zone.geometry;
+    return `<div class="street-result-card" data-id="${zone.id}" data-kind="zone" ${clickable ? 'tabindex="0" role="button"' : ''}>
+      <div class="street-result-name"><span class="zoning-swatch" style="background:${zone.color};display:inline-block;margin-right:0.4rem;"></span>${escapeHtml(zone.name)}</div>
+      <div class="street-result-row street-result-detail">${escapeHtml(zone.area)}</div>
+      <div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.rate)} · ${escapeHtml(zone.hours)}</span></div>
+      ${zone.note ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.note)}</span></div>` : ''}
+      ${zone.payment ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.payment)}</span></div>` : ''}
+    </div>`;
+  }
+
+  function garageCardHtml(g) {
+    return `<div class="street-result-card" data-id="${g.id}" data-kind="garage" tabindex="0" role="button">
+      <div class="street-result-name">${escapeHtml(g.name)}</div>
+      <div class="street-result-row street-result-detail">${escapeHtml(g.address)}</div>
+      <div class="street-result-row"><span class="street-result-detail">${escapeHtml(g.hours)}</span></div>
+      <div class="street-result-row"><span class="street-result-detail">${escapeHtml(g.rate)}</span></div>
+      <div class="street-result-row"><span class="street-result-detail">${escapeHtml(g.snow)}</span></div>
+      <div class="street-result-row"><span class="street-result-detail">${escapeHtml(g.payment)}</span></div>
+    </div>`;
+  }
+
+  function renderFilters() {
+    const container = document.getElementById('parking-filters');
+    container.innerHTML = FILTERS.map(f =>
+      `<button class="property-filter-btn ${f.id === activeFilter ? 'active' : ''}" data-filter="${f.id}"><span>${f.label}</span></button>`
+    ).join('');
+    container.addEventListener('click', e => {
+      const btn = e.target.closest('.property-filter-btn');
+      if (!btn) return;
+      activeFilter = btn.dataset.filter;
+      container.querySelectorAll('.property-filter-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === activeFilter));
+      renderList();
+      applyMarkerVisibility();
+    });
+  }
+
+  function renderList() {
+    const list = document.getElementById('parking-list');
+    let html = '';
+    if (activeFilter === 'all' || activeFilter === 'lots') {
+      html += PARKING.lots.map(lotCardHtml).join('');
+    }
+    if (activeFilter === 'all' || activeFilter === 'zones') {
+      html += PARKING.zones.map(zoneCardHtml).join('');
+    }
+    if (activeFilter === 'all' || activeFilter === 'garage') {
+      html += garageCardHtml(PARKING.garage);
+    }
+    list.innerHTML = html;
+    list.querySelectorAll('.street-result-card[data-kind="lot"]').forEach(card => {
+      card.addEventListener('click', () => {
+        const lot = PARKING.lots.find(l => l.id === card.dataset.id);
+        if (lot) flyToLot(lot);
+      });
+    });
+    list.querySelectorAll('.street-result-card[data-kind="garage"]').forEach(card => {
+      card.addEventListener('click', () => flyToGarage(PARKING.garage));
+    });
+    list.querySelectorAll('.street-result-card[data-kind="zone"]').forEach(card => {
+      card.addEventListener('click', () => {
+        const zone = PARKING.zones.find(z => z.id === card.dataset.id);
+        if (zone) flyToZone(zone);
+      });
+    });
+  }
+
+  function applyMarkerVisibility() {
+    const showLots = activeFilter === 'all' || activeFilter === 'lots';
+    const showGarage = activeFilter === 'all' || activeFilter === 'garage';
+    const showZones = activeFilter === 'all' || activeFilter === 'zones';
+    if (map.getLayer('lot-fill')) {
+      map.setLayoutProperty('lot-fill', 'visibility', showLots ? 'visible' : 'none');
+      map.setLayoutProperty('lot-outline', 'visibility', showLots ? 'visible' : 'none');
+    }
+    if (map.getLayer('zone-lines')) {
+      map.setLayoutProperty('zone-lines', 'visibility', showZones ? 'visible' : 'none');
+    }
+    if (map.getLayer('garage-fill')) {
+      map.setLayoutProperty('garage-fill', 'visibility', showGarage ? 'visible' : 'none');
+      map.setLayoutProperty('garage-outline', 'visibility', showGarage ? 'visible' : 'none');
+    }
+    PARKING.lots.filter(l => !l.geometry && l.lat != null && l.lng != null).forEach(lot => {
+      markers[lot.id].getElement().style.display = showLots ? '' : 'none';
+    });
+    if (markers[PARKING.garage.id]) {
+      markers[PARKING.garage.id].getElement().style.display = showGarage ? '' : 'none';
+    }
+  }
+
+  document.getElementById('loading-msg').style.display = 'block';
+
+  map.once('load', () => {
+    fetch('/parking.json')
+      .then(r => r.json())
+      .then(data => {
+        PARKING = data;
+
+        const polyLots = PARKING.lots.filter(l => l.geometry);
+        const pinLots = PARKING.lots.filter(l => !l.geometry && l.lat != null && l.lng != null);
+
+        map.addSource('lot-polys', {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: polyLots.map(l => ({ type: 'Feature', geometry: l.geometry, properties: { id: l.id } })),
+          },
+        });
+        map.addLayer({ id: 'lot-fill', type: 'fill', source: 'lot-polys', paint: { 'fill-color': LOT_COLOR, 'fill-opacity': 0.45 } });
+        map.addLayer({ id: 'lot-outline', type: 'line', source: 'lot-polys', paint: { 'line-color': LOT_COLOR, 'line-width': 1.5 } });
+
+        map.on('click', 'lot-fill', e => {
+          const lot = PARKING.lots.find(l => l.id === e.features[0].properties.id);
+          if (lot) openLotPopup(lot, e.lngLat);
+        });
+        map.on('mouseenter', 'lot-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', 'lot-fill', () => { map.getCanvas().style.cursor = ''; });
+
+        const zonesWithGeom = PARKING.zones.filter(z => z.geometry);
+        map.addSource('zone-lines-src', {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: zonesWithGeom.map(z => ({ type: 'Feature', geometry: z.geometry, properties: { id: z.id, color: z.color } })),
+          },
+        });
+        map.addLayer({
+          id: 'zone-lines',
+          type: 'line',
+          source: 'zone-lines-src',
+          layout: { 'line-cap': 'round', 'line-join': 'round' },
+          paint: { 'line-color': ['get', 'color'], 'line-width': 4, 'line-opacity': 0.8 },
+        });
+
+        map.on('click', 'zone-lines', e => {
+          const zone = PARKING.zones.find(z => z.id === e.features[0].properties.id);
+          if (zone) {
+            if (lotPopup) lotPopup.remove();
+            lotPopup = new maplibregl.Popup({ closeButton: true, maxWidth: '240px' })
+              .setLngLat(e.lngLat)
+              .setHTML(zonePopupHtml(zone))
+              .addTo(map);
+          }
+        });
+        map.on('mouseenter', 'zone-lines', () => { map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', 'zone-lines', () => { map.getCanvas().style.cursor = ''; });
+
+        pinLots.forEach(lot => {
+          const popup = new maplibregl.Popup({ closeButton: true, maxWidth: '240px' }).setHTML(lotPopupHtml(lot));
+          markers[lot.id] = new maplibregl.Marker({ element: makeMarkerEl(LOT_COLOR) })
+            .setLngLat([lot.lng, lot.lat])
+            .setPopup(popup)
+            .addTo(map);
+        });
+
+        const g = PARKING.garage;
+        if (g.geometry) {
+          map.addSource('garage-poly', {
+            type: 'geojson',
+            data: { type: 'Feature', geometry: g.geometry, properties: { id: g.id } },
+          });
+          map.addLayer({ id: 'garage-fill', type: 'fill', source: 'garage-poly', paint: { 'fill-color': GARAGE_COLOR, 'fill-opacity': 0.45 } });
+          map.addLayer({ id: 'garage-outline', type: 'line', source: 'garage-poly', paint: { 'line-color': GARAGE_COLOR, 'line-width': 1.5 } });
+
+          map.on('click', 'garage-fill', e => {
+            if (lotPopup) lotPopup.remove();
+            lotPopup = new maplibregl.Popup({ closeButton: true, maxWidth: '240px' })
+              .setLngLat(e.lngLat)
+              .setHTML(garagePopupHtml(g))
+              .addTo(map);
+          });
+          map.on('mouseenter', 'garage-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
+          map.on('mouseleave', 'garage-fill', () => { map.getCanvas().style.cursor = ''; });
+        } else {
+          const gPopup = new maplibregl.Popup({ closeButton: true, maxWidth: '240px' }).setHTML(garagePopupHtml(g));
+          markers[g.id] = new maplibregl.Marker({ element: makeMarkerEl(GARAGE_COLOR) })
+            .setLngLat([g.lng, g.lat])
+            .setPopup(gPopup)
+            .addTo(map);
+        }
+
+        renderFilters();
+        renderList();
+        document.getElementById('loading-msg').style.display = 'none';
+      })
+      .catch(err => {
+        document.getElementById('loading-msg').innerHTML = 'Failed to load parking data.';
+        console.error('Failed to load parking data', err);
+      });
+  });
+</script>
+<div class="mob-sidebar-backdrop" id="mob-backdrop"></div>
+<script>
+  (function() {
+    const btn = document.getElementById('mob-controls-btn');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('mob-backdrop');
+    function openSidebar() {
+      sidebar.classList.add('mob-open');
+      backdrop.classList.add('visible');
+    }
+    function closeSidebar() {
+      sidebar.classList.remove('mob-open');
+      backdrop.classList.remove('visible');
+    }
+    btn.addEventListener('click', () => {
+      sidebar.classList.contains('mob-open') ? closeSidebar() : openSidebar();
+    });
+    backdrop.addEventListener('click', closeSidebar);
+    document.getElementById('mob-sidebar-close').addEventListener('click', closeSidebar);
+  })();
+</script>
+<script src="/nav.js"></script>
+</body>
+</html>

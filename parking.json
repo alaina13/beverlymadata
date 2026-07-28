@@ -1,0 +1,130 @@
+{
+  "lots": [
+    {
+      "id": "pond-upper-lower",
+      "name": "Upper and Lower Pond Street Lot",
+      "note": "Behind The Cabot Lodge, 278 Cabot St",
+      "geometry": {"type": "Polygon", "coordinates": [[[-70.8795192, 42.5505701], [-70.8795669, 42.5508949], [-70.8793092, 42.5508893], [-70.8793111, 42.5510074], [-70.8788224, 42.5509877], [-70.8787594, 42.5506446], [-70.8795192, 42.5505701]]]},
+      "boundaryNote": "Boundary traced directly from satellite imagery by Open Beverly to match the paved lot, not an assessor parcel or official surveyed outline.",
+      "rate": "$0.50/hour",
+      "hours": "8am–8pm, Monday through Saturday",
+      "payment": "Paystation (credit card or quarters) or the Passport Parking app"
+    },
+    {
+      "id": "pond-chapman",
+      "name": "Pond/Chapman Street Lot",
+      "note": "Behind the Atomic Cafe",
+      "geometry": {"type": "Polygon", "coordinates": [[[-70.878862, 42.5505268], [-70.8787603, 42.5502631], [-70.878838, 42.5500963], [-70.8792765, 42.550189], [-70.8793322, 42.5500468], [-70.8787454, 42.5498995], [-70.8787405, 42.5496817], [-70.8785243, 42.5496255], [-70.8783424, 42.5500904], [-70.8783733, 42.5503394], [-70.8785023, 42.5505683], [-70.878862, 42.5505268]]]},
+      "boundaryNote": "Boundary traced directly from satellite imagery by Open Beverly to match the paved lot, not an assessor parcel or official surveyed outline.",
+      "rate": "$0.50/hour",
+      "hours": "8am–8pm, Monday through Saturday",
+      "payment": "Paystation (credit card or quarters) or the Passport Parking app"
+    },
+    {
+      "id": "federal-chapman-east",
+      "name": "Federal/Chapman Street East Lot",
+      "note": "Behind the Rogers Building",
+      "geometry": {"type": "Polygon", "coordinates": [[[-70.8796567, 42.5492827], [-70.8798691, 42.5487379], [-70.8795168, 42.5486643], [-70.8793944, 42.548968], [-70.8791496, 42.5489091], [-70.8790596, 42.5491391], [-70.8796567, 42.5492827]]]},
+      "boundaryNote": "Boundary traced directly from satellite imagery by Open Beverly to match the paved lot, not an assessor parcel or official surveyed outline.",
+      "rate": "$0.50/hour",
+      "hours": "8am–8pm, Monday through Saturday",
+      "payment": "Paystation (credit card or quarters) or the Passport Parking app"
+    },
+    {
+      "id": "federal-chapman-west",
+      "name": "Federal/Chapman Street West Lot",
+      "note": "Adjacent to 6 Chapman Street",
+      "geometry": {"type": "Polygon", "coordinates": [[[-70.87979703415616, 42.54930175123263], [-70.87991766460597, 42.548996896803466], [-70.88024475246588, 42.54905496664656], [-70.8801197521309, 42.54937570549979], [-70.87979703415616, 42.54930175123263]]]},
+      "boundaryNote": "Boundary is the assessor parcel at \"8 Chapman St\" (tax-exempt), not an official surveyed lot outline.",
+      "rate": "$0.50/hour",
+      "hours": "8am–8pm, Monday through Saturday",
+      "payment": "Paystation (credit card or quarters) or the Passport Parking app"
+    },
+    {
+      "id": "hale-briscoe",
+      "name": "Hale/Briscoe Street Lot",
+      "note": "Adjacent to 5 Briscoe Street",
+      "geometry": {"type": "Polygon", "coordinates": [[[-70.87727942815049, 42.548731045679524], [-70.87704824848562, 42.54867699187529], [-70.87711442302646, 42.54853260640327], [-70.8775571243876, 42.54865329277562], [-70.87742871608843, 42.54878599036811], [-70.87727942815049, 42.548731045679524]]]},
+      "boundaryNote": "Boundary is the assessor parcel at \"8 Hale St\" (tax-exempt), not an official surveyed lot outline.",
+      "rate": "$0.50/hour",
+      "hours": "8am–8pm, Monday through Saturday",
+      "payment": "Paystation (credit card or quarters) or the Passport Parking app"
+    },
+    {
+      "id": "washington-franklin",
+      "name": "Washington Street/Franklin Place Lot",
+      "note": "Behind Cabot Street Pizza",
+      "geometry": {"type": "Polygon", "coordinates": [[[-70.8791172, 42.5464743], [-70.8788797, 42.546337], [-70.879217, 42.5460607], [-70.8791238, 42.5459937], [-70.8793416, 42.5457687], [-70.8794523, 42.5458351], [-70.8796298, 42.5459332], [-70.8791172, 42.5464743]]]},
+      "boundaryNote": "Boundary traced directly from satellite imagery by Open Beverly to match the paved lot, not an assessor parcel or official surveyed outline.",
+      "rate": "$0.50/hour",
+      "hours": "8am–8pm, Monday through Saturday",
+      "payment": "Paystation (credit card or quarters) or the Passport Parking app"
+    },
+    {
+      "id": "city-hall",
+      "name": "City Hall Lot",
+      "geometry": {"type": "Polygon", "coordinates": [[[-70.8785212, 42.5474306], [-70.8783476, 42.5477062], [-70.8780082, 42.5475954], [-70.878311, 42.5473112], [-70.8785212, 42.5474306]]]},
+      "boundaryNote": "Boundary traced directly from satellite imagery by Open Beverly to match the paved lot, not an assessor parcel or official surveyed outline."
+    },
+    {
+      "id": "library",
+      "name": "Library Lot",
+      "restriction": "Library Parking Only",
+      "geometry": {"type": "Polygon", "coordinates": [[[-70.8774903, 42.5507212], [-70.8772704, 42.5510892], [-70.8769367, 42.5509798], [-70.8771315, 42.5506629], [-70.8774903, 42.5507212]]]},
+      "boundaryNote": "Boundary traced directly from satellite imagery by Open Beverly to match the paved lot, not an assessor parcel or official surveyed outline."
+    }
+  ],
+  "zones": [
+    {
+      "id": "green",
+      "name": "Green Zone",
+      "color": "#2e7d32",
+      "area": "Cabot and Rantoul Street businesses",
+      "rate": "$1.00/hour",
+      "hours": "8am–8pm, Monday through Saturday",
+      "note": "",
+      "payment": "Paystation (credit card or quarters) or the Passport Parking app",
+      "geometry": {"type": "MultiLineString", "coordinates": [[[-70.8787154, 42.5528166], [-70.8787657, 42.5524189], [-70.8787811, 42.552217], [-70.878769, 42.5520166], [-70.8787037, 42.5516619], [-70.8785679, 42.5513055], [-70.8780238, 42.5505438], [-70.8779555, 42.5504095], [-70.8779147, 42.5502591], [-70.8778685, 42.5499764], [-70.8778633, 42.5497681], [-70.8779211, 42.5495567], [-70.8781754, 42.5490909], [-70.8784662, 42.5487375], [-70.8795563, 42.5467189], [-70.8799415, 42.546146]], [[-70.8794906, 42.5467643], [-70.8789448, 42.5464474]], [[-70.8803675, 42.5476987], [-70.8798067, 42.5477559], [-70.8784084, 42.547289], [-70.8778164, 42.5469347]], [[-70.878898, 42.5479425], [-70.8791618, 42.5479741], [-70.8794455, 42.548035]], [[-70.8787318, 42.5482492], [-70.8782556, 42.5481066], [-70.8777872, 42.5479436]], [[-70.8787147, 42.5482782], [-70.8793249, 42.5484148]], [[-70.8783982, 42.5488204], [-70.8771762, 42.5484597]], [[-70.8776699, 42.5486104], [-70.8775689, 42.5487946], [-70.8775072, 42.5488893], [-70.8774765, 42.5489798], [-70.8774794, 42.5490915], [-70.8775509, 42.5492286], [-70.8773401, 42.5493569], [-70.8771874, 42.5495217], [-70.8768525, 42.5498992]], [[-70.8782457, 42.5490046], [-70.8797034, 42.5493494]], [[-70.8781214, 42.5506851], [-70.8780461, 42.550699], [-70.8779886, 42.5507381], [-70.8777767, 42.5510902]], [[-70.8785081, 42.5512242], [-70.8793264, 42.5512463]], [[-70.8824332, 42.5528261], [-70.8834878, 42.5500495], [-70.8843569, 42.5467475], [-70.8850304, 42.5441786]], [[-70.8832834, 42.550583], [-70.8841013, 42.5507648]], [[-70.8853799, 42.5462988], [-70.8851603, 42.5470307], [-70.8849784, 42.547739], [-70.8846923, 42.5488263]], [[-70.8838283, 42.548768], [-70.8842779, 42.5487907], [-70.8846948, 42.5488263]], [[-70.8839769, 42.5482043], [-70.8848257, 42.5483165]], [[-70.8827031, 42.5475228], [-70.8841634, 42.5473739], [-70.8850422, 42.5474893]], [[-70.8852074, 42.5468816], [-70.8843526, 42.5467712]], [[-70.8856329, 42.5494702], [-70.885658, 42.5489204], [-70.8857701, 42.5483389], [-70.8860012, 42.5471856], [-70.8866682, 42.5449295]], [[-70.8863811, 42.5506472], [-70.8856106, 42.5505666]]]}
+    },
+    {
+      "id": "purple",
+      "name": "Purple Zone",
+      "color": "#8e24aa",
+      "area": "Waterfront and harbor businesses",
+      "rate": "$1.00/hour",
+      "hours": "8am–8pm, every day",
+      "note": "Parking directly under the bridge overpass is free, limited to 2-hour increments.",
+      "payment": "Paystation (credit card or quarters) or the Passport Parking app"
+    },
+    {
+      "id": "red",
+      "name": "Red Zone",
+      "color": "#c62828",
+      "area": "Streets convenient to residential areas",
+      "rate": "Free",
+      "hours": "8am–8pm, Monday through Saturday",
+      "note": "Limited to a 2-hour stay.",
+      "payment": "",
+      "geometry": {"type": "MultiLineString", "coordinates": [[[-70.8826518, 42.5521694], [-70.8809837, 42.5521181], [-70.87928, 42.5520864]], [[-70.8817845, 42.5521436], [-70.8821891, 42.5510973], [-70.88236, 42.5506387], [-70.8824114, 42.5506507], [-70.8824586, 42.550574], [-70.8826672, 42.5500283]], [[-70.8802648, 42.5521059], [-70.88077, 42.5509126], [-70.8812985, 42.5497332]], [[-70.8819123, 42.5518148], [-70.8800863, 42.5513993], [-70.8797626, 42.5513186], [-70.8794227, 42.5512511]], [[-70.8831546, 42.5508221], [-70.8811227, 42.5503512], [-70.8792205, 42.5505227]], [[-70.882114, 42.5512877], [-70.8811337, 42.5510554], [-70.8803331, 42.5508728], [-70.8801407, 42.5508501], [-70.8800762, 42.5509219], [-70.8799114, 42.5513548]], [[-70.8792205, 42.5505264], [-70.8800349, 42.5485348]], [[-70.8802288, 42.5499864], [-70.879524, 42.5498146]], [[-70.8833953, 42.5501879], [-70.8801203, 42.5494399]], [[-70.8816847, 42.5497966], [-70.881934, 42.5492055]], [[-70.8835709, 42.549547], [-70.880976, 42.5490031], [-70.8810147, 42.5486784]], [[-70.8837759, 42.5487675], [-70.8815885, 42.5487028], [-70.8809969, 42.5486796], [-70.8794861, 42.5484456]], [[-70.8838871, 42.5482395], [-70.8826478, 42.5481971], [-70.8820209, 42.5481847], [-70.8814872, 42.5482099], [-70.8795493, 42.5480475]], [[-70.8826104, 42.5475243], [-70.8804341, 42.5477066]], [[-70.884313, 42.546767], [-70.8832573, 42.5467562], [-70.8827515, 42.5467444], [-70.882449, 42.5467381], [-70.8822416, 42.5467079], [-70.8808619, 42.5464682], [-70.8800145, 42.5461372]], [[-70.8829057, 42.5467444], [-70.8829256, 42.5465124], [-70.8829645, 42.54629], [-70.8826916, 42.5462664], [-70.8824245, 42.5462878], [-70.8823108, 42.5464596], [-70.8822521, 42.5467044]], [[-70.8844717, 42.5461319], [-70.8834813, 42.5459574], [-70.8812625, 42.5444884]], [[-70.8823736, 42.5452383], [-70.8821939, 42.5453874], [-70.8817173, 42.5450089], [-70.8816916, 42.5449059], [-70.8817251, 42.5447976]], [[-70.8848161, 42.5447536], [-70.8827523, 42.5442016], [-70.8824245, 42.5441049], [-70.8821799, 42.5439073]], [[-70.8849807, 42.5440998], [-70.8840917, 42.5437222], [-70.8831453, 42.5432946]], [[-70.885033, 42.5440998], [-70.8849767, 42.5420695]], [[-70.8835729, 42.5430162], [-70.8850378, 42.543314], [-70.8857028, 42.543389], [-70.8863373, 42.5434299]], [[-70.8863042, 42.5427333], [-70.8862725, 42.5416878]], [[-70.888163, 42.5441593], [-70.8866721, 42.5449019], [-70.8868092, 42.5434518]]]}
+    }
+  ],
+  "garage": {
+    "id": "mbta-garage",
+    "name": "MBTA Garage",
+    "address": "100 Rantoul St",
+    "lat": 42.545423,
+    "lng": -70.885405,
+    "coordApprox": false,
+    "geometry": {"type": "Polygon", "coordinates": [[[-70.8856858, 42.5458593], [-70.8858589, 42.5451616], [-70.8852139, 42.5450615], [-70.8850272, 42.5457618], [-70.8856858, 42.5458593]]]},
+    "hours": "Open 24 hours, every day",
+    "rate": "$4 Monday–Friday, $2 Saturday–Sunday (up to 14 hours; $15/day after that)",
+    "snow": "$4 flat rate during declared snow bans, up to 24 hours",
+    "payment": "Tap card, credit/debit card, or cash"
+  },
+  "source": {
+    "label": "parkbeverly.com (City of Beverly Parking Program, Passport Labs)",
+    "url": "https://www.parkbeverly.com/visitors",
+    "mapUrl": "https://www.parkbeverly.com/s/Downtown-District-2024",
+    "accessed": "July 27, 2026"
+  }
+}
