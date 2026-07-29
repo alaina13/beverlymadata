@@ -62,7 +62,7 @@
         <h3>Where are you headed?</h3>
         <div class="street-search-input-wrap dest-search-wrap">
           <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-          <input type="text" id="destSearchInput" placeholder="e.g. Cabot Theatre, City Hall…" autocomplete="off" aria-describedby="destSearchHint">
+          <input type="text" id="destSearchInput" placeholder="e.g. 35 Rantoul St, or Cabot Theatre…" autocomplete="off" aria-describedby="destSearchHint">
         </div>
         <div id="destSearchResults" class="street-search-results" aria-live="polite"></div>
         <p class="layer-hint" id="destSearchHint">Sorts the list below by distance and drops a pin at your destination.</p>
@@ -338,6 +338,10 @@
   }
 
   function normalizeQuery(s) { return s.toLowerCase().replace(/\./g, '').trim(); }
+  function normalizeAddress(s) { return s.toLowerCase().replace(/\./g, '').replace(/\s+/g, ' ').trim(); }
+  function titleCaseAddress(s) { return s.replace(/\w+/g, w => w.charAt(0).toUpperCase() + w.slice(1)); }
+
+  let ADDRESS_INDEX = {};
 
   function searchDestinations(raw) {
     const qWords = normalizeQuery(raw).split(/\s+/).filter(Boolean);
@@ -346,6 +350,19 @@
       const nameWords = normalizeQuery(d.name).split(/\s+/);
       return qWords.every(qw => nameWords.some(nw => nw.startsWith(qw)));
     });
+  }
+
+  function searchAddresses(raw) {
+    const q = normalizeAddress(raw);
+    if (!q) return [];
+    return Object.keys(ADDRESS_INDEX)
+      .filter(key => key.startsWith(q))
+      .sort()
+      .slice(0, 8)
+      .map(key => {
+        const entry = ADDRESS_INDEX[key];
+        return { id: 'addr:' + key, name: titleCaseAddress(key), address: '', lat: entry.lat, lng: entry.lng };
+      });
   }
 
   function makeDestMarkerEl() {
@@ -580,23 +597,26 @@
     return `<button class="color-btn" data-dest-id="${dest.id}" type="button">${escapeHtml(dest.name)} <span class="street-result-detail">${escapeHtml(dest.address)}</span></button>`;
   }
 
+  let lastSearchResults = [];
+
   destSearchInput.addEventListener('input', () => {
     const raw = destSearchInput.value;
     if (!raw.trim()) {
       destSearchResults.innerHTML = '';
+      lastSearchResults = [];
       if (activeDestination) clearDestination();
       return;
     }
-    const matches = searchDestinations(raw);
-    destSearchResults.innerHTML = matches.length
-      ? matches.map(destResultHtml).join('')
-      : `<div class="tbd">No match for that destination yet. Try Cabot Theatre, City Hall, the Public Library, or Beverly Common.</div>`;
+    lastSearchResults = [...searchDestinations(raw), ...searchAddresses(raw)];
+    destSearchResults.innerHTML = lastSearchResults.length
+      ? lastSearchResults.map(destResultHtml).join('')
+      : `<div class="tbd">No match for that address yet. Try a full or partial street address, or one of: Cabot Theatre, City Hall, the Public Library, Beverly Common.</div>`;
   });
 
   destSearchResults.addEventListener('click', e => {
     const btn = e.target.closest('[data-dest-id]');
     if (!btn) return;
-    const dest = DESTINATIONS.find(d => d.id === btn.dataset.destId);
+    const dest = lastSearchResults.find(d => d.id === btn.dataset.destId);
     if (dest) selectDestination(dest);
   });
 
@@ -638,6 +658,11 @@
   }
   arrivalDateInput.addEventListener('input', updateArrivalFromInputs);
   arrivalTimeInput.addEventListener('change', updateArrivalFromInputs);
+
+  fetch('/address_index.json')
+    .then(r => r.json())
+    .then(data => { ADDRESS_INDEX = data.addresses || {}; })
+    .catch(err => console.error('Failed to load address index', err));
 
   document.getElementById('loading-msg').style.display = 'block';
 
