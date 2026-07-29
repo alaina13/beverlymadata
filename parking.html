@@ -287,7 +287,7 @@
     return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
   }
 
-  function getAvailability(scheduleType, rate, date) {
+  function getAvailability(scheduleType, rate, date, isLibraryPatron) {
     const day = date.getDay(); // 0 Sun ... 6 Sat
     const mins = date.getHours() * 60 + date.getMinutes();
     const weekday = day >= 1 && day <= 6; // Mon-Sat
@@ -321,7 +321,9 @@
       return { state: 'free', label: `Free at ${t}` };
     }
     if (scheduleType === 'library-lot') {
-      return { state: 'closed', label: 'Library patrons only' };
+      return isLibraryPatron
+        ? { state: 'free', label: 'Free for library patrons' }
+        : { state: 'closed', label: 'Library patrons only' };
     }
     if (scheduleType === 'garage-24-7') {
       const weekdayRate = day >= 1 && day <= 5;
@@ -518,7 +520,10 @@
       </div>`;
     }
 
-    items.forEach(it => { it.avail = getAvailability(it.data.scheduleType, it.data.rate, arrivalDate); });
+    items.forEach(it => {
+      const isLibraryPatron = it.data.id === 'library' && activeDestination && activeDestination.id === 'public-library';
+      it.avail = getAvailability(it.data.scheduleType, it.data.rate, arrivalDate, isLibraryPatron);
+    });
 
     let html = noticeHtml + items.map(it => {
       if (it.kind === 'lot') return lotCardHtml(it.data, it.dist, it.avail);
