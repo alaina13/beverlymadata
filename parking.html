@@ -294,7 +294,7 @@
     const in8to8 = mins >= 8 * 60 && mins < 20 * 60;
     const t = formatTime(date);
 
-    if (scheduleType === 'standard-lot' || scheduleType === 'metered-mon-sat') {
+    if (isFreeOffHoursSchedule(scheduleType)) {
       return weekday && in8to8
         ? { state: 'paid', label: `${rate} at ${t}` }
         : { state: 'free', label: `Free at ${t}` };
@@ -337,17 +337,31 @@
     return `<div class="street-result-row"><span class="pci-badge avail-${avail.state}">${escapeHtml(avail.label)}</span></div>`;
   }
 
-  function normalizeQuery(s) { return s.toLowerCase().replace(/\./g, '').trim(); }
   function normalizeAddress(s) { return s.toLowerCase().replace(/\./g, '').replace(/\s+/g, ' ').trim(); }
   function titleCaseAddress(s) { return s.replace(/\w+/g, w => w.charAt(0).toUpperCase() + w.slice(1)); }
 
   let ADDRESS_INDEX = {};
+  let ADDRESS_KEYS = [];
+  let addressIndexPromise = null;
+
+  function loadAddressIndex() {
+    if (!addressIndexPromise) {
+      addressIndexPromise = fetch('/address_index.json')
+        .then(r => r.json())
+        .then(data => {
+          ADDRESS_INDEX = data.addresses || {};
+          ADDRESS_KEYS = Object.keys(ADDRESS_INDEX);
+        })
+        .catch(err => console.error('Failed to load address index', err));
+    }
+    return addressIndexPromise;
+  }
 
   function searchDestinations(raw) {
-    const qWords = normalizeQuery(raw).split(/\s+/).filter(Boolean);
+    const qWords = normalizeAddress(raw).split(/\s+/).filter(Boolean);
     if (!qWords.length) return [];
     return DESTINATIONS.filter(d => {
-      const nameWords = normalizeQuery(d.name).split(/\s+/);
+      const nameWords = normalizeAddress(d.name).split(/\s+/);
       return qWords.every(qw => nameWords.some(nw => nw.startsWith(qw)));
     });
   }
@@ -355,7 +369,7 @@
   function searchAddresses(raw) {
     const q = normalizeAddress(raw);
     if (!q) return [];
-    return Object.keys(ADDRESS_INDEX)
+    return ADDRESS_KEYS
       .filter(key => key.startsWith(q))
       .sort()
       .slice(0, 8)
@@ -444,7 +458,7 @@
       ${distRowHtml(dist)}
       ${lot.note ? `<div class="street-result-row street-result-detail">${escapeHtml(lot.note)}</div>` : ''}
       ${lot.rate ? `
-        <div class="street-result-row" style="align-items:flex-start;">
+        <div class="street-result-row street-result-row--top">
           <span class="street-result-detail">${escapeHtml(lot.payment)}</span>
           ${passportCodeHtml(lot.passportCode)}
         </div>
@@ -468,7 +482,7 @@
       <div class="street-result-row street-result-detail">${escapeHtml(zone.area)}</div>
       ${zone.note ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.note)}</span></div>` : ''}
       ${zone.payment ? `
-        <div class="street-result-row" style="align-items:flex-start;">
+        <div class="street-result-row street-result-row--top">
           <span class="street-result-detail">${escapeHtml(zone.payment)}</span>
           ${passportCodeHtml(zone.passportCode)}
         </div>
@@ -522,9 +536,14 @@
       items.push({ kind: 'garage', data: PARKING.garage });
     }
 
+    items.forEach(it => {
+      it.dist = activeDestination ? distToDestination(it.kind, it.data) : null;
+      const isPatron = !!(it.data.patronDestination && activeDestination && activeDestination.id === it.data.patronDestination);
+      it.avail = getAvailability(it.data.scheduleType, it.data.rate, arrivalDate, isPatron);
+    });
+
     let noticeHtml = '';
     if (activeDestination) {
-      items.forEach(it => { it.dist = distToDestination(it.kind, it.data); });
       items.sort((a, b) => {
         if (a.dist == null && b.dist == null) return 0;
         if (a.dist == null) return 1;
@@ -536,11 +555,6 @@
         <button class="link-btn small" id="clearDestBtn" type="button">Clear</button>
       </div>`;
     }
-
-    items.forEach(it => {
-      const isLibraryPatron = it.data.id === 'library' && activeDestination && activeDestination.id === 'public-library';
-      it.avail = getAvailability(it.data.scheduleType, it.data.rate, arrivalDate, isLibraryPatron);
-    });
 
     let html = noticeHtml + items.map(it => {
       if (it.kind === 'lot') return lotCardHtml(it.data, it.dist, it.avail);
@@ -598,6 +612,14 @@
   }
 
   let lastSearchResults = [];
+  let searchDebounceTimer = null;
+
+  function runDestSearch(raw) {
+    lastSearchResults = [...searchDestinations(raw), ...searchAddresses(raw)];
+    destSearchResults.innerHTML = lastSearchResults.length
+      ? lastSearchResults.map(destResultHtml).join('')
+      : `<div class="layer-hint">No match for that address. Try a full or partial street address in Beverly, or destinations like Cabot Theatre, City Hall, Beverly Public Library, or the Beverly Common.</div>`;
+  }
 
   destSearchInput.addEventListener('input', () => {
     const raw = destSearchInput.value;
@@ -607,10 +629,9 @@
       if (activeDestination) clearDestination();
       return;
     }
-    lastSearchResults = [...searchDestinations(raw), ...searchAddresses(raw)];
-    destSearchResults.innerHTML = lastSearchResults.length
-      ? lastSearchResults.map(destResultHtml).join('')
-      : `<div class="layer-hint">No match for that address. Try a full or partial street address in Beverly, or destinations like Cabot Theatre, City Hall, Beverly Public Library, or the Beverly Common.</div>`;
+    loadAddressIndex().then(() => { if (destSearchInput.value === raw) runDestSearch(raw); });
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => runDestSearch(raw), 120);
   });
 
   destSearchResults.addEventListener('click', e => {
@@ -658,11 +679,6 @@
   }
   arrivalDateInput.addEventListener('input', updateArrivalFromInputs);
   arrivalTimeInput.addEventListener('change', updateArrivalFromInputs);
-
-  fetch('/address_index.json')
-    .then(r => r.json())
-    .then(data => { ADDRESS_INDEX = data.addresses || {}; })
-    .catch(err => console.error('Failed to load address index', err));
 
   document.getElementById('loading-msg').style.display = 'block';
 
@@ -779,6 +795,8 @@
     let dragStartY = null;
     let dragStartHeight = null;
     let moved = false;
+    let pendingDy = null;
+    let dragRafId = null;
 
     function snapPx(name) {
       const raw = window.innerHeight * SNAP[name];
@@ -811,17 +829,29 @@
       if (dragStartY == null) return;
       const dy = e.clientY - dragStartY;
       if (Math.abs(dy) > 4) moved = true;
-      const min = snapPx('peek');
-      const max = snapPx('full');
-      sidebar.style.height = Math.min(max, Math.max(min, dragStartHeight - dy)) + 'px';
+      pendingDy = dy;
+      if (dragRafId == null) {
+        dragRafId = requestAnimationFrame(() => {
+          dragRafId = null;
+          if (pendingDy == null) return;
+          const min = snapPx('peek');
+          const max = snapPx('full');
+          sidebar.style.height = Math.min(max, Math.max(min, dragStartHeight - pendingDy)) + 'px';
+        });
+      }
     }
     function onPointerUp() {
       if (dragStartY == null) return;
+      if (dragRafId != null) { cancelAnimationFrame(dragRafId); dragRafId = null; }
       sidebar.classList.remove('dragging');
       if (!moved) {
+        pendingDy = null;
         cycle();
       } else {
-        const cur = sidebar.getBoundingClientRect().height;
+        const min = snapPx('peek');
+        const max = snapPx('full');
+        const cur = Math.min(max, Math.max(min, dragStartHeight - pendingDy));
+        pendingDy = null;
         const nearest = order.reduce((a, b) => Math.abs(snapPx(b) - cur) < Math.abs(snapPx(a) - cur) ? b : a);
         applyState(nearest, true);
       }

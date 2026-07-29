@@ -84,6 +84,7 @@
       "id": "library",
       "name": "Library Lot",
       "scheduleType": "library-lot",
+      "patronDestination": "public-library",
       "restriction": "Library Parking Only",
       "geometry": {"type": "Polygon", "coordinates": [[[-70.8774903, 42.5507212], [-70.8772704, 42.5510892], [-70.8769367, 42.5509798], [-70.8771315, 42.5506629], [-70.8774903, 42.5507212]]]},
       "boundaryNote": "Boundary traced directly from satellite imagery by Open Beverly to match the paved lot, not an assessor parcel or official surveyed outline."

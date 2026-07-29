@@ -1634,6 +1634,8 @@ input[type=range]::-webkit-slider-thumb {
   flex-wrap: wrap;
 }
 
+.street-result-row--top { align-items: flex-start; }
+
 .street-result-detail { color: var(--muted); }
 
 .street-result-tier2 {
@@ -1695,11 +1697,11 @@ input[type=range]::-webkit-slider-thumb {
   white-space: nowrap;
 }
 
-.pci-badge.excellent { color: var(--green); border-color: var(--green); background: #ecfdf5; }
-.pci-badge.good       { color: var(--blue); border-color: var(--blue); background: var(--tag-bg); }
-.pci-badge.fair       { color: var(--accent-text); border-color: var(--accent); background: var(--warn-bg); }
+.pci-badge.excellent, .pci-badge.avail-free   { color: var(--green); border-color: var(--green); background: #ecfdf5; }
+.pci-badge.good, .pci-badge.avail-paid        { color: var(--blue); border-color: var(--blue); background: var(--tag-bg); }
+.pci-badge.fair, .pci-badge.avail-permit      { color: var(--accent-text); border-color: var(--accent); background: var(--warn-bg); }
 .pci-badge.poor       { color: #c2410c; border-color: #ea580c; background: #fff7ed; }
-.pci-badge.verypoor   { color: var(--red); border-color: var(--red); background: #fef2f2; }
+.pci-badge.verypoor, .pci-badge.avail-closed  { color: var(--red); border-color: var(--red); background: #fef2f2; }
 .pci-badge.serious    { color: #fff; border-color: #7f1d1d; background: #7f1d1d; }
 
 .street-result-stats { margin-top: 0.5rem; }
@@ -2445,11 +2447,6 @@ blockquote cite {
   color: var(--text);
   margin-bottom: 0.4rem;
 }
-
-.pci-badge.avail-free    { color: var(--green); border-color: var(--green); background: #ecfdf5; }
-.pci-badge.avail-paid    { color: var(--blue); border-color: var(--blue); background: var(--tag-bg); }
-.pci-badge.avail-permit  { color: var(--accent-text); border-color: var(--accent); background: var(--warn-bg); }
-.pci-badge.avail-closed  { color: var(--red); border-color: var(--red); background: #fef2f2; }
 
 .tooltip {
   position: absolute;
