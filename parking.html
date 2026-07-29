@@ -220,9 +220,14 @@
     }
   }
 
-  function lineBounds(geometry) {
+  function forEachPosition(coords, cb) {
+    if (typeof coords[0] === 'number') { cb(coords); return; }
+    coords.forEach(c => forEachPosition(c, cb));
+  }
+
+  function lineBounds(...geometries) {
     let minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity;
-    geometry.coordinates.forEach(line => line.forEach(([lng, lat]) => {
+    geometries.filter(Boolean).forEach(geometry => forEachPosition(geometry.coordinates, ([lng, lat]) => {
       minLng = Math.min(minLng, lng); maxLng = Math.max(maxLng, lng);
       minLat = Math.min(minLat, lat); maxLat = Math.max(maxLat, lat);
     }));
@@ -414,7 +419,6 @@
   function zonePopupHtml(zone) {
     return `
       <div class="tooltip-addr"><span class="zoning-swatch" style="background:${zone.color};display:inline-block;margin-right:0.4rem;"></span>${escapeHtml(zone.name)}</div>
-      <div class="tooltip-cat">${escapeHtml(zone.area)}</div>
       <div class="tooltip-row"><span>Rate</span><span>${escapeHtml(zone.rate)}</span></div>
       <div class="tooltip-row"><span>Hours</span><span>${escapeHtml(zone.hours)}</span></div>
       ${zone.passportCode ? `<div class="tooltip-row"><span>Passport code</span><span>${escapeHtml(passportCodeText(zone.passportCode))}</span></div>` : ''}
@@ -423,8 +427,8 @@
   }
 
   function flyToZone(zone) {
-    if (!zone.geometry) return;
-    const bounds = lineBounds(zone.geometry);
+    if (!zone.geometry && !zone.areas) return;
+    const bounds = lineBounds(zone.geometry, zone.areas);
     map.fitBounds(bounds, { padding: 60, duration: 800 });
     const mid = [(bounds[0][0] + bounds[1][0]) / 2, (bounds[0][1] + bounds[1][1]) / 2];
     map.once('idle', () => {
@@ -474,12 +478,11 @@
   }
 
   function zoneCardHtml(zone, dist, avail) {
-    const clickable = !!zone.geometry;
+    const clickable = !!(zone.geometry || zone.areas);
     return `<div class="street-result-card" data-id="${zone.id}" data-kind="zone" ${clickable ? 'tabindex="0" role="button"' : ''}>
       <div class="street-result-name"><span class="zoning-swatch" style="background:${zone.color};display:inline-block;margin-right:0.4rem;"></span>${escapeHtml(zone.name)}</div>
       ${availBadgeHtml(avail)}
       ${distRowHtml(dist)}
-      <div class="street-result-row street-result-detail">${escapeHtml(zone.area)}</div>
       ${zone.note ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.note)}</span></div>` : ''}
       ${zone.payment ? `
         <div class="street-result-row street-result-row--top">
@@ -591,6 +594,10 @@
     }
     if (map.getLayer('zone-lines')) {
       map.setLayoutProperty('zone-lines', 'visibility', showZones ? 'visible' : 'none');
+    }
+    if (map.getLayer('zone-fill')) {
+      map.setLayoutProperty('zone-fill', 'visibility', showZones ? 'visible' : 'none');
+      map.setLayoutProperty('zone-poly-outline', 'visibility', showZones ? 'visible' : 'none');
     }
     if (map.getLayer('garage-fill')) {
       map.setLayoutProperty('garage-fill', 'visibility', showGarage ? 'visible' : 'none');
@@ -708,6 +715,31 @@
         map.on('mouseenter', 'lot-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
         map.on('mouseleave', 'lot-fill', () => { map.getCanvas().style.cursor = ''; });
 
+        function openZonePopup(zoneId, lngLat) {
+          const zone = PARKING.zones.find(z => z.id === zoneId);
+          if (!zone) return;
+          if (lotPopup) lotPopup.remove();
+          lotPopup = new maplibregl.Popup({ closeButton: true, maxWidth: '240px' })
+            .setLngLat(lngLat)
+            .setHTML(zonePopupHtml(zone))
+            .addTo(map);
+        }
+
+        const zonesWithAreas = PARKING.zones.filter(z => z.areas);
+        map.addSource('zone-polys', {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: zonesWithAreas.map(z => ({ type: 'Feature', geometry: z.areas, properties: { id: z.id, color: z.color } })),
+          },
+        });
+        map.addLayer({ id: 'zone-fill', type: 'fill', source: 'zone-polys', paint: { 'fill-color': ['get', 'color'], 'fill-opacity': 0.45 } });
+        map.addLayer({ id: 'zone-poly-outline', type: 'line', source: 'zone-polys', paint: { 'line-color': ['get', 'color'], 'line-width': 1.5 } });
+
+        map.on('click', 'zone-fill', e => openZonePopup(e.features[0].properties.id, e.lngLat));
+        map.on('mouseenter', 'zone-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', 'zone-fill', () => { map.getCanvas().style.cursor = ''; });
+
         const zonesWithGeom = PARKING.zones.filter(z => z.geometry);
         map.addSource('zone-lines-src', {
           type: 'geojson',
@@ -724,16 +756,7 @@
           paint: { 'line-color': ['get', 'color'], 'line-width': 4, 'line-opacity': 0.8 },
         });
 
-        map.on('click', 'zone-lines', e => {
-          const zone = PARKING.zones.find(z => z.id === e.features[0].properties.id);
-          if (zone) {
-            if (lotPopup) lotPopup.remove();
-            lotPopup = new maplibregl.Popup({ closeButton: true, maxWidth: '240px' })
-              .setLngLat(e.lngLat)
-              .setHTML(zonePopupHtml(zone))
-              .addTo(map);
-          }
-        });
+        map.on('click', 'zone-lines', e => openZonePopup(e.features[0].properties.id, e.lngLat));
         map.on('mouseenter', 'zone-lines', () => { map.getCanvas().style.cursor = 'pointer'; });
         map.on('mouseleave', 'zone-lines', () => { map.getCanvas().style.cursor = ''; });
 
