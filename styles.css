@@ -2295,7 +2295,7 @@ blockquote cite {
 }
 
 #sidebar {
-  width: 240px;
+  width: 300px;
   flex-shrink: 0;
   background: white;
   border-right: 1px solid var(--border);
@@ -2433,8 +2433,8 @@ blockquote cite {
 
 .dest-dist { color: var(--blue); font-weight: 600; }
 
-.free-note { color: var(--green); font-weight: 600; }
-.free-note i { margin-right: 0.3rem; }
+.free-note { color: var(--green); font-weight: 600; flex-wrap: nowrap; align-items: flex-start; }
+.free-note i, .free-note svg { margin-right: 0.3rem; flex-shrink: 0; }
 
 .arrival-input {
   width: 100%;
