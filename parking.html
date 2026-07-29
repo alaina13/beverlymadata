@@ -54,7 +54,9 @@
 <div class="map-page-wrap">
 <div id="app">
   <div id="sidebar">
-    <button class="mob-sidebar-close" id="mob-sidebar-close" aria-label="Close controls">✕ Close</button>
+    <div class="sheet-handle" id="sheetHandle" role="button" tabindex="0" aria-expanded="false" aria-label="Parking controls, peek. Drag or tap to resize.">
+      <span class="sheet-grabber" aria-hidden="true"></span>
+    </div>
     <div class="sidebar-body">
       <div class="panel-section">
         <h3>Where are you headed?</h3>
@@ -86,9 +88,6 @@
   </div>
 
   <div style="position:relative;flex:1;">
-    <button class="mob-controls-btn" id="mob-controls-btn" aria-label="Map controls">
-      <i class="fa-solid fa-sliders" aria-hidden="true"></i> Controls
-    </button>
     <div id="map" role="img" aria-label="Interactive map of downtown Beverly parking locations"></div>
     <div id="loading-msg"><div class="spinner"></div>Loading parking data…</div>
   </div>
@@ -702,25 +701,100 @@
       });
   });
 </script>
-<div class="mob-sidebar-backdrop" id="mob-backdrop"></div>
 <script>
   (function() {
-    const btn = document.getElementById('mob-controls-btn');
     const sidebar = document.getElementById('sidebar');
-    const backdrop = document.getElementById('mob-backdrop');
-    function openSidebar() {
-      sidebar.classList.add('mob-open');
-      backdrop.classList.add('visible');
+    const handle = document.getElementById('sheetHandle');
+    const mq = window.matchMedia('(max-width: 700px)');
+    const HEADER_GAP = 90;
+    const SNAP = { peek: 0.24, half: 0.50, full: 0.88 };
+    const MIN_PEEK = 160;
+    const order = ['peek', 'half', 'full'];
+    let state = 'peek';
+    let active = false;
+    let dragStartY = null;
+    let dragStartHeight = null;
+    let moved = false;
+
+    function snapPx(name) {
+      const raw = window.innerHeight * SNAP[name];
+      if (name === 'peek') return Math.max(raw, MIN_PEEK);
+      if (name === 'full') return Math.min(raw, window.innerHeight - HEADER_GAP);
+      return raw;
     }
-    function closeSidebar() {
-      sidebar.classList.remove('mob-open');
-      backdrop.classList.remove('visible');
+
+    function applyState(name, animate) {
+      state = name;
+      if (!animate) sidebar.style.transition = 'none';
+      sidebar.style.height = snapPx(name) + 'px';
+      if (!animate) requestAnimationFrame(() => { sidebar.style.transition = ''; });
+      handle.setAttribute('aria-expanded', String(name !== 'peek'));
+      handle.setAttribute('aria-label', 'Parking controls, ' + name + '. Drag or tap to resize.');
     }
-    btn.addEventListener('click', () => {
-      sidebar.classList.contains('mob-open') ? closeSidebar() : openSidebar();
+
+    function cycle() {
+      applyState(order[(order.indexOf(state) + 1) % order.length], true);
+    }
+
+    function onPointerDown(e) {
+      dragStartY = e.clientY;
+      dragStartHeight = sidebar.getBoundingClientRect().height;
+      moved = false;
+      sidebar.classList.add('dragging');
+      handle.setPointerCapture(e.pointerId);
+    }
+    function onPointerMove(e) {
+      if (dragStartY == null) return;
+      const dy = e.clientY - dragStartY;
+      if (Math.abs(dy) > 4) moved = true;
+      const min = snapPx('peek');
+      const max = snapPx('full');
+      sidebar.style.height = Math.min(max, Math.max(min, dragStartHeight - dy)) + 'px';
+    }
+    function onPointerUp() {
+      if (dragStartY == null) return;
+      sidebar.classList.remove('dragging');
+      if (!moved) {
+        cycle();
+      } else {
+        const cur = sidebar.getBoundingClientRect().height;
+        const nearest = order.reduce((a, b) => Math.abs(snapPx(b) - cur) < Math.abs(snapPx(a) - cur) ? b : a);
+        applyState(nearest, true);
+      }
+      dragStartY = null;
+    }
+
+    function activate() {
+      if (active) return;
+      active = true;
+      sidebar.classList.add('drag-sheet');
+      applyState('peek', false);
+      handle.addEventListener('pointerdown', onPointerDown);
+      handle.addEventListener('pointermove', onPointerMove);
+      handle.addEventListener('pointerup', onPointerUp);
+      handle.addEventListener('pointercancel', onPointerUp);
+    }
+    function deactivate() {
+      if (!active) return;
+      active = false;
+      sidebar.classList.remove('drag-sheet', 'dragging');
+      sidebar.style.height = '';
+      sidebar.style.transition = '';
+      handle.removeEventListener('pointerdown', onPointerDown);
+      handle.removeEventListener('pointermove', onPointerMove);
+      handle.removeEventListener('pointerup', onPointerUp);
+      handle.removeEventListener('pointercancel', onPointerUp);
+    }
+
+    handle.addEventListener('keydown', e => {
+      if (!active) return;
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); cycle(); }
     });
-    backdrop.addEventListener('click', closeSidebar);
-    document.getElementById('mob-sidebar-close').addEventListener('click', closeSidebar);
+
+    function syncMode() { mq.matches ? activate() : deactivate(); }
+    syncMode();
+    mq.addEventListener('change', syncMode);
+    window.addEventListener('resize', () => { if (active) applyState(state, false); });
   })();
 </script>
 <script src="/nav.js"></script>

@@ -2547,6 +2547,54 @@ blockquote cite {
   .mob-sidebar-close { display: block; }
 }
 
+/* Draggable bottom sheet (parking map, mobile) */
+.sheet-handle { display: none; }
+
+@media (max-width: 700px) {
+  #sidebar.drag-sheet {
+    display: flex;
+    height: 24vh;
+    min-height: 160px;
+    max-height: calc(100vh - 90px);
+    transition: height 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  #sidebar.drag-sheet.dragging { transition: none; }
+
+  .sheet-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    flex-shrink: 0;
+    cursor: grab;
+    touch-action: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .sheet-handle:active { cursor: grabbing; }
+  .sheet-handle:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  .sheet-grabber {
+    width: 40px;
+    height: 5px;
+    border-radius: 3px;
+    background: var(--border);
+  }
+
+  /* Bigger touch targets */
+  .dest-search-wrap input { min-height: 44px; }
+
+  #parking-filters .property-filter-btn {
+    min-height: 44px;
+    padding: 0.65rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  #destSearchResults .color-btn {
+    min-height: 44px;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
 
 /* --- sources.html --- */
 .sources-container {
