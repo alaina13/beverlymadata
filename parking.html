@@ -163,6 +163,7 @@
         <div class="tooltip-row"><span>Rate</span><span>${escapeHtml(lot.rate)}</span></div>
         <div class="tooltip-row"><span>Hours</span><span>${escapeHtml(lot.hours)}</span></div>
         <div class="tooltip-row"><span>Pay by</span><span>${escapeHtml(lot.payment)}</span></div>
+        ${lot.passportCode ? `<div class="tooltip-row"><span>Passport code</span><span>${escapeHtml(lot.passportCode)}</span></div>` : ''}
         ${isFreeOffHoursSchedule(lot.scheduleType) ? '<div class="tooltip-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
       ` : lot.restriction ? `<div class="tooltip-row"><strong>${escapeHtml(lot.restriction)}</strong></div>`
         : '<div class="tooltip-row"><span class="tbd">Rules not yet confirmed</span></div>'}
@@ -365,6 +366,7 @@
       <div class="tooltip-cat">${escapeHtml(zone.area)}</div>
       <div class="tooltip-row"><span>Rate</span><span>${escapeHtml(zone.rate)}</span></div>
       <div class="tooltip-row"><span>Hours</span><span>${escapeHtml(zone.hours)}</span></div>
+      ${zone.passportCode ? `<div class="tooltip-row"><span>Passport code</span><span>${escapeHtml(zone.passportCode)}</span></div>` : ''}
       ${isFreeOffHoursSchedule(zone.scheduleType) ? '<div class="tooltip-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
     `;
   }
@@ -407,6 +409,7 @@
       ${lot.rate ? `
         <div class="street-result-row"><span class="street-result-detail">${escapeHtml(lot.rate)} · ${escapeHtml(lot.hours)}</span></div>
         <div class="street-result-row"><span class="street-result-detail">${escapeHtml(lot.payment)}</span></div>
+        ${lot.passportCode ? `<div class="street-result-row"><span class="street-result-detail">Passport code: ${escapeHtml(lot.passportCode)}</span></div>` : ''}
         ${isFreeOffHoursSchedule(lot.scheduleType) ? '<div class="street-result-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
       ` : lot.restriction ? `<div class="street-result-row"><strong>${escapeHtml(lot.restriction)}</strong></div>`
         : '<div class="street-result-row"><span class="tbd">Rules not yet confirmed</span></div>'}
@@ -425,6 +428,7 @@
       ${isFreeOffHoursSchedule(zone.scheduleType) ? '<div class="street-result-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
       ${zone.note ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.note)}</span></div>` : ''}
       ${zone.payment ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.payment)}</span></div>` : ''}
+      ${zone.passportCode ? `<div class="street-result-row"><span class="street-result-detail">Passport code: ${escapeHtml(zone.passportCode)}</span></div>` : ''}
     </div>`;
   }
 
