@@ -163,7 +163,7 @@
         <div class="tooltip-row"><span>Rate</span><span>${escapeHtml(lot.rate)}</span></div>
         <div class="tooltip-row"><span>Hours</span><span>${escapeHtml(lot.hours)}</span></div>
         <div class="tooltip-row"><span>Pay by</span><span>${escapeHtml(lot.payment)}</span></div>
-        ${lot.passportCode ? `<div class="tooltip-row"><span>Passport code</span><span>${escapeHtml(lot.passportCode)}</span></div>` : ''}
+        ${lot.passportCode ? `<div class="tooltip-row"><span>Passport code</span><span>${escapeHtml(passportCodeText(lot.passportCode))}</span></div>` : ''}
         ${isFreeOffHoursSchedule(lot.scheduleType) ? '<div class="tooltip-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
       ` : lot.restriction ? `<div class="tooltip-row"><strong>${escapeHtml(lot.restriction)}</strong></div>`
         : '<div class="tooltip-row"><span class="tbd">Rules not yet confirmed</span></div>'}
@@ -262,6 +262,24 @@
     if (dist == null) return '';
     const label = dist < 0.1 ? 'Less than 0.1 mi' : dist.toFixed(1) + ' mi';
     return `<div class="street-result-row street-result-detail dest-dist">${label} from ${escapeHtml(activeDestination.name)}</div>`;
+  }
+
+  function passportCodeHtml(passportCode) {
+    if (!passportCode) return '';
+    if (Array.isArray(passportCode)) {
+      return `<span class="passport-code-group">${passportCode.map(c =>
+        `<span class="passport-code-row"><span class="passport-code-chip">${escapeHtml(c.code)}</span><span class="street-result-detail">${escapeHtml(c.area)}</span></span>`
+      ).join('')}</span>`;
+    }
+    return `<span class="passport-code-chip">${escapeHtml(passportCode)}</span>`;
+  }
+
+  function passportCodeText(passportCode) {
+    if (!passportCode) return '';
+    if (Array.isArray(passportCode)) {
+      return passportCode.map(c => `${c.code} (${c.area})`).join(' or ');
+    }
+    return passportCode;
   }
 
   // Availability rules sourced from City of Beverly Code of Ordinances, Ch. 270, Art. VII, § 270-66 (accessed July 28, 2026).
@@ -366,7 +384,7 @@
       <div class="tooltip-cat">${escapeHtml(zone.area)}</div>
       <div class="tooltip-row"><span>Rate</span><span>${escapeHtml(zone.rate)}</span></div>
       <div class="tooltip-row"><span>Hours</span><span>${escapeHtml(zone.hours)}</span></div>
-      ${zone.passportCode ? `<div class="tooltip-row"><span>Passport code</span><span>${escapeHtml(zone.passportCode)}</span></div>` : ''}
+      ${zone.passportCode ? `<div class="tooltip-row"><span>Passport code</span><span>${escapeHtml(passportCodeText(zone.passportCode))}</span></div>` : ''}
       ${isFreeOffHoursSchedule(zone.scheduleType) ? '<div class="tooltip-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
     `;
   }
@@ -407,10 +425,15 @@
       ${distRowHtml(dist)}
       ${lot.note ? `<div class="street-result-row street-result-detail">${escapeHtml(lot.note)}</div>` : ''}
       ${lot.rate ? `
-        <div class="street-result-row"><span class="street-result-detail">${escapeHtml(lot.rate)} · ${escapeHtml(lot.hours)}</span></div>
-        <div class="street-result-row"><span class="street-result-detail">${escapeHtml(lot.payment)}</span></div>
-        ${lot.passportCode ? `<div class="street-result-row"><span class="street-result-detail">Passport code: ${escapeHtml(lot.passportCode)}</span></div>` : ''}
-        ${isFreeOffHoursSchedule(lot.scheduleType) ? '<div class="street-result-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
+        <div class="street-result-row" style="align-items:flex-start;">
+          <span class="street-result-detail">${escapeHtml(lot.payment)}</span>
+          ${passportCodeHtml(lot.passportCode)}
+        </div>
+        <div class="street-result-tier2">
+          <span class="street-result-tier2-label">Full schedule</span>
+          <div class="street-result-row"><span class="street-result-detail">${escapeHtml(lot.rate)} · ${escapeHtml(lot.hours)}</span></div>
+          ${isFreeOffHoursSchedule(lot.scheduleType) ? '<div class="street-result-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
+        </div>
       ` : lot.restriction ? `<div class="street-result-row"><strong>${escapeHtml(lot.restriction)}</strong></div>`
         : '<div class="street-result-row"><span class="tbd">Rules not yet confirmed</span></div>'}
       ${!clickable && lot.boundaryNote ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(lot.boundaryNote)}</span></div>` : ''}
@@ -424,11 +447,18 @@
       ${availBadgeHtml(avail)}
       ${distRowHtml(dist)}
       <div class="street-result-row street-result-detail">${escapeHtml(zone.area)}</div>
-      <div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.rate)} · ${escapeHtml(zone.hours)}</span></div>
-      ${isFreeOffHoursSchedule(zone.scheduleType) ? '<div class="street-result-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
       ${zone.note ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.note)}</span></div>` : ''}
-      ${zone.payment ? `<div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.payment)}</span></div>` : ''}
-      ${zone.passportCode ? `<div class="street-result-row"><span class="street-result-detail">Passport code: ${escapeHtml(zone.passportCode)}</span></div>` : ''}
+      ${zone.payment ? `
+        <div class="street-result-row" style="align-items:flex-start;">
+          <span class="street-result-detail">${escapeHtml(zone.payment)}</span>
+          ${passportCodeHtml(zone.passportCode)}
+        </div>
+      ` : ''}
+      <div class="street-result-tier2">
+        <span class="street-result-tier2-label">Full schedule</span>
+        <div class="street-result-row"><span class="street-result-detail">${escapeHtml(zone.rate)} · ${escapeHtml(zone.hours)}</span></div>
+        ${isFreeOffHoursSchedule(zone.scheduleType) ? '<div class="street-result-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
+      </div>
     </div>`;
   }
 
