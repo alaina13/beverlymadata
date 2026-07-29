@@ -610,7 +610,7 @@
     lastSearchResults = [...searchDestinations(raw), ...searchAddresses(raw)];
     destSearchResults.innerHTML = lastSearchResults.length
       ? lastSearchResults.map(destResultHtml).join('')
-      : `<div class="tbd">No match for that address yet. Try a full or partial street address, or one of: Cabot Theatre, City Hall, the Public Library, Beverly Common.</div>`;
+      : `<div class="layer-hint">No match for that address. Try a full or partial street address in Beverly, or destinations like Cabot Theatre, City Hall, Beverly Public Library, or the Beverly Common.</div>`;
   });
 
   destSearchResults.addEventListener('click', e => {
