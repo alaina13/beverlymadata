@@ -1,16 +1,5 @@
 [
   {
-    "title": "Conservation Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3601",
-    "pubDate": "2026-07-23T09:16:29-05:00",
-    "eventDate": "July 28, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Conservation Commission",
-    "sortDate": "2026-07-28T00:00:00+00:00",
-    "agendaDocId": 2852
-  },
-  {
     "title": "Beverly Airport Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3829",
     "pubDate": "2026-07-27T07:47:17-05:00",
@@ -31,6 +20,17 @@
     "board": "Other",
     "sortDate": "2026-07-29T00:00:00+00:00",
     "agendaDocId": 2851
+  },
+  {
+    "title": "Beverly Retirement Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3830",
+    "pubDate": "2026-07-28T15:52:38-05:00",
+    "eventDate": "July 30, 2026",
+    "eventTime": "06:00 PM",
+    "location": "275 Rantoul StreetBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-07-30T00:00:00+00:00",
+    "agendaDocId": 2854
   },
   {
     "title": "Parking & Traffic Commission Meeting",
