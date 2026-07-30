@@ -1,12 +1,21 @@
 [
   {
-    "title": "Beverly Retirment Board Meeting Agenda",
+    "title": "Revised Beverly Retirment Board Meeting Agenda",
     "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2854",
-    "pubDate": "2026-07-28T15:52:19-05:00",
+    "pubDate": "2026-07-29T15:19:02-05:00",
     "desc": "",
     "board": "Other",
     "type": "agenda",
     "docId": 2854
+  },
+  {
+    "title": "Conservation Commission Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2825",
+    "pubDate": "2026-07-29T13:42:22-05:00",
+    "desc": "Conservation Commission Meeting Agenda Update: Minutes added or updated",
+    "board": "Conservation Commission",
+    "type": "minutes",
+    "docId": 2825
   },
   {
     "title": "Beverly Airport Meeting of the Subcommitee on Governance and Internal Policy Agenda",
@@ -88,23 +97,5 @@
     "board": "Harbor Management Authority",
     "type": "minutes",
     "docId": 2799
-  },
-  {
-    "title": "Zoning Board of Appeals Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2843",
-    "pubDate": "2026-07-15T11:08:37-05:00",
-    "desc": "",
-    "board": "Zoning Board of Appeals",
-    "type": "agenda",
-    "docId": 2843
-  },
-  {
-    "title": "Planning Board Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2842",
-    "pubDate": "2026-07-15T10:52:52-05:00",
-    "desc": "",
-    "board": "Planning Board",
-    "type": "agenda",
-    "docId": 2842
   }
 ]
