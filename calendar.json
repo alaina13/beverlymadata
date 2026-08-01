@@ -11,15 +11,15 @@
     "agendaDocId": 2855
   },
   {
-    "title": "Beverly License Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3831",
-    "pubDate": "2026-07-31T08:49:09-05:00",
-    "eventDate": "August 6, 2026",
-    "eventTime": "06:30 PM",
+    "title": "South Essex Sewerage District Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3832",
+    "pubDate": "2026-07-31T14:51:47-05:00",
+    "eventDate": "August 5, 2026",
+    "eventTime": "01:00 PM",
     "location": "Beverly, MA 01915",
     "board": "Other",
-    "sortDate": "2026-08-06T00:00:00+00:00",
-    "agendaDocId": null
+    "sortDate": "2026-08-05T00:00:00+00:00",
+    "agendaDocId": 2857
   },
   {
     "title": "Design Review Board Meeting",
@@ -31,5 +31,16 @@
     "board": "Other",
     "sortDate": "2026-08-06T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "Beverly License Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3831",
+    "pubDate": "2026-07-31T09:00:38-05:00",
+    "eventDate": "August 6, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-08-06T00:00:00+00:00",
+    "agendaDocId": 2856
   }
 ]
