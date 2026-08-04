@@ -24,13 +24,13 @@
   {
     "title": "Design Review Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3485",
-    "pubDate": "2026-05-28T11:12:32-05:00",
+    "pubDate": "2026-08-03T16:06:15-05:00",
     "eventDate": "August 6, 2026",
     "eventTime": "06:30 PM",
-    "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
+    "location": "191 Cabot Street<br>3rd Floor Conference A Beverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-08-06T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2859
   },
   {
     "title": "Beverly License Board Meeting",
@@ -42,5 +42,38 @@
     "board": "Other",
     "sortDate": "2026-08-06T00:00:00+00:00",
     "agendaDocId": 2856
+  },
+  {
+    "title": "Board of Trustees Beverly Public Library Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3833",
+    "pubDate": "2026-08-03T12:47:51-05:00",
+    "eventDate": "August 13, 2026",
+    "eventTime": "05:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Library Board of Trustees",
+    "sortDate": "2026-08-13T00:00:00+00:00",
+    "agendaDocId": 2858
+  },
+  {
+    "title": "Conservation Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3602",
+    "pubDate": "2026-02-11T15:34:55-05:00",
+    "eventDate": "August 18, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Conservation Commission",
+    "sortDate": "2026-08-18T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Planning Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3629",
+    "pubDate": "2026-05-28T14:00:58-05:00",
+    "eventDate": "August 18, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
+    "board": "Planning Board",
+    "sortDate": "2026-08-18T00:00:00+00:00",
+    "agendaDocId": null
   }
 ]
