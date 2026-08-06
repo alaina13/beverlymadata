@@ -1,16 +1,5 @@
 [
   {
-    "title": "South Essex Sewerage District Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3832",
-    "pubDate": "2026-07-31T14:51:47-05:00",
-    "eventDate": "August 5, 2026",
-    "eventTime": "01:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-08-05T00:00:00+00:00",
-    "agendaDocId": 2857
-  },
-  {
     "title": "Design Review Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3485",
     "pubDate": "2026-08-03T16:06:15-05:00",
@@ -31,6 +20,50 @@
     "board": "Other",
     "sortDate": "2026-08-06T00:00:00+00:00",
     "agendaDocId": 2856
+  },
+  {
+    "title": "Beverly Regional Airport Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3836",
+    "pubDate": "2026-08-05T17:39:12-05:00",
+    "eventDate": "August 10, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-08-10T00:00:00+00:00",
+    "agendaDocId": 2862
+  },
+  {
+    "title": "Council on Aging Grant Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3834",
+    "pubDate": "2026-08-05T10:59:45-05:00",
+    "eventDate": "August 11, 2026",
+    "eventTime": "02:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-08-11T00:00:00+00:00",
+    "agendaDocId": 2860
+  },
+  {
+    "title": "Council on Aging Board of Directors Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3835",
+    "pubDate": "2026-08-05T11:02:38-05:00",
+    "eventDate": "August 11, 2026",
+    "eventTime": "02:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-08-11T00:00:00+00:00",
+    "agendaDocId": 2861
+  },
+  {
+    "title": "Beverly Golf and Tennis Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3837",
+    "pubDate": "2026-08-06T08:42:48-05:00",
+    "eventDate": "August 11, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-08-11T00:00:00+00:00",
+    "agendaDocId": 2863
   },
   {
     "title": "Board of Trustees Beverly Public Library Meeting",
@@ -63,6 +96,17 @@
     "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
     "board": "Planning Board",
     "sortDate": "2026-08-18T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Community Preservation Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3570",
+    "pubDate": "2026-05-28T11:32:53-05:00",
+    "eventDate": "August 20, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-08-20T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
