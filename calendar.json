@@ -1,25 +1,14 @@
 [
   {
-    "title": "Design Review Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3485",
-    "pubDate": "2026-08-03T16:06:15-05:00",
-    "eventDate": "August 6, 2026",
-    "eventTime": "06:30 PM",
-    "location": "191 Cabot Street<br>3rd Floor Conference A Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-08-06T00:00:00+00:00",
-    "agendaDocId": 2859
-  },
-  {
-    "title": "Beverly License Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3831",
-    "pubDate": "2026-07-31T09:00:38-05:00",
-    "eventDate": "August 6, 2026",
-    "eventTime": "06:30 PM",
+    "title": "Beverly Airport Subcommittee on Mission and Outreah Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3838",
+    "pubDate": "2026-08-06T11:42:44-05:00",
+    "eventDate": "August 10, 2026",
+    "eventTime": "04:30 PM",
     "location": "Beverly, MA 01915",
     "board": "Other",
-    "sortDate": "2026-08-06T00:00:00+00:00",
-    "agendaDocId": 2856
+    "sortDate": "2026-08-10T00:00:00+00:00",
+    "agendaDocId": 2864
   },
   {
     "title": "Beverly Regional Airport Commission Meeting",
@@ -101,12 +90,12 @@
   {
     "title": "Community Preservation Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3570",
-    "pubDate": "2026-05-28T11:32:53-05:00",
+    "pubDate": "2026-08-06T12:17:26-05:00",
     "eventDate": "August 20, 2026",
     "eventTime": "07:00 PM",
     "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-08-20T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2866
   }
 ]
