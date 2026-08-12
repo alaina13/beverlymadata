@@ -90,6 +90,7 @@
               <div class="layer-subsection">
                 <h4>Color by</h4>
                 <button class="color-btn active" data-mode="vpa">Value per acre</button>
+                <button class="color-btn" data-mode="lvpa">Land value per acre</button>
                 <button class="color-btn" data-mode="taxpa">Tax per acre</button>
                 <button class="color-btn" data-mode="net">Net revenue (after infrastructure)</button>
                 <button class="color-btn" data-mode="netpa">Net revenue per acre</button>
@@ -218,6 +219,7 @@
 
   const COLOR_STOPS = {
     vpa:   [[0,'#d0ead0'],[500000,'#4caf50'],[2000000,'#cddc39'],[4000000,'#ffc107'],[7000000,'#f44336'],[9400000,'#9c27b0']],
+    lvpa:  [[0,'#d0ead0'],[500000,'#4caf50'],[1200000,'#cddc39'],[2500000,'#ffc107'],[4100000,'#f44336'],[5100000,'#9c27b0']],
     taxpa: [[0,'#d0ead0'],[12000,'#4caf50'],[34000,'#cddc39'],[55000,'#ffc107'],[80000,'#f44336'],[102409,'#9c27b0']],
     net:   [[-4500,'#f44336'],[0,'#ffc107'],[3000,'#cddc39'],[10000,'#4caf50'],[50000,'#1a9850'],[200000,'#9c27b0']],
     netpa: [[-5000,'#f44336'],[0,'#ffc107'],[8000,'#cddc39'],[25000,'#4caf50'],[80000,'#1a9850'],[300000,'#9c27b0']],
@@ -512,6 +514,7 @@
           el.innerHTML = `
             <div class="tooltip-addr">${p.addr || 'Unknown'}</div>
             <div class="tooltip-row"><span>Value / acre</span><span>${fmt(p.vpa)}</span></div>
+            <div class="tooltip-row"><span>Land value / acre</span><span>${fmt(p.lvpa)}</span></div>
             <div class="tooltip-row"><span>Tax / acre</span><span>${fmt(p.taxpa)}</span></div>
             <div class="tooltip-row"><span>Total value</span><span>${fmt(p.v)}</span></div>
             <div class="tooltip-row"><span>Annual tax</span><span>${fmt(p.tax)}</span></div>
@@ -666,6 +669,7 @@
       <div class="parcel-panel-addr">${addr}</div>
       <div class="parcel-panel-cat">${p.cat || ''}</div>
       <div class="tooltip-row"><span>Value / acre</span><span>${fmt(p.vpa)}</span></div>
+      <div class="tooltip-row"><span>Land value / acre</span><span>${fmt(p.lvpa)}</span></div>
       <div class="tooltip-row"><span>Tax / acre</span><span>${fmt(p.taxpa)}</span></div>
       <div class="tooltip-row"><span>Total value</span><span>${fmt(p.v)}</span></div>
       <div class="tooltip-row"><span>Annual tax</span><span>${fmt(p.tax)}</span></div>
