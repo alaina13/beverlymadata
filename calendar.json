@@ -75,5 +75,16 @@
     "board": "Zoning Board of Appeals",
     "sortDate": "2026-08-26T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "Economic and Community Development Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3664",
+    "pubDate": "2026-05-28T11:38:21-05:00",
+    "eventDate": "August 27, 2026",
+    "eventTime": "08:30 AM",
+    "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-08-27T00:00:00+00:00",
+    "agendaDocId": null
   }
 ]
