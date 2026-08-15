@@ -1,5 +1,23 @@
 [
   {
+    "title": "Harbor Management Authority Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2871",
+    "pubDate": "2026-08-14T12:20:00-05:00",
+    "desc": "",
+    "board": "Harbor Management Authority",
+    "type": "agenda",
+    "docId": 2871
+  },
+  {
+    "title": "Planning Board Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2870",
+    "pubDate": "2026-08-14T10:20:48-05:00",
+    "desc": "",
+    "board": "Planning Board",
+    "type": "agenda",
+    "docId": 2870
+  },
+  {
     "title": "Open Space and Recreation Committee Regular Meeting Agenda",
     "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2749",
     "pubDate": "2026-08-13T18:42:42-05:00",
@@ -268,23 +286,5 @@
     "board": "Library Board of Trustees",
     "type": "agenda",
     "docId": 2858
-  },
-  {
-    "title": "South Essex Sewerage District Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2857",
-    "pubDate": "2026-07-31T14:51:37-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2857
-  },
-  {
-    "title": "Beverly License Board - Agenda - August 6, 2026",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2856",
-    "pubDate": "2026-07-31T08:51:25-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2856
   }
 ]

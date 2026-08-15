@@ -24,13 +24,24 @@
   {
     "title": "Planning Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3629",
-    "pubDate": "2026-05-28T14:00:58-05:00",
+    "pubDate": "2026-08-14T10:21:11-05:00",
     "eventDate": "August 18, 2026",
     "eventTime": "07:00 PM",
     "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
     "board": "Planning Board",
     "sortDate": "2026-08-18T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2870
+  },
+  {
+    "title": "Harbor Management Authority Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3841",
+    "pubDate": "2026-08-14T12:20:16-05:00",
+    "eventDate": "August 19, 2026",
+    "eventTime": "06:45 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Harbor Management Authority",
+    "sortDate": "2026-08-19T00:00:00+00:00",
+    "agendaDocId": 2871
   },
   {
     "title": "Community Preservation Committee Meeting",
