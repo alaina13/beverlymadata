@@ -44,6 +44,17 @@
     "agendaDocId": 2871
   },
   {
+    "title": "Veterans Advisory Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3842",
+    "pubDate": "2026-08-17T13:42:08-05:00",
+    "eventDate": "August 20, 2026",
+    "eventTime": "05:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-08-20T00:00:00+00:00",
+    "agendaDocId": 2872
+  },
+  {
     "title": "Community Preservation Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3570",
     "pubDate": "2026-08-06T12:17:26-05:00",
@@ -53,17 +64,6 @@
     "board": "Other",
     "sortDate": "2026-08-20T00:00:00+00:00",
     "agendaDocId": 2866
-  },
-  {
-    "title": "Historic Districts Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3525",
-    "pubDate": "2025-12-08T14:08:25-05:00",
-    "eventDate": "August 26, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly City Hall, Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
-    "board": "Historic District Commission",
-    "sortDate": "2026-08-26T00:00:00+00:00",
-    "agendaDocId": null
   },
   {
     "title": "Zoning Board of Appeals Meeting",
@@ -77,6 +77,17 @@
     "agendaDocId": null
   },
   {
+    "title": "Historic Districts Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3525",
+    "pubDate": "2025-12-08T14:08:25-05:00",
+    "eventDate": "August 26, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly City Hall, Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
+    "board": "Historic District Commission",
+    "sortDate": "2026-08-26T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
     "title": "Economic and Community Development Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3664",
     "pubDate": "2026-05-28T11:38:21-05:00",
@@ -85,6 +96,17 @@
     "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-08-27T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Parking & Traffic Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3537",
+    "pubDate": "2025-12-08T14:12:29-05:00",
+    "eventDate": "September 1, 2026",
+    "eventTime": "08:30 AM",
+    "location": "Beverly City Hall, 3rd Floor Council Chambers<br>191 Cabot StreetBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-01T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
