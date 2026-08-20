@@ -1,16 +1,5 @@
 [
   {
-    "title": "Harbor Management Authority Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3841",
-    "pubDate": "2026-08-14T12:20:16-05:00",
-    "eventDate": "August 19, 2026",
-    "eventTime": "06:45 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Harbor Management Authority",
-    "sortDate": "2026-08-19T00:00:00+00:00",
-    "agendaDocId": 2871
-  },
-  {
     "title": "Community Preservation Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3570",
     "pubDate": "2026-08-06T12:17:26-05:00",
@@ -22,6 +11,17 @@
     "agendaDocId": 2866
   },
   {
+    "title": "Zoning Board of Appeals Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3800",
+    "pubDate": "2026-08-19T13:32:55-05:00",
+    "eventDate": "August 26, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Zoning Board of Appeals",
+    "sortDate": "2026-08-26T00:00:00+00:00",
+    "agendaDocId": 2874
+  },
+  {
     "title": "Historic Districts Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3525",
     "pubDate": "2025-12-08T14:08:25-05:00",
@@ -29,17 +29,6 @@
     "eventTime": "07:00 PM",
     "location": "Beverly City Hall, Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
     "board": "Historic District Commission",
-    "sortDate": "2026-08-26T00:00:00+00:00",
-    "agendaDocId": null
-  },
-  {
-    "title": "Zoning Board of Appeals Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3800",
-    "pubDate": "2026-06-17T10:43:06-05:00",
-    "eventDate": "August 26, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Zoning Board of Appeals",
     "sortDate": "2026-08-26T00:00:00+00:00",
     "agendaDocId": null
   },
@@ -85,6 +74,17 @@
     "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-09-02T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Design Review Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3486",
+    "pubDate": "2026-05-28T11:15:03-05:00",
+    "eventDate": "September 3, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-03T00:00:00+00:00",
     "agendaDocId": null
   }
 ]

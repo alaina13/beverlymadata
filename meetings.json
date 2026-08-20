@@ -1,5 +1,32 @@
 [
   {
+    "title": "Planning Board Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2766",
+    "pubDate": "2026-08-19T16:05:07-05:00",
+    "desc": "Planning Board Meeting Agenda Update: Minutes added or updated",
+    "board": "Planning Board",
+    "type": "minutes",
+    "docId": 2766
+  },
+  {
+    "title": "Zoning Board of Appeals Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2874",
+    "pubDate": "2026-08-19T13:32:44-05:00",
+    "desc": "",
+    "board": "Zoning Board of Appeals",
+    "type": "agenda",
+    "docId": 2874
+  },
+  {
+    "title": "Conservation Commission Meeting Agenda 7/28/2026",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2852",
+    "pubDate": "2026-08-19T10:08:21-05:00",
+    "desc": "Conservation Commission Meeting Agenda 7/28/2026 Update: Minutes added or updated",
+    "board": "Conservation Commission",
+    "type": "minutes",
+    "docId": 2852
+  },
+  {
     "title": "Board of Assessors Meeting Agenda",
     "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2873",
     "pubDate": "2026-08-18T14:07:35-05:00",
@@ -151,32 +178,5 @@
     "board": "Other",
     "type": "agenda",
     "docId": 2863
-  },
-  {
-    "title": "Beverly Regional Airport Commission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2862",
-    "pubDate": "2026-08-05T17:39:02-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2862
-  },
-  {
-    "title": "Council on Aging Board of Director Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2861",
-    "pubDate": "2026-08-05T11:02:27-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2861
-  },
-  {
-    "title": "Council on Aging Grant Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2860",
-    "pubDate": "2026-08-05T10:59:31-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2860
   }
 ]
