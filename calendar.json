@@ -1,14 +1,14 @@
 [
   {
-    "title": "Community Preservation Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3570",
-    "pubDate": "2026-08-06T12:17:26-05:00",
-    "eventDate": "August 20, 2026",
+    "title": "Historic Districts Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3525",
+    "pubDate": "2025-12-08T14:08:25-05:00",
+    "eventDate": "August 26, 2026",
     "eventTime": "07:00 PM",
-    "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-08-20T00:00:00+00:00",
-    "agendaDocId": 2866
+    "location": "Beverly City Hall, Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
+    "board": "Historic District Commission",
+    "sortDate": "2026-08-26T00:00:00+00:00",
+    "agendaDocId": null
   },
   {
     "title": "Zoning Board of Appeals Meeting",
@@ -22,17 +22,6 @@
     "agendaDocId": 2874
   },
   {
-    "title": "Historic Districts Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3525",
-    "pubDate": "2025-12-08T14:08:25-05:00",
-    "eventDate": "August 26, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly City Hall, Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
-    "board": "Historic District Commission",
-    "sortDate": "2026-08-26T00:00:00+00:00",
-    "agendaDocId": null
-  },
-  {
     "title": "Economic and Community Development Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3664",
     "pubDate": "2026-05-28T11:38:21-05:00",
@@ -42,6 +31,17 @@
     "board": "Other",
     "sortDate": "2026-08-27T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "Commission on Disabilities Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3844",
+    "pubDate": "2026-08-20T15:22:00-05:00",
+    "eventDate": "August 27, 2026",
+    "eventTime": "12:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Commission on Disabilities",
+    "sortDate": "2026-08-27T00:00:00+00:00",
+    "agendaDocId": 2875
   },
   {
     "title": "Board of Assessors Meeting",
