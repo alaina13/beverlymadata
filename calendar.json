@@ -22,9 +22,9 @@
     "agendaDocId": 2874
   },
   {
-    "title": "Economic and Community Development Council Meeting",
+    "title": "CANCELED - Economic and Community Development Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3664",
-    "pubDate": "2026-05-28T11:38:21-05:00",
+    "pubDate": "2026-08-24T10:55:27-05:00",
     "eventDate": "August 27, 2026",
     "eventTime": "08:30 AM",
     "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
@@ -85,6 +85,17 @@
     "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-09-03T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3556",
+    "pubDate": "2025-12-09T15:46:58-05:00",
+    "eventDate": "September 8, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "City Council",
+    "sortDate": "2026-09-08T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
