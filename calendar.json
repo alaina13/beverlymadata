@@ -1,38 +1,5 @@
 [
   {
-    "title": "Commission on Disabilities Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3844",
-    "pubDate": "2026-08-20T15:22:00-05:00",
-    "eventDate": "August 27, 2026",
-    "eventTime": "12:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Commission on Disabilities",
-    "sortDate": "2026-08-27T00:00:00+00:00",
-    "agendaDocId": 2875
-  },
-  {
-    "title": "Board of Assessors Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3843",
-    "pubDate": "2026-08-18T14:07:45-05:00",
-    "eventDate": "August 27, 2026",
-    "eventTime": "04:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-08-27T00:00:00+00:00",
-    "agendaDocId": 2873
-  },
-  {
-    "title": "Beverly Retirement Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3845",
-    "pubDate": "2026-08-25T15:00:08-05:00",
-    "eventDate": "August 27, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-08-27T00:00:00+00:00",
-    "agendaDocId": 2876
-  },
-  {
     "title": "Deficit Reduction Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3847",
     "pubDate": "2026-08-27T11:49:06-05:00",
@@ -44,15 +11,26 @@
     "agendaDocId": 2878
   },
   {
+    "title": "Harbor Management Authority Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3849",
+    "pubDate": "2026-08-27T17:38:56-05:00",
+    "eventDate": "August 31, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Harbor Management Authority",
+    "sortDate": "2026-08-31T00:00:00+00:00",
+    "agendaDocId": 2880
+  },
+  {
     "title": "Open Space and Recreation Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3494",
-    "pubDate": "2026-05-28T11:28:41-05:00",
+    "pubDate": "2026-08-28T12:24:41-05:00",
     "eventDate": "September 2, 2026",
     "eventTime": "07:00 PM",
     "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-09-02T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2882
   },
   {
     "title": "Waste Reduction Committee Meeting",
@@ -68,13 +46,13 @@
   {
     "title": "Design Review Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3486",
-    "pubDate": "2026-05-28T11:15:03-05:00",
+    "pubDate": "2026-08-28T09:27:33-05:00",
     "eventDate": "September 3, 2026",
     "eventTime": "06:30 PM",
     "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-09-03T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2881
   },
   {
     "title": "Parking & Traffic Commission Meeting",
