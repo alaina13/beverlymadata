@@ -119,5 +119,16 @@
     "board": "Planning Board",
     "sortDate": "2026-09-15T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3526",
+    "pubDate": "2026-08-21T13:08:06-05:00",
+    "eventDate": "September 16, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly City Hall, Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
+    "board": "Historic District Commission",
+    "sortDate": "2026-09-16T00:00:00+00:00",
+    "agendaDocId": null
   }
 ]
