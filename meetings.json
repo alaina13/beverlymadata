@@ -1,5 +1,23 @@
 [
   {
+    "title": "Council on Aging Board of Directors Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2886",
+    "pubDate": "2026-09-02T15:06:36-05:00",
+    "desc": "",
+    "board": "Other",
+    "type": "agenda",
+    "docId": 2886
+  },
+  {
+    "title": "Community Preservation Committee Public Hearing and Launch of Grant Funding Round 14",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2885",
+    "pubDate": "2026-09-02T12:05:49-05:00",
+    "desc": "",
+    "board": "Other",
+    "type": "agenda",
+    "docId": 2885
+  },
+  {
     "title": "Parks and Recreation Commission Meeting Agenda",
     "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2884",
     "pubDate": "2026-08-31T15:16:02-05:00",
@@ -124,32 +142,5 @@
     "board": "Commission on Disabilities",
     "type": "agenda",
     "docId": 2875
-  },
-  {
-    "title": "Planning Board Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2766",
-    "pubDate": "2026-08-19T16:05:07-05:00",
-    "desc": "Planning Board Meeting Agenda Update: Minutes added or updated",
-    "board": "Planning Board",
-    "type": "minutes",
-    "docId": 2766
-  },
-  {
-    "title": "Zoning Board of Appeals Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2874",
-    "pubDate": "2026-08-19T13:32:44-05:00",
-    "desc": "",
-    "board": "Zoning Board of Appeals",
-    "type": "agenda",
-    "docId": 2874
-  },
-  {
-    "title": "Conservation Commission Meeting Agenda 7/28/2026",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2852",
-    "pubDate": "2026-08-19T10:08:21-05:00",
-    "desc": "Conservation Commission Meeting Agenda 7/28/2026 Update: Minutes added or updated",
-    "board": "Conservation Commission",
-    "type": "minutes",
-    "docId": 2852
   }
 ]
