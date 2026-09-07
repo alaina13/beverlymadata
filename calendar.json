@@ -130,5 +130,16 @@
     "board": "Other",
     "sortDate": "2026-09-17T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3557",
+    "pubDate": "2025-12-09T15:48:09-05:00",
+    "eventDate": "September 21, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "City Council",
+    "sortDate": "2026-09-21T00:00:00+00:00",
+    "agendaDocId": null
   }
 ]
