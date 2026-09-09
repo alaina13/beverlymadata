@@ -1,27 +1,5 @@
 [
   {
-    "title": "Council on Aging Board of Directors Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3852",
-    "pubDate": "2026-09-02T15:06:47-05:00",
-    "eventDate": "September 8, 2026",
-    "eventTime": "02:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-08T00:00:00+00:00",
-    "agendaDocId": 2886
-  },
-  {
-    "title": "Regular City Council Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3556",
-    "pubDate": "2026-09-03T20:39:18-05:00",
-    "eventDate": "September 8, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "City Council",
-    "sortDate": "2026-09-08T00:00:00+00:00",
-    "agendaDocId": 2890
-  },
-  {
     "title": "South Essex Sewerage District Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3853",
     "pubDate": "2026-09-08T10:22:29-05:00",
@@ -129,6 +107,17 @@
     "location": "Beverly, MA 01915",
     "board": "City Council",
     "sortDate": "2026-09-21T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Zoning Board of Appeals Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3801",
+    "pubDate": "2026-06-17T10:43:48-05:00",
+    "eventDate": "September 23, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Zoning Board of Appeals",
+    "sortDate": "2026-09-23T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
