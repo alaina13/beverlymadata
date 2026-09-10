@@ -1,16 +1,5 @@
 [
   {
-    "title": "South Essex Sewerage District Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3853",
-    "pubDate": "2026-09-08T10:22:29-05:00",
-    "eventDate": "September 9, 2026",
-    "eventTime": "01:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-09T00:00:00+00:00",
-    "agendaDocId": 2887
-  },
-  {
     "title": "Northeast Massachusetts Mosquito Control and Wetlands Management District Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3854",
     "pubDate": "2026-09-03T11:44:25-05:00",
@@ -55,6 +44,50 @@
     "agendaDocId": 2885
   },
   {
+    "title": "Beverly City Council Budget/Management Analyst Preliminary Screening Committee Meeting Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3880",
+    "pubDate": "2026-09-09T15:33:39-05:00",
+    "eventDate": "September 14, 2026",
+    "eventTime": "08:30 AM",
+    "location": "Beverly, MA 01915",
+    "board": "City Council",
+    "sortDate": "2026-09-14T00:00:00+00:00",
+    "agendaDocId": 2893
+  },
+  {
+    "title": "Beverly Regional Airport Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3879",
+    "pubDate": "2026-09-09T12:36:10-05:00",
+    "eventDate": "September 14, 2026",
+    "eventTime": "04:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-14T00:00:00+00:00",
+    "agendaDocId": 2892
+  },
+  {
+    "title": "Beverly Regional Airport Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3882",
+    "pubDate": "2026-09-09T16:08:02-05:00",
+    "eventDate": "September 14, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-14T00:00:00+00:00",
+    "agendaDocId": 2895
+  },
+  {
+    "title": "Deficit Reduction Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3883",
+    "pubDate": "2026-09-10T08:37:23-05:00",
+    "eventDate": "September 14, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-14T00:00:00+00:00",
+    "agendaDocId": 2896
+  },
+  {
     "title": "Conservation Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3603",
     "pubDate": "2026-02-11T15:36:35-05:00",
@@ -88,6 +121,17 @@
     "agendaDocId": null
   },
   {
+    "title": "Clean Energy Advisory Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3881",
+    "pubDate": "2026-09-09T15:43:47-05:00",
+    "eventDate": "September 16, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-16T00:00:00+00:00",
+    "agendaDocId": 2894
+  },
+  {
     "title": "Community Preservation Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3572",
     "pubDate": "2026-05-28T11:33:40-05:00",
@@ -118,6 +162,17 @@
     "location": "Beverly, MA 01915",
     "board": "Zoning Board of Appeals",
     "sortDate": "2026-09-23T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Economic and Community Development Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3665",
+    "pubDate": "2026-05-28T11:38:56-05:00",
+    "eventDate": "September 24, 2026",
+    "eventTime": "08:30 AM",
+    "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-24T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
