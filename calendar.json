@@ -1,49 +1,5 @@
 [
   {
-    "title": "Northeast Massachusetts Mosquito Control and Wetlands Management District Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3854",
-    "pubDate": "2026-09-03T11:44:25-05:00",
-    "eventDate": "September 10, 2026",
-    "eventTime": "09:00 AM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-10T00:00:00+00:00",
-    "agendaDocId": 2888
-  },
-  {
-    "title": "Salem and Beverly Water Supply Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3855",
-    "pubDate": "2026-09-03T17:44:41-05:00",
-    "eventDate": "September 10, 2026",
-    "eventTime": "09:00 AM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-10T00:00:00+00:00",
-    "agendaDocId": 2891
-  },
-  {
-    "title": "Beverly Bicycle & Pedestrian Advisory Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3846",
-    "pubDate": "2026-08-26T15:40:37-05:00",
-    "eventDate": "September 10, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-10T00:00:00+00:00",
-    "agendaDocId": 2877
-  },
-  {
-    "title": "Community Preservation Committee - Special Pubic Hearing",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3571",
-    "pubDate": "2026-09-02T12:06:05-05:00",
-    "eventDate": "September 10, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-10T00:00:00+00:00",
-    "agendaDocId": 2885
-  },
-  {
     "title": "Beverly City Council Budget/Management Analyst Preliminary Screening Committee Meeting Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3880",
     "pubDate": "2026-09-09T15:33:39-05:00",
@@ -90,24 +46,35 @@
   {
     "title": "Conservation Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3603",
-    "pubDate": "2026-02-11T15:36:35-05:00",
+    "pubDate": "2026-09-10T14:17:43-05:00",
     "eventDate": "September 15, 2026",
     "eventTime": "06:30 PM",
     "location": "Beverly, MA 01915",
     "board": "Conservation Commission",
     "sortDate": "2026-09-15T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2899
   },
   {
     "title": "Planning Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3630",
-    "pubDate": "2026-05-28T14:01:39-05:00",
+    "pubDate": "2026-09-10T18:28:11-05:00",
     "eventDate": "September 15, 2026",
     "eventTime": "07:00 PM",
     "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
     "board": "Planning Board",
     "sortDate": "2026-09-15T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2901
+  },
+  {
+    "title": "Beverly Golf and Tennis Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3884",
+    "pubDate": "2026-09-10T13:28:52-05:00",
+    "eventDate": "September 15, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-15T00:00:00+00:00",
+    "agendaDocId": 2898
   },
   {
     "title": "Historic Districts Commission Meeting",
@@ -134,13 +101,13 @@
   {
     "title": "Community Preservation Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3572",
-    "pubDate": "2026-05-28T11:33:40-05:00",
+    "pubDate": "2026-09-10T17:01:07-05:00",
     "eventDate": "September 17, 2026",
     "eventTime": "07:00 PM",
     "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-09-17T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2900
   },
   {
     "title": "Regular City Council Meeting",
