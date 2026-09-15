@@ -1,49 +1,5 @@
 [
   {
-    "title": "Beverly City Council Budget/Management Analyst Preliminary Screening Committee Meeting Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3880",
-    "pubDate": "2026-09-09T15:33:39-05:00",
-    "eventDate": "September 14, 2026",
-    "eventTime": "08:30 AM",
-    "location": "Beverly, MA 01915",
-    "board": "City Council",
-    "sortDate": "2026-09-14T00:00:00+00:00",
-    "agendaDocId": 2893
-  },
-  {
-    "title": "Beverly Regional Airport Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3879",
-    "pubDate": "2026-09-09T12:36:10-05:00",
-    "eventDate": "September 14, 2026",
-    "eventTime": "04:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-14T00:00:00+00:00",
-    "agendaDocId": 2892
-  },
-  {
-    "title": "Beverly Regional Airport Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3882",
-    "pubDate": "2026-09-09T16:08:02-05:00",
-    "eventDate": "September 14, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-14T00:00:00+00:00",
-    "agendaDocId": 2895
-  },
-  {
-    "title": "Deficit Reduction Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3883",
-    "pubDate": "2026-09-10T08:37:23-05:00",
-    "eventDate": "September 14, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-14T00:00:00+00:00",
-    "agendaDocId": 2896
-  },
-  {
     "title": "Conservation Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3603",
     "pubDate": "2026-09-10T14:17:43-05:00",
@@ -88,6 +44,17 @@
     "agendaDocId": 2906
   },
   {
+    "title": "Clean Energy Advisory Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3881",
+    "pubDate": "2026-09-09T15:43:47-05:00",
+    "eventDate": "September 16, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-16T00:00:00+00:00",
+    "agendaDocId": 2894
+  },
+  {
     "title": "Board of Health Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3886",
     "pubDate": "2026-09-14T08:37:52-05:00",
@@ -108,17 +75,6 @@
     "board": "Historic District Commission",
     "sortDate": "2026-09-16T00:00:00+00:00",
     "agendaDocId": 2905
-  },
-  {
-    "title": "Clean Energy Advisory Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3881",
-    "pubDate": "2026-09-09T15:43:47-05:00",
-    "eventDate": "September 16, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-16T00:00:00+00:00",
-    "agendaDocId": 2894
   },
   {
     "title": "Harbor Management Authority Meeting",
