@@ -1,38 +1,5 @@
 [
   {
-    "title": "Conservation Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3603",
-    "pubDate": "2026-09-10T14:17:43-05:00",
-    "eventDate": "September 15, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Conservation Commission",
-    "sortDate": "2026-09-15T00:00:00+00:00",
-    "agendaDocId": 2899
-  },
-  {
-    "title": "Planning Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3630",
-    "pubDate": "2026-09-10T18:28:11-05:00",
-    "eventDate": "September 15, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
-    "board": "Planning Board",
-    "sortDate": "2026-09-15T00:00:00+00:00",
-    "agendaDocId": 2901
-  },
-  {
-    "title": "Beverly Golf and Tennis Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3884",
-    "pubDate": "2026-09-10T13:28:52-05:00",
-    "eventDate": "September 15, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-15T00:00:00+00:00",
-    "agendaDocId": 2898
-  },
-  {
     "title": "Beverly City Council Budget/Management Analyst Preliminary Screening Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3887",
     "pubDate": "2026-09-14T10:52:24-05:00",
@@ -42,6 +9,17 @@
     "board": "City Council",
     "sortDate": "2026-09-16T00:00:00+00:00",
     "agendaDocId": 2906
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3526",
+    "pubDate": "2026-09-14T10:21:43-05:00",
+    "eventDate": "September 16, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly City Hall, Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
+    "board": "Historic District Commission",
+    "sortDate": "2026-09-16T00:00:00+00:00",
+    "agendaDocId": 2905
   },
   {
     "title": "Clean Energy Advisory Committee Meeting",
@@ -66,17 +44,6 @@
     "agendaDocId": 2904
   },
   {
-    "title": "Historic Districts Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3526",
-    "pubDate": "2026-09-14T10:21:43-05:00",
-    "eventDate": "September 16, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly City Hall, Conference Room A<br>191 Cabot StreetBeverly, MA 01915",
-    "board": "Historic District Commission",
-    "sortDate": "2026-09-16T00:00:00+00:00",
-    "agendaDocId": 2905
-  },
-  {
     "title": "Harbor Management Authority Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3885",
     "pubDate": "2026-09-14T08:32:27-05:00",
@@ -99,6 +66,17 @@
     "agendaDocId": 2900
   },
   {
+    "title": "Human Rights Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3888",
+    "pubDate": "2026-09-15T13:54:57-05:00",
+    "eventDate": "September 17, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-17T00:00:00+00:00",
+    "agendaDocId": 2907
+  },
+  {
     "title": "Regular City Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3557",
     "pubDate": "2025-12-09T15:48:09-05:00",
@@ -112,13 +90,13 @@
   {
     "title": "Zoning Board of Appeals Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3801",
-    "pubDate": "2026-06-17T10:43:48-05:00",
+    "pubDate": "2026-09-16T10:49:32-05:00",
     "eventDate": "September 23, 2026",
     "eventTime": "07:00 PM",
     "location": "Beverly, MA 01915",
     "board": "Zoning Board of Appeals",
     "sortDate": "2026-09-23T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2908
   },
   {
     "title": "Economic and Community Development Council Meeting",
@@ -129,6 +107,17 @@
     "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-09-24T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Open Space and Recreation Committee Special Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3878",
+    "pubDate": "2026-09-08T10:40:16-05:00",
+    "eventDate": "September 30, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly Public Library Fogg Room <br>32 Essex StreetBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-30T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
