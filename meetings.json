@@ -1,5 +1,41 @@
 [
   {
+    "title": "Board of Trustees-Beverly Public Library Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2913",
+    "pubDate": "2026-09-17T13:59:42-05:00",
+    "desc": "",
+    "board": "Library Board of Trustees",
+    "type": "agenda",
+    "docId": 2913
+  },
+  {
+    "title": "Commission on Disabilities Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2845",
+    "pubDate": "2026-09-17T13:30:32-05:00",
+    "desc": "Commission on Disabilities Meeting Agenda Update: Minutes added or updated",
+    "board": "Commission on Disabilities",
+    "type": "minutes",
+    "docId": 2845
+  },
+  {
+    "title": "Commission on Disabilities Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2911",
+    "pubDate": "2026-09-17T13:28:06-05:00",
+    "desc": "",
+    "board": "Commission on Disabilities",
+    "type": "agenda",
+    "docId": 2911
+  },
+  {
+    "title": "Beverly Golf and Tennis Commission Meeting Agenda",
+    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2863",
+    "pubDate": "2026-09-17T12:56:29-05:00",
+    "desc": "Beverly Golf and Tennis Commission Meeting Agenda Update: Minutes added or updated",
+    "board": "Other",
+    "type": "minutes",
+    "docId": 2863
+  },
+  {
     "title": "Harbor Management Authority Meeting Agenda",
     "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2880",
     "pubDate": "2026-09-17T09:17:28-05:00",
@@ -214,23 +250,5 @@
     "board": "Other",
     "type": "minutes",
     "docId": 2859
-  },
-  {
-    "title": "Salem and Beverly Water Supply Board Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2891",
-    "pubDate": "2026-09-03T17:44:23-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2891
-  },
-  {
-    "title": "Parking and Traffic Commission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2889",
-    "pubDate": "2026-09-03T15:20:45-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2889
   }
 ]

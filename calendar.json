@@ -1,47 +1,25 @@
 [
   {
-    "title": "Community Preservation Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3572",
-    "pubDate": "2026-09-10T17:01:07-05:00",
-    "eventDate": "September 17, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-17T00:00:00+00:00",
-    "agendaDocId": 2900
-  },
-  {
-    "title": "Human Rights Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3888",
-    "pubDate": "2026-09-15T13:54:57-05:00",
-    "eventDate": "September 17, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-17T00:00:00+00:00",
-    "agendaDocId": 2907
-  },
-  {
     "title": "Regular City Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3557",
-    "pubDate": "2025-12-09T15:48:09-05:00",
+    "pubDate": "2026-09-17T18:03:23-05:00",
     "eventDate": "September 21, 2026",
     "eventTime": "07:00 PM",
     "location": "Beverly, MA 01915",
     "board": "City Council",
     "sortDate": "2026-09-21T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2914
   },
   {
     "title": "Trustees of the Beverly Public Library",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3890",
-    "pubDate": "2026-09-17T11:13:10-05:00",
+    "pubDate": "2026-09-17T14:00:03-05:00",
     "eventDate": "September 22, 2026",
     "eventTime": "06:00 PM",
     "location": "32 Essex StBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-09-22T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2913
   },
   {
     "title": "Zoning Board of Appeals Meeting",
@@ -57,13 +35,35 @@
   {
     "title": "Economic and Community Development Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3665",
-    "pubDate": "2026-09-16T15:50:19-05:00",
+    "pubDate": "2026-09-17T15:49:43-05:00",
     "eventDate": "September 24, 2026",
     "eventTime": "08:30 AM",
-    "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
+    "location": "City Council Chambers<br>191 Cabot StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-09-24T00:00:00+00:00",
     "agendaDocId": 2909
+  },
+  {
+    "title": "Budget/Managment Analyst Preliminary Screening Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3892",
+    "pubDate": "2026-09-18T07:33:45-05:00",
+    "eventDate": "September 24, 2026",
+    "eventTime": "09:00 AM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-24T00:00:00+00:00",
+    "agendaDocId": 2915
+  },
+  {
+    "title": "Commission on Disabilities Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3891",
+    "pubDate": "2026-09-17T13:28:20-05:00",
+    "eventDate": "September 24, 2026",
+    "eventTime": "12:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Commission on Disabilities",
+    "sortDate": "2026-09-24T00:00:00+00:00",
+    "agendaDocId": 2911
   },
   {
     "title": "Board of Assessors Meeting",
@@ -75,6 +75,28 @@
     "board": "Other",
     "sortDate": "2026-09-24T00:00:00+00:00",
     "agendaDocId": 2910
+  },
+  {
+    "title": "Budget/Managment Analyst Preliminary Screening Committee Meeting !",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3894",
+    "pubDate": "2026-09-18T07:43:03-05:00",
+    "eventDate": "September 28, 2026",
+    "eventTime": "09:00 AM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-28T00:00:00+00:00",
+    "agendaDocId": 2919
+  },
+  {
+    "title": "Budget/Managment Analyst Preliminary Screening Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3893",
+    "pubDate": "2026-09-18T07:42:18-05:00",
+    "eventDate": "September 28, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-28T00:00:00+00:00",
+    "agendaDocId": 2918
   },
   {
     "title": "Open Space and Recreation Committee Special Meeting",
