@@ -22,6 +22,17 @@
     "agendaDocId": 2913
   },
   {
+    "title": "Regular City Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3896",
+    "pubDate": "2026-09-21T10:01:32-05:00",
+    "eventDate": "September 22, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "City Council",
+    "sortDate": "2026-09-22T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
     "title": "South Essex Sewerage District Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3895",
     "pubDate": "2026-09-18T10:52:38-05:00",
@@ -31,6 +42,17 @@
     "board": "Other",
     "sortDate": "2026-09-23T00:00:00+00:00",
     "agendaDocId": 2920
+  },
+  {
+    "title": "Beverly Airport Subcommittee on Mission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3904",
+    "pubDate": "2026-09-21T11:57:38-05:00",
+    "eventDate": "September 23, 2026",
+    "eventTime": "02:45 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-23T00:00:00+00:00",
+    "agendaDocId": 2921
   },
   {
     "title": "Zoning Board of Appeals Meeting",
@@ -64,6 +86,17 @@
     "board": "Other",
     "sortDate": "2026-09-24T00:00:00+00:00",
     "agendaDocId": 2915
+  },
+  {
+    "title": "Beverly Housing Authority Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3905",
+    "pubDate": "2026-09-21T12:01:44-05:00",
+    "eventDate": "September 24, 2026",
+    "eventTime": "11:00 AM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-24T00:00:00+00:00",
+    "agendaDocId": 2922
   },
   {
     "title": "Commission on Disabilities Meeting",
@@ -118,6 +151,17 @@
     "location": "Beverly Public Library Fogg Room <br>32 Essex StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-09-30T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3558",
+    "pubDate": "2025-12-09T15:48:32-05:00",
+    "eventDate": "October 5, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "City Council",
+    "sortDate": "2026-10-05T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
