@@ -10,6 +10,7 @@ Usage:
     python3 fetch_data.py
 """
 
+import html as html_lib
 import json
 import re
 import urllib.request
@@ -186,7 +187,7 @@ def fetch_council_agendas() -> list:
         if not agenda:
             continue
         doc_id   = int(agenda.group(1))
-        title    = clean_title(re.sub(r"\s+", " ", agenda.group(2)))
+        title    = clean_title(html_lib.unescape(re.sub(r"\s+", " ", agenda.group(2))))
         pub_date = parse_posted(posted.group(1)) if posted else ""
         items.append({
             "title":   title,
