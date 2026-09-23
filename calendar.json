@@ -1,27 +1,5 @@
 [
   {
-    "title": "Trustees of the Beverly Public Library",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3890",
-    "pubDate": "2026-09-17T14:00:03-05:00",
-    "eventDate": "September 22, 2026",
-    "eventTime": "06:00 PM",
-    "location": "32 Essex StBeverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-22T00:00:00+00:00",
-    "agendaDocId": 2913
-  },
-  {
-    "title": "Regular City Council Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3896",
-    "pubDate": "2026-09-21T10:01:32-05:00",
-    "eventDate": "September 22, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "City Council",
-    "sortDate": "2026-09-22T00:00:00+00:00",
-    "agendaDocId": null
-  },
-  {
     "title": "South Essex Sewerage District Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3895",
     "pubDate": "2026-09-18T10:52:38-05:00",
@@ -143,17 +121,6 @@
     "agendaDocId": 2919
   },
   {
-    "title": "Budget/Managment Analyst Preliminary Screening Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3893",
-    "pubDate": "2026-09-18T07:42:18-05:00",
-    "eventDate": "September 28, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-28T00:00:00+00:00",
-    "agendaDocId": 2918
-  },
-  {
     "title": "Deficit Reduction Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3910",
     "pubDate": "2026-09-21T14:40:03-05:00",
@@ -163,6 +130,17 @@
     "board": "Other",
     "sortDate": "2026-09-28T00:00:00+00:00",
     "agendaDocId": 2926
+  },
+  {
+    "title": "Budget/Managment Analyst Preliminary Screening Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3893",
+    "pubDate": "2026-09-18T07:42:18-05:00",
+    "eventDate": "September 28, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-28T00:00:00+00:00",
+    "agendaDocId": 2918
   },
   {
     "title": "Open Space and Recreation Committee Special Meeting",
