@@ -163,7 +163,7 @@
         <div class="tooltip-row"><span>Rate</span><span>${escapeHtml(lot.rate)}</span></div>
         <div class="tooltip-row"><span>Hours</span><span>${escapeHtml(lot.hours)}</span></div>
         <div class="tooltip-row"><span>Pay by</span><span>${escapeHtml(lot.payment)}</span></div>
-        ${lot.passportCode ? `<div class="tooltip-row"><span>Passport code</span><span>${escapeHtml(passportCodeText(lot.passportCode))}</span></div>` : ''}
+        ${lot.passportCode ? `<div class="tooltip-row"><span>Passport code</span><span>${passportCodeHtml(lot.passportCode)}</span></div>` : ''}
         ${isFreeOffHoursSchedule(lot.scheduleType) ? '<div class="tooltip-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
       ` : lot.restriction ? `<div class="tooltip-row"><strong>${escapeHtml(lot.restriction)}</strong></div>`
         : '<div class="tooltip-row"><span class="tbd">Rules not yet confirmed</span></div>'}
@@ -269,23 +269,70 @@
     return `<div class="street-result-row street-result-detail dest-dist">${label} from ${escapeHtml(activeDestination.name)}</div>`;
   }
 
+  function passportCodeChipHtml(code) {
+    const c = escapeHtml(code);
+    return `<button type="button" class="passport-code-chip" data-copy-code="${c}" aria-label="Copy Passport zone code ${c}"><span class="passport-code-text">${c}</span><i class="fa-solid fa-copy" aria-hidden="true"></i></button>`;
+  }
+
   function passportCodeHtml(passportCode) {
     if (!passportCode) return '';
     if (Array.isArray(passportCode)) {
       return `<span class="passport-code-group">${passportCode.map(c =>
-        `<span class="passport-code-row"><span class="passport-code-chip">${escapeHtml(c.code)}</span><span class="street-result-detail">${escapeHtml(c.area)}</span></span>`
+        `<span class="passport-code-row">${passportCodeChipHtml(c.code)}<span class="street-result-detail">${escapeHtml(c.area)}</span></span>`
       ).join('')}</span>`;
     }
-    return `<span class="passport-code-chip">${escapeHtml(passportCode)}</span>`;
+    return passportCodeChipHtml(passportCode);
   }
 
-  function passportCodeText(passportCode) {
-    if (!passportCode) return '';
-    if (Array.isArray(passportCode)) {
-      return passportCode.map(c => `${c.code} (${c.area})`).join(' or ');
-    }
-    return passportCode;
+  function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
   }
+
+  let lastCopiedBtn = null;
+
+  function resetCopyState(btn) {
+    clearTimeout(btn._copyTimeout);
+    btn.classList.remove('is-copied');
+    btn.querySelector('.passport-code-text').textContent = btn.dataset.copyCode;
+    btn.querySelector('i').className = 'fa-solid fa-copy';
+  }
+
+  function copyPassportCode(btn, code) {
+    const showCopied = () => {
+      if (lastCopiedBtn && lastCopiedBtn !== btn) resetCopyState(lastCopiedBtn);
+      lastCopiedBtn = btn;
+      clearTimeout(btn._copyTimeout);
+      btn.classList.add('is-copied');
+      btn.querySelector('.passport-code-text').textContent = 'Copied';
+      btn.querySelector('i').className = 'fa-solid fa-check';
+      btn._copyTimeout = setTimeout(() => {
+        resetCopyState(btn);
+        if (lastCopiedBtn === btn) lastCopiedBtn = null;
+      }, 1500);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(showCopied, () => { if (fallbackCopy(code)) showCopied(); });
+    } else if (fallbackCopy(code)) {
+      showCopied();
+    }
+  }
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.passport-code-chip');
+    if (!btn) return;
+    e.stopPropagation();
+    const code = btn.dataset.copyCode;
+    if (code) copyPassportCode(btn, code);
+  }, true);
 
   // Availability rules sourced from City of Beverly Code of Ordinances, Ch. 270, Art. VII, § 270-66 (accessed July 28, 2026).
   function formatTime(date) {
@@ -421,7 +468,7 @@
       <div class="tooltip-addr"><span class="zoning-swatch" style="background:${zone.color};display:inline-block;margin-right:0.4rem;"></span>${escapeHtml(zone.name)}</div>
       <div class="tooltip-row"><span>Rate</span><span>${escapeHtml(zone.rate)}</span></div>
       <div class="tooltip-row"><span>Hours</span><span>${escapeHtml(zone.hours)}</span></div>
-      ${zone.passportCode ? `<div class="tooltip-row"><span>Passport code</span><span>${escapeHtml(passportCodeText(zone.passportCode))}</span></div>` : ''}
+      ${zone.passportCode ? `<div class="tooltip-row"><span>Passport code</span><span>${passportCodeHtml(zone.passportCode)}</span></div>` : ''}
       ${isFreeOffHoursSchedule(zone.scheduleType) ? '<div class="tooltip-row free-note"><i class="fa-solid fa-check" aria-hidden="true"></i> Free evenings, Sundays, and holidays</div>' : ''}
     `;
   }
