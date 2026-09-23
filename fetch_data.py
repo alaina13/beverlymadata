@@ -26,6 +26,12 @@ AGENDA_FEEDS = [
     {"url": "https://beverlyma.gov/RSSFeed.aspx?ModID=65&CID=City-Council-49", "board": "City Council"},
 ]
 
+# The City Council RSS feed above is empty on the city's side, so council
+# agendas are also read from the City Council section of the Agenda Center page.
+AGENDA_CENTER_URL  = "https://www.beverlyma.gov/AgendaCenter"
+AGENDA_CENTER_BASE = "https://www.beverlyma.gov"
+COUNCIL_CATEGORY   = 49
+
 CALENDAR_FEED = "https://beverlyma.gov/RSSFeed.aspx?ModID=58&CID=All-calendar.xml"
 
 BOARD_RULES = [
@@ -135,9 +141,73 @@ def fetch_agendas() -> list:
                 "docId":    extract_doc_id(link),
             })
 
+    print("  Fetching City Council section of Agenda Center …")
+    try:
+        have = {(x["docId"], x["type"]) for x in items if x["docId"] is not None}
+        council = [x for x in fetch_council_agendas()
+                   if x["docId"] is None or (x["docId"], x["type"]) not in have]
+        items.extend(council)
+        print(f"  → {len(council)} City Council items from Agenda Center")
+    except Exception as e:
+        print(f"  ⚠️  Failed: {e}")
+
     # Sort newest first
     items.sort(key=lambda x: x["pubDate"], reverse=True)
     print(f"  → {len(items)} agenda/minutes items")
+    return items
+
+def parse_posted(text: str) -> str:
+    """Agenda Center 'Posted Sep 21, 2026 2:52 PM' (Eastern) -> ISO string."""
+    from zoneinfo import ZoneInfo
+    try:
+        dt = datetime.strptime(text, "%b %d, %Y %I:%M %p")
+        return dt.replace(tzinfo=ZoneInfo("America/New_York")).isoformat()
+    except ValueError:
+        return ""
+
+def fetch_council_agendas() -> list:
+    """Scrape the City Council section of the Agenda Center page."""
+    req = urllib.request.Request(AGENDA_CENTER_URL, headers={"User-Agent": "BeverlyData/1.0"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        html = resp.read().decode("utf-8", errors="replace")
+
+    start = html.find(f'id="category-panel-{COUNCIL_CATEGORY}"')
+    if start < 0:
+        raise ValueError("City Council section not found on Agenda Center page")
+    end = html.find('id="category-panel-', start + 30)
+    section = html[start:end if end > 0 else None]
+
+    items = []
+    for row in re.findall(r'<tr[^>]*class="catAgendaRow".*?</tr>', section, re.S):
+        text   = re.sub(r"<[^>]+>", " ", row)
+        text   = re.sub(r"\s+", " ", text.replace("&thinsp;", " ").replace("&mdash;", " "))
+        posted = re.search(r"Posted (\w{3} \d{1,2}, \d{4} \d{1,2}:\d{2} [AP]M)", text)
+        agenda = re.search(r'<p>\s*<a[^>]*href="/AgendaCenter/ViewFile/Agenda/_\d+-(\d+)"[^>]*>(.*?)</a>', row, re.S)
+        if not agenda:
+            continue
+        doc_id   = int(agenda.group(1))
+        title    = clean_title(re.sub(r"\s+", " ", agenda.group(2)))
+        pub_date = parse_posted(posted.group(1)) if posted else ""
+        items.append({
+            "title":   title,
+            "link":    f"{AGENDA_CENTER_BASE}/AgendaCenter/PreviousVersions/{doc_id}",
+            "pubDate": pub_date,
+            "desc":    "",
+            "board":   "City Council",
+            "type":    "agenda",
+            "docId":   doc_id,
+        })
+        minutes = re.search(r'href="(/AgendaCenter/ViewFile/Minutes/[^"]+)"', row)
+        if minutes:
+            items.append({
+                "title":   title.replace("Agenda", "Minutes") if "Agenda" in title else f"{title} Minutes",
+                "link":    AGENDA_CENTER_BASE + minutes.group(1),
+                "pubDate": pub_date,
+                "desc":    "",
+                "board":   "City Council",
+                "type":    "minutes",
+                "docId":   None,
+            })
     return items
 
 # ── Calendar fetcher ───────────────────────────────────────────────────────────
