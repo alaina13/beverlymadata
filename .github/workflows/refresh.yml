@@ -21,7 +21,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install anthropic youtube-transcript-api feedparser
+        run: pip install anthropic youtube-transcript-api feedparser pypdf
 
       - name: Fetch meeting data
         run: python3 fetch_data.py

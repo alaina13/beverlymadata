@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import io
 import json
 import os
 import re
@@ -23,6 +24,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import anthropic
+from pypdf import PdfReader, PdfWriter
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
@@ -32,11 +34,16 @@ OUTPUT_FILE   = ROOT / "agenda_text.json"
 CLAUDE_MODEL  = "claude-haiku-4-5-20251001"
 BASE_URL      = "https://www.beverlyma.gov"
 USER_AGENT    = "Mozilla/5.0 (OpenBeverly agenda transcriber)"
-MAX_PDF_BYTES = 20 * 1024 * 1024   # skip oversized agenda packets
+MAX_PDF_BYTES = 60 * 1024 * 1024   # skip oversized files
+AGENDA_PAGES  = 10                 # packets (agenda + all backup) are trimmed to this many front pages
 
 PROMPT = """\
 This PDF is a scanned meeting agenda from the City of Beverly, Massachusetts.
-Transcribe all of its text exactly as written, in reading order.
+Some boards post the full meeting packet, where the agenda is followed by
+supporting documents. Transcribe only the agenda itself, including any
+committee agendas that directly follow it. Stop as soon as supporting
+documents begin (letters, memos, legal notices, orders, applications,
+reports, plans, minutes) and include nothing from them.
 
 Rules:
 - Keep the original wording, spelling, numbering, and line breaks.
@@ -53,10 +60,27 @@ def fetch(url: str) -> bytes:
 
 
 def pdf_url(doc: dict) -> str | None:
-    """The meetings.json link is a 'PreviousVersions' HTML page; find the PDF on it."""
+    """The meetings.json link is a 'PreviousVersions' HTML page; find the agenda PDF on it.
+    Packet links (the agenda plus all supporting documents) are skipped."""
     html = fetch(doc["link"]).decode("utf-8", errors="replace")
-    m = re.search(r'href="(/AgendaCenter/ViewFile/Agenda/[^"]+)"', html)
-    return BASE_URL + m.group(1) if m else None
+    for href in re.findall(r'href="(/AgendaCenter/ViewFile/Agenda/[^"]+)"', html):
+        if "packet" not in href.lower():
+            return BASE_URL + href
+    return None
+
+
+def front_pages(pdf: bytes) -> tuple[bytes, int]:
+    """Trim a long packet to its first AGENDA_PAGES pages. Returns (pdf, original page count)."""
+    reader = PdfReader(io.BytesIO(pdf))
+    total = len(reader.pages)
+    if total <= AGENDA_PAGES:
+        return pdf, total
+    writer = PdfWriter()
+    for page in reader.pages[:AGENDA_PAGES]:
+        writer.add_page(page)
+    out = io.BytesIO()
+    writer.write(out)
+    return out.getvalue(), total
 
 
 def transcribe(client: anthropic.Anthropic, pdf: bytes) -> str:
@@ -136,6 +160,8 @@ def main():
                 raise ValueError("download was not a PDF")
             if len(pdf) > MAX_PDF_BYTES:
                 raise ValueError(f"PDF too large ({len(pdf) // 1024 // 1024} MB)")
+            pdf, pages = front_pages(pdf)
+            entry["pages"] = pages
             entry["pdf"] = url
             entry["text"] = transcribe(client, pdf)
             print(f"    ✓ {len(entry['text'].split())} words\n")
