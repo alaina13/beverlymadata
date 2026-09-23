@@ -145,12 +145,12 @@
       <div class="stat-sub" id="belowStandardShare">&nbsp;</div>
     </div>
     <div class="stat-card">
-      <div class="stat-label">Annual Upkeep Benchmark</div>
+      <div class="stat-label">Estimated Annual Road Need</div>
       <div class="stat-value" id="belowStandardCost">—</div>
-      <div class="stat-sub">Not a repair-cost estimate — see note below</div>
+      <div class="stat-sub">Not a repair-cost estimate. See note below.</div>
     </div>
   </div>
-  <p class="chart-note">Open Beverly doesn't have a reliable estimate of what it would cost to repair these specific <span id="belowStandardMilesInline">—</span>. Actual repair cost depends heavily on what treatment each segment needs, resurfacing is far cheaper than full reconstruction, and the city's data doesn't specify which each segment requires. The figure above is a different, related measure: a statewide benchmark for the ongoing cost of routine upkeep, resurfacing, and reconstruction, averaged over a road's lifetime, applied to this mileage. It shows how much of the city's overall road-upkeep need is tied up in below-standard streets, not what it would cost to fix them today. See the <a href="/capital.html">Capital Plan</a> for the city's actual road paving budget, and <a href="/sources.html">Sources</a> for the underlying MMA benchmark.</p>
+  <p class="chart-note">Open Beverly doesn't have a reliable estimate of what it would cost to repair these specific <span id="belowStandardMilesInline">—</span>. Actual repair cost depends heavily on what treatment each segment needs, resurfacing is far cheaper than full reconstruction, and the city's data doesn't specify which each segment requires. The figure above is a different, related measure: the annual road budget Massachusetts cities and towns report needing to keep local roads in a state of good repair (MMA statewide survey), divided across local road miles and applied to this mileage. It is an Open Beverly estimate of how much of a typical annual road budget need corresponds to below-standard streets, not what it would cost to fix them today. See the <a href="/capital.html">Capital Plan</a> for the city's actual road paving budget, and <a href="/sources.html#src-mma">Sources</a> for the underlying MMA survey.</p>
 
   <!-- ── Worst-rated streets ── -->
   <div class="section-header">
@@ -192,7 +192,7 @@
     <strong>Data sources</strong><br>
     Citywide Pavement Condition Index (PCI) inventory: City of Beverly GIS (BeverlyGIS), Beverly Streets ArcGIS web application, streets_cyvl_update feature layer, accessed July 13, 2026.<br>
     Property addresses: City of Beverly Assessor's parcel data. Address-to-segment matching is an Open Beverly estimate based on nearest surveyed segment to each parcel's location, not a city-provided join.<br>
-    Road cost per mile: Open Beverly estimate of about $22,833 per mile per year, derived from the Massachusetts Municipal Association's 2018 Chapter 90 survey ($685 million per year in reported need across about 30,000 miles of local roads). MMA does not publish a per-mile figure. Also used in Open Beverly's <a href="/property.html">property map</a> net-revenue estimate. See <a href="/sources.html">Sources</a>.<br>
+    Road cost per mile: Open Beverly estimate of about $28,633 per mile per year, derived from the Massachusetts Municipal Association's most recent Chapter 90 survey, as reported January 24, 2025 ($859 million per year in reported need across about 30,000 miles of local roads). MMA does not publish a per-mile figure. Also used in Open Beverly's <a href="/property.html">property map</a> net-revenue estimate. See <a href="/sources.html">Sources</a>.<br>
     Open Beverly is an independent civic project. All data sourced from public records.
   </div>
 
@@ -406,7 +406,7 @@
       `Local streets, which make up ${totals['Local'].count.toLocaleString()} of the city's ${SEGMENTS.length.toLocaleString()} tracked segments, average a PCI of ${local.toFixed(1)}, in the ${pciToConditionTier(local)} tier. Principal arterials average ${arterial.toFixed(1)}, in the ${pciToConditionTier(arterial)} tier.`;
   }
 
-  const MMA_COST_PER_MILE_PER_YEAR = 22833; // Open Beverly estimate: MMA 2018 survey $685M/yr need / 30,000 local road miles; see Sources #21.
+  const MMA_COST_PER_MILE_PER_YEAR = 28633; // Open Beverly estimate: MMA survey (reported Jan 24, 2025) $859M/yr need / 30,000 local road miles; see Sources #21.
 
   function renderBelowStandard() {
     const withPci = SEGMENTS.filter(s => s.condition);
@@ -573,7 +573,7 @@
       return;
     }
 
-    // No exact address match — fall back to the street-level result for the street portion of the query.
+    // No exact address match: fall back to the street-level result for the street portion of the query.
     const streetPortion = normalizeStreetName(rawQuery.replace(/^\s*\d+[A-Za-z]?(?:\s*-\s*\d+[A-Za-z]?)?\s*/, ''));
     const streetEntry = streetPortion.length >= 2 ? STREET_MAP[streetPortion] : null;
     if (streetEntry) {
@@ -620,7 +620,7 @@
       searchInput.placeholder = 'e.g. 191 Cabot St, Hale Street, Wellman…';
     })
     .catch(err => {
-      searchInput.placeholder = 'Street data failed to load — try refreshing';
+      searchInput.placeholder = 'Street data failed to load. Try refreshing.';
       console.error('Failed to load pavement data', err);
     });
 </script>
