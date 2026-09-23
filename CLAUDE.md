@@ -3,7 +3,7 @@
 ## Project
 
 Static civic transparency site for Beverly, MA. Plain HTML/CSS/JS, no build step.
-Deployed to GitHub Pages: https://alaina13.github.io/beverlymadata/ (repo: alaina13/beverlymadata)
+Deployed to GitHub Pages at https://openbeverly.org/ (custom domain via `CNAME`; repo: alaina13/beverlymadata; the old alaina13.github.io/beverlymadata URL redirects there)
 Local preview: `python3 -m http.server 8765 --directory /Users/alainapitt/beverlydata` on port 8765.
 
 ## Stack
