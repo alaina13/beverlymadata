@@ -2530,6 +2530,75 @@ blockquote cite {
   color: var(--text);
 }
 
+/* Data sources panel, pinned to the top-right corner of every map */
+.map-sources {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 20;
+  max-width: calc(100% - 24px);
+  font-size: 0.78rem;
+  color: var(--text);
+}
+.map-sources > summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  width: max-content;
+  list-style: none;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.map-sources > summary::-webkit-details-marker { display: none; }
+.map-sources > summary i { color: var(--blue); }
+.map-sources > summary:hover,
+.map-sources > summary:focus-visible { border-color: var(--blue); }
+.map-sources > summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.map-sources[open] > summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.map-sources-panel {
+  width: 320px;
+  max-width: 100%;
+  max-height: min(60vh, 460px);
+  overflow-y: auto;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px 0 8px 8px;
+  margin-top: -1px;
+  padding: 0.75rem 0.9rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  line-height: 1.45;
+}
+.map-sources-list { list-style: none; margin: 0; padding: 0; }
+.map-sources-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+.map-sources-list li:first-child { padding-top: 0; }
+.map-sources-list a { color: var(--blue); font-weight: 600; }
+.map-sources-list .map-sources-layer {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 0.1rem;
+}
+.map-sources-list .map-sources-meta { display: block; color: var(--muted); margin-top: 0.15rem; }
+.map-sources-list .map-sources-date { display: flex; align-items: center; gap: 0.35rem; margin-top: 0.3rem; font-size: 0.72rem; font-weight: 600; color: var(--muted); }
+.map-sources-list .map-sources-date i { font-size: 0.9em; }
+.map-sources-note { color: var(--muted); margin: 0.6rem 0 0; }
+.map-sources-note a,
+.map-sources-all { color: var(--blue); }
+.map-sources-all { display: inline-block; font-weight: 600; margin-top: 0.6rem; }
+
+/* Deep links from map panels land on a highlighted bibliography entry */
+.bib-entry { scroll-margin-top: 80px; }
+.bib-entry:target { background: var(--tag-bg); border-radius: 6px; box-shadow: 0 0 0 0.5rem var(--tag-bg); }
+
 .mob-sidebar-close {
   display: none;
   width: 100%;

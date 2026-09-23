@@ -154,6 +154,18 @@
     <button class="mob-controls-btn" id="mob-controls-btn" aria-label="Map controls">
       <i class="fa-solid fa-sliders" aria-hidden="true"></i> Controls
     </button>
+    <details class="map-sources">
+      <summary><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Data sources</summary>
+      <div class="map-sources-panel">
+        <ul class="map-sources-list">
+          <li><span class="map-sources-layer">Parcel value</span><a href="https://gis.data.mass.gov/datasets/massgis::massachusetts-property-tax-parcels/about" target="_blank" rel="noopener">MassGIS Property Tax Parcels</a><span class="map-sources-meta">Massachusetts Office of Geographic Information. FY2026 assessed values, land use, lot size, and parcel boundaries.</span><span class="map-sources-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last accessed June 29, 2026</span></li>
+          <li><span class="map-sources-layer">Net revenue</span><a href="/sources.html#methodology">Open Beverly estimate</a><span class="map-sources-meta">Annual tax minus allocated road, water, and sewer cost. Inputs: MassDOT Road Inventory (2024), MMA road cost benchmark, Water and Sewer Enterprise totals from the <a href="https://www.beverlyma.gov/DocumentCenter/View/7440/Proposed-FY-2027-City-Budget" target="_blank" rel="noopener">Proposed FY2027 Budget</a>.</span><span class="map-sources-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last calculated July 6, 2026</span></li>
+          <li><span class="map-sources-layer">Zoning, overlay, and historic districts</span><a href="https://beverlyma.maps.arcgis.com/apps/instant/sidebar/index.html?appid=d1979c4c33e14adc8fe8f448b8dcb086" target="_blank" rel="noopener">City of Beverly Zoning Map (BeverlyGIS)</a><span class="map-sources-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last accessed July 16, 2026</span></li>
+          <li><span class="map-sources-layer">Basemap</span><a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO Positron</a><span class="map-sources-meta">Map tiles from CARTO; map data from OpenStreetMap contributors.</span></li>
+        </ul>
+        <a class="map-sources-all" href="/sources.html#src-parcels">Full citations and methodology <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </details>
     <div id="map" role="img" aria-label="Interactive map of Beverly parcels"></div>
     <div id="loading-msg"><div class="spinner"></div>Loading parcels…</div>
     <div class="tooltip" id="tooltip"></div>

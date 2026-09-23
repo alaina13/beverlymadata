@@ -84,6 +84,16 @@
     <button class="mob-controls-btn" id="mob-controls-btn" aria-label="Map controls">
       <i class="fa-solid fa-sliders" aria-hidden="true"></i> Controls
     </button>
+    <details class="map-sources">
+      <summary><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Data sources</summary>
+      <div class="map-sources-panel">
+        <ul class="map-sources-list">
+          <li><span class="map-sources-layer">Street width</span><a href="https://services1.arcgis.com/IVwtHDf2UjOF6PcX/arcgis/rest/services/Combined_gdb/FeatureServer/83" target="_blank" rel="noopener">City of Beverly street pavement polygons (BeverlyGIS)</a><span class="map-sources-meta">Street_MasterPoly layer: width, lanes, pavement type, sidewalks, and curbs per segment.</span><span class="map-sources-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last accessed July 16, 2026</span></li>
+          <li><span class="map-sources-layer">Basemap</span><a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO Positron</a><span class="map-sources-meta">Map tiles from CARTO; map data from OpenStreetMap contributors.</span></li>
+        </ul>
+        <a class="map-sources-all" href="/sources.html#src-street-width">Full citations <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </details>
     <div id="map" role="img" aria-label="Interactive map of Beverly street widths"></div>
     <div id="loading-msg"><div class="spinner"></div>Loading streets…</div>
     <div class="tooltip" id="tooltip"></div>

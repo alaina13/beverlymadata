@@ -88,6 +88,19 @@
   </div>
 
   <div style="position:relative;flex:1;">
+    <details class="map-sources">
+      <summary><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Data sources</summary>
+      <div class="map-sources-panel">
+        <ul class="map-sources-list">
+          <li><span class="map-sources-layer">Lots, zones, rates, and hours</span><a href="https://www.parkbeverly.com/visitors" target="_blank" rel="noopener">parkbeverly.com</a><span class="map-sources-meta">City of Beverly Parking Program (Passport Labs). See also the <a href="https://www.parkbeverly.com/s/Downtown-District-2024" target="_blank" rel="noopener">official parking map</a>.</span><span class="map-sources-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last accessed July 27, 2026</span></li>
+          <li><span class="map-sources-layer">Free and restricted times</span><a href="https://ecode360.com/29283081" target="_blank" rel="noopener">Beverly Code of Ordinances, Ch. 270, Art. VII, § 270-66</a><span class="map-sources-meta">After-hours, Sunday/holiday, and City Hall Lot rules.</span><span class="map-sources-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last accessed July 28, 2026</span></li>
+          <li><span class="map-sources-layer">Lot pin locations</span><a href="https://gis.data.mass.gov/datasets/massgis::massachusetts-property-tax-parcels/about" target="_blank" rel="noopener">MassGIS Property Tax Parcels</a><span class="map-sources-meta">Open Beverly estimate: matched to the nearest city-owned parcel near each cross street named by the city. Not surveyed coordinates.</span><span class="map-sources-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last accessed June 29, 2026</span></li>
+          <li><span class="map-sources-layer">Destination search</span><a href="https://nominatim.openstreetmap.org/" target="_blank" rel="noopener">OpenStreetMap Nominatim</a><span class="map-sources-meta">Named destinations. Typed street addresses are matched against MassGIS parcel addresses.</span><span class="map-sources-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last accessed July 28, 2026</span></li>
+          <li><span class="map-sources-layer">Basemap</span><a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO Positron</a><span class="map-sources-meta">Map tiles from CARTO; map data from OpenStreetMap contributors.</span></li>
+        </ul>
+        <a class="map-sources-all" href="/sources.html#src-parking">Full citations <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </details>
     <div id="map" role="img" aria-label="Interactive map of downtown Beverly parking locations"></div>
     <div id="loading-msg"><div class="spinner"></div>Loading parking data…</div>
   </div>
