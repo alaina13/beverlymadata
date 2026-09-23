@@ -35,6 +35,11 @@ jobs:
       - name: Refresh AI summaries (new videos only)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # YouTube blocks transcript requests from GitHub's IPs; set one of these
+          # repo secrets to route them through a proxy.
+          WEBSHARE_PROXY_USERNAME: ${{ secrets.WEBSHARE_PROXY_USERNAME }}
+          WEBSHARE_PROXY_PASSWORD: ${{ secrets.WEBSHARE_PROXY_PASSWORD }}
+          YT_PROXY_URL: ${{ secrets.YT_PROXY_URL }}
         run: python3 summarize.py --max 10
 
       - name: Commit updated data files

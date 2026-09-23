@@ -24,6 +24,7 @@ from pathlib import Path
 import anthropic
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import TranscriptsDisabled, NoTranscriptFound
+from youtube_transcript_api.proxies import GenericProxyConfig, WebshareProxyConfig
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
@@ -140,16 +141,30 @@ def fetch_channel_videos(max_videos: int) -> list[dict]:
     return videos
 
 
+def proxy_config():
+    """YouTube blocks transcript requests from cloud IPs (e.g. GitHub Actions).
+    Route them through a proxy when one is configured in the environment."""
+    ws_user = os.environ.get("WEBSHARE_PROXY_USERNAME")
+    ws_pass = os.environ.get("WEBSHARE_PROXY_PASSWORD")
+    if ws_user and ws_pass:
+        return WebshareProxyConfig(proxy_username=ws_user, proxy_password=ws_pass)
+    url = os.environ.get("YT_PROXY_URL")
+    if url:
+        return GenericProxyConfig(http_url=url, https_url=url)
+    return None
+
+
 def fetch_transcript(video_id: str):
     """Return the transcript as a single string, or None if unavailable."""
     try:
-        api = YouTubeTranscriptApi()
+        api = YouTubeTranscriptApi(proxy_config=proxy_config())
         segments = api.fetch(video_id)
         return " ".join(s.text for s in segments)
-    except (TranscriptsDisabled, NoTranscriptFound):
+    except (TranscriptsDisabled, NoTranscriptFound) as e:
+        print(f"    ⚠️  {type(e).__name__}")
         return None
     except Exception as e:
-        print(f"    ⚠️  Transcript error: {e}")
+        print(f"    ⚠️  Transcript error ({type(e).__name__}): {e}")
         return None
 
 
@@ -223,7 +238,10 @@ def main():
         vid = video["video_id"]
         print(f"[{i}/{len(videos)}] {video['title']}")
 
-        if vid in summaries and not args.force:
+        # Entries saved with an error are retried: the transcript may not have
+        # existed yet (videos are often posted before the meeting) or the
+        # request may have been blocked.
+        if vid in summaries and not summaries[vid].get("error") and not args.force:
             print("    ✓ Already summarized — skipping\n")
             continue
 
