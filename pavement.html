@@ -192,7 +192,7 @@
     <strong>Data sources</strong><br>
     Citywide Pavement Condition Index (PCI) inventory: City of Beverly GIS (BeverlyGIS), Beverly Streets ArcGIS web application, streets_cyvl_update feature layer, accessed July 13, 2026.<br>
     Property addresses: City of Beverly Assessor's parcel data. Address-to-segment matching is an Open Beverly estimate based on nearest surveyed segment to each parcel's location, not a city-provided join.<br>
-    Lifecycle-maintenance cost benchmark: Massachusetts Municipal Association (MMA), approximately $22,833 per centerline mile per year, also used in Open Beverly's <a href="/property.html">property map</a> net-revenue estimate. See <a href="/sources.html">Sources</a>.<br>
+    Road cost per mile: Open Beverly estimate of about $22,833 per mile per year, derived from the Massachusetts Municipal Association's 2018 Chapter 90 survey ($685 million per year in reported need across about 30,000 miles of local roads). MMA does not publish a per-mile figure. Also used in Open Beverly's <a href="/property.html">property map</a> net-revenue estimate. See <a href="/sources.html">Sources</a>.<br>
     Open Beverly is an independent civic project. All data sourced from public records.
   </div>
 
@@ -406,7 +406,7 @@
       `Local streets, which make up ${totals['Local'].count.toLocaleString()} of the city's ${SEGMENTS.length.toLocaleString()} tracked segments, average a PCI of ${local.toFixed(1)}, in the ${pciToConditionTier(local)} tier. Principal arterials average ${arterial.toFixed(1)}, in the ${pciToConditionTier(arterial)} tier.`;
   }
 
-  const MMA_COST_PER_MILE_PER_YEAR = 22833; // MMA statewide lifecycle-maintenance benchmark; see Sources.
+  const MMA_COST_PER_MILE_PER_YEAR = 22833; // Open Beverly estimate: MMA 2018 survey $685M/yr need / 30,000 local road miles; see Sources #21.
 
   function renderBelowStandard() {
     const withPci = SEGMENTS.filter(s => s.condition);
