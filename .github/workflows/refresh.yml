@@ -21,7 +21,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install anthropic youtube-transcript-api feedparser
+        run: pip install feedparser
 
       - name: Fetch meeting data
         run: python3 fetch_data.py
@@ -32,20 +32,10 @@ jobs:
       - name: Track Street Paving page
         run: python3 fetch_street_paving.py
 
-      - name: Refresh AI summaries (new videos only)
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          # YouTube blocks transcript requests from GitHub's IPs; set one of these
-          # repo secrets to route them through a proxy.
-          WEBSHARE_PROXY_USERNAME: ${{ secrets.WEBSHARE_PROXY_USERNAME }}
-          WEBSHARE_PROXY_PASSWORD: ${{ secrets.WEBSHARE_PROXY_PASSWORD }}
-          YT_PROXY_URL: ${{ secrets.YT_PROXY_URL }}
-        run: python3 summarize.py --max 10
-
       - name: Commit updated data files
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add meetings.json calendar.json summaries.json civic_data.json street_paving_history.json
+          git add meetings.json calendar.json civic_data.json street_paving_history.json
           git diff --staged --quiet || git commit -m "chore: refresh data $(date -u '+%Y-%m-%d')"
           git push
