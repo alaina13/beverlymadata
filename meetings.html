@@ -240,6 +240,16 @@
   let archiveBoard  = 'all';
   let archiveType   = 'all';
   let archiveSearch = '';
+  let agendaText = {};
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  function docText(item) {
+    const t = item.docId != null && agendaText[item.docId];
+    return t && t.text ? t.text : '';
+  }
 
   function formatDate(dateStr) {
     const d = new Date(dateStr);
@@ -253,7 +263,8 @@
       const typeMatch   = archiveType  === 'all' || item.type  === archiveType;
       const q = archiveSearch.toLowerCase();
       const searchMatch = !q || item.title.toLowerCase().includes(q) ||
-        item.desc.toLowerCase().includes(q) || item.board.toLowerCase().includes(q);
+        item.desc.toLowerCase().includes(q) || item.board.toLowerCase().includes(q) ||
+        docText(item).toLowerCase().includes(q);
       return boardMatch && typeMatch && searchMatch;
     });
   }
@@ -301,7 +312,9 @@
       return;
     }
 
-    list.innerHTML = items.map(item => `
+    list.innerHTML = items.map(item => {
+      const text = docText(item);
+      return `
       <div class="meeting-card">
         <div class="card-top">
           <div>
@@ -315,7 +328,14 @@
           <span class="tag ${item.type}">${item.type}</span>
           <span class="tag">${item.board}</span>
         </div>
-      </div>`).join('');
+        ${text ? `
+        <details class="agenda-text">
+          <summary class="disclosure-summary">Read agenda text <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+          <p class="agenda-text-note">Text converted automatically from the city's scanned PDF; the PDF is the official record.</p>
+          <div class="agenda-text-body">${escapeHtml(text)}</div>
+        </details>` : ''}
+      </div>`;
+    }).join('');
   }
 
   document.querySelectorAll('[data-type]').forEach(btn => {
@@ -340,6 +360,8 @@
         fetch('events.json?v=' + Date.now()).catch(() => null),
         fetch('meetings.json?v=' + Date.now()),
       ]);
+      const textRes = await fetch('agenda_text.json?v=' + Date.now()).catch(() => null);
+      if (textRes && textRes.ok) agendaText = await textRes.json();
       if (!calRes.ok) throw new Error(`calendar.json HTTP ${calRes.status}`);
       if (!docsRes.ok) throw new Error(`meetings.json HTTP ${docsRes.status}`);
 

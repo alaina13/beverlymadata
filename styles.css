@@ -675,6 +675,11 @@ details[open] > .timeline-summary .fa-chevron-down { transform: rotate(180deg); 
 
 .card-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
 
+.agenda-text { margin-top: 0.75rem; border-top: 1px solid var(--border); padding-top: 0.6rem; }
+.agenda-text > .disclosure-summary { justify-content: flex-start; font-size: 0.85rem; font-weight: 600; color: var(--blue); }
+.agenda-text-note { font-size: 0.78rem; color: var(--muted); margin: 0.5rem 0; }
+.agenda-text-body { font-size: 0.85rem; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
+
 @media (max-width: 700px) {
   .agendas-container { grid-template-columns: 1fr; padding: 1rem; gap: 0; }
   .agendas-container .sidebar { position: static; margin-bottom: 0; }
