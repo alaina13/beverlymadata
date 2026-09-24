@@ -115,8 +115,13 @@ def fetch_channel_videos(max_videos: int) -> list[dict]:
     """Return list of {video_id, title, published, url, body} from channel RSS."""
     print(f"  Fetching channel RSS feed…")
     req = urllib.request.Request(CHANNEL_RSS, headers={"User-Agent": "BeverlyData/1.0"})
-    with urllib.request.urlopen(req, timeout=15) as resp:
-        raw = resp.read()
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            raw = resp.read()
+    except Exception as e:
+        # A feed outage should not fail the daily refresh; keep existing summaries.
+        print(f"  ⚠️  Could not fetch channel feed ({e}); skipping this run.")
+        return []
 
     ns = {
         "atom": "http://www.w3.org/2005/Atom",

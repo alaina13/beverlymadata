@@ -39,6 +39,7 @@ jobs:
       # Adds new meetings from the channel feed. YouTube usually blocks the
       # transcript fetch here, so a daily Claude task fills those entries in.
       - name: Refresh AI summaries (new and previously failed videos)
+        continue-on-error: true  # a failure here shouldn't block the other data updates
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           # YouTube blocks transcript requests from GitHub's IPs; set one of these
@@ -49,6 +50,7 @@ jobs:
         run: python3 summarize.py --max 10
 
       - name: Transcribe scanned agendas (new agendas only)
+        continue-on-error: true  # a failure here shouldn't block the other data updates
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python3 transcribe_agendas.py --max ${{ inputs.agenda_max || 25 }}
