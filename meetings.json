@@ -1,875 +1,3134 @@
 [
   {
-    "title": "Open Space and Recreation Committee Special Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2928",
-    "pubDate": "2026-09-23T13:31:52-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2928
-  },
-  {
-    "title": "Board of Trustees Beverly Public Library Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2858",
-    "pubDate": "2026-09-23T09:43:47-05:00",
-    "desc": "Board of Trustees Beverly Public Library Meeting Agenda Update: Minutes added or updated",
-    "board": "Library Board of Trustees",
-    "type": "minutes",
-    "docId": 2858
-  },
-  {
-    "title": "Board of Trustees Beverly Public Library Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2826",
-    "pubDate": "2026-09-23T09:43:35-05:00",
-    "desc": "Board of Trustees Beverly Public Library Meeting Agenda Update: Minutes added or updated",
-    "board": "Library Board of Trustees",
-    "type": "minutes",
-    "docId": 2826
-  },
-  {
-    "title": "Veterans Advisory Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2923",
-    "pubDate": "2026-09-22T08:45:06-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2923
-  },
-  {
-    "title": "Joint Meeting Legal Affairs/Public Services/Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2927",
-    "pubDate": "2026-09-21T14:52:00-04:00",
-    "desc": "",
+    "title": "Joint Meeting Legal Affairs/Public Services/Committee of the Whole Meeting",
     "board": "City Council",
-    "type": "agenda",
-    "docId": 2927
+    "date": "2026-10-19",
+    "posted": "2026-09-21T14:52:00-04:00",
+    "docId": 2927,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10192026-2927",
+    "minutes": null
   },
   {
-    "title": "Deficit Reduction Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2926",
-    "pubDate": "2026-09-21T14:39:52-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2926
+    "title": "Open Space and Recreation Committee Special Meeting",
+    "board": "Open Space & Recreation Committee",
+    "date": "2026-09-30",
+    "posted": "2026-09-23T13:31:00-04:00",
+    "docId": 2928,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09302026-2928",
+    "minutes": null
   },
   {
-    "title": "Beverly Retirement Board Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2925",
-    "pubDate": "2026-09-21T14:33:36-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2925
+    "title": "Deficit Reduction Committee Meeting",
+    "board": "Deficit Reduction Committee",
+    "date": "2026-09-28",
+    "posted": "2026-09-21T14:39:00-04:00",
+    "docId": 2926,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2926",
+    "minutes": null
   },
   {
-    "title": "Bevelry Housing Authority Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2922",
-    "pubDate": "2026-09-21T12:01:32-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2922
-  },
-  {
-    "title": "Beverly Regional Airport Subcommittee on Mission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2921",
-    "pubDate": "2026-09-21T11:57:28-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2921
-  },
-  {
-    "title": "Planning Board Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2870",
-    "pubDate": "2026-09-21T11:16:17-05:00",
-    "desc": "Planning Board Meeting Agenda Update: Minutes added or updated",
-    "board": "Planning Board",
-    "type": "minutes",
-    "docId": 2870
-  },
-  {
-    "title": "Planning Board Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2842",
-    "pubDate": "2026-09-21T11:16:01-05:00",
-    "desc": "Planning Board Meeting Agenda Update: Minutes added or updated",
-    "board": "Planning Board",
-    "type": "minutes",
-    "docId": 2842
-  },
-  {
-    "title": "Economic and Community Development Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2909",
-    "pubDate": "2026-09-18T12:25:15-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2909
-  },
-  {
-    "title": "South Essex Sewerage District Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2920",
-    "pubDate": "2026-09-18T10:52:28-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2920
-  },
-  {
-    "title": "Budget Managment Analyst Preliminary Screening Commitee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2918",
-    "pubDate": "2026-09-18T07:42:00-04:00",
-    "desc": "",
+    "title": "Budget Managment Analyst Preliminary Screening Commitee Meeting",
     "board": "City Council",
-    "type": "agenda",
-    "docId": 2918
+    "date": "2026-09-28",
+    "posted": "2026-09-18T07:42:00-04:00",
+    "docId": 2918,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2918",
+    "minutes": null
   },
   {
-    "title": "Budget Managment Analyst Preliminary Screening Commitee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2919",
-    "pubDate": "2026-09-18T07:42:00-04:00",
-    "desc": "",
+    "title": "Budget Managment Analyst Preliminary Screening Commitee Meeting",
     "board": "City Council",
-    "type": "agenda",
-    "docId": 2919
+    "date": "2026-09-28",
+    "posted": "2026-09-18T07:42:00-04:00",
+    "docId": 2919,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09282026-2919",
+    "minutes": null
   },
   {
-    "title": "Budget Managment Analyst Preliminary Screening Commitee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2915",
-    "pubDate": "2026-09-18T07:33:00-04:00",
-    "desc": "",
+    "title": "Beverly Retirement Board Meeting",
+    "board": "Contributory Retirement Board",
+    "date": "2026-09-24",
+    "posted": "2026-09-21T14:33:00-04:00",
+    "docId": 2925,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09242026-2925",
+    "minutes": null
+  },
+  {
+    "title": "Veterans Advisory Council Meeting",
+    "board": "Veterans Advisory Committee",
+    "date": "2026-09-24",
+    "posted": "2026-09-21T13:38:00-04:00",
+    "docId": 2923,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09242026-2923",
+    "minutes": null
+  },
+  {
+    "title": "Bevelry Housing Authority Meeting",
+    "board": "Beverly Housing Authority",
+    "date": "2026-09-24",
+    "posted": "2026-09-21T12:01:00-04:00",
+    "docId": 2922,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09242026-2922",
+    "minutes": null
+  },
+  {
+    "title": "Budget Managment Analyst Preliminary Screening Commitee Meeting",
     "board": "City Council",
-    "type": "agenda",
-    "docId": 2915
+    "date": "2026-09-24",
+    "posted": "2026-09-18T07:33:00-04:00",
+    "docId": 2915,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09242026-2915",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2914",
-    "pubDate": "2026-09-17T18:03:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2914
-  },
-  {
-    "title": "Board of Trustees-Beverly Public Library Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2913",
-    "pubDate": "2026-09-17T13:59:42-05:00",
-    "desc": "",
-    "board": "Library Board of Trustees",
-    "type": "agenda",
-    "docId": 2913
-  },
-  {
-    "title": "Commission on Disabilities Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2845",
-    "pubDate": "2026-09-17T13:30:32-05:00",
-    "desc": "Commission on Disabilities Meeting Agenda Update: Minutes added or updated",
+    "title": "Commission on Disabilities Meeting",
     "board": "Commission on Disabilities",
-    "type": "minutes",
-    "docId": 2845
+    "date": "2026-09-24",
+    "posted": "2026-09-17T13:28:00-04:00",
+    "docId": 2911,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09242026-2911",
+    "minutes": null
   },
   {
-    "title": "Commission on Disabilities Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2911",
-    "pubDate": "2026-09-17T13:28:06-05:00",
-    "desc": "",
-    "board": "Commission on Disabilities",
-    "type": "agenda",
-    "docId": 2911
+    "title": "Board of Assessors Meeting",
+    "board": "Board of Assessors",
+    "date": "2026-09-24",
+    "posted": "2026-09-16T15:56:00-04:00",
+    "docId": 2910,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09242026-2910",
+    "minutes": null
   },
   {
-    "title": "Beverly Golf and Tennis Commission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2863",
-    "pubDate": "2026-09-17T12:56:29-05:00",
-    "desc": "Beverly Golf and Tennis Commission Meeting Agenda Update: Minutes added or updated",
-    "board": "Other",
-    "type": "minutes",
-    "docId": 2863
+    "title": "Economic and Community Development Council Meeting",
+    "board": "Economic & Community Development Council",
+    "date": "2026-09-24",
+    "posted": "",
+    "docId": 2909,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09242026-2909",
+    "minutes": null
   },
   {
-    "title": "Harbor Management Authority Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2880",
-    "pubDate": "2026-09-17T09:17:28-05:00",
-    "desc": "Harbor Management Authority Meeting Agenda Update: Minutes added or updated",
-    "board": "Harbor Management Authority",
-    "type": "minutes",
-    "docId": 2880
+    "title": "Beverly Regional Airport Subcommittee on Mission Meeting",
+    "board": "Airport Commission",
+    "date": "2026-09-23",
+    "posted": "2026-09-21T11:57:00-04:00",
+    "docId": 2921,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09232026-2921",
+    "minutes": null
   },
   {
-    "title": "Harbor Management Authority Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2832",
-    "pubDate": "2026-09-17T09:16:59-05:00",
-    "desc": "Harbor Management Authority Meeting Agenda Update: Minutes added or updated",
-    "board": "Harbor Management Authority",
-    "type": "minutes",
-    "docId": 2832
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-09-23",
+    "posted": "2026-09-18T10:52:00-04:00",
+    "docId": 2920,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09232026-2920",
+    "minutes": null
   },
   {
-    "title": "Deficit Reduction Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2878",
-    "pubDate": "2026-09-17T09:05:48-05:00",
-    "desc": "Deficit Reduction Committee Meeting Agenda Update: Minutes added or updated",
-    "board": "Other",
-    "type": "minutes",
-    "docId": 2878
-  },
-  {
-    "title": "Board of Assessors Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2910",
-    "pubDate": "2026-09-16T15:56:52-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2910
-  },
-  {
-    "title": "Zoning Board of Appeals Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2908",
-    "pubDate": "2026-09-16T10:49:22-05:00",
-    "desc": "",
+    "title": "Zoning Board of Appeals Meeting",
     "board": "Zoning Board of Appeals",
-    "type": "agenda",
-    "docId": 2908
+    "date": "2026-09-23",
+    "posted": "2026-09-16T10:49:00-04:00",
+    "docId": 2908,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09232026-2908",
+    "minutes": null
   },
   {
-    "title": "Conservation Commission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2869",
-    "pubDate": "2026-09-16T10:36:54-05:00",
-    "desc": "Conservation Commission Meeting Agenda Update: Minutes added or updated",
-    "board": "Conservation Commission",
-    "type": "minutes",
-    "docId": 2869
+    "title": "Board of Trustees - Beverly Public Library Meeting",
+    "board": "Board of Library Trustees",
+    "date": "2026-09-22",
+    "posted": "2026-09-17T13:59:00-04:00",
+    "docId": 2913,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09222026-2913",
+    "minutes": null
   },
   {
-    "title": "Community Preservation Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2900",
-    "pubDate": "2026-09-15T16:23:45-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2900
-  },
-  {
-    "title": "Human Rights Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2907",
-    "pubDate": "2026-09-15T13:54:48-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2907
-  },
-  {
-    "title": "Beverly City Council Budget/Management Analyst Preliminary Screening Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2906",
-    "pubDate": "2026-09-14T10:52:00-04:00",
-    "desc": "",
+    "title": "Regular City Council Meeting",
     "board": "City Council",
-    "type": "agenda",
-    "docId": 2906
+    "date": "2026-09-21",
+    "posted": "2026-09-17T18:03:00-04:00",
+    "docId": 2914,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09212026-2914",
+    "minutes": null
   },
   {
-    "title": "Community Preservation Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2788",
-    "pubDate": "2026-09-14T10:49:14-05:00",
-    "desc": "Community Preservation Committee Meeting Agenda Update: Minutes added or updated",
-    "board": "Other",
-    "type": "minutes",
-    "docId": 2788
+    "title": "Human Rights Committee Meeting",
+    "board": "Human Rights Committee",
+    "date": "2026-09-17",
+    "posted": "2026-09-15T13:54:00-04:00",
+    "docId": 2907,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09172026-2907",
+    "minutes": null
   },
   {
-    "title": "Historic Districts Commission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2905",
-    "pubDate": "2026-09-14T10:21:32-05:00",
-    "desc": "",
+    "title": "Community Preservation Committee Meeting",
+    "board": "Community Preservation Committee",
+    "date": "2026-09-17",
+    "posted": "",
+    "docId": 2900,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09172026-2900",
+    "minutes": null
+  },
+  {
+    "title": "Beverly City Council Budget/Management Analyst Preliminary Screening Committee Meeting",
+    "board": "City Council",
+    "date": "2026-09-16",
+    "posted": "2026-09-14T10:52:00-04:00",
+    "docId": 2906,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09162026-2906",
+    "minutes": null
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
     "board": "Historic District Commission",
-    "type": "agenda",
-    "docId": 2905
+    "date": "2026-09-16",
+    "posted": "2026-09-14T10:21:00-04:00",
+    "docId": 2905,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09162026-2905",
+    "minutes": null
   },
   {
-    "title": "Board of Health Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2904",
-    "pubDate": "2026-09-14T08:37:41-05:00",
-    "desc": "",
+    "title": "Board of Health Meeting",
     "board": "Board of Health",
-    "type": "agenda",
-    "docId": 2904
+    "date": "2026-09-16",
+    "posted": "2026-09-14T08:37:00-04:00",
+    "docId": 2904,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09162026-2904",
+    "minutes": null
   },
   {
-    "title": "Harbor Management Authority Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2903",
-    "pubDate": "2026-09-14T08:31:46-05:00",
-    "desc": "",
+    "title": "Harbor Management Authority Meeting",
     "board": "Harbor Management Authority",
-    "type": "agenda",
-    "docId": 2903
+    "date": "2026-09-16",
+    "posted": "2026-09-14T08:31:00-04:00",
+    "docId": 2903,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09162026-2903",
+    "minutes": null
   },
   {
-    "title": "Historic Districts Commission Agenda for 9/16/2026",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2902",
-    "pubDate": "2026-09-11T14:01:47-05:00",
-    "desc": "",
+    "title": "Historic Districts Commission",
     "board": "Historic District Commission",
-    "type": "agenda",
-    "docId": 2902
+    "date": "2026-09-16",
+    "posted": "2026-09-11T14:00:00-04:00",
+    "docId": 2902,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09162026-2902",
+    "minutes": null
+  },
+  {
+    "title": "Clean Energy Advisory Committee Meeting",
+    "board": "Clean Energy Advisory Committee",
+    "date": "2026-09-16",
+    "posted": "2026-09-09T15:43:00-04:00",
+    "docId": 2894,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09162026-2894",
+    "minutes": null
   },
   {
     "title": "Planning Board Meeting",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2901",
-    "pubDate": "2026-09-10T18:27:52-05:00",
-    "desc": "",
     "board": "Planning Board",
-    "type": "agenda",
-    "docId": 2901
+    "date": "2026-09-15",
+    "posted": "2026-09-10T18:27:00-04:00",
+    "docId": 2901,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09152026-2901",
+    "minutes": null
   },
   {
-    "title": "Conservation Commission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2899",
-    "pubDate": "2026-09-10T14:17:32-05:00",
-    "desc": "",
+    "title": "Conservation Commission Meeting",
     "board": "Conservation Commission",
-    "type": "agenda",
-    "docId": 2899
+    "date": "2026-09-15",
+    "posted": "2026-09-10T14:17:00-04:00",
+    "docId": 2899,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09152026-2899",
+    "minutes": null
   },
   {
-    "title": "Beverly Golf and Tennis Commission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2898",
-    "pubDate": "2026-09-10T13:28:43-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2898
+    "title": "Beverly Golf and Tennis Commission Meeting",
+    "board": "Beverly Golf & Tennis Club Commission",
+    "date": "2026-09-15",
+    "posted": "2026-09-10T13:28:00-04:00",
+    "docId": 2898,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09152026-2898",
+    "minutes": null
   },
   {
-    "title": "Beverly Golf and Tennis Commission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2897",
-    "pubDate": "2026-09-10T13:27:41-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2897
+    "title": "Beverly Golf and Tennis Commission Meeting",
+    "board": "Beverly Golf & Tennis Club Commission",
+    "date": "2026-09-15",
+    "posted": "2026-09-10T13:27:00-04:00",
+    "docId": 2897,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09152026-2897",
+    "minutes": null
   },
   {
-    "title": "Deficit Reduction Committee Meeting AGenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2896",
-    "pubDate": "2026-09-10T08:37:12-05:00",
-    "desc": "",
-    "board": "Other",
-    "type": "agenda",
-    "docId": 2896
+    "title": "Deficit Reduction Committee Meeting",
+    "board": "Deficit Reduction Committee",
+    "date": "2026-09-14",
+    "posted": "2026-09-10T08:37:00-04:00",
+    "docId": 2896,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09142026-2896",
+    "minutes": null
   },
   {
-    "title": "City Council Budget/Management Analyst PreliminaryScreening Committee Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2893",
-    "pubDate": "2026-09-09T15:33:00-04:00",
-    "desc": "",
+    "title": "City Council Budget/Management Analyst PreliminaryScreening Committee",
     "board": "City Council",
-    "type": "agenda",
-    "docId": 2893
+    "date": "2026-09-14",
+    "posted": "2026-09-09T15:33:00-04:00",
+    "docId": 2893,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09142026-2893",
+    "minutes": null
   },
   {
-    "title": "Special City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2823",
-    "pubDate": "2026-06-22T14:40:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2823
+    "title": "Beverly Regional Airport Subcommittee on Goverance and Internal Policy Meeting",
+    "board": "Airport Commission",
+    "date": "2026-09-14",
+    "posted": "2026-09-09T12:36:00-04:00",
+    "docId": 2892,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09142026-2892",
+    "minutes": null
   },
   {
-    "title": "Finance and Property Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2797",
-    "pubDate": "2026-06-11T18:53:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2797
+    "title": "Beverly Regional Airport Commission Meeting",
+    "board": "Airport Commission",
+    "date": "2026-09-14",
+    "posted": "",
+    "docId": 2895,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09142026-2895",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2796",
-    "pubDate": "2026-06-11T12:51:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2796
+    "title": "Northeast Massachusetts Mosquito Control and Wetlands Management District Meeting",
+    "board": "Northeast Massachusetts Mosquito Control (NEMMC) and Wetlands Management District",
+    "date": "2026-09-10",
+    "posted": "2026-09-10T11:44:00-04:00",
+    "docId": 2888,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09102026-2888",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2778",
-    "pubDate": "2026-05-28T15:43:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2778
+    "title": "Salem and Beverly Water Supply Board Meeting",
+    "board": "Salem and Beverly Water Supply Board",
+    "date": "2026-09-10",
+    "posted": "2026-09-03T17:44:00-04:00",
+    "docId": 2891,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09102026-2891",
+    "minutes": null
   },
   {
-    "title": "Finance &amp; Property/Committee of the Whole Budget Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2770",
-    "pubDate": "2026-05-27T14:02:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2770
+    "title": "Community Preservation Committee Public Hearing and Launch of Grant Funding Round 14",
+    "board": "Community Preservation Committee",
+    "date": "2026-09-10",
+    "posted": "2026-09-02T12:05:00-04:00",
+    "docId": 2885,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09102026-2885",
+    "minutes": null
   },
   {
-    "title": "Finance &amp; Property/Committee of the Whole Budget Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2771",
-    "pubDate": "2026-05-27T14:02:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2771
+    "title": "Beverly Bicycle & Pedestrian Advisory Committee Meeting",
+    "board": "Bicycle and Pedestrian Advisory Committee",
+    "date": "2026-09-10",
+    "posted": "2026-08-26T15:40:00-04:00",
+    "docId": 2877,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09102026-2877",
+    "minutes": null
   },
   {
-    "title": "Finance &amp; Property/Committee of the Whole Budget Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2769",
-    "pubDate": "2026-05-27T14:00:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2769
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-09-09",
+    "posted": "",
+    "docId": 2887,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09092026-2887",
+    "minutes": null
   },
   {
-    "title": "Special City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2760",
-    "pubDate": "2026-05-19T10:06:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2760
+    "title": "Parking and Traffic Commission Meeting",
+    "board": "Parking & Traffic Commission",
+    "date": "2026-09-08",
+    "posted": "2026-09-03T15:20:00-04:00",
+    "docId": 2889,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09082026-2889",
+    "minutes": null
   },
   {
-    "title": "Legal Affairs / Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2759",
-    "pubDate": "2026-05-19T09:44:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2759
+    "title": "Council on Aging Board of Directors Meeting",
+    "board": "Council on Aging",
+    "date": "2026-09-08",
+    "posted": "2026-09-02T15:06:00-04:00",
+    "docId": 2886,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09082026-2886",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2754",
-    "pubDate": "2026-05-14T15:51:00-04:00",
-    "desc": "",
+    "title": "Revised Regular City Council Meeting",
     "board": "City Council",
-    "type": "agenda",
-    "docId": 2754
+    "date": "2026-09-08",
+    "posted": "",
+    "docId": 2890,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09082026-2890",
+    "minutes": null
   },
   {
-    "title": "Public Services/Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2738",
-    "pubDate": "2026-05-04T14:05:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2738
+    "title": "Waste Reduction Committee Meeting",
+    "board": "Beverly Waste Reduction Committee",
+    "date": "2026-09-03",
+    "posted": "2026-09-03T16:06:00-04:00",
+    "docId": 2879,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09032026-2879",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2734",
-    "pubDate": "2026-04-30T15:19:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2734
+    "title": "Parks and Recreation Commission Meeting",
+    "board": "Parks & Recreation Commission",
+    "date": "2026-09-03",
+    "posted": "2026-09-03T15:16:00-04:00",
+    "docId": 2884,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09032026-2884",
+    "minutes": null
   },
   {
-    "title": "Special City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2728",
-    "pubDate": "2026-04-27T16:07:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2728
+    "title": "Beverly License Board",
+    "board": "Licensing Board",
+    "date": "2026-09-03",
+    "posted": "2026-08-31T10:01:00-04:00",
+    "docId": 2883,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09032026-2883",
+    "minutes": null
   },
   {
-    "title": "Special City Council Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04292026-2728",
-    "pubDate": "2026-04-27T16:07:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Design Review Board Meeting",
+    "board": "Design Review Board",
+    "date": "2026-09-03",
+    "posted": "2026-08-28T09:27:00-04:00",
+    "docId": 2881,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09032026-2881",
+    "minutes": null
   },
   {
-    "title": "Joint Meeting Legal Affairs/Public Services/Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2720",
-    "pubDate": "2026-04-16T15:46:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2720
+    "title": "Open Space and Recreation Committee Meeting",
+    "board": "Open Space & Recreation Committee",
+    "date": "2026-09-02",
+    "posted": "2026-08-28T12:24:00-04:00",
+    "docId": 2882,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09022026-2882",
+    "minutes": null
   },
   {
-    "title": "Joint Meeting Legal Affairs/Public Services/Committee of the Whole Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04212026-2720",
-    "pubDate": "2026-04-16T15:46:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Harbor Management Authority Meeting",
+    "board": "Harbor Management Authority",
+    "date": "2026-08-31",
+    "posted": "2026-08-27T17:38:00-04:00",
+    "docId": 2880,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08312026-2880",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_08312026-2880"
   },
   {
-    "title": "Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2719",
-    "pubDate": "2026-04-16T15:42:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2719
+    "title": "Deficit Reduction Committee Meeting",
+    "board": "Deficit Reduction Committee",
+    "date": "2026-08-31",
+    "posted": "2026-08-27T11:48:00-04:00",
+    "docId": 2878,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08312026-2878",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_08312026-2878"
   },
   {
-    "title": "Regular City Council Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04212026-2719",
-    "pubDate": "2026-04-16T15:42:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Beverly Retirement Board Meeting",
+    "board": "Contributory Retirement Board",
+    "date": "2026-08-27",
+    "posted": "2026-08-25T14:59:00-04:00",
+    "docId": 2876,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08272026-2876",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2701",
-    "pubDate": "2026-04-02T14:49:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2701
+    "title": "Communities on Disabilities Meeting",
+    "board": "Commission on Disabilities",
+    "date": "2026-08-27",
+    "posted": "2026-08-20T15:12:00-04:00",
+    "docId": 2875,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08272026-2875",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04062026-2701",
-    "pubDate": "2026-04-02T14:49:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Board of Assessors Meeting",
+    "board": "Board of Assessors",
+    "date": "2026-08-27",
+    "posted": "2026-08-18T14:07:00-04:00",
+    "docId": 2873,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08272026-2873",
+    "minutes": null
   },
   {
-    "title": "Legal Affairs / Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2692",
-    "pubDate": "2026-03-31T10:13:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2692
+    "title": "Zoning Board of Appeals Meeting",
+    "board": "Zoning Board of Appeals",
+    "date": "2026-08-26",
+    "posted": "2026-08-19T13:32:00-04:00",
+    "docId": 2874,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08262026-2874",
+    "minutes": null
   },
   {
-    "title": "Legal Affairs / Committee of the Whole Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04062026-2692",
-    "pubDate": "2026-03-31T10:13:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Community Preservation Committee Meeting",
+    "board": "Community Preservation Committee",
+    "date": "2026-08-20",
+    "posted": "2026-08-06T12:17:00-04:00",
+    "docId": 2866,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08202026-2866",
+    "minutes": null
   },
   {
-    "title": "Public Services/Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2688",
-    "pubDate": "2026-03-25T16:18:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2688
+    "title": "Harbor Management Authority Meeting",
+    "board": "Harbor Management Authority",
+    "date": "2026-08-19",
+    "posted": "2026-08-14T12:20:00-04:00",
+    "docId": 2871,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08192026-2871",
+    "minutes": null
   },
   {
-    "title": "Finance &amp; Property Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2678",
-    "pubDate": "2026-03-19T16:07:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2678
+    "title": "Planning Board Meeting",
+    "board": "Planning Board",
+    "date": "2026-08-18",
+    "posted": "2026-08-14T10:20:00-04:00",
+    "docId": 2870,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08182026-2870",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_08182026-2870"
   },
   {
-    "title": "Finance &amp; Property Committee of the Whole Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04062026-2678",
-    "pubDate": "2026-03-19T16:07:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Conservation Commission Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-08-18",
+    "posted": "2026-08-13T15:15:00-04:00",
+    "docId": 2869,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08182026-2869",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_08182026-2869"
   },
   {
-    "title": "Public Services/Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2676",
-    "pubDate": "2026-03-17T15:23:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2676
+    "title": "Deficit Reduction Committee Meeting",
+    "board": "Deficit Reduction Committee",
+    "date": "2026-08-18",
+    "posted": "2026-08-11T09:50:00-04:00",
+    "docId": 2868,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08182026-2868",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_08182026-2868"
   },
   {
-    "title": "Public Services/Committee of the Whole Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04062026-2676",
-    "pubDate": "2026-03-17T15:23:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Board of Trustees Beverly Public Library Meeting",
+    "board": "Board of Library Trustees",
+    "date": "2026-08-13",
+    "posted": "2026-08-03T12:47:00-04:00",
+    "docId": 2858,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08132026-2858",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_08132026-2858"
   },
   {
-    "title": "Joint Meeting of the Beverly City Council and Beverly School Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2675",
-    "pubDate": "2026-03-16T17:31:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2675
+    "title": "Council on Aging Grants Committee Meeting",
+    "board": "Council on Aging",
+    "date": "2026-08-11",
+    "posted": "2026-08-07T10:40:00-04:00",
+    "docId": 2867,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08112026-2867",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2670",
-    "pubDate": "2026-03-12T17:44:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2670
+    "title": "Beverly Golf and Tennis Commission Meeting",
+    "board": "Beverly Golf & Tennis Club Commission",
+    "date": "2026-08-11",
+    "posted": "2026-08-06T08:42:00-04:00",
+    "docId": 2863,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08112026-2863",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_08112026-2863"
   },
   {
-    "title": "Regular City Council Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03162026-2670",
-    "pubDate": "2026-03-12T17:44:00-04:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Council on Aging Board of Director Meeting",
+    "board": "Council on Aging",
+    "date": "2026-08-11",
+    "posted": "2026-08-05T10:51:00-04:00",
+    "docId": 2861,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08112026-2861",
+    "minutes": null
   },
   {
-    "title": "Public Services/Committee of the Whole Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2654",
-    "pubDate": "2026-03-03T14:43:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2654
+    "title": "Council on Aging Grant Committee Meeting",
+    "board": "Council on Aging",
+    "date": "2026-08-11",
+    "posted": "2026-08-05T10:50:00-04:00",
+    "docId": 2860,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08112026-2860",
+    "minutes": null
   },
   {
-    "title": "Public Services/Committee of the Whole Committee Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03162026-2654",
-    "pubDate": "2026-03-03T14:43:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Beverly Airport Subcommittee on Mission and Outreach Meeting",
+    "board": "Airport Commission",
+    "date": "2026-08-10",
+    "posted": "2026-08-06T11:42:00-04:00",
+    "docId": 2864,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08102026-2864",
+    "minutes": null
   },
   {
-    "title": "Legal Affairs/Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2636",
-    "pubDate": "2026-02-18T13:12:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2636
+    "title": "Beverly Regional Airport Commission Meeting",
+    "board": "Airport Commission",
+    "date": "2026-08-10",
+    "posted": "2026-08-05T17:39:00-04:00",
+    "docId": 2862,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08102026-2862",
+    "minutes": null
   },
   {
-    "title": "Legal Affairs/Committee of the Whole Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03022026-2636",
-    "pubDate": "2026-02-18T13:12:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Design Review Board Meeting",
+    "board": "Design Review Board",
+    "date": "2026-08-06",
+    "posted": "2026-08-03T16:03:00-04:00",
+    "docId": 2859,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08062026-2859",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_08062026-2859"
   },
   {
-    "title": "Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2632",
-    "pubDate": "2026-02-12T12:58:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2632
+    "title": "Beverly License Board",
+    "board": "Licensing Board",
+    "date": "2026-08-06",
+    "posted": "2026-07-31T08:51:00-04:00",
+    "docId": 2856,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08062026-2856",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02172026-2632",
-    "pubDate": "2026-02-12T12:58:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-08-05",
+    "posted": "2026-07-31T14:51:00-04:00",
+    "docId": 2857,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08052026-2857",
+    "minutes": null
   },
   {
-    "title": "Public Services/Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2618",
-    "pubDate": "2026-02-03T14:15:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2618
+    "title": "Parking and Traffic Commission Meeting",
+    "board": "Parking & Traffic Commission",
+    "date": "2026-08-04",
+    "posted": "2026-07-30T18:43:00-04:00",
+    "docId": 2855,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08042026-2855",
+    "minutes": null
   },
   {
-    "title": "Public Services/Committee of the Whole Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02092026-2618",
-    "pubDate": "2026-02-03T14:15:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Revised Beverly Retirment Board Meeting",
+    "board": "Contributory Retirement Board",
+    "date": "2026-07-30",
+    "posted": "",
+    "docId": 2854,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07302026-2854",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2612",
-    "pubDate": "2026-01-29T12:02:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2612
+    "title": "Beverly Airport Meeting of the Subcommitee on Governance and Internal Policy",
+    "board": "Airport Commission",
+    "date": "2026-07-29",
+    "posted": "2026-07-27T07:47:00-04:00",
+    "docId": 2853,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07292026-2853",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02022026-2612",
-    "pubDate": "2026-01-29T12:02:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Deficit Reduction Committee Meeting",
+    "board": "Deficit Reduction Committee",
+    "date": "2026-07-29",
+    "posted": "2026-07-21T09:57:00-04:00",
+    "docId": 2851,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07292026-2851",
+    "minutes": null
   },
   {
-    "title": "Public Services/Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2610",
-    "pubDate": "2026-01-29T09:18:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2610
+    "title": "Conservation Commission Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-07-28",
+    "posted": "2026-07-23T09:16:00-04:00",
+    "docId": 2852,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07282026-2852",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_07282026-2852"
   },
   {
-    "title": "Public Services/Committee of the Whole Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02022026-2610",
-    "pubDate": "2026-01-29T09:18:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Economic & Community Development Council Meeting",
+    "board": "Economic & Community Development Council",
+    "date": "2026-07-23",
+    "posted": "2026-07-17T10:39:00-04:00",
+    "docId": 2847,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07232026-2847",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_07232026-2847"
   },
   {
-    "title": "Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2598",
-    "pubDate": "2026-01-15T13:33:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2598
+    "title": "Commission on Disabilities Meeting",
+    "board": "Commission on Disabilities",
+    "date": "2026-07-23",
+    "posted": "2026-07-16T15:51:00-04:00",
+    "docId": 2845,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07232026-2845",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_07232026-2845"
   },
   {
-    "title": "Regular City Council Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01202026-2598",
-    "pubDate": "2026-01-15T13:33:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Board of Health Meeting",
+    "board": "Board of Health",
+    "date": "2026-07-22",
+    "posted": "2026-07-17T10:35:00-04:00",
+    "docId": 2846,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07222026-2846",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting and Inauguration",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2578",
-    "pubDate": "2025-12-30T14:28:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2578
+    "title": "Zoning Board of Appeals Meeting",
+    "board": "Zoning Board of Appeals",
+    "date": "2026-07-22",
+    "posted": "2026-07-15T11:08:00-04:00",
+    "docId": 2843,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07222026-2843",
+    "minutes": null
   },
   {
-    "title": "Regular City Council Meeting and Inauguration Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01052026-2578",
-    "pubDate": "2025-12-30T14:28:00-05:00",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Historic Districts Commission Meeting",
+    "board": "Historic District Commission",
+    "date": "2026-07-22",
+    "posted": "",
+    "docId": 2844,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07222026-2844",
+    "minutes": null
   },
   {
-    "title": "Revised Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2890",
-    "pubDate": "",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2890
+    "title": "Planning Board Meeting",
+    "board": "Planning Board",
+    "date": "2026-07-21",
+    "posted": "2026-07-15T10:52:00-04:00",
+    "docId": 2842,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07212026-2842",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_07212026-2842"
+  },
+  {
+    "title": "Deficit Reduction Committee Meeting",
+    "board": "Deficit Reduction Committee",
+    "date": "2026-07-20",
+    "posted": "2026-07-14T12:05:00-04:00",
+    "docId": 2841,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07202026-2841",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_07202026-2841"
+  },
+  {
+    "title": "Salem and Beverly Water Supply Board Meeting",
+    "board": "Salem and Beverly Water Supply Board",
+    "date": "2026-07-16",
+    "posted": "2026-07-13T12:47:00-04:00",
+    "docId": 2840,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07162026-2840",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Housing Authority Meeting",
+    "board": "Beverly Housing Authority",
+    "date": "2026-07-16",
+    "posted": "2026-07-13T12:44:00-04:00",
+    "docId": 2839,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07162026-2839",
+    "minutes": null
+  },
+  {
+    "title": "Board of Health Meeting",
+    "board": "Board of Health",
+    "date": "2026-07-15",
+    "posted": "2026-07-13T12:37:00-04:00",
+    "docId": 2838,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07152026-2838",
+    "minutes": null
+  },
+  {
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-07-15",
+    "posted": "2026-07-13T12:35:00-04:00",
+    "docId": 2837,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07152026-2837",
+    "minutes": null
+  },
+  {
+    "title": "Harbor Management Authority Meeting",
+    "board": "Harbor Management Authority",
+    "date": "2026-07-15",
+    "posted": "2026-07-08T16:13:00-04:00",
+    "docId": 2832,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07152026-2832",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_07152026-2832"
+  },
+  {
+    "title": "Beverly Golf & Tennis Commission Meeting",
+    "board": "Beverly Golf & Tennis Club Commission",
+    "date": "2026-07-14",
+    "posted": "2026-07-09T11:49:00-04:00",
+    "docId": 2834,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07142026-2834",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_07142026-2834"
+  },
+  {
+    "title": "Beverly Regional Airport Commission Mission Statement Subcommittee Meeting",
+    "board": "Airport Commission",
+    "date": "2026-07-13",
+    "posted": "2026-07-09T12:01:00-04:00",
+    "docId": 2835,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07132026-2835",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Regional Airport Commission Meeting",
+    "board": "Airport Commission",
+    "date": "2026-07-13",
+    "posted": "2026-07-08T16:15:00-04:00",
+    "docId": 2833,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07132026-2833",
+    "minutes": null
+  },
+  {
+    "title": "Design Review Board Meeting",
+    "board": "Design Review Board",
+    "date": "2026-07-09",
+    "posted": "2026-07-07T09:36:00-04:00",
+    "docId": 2831,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07092026-2831",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_07092026-2831"
+  },
+  {
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-07-08",
+    "posted": "2026-07-02T13:25:00-04:00",
+    "docId": 2830,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07082026-2830",
+    "minutes": null
+  },
+  {
+    "title": "Beverly License Board",
+    "board": "Licensing Board",
+    "date": "2026-07-02",
+    "posted": "2026-06-29T15:32:00-04:00",
+    "docId": 2828,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07022026-2828",
+    "minutes": null
+  },
+  {
+    "title": "Open Space and Recreation Committee Meeting",
+    "board": "Open Space & Recreation Committee",
+    "date": "2026-07-01",
+    "posted": "2026-06-18T16:21:00-04:00",
+    "docId": 2815,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07012026-2815",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_07012026-2815"
+  },
+  {
+    "title": "Affordable Housing Trust Meeting",
+    "board": "Affordable Housing Trust",
+    "date": "2026-06-30",
+    "posted": "2026-06-26T11:30:00-04:00",
+    "docId": 2827,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06302026-2827",
+    "minutes": null
+  },
+  {
+    "title": "Board of Trustees Beverly Public Library Meeting",
+    "board": "Board of Library Trustees",
+    "date": "2026-06-30",
+    "posted": "2026-06-25T17:16:00-04:00",
+    "docId": 2826,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06302026-2826",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_06302026-2826"
+  },
+  {
+    "title": "Conservation Commission Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-06-30",
+    "posted": "2026-06-25T12:18:00-04:00",
+    "docId": 2825,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06302026-2825",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_06302026-2825"
+  },
+  {
+    "title": "Beverly Contributory Retirment Board Meeting",
+    "board": "Contributory Retirement Board",
+    "date": "2026-06-25",
+    "posted": "2026-06-23T11:15:00-04:00",
+    "docId": 2824,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06252026-2824",
+    "minutes": null
   },
   {
     "title": "Special City Council Meeting",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2775",
-    "pubDate": "",
-    "desc": "",
     "board": "City Council",
-    "type": "agenda",
-    "docId": 2775
+    "date": "2026-06-25",
+    "posted": "2026-06-22T14:40:00-04:00",
+    "docId": 2823,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06252026-2823",
+    "minutes": null
+  },
+  {
+    "title": "Veterans Advisory Council Meeting",
+    "board": "Veterans Advisory Committee",
+    "date": "2026-06-25",
+    "posted": "2026-06-22T11:39:00-04:00",
+    "docId": 2821,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06252026-2821",
+    "minutes": null
+  },
+  {
+    "title": "Commission on Disabilities Meeting",
+    "board": "Commission on Disabilities",
+    "date": "2026-06-25",
+    "posted": "2026-06-18T17:37:00-04:00",
+    "docId": 2819,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06252026-2819",
+    "minutes": null
+  },
+  {
+    "title": "Economic & Community Development Council Meeting",
+    "board": "Economic & Community Development Council",
+    "date": "2026-06-25",
+    "posted": "",
+    "docId": 2811,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06252026-2811",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_06252026-2811"
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
+    "board": "Historic District Commission",
+    "date": "2026-06-24",
+    "posted": "2026-06-18T16:40:00-04:00",
+    "docId": 2818,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06242026-2818",
+    "minutes": null
+  },
+  {
+    "title": "South Essex Sewerage Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-06-24",
+    "posted": "2026-06-18T13:08:00-04:00",
+    "docId": 2814,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06242026-2814",
+    "minutes": null
+  },
+  {
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-06-24",
+    "posted": "2026-06-18T13:06:00-04:00",
+    "docId": 2813,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06242026-2813",
+    "minutes": null
+  },
+  {
+    "title": "Zoning Board of Appeals Meeting",
+    "board": "Zoning Board of Appeals",
+    "date": "2026-06-24",
+    "posted": "2026-06-18T09:07:00-04:00",
+    "docId": 2812,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06242026-2812",
+    "minutes": null
+  },
+  {
+    "title": "Council on Aging Awards Committee Meeting",
+    "board": "Council on Aging",
+    "date": "2026-06-23",
+    "posted": "2026-06-17T17:29:00-04:00",
+    "docId": 2810,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06232026-2810",
+    "minutes": null
+  },
+  {
+    "title": "Council on Aging Board of Directors Meeting",
+    "board": "Council on Aging",
+    "date": "2026-06-23",
+    "posted": "2026-06-17T17:28:00-04:00",
+    "docId": 2809,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06232026-2809",
+    "minutes": null
+  },
+  {
+    "title": "Special City Council Meeting",
+    "board": "City Council",
+    "date": "2026-06-23",
+    "posted": "",
+    "docId": 2775,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06232026-2775",
+    "minutes": null
+  },
+  {
+    "title": "Stormwater Committee Meeting",
+    "board": "Stormwater Management Advisory Committee",
+    "date": "2026-06-22",
+    "posted": "2026-06-15T18:36:00-04:00",
+    "docId": 2801,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06222026-2801",
+    "minutes": null
   },
   {
     "title": "Revised Special City Council Meeting",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2774",
-    "pubDate": "",
-    "desc": "",
     "board": "City Council",
-    "type": "agenda",
-    "docId": 2774
+    "date": "2026-06-22",
+    "posted": "",
+    "docId": 2774,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06222026-2774",
+    "minutes": null
   },
   {
-    "title": "Finance &amp; Property/Committee of the Whole Budget Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2772",
-    "pubDate": "",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2772
+    "title": "Beverly Housing Authority Meeting",
+    "board": "Beverly Housing Authority",
+    "date": "2026-06-18",
+    "posted": "2026-06-16T11:58:00-04:00",
+    "docId": 2802,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06182026-2802",
+    "minutes": null
   },
   {
-    "title": "CANCELLED-Public Services/Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2787",
-    "pubDate": "",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2787
+    "title": "Salem and Beverly Water Supply Board Meeting",
+    "board": "Salem and Beverly Water Supply Board",
+    "date": "2026-06-18",
+    "posted": "2026-06-15T10:41:00-04:00",
+    "docId": 2800,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06182026-2800",
+    "minutes": null
   },
   {
-    "title": "CANCELLED-Legal Affairs / Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2686",
-    "pubDate": "",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2686
+    "title": "Community Preservation Committee Meeting",
+    "board": "Community Preservation Committee",
+    "date": "2026-06-18",
+    "posted": "2026-06-04T15:54:00-04:00",
+    "docId": 2788,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06182026-2788",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_06182026-2788"
   },
   {
-    "title": "CANCELLED-Legal Affairs / Committee of the Whole Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03302026-2686",
-    "pubDate": "",
-    "desc": "",
-    "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "title": "Harbor Management Authority Meeting",
+    "board": "Harbor Management Authority",
+    "date": "2026-06-17",
+    "posted": "2026-06-15T10:38:00-04:00",
+    "docId": 2799,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06172026-2799",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_06172026-2799"
   },
   {
-    "title": "Revised Regular City Council Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2646",
-    "pubDate": "",
-    "desc": "",
-    "board": "City Council",
-    "type": "agenda",
-    "docId": 2646
+    "title": "Clean Energy Advisory Committee Meeting",
+    "board": "Clean Energy Advisory Committee",
+    "date": "2026-06-17",
+    "posted": "2026-06-12T12:47:00-04:00",
+    "docId": 2798,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06172026-2798",
+    "minutes": null
   },
   {
-    "title": "Revised Regular City Council Meeting Minutes",
-    "link": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03022026-2646",
-    "pubDate": "",
-    "desc": "",
+    "title": "Finance & Property/Committee of the Whole Budget Meeting",
     "board": "City Council",
-    "type": "minutes",
-    "docId": null
+    "date": "2026-06-17",
+    "posted": "",
+    "docId": 2772,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06172026-2772",
+    "minutes": null
   },
   {
-    "title": "CANCELLED-Public Services Committee/Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/AgendaCenter/PreviousVersions/2640",
-    "pubDate": "",
-    "desc": "",
+    "title": "Finance and Property Committee of the Whole Meeting",
     "board": "City Council",
-    "type": "agenda",
-    "docId": 2640
+    "date": "2026-06-16",
+    "posted": "2026-06-11T18:53:00-04:00",
+    "docId": 2797,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06162026-2797",
+    "minutes": null
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-06-15",
+    "posted": "2026-06-11T12:51:00-04:00",
+    "docId": 2796,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06152026-2796",
+    "minutes": null
+  },
+  {
+    "title": "Special Meeting - Beverly License Board",
+    "board": "Licensing Board",
+    "date": "2026-06-12",
+    "posted": "2026-06-10T14:14:00-04:00",
+    "docId": 2795,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06122026-2795",
+    "minutes": null
+  },
+  {
+    "title": "Northeast Massachusetts Mosquito Control and Wetlands Management District Meeting",
+    "board": "Northeast Massachusetts Mosquito Control (NEMMC) and Wetlands Management District",
+    "date": "2026-06-11",
+    "posted": "2026-06-08T16:30:00-04:00",
+    "docId": 2794,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06112026-2794",
+    "minutes": null
+  },
+  {
+    "title": "Finance & Property/Committee of the Whole Budget Meeting",
+    "board": "City Council",
+    "date": "2026-06-11",
+    "posted": "2026-05-27T14:02:00-04:00",
+    "docId": 2770,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06112026-2770",
+    "minutes": null
+  },
+  {
+    "title": "REVISED Northeast Massachusetts Mosquito Control and Wetlands Managemnt District Meeting",
+    "board": "Northeast Massachusetts Mosquito Control (NEMMC) and Wetlands Management District",
+    "date": "2026-06-11",
+    "posted": "",
+    "docId": 2793,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06112026-2793",
+    "minutes": null
+  },
+  {
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-06-10",
+    "posted": "2026-06-05T10:35:00-04:00",
+    "docId": 2792,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06102026-2792",
+    "minutes": null
+  },
+  {
+    "title": "Board of Health Meeting",
+    "board": "Board of Health",
+    "date": "2026-06-10",
+    "posted": "2026-06-04T09:37:00-04:00",
+    "docId": 2784,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06102026-2784",
+    "minutes": null
+  },
+  {
+    "title": "Council on Aging Board of Directors Meeting",
+    "board": "Council on Aging",
+    "date": "2026-06-09",
+    "posted": "2026-06-04T15:56:00-04:00",
+    "docId": 2790,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06092026-2790",
+    "minutes": null
+  },
+  {
+    "title": "Council on Aging Grant Committee Meeting",
+    "board": "Council on Aging",
+    "date": "2026-06-09",
+    "posted": "2026-06-04T15:55:00-04:00",
+    "docId": 2789,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06092026-2789",
+    "minutes": null
+  },
+  {
+    "title": "Conservation Commission Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-06-09",
+    "posted": "2026-06-04T12:50:00-04:00",
+    "docId": 2786,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06092026-2786",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_06092026-2786"
+  },
+  {
+    "title": "Beverly Golf and Tennis Commission Meeting",
+    "board": "Beverly Golf & Tennis Club Commission",
+    "date": "2026-06-09",
+    "posted": "2026-06-04T10:06:00-04:00",
+    "docId": 2785,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06092026-2785",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_06092026-2785"
+  },
+  {
+    "title": "Finance & Property/Committee of the Whole Budget Meeting",
+    "board": "City Council",
+    "date": "2026-06-09",
+    "posted": "2026-05-27T14:02:00-04:00",
+    "docId": 2771,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06092026-2771",
+    "minutes": null
+  },
+  {
+    "title": "Mission Statement Subcommittee of the Beverly Regional Airport Meeting",
+    "board": "Airport Commission",
+    "date": "2026-06-08",
+    "posted": "2026-06-04T17:37:00-04:00",
+    "docId": 2791,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06082026-2791",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Regional Airport Commission Meeting",
+    "board": "Airport Commission",
+    "date": "2026-06-08",
+    "posted": "2026-06-04T09:21:00-04:00",
+    "docId": 2783,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06082026-2783",
+    "minutes": null
+  },
+  {
+    "title": "CANCELLED - Public Services/Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-06-08",
+    "posted": "",
+    "docId": 2787,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06082026-2787",
+    "minutes": null
+  },
+  {
+    "title": "Waste Reduction Committee Meeting",
+    "board": "Beverly Waste Reduction Committee",
+    "date": "2026-06-04",
+    "posted": "2026-06-02T10:44:00-04:00",
+    "docId": 2782,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06042026-2782",
+    "minutes": null
+  },
+  {
+    "title": "Design Review Board Meeting",
+    "board": "Design Review Board",
+    "date": "2026-06-04",
+    "posted": "2026-06-02T09:26:00-04:00",
+    "docId": 2781,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06042026-2781",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_06042026-2781"
+  },
+  {
+    "title": "Beverly License Board",
+    "board": "Licensing Board",
+    "date": "2026-06-04",
+    "posted": "2026-06-01T13:32:00-04:00",
+    "docId": 2780,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06042026-2780",
+    "minutes": null
+  },
+  {
+    "title": "Parks and Recreation Commission Meeting",
+    "board": "Parks & Recreation Commission",
+    "date": "2026-06-04",
+    "posted": "2026-06-01T12:37:00-04:00",
+    "docId": 2779,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06042026-2779",
+    "minutes": null
+  },
+  {
+    "title": "Finance & Property/Committee of the Whole Budget Meeting",
+    "board": "City Council",
+    "date": "2026-06-04",
+    "posted": "2026-05-27T14:00:00-04:00",
+    "docId": 2769,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06042026-2769",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Police Department Public Hearing",
+    "board": "Beverly Police Department - Animal Hearings",
+    "date": "2026-06-04",
+    "posted": "2026-05-11T11:02:00-04:00",
+    "docId": 2748,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06042026-2748",
+    "minutes": null
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-06-01",
+    "posted": "2026-05-28T15:43:00-04:00",
+    "docId": 2778,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06012026-2778",
+    "minutes": null
+  },
+  {
+    "title": "Veterans Advisory Council Meeting",
+    "board": "Veterans Advisory Committee",
+    "date": "2026-05-28",
+    "posted": "2026-05-21T11:11:00-04:00",
+    "docId": 2764,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05282026-2764",
+    "minutes": null
+  },
+  {
+    "title": "Economic & Community Development Council Meeting",
+    "board": "Economic & Community Development Council",
+    "date": "2026-05-28",
+    "posted": "2026-05-20T15:57:00-04:00",
+    "docId": 2761,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05282026-2761",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05282026-2761"
+  },
+  {
+    "title": "Commission on Disabilities Meeting",
+    "board": "Commission on Disabilities",
+    "date": "2026-05-28",
+    "posted": "2026-05-15T10:30:00-04:00",
+    "docId": 2756,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05282026-2756",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05282026-2756"
+  },
+  {
+    "title": "Revised Beverly Retirement Board Meeting",
+    "board": "Contributory Retirement Board",
+    "date": "2026-05-28",
+    "posted": "",
+    "docId": 2768,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05282026-2768",
+    "minutes": null
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
+    "board": "Historic District Commission",
+    "date": "2026-05-27",
+    "posted": "2026-05-22T11:43:00-04:00",
+    "docId": 2767,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05272026-2767",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05272026-2767"
+  },
+  {
+    "title": "Board of Health Meeting",
+    "board": "Board of Health",
+    "date": "2026-05-27",
+    "posted": "2026-05-14T17:42:00-04:00",
+    "docId": 2755,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05272026-2755",
+    "minutes": null
+  },
+  {
+    "title": "Zoning Board of Appeals Meeting",
+    "board": "Zoning Board of Appeals",
+    "date": "2026-05-27",
+    "posted": "2026-05-13T12:54:00-04:00",
+    "docId": 2751,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05272026-2751",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05272026-2751"
+  },
+  {
+    "title": "Planning Board Meeting",
+    "board": "Planning Board",
+    "date": "2026-05-26",
+    "posted": "2026-05-22T09:23:00-04:00",
+    "docId": 2766,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05262026-2766",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05262026-2766"
+  },
+  {
+    "title": "Board of Trustees Beverly Public Library Meeting",
+    "board": "Board of Library Trustees",
+    "date": "2026-05-26",
+    "posted": "2026-05-20T16:14:00-04:00",
+    "docId": 2762,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05262026-2762",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05262026-2762"
+  },
+  {
+    "title": "Special City Council Meeting",
+    "board": "City Council",
+    "date": "2026-05-26",
+    "posted": "2026-05-19T10:06:00-04:00",
+    "docId": 2760,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05262026-2760",
+    "minutes": null
+  },
+  {
+    "title": "Legal Affairs / Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-05-26",
+    "posted": "2026-05-19T09:44:00-04:00",
+    "docId": 2759,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05262026-2759",
+    "minutes": null
+  },
+  {
+    "title": "Clean Energy Advisory Committee Meeting",
+    "board": "Clean Energy Advisory Committee",
+    "date": "2026-05-26",
+    "posted": "",
+    "docId": 2763,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05262026-2763",
+    "minutes": null
+  },
+  {
+    "title": "Board of Assessors Meeting",
+    "board": "Board of Assessors",
+    "date": "2026-05-21",
+    "posted": "2026-05-13T09:16:00-04:00",
+    "docId": 2750,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05212026-2750",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05212026-2750"
+  },
+  {
+    "title": "Community Preservation Committee Meeting",
+    "board": "Community Preservation Committee",
+    "date": "2026-05-21",
+    "posted": "2026-05-06T15:53:00-04:00",
+    "docId": 2739,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05212026-2739",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05212026-2739"
+  },
+  {
+    "title": "Beverly Housing Authority Meeting - REVISED",
+    "board": "Beverly Housing Authority",
+    "date": "2026-05-21",
+    "posted": "",
+    "docId": 2758,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05212026-2758",
+    "minutes": null
+  },
+  {
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-05-20",
+    "posted": "2026-05-15T12:10:00-04:00",
+    "docId": 2757,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05202026-2757",
+    "minutes": null
+  },
+  {
+    "title": "Harbor Management Authority Meeting",
+    "board": "Harbor Management Authority",
+    "date": "2026-05-20",
+    "posted": "2026-05-14T15:08:00-04:00",
+    "docId": 2753,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05202026-2753",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05202026-2753"
+  },
+  {
+    "title": "Conservation Commission Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-05-19",
+    "posted": "2026-05-14T12:22:00-04:00",
+    "docId": 2752,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05192026-2752",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05192026-2752"
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-05-18",
+    "posted": "2026-05-14T15:51:00-04:00",
+    "docId": 2754,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05182026-2754",
+    "minutes": null
+  },
+  {
+    "title": "Bicycle and Pedestrian Advisory Committee Meeting",
+    "board": "Bicycle and Pedestrian Advisory Committee",
+    "date": "2026-05-14",
+    "posted": "2026-05-11T09:56:00-04:00",
+    "docId": 2747,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05142026-2747",
+    "minutes": null
+  },
+  {
+    "title": "Special Committee on Rental Policies Meeting",
+    "board": "Special Committee on Rental Policies",
+    "date": "2026-05-14",
+    "posted": "2026-05-11T09:33:00-04:00",
+    "docId": 2746,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05142026-2746",
+    "minutes": null
+  },
+  {
+    "title": "Northeast Massachusetts Mosquito Control and Wetlands Management District Meeting",
+    "board": "Northeast Massachusetts Mosquito Control (NEMMC) and Wetlands Management District",
+    "date": "2026-05-14",
+    "posted": "2026-05-08T12:21:00-04:00",
+    "docId": 2745,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05142026-2745",
+    "minutes": null
+  },
+  {
+    "title": "Open Space and Recreation Committee Regular Meeting",
+    "board": "Open Space & Recreation Committee",
+    "date": "2026-05-13",
+    "posted": "2026-05-11T14:39:00-04:00",
+    "docId": 2749,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05132026-2749",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05132026-2749"
+  },
+  {
+    "title": "Beverly Golf and Tennis Commission Meeting",
+    "board": "Beverly Golf & Tennis Club Commission",
+    "date": "2026-05-12",
+    "posted": "2026-05-07T08:46:00-04:00",
+    "docId": 2740,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05122026-2740",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05122026-2740"
+  },
+  {
+    "title": "Beverly Regional Airport Commission Meeting",
+    "board": "Airport Commission",
+    "date": "2026-05-11",
+    "posted": "2026-05-07T09:45:00-04:00",
+    "docId": 2741,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05112026-2741",
+    "minutes": null
+  },
+  {
+    "title": "Public Services/Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-05-07",
+    "posted": "2026-05-04T14:05:00-04:00",
+    "docId": 2738,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05072026-2738",
+    "minutes": null
+  },
+  {
+    "title": "Salem and Beverly Water Supply Board Meeting",
+    "board": "Salem and Beverly Water Supply Board",
+    "date": "2026-05-07",
+    "posted": "2026-05-04T12:12:00-04:00",
+    "docId": 2737,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05072026-2737",
+    "minutes": null
+  },
+  {
+    "title": "Parks and Recreation Commission Meeting",
+    "board": "Parks & Recreation Commission",
+    "date": "2026-05-07",
+    "posted": "2026-05-04T08:42:00-04:00",
+    "docId": 2736,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05072026-2736",
+    "minutes": null
+  },
+  {
+    "title": "Design Review Board Meeting",
+    "board": "Design Review Board",
+    "date": "2026-05-07",
+    "posted": "2026-04-30T11:09:00-04:00",
+    "docId": 2733,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05072026-2733",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05072026-2733"
+  },
+  {
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-05-06",
+    "posted": "2026-05-01T12:51:00-04:00",
+    "docId": 2735,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05062026-2735",
+    "minutes": null
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-05-04",
+    "posted": "2026-04-30T15:19:00-04:00",
+    "docId": 2734,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05042026-2734",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Housing Authority Meeting",
+    "board": "Beverly Housing Authority",
+    "date": "2026-04-30",
+    "posted": "2026-04-28T10:37:00-04:00",
+    "docId": 2732,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04302026-2732",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Retirement Board Meeting",
+    "board": "Contributory Retirement Board",
+    "date": "2026-04-30",
+    "posted": "2026-04-28T10:32:00-04:00",
+    "docId": 2731,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04302026-2731",
+    "minutes": null
+  },
+  {
+    "title": "Veterans Advisory Council Meeting",
+    "board": "Veterans Advisory Committee",
+    "date": "2026-04-30",
+    "posted": "2026-04-28T10:17:00-04:00",
+    "docId": 2730,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04302026-2730",
+    "minutes": null
+  },
+  {
+    "title": "Beverly License Board",
+    "board": "Licensing Board",
+    "date": "2026-04-30",
+    "posted": "2026-04-27T16:37:00-04:00",
+    "docId": 2729,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04302026-2729",
+    "minutes": null
+  },
+  {
+    "title": "Special City Council Meeting",
+    "board": "City Council",
+    "date": "2026-04-29",
+    "posted": "2026-04-27T16:07:00-04:00",
+    "docId": 2728,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04292026-2728",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04292026-2728"
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
+    "board": "Historic District Commission",
+    "date": "2026-04-29",
+    "posted": "2026-04-23T15:47:00-04:00",
+    "docId": 2724,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04292026-2724",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04292026-2724"
+  },
+  {
+    "title": "Conservation Commission Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-04-29",
+    "posted": "2026-04-23T12:04:00-04:00",
+    "docId": 2723,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04292026-2723",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04292026-2723"
+  },
+  {
+    "title": "Revised Board of Health Meeting",
+    "board": "Board of Health",
+    "date": "2026-04-29",
+    "posted": "",
+    "docId": 2722,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04292026-2722",
+    "minutes": null
+  },
+  {
+    "title": "Planning Board Meeting",
+    "board": "Planning Board",
+    "date": "2026-04-28",
+    "posted": "2026-04-23T16:23:00-04:00",
+    "docId": 2726,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04282026-2726",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04282026-2726"
+  },
+  {
+    "title": "Board of Trustees Beverly Public Library Meeting",
+    "board": "Board of Library Trustees",
+    "date": "2026-04-28",
+    "posted": "2026-04-23T15:56:00-04:00",
+    "docId": 2725,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04282026-2725",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04282026-2725"
+  },
+  {
+    "title": "Commission on Disabilities Meeting",
+    "board": "Commission on Disabilities",
+    "date": "2026-04-23",
+    "posted": "2026-04-16T17:36:00-04:00",
+    "docId": 2721,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04232026-2721",
+    "minutes": null
+  },
+  {
+    "title": "Economic & Community Development Council Meeting",
+    "board": "Economic & Community Development Council",
+    "date": "2026-04-23",
+    "posted": "2026-04-13T10:11:00-04:00",
+    "docId": 2712,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04232026-2712",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04232026-2712"
+  },
+  {
+    "title": "Zoning Board of Appeals Meeting",
+    "board": "Zoning Board of Appeals",
+    "date": "2026-04-22",
+    "posted": "2026-04-13T08:56:00-04:00",
+    "docId": 2711,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04222026-2711",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04222026-2711"
+  },
+  {
+    "title": "Joint Meeting Legal Affairs/Public Services/Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-04-21",
+    "posted": "2026-04-16T15:46:00-04:00",
+    "docId": 2720,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04212026-2720",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04212026-2720"
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-04-21",
+    "posted": "2026-04-16T15:42:00-04:00",
+    "docId": 2719,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04212026-2719",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04212026-2719"
+  },
+  {
+    "title": "South Essex Sewerage Board Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-04-17",
+    "posted": "2026-04-14T12:38:00-04:00",
+    "docId": 2717,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04172026-2717",
+    "minutes": null
+  },
+  {
+    "title": "Human Rights Committee Meeting",
+    "board": "Human Rights Committee",
+    "date": "2026-04-16",
+    "posted": "2026-04-14T16:23:00-04:00",
+    "docId": 2718,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04162026-2718",
+    "minutes": null
+  },
+  {
+    "title": "Design Review Board Meeting",
+    "board": "Design Review Board",
+    "date": "2026-04-16",
+    "posted": "2026-04-13T10:40:00-04:00",
+    "docId": 2713,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04162026-2713",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04162026-2713"
+  },
+  {
+    "title": "Community Preservation Committee Meeting",
+    "board": "Community Preservation Committee",
+    "date": "2026-04-16",
+    "posted": "2026-04-02T12:47:00-04:00",
+    "docId": 2699,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04162026-2699",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04162026-2699"
+  },
+  {
+    "title": "Harbor Managament Authority Meeting",
+    "board": "Harbor Management Authority",
+    "date": "2026-04-15",
+    "posted": "2026-04-08T12:28:00-04:00",
+    "docId": 2707,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04152026-2707",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04152026-2707"
+  },
+  {
+    "title": "Clean Energy Advisory Committee Meeting",
+    "board": "Clean Energy Advisory Committee",
+    "date": "2026-04-15",
+    "posted": "",
+    "docId": 2710,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04152026-2710",
+    "minutes": null
+  },
+  {
+    "title": "CANCELLED - South Essex Sewerage Board Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-04-15",
+    "posted": "",
+    "docId": 2714,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04152026-2714",
+    "minutes": null
+  },
+  {
+    "title": "Council on Aging Grant Committee Meeting",
+    "board": "Council on Aging",
+    "date": "2026-04-14",
+    "posted": "2026-04-09T15:18:00-04:00",
+    "docId": 2709,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04142026-2709",
+    "minutes": null
+  },
+  {
+    "title": "Council on Aging Board of Directors Meeting",
+    "board": "Council on Aging",
+    "date": "2026-04-14",
+    "posted": "2026-04-09T11:52:00-04:00",
+    "docId": 2708,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04142026-2708",
+    "minutes": null
+  },
+  {
+    "title": "Parking and Traffic Commission",
+    "board": "Parking & Traffic Commission",
+    "date": "2026-04-14",
+    "posted": "2026-04-06T13:46:00-04:00",
+    "docId": 2704,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04142026-2704",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04142026-2704"
+  },
+  {
+    "title": "Beverly Regional Airport Commission Meeting",
+    "board": "Airport Commission",
+    "date": "2026-04-13",
+    "posted": "2026-04-08T11:16:00-04:00",
+    "docId": 2706,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04132026-2706",
+    "minutes": null
+  },
+  {
+    "title": "Human Rights Committee Meeting",
+    "board": "Human Rights Committee",
+    "date": "2026-04-09",
+    "posted": "2026-04-07T16:28:00-04:00",
+    "docId": 2705,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04092026-2705",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04092026-2705"
+  },
+  {
+    "title": "Northeast Massachusetts Mosquito Control and Wetlands Management District Meeting",
+    "board": "Northeast Massachusetts Mosquito Control (NEMMC) and Wetlands Management District",
+    "date": "2026-04-09",
+    "posted": "2026-04-06T09:01:00-04:00",
+    "docId": 2703,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04092026-2703",
+    "minutes": null
+  },
+  {
+    "title": "Special Committee on Rental Policies Meeting",
+    "board": "Special Committee on Rental Policies",
+    "date": "2026-04-08",
+    "posted": "2026-04-01T17:25:00-04:00",
+    "docId": 2698,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04082026-2698",
+    "minutes": null
+  },
+  {
+    "title": "Public Services/Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-04-08",
+    "posted": "2026-03-25T16:18:00-04:00",
+    "docId": 2688,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04082026-2688",
+    "minutes": null
+  },
+  {
+    "title": "Planning Board Meeting",
+    "board": "Planning Board",
+    "date": "2026-04-07",
+    "posted": "2026-04-03T08:27:00-04:00",
+    "docId": 2702,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04072026-2702",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04072026-2702"
+  },
+  {
+    "title": "Beverly Golf and Tennis Commission Meeting",
+    "board": "Beverly Golf & Tennis Club Commission",
+    "date": "2026-04-07",
+    "posted": "2026-04-02T14:25:00-04:00",
+    "docId": 2700,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04072026-2700",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04072026-2700"
+  },
+  {
+    "title": "Conservation Commission 4/7/2026 Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-04-07",
+    "posted": "2026-04-01T13:42:00-04:00",
+    "docId": 2697,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04072026-2697",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04072026-2697"
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-04-06",
+    "posted": "2026-04-02T14:49:00-04:00",
+    "docId": 2701,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04062026-2701",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04062026-2701"
+  },
+  {
+    "title": "Legal Affairs / Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-04-06",
+    "posted": "2026-03-31T10:13:00-04:00",
+    "docId": 2692,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04062026-2692",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04062026-2692"
+  },
+  {
+    "title": "Finance & Property Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-04-06",
+    "posted": "2026-03-19T16:07:00-04:00",
+    "docId": 2678,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04062026-2678",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04062026-2678"
+  },
+  {
+    "title": "Public Services/Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-04-06",
+    "posted": "2026-03-17T15:23:00-04:00",
+    "docId": 2676,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04062026-2676",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04062026-2676"
+  },
+  {
+    "title": "Beverly Waste Reduction Committee",
+    "board": "Beverly Waste Reduction Committee",
+    "date": "2026-04-02",
+    "posted": "2026-03-31T16:09:00-04:00",
+    "docId": 2694,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04022026-2694",
+    "minutes": null
+  },
+  {
+    "title": "Essex County Commission on the Status of Women Meeting",
+    "board": "Essex County Commission on the Status of Women",
+    "date": "2026-04-02",
+    "posted": "2026-03-31T15:02:00-04:00",
+    "docId": 2693,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04022026-2693",
+    "minutes": null
+  },
+  {
+    "title": "Beverly License Board Meeting",
+    "board": "Licensing Board",
+    "date": "2026-04-02",
+    "posted": "2026-03-30T14:09:00-04:00",
+    "docId": 2691,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04022026-2691",
+    "minutes": null
+  },
+  {
+    "title": "Board of Assessors Meeting",
+    "board": "Board of Assessors",
+    "date": "2026-04-02",
+    "posted": "2026-03-26T15:00:00-04:00",
+    "docId": 2690,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04022026-2690",
+    "minutes": null
+  },
+  {
+    "title": "Board of Assessors Meeting",
+    "board": "Board of Assessors",
+    "date": "2026-04-02",
+    "posted": "2026-03-26T14:17:00-04:00",
+    "docId": 2689,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04022026-2689",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04022026-2689"
+  },
+  {
+    "title": "CANCELLED - Legal Affairs / Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-03-30",
+    "posted": "",
+    "docId": 2686,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03302026-2686",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03302026-2686"
+  },
+  {
+    "title": "Beverly Retirement Board Meeting",
+    "board": "Contributory Retirement Board",
+    "date": "2026-03-26",
+    "posted": "2026-03-23T16:01:00-04:00",
+    "docId": 2685,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03262026-2685",
+    "minutes": null
+  },
+  {
+    "title": "Salem and Beverly Water Supply Board Meeting",
+    "board": "Salem and Beverly Water Supply Board",
+    "date": "2026-03-26",
+    "posted": "2026-03-23T13:14:00-04:00",
+    "docId": 2684,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03262026-2684",
+    "minutes": null
+  },
+  {
+    "title": "Veterans Advisory Council",
+    "board": "Veterans Advisory Committee",
+    "date": "2026-03-26",
+    "posted": "2026-03-23T09:19:00-04:00",
+    "docId": 2682,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03262026-2682",
+    "minutes": null
+  },
+  {
+    "title": "Economic & Community Development Council Meeting",
+    "board": "Economic & Community Development Council",
+    "date": "2026-03-26",
+    "posted": "2026-03-18T13:36:00-04:00",
+    "docId": 2677,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03262026-2677",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03262026-2677"
+  },
+  {
+    "title": "Revised 3.23.2026 - Zoning Board of Appeals Meeting",
+    "board": "Zoning Board of Appeals",
+    "date": "2026-03-25",
+    "posted": "2026-03-24T08:59:00-04:00",
+    "docId": 2687,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03252026-2687",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03252026-2687"
+  },
+  {
+    "title": "Beverly Affordable Housing Trust Meeting",
+    "board": "Affordable Housing Trust",
+    "date": "2026-03-25",
+    "posted": "2026-03-23T13:10:00-04:00",
+    "docId": 2683,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03252026-2683",
+    "minutes": null
+  },
+  {
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-03-25",
+    "posted": "2026-03-20T10:30:00-04:00",
+    "docId": 2681,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03252026-2681",
+    "minutes": null
+  },
+  {
+    "title": "Zoning Board of Appeals Meeting",
+    "board": "Zoning Board of Appeals",
+    "date": "2026-03-25",
+    "posted": "2026-03-09T10:44:00-04:00",
+    "docId": 2660,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03252026-2660",
+    "minutes": null
+  },
+  {
+    "title": "Board of Trustees Beverly Public Library Meeting",
+    "board": "Board of Library Trustees",
+    "date": "2026-03-24",
+    "posted": "2026-03-19T18:44:00-04:00",
+    "docId": 2680,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03242026-2680",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03242026-2680"
+  },
+  {
+    "title": "Beverly Housing Authority",
+    "board": "Beverly Housing Authority",
+    "date": "2026-03-19",
+    "posted": "2026-03-16T11:52:00-04:00",
+    "docId": 2673,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03192026-2673",
+    "minutes": null
+  },
+  {
+    "title": "Community Preservation Committee Meeting",
+    "board": "Community Preservation Committee",
+    "date": "2026-03-19",
+    "posted": "2026-03-11T15:53:00-04:00",
+    "docId": 2663,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03192026-2663",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03192026-2663"
+  },
+  {
+    "title": "Joint Meeting of the Beverly City Council and Beverly School Committee Meeting",
+    "board": "City Council",
+    "date": "2026-03-18",
+    "posted": "2026-03-16T17:31:00-04:00",
+    "docId": 2675,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03182026-2675",
+    "minutes": null
+  },
+  {
+    "title": "Clean Energy Advisory Committee Meeting",
+    "board": "Clean Energy Advisory Committee",
+    "date": "2026-03-18",
+    "posted": "2026-03-13T12:51:00-04:00",
+    "docId": 2672,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03182026-2672",
+    "minutes": null
+  },
+  {
+    "title": "Harbor Managment Authority Meeting",
+    "board": "Harbor Management Authority",
+    "date": "2026-03-18",
+    "posted": "2026-03-13T11:26:00-04:00",
+    "docId": 2671,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03182026-2671",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03182026-2671"
+  },
+  {
+    "title": "Conservation Commission 03/18/2026 Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-03-18",
+    "posted": "2026-03-12T16:22:00-04:00",
+    "docId": 2669,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03182026-2669",
+    "minutes": null
+  },
+  {
+    "title": "Conservation Commission Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-03-18",
+    "posted": "2026-03-12T14:45:00-04:00",
+    "docId": 2668,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03182026-2668",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03182026-2668"
+  },
+  {
+    "title": "Board of Health Meeting",
+    "board": "Board of Health",
+    "date": "2026-03-18",
+    "posted": "2026-03-12T14:05:00-04:00",
+    "docId": 2667,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03182026-2667",
+    "minutes": null
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-03-16",
+    "posted": "2026-03-12T17:44:00-04:00",
+    "docId": 2670,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03162026-2670",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03162026-2670"
+  },
+  {
+    "title": "Salem and Beverly Water Supply Board Meeting",
+    "board": "Salem and Beverly Water Supply Board",
+    "date": "2026-03-16",
+    "posted": "2026-03-11T08:34:00-04:00",
+    "docId": 2662,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03162026-2662",
+    "minutes": null
+  },
+  {
+    "title": "Public Services/Committee of the Whole Committee Meeting",
+    "board": "City Council",
+    "date": "2026-03-16",
+    "posted": "2026-03-03T14:43:00-05:00",
+    "docId": 2654,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03162026-2654",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03162026-2654"
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
+    "board": "Historic District Commission",
+    "date": "2026-03-12",
+    "posted": "2026-03-10T14:53:00-04:00",
+    "docId": 2661,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03122026-2661",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03122026-2661"
+  },
+  {
+    "title": "Northeast Masssachusetts Mosquito Control and Wetlands Managements District Meeting",
+    "board": "Northeast Massachusetts Mosquito Control (NEMMC) and Wetlands Management District",
+    "date": "2026-03-12",
+    "posted": "2026-03-06T09:10:00-05:00",
+    "docId": 2658,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03122026-2658",
+    "minutes": null
+  },
+  {
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-03-11",
+    "posted": "2026-03-06T10:19:00-05:00",
+    "docId": 2659,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03112026-2659",
+    "minutes": null
+  },
+  {
+    "title": "Planning Board Meeting",
+    "board": "Planning Board",
+    "date": "2026-03-10",
+    "posted": "2026-03-05T16:23:00-05:00",
+    "docId": 2657,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03102026-2657",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03102026-2657"
+  },
+  {
+    "title": "Council on Aging Board of Directors Meeting",
+    "board": "Council on Aging",
+    "date": "2026-03-10",
+    "posted": "2026-03-05T14:07:00-05:00",
+    "docId": 2656,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03102026-2656",
+    "minutes": null
+  },
+  {
+    "title": "CANCELLED - Beverly Regional Airport Commission Meeting",
+    "board": "Airport Commission",
+    "date": "2026-03-09",
+    "posted": "",
+    "docId": 2655,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03092026-2655",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Waste Reduction Committee",
+    "board": "Beverly Waste Reduction Committee",
+    "date": "2026-03-05",
+    "posted": "2026-03-02T16:18:00-05:00",
+    "docId": 2653,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03052026-2653",
+    "minutes": null
+  },
+  {
+    "title": "Parks and Recreation Commission Meeting",
+    "board": "Parks & Recreation Commission",
+    "date": "2026-03-05",
+    "posted": "2026-03-02T13:27:00-05:00",
+    "docId": 2652,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03052026-2652",
+    "minutes": null
+  },
+  {
+    "title": "Essex County Commission on the Status of Women Meting",
+    "board": "Essex County Commission on the Status of Women",
+    "date": "2026-03-05",
+    "posted": "2026-03-02T09:18:00-05:00",
+    "docId": 2649,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03052026-2649",
+    "minutes": null
+  },
+  {
+    "title": "Design Review Board Meeting",
+    "board": "Design Review Board",
+    "date": "2026-03-05",
+    "posted": "2026-02-27T10:59:00-05:00",
+    "docId": 2648,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03052026-2648",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03052026-2648"
+  },
+  {
+    "title": "Special Committee on Rental Policies",
+    "board": "Special Committee on Rental Policies",
+    "date": "2026-03-05",
+    "posted": "2026-02-05T12:10:00-05:00",
+    "docId": 2621,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03052026-2621",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03052026-2621"
+  },
+  {
+    "title": "Open Space and Recreation Committee Meeting",
+    "board": "Open Space & Recreation Committee",
+    "date": "2026-03-04",
+    "posted": "2026-03-02T13:09:00-05:00",
+    "docId": 2651,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03042026-2651",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03042026-2651"
+  },
+  {
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-03-04",
+    "posted": "2026-02-27T10:48:00-05:00",
+    "docId": 2647,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03042026-2647",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Golf and Tennis Commission Meeting",
+    "board": "Beverly Golf & Tennis Club Commission",
+    "date": "2026-03-03",
+    "posted": "2026-02-26T08:44:00-05:00",
+    "docId": 2645,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03032026-2645",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03032026-2645"
+  },
+  {
+    "title": "Legal Affairs/Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-03-02",
+    "posted": "2026-02-18T13:12:00-05:00",
+    "docId": 2636,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03022026-2636",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03022026-2636"
+  },
+  {
+    "title": "Revised Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-03-02",
+    "posted": "",
+    "docId": 2646,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03022026-2646",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_03022026-2646"
+  },
+  {
+    "title": "Beverly Retirement Board Meeting",
+    "board": "Contributory Retirement Board",
+    "date": "2026-02-26",
+    "posted": "2026-02-24T15:51:00-05:00",
+    "docId": 2644,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02262026-2644",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02262026-2644"
+  },
+  {
+    "title": "Veterans Advisory Council",
+    "board": "Veterans Advisory Committee",
+    "date": "2026-02-26",
+    "posted": "2026-02-24T10:36:00-05:00",
+    "docId": 2643,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02262026-2643",
+    "minutes": null
+  },
+  {
+    "title": "Board of Assesors Meeting",
+    "board": "Board of Assessors",
+    "date": "2026-02-26",
+    "posted": "2026-02-18T13:16:00-05:00",
+    "docId": 2637,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02262026-2637",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02262026-2637"
+  },
+  {
+    "title": "Economic & Community Development Council Meeting",
+    "board": "Economic & Community Development Council",
+    "date": "2026-02-26",
+    "posted": "2026-02-17T15:18:00-05:00",
+    "docId": 2635,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02262026-2635",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02262026-2635"
+  },
+  {
+    "title": "Revised 2.19.2026 - Zoning Board of Appeals Meeting",
+    "board": "Zoning Board of Appeals",
+    "date": "2026-02-25",
+    "posted": "",
+    "docId": 2625,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02252026-2625",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02252026-2625"
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
+    "board": "Historic District Commission",
+    "date": "2026-02-25",
+    "posted": "",
+    "docId": 2630,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02252026-2630",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02252026-2630"
+  },
+  {
+    "title": "CANCELLED - South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-02-25",
+    "posted": "",
+    "docId": 2642,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02252026-2642",
+    "minutes": null
+  },
+  {
+    "title": "Board of Trustees Beverly Public Library Meeting",
+    "board": "Board of Library Trustees",
+    "date": "2026-02-24",
+    "posted": "2026-02-19T18:45:00-05:00",
+    "docId": 2641,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02242026-2641",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02242026-2641"
+  },
+  {
+    "title": "Conservation Commission Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-02-24",
+    "posted": "2026-02-19T13:34:00-05:00",
+    "docId": 2639,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02242026-2639",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02242026-2639"
+  },
+  {
+    "title": "CANCELLED - Beverly Golf and Tennis Commission Meeting",
+    "board": "Beverly Golf & Tennis Club Commission",
+    "date": "2026-02-24",
+    "posted": "",
+    "docId": 2638,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02242026-2638",
+    "minutes": null
+  },
+  {
+    "title": "CANCELLED - Public Services Committee/Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-02-23",
+    "posted": "",
+    "docId": 2640,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02232026-2640",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Housing Authority Meeting",
+    "board": "Beverly Housing Authority",
+    "date": "2026-02-19",
+    "posted": "2026-02-12T17:37:00-05:00",
+    "docId": 2634,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02192026-2634",
+    "minutes": null
+  },
+  {
+    "title": "Community Preservation Committee Meeting",
+    "board": "Community Preservation Committee",
+    "date": "2026-02-19",
+    "posted": "",
+    "docId": 2628,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02192026-2628",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02192026-2628"
+  },
+  {
+    "title": "Beverly Harbor Management Authority",
+    "board": "Harbor Management Authority",
+    "date": "2026-02-18",
+    "posted": "2026-02-12T16:38:00-05:00",
+    "docId": 2633,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02182026-2633",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02182026-2633"
+  },
+  {
+    "title": "Board of Health Meeting",
+    "board": "Board of Health",
+    "date": "2026-02-18",
+    "posted": "2026-02-12T11:19:00-05:00",
+    "docId": 2631,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02182026-2631",
+    "minutes": null
+  },
+  {
+    "title": "Clean Energy Advisory Committee Meeting",
+    "board": "Clean Energy Advisory Committee",
+    "date": "2026-02-18",
+    "posted": "2026-02-12T09:13:00-05:00",
+    "docId": 2629,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02182026-2629",
+    "minutes": null
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-02-17",
+    "posted": "2026-02-12T12:58:00-05:00",
+    "docId": 2632,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02172026-2632",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02172026-2632"
+  },
+  {
+    "title": "Human Rights Committee Meeting",
+    "board": "Human Rights Committee",
+    "date": "2026-02-12",
+    "posted": "2026-02-10T15:39:00-05:00",
+    "docId": 2627,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02122026-2627",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02122026-2627"
+  },
+  {
+    "title": "Beverly Bicycle & Pedestrian Advisory Committee",
+    "board": "Zoning Board of Appeals",
+    "date": "2026-02-12",
+    "posted": "2026-02-09T08:40:00-05:00",
+    "docId": 2626,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02122026-2626",
+    "minutes": null
+  },
+  {
+    "title": "South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-02-11",
+    "posted": "2026-02-06T10:36:00-05:00",
+    "docId": 2624,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02112026-2624",
+    "minutes": null
+  },
+  {
+    "title": "Council on Aging Board of Directos Meeting",
+    "board": "Council on Aging",
+    "date": "2026-02-10",
+    "posted": "2026-02-05T12:45:00-05:00",
+    "docId": 2622,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02102026-2622",
+    "minutes": null
+  },
+  {
+    "title": "CANCELLED - Beverly Golf and Tennis Commission Meeting",
+    "board": "Beverly Golf & Tennis Club Commission",
+    "date": "2026-02-10",
+    "posted": "",
+    "docId": 2620,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02102026-2620",
+    "minutes": null
+  },
+  {
+    "title": "Planning Board Meeting",
+    "board": "Planning Board",
+    "date": "2026-02-10",
+    "posted": "",
+    "docId": 2623,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02102026-2623",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02102026-2623"
+  },
+  {
+    "title": "Beverly Regional Airport Commission Meeting",
+    "board": "Airport Commission",
+    "date": "2026-02-09",
+    "posted": "2026-02-04T14:28:00-05:00",
+    "docId": 2619,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02092026-2619",
+    "minutes": null
+  },
+  {
+    "title": "Public Services/Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-02-09",
+    "posted": "2026-02-03T14:15:00-05:00",
+    "docId": 2618,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02092026-2618",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02092026-2618"
+  },
+  {
+    "title": "Design Review Board Meeting",
+    "board": "Design Review Board",
+    "date": "2026-02-05",
+    "posted": "2026-02-02T13:28:00-05:00",
+    "docId": 2617,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02052026-2617",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02052026-2617"
+  },
+  {
+    "title": "Essex County Commission on the Sttus of Women Meeting",
+    "board": "Essex County Commission on the Status of Women",
+    "date": "2026-02-05",
+    "posted": "2026-02-02T08:38:00-05:00",
+    "docId": 2616,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02052026-2616",
+    "minutes": null
+  },
+  {
+    "title": "Parks and Recreation Commission Meeting",
+    "board": "Parks & Recreation Commission",
+    "date": "2026-02-05",
+    "posted": "2026-01-30T11:49:00-05:00",
+    "docId": 2615,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02052026-2615",
+    "minutes": null
+  },
+  {
+    "title": "Beverly License Board",
+    "board": "Licensing Board",
+    "date": "2026-02-05",
+    "posted": "2026-01-29T11:45:00-05:00",
+    "docId": 2611,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02052026-2611",
+    "minutes": null
+  },
+  {
+    "title": "Special Committee on Rental Policies",
+    "board": "Special Committee on Rental Policies",
+    "date": "2026-02-05",
+    "posted": "2026-01-20T09:57:00-05:00",
+    "docId": 2602,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02052026-2602",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02052026-2602"
+  },
+  {
+    "title": "Conservation Commission Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-02-03",
+    "posted": "2026-01-29T16:28:00-05:00",
+    "docId": 2614,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02032026-2614",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02032026-2614"
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-02-02",
+    "posted": "2026-01-29T12:02:00-05:00",
+    "docId": 2612,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02022026-2612",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02022026-2612"
+  },
+  {
+    "title": "Public Services/Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-02-02",
+    "posted": "2026-01-29T09:18:00-05:00",
+    "docId": 2610,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02022026-2610",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02022026-2610"
+  },
+  {
+    "title": "Beverly Retirement Board Meeting",
+    "board": "Contributory Retirement Board",
+    "date": "2026-01-29",
+    "posted": "2026-01-27T15:25:00-05:00",
+    "docId": 2608,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01292026-2608",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01292026-2608"
+  },
+  {
+    "title": "Harbor Mangement Authority Meeting",
+    "board": "Harbor Management Authority",
+    "date": "2026-01-28",
+    "posted": "2026-01-23T11:13:00-05:00",
+    "docId": 2606,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01282026-2606",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01282026-2606"
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
+    "board": "Historic District Commission",
+    "date": "2026-01-28",
+    "posted": "2026-01-22T16:44:00-05:00",
+    "docId": 2604,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01282026-2604",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01282026-2604"
+  },
+  {
+    "title": "Board of Health Meeting",
+    "board": "Board of Health",
+    "date": "2026-01-28",
+    "posted": "2026-01-22T16:38:00-05:00",
+    "docId": 2603,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01282026-2603",
+    "minutes": null
+  },
+  {
+    "title": "Zoning Board of Appeals Meeting",
+    "board": "Zoning Board of Appeals",
+    "date": "2026-01-28",
+    "posted": "",
+    "docId": 2589,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01282026-2589",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01282026-2589"
+  },
+  {
+    "title": "REVISED Board of Directors - Beverly Public Library Meeting",
+    "board": "Board of Library Trustees",
+    "date": "2026-01-27",
+    "posted": "",
+    "docId": 2605,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01272026-2605",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01272026-2605"
+  },
+  {
+    "title": "Veterans Advisory Council",
+    "board": "Veterans Advisory Committee",
+    "date": "2026-01-22",
+    "posted": "2026-01-20T08:46:00-05:00",
+    "docId": 2601,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01222026-2601",
+    "minutes": null
+  },
+  {
+    "title": "Economic & Community Development Council",
+    "board": "Economic & Community Development Council",
+    "date": "2026-01-22",
+    "posted": "2026-01-15T13:55:00-05:00",
+    "docId": 2599,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01222026-2599",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01222026-2599"
+  },
+  {
+    "title": "Community Preservation Committee Meeting",
+    "board": "Community Preservation Committee",
+    "date": "2026-01-22",
+    "posted": "2026-01-12T14:51:00-05:00",
+    "docId": 2595,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01222026-2595",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01222026-2595"
+  },
+  {
+    "title": "South Essex Sewearge District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-01-21",
+    "posted": "2026-01-16T10:36:00-05:00",
+    "docId": 2600,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01212026-2600",
+    "minutes": null
+  },
+  {
+    "title": "Clean Energy Advisory Committee Meeting",
+    "board": "Clean Energy Advisory Committee",
+    "date": "2026-01-21",
+    "posted": "2026-01-15T11:08:00-05:00",
+    "docId": 2597,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01212026-2597",
+    "minutes": null
+  },
+  {
+    "title": "Airport Commission Meeting",
+    "board": "Airport Commission",
+    "date": "2026-01-21",
+    "posted": "2025-12-31T11:27:00-05:00",
+    "docId": 2580,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01212026-2580",
+    "minutes": null
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-01-20",
+    "posted": "2026-01-15T13:33:00-05:00",
+    "docId": 2598,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01202026-2598",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01202026-2598"
+  },
+  {
+    "title": "N - 192 Replacement Project Citizens Advisory Committee Meeting",
+    "board": "Citizens Advisory Committee",
+    "date": "2026-01-15",
+    "posted": "2026-01-14T09:19:00-05:00",
+    "docId": 2596,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01152026-2596",
+    "minutes": null
+  },
+  {
+    "title": "Salem and Beverly Water Supply Board Meeting",
+    "board": "Salem and Beverly Water Supply Board",
+    "date": "2026-01-15",
+    "posted": "2026-01-12T12:14:00-05:00",
+    "docId": 2594,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01152026-2594",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Housing Authority Meeting",
+    "board": "Beverly Housing Authority",
+    "date": "2026-01-15",
+    "posted": "2026-01-09T12:18:00-05:00",
+    "docId": 2593,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01152026-2593",
+    "minutes": null
+  },
+  {
+    "title": "Board of Assessors Meeting",
+    "board": "Board of Assessors",
+    "date": "2026-01-15",
+    "posted": "2026-01-08T15:06:00-05:00",
+    "docId": 2592,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01152026-2592",
+    "minutes": null
+  },
+  {
+    "title": "Council on Aging Board of Directors Meeting",
+    "board": "Council on Aging",
+    "date": "2026-01-13",
+    "posted": "2026-01-08T15:04:00-05:00",
+    "docId": 2591,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01132026-2591",
+    "minutes": null
+  },
+  {
+    "title": "Conservation Commission Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-01-13",
+    "posted": "2026-01-08T13:34:00-05:00",
+    "docId": 2590,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01132026-2590",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01132026-2590"
+  },
+  {
+    "title": "Regular Planning Board Meeting January 13 2025",
+    "board": "Planning Board",
+    "date": "2026-01-13",
+    "posted": "2026-01-08T10:13:00-05:00",
+    "docId": 2587,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01132026-2587",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01132026-2587"
+  },
+  {
+    "title": "Revised South Essex Sewerage District Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-01-12",
+    "posted": "",
+    "docId": 2588,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01122026-2588",
+    "minutes": null
+  },
+  {
+    "title": "Human Rights Committee Meeting",
+    "board": "Human Rights Committee",
+    "date": "2026-01-08",
+    "posted": "2026-01-06T15:12:00-05:00",
+    "docId": 2586,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01082026-2586",
+    "minutes": null
+  },
+  {
+    "title": "Waste Reduction Committee Meeting",
+    "board": "Beverly Waste Reduction Committee",
+    "date": "2026-01-08",
+    "posted": "2026-01-06T11:48:00-05:00",
+    "docId": 2585,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01082026-2585",
+    "minutes": null
+  },
+  {
+    "title": "Design Review Board Meeting",
+    "board": "Design Review Board",
+    "date": "2026-01-08",
+    "posted": "2026-01-06T11:24:00-05:00",
+    "docId": 2584,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01082026-2584",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01082026-2584"
+  },
+  {
+    "title": "Beverly License Board",
+    "board": "Licensing Board",
+    "date": "2026-01-08",
+    "posted": "2026-01-02T11:29:00-05:00",
+    "docId": 2582,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01082026-2582",
+    "minutes": null
+  },
+  {
+    "title": "Parks and Recreation Commission Meeting",
+    "board": "Parks & Recreation Commission",
+    "date": "2026-01-08",
+    "posted": "2025-12-31T10:01:00-05:00",
+    "docId": 2579,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01082026-2579",
+    "minutes": null
+  },
+  {
+    "title": "Open Space and Recreation Committee Regular Meeting",
+    "board": "Open Space & Recreation Committee",
+    "date": "2026-01-07",
+    "posted": "2026-01-02T11:51:00-05:00",
+    "docId": 2583,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01072026-2583",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01072026-2583"
+  },
+  {
+    "title": "South Essex Sewerage District Board Meeting",
+    "board": "South Essex Sewerage Board",
+    "date": "2026-01-07",
+    "posted": "2026-01-02T11:18:00-05:00",
+    "docId": 2581,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01072026-2581",
+    "minutes": null
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
+    "board": "Historic District Commission",
+    "date": "2026-01-07",
+    "posted": "",
+    "docId": 2575,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01072026-2575",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01072026-2575"
+  },
+  {
+    "title": "Parking and Traffic Commission",
+    "board": "Parking & Traffic Commission",
+    "date": "2026-01-06",
+    "posted": "2025-12-23T12:02:00-05:00",
+    "docId": 2576,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01062026-2576",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01062026-2576"
+  },
+  {
+    "title": "Regular City Council Meeting and Inauguration",
+    "board": "City Council",
+    "date": "2026-01-05",
+    "posted": "2025-12-30T14:28:00-05:00",
+    "docId": 2578,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01052026-2578",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01052026-2578"
+  },
+  {
+    "title": "David S Lynch Public Park Trustees Meeting",
+    "board": "Trustees of David S. Lynch Public Parks Fund",
+    "date": "2025-12-17",
+    "posted": "2025-12-15T14:32:00-05:00",
+    "docId": 2572,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_12172025-2572",
+    "minutes": null
+  },
+  {
+    "title": "Financial Forecast Committee Meeting",
+    "board": "Financial Forecasting Committee",
+    "date": "2025-12-09",
+    "posted": "2025-11-07T08:37:00-05:00",
+    "docId": 2519,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_12092025-2519",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_12092025-2519"
+  },
+  {
+    "title": "Financial Forecast Committee Meeting",
+    "board": "Financial Forecasting Committee",
+    "date": "2025-12-02",
+    "posted": "2025-11-07T08:36:00-05:00",
+    "docId": 2518,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_12022025-2518",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_12022025-2518"
+  },
+  {
+    "title": "Financial Forecast Committee Meeting",
+    "board": "Financial Forecasting Committee",
+    "date": "2025-11-13",
+    "posted": "2025-11-07T08:33:00-05:00",
+    "docId": 2517,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11132025-2517",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_11132025-2517"
+  },
+  {
+    "title": "Board of Registrars of Voters Meeting",
+    "board": "Board of Registrars of Voters",
+    "date": "2025-10-20",
+    "posted": "2025-10-07T13:05:00-04:00",
+    "docId": 2480,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10202025-2480",
+    "minutes": null
+  },
+  {
+    "title": "Municipal Planting Study Committee Meeting",
+    "board": "Municipal Planting Study Committee",
+    "date": "2025-06-18",
+    "posted": "2025-06-09T09:49:00-04:00",
+    "docId": 2332,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06182025-2332",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_06182025-2332"
+  },
+  {
+    "title": "Board of Registrar of Voters Meeting",
+    "board": "Board of Registrars of Voters",
+    "date": "2025-04-30",
+    "posted": "2025-04-24T14:43:00-04:00",
+    "docId": 2269,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04302025-2269",
+    "minutes": null
+  },
+  {
+    "title": "REVISED Municipal Planting Study Committee Meeting",
+    "board": "Municipal Planting Study Committee",
+    "date": "2025-04-02",
+    "posted": "",
+    "docId": 2226,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04022025-2226",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_04022025-2226"
+  },
+  {
+    "title": "CMR firms Beverly City Hall Project Evaluation Committee Meeting",
+    "board": "Evaluation Committee",
+    "date": "2025-03-20",
+    "posted": "2025-03-18T09:54:00-04:00",
+    "docId": 2217,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03202025-2217",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Audit Committee Meeting",
+    "board": "Beverly Audit Committee",
+    "date": "2025-01-24",
+    "posted": "2025-01-15T14:35:00-05:00",
+    "docId": 2128,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01242025-2128",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Cultural Council 2025 Grant Cycle Meeting",
+    "board": "Cultural Council",
+    "date": "2024-11-20",
+    "posted": "2024-09-16T10:12:00-04:00",
+    "docId": 1951,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11202024-1951",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Cultural Council 2025 Grant Cycle Meeting",
+    "board": "Cultural Council",
+    "date": "2024-11-06",
+    "posted": "2024-09-16T10:11:00-04:00",
+    "docId": 1950,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11062024-1950",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Cultural Council 2025 Grant Cycle Meeting",
+    "board": "Cultural Council",
+    "date": "2024-10-30",
+    "posted": "2024-09-16T10:10:00-04:00",
+    "docId": 1949,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10302024-1949",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Cultural Council 2025 Grant Cycle Meeting",
+    "board": "Cultural Council",
+    "date": "2024-10-16",
+    "posted": "2024-09-16T10:10:00-04:00",
+    "docId": 1948,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10162024-1948",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Cultural Council 2025 Grant Cycle Meeting",
+    "board": "Cultural Council",
+    "date": "2024-09-18",
+    "posted": "2024-09-16T10:09:00-04:00",
+    "docId": 1947,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09182024-1947",
+    "minutes": null
+  },
+  {
+    "title": "Permanent Building Commission",
+    "board": "Permanent Building Commission",
+    "date": "2024-02-12",
+    "posted": "2024-02-08T12:46:00-05:00",
+    "docId": 1665,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02122024-1665",
+    "minutes": null
+  },
+  {
+    "title": "Race Equity Task Force Regular Meeting",
+    "board": "Diversity, Equity and Inclusion",
+    "date": "2022-02-15",
+    "posted": "2022-02-11T12:36:00-05:00",
+    "docId": 709,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02152022-709",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02152022-709"
+  },
+  {
+    "title": "Charter Review Committee Meeting",
+    "board": "Charter Review Committee",
+    "date": "2022-02-10",
+    "posted": "2022-01-28T10:06:00-05:00",
+    "docId": 692,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02102022-692",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02102022-692"
+  },
+  {
+    "title": "Charter Review Committee Meeting",
+    "board": "Charter Review Committee",
+    "date": "2022-01-27",
+    "posted": "",
+    "docId": 682,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01272022-682",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01272022-682"
+  },
+  {
+    "title": "Charter Review Committee Meeting",
+    "board": "Charter Review Committee",
+    "date": "2022-01-20",
+    "posted": "2022-01-14T10:57:00-05:00",
+    "docId": 668,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01202022-668",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01202022-668"
+  },
+  {
+    "title": "Cable TV Advisory Committee meeting",
+    "board": "Cable Television Advisory Committee",
+    "date": "2021-05-24",
+    "posted": "2021-05-20T11:39:00-04:00",
+    "docId": 407,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05242021-407",
+    "minutes": null
+  },
+  {
+    "title": "Commissioners of Trust Funds Meeting",
+    "board": "Commissioners of Trust Funds",
+    "date": "2021-05-11",
+    "posted": "",
+    "docId": 386,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05112021-386",
+    "minutes": null
+  },
+  {
+    "title": "Cable TV Advisory Committee meeting",
+    "board": "Cable Television Advisory Committee",
+    "date": "2021-04-20",
+    "posted": "2021-04-15T13:01:00-04:00",
+    "docId": 357,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04202021-357",
+    "minutes": null
+  },
+  {
+    "title": "Cable Television Advisory Committee Public Hearing",
+    "board": "Cable Television Advisory Committee",
+    "date": "2021-03-25",
+    "posted": "2021-03-23T15:44:00-04:00",
+    "docId": 325,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03252021-325",
+    "minutes": null
+  },
+  {
+    "title": "Cable TV Advisory Committee meeting",
+    "board": "Cable Television Advisory Committee",
+    "date": "2021-03-22",
+    "posted": "2021-03-19T13:10:00-04:00",
+    "docId": 320,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_03222021-320",
+    "minutes": null
+  },
+  {
+    "title": "Cable TV Advisory Committee meeting",
+    "board": "Cable Television Advisory Committee",
+    "date": "2021-02-22",
+    "posted": "2021-02-18T15:50:00-05:00",
+    "docId": 274,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02222021-274",
+    "minutes": null
+  },
+  {
+    "title": "Cable TV Advisory Committee meeting",
+    "board": "Cable Television Advisory Committee",
+    "date": "2021-02-01",
+    "posted": "2021-01-28T06:15:00-05:00",
+    "docId": 223,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_02012021-223",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_02012021-223"
+  },
+  {
+    "title": "Cable TV Advisory Committee meeting",
+    "board": "Cable Television Advisory Committee",
+    "date": "2021-01-12",
+    "posted": "2021-01-08T12:16:00-05:00",
+    "docId": 198,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_01122021-198",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_01122021-198"
+  },
+  {
+    "title": "Beverly COVID - 19 Emergency Business Support Task Force Regular Meeting",
+    "board": "Beverly COVID-19 Emergency Business Support Task Force",
+    "date": "2020-08-20",
+    "posted": "",
+    "docId": 6,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08202020-6",
+    "minutes": null
+  },
+  {
+    "title": "Beverly COVID - 19 Emergency Business Support Task Force Regular Meeting",
+    "board": "Beverly COVID-19 Emergency Business Support Task Force",
+    "date": "2020-07-23",
+    "posted": "",
+    "docId": 5,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_07232020-5",
+    "minutes": null
+  },
+  {
+    "title": "Beverly COVID - 19 Emergency Business Support Task Force Regular Meeting",
+    "board": "Beverly COVID-19 Emergency Business Support Task Force",
+    "date": "2020-06-18",
+    "posted": "",
+    "docId": 4,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06182020-4",
+    "minutes": null
+  },
+  {
+    "title": "Beverly COVID - 19 Emergency Business Support Task Force Regular Meeting",
+    "board": "Beverly COVID-19 Emergency Business Support Task Force",
+    "date": "2020-06-11",
+    "posted": "",
+    "docId": 1,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06112020-1",
+    "minutes": null
+  },
+  {
+    "title": "Beverly COVID - 19 Emergency Business Support Task Force Regular Meeting",
+    "board": "Beverly COVID-19 Emergency Business Support Task Force",
+    "date": "2020-06-04",
+    "posted": "",
+    "docId": 8,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06042020-8",
+    "minutes": null
+  },
+  {
+    "title": "Beverly COVID - 19 Emergency Business Support Task Force Regular Meeting",
+    "board": "Beverly COVID-19 Emergency Business Support Task Force",
+    "date": "2020-05-28",
+    "posted": "",
+    "docId": 3,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05282020-3",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05282020-3"
+  },
+  {
+    "title": "Beverly COVID - 19 Emergency Business Support Task Force Regular Meeting",
+    "board": "Beverly COVID-19 Emergency Business Support Task Force",
+    "date": "2020-05-21",
+    "posted": "",
+    "docId": 2,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05212020-2",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05212020-2"
+  },
+  {
+    "title": "Beverly COVID - 19 Emergency Business Support Task Force Regular Meeting",
+    "board": "Beverly COVID-19 Emergency Business Support Task Force",
+    "date": "2020-05-14",
+    "posted": "",
+    "docId": 9,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05142020-9",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05142020-9"
+  },
+  {
+    "title": "Beverly COVID - 19 Emergency Business Support Task Force Regular Meeting",
+    "board": "Beverly COVID-19 Emergency Business Support Task Force",
+    "date": "2020-05-07",
+    "posted": "",
+    "docId": 7,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_05072020-7",
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_05072020-7"
   }
 ]

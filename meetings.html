@@ -82,10 +82,10 @@
       <h2>Board / Committee</h2>
     </div>
     <div class="filter-group">
-      <h2>Document Type</h2>
-      <button class="filter-btn active-type active" data-type="all">All Types <span class="count" id="type-all-count"></span></button>
-      <button class="filter-btn" data-type="minutes">Minutes</button>
-      <button class="filter-btn" data-type="agenda">Agenda</button>
+      <h2>Minutes</h2>
+      <button class="filter-btn active-type active" data-minutes="all">All meetings</button>
+      <button class="filter-btn" data-minutes="posted">Minutes posted</button>
+      <button class="filter-btn" data-minutes="pending">Minutes not yet posted</button>
     </div>
   </aside>
 
@@ -206,7 +206,7 @@
         if (ov.dial_in) links.push(`<span class="meet-dial">Or dial: ${ov.dial_in}${ov.dial_pin ? ` &nbsp;PIN: ${ov.dial_pin}` : ''}</span>`);
       }
       if (doc) {
-        links.push(`<a href="${doc.link}" target="_blank" class="meet-btn">📄 View ${doc.type === 'minutes' ? 'Minutes' : 'Agenda'}</a>`);
+        links.push(`<a href="${doc.agenda}" target="_blank" class="meet-btn">📄 View Agenda</a>`);
       }
       const startEnd = eventStartEnd(e);
       if (startEnd) {
@@ -238,7 +238,7 @@
   // ── Agendas & Minutes Archive ────────────────────────────────────────────
   let allDocs = [];
   let archiveBoard  = 'all';
-  let archiveType   = 'all';
+  let archiveMinutes = 'all';
   let archiveSearch = '';
   let agendaText = {};
 
@@ -251,19 +251,20 @@
     return t && t.text ? t.text : '';
   }
 
-  function formatDate(dateStr) {
-    const d = new Date(dateStr);
-    if (isNaN(d)) return dateStr;
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  function formatMeetingDate(dateStr) {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    const date = new Date(y, m - 1, d);
+    if (isNaN(date)) return dateStr;
+    return date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
   }
 
   function filteredDocs() {
     return allDocs.filter(item => {
       const boardMatch  = archiveBoard === 'all' || item.board === archiveBoard;
-      const typeMatch   = archiveType  === 'all' || item.type  === archiveType;
+      const typeMatch   = archiveMinutes === 'all' || (archiveMinutes === 'posted') === !!item.minutes;
       const q = archiveSearch.toLowerCase();
       const searchMatch = !q || item.title.toLowerCase().includes(q) ||
-        item.desc.toLowerCase().includes(q) || item.board.toLowerCase().includes(q) ||
+        item.board.toLowerCase().includes(q) ||
         docText(item).toLowerCase().includes(q);
       return boardMatch && typeMatch && searchMatch;
     });
@@ -305,10 +306,10 @@
     const list = document.getElementById('meetings-list');
     const items = filteredDocs();
     document.getElementById('archive-result-count').textContent =
-      `${items.length} document${items.length !== 1 ? 's' : ''}`;
+      `${items.length} meeting${items.length !== 1 ? 's' : ''}`;
 
     if (!items.length) {
-      list.innerHTML = '<div class="state-msg">No agendas or minutes match your filters.</div>';
+      list.innerHTML = '<div class="state-msg">No meetings match your filters.</div>';
       return;
     }
 
@@ -316,17 +317,13 @@
       const text = docText(item);
       return `
       <div class="meeting-card">
-        <div class="card-top">
-          <div>
-            <div class="card-meta">${formatDate(item.pubDate)} · ${item.board}</div>
-            <div class="card-title"><a href="${item.link}" target="_blank">${item.title}</a></div>
-            ${item.desc ? `<div class="card-desc">${item.desc}</div>` : ''}
-          </div>
-          <span class="status-badge ${item.type}">${item.type === 'minutes' ? 'Minutes' : 'Agenda'}</span>
-        </div>
-        <div class="card-tags">
-          <span class="tag ${item.type}">${item.type}</span>
-          <span class="tag">${item.board}</span>
+        <div class="card-title">${escapeHtml(item.title)}</div>
+        <div class="card-meta">${formatMeetingDate(item.date)} · ${escapeHtml(item.board)}</div>
+        <div class="card-docs">
+          <a href="${item.agenda}" target="_blank" class="meet-btn outline">Agenda (PDF)</a>
+          ${item.minutes
+            ? `<a href="${item.minutes}" target="_blank" class="meet-btn outline">Minutes (PDF)</a>`
+            : '<span class="card-docs-pending">Minutes not yet posted</span>'}
         </div>
         ${text ? `
         <details class="agenda-text">
@@ -338,11 +335,11 @@
     }).join('');
   }
 
-  document.querySelectorAll('[data-type]').forEach(btn => {
+  document.querySelectorAll('[data-minutes]').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active-type', 'active'));
+      document.querySelectorAll('[data-minutes]').forEach(b => b.classList.remove('active-type', 'active'));
       btn.classList.add('active-type', 'active');
-      archiveType = btn.dataset.type;
+      archiveMinutes = btn.dataset.minutes;
       renderArchive();
     });
   });

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Beverly Data — Data Fetcher
-Pulls agenda and calendar RSS feeds from beverlyma.gov and writes:
-  - meetings.json   (agendas & minutes)
+Pulls the Agenda Center page and calendar RSS feed from beverlyma.gov and writes:
+  - meetings.json   (one item per meeting, with agenda and minutes links)
   - calendar.json   (upcoming events)
 
 Run this on a schedule (cron, GitHub Actions, etc.) to keep data fresh.
@@ -22,16 +22,11 @@ from pathlib import Path
 
 OUT_DIR = Path(__file__).parent
 
-AGENDA_FEEDS = [
-    {"url": "https://beverlyma.gov/RSSFeed.aspx?ModID=65&CID=All-0",           "board": None},
-    {"url": "https://beverlyma.gov/RSSFeed.aspx?ModID=65&CID=City-Council-49", "board": "City Council"},
-]
-
-# The City Council RSS feed above is empty on the city's side, so council
-# agendas are also read from the City Council section of the Agenda Center page.
+# The Agenda Center page lists every board's meetings, each with its agenda
+# and (once posted) minutes. It is the source for the archive; the city's RSS
+# feeds report minutes under the agenda's title and link, which is misleading.
 AGENDA_CENTER_URL  = "https://www.beverlyma.gov/AgendaCenter"
 AGENDA_CENTER_BASE = "https://www.beverlyma.gov"
-COUNCIL_CATEGORY   = 49
 
 CALENDAR_FEED = "https://beverlyma.gov/RSSFeed.aspx?ModID=58&CID=All-calendar.xml"
 
@@ -63,15 +58,8 @@ def detect_board(title: str) -> str:
             return name
     return "Other"
 
-def detect_type(title: str, desc: str) -> str:
-    return "minutes" if re.search(r"minutes", title + " " + desc, re.I) else "agenda"
-
 def clean_title(title: str) -> str:
     return re.sub(r"\s*\(PDF\)", "", title, flags=re.I).strip()
-
-def clean_desc(raw_desc: str, title: str) -> str:
-    clean = re.sub(r"\s*\(PDF\)", "", raw_desc, flags=re.I).strip()
-    return clean if clean and clean != title else ""
 
 def extract_doc_id(url: str):
     """Trailing numeric AgendaCenter document ID from a beverlyma.gov URL, or None."""
@@ -102,60 +90,25 @@ def parse_date(date_str: str):
     except Exception:
         return date_str
 
-# ── Agenda fetcher ─────────────────────────────────────────────────────────────
+# ── Meeting archive fetcher ────────────────────────────────────────────────────
 
-def fetch_agendas() -> list:
-    seen = set()
-    items = []
+def board_name(category: str) -> str:
+    """City category names are index-style ('Health, Board of'); put them in natural order."""
+    name = html_lib.unescape(category).strip()
+    head, sep, tail = name.rpartition(", ")
+    if sep and (re.search(r"\b(of|on)$", tail) or tail == "Salem and Beverly"):
+        return f"{tail} {head}"
+    return name
 
-    for feed in AGENDA_FEEDS:
-        print(f"  Fetching {feed['url'].split('CID=')[1]} …")
-        try:
-            root = fetch_xml(feed["url"])
-        except Exception as e:
-            print(f"  ⚠️  Failed: {e}")
-            continue
-
-        for item in root.findall(".//item"):
-            raw_title = item.findtext("title") or ""
-            title     = clean_title(raw_title)
-            link      = (item.findtext("link") or "").strip() or \
-                        (item.findtext("guid") or "").strip()
-            pub_date  = item.findtext("pubDate") or ""
-            raw_desc  = item.findtext("description") or ""
-            desc      = clean_desc(raw_desc, title)
-            board     = feed["board"] or detect_board(title)
-            doc_type  = detect_type(title, desc)
-
-            key = title + "|" + link
-            if key in seen:
-                continue
-            seen.add(key)
-
-            items.append({
-                "title":    title,
-                "link":     link,
-                "pubDate":  parse_date(pub_date),
-                "desc":     desc,
-                "board":    board,
-                "type":     doc_type,
-                "docId":    extract_doc_id(link),
-            })
-
-    print("  Fetching City Council section of Agenda Center …")
-    try:
-        have = {(x["docId"], x["type"]) for x in items if x["docId"] is not None}
-        council = [x for x in fetch_council_agendas()
-                   if x["docId"] is None or (x["docId"], x["type"]) not in have]
-        items.extend(council)
-        print(f"  → {len(council)} City Council items from Agenda Center")
-    except Exception as e:
-        print(f"  ⚠️  Failed: {e}")
-
-    # Sort newest first
-    items.sort(key=lambda x: x["pubDate"], reverse=True)
-    print(f"  → {len(items)} agenda/minutes items")
-    return items
+def meeting_title(raw: str, board: str) -> str:
+    """Drop the word 'Agenda' and any trailing date; the card shows the meeting date."""
+    title = clean_title(html_lib.unescape(re.sub(r"\s+", " ", raw)))
+    title = re.sub(r"\s+(for\s+)?\d{1,2}/\d{1,2}/\d{2,4}$", "", title)
+    title = re.sub(r"\s*-\s*[A-Z][a-z]+ \d{1,2}, \d{4}$", "", title)
+    title = re.sub(r"\bagenda\b", "", title, flags=re.I)
+    title = re.sub(r"(\s*-\s*)+", " - ", title)
+    title = re.sub(r"\s+", " ", title).strip(" -")
+    return title or f"{board} Meeting"
 
 def parse_posted(text: str) -> str:
     """Agenda Center 'Posted Sep 21, 2026 2:52 PM' (Eastern) -> ISO string."""
@@ -166,49 +119,46 @@ def parse_posted(text: str) -> str:
     except ValueError:
         return ""
 
-def fetch_council_agendas() -> list:
-    """Scrape the City Council section of the Agenda Center page."""
+def parse_row(row: str, board: str):
+    agenda = re.search(r'<p>\s*<a[^>]*href="(/AgendaCenter/ViewFile/Agenda/_(\d{8})-(\d+))"[^>]*>(.*?)</a>', row, re.S)
+    if not agenda:
+        return None
+    href, mmddyyyy, doc_id, raw_title = agenda.groups()
+    text    = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", row))
+    posted  = re.search(r"Posted (\w{3} \d{1,2}, \d{4} \d{1,2}:\d{2} [AP]M)", text)
+    minutes = re.search(r'href="(/AgendaCenter/ViewFile/Minutes/[^"]+)"', row)
+    return {
+        "title":   meeting_title(raw_title, board),
+        "board":   board,
+        "date":    f"{mmddyyyy[4:]}-{mmddyyyy[:2]}-{mmddyyyy[2:4]}",
+        "posted":  parse_posted(posted.group(1)) if posted else "",
+        "docId":   int(doc_id),
+        "agenda":  AGENDA_CENTER_BASE + href,
+        "minutes": AGENDA_CENTER_BASE + minutes.group(1) if minutes else None,
+    }
+
+def fetch_archive() -> list:
+    """One item per meeting, from every board section of the Agenda Center page."""
     req = urllib.request.Request(AGENDA_CENTER_URL, headers={"User-Agent": "BeverlyData/1.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
         html = resp.read().decode("utf-8", errors="replace")
 
-    start = html.find(f'id="category-panel-{COUNCIL_CATEGORY}"')
-    if start < 0:
-        raise ValueError("City Council section not found on Agenda Center page")
-    end = html.find('id="category-panel-', start + 30)
-    section = html[start:end if end > 0 else None]
+    categories = re.findall(r'aria-controls="category-panel-(\d+)">\s*([^<]+)', html)
+    items, seen = [], set()
+    for cid, category in categories:
+        start = html.find(f'id="category-panel-{cid}"')
+        end   = html.find('id="category-panel-', start + 30)
+        section = html[start:end if end > 0 else None]
+        board = board_name(category)
+        for row in re.findall(r'<tr[^>]*class="catAgendaRow".*?</tr>', section, re.S):
+            item = parse_row(row, board)
+            if item and item["docId"] not in seen:
+                seen.add(item["docId"])
+                items.append(item)
 
-    items = []
-    for row in re.findall(r'<tr[^>]*class="catAgendaRow".*?</tr>', section, re.S):
-        text   = re.sub(r"<[^>]+>", " ", row)
-        text   = re.sub(r"\s+", " ", text.replace("&thinsp;", " ").replace("&mdash;", " "))
-        posted = re.search(r"Posted (\w{3} \d{1,2}, \d{4} \d{1,2}:\d{2} [AP]M)", text)
-        agenda = re.search(r'<p>\s*<a[^>]*href="/AgendaCenter/ViewFile/Agenda/_\d+-(\d+)"[^>]*>(.*?)</a>', row, re.S)
-        if not agenda:
-            continue
-        doc_id   = int(agenda.group(1))
-        title    = clean_title(html_lib.unescape(re.sub(r"\s+", " ", agenda.group(2))))
-        pub_date = parse_posted(posted.group(1)) if posted else ""
-        items.append({
-            "title":   title,
-            "link":    f"{AGENDA_CENTER_BASE}/AgendaCenter/PreviousVersions/{doc_id}",
-            "pubDate": pub_date,
-            "desc":    "",
-            "board":   "City Council",
-            "type":    "agenda",
-            "docId":   doc_id,
-        })
-        minutes = re.search(r'href="(/AgendaCenter/ViewFile/Minutes/[^"]+)"', row)
-        if minutes:
-            items.append({
-                "title":   title.replace("Agenda", "Minutes") if "Agenda" in title else f"{title} Minutes",
-                "link":    AGENDA_CENTER_BASE + minutes.group(1),
-                "pubDate": pub_date,
-                "desc":    "",
-                "board":   "City Council",
-                "type":    "minutes",
-                "docId":   None,
-            })
+    items.sort(key=lambda x: (x["date"], x["posted"]), reverse=True)
+    print(f"  → {len(items)} meetings across {len(categories)} boards, "
+          f"{sum(1 for x in items if x['minutes'])} with minutes")
     return items
 
 # ── Calendar fetcher ───────────────────────────────────────────────────────────
@@ -280,7 +230,7 @@ def main():
     print(f"    {datetime.now().strftime('%Y-%m-%d %H:%M')}\n")
 
     print("Agendas & Minutes:")
-    meetings = fetch_agendas()
+    meetings = fetch_archive()
     meetings_path = OUT_DIR / "meetings.json"
     with open(meetings_path, "w") as f:
         json.dump(meetings, f, indent=2)

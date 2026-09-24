@@ -2,7 +2,7 @@
 """
 Open Beverly: Agenda Transcriber
 The city's agenda PDFs are scanned images with no text layer. This script
-downloads each agenda listed in meetings.json, has Claude read the scan,
+downloads each meeting's agenda listed in meetings.json, has Claude read the scan,
 and writes the text to agenda_text.json (keyed by docId).
 
 Usage:
@@ -17,7 +17,6 @@ import base64
 import io
 import json
 import os
-import re
 import sys
 import urllib.request
 from datetime import datetime, timezone
@@ -32,7 +31,6 @@ ROOT          = Path(__file__).parent
 MEETINGS_FILE = ROOT / "meetings.json"
 OUTPUT_FILE   = ROOT / "agenda_text.json"
 CLAUDE_MODEL  = "claude-haiku-4-5-20251001"
-BASE_URL      = "https://www.beverlyma.gov"
 USER_AGENT    = "Mozilla/5.0 (OpenBeverly agenda transcriber)"
 MAX_PDF_BYTES = 60 * 1024 * 1024   # skip oversized files
 AGENDA_PAGES  = 10                 # packets (agenda + all backup) are trimmed to this many front pages
@@ -57,16 +55,6 @@ def fetch(url: str) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=60) as r:
         return r.read()
-
-
-def pdf_url(doc: dict) -> str | None:
-    """The meetings.json link is a 'PreviousVersions' HTML page; find the agenda PDF on it.
-    Packet links (the agenda plus all supporting documents) are skipped."""
-    html = fetch(doc["link"]).decode("utf-8", errors="replace")
-    for href in re.findall(r'href="(/AgendaCenter/ViewFile/Agenda/[^"]+)"', html):
-        if "packet" not in href.lower():
-            return BASE_URL + href
-    return None
 
 
 def front_pages(pdf: bytes) -> tuple[bytes, int]:
@@ -131,7 +119,7 @@ def main():
 
     client = anthropic.Anthropic(api_key=api_key)
     with open(MEETINGS_FILE) as f:
-        docs = [d for d in json.load(f) if d.get("type") == "agenda" and d.get("docId") is not None]
+        docs = [d for d in json.load(f) if d.get("agenda") and d.get("docId") is not None]
 
     existing = load_existing()
     todo = [d for d in docs
@@ -147,14 +135,12 @@ def main():
         entry = {
             "title": doc["title"],
             "board": doc.get("board", ""),
-            "pubDate": doc.get("pubDate", ""),
+            "date": doc.get("date", ""),
             "transcribed": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
             "model": CLAUDE_MODEL,
         }
         try:
-            url = pdf_url(doc)
-            if not url:
-                raise ValueError("no PDF link found on agenda page")
+            url = doc["agenda"]
             pdf = fetch(url)
             if not pdf.startswith(b"%PDF"):
                 raise ValueError("download was not a PDF")

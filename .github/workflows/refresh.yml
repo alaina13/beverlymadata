@@ -5,6 +5,10 @@ on:
     # 7 AM ET every morning (11:00 UTC, accounts for EDT offset)
     - cron: '0 11 * * *'
   workflow_dispatch: # allow manual trigger from GitHub UI
+    inputs:
+      agenda_max:
+        description: 'Max agendas to transcribe this run (use a larger number for a one-time catch-up)'
+        default: '25'
 
 jobs:
   refresh:
@@ -47,7 +51,7 @@ jobs:
       - name: Transcribe scanned agendas (new agendas only)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python3 transcribe_agendas.py --max 25
+        run: python3 transcribe_agendas.py --max ${{ inputs.agenda_max || 25 }}
 
       - name: Commit updated data files
         run: |
