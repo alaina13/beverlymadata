@@ -17,6 +17,7 @@ import base64
 import io
 import json
 import os
+import re
 import sys
 import urllib.request
 from datetime import datetime, timezone
@@ -43,12 +44,30 @@ committee agendas that directly follow it. Stop as soon as supporting
 documents begin (letters, memos, legal notices, orders, applications,
 reports, plans, minutes) and include nothing from them.
 
+Skip the letterhead. Begin at the meeting's own heading (board name with
+"Agenda", "Meeting Notice", or the date, time, and place). Leave out the
+city seal text, department mailing address, phone and fax numbers, the
+Mayor's name, rosters of board members or councilors printed in the
+margin or header, and any cover letter addressed to the City Clerk.
+
 Rules:
 - Keep the original wording, spelling, numbering, and line breaks.
 - Use plain text only. No markdown, no commentary, no summary.
 - Skip clerk "received and recorded" stamps, page numbers, and signatures.
 - If a word is illegible, write [illegible].
 - Output only the transcription."""
+
+TRIM_PROMPT = """\
+Below is a numbered transcription of a City of Beverly, Massachusetts meeting
+agenda. It may open with letterhead: the city or department name and mailing
+address, phone and fax numbers, the Mayor's name, a roster of board members or
+councilors, or a cover letter addressed to the City Clerk.
+
+Reply with only the number of the first line that belongs to the agenda itself
+(the meeting's heading, such as the board name with "Agenda" or "Meeting
+Notice", or the date, time, and place). If there is no letterhead, reply 1.
+
+"""
 
 
 def fetch(url: str) -> bytes:
@@ -88,6 +107,23 @@ def transcribe(client: anthropic.Anthropic, pdf: bytes) -> str:
         }],
     )
     return message.content[0].text.strip()
+
+
+def trim_letterhead(client: anthropic.Anthropic, text: str) -> str:
+    """Drop leading letterhead lines from an existing transcription.
+    Claude only picks the start line, so the agenda wording is never rewritten."""
+    lines = text.splitlines()
+    numbered = "\n".join(f"{i}: {line}" for i, line in enumerate(lines[:80], 1))
+    message = client.messages.create(
+        model=CLAUDE_MODEL,
+        max_tokens=10,
+        messages=[{"role": "user", "content": TRIM_PROMPT + numbered}],
+    )
+    m = re.search(r"\d+", message.content[0].text)
+    start = int(m.group()) if m else 1
+    if not 1 <= start <= min(len(lines), 80):
+        return text
+    return "\n".join(lines[start - 1:]).strip()
 
 
 def load_existing() -> dict:
@@ -150,11 +186,30 @@ def main():
             entry["pages"] = pages
             entry["pdf"] = url
             entry["text"] = transcribe(client, pdf)
+            entry["letterhead_trimmed"] = True
             print(f"    ✓ {len(entry['text'].split())} words\n")
         except Exception as e:
             entry["error"] = str(e)
             print(f"    ⚠️  {e}\n")
         existing[key] = entry
+        save(existing)
+
+    # One-time cleanup: entries transcribed before the prompt skipped letterhead.
+    untrimmed = [k for k, v in existing.items() if v.get("text") and not v.get("letterhead_trimmed")]
+    if untrimmed:
+        print(f"✂️   Trimming letterhead from {len(untrimmed)} earlier transcriptions")
+    for key in untrimmed:
+        entry = existing[key]
+        try:
+            before = entry["text"]
+            entry["text"] = trim_letterhead(client, before)
+            entry["letterhead_trimmed"] = True
+            dropped = len(before.splitlines()) - len(entry["text"].splitlines())
+            if dropped:
+                print(f"    {key}: dropped {dropped} lines")
+        except Exception as e:
+            print(f"    ⚠️  {key}: {e}")
+    if untrimmed:
         save(existing)
 
     ok = sum(1 for v in existing.values() if v.get("text"))
