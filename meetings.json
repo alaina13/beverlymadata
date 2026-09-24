@@ -18,6 +18,15 @@
     "minutes": null
   },
   {
+    "title": "Beverly Regional Airport Subcommittee on Governance and Internal Policy/Committee of the Whole Meeting",
+    "board": "Airport Commission",
+    "date": "2026-09-29",
+    "posted": "2026-09-24T11:09:00-04:00",
+    "docId": 2929,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09292026-2929",
+    "minutes": null
+  },
+  {
     "title": "Deficit Reduction Committee Meeting",
     "board": "Deficit Reduction Committee",
     "date": "2026-09-28",
@@ -177,7 +186,7 @@
     "posted": "2026-09-14T10:52:00-04:00",
     "docId": 2906,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09162026-2906",
-    "minutes": null
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_09162026-2906"
   },
   {
     "title": "Historic Districts Commission Meeting",
@@ -276,7 +285,7 @@
     "posted": "2026-09-09T15:33:00-04:00",
     "docId": 2893,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09142026-2893",
-    "minutes": null
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_09142026-2893"
   },
   {
     "title": "Beverly Regional Airport Subcommittee on Goverance and Internal Policy Meeting",
