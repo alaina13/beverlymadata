@@ -11,7 +11,7 @@
   <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:title" content="Meetings — Open Beverly" />
-  <meta property="og:description" content="Beverly city board and committee meetings, agendas, and minutes." />
+  <meta property="og:description" content="Upcoming and past Beverly board and committee meetings, with agendas, minutes, and AI-generated meeting summaries." />
   <meta property="og:image" content="https://openbeverly.org/preview.png" />
   <meta property="og:url" content="https://openbeverly.org/" />
   <meta property="og:type" content="website" />
@@ -22,15 +22,7 @@
 <header>
   <a class="logo" href="/">Open <span>Beverly</span></a>
   <nav>
-    <div class="nav-group">
-      <button class="nav-group-btn active" aria-haspopup="true" aria-expanded="false">
-        Meetings
-      </button>
-      <div class="nav-dropdown">
-      <a href="/meetings.html" class="active">Meetings</a>
-      <a href="/summaries.html">Summaries</a>
-      </div>
-    </div>
+    <a href="/meetings.html" class="active">Meetings</a>
     <div class="nav-group">
       <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">
         Finance
@@ -61,77 +53,78 @@
 
 <div class="hero">
   <h1>Meetings</h1>
-  <p>Scheduled meetings for Beverly's boards and committees, plus agendas and minutes from the city's agenda center. Document links open on beverlyma.gov.</p>
+  <p>Upcoming and past meetings for Beverly's boards and committees, with agendas, minutes, and AI-generated summaries of recorded City Council and School Committee meetings. Document links open on beverlyma.gov.</p>
 </div>
 
-<main id="main">
-<section class="upcoming-section">
-  <h2 class="section-title">Upcoming Meetings</h2>
-  <div class="main-header">
-    <span class="result-count" id="cal-result-count">Loading…</span>
+<main id="main" class="meetings-page">
+  <div class="meeting-tabs" role="tablist" aria-label="Meetings">
+    <button type="button" role="tab" id="tab-upcoming" class="meeting-tab" aria-controls="meetings-panel" aria-selected="true">Upcoming <span class="count" id="count-upcoming"></span></button>
+    <button type="button" role="tab" id="tab-past" class="meeting-tab" aria-controls="meetings-panel" aria-selected="false">Past <span class="count" id="count-past"></span></button>
   </div>
-  <div id="calendar-list">
-    <div class="state-msg"><div class="spinner"></div>Fetching calendar…</div>
-  </div>
-</section>
 
-<div class="agendas-container" id="archive">
-  <h2 class="section-title">Agendas &amp; Minutes Archive</h2>
-  <aside class="sidebar">
-    <div class="filter-group" id="archive-board-filter-group">
-      <h2>Board / Committee</h2>
-    </div>
-    <div class="filter-group">
-      <h2>Minutes</h2>
-      <button class="filter-btn active-type active" data-minutes="all">All meetings</button>
-      <button class="filter-btn" data-minutes="posted">Minutes posted</button>
-      <button class="filter-btn" data-minutes="pending">Minutes not yet posted</button>
-    </div>
-  </aside>
-
-  <div>
-    <div class="mobile-filters" id="mobile-archive-board-filters"></div>
-    <div class="main-header">
-      <span class="result-count" id="archive-result-count">Loading…</span>
-      <label for="archive-search" class="sr-only">Search agendas and minutes</label><input class="search-box" type="search" id="archive-search" placeholder="Search agendas and minutes…" />
-    </div>
-    <div id="meetings-list">
-      <div class="state-msg"><div class="spinner"></div>Fetching meeting data…</div>
-    </div>
+  <div class="archive-controls">
+    <label for="meeting-search" class="sr-only">Search meetings, agendas, and summaries</label>
+    <input class="search-box" type="search" id="meeting-search" placeholder="Search agendas, minutes, summaries…" />
+    <label for="meeting-board" class="sr-only">Board or committee</label>
+    <select id="meeting-board" class="archive-select"><option value="all">All boards</option></select>
+    <label for="past-filter" class="sr-only">Show</label>
+    <select id="past-filter" class="archive-select" hidden>
+      <option value="all">All past meetings</option>
+      <option value="summary">With AI summary</option>
+      <option value="posted">Minutes posted</option>
+      <option value="pending">Minutes not yet posted</option>
+    </select>
+    <span class="result-count" id="result-count">Loading…</span>
   </div>
-</div>
+
+  <p class="section-note" id="ai-note" hidden>AI summaries are generated from <a href="https://www.youtube.com/@BevCam" target="_blank">BevCam</a> recordings. AI can mishear names, misattribute statements, or omit context. Check the recording before relying on a summary, and use the minutes as the official record.</p>
+
+  <div id="meetings-panel" class="doc-list" role="tabpanel" aria-labelledby="tab-upcoming">
+    <div class="state-msg"><div class="spinner"></div>Loading meetings…</div>
+  </div>
 </main>
 
 <footer>
-
+  Summaries generated from <a href="https://www.youtube.com/@BevCam" target="_blank">BevCam</a> recordings using AI.
   Open Beverly is an independent civic project and is not affiliated with the City of Beverly. Created with the assistance of AI.
   <a href="/about.html#feedback">Feedback</a>
 </footer>
 
 <script>
-  // ── Upcoming Meetings ────────────────────────────────────────────────────
-  let allEvents = [];
-  let eventOverrides = [];
-  let agendaDocsById = {};
+  const PAGE_SIZE = 40;
 
-  function formatEventDate(dateStr) {
-    const d = new Date(dateStr);
-    if (isNaN(d)) return { month: '', day: '?', dow: '' };
-    return {
-      month: d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase(),
-      day:   d.getDate(),
-      dow:   d.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase(),
-    };
+  let upcoming = [];
+  let past = [];
+  let agendaText = {};
+  let tab = 'upcoming';
+  let board = 'all';
+  let pastFilter = 'all';
+  let search = '';
+  let limit = PAGE_SIZE;
+
+  // ── Helpers ──────────────────────────────────────────────────────────────
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
-  function findOverride(event) {
-    const eventDateStr = event.eventDate ? new Date(event.eventDate).toISOString().slice(0, 10) : '';
-    return eventOverrides.find(o =>
-      event.title.toLowerCase().includes(o.match.toLowerCase()) &&
-      (!o.date || o.date === eventDateStr)
-    ) || null;
+  function pad2(n) { return String(n).padStart(2, '0'); }
+
+  function isoDate(d) { return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`; }
+
+  function parseIso(iso) {
+    const [y, m, d] = iso.split('-').map(Number);
+    return new Date(y, m - 1, d);
   }
 
+  function upcomingDate(iso) {
+    return parseIso(iso).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  }
+
+  function pastDate(iso) {
+    return parseIso(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  // ── Calendar links (upcoming meetings) ──────────────────────────────────
   const DEFAULT_EVENT_DURATION_MS = 60 * 60 * 1000;
 
   function eventStartEnd(event) {
@@ -140,8 +133,6 @@
     if (isNaN(start)) return null;
     return { start, end: new Date(start.getTime() + DEFAULT_EVENT_DURATION_MS) };
   }
-
-  function pad2(n) { return String(n).padStart(2, '0'); }
 
   function icsLocal(d) {
     return `${d.getFullYear()}${pad2(d.getMonth() + 1)}${pad2(d.getDate())}T${pad2(d.getHours())}${pad2(d.getMinutes())}00`;
@@ -185,65 +176,88 @@
     return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) + '.ics';
   }
 
-  function renderUpcoming() {
-    const list = document.getElementById('calendar-list');
-    document.getElementById('cal-result-count').textContent =
-      `${allEvents.length} upcoming event${allEvents.length !== 1 ? 's' : ''}`;
-
-    if (!allEvents.length) {
-      list.innerHTML = '<div class="state-msg">No upcoming events found.</div>';
-      return;
-    }
-
-    list.innerHTML = allEvents.map(e => {
-      const { month, day, dow } = formatEventDate(e.eventDate || e.pubDate);
-      const ov  = findOverride(e);
-      const doc = e.agendaDocId != null ? agendaDocsById[e.agendaDocId] : null;
-
-      const links = [];
-      if (ov) {
-        links.push(`<a href="${ov.meet_url}" target="_blank" class="meet-btn">📹 Join Google Meet</a>`);
-        if (ov.dial_in) links.push(`<span class="meet-dial">Or dial: ${ov.dial_in}${ov.dial_pin ? ` &nbsp;PIN: ${ov.dial_pin}` : ''}</span>`);
-      }
-      if (doc) {
-        links.push(`<a href="${doc.agenda}" target="_blank" class="meet-btn">📄 View Agenda</a>`);
-      }
-      const startEnd = eventStartEnd(e);
-      if (startEnd) {
-        links.push(`<a href="${googleCalUrl(e, startEnd.start, startEnd.end)}" target="_blank" class="meet-btn outline">🗓️ Google Calendar</a>`);
-        links.push(`<a href="${icsFileUrl(e, startEnd.start, startEnd.end)}" download="${icsFileName(e.title)}" class="meet-btn outline">⬇️ .ics</a>`);
-      }
-      const metaHtml = links.length ? `<div class="event-meet">${links.join('')}</div>` : '';
-
-      return `
-        <div class="event-card">
-          <div class="event-date-block">
-            <div class="month">${month}</div>
-            <div class="day">${day}</div>
-            <div class="dow">${dow}</div>
-          </div>
-          <div class="event-body">
-            <div class="event-title"><a href="${e.link}" target="_blank">${e.title}</a></div>
-            <div class="event-detail">
-              ${e.eventTime ? `<span>🕐 ${e.eventTime}</span>` : ''}
-              ${e.location  ? `<span>📍 ${e.location}</span>`  : ''}
-              <span style="color:var(--tag-text);font-weight:600">${e.board}</span>
-            </div>
-            ${metaHtml}
-          </div>
-        </div>`;
-    }).join('');
+  function findOverride(event, overrides) {
+    const eventDateStr = event.eventDate ? isoDate(new Date(event.eventDate)) : '';
+    return overrides.find(o =>
+      event.title.toLowerCase().includes(o.match.toLowerCase()) &&
+      (!o.date || o.date === eventDateStr)
+    ) || null;
   }
 
-  // ── Agendas & Minutes Archive ────────────────────────────────────────────
-  let allDocs = [];
-  let archiveBoard  = 'all';
-  let archiveMinutes = 'all';
-  let archiveSearch = '';
-  let agendaText = {};
+  // ── Building the two lists ───────────────────────────────────────────────
+  // Upcoming: calendar events (with their agenda when posted), plus posted
+  // agendas for future meetings the calendar doesn't list.
+  function buildUpcoming(events, overrides, docs, today) {
+    const byId = Object.fromEntries(docs.filter(d => d.docId != null).map(d => [d.docId, d]));
+    const used = new Set();
+    const items = events.map(e => {
+      const doc = e.agendaDocId != null ? byId[e.agendaDocId] : null;
+      if (doc) used.add(doc.docId);
+      const d = new Date(e.eventDate || e.pubDate);
+      const range = eventStartEnd(e);
+      return {
+        date: isNaN(d) ? today : isoDate(d),
+        time: e.eventTime || '',
+        title: e.title,
+        board: doc ? doc.board : (e.board !== 'Other' ? e.board : ''),
+        location: e.location || '',
+        link: e.link,
+        agenda: doc ? doc.agenda : null,
+        docId: doc ? doc.docId : null,
+        meet: findOverride(e, overrides),
+        gcal: range ? googleCalUrl(e, range.start, range.end) : null,
+        ics: range ? icsFileUrl(e, range.start, range.end) : null,
+        icsName: icsFileName(e.title),
+      };
+    });
+    for (const d of docs) {
+      if (d.date >= today && !used.has(d.docId)) {
+        items.push({ ...d, time: '', location: '', link: null });
+      }
+    }
+    return items.sort((a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
+  }
 
-  function escapeHtml(str) {
-    return str.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  // Past: archive meetings before today, with BevCam summaries attached to the
+  // City Council meeting held the same day. School Committee recordings get
+  // their own rows (their documents are not in the city's Agenda Center).
+  function recordingDate(title) {
+    const m = title.match(/(\d{2})[\/-](\d{2})[\/-](\d{4})/);
+    return m ? `${m[3]}-${m[1]}-${m[2]}` : null;
+  }
+
+  function recordingTitle(title) {
+    return title
+      .replace(/\s*\(hybrid with captions\)/i, '')
+      .replace(/[\s:-]*\d{2}[\/-]\d{2}[\/-]\d{4}\s*/, ' ')
+      .replace(/\bMtg\b/, 'Meeting')
+      .replace(/\s*[-:]\s*$/, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function buildPast(docs, summaries, today) {
+    const items = docs.filter(d => d.date < today).map(d => ({ ...d }));
+    for (const s of summaries) {
+      if (s.error || !s.headline) continue;
+      const date = recordingDate(s.title);
+      if (!date) continue;
+      const isCouncil = /city council/i.test(s.title);
+      const sameDay = isCouncil
+        ? items.filter(d => d.board === 'City Council' && d.date === date && !d.summary)
+        : [];
+      const match = sameDay.find(d => /city council meeting/i.test(d.title)) || sameDay[0];
+      if (match) {
+        match.summary = s;
+      } else {
+        items.push({
+          title: recordingTitle(s.title),
+          board: isCouncil ? 'City Council' : 'School Committee',
+          date, docId: null, agenda: null, minutes: null, summary: s,
+        });
+      }
+    }
+    return items.sort((a, b) => b.date.localeCompare(a.date));
   }
 
   function docText(item) {
@@ -251,138 +265,184 @@
     return t && t.text ? t.text : '';
   }
 
-  function formatMeetingDate(dateStr) {
-    const [y, m, d] = dateStr.split('-').map(Number);
-    const date = new Date(y, m - 1, d);
-    if (isNaN(date)) return dateStr;
-    return date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+  function summaryText(item) {
+    const s = item.summary;
+    return s ? [s.headline, ...(s.bullets || []), ...(s.votes || [])].join(' ') : '';
   }
 
-  function filteredDocs() {
-    return allDocs.filter(item => {
-      const boardMatch  = archiveBoard === 'all' || item.board === archiveBoard;
-      const typeMatch   = archiveMinutes === 'all' || (archiveMinutes === 'posted') === !!item.minutes;
-      const q = archiveSearch.toLowerCase();
-      const searchMatch = !q || item.title.toLowerCase().includes(q) ||
-        item.board.toLowerCase().includes(q) ||
-        docText(item).toLowerCase().includes(q);
-      return boardMatch && typeMatch && searchMatch;
-    });
+  // ── Rendering ────────────────────────────────────────────────────────────
+  function summaryBlock(s) {
+    const votes = (s.votes || []).map(v => `<li>${escapeHtml(v)}</li>`).join('');
+    const bullets = (s.bullets || []).map(b => `<li>${escapeHtml(b)}</li>`).join('');
+    return `
+        <details class="row-summary">
+          <summary>
+            <span class="ai-badge">AI summary</span>
+            <span class="row-summary-headline">${escapeHtml(s.headline)}</span>
+            <span class="row-summary-more">Read summary <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+          </summary>
+          ${votes ? `<div class="summary-votes"><h4>Key Votes</h4><ul>${votes}</ul></div>` : ''}
+          ${bullets ? `<ul class="summary-bullets">${bullets}</ul>` : ''}
+        </details>`;
   }
 
-  function buildArchiveBoardFilters() {
-    const counts = {};
-    for (const item of allDocs) counts[item.board] = (counts[item.board] || 0) + 1;
-    const boards = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-
-    function makeBtn(board, label, count, cls) {
-      const btn = document.createElement('button');
-      btn.className = cls;
-      btn.dataset.board = board;
-      btn.innerHTML = cls === 'filter-btn'
-        ? `${label} <span class="count">${count}</span>`
-        : label;
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('[data-board]').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('[data-board="' + board + '"]').forEach(b => b.classList.add('active'));
-        archiveBoard = board;
-        renderArchive();
-      });
-      return btn;
-    }
-
-    const sidebar = document.getElementById('archive-board-filter-group');
-    sidebar.innerHTML = '<h2>Board / Committee</h2>';
-    sidebar.appendChild(makeBtn('all', 'All Boards', allDocs.length, 'filter-btn active'));
-    for (const [board, count] of boards) sidebar.appendChild(makeBtn(board, board, count, 'filter-btn'));
-
-    const pills = document.getElementById('mobile-archive-board-filters');
-    pills.innerHTML = '';
-    pills.appendChild(makeBtn('all', 'All', allDocs.length, 'mobile-pill active'));
-    for (const [board, count] of boards) pills.appendChild(makeBtn(board, board, count, 'mobile-pill'));
-  }
-
-  function renderArchive() {
-    const list = document.getElementById('meetings-list');
-    const items = filteredDocs();
-    document.getElementById('archive-result-count').textContent =
-      `${items.length} meeting${items.length !== 1 ? 's' : ''}`;
-
-    if (!items.length) {
-      list.innerHTML = '<div class="state-msg">No meetings match your filters.</div>';
-      return;
-    }
-
-    list.innerHTML = items.map(item => {
-      const text = docText(item);
-      return `
-      <div class="meeting-card">
-        <div class="card-title">${escapeHtml(item.title)}</div>
-        <div class="card-meta">${formatMeetingDate(item.date)} · ${escapeHtml(item.board)}</div>
-        <div class="card-docs">
-          <a href="${item.agenda}" target="_blank" class="meet-btn outline">Agenda (PDF)</a>
-          ${item.minutes
-            ? `<a href="${item.minutes}" target="_blank" class="meet-btn outline">Minutes (PDF)</a>`
-            : '<span class="card-docs-pending">Minutes not yet posted</span>'}
-        </div>
-        ${text ? `
-        <details class="agenda-text">
+  function textBlock(item) {
+    const text = docText(item);
+    return text ? `
+        <details class="agenda-text doc-text">
           <summary class="disclosure-summary">Read agenda text <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
           <p class="agenda-text-note">Text converted automatically from the city's scanned PDF; the PDF is the official record.</p>
           <div class="agenda-text-body">${escapeHtml(text)}</div>
-        </details>` : ''}
-      </div>`;
-    }).join('');
+        </details>` : '';
   }
 
-  document.querySelectorAll('[data-minutes]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('[data-minutes]').forEach(b => b.classList.remove('active-type', 'active'));
-      btn.classList.add('active-type', 'active');
-      archiveMinutes = btn.dataset.minutes;
-      renderArchive();
-    });
-  });
+  function upcomingRow(item) {
+    const links = [];
+    if (item.meet) links.push(`<a href="${item.meet.meet_url}" target="_blank">Join Google Meet</a>`);
+    if (item.agenda) links.push(`<a href="${item.agenda}" target="_blank">Agenda</a>`);
+    if (item.gcal) links.push(`<a href="${item.gcal}" target="_blank">Google Calendar</a>`);
+    if (item.ics) links.push(`<a href="${item.ics}" download="${item.icsName}">.ics</a>`);
+    const title = item.link
+      ? `<a href="${item.link}" target="_blank">${escapeHtml(item.title)}</a>`
+      : escapeHtml(item.title);
+    const meta = [item.board, item.location].filter(Boolean).map(escapeHtml).join(' · ');
+    return `
+      <div class="doc-row">
+        <div class="doc-date">${upcomingDate(item.date)}${item.time ? `<br>${item.time}` : ''}</div>
+        <div class="doc-main">
+          <div class="doc-title">${title}</div>
+          ${meta ? `<div class="doc-board">${meta}</div>` : ''}
+        </div>
+        <div class="archive-links">${links.join('')}</div>
+        ${textBlock(item)}
+      </div>`;
+  }
 
-  document.getElementById('archive-search').addEventListener('input', e => {
-    archiveSearch = e.target.value;
-    renderArchive();
+  function pastRow(item) {
+    const links = [];
+    if (item.agenda) {
+      links.push(`<a href="${item.agenda}" target="_blank">Agenda</a>`);
+      links.push(item.minutes
+        ? `<a href="${item.minutes}" target="_blank">Minutes</a>`
+        : '<span class="doc-pending">Minutes not yet posted</span>');
+    }
+    if (item.summary) links.push(`<a href="${item.summary.url}" target="_blank">Recording</a>`);
+    return `
+      <div class="doc-row">
+        <div class="doc-date">${pastDate(item.date)}</div>
+        <div class="doc-main">
+          <div class="doc-title">${escapeHtml(item.title)}</div>
+          <div class="doc-board">${escapeHtml(item.board)}</div>
+        </div>
+        <div class="archive-links">${links.join('')}</div>
+        ${item.summary ? summaryBlock(item.summary) : ''}
+        ${textBlock(item)}
+      </div>`;
+  }
+
+  function filtered() {
+    const q = search.toLowerCase();
+    const list = tab === 'upcoming' ? upcoming : past;
+    return list.filter(item =>
+      (board === 'all' || item.board === board) &&
+      (tab === 'upcoming' || pastFilter === 'all' ||
+        (pastFilter === 'summary' && item.summary) ||
+        (pastFilter === 'posted' && item.agenda && item.minutes) ||
+        (pastFilter === 'pending' && item.agenda && !item.minutes)) &&
+      (!q || item.title.toLowerCase().includes(q) || item.board.toLowerCase().includes(q) ||
+        docText(item).toLowerCase().includes(q) || summaryText(item).toLowerCase().includes(q))
+    );
+  }
+
+  function render() {
+    const panel = document.getElementById('meetings-panel');
+    const items = filtered();
+    document.getElementById('result-count').textContent =
+      `${items.length} meeting${items.length !== 1 ? 's' : ''}`;
+
+    if (!items.length) {
+      panel.innerHTML = `<div class="state-msg">No ${tab} meetings match your filters.</div>`;
+      return;
+    }
+    const row = tab === 'upcoming' ? upcomingRow : pastRow;
+    const more = items.length > limit
+      ? `<button type="button" class="link-btn" id="show-more">Show ${Math.min(PAGE_SIZE, items.length - limit)} more</button>` : '';
+    panel.innerHTML = items.slice(0, limit).map(row).join('') + more;
+    const btn = document.getElementById('show-more');
+    if (btn) btn.addEventListener('click', () => { limit += PAGE_SIZE; render(); });
+  }
+
+  function setTab(name) {
+    tab = name;
+    limit = PAGE_SIZE;
+    for (const t of ['upcoming', 'past']) {
+      document.getElementById(`tab-${t}`).setAttribute('aria-selected', String(t === name));
+    }
+    document.getElementById('meetings-panel').setAttribute('aria-labelledby', `tab-${name}`);
+    document.getElementById('past-filter').hidden = name !== 'past';
+    document.getElementById('ai-note').hidden = name !== 'past';
+    render();
+  }
+
+  function buildBoardSelect() {
+    const boards = [...new Set([...upcoming, ...past].map(i => i.board).filter(Boolean))].sort();
+    document.getElementById('meeting-board').innerHTML = '<option value="all">All boards</option>' +
+      boards.map(b => `<option value="${escapeHtml(b)}">${escapeHtml(b)}</option>`).join('');
+  }
+
+  // #past opens the Past tab; #summaries (old Summaries page) and #archive
+  // (old archive link) open it filtered accordingly.
+  function applyHash() {
+    const h = location.hash.slice(1);
+    if (h === 'summaries') {
+      pastFilter = 'summary';
+      document.getElementById('past-filter').value = 'summary';
+    }
+    setTab(['past', 'summaries', 'archive'].includes(h) ? 'past' : 'upcoming');
+  }
+
+  document.getElementById('tab-upcoming').addEventListener('click', () => { history.replaceState(null, '', '#upcoming'); setTab('upcoming'); });
+  document.getElementById('tab-past').addEventListener('click', () => { history.replaceState(null, '', '#past'); setTab('past'); });
+  document.querySelector('.meeting-tabs').addEventListener('keydown', e => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const next = tab === 'upcoming' ? 'past' : 'upcoming';
+    document.getElementById(`tab-${next}`).focus();
+    document.getElementById(`tab-${next}`).click();
   });
+  document.getElementById('meeting-board').addEventListener('change', e => { board = e.target.value; limit = PAGE_SIZE; render(); });
+  document.getElementById('past-filter').addEventListener('change', e => { pastFilter = e.target.value; limit = PAGE_SIZE; render(); });
+  document.getElementById('meeting-search').addEventListener('input', e => { search = e.target.value; limit = PAGE_SIZE; render(); });
 
   // ── Load ─────────────────────────────────────────────────────────────────
   (async () => {
     try {
-      const [calRes, ovRes, docsRes] = await Promise.all([
-        fetch('calendar.json?v=' + Date.now()),
-        fetch('events.json?v=' + Date.now()).catch(() => null),
-        fetch('meetings.json?v=' + Date.now()),
+      const v = '?v=' + Date.now();
+      const [calRes, ovRes, docsRes, textRes, sumRes] = await Promise.all([
+        fetch('calendar.json' + v),
+        fetch('events.json' + v).catch(() => null),
+        fetch('meetings.json' + v),
+        fetch('agenda_text.json' + v).catch(() => null),
+        fetch('summaries.json' + v).catch(() => null),
       ]);
-      const textRes = await fetch('agenda_text.json?v=' + Date.now()).catch(() => null);
-      if (textRes && textRes.ok) agendaText = await textRes.json();
       if (!calRes.ok) throw new Error(`calendar.json HTTP ${calRes.status}`);
       if (!docsRes.ok) throw new Error(`meetings.json HTTP ${docsRes.status}`);
+      const events = await calRes.json();
+      const overrides = ovRes && ovRes.ok ? await ovRes.json() : [];
+      const docs = await docsRes.json();
+      if (textRes && textRes.ok) agendaText = await textRes.json();
+      const summaries = sumRes && sumRes.ok ? await sumRes.json() : [];
 
-      allEvents = await calRes.json();
-      if (ovRes && ovRes.ok) eventOverrides = await ovRes.json();
-      allDocs = await docsRes.json();
-      agendaDocsById = Object.fromEntries(
-        allDocs.filter(d => d.docId != null).map(d => [d.docId, d])
-      );
-
-      renderUpcoming();
-      buildArchiveBoardFilters();
-      renderArchive();
-
-      if (location.hash === '#archive') {
-        document.getElementById('archive').scrollIntoView();
-      }
+      const today = isoDate(new Date());
+      upcoming = buildUpcoming(events, overrides, docs, today);
+      past = buildPast(docs, summaries, today);
+      document.getElementById('count-upcoming').textContent = upcoming.length;
+      document.getElementById('count-past').textContent = past.length;
+      buildBoardSelect();
+      applyHash();
     } catch (err) {
-      document.getElementById('calendar-list').innerHTML =
-        `<div class="state-msg">⚠️ Could not load meeting data — run fetch_data.py first.<br><small>${err.message}</small></div>`;
-      document.getElementById('cal-result-count').textContent = 'Error';
-      document.getElementById('meetings-list').innerHTML =
+      document.getElementById('meetings-panel').innerHTML =
         `<div class="state-msg">⚠️ Could not load meeting data.<br><small>${err.message}</small></div>`;
-      document.getElementById('archive-result-count').textContent = 'Error';
+      document.getElementById('result-count').textContent = 'Error';
     }
   })();
 </script>
