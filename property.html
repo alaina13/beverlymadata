@@ -221,6 +221,14 @@
     MBTA: '#e53935', MMU: '#1e88e5', WPOD: '#00897b', IROD: '#8e24aa',
     DPOD: '#d81b60', SGOD: '#43a047', NHL: '#6d4c41', LHD: '#a1887f',
   };
+  // Dash patterns in line-width units, so overlays stay distinguishable without relying on color.
+  // null = solid line.
+  const OVERLAY_DASHES = {
+    MBTA: null, MMU: [5, 2], WPOD: [1, 1], IROD: [5, 1.5, 1, 1.5],
+    DPOD: [2, 2], SGOD: [5, 1.5, 1, 1.5, 1, 1.5], NHL: [8, 1.5, 2, 1.5], LHD: [1, 3],
+  };
+  const OVERLAY_LINE_WIDTH = 2.5;
+  const OVERLAY_LAYER_IDS = Object.keys(OVERLAY_LABELS).map(code => `overlay-outline-${code}`);
 
   const COLOR_STOPS = {
     vpa:   [[0,'#d0ead0'],[500000,'#4caf50'],[2000000,'#cddc39'],[4000000,'#ffc107'],[7000000,'#f44336'],[9400000,'#9c27b0']],
@@ -286,18 +294,16 @@
     return expr;
   }
 
-  function overlayLineColorExpr() {
-    const expr = ['match', ['get', 'code']];
-    Object.entries(OVERLAY_COLORS).forEach(([code, color]) => { expr.push(code, color); });
-    expr.push('#333333');
-    return expr;
-  }
 
   document.getElementById('zoning-legend').innerHTML =
     ZONE_GROUP_ORDER.map(g => `<div class="zoning-legend-item"><span class="zoning-swatch" style="background:${ZONE_GROUP_COLORS[g]}"></span>${g}</div>`).join('');
 
   document.getElementById('overlay-legend').innerHTML =
-    Object.keys(OVERLAY_LABELS).map(code => `<div class="zoning-legend-item"><span class="zoning-swatch outline" style="border-color:${OVERLAY_COLORS[code]}"></span>${OVERLAY_LABELS[code]}</div>`).join('');
+    Object.keys(OVERLAY_LABELS).map(code => {
+      const dash = OVERLAY_DASHES[code];
+      const dashAttr = dash ? ` stroke-dasharray="${dash.map(d => d * OVERLAY_LINE_WIDTH).join(' ')}"` : '';
+      return `<div class="zoning-legend-item"><svg class="overlay-swatch" viewBox="0 0 36 10" aria-hidden="true"><line x1="0" y1="5" x2="36" y2="5" stroke="${OVERLAY_COLORS[code]}" stroke-width="${OVERLAY_LINE_WIDTH}"${dashAttr}/></svg>${OVERLAY_LABELS[code]}</div>`;
+    }).join('');
 
   function applyLayerVisibility() {
     const parcelsOn = document.getElementById('layer-parcels-vis').checked;
@@ -309,7 +315,9 @@
     ['zoning-fill', 'zoning-outline'].forEach(id => {
       if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', zoningOn ? 'visible' : 'none');
     });
-    if (map.getLayer('overlay-outline')) map.setLayoutProperty('overlay-outline', 'visibility', overlayOn ? 'visible' : 'none');
+    OVERLAY_LAYER_IDS.forEach(id => {
+      if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', overlayOn ? 'visible' : 'none');
+    });
 
     document.getElementById('parcel-layer-body').classList.toggle('layer-disabled', !parcelsOn);
   }
@@ -560,13 +568,18 @@
           paint: { 'line-color': 'rgba(0,0,0,0.35)', 'line-width': 1 },
         });
 
-        map.addLayer({
-          id: 'overlay-outline',
-          type: 'line',
-          source: 'zoning',
-          filter: ['==', ['get', 'kind'], 'overlay'],
-          layout: { visibility: 'none' },
-          paint: { 'line-color': overlayLineColorExpr(), 'line-width': 2.5, 'line-dasharray': [2, 1.5] },
+        // line-dasharray can't be data-driven, so each overlay gets its own layer.
+        Object.keys(OVERLAY_LABELS).forEach(code => {
+          const paint = { 'line-color': OVERLAY_COLORS[code], 'line-width': OVERLAY_LINE_WIDTH };
+          if (OVERLAY_DASHES[code]) paint['line-dasharray'] = OVERLAY_DASHES[code];
+          map.addLayer({
+            id: `overlay-outline-${code}`,
+            type: 'line',
+            source: 'zoning',
+            filter: ['all', ['==', ['get', 'kind'], 'overlay'], ['==', ['get', 'code'], code]],
+            layout: { visibility: 'none' },
+            paint,
+          });
         });
 
         function showZoningPopup(e) {
@@ -578,8 +591,8 @@
             .addTo(map);
         }
         map.on('click', 'zoning-fill', showZoningPopup);
-        map.on('click', 'overlay-outline', showZoningPopup);
-        ['zoning-fill', 'overlay-outline'].forEach(id => {
+        OVERLAY_LAYER_IDS.forEach(id => map.on('click', id, showZoningPopup));
+        ['zoning-fill', ...OVERLAY_LAYER_IDS].forEach(id => {
           map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
           map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
         });
