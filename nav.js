@@ -1,4 +1,14 @@
 (function() {
+  // Mobile menu toggle. Icons swap via CSS on aria-expanded, since the
+  // Font Awesome kit replaces <i> elements with <svg> at load.
+  var menuBtn = document.querySelector('.menu-btn');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function() {
+      var open = menuBtn.closest('header').querySelector('nav').classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open);
+    });
+  }
+
   document.querySelectorAll('.nav-group-btn').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.stopPropagation();

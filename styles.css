@@ -152,6 +152,9 @@ footer a { color: var(--blue); }
   padding: 0.5rem;
   line-height: 1;
 }
+.menu-btn .menu-icon-close,
+.menu-btn[aria-expanded="true"] .menu-icon-open { display: none; }
+.menu-btn[aria-expanded="true"] .menu-icon-close { display: inline-block; }
 
 @media (max-width: 700px) {
   header { padding: 0 1rem; }
