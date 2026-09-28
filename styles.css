@@ -1378,6 +1378,17 @@ input[type=range]::-webkit-slider-thumb {
 
 .sustain-table tr:last-child td { border-bottom: none; }
 
+.sustain-table tbody th {
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.sustain-table tbody tr:last-child th { border-bottom: none; }
+
 .trend-up   { color: var(--green); }
 .trend-down { color: #c62828; }
 
@@ -1423,6 +1434,9 @@ input[type=range]::-webkit-slider-thumb {
 .condition-badge.fair      { color: var(--accent-text); border-color: var(--accent); background: var(--warn-bg); }
 .condition-badge.good      { color: var(--blue);  border-color: var(--blue);  background: var(--tag-bg); }
 .condition-badge.excellent { color: var(--green); border-color: var(--green); background: #ecfdf5; }
+.condition-badge.meets     { color: var(--green); border-color: var(--green); background: #ecfdf5; }
+.condition-badge.close     { color: var(--accent-text); border-color: var(--accent); background: var(--warn-bg); }
+.condition-badge.short     { color: var(--red);   border-color: var(--red);   background: #fef2f2; }
 
 /* ── Shared: .repave-list (pavement.html) ── */
 .repave-list {
@@ -2799,4 +2813,74 @@ blockquote cite {
   .driver-grid { grid-template-columns: 1fr; }
   .stat-row { gap: 0.75rem; }
   .stat-chip .val { font-size: 1.3rem; }
+}
+
+/* ── zoning.html: embedded map, legend, lot lookup ── */
+.embed-map-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+.embed-map-controls label { font-weight: 700; color: var(--navy); }
+.embed-map-controls select {
+  font: inherit;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card-bg);
+  color: var(--text);
+}
+.embed-map-controls select:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+.embed-map {
+  position: relative;
+  height: 540px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.zc-legend { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
+.zc-legend-item { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.78rem; color: var(--text); }
+.zc-swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; border: 1px solid rgba(0, 0, 0, 0.15); }
+.zc-swatch.meets, .zc-swatch.c0 { background: var(--green); }
+.zc-swatch.close { background: var(--accent); }
+.zc-swatch.short { background: var(--red); }
+.zc-swatch.na    { background: #cbd5e1; }
+.zc-swatch.c1    { background: #fca5a5; }
+.zc-swatch.c2    { background: #f87171; }
+.zc-swatch.c3    { background: #dc2626; }
+.zc-swatch.c4    { background: #7f1d1d; }
+
+.lot-search-hit {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--navy);
+  cursor: pointer;
+}
+.lot-search-hit:hover { background: var(--tag-bg); }
+.lot-search-hit:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+
+.lot-detail { margin-bottom: 2rem; }
+.lot-detail-head { margin-bottom: 0.75rem; }
+.lot-detail-head h3 { font-size: 1.1rem; font-weight: 800; color: var(--navy); }
+.lot-detail-meta { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+.lot-detail-na { font-size: 0.78rem; color: var(--muted); }
+
+.method-list { list-style: disc; padding-left: 1.25rem; font-size: 0.9rem; line-height: 1.7; }
+.method-list li { margin-bottom: 0.4rem; }
+
+@media (max-width: 700px) {
+  .embed-map { height: 400px; }
 }

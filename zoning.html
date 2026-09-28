@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/56a48e0c30.js" crossorigin="anonymous"></script>
+  <title>Zoning Comparison: Rules vs. What's Built | Open Beverly</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3/dist/maplibre-gl.css" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="Zoning Comparison: Rules vs. What's Built | Open Beverly" />
+  <meta property="og:description" content="How lots in Beverly's RHD district compare to the district's lot size, frontage, and setback requirements." />
+  <meta property="og:image" content="https://openbeverly.org/preview.png" />
+  <meta property="og:url" content="https://openbeverly.org/zoning.html" />
+  <meta property="og:type" content="website" />
+</head>
+<body class="data-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+  <a class="logo" href="/">Open <span>Beverly</span></a>
+  <nav>
+    <a href="/meetings.html">Meetings</a>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">
+        Finance
+      </button>
+      <div class="nav-dropdown">
+      <a href="/data.html">City Data</a>
+      <a href="/budget.html">Budget Explorer</a>
+      <a href="/history.html">How We Got Here</a>
+      <a href="/whats-next.html">What's Next</a>
+      <a href="/calculator.html">Override Calculator</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">Infrastructure</button>
+      <div class="nav-dropdown">
+      <a href="/capital.html">Capital Plan</a>
+      <a href="/pavement.html">Pavement Conditions</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn active" aria-haspopup="true" aria-expanded="false">Map</button>
+      <div class="nav-dropdown">
+      <a href="/property.html">Property Map</a>
+      <a href="/zoning.html" class="active">Zoning Comparison</a>
+      </div>
+    </div>
+    <a href="/sources.html">Sources</a>
+    <a href="/about.html">About</a>
+  </nav>
+  <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false" onclick="var n=this.closest('header').querySelector('nav');var open=n.classList.toggle('open');this.setAttribute('aria-expanded',open);this.querySelector('i').className='fa-solid '+(open?'fa-xmark':'fa-bars')">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+  </button>
+</header>
+<main id="main">
+<div class="data-hero">
+  <h1>Zoning Comparison: Rules vs. What&rsquo;s Built</h1>
+  <p>How lots in Beverly's Multifamily High Density (RHD) district compare to the district's lot size, frontage, and setback requirements.</p>
+</div>
+
+<div class="page-with-toc">
+<nav class="toc" aria-label="Table of contents">
+  <div class="toc-label">On this page</div>
+  <a href="#overview" class="toc-link">Overview</a>
+  <a href="#rules" class="toc-link">What the Rules Require</a>
+  <a href="#built" class="toc-link">What's on the Ground</a>
+  <a href="#lookup" class="toc-link">Look Up a Lot</a>
+  <a href="#methodology" class="toc-link">Methodology &amp; Limitations</a>
+</nav>
+<div class="data-container">
+
+  <!-- ── Overview ── -->
+  <div class="section-header">
+    <h2 id="overview">Overview</h2>
+  </div>
+  <p class="body-text">Beverly's Zoning Ordinance sets minimum dimensions for every lot in the RHD district: how large a lot must be, how much of it must face a street, and how far a building must sit from each lot line. Many of the buildings in the district were built before these rules existed.</p>
+  <p class="body-text">This page compares each RHD lot against those requirements using the City's own map data. The results are estimates from GIS measurements, not surveys, and they do not indicate whether any property is in violation of zoning. See "What nonconforming means" below.</p>
+
+  <!-- ── Rules ── -->
+  <div class="section-header">
+    <h2 id="rules">What the Rules Require</h2>
+    <p>RHD requirements come from &sect; 300-37 of the Zoning Ordinance. <span data-sum="mbta">412</span> of the district's <span data-sum="lots">414</span> lots are also inside the MBTA Communities Overlay District (&sect; 300-140), which keeps the same frontage, setback, and height rules but changes how lot area is calculated.</p>
+  </div>
+  <div class="chart-card table-scroll">
+    <table class="sustain-table">
+      <caption class="sr-only">RHD dimensional requirements, base district and MBTA Communities Overlay</caption>
+      <thead>
+        <tr>
+          <th scope="col">Requirement</th>
+          <th scope="col">RHD base district (&sect; 300-37)</th>
+          <th scope="col">RHD in MBTA overlay (&sect; 300-140)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Minimum lot area</th><td>6,000 sq ft, plus 3,000 sq ft per unit over two</td><td>6,000 sq ft</td></tr>
+        <tr><th scope="row">Maximum units per lot</th><td>None</td><td>9</td></tr>
+        <tr><th scope="row">Minimum frontage</th><td>50 ft</td><td>50 ft</td></tr>
+        <tr><th scope="row">Front setback</th><td>15 ft</td><td>15 ft</td></tr>
+        <tr><th scope="row">Side setback</th><td>10 ft; 15 ft if over three stories</td><td>10 ft; 15 ft if over three stories</td></tr>
+        <tr><th scope="row">Rear setback</th><td>20 ft</td><td>20 ft</td></tr>
+        <tr><th scope="row">Maximum height</th><td>40 ft</td><td>40 ft</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── What's built ── -->
+  <div class="section-header">
+    <h2 id="built">What's on the Ground</h2>
+    <p>Open Beverly measured <span data-sum="lots">414</span> RHD lots and the principal building on <span data-sum="measured">394</span> of them. Measurements within 3 feet of a requirement are shown separately, because building footprints in the City's data include roof overhangs and parcel lines are drawn from assessor maps, not surveys.</p>
+  </div>
+  <div class="chart-card table-scroll">
+    <table class="sustain-table">
+      <caption class="sr-only">RHD lots by whether they meet each dimensional requirement</caption>
+      <thead>
+        <tr>
+          <th scope="col">Requirement</th>
+          <th scope="col">Median measured</th>
+          <th scope="col">Meets</th>
+          <th scope="col">Within 3 ft or 5% (too close to call)</th>
+          <th scope="col">Short</th>
+        </tr>
+      </thead>
+      <tbody id="builtTbody"></tbody>
+    </table>
+  </div>
+  <p class="body-text"><span data-sum="meets_all_within_tolerance">11</span> of the <span data-sum="measured">394</span> measured lots meet or come within 3 feet of all five requirements. <span data-sum="over_unit_cap">6</span> lots in the MBTA overlay have more than nine units.</p>
+  <p class="body-text">For comparison, the City's Planning Department estimated in 2024 that "approximately 80%" of parcels in the RHD and RMD districts combined were nonconforming. The City's figure covers a different set of lots, and its method is not published, so the two figures are not directly comparable.</p>
+
+  <div class="structural-box">
+    <h2>What nonconforming means</h2>
+    <div class="not-waste">
+      <span class="check"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span>
+      <span>A lot or building that does not meet current dimensional rules is called nonconforming. Under Massachusetts law (MGL Chapter 40A, &sect; 6), structures that were lawfully built before a zoning rule took effect may remain. Changes or additions to a nonconforming structure may require a finding or special permit from the Zoning Board of Appeals. This page does not assess whether any lot has received a variance or special permit.</span>
+    </div>
+  </div>
+
+  <!-- ── Lookup ── -->
+  <div class="section-header">
+    <h2 id="lookup">Look Up a Lot</h2>
+    <p>Search for an RHD address, or select a lot on the map, to see its required and measured dimensions.</p>
+  </div>
+  <div class="street-search">
+    <label for="lotSearchInput" class="street-search-label">Search an RHD Address</label>
+    <div class="street-search-input-wrap">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="text" id="lotSearchInput" placeholder="Loading lots&hellip;" autocomplete="off" aria-describedby="lotSearchHint" aria-controls="lotSearchResults" disabled>
+    </div>
+    <div id="lotSearchResults" class="street-search-results" aria-live="polite"></div>
+    <p class="street-search-hint" id="lotSearchHint">Covers the <span data-sum="lots">414</span> lots in the RHD district. Condominium buildings are listed once, by street address.</p>
+  </div>
+
+  <div class="embed-map-controls">
+    <label for="colorBy">Color lots by</label>
+    <select id="colorBy">
+      <option value="n_short">Number of requirements short</option>
+      <option value="t_area">Lot area</option>
+      <option value="t_frontage">Frontage</option>
+      <option value="t_front">Front setback</option>
+      <option value="t_side">Side setback</option>
+      <option value="t_rear">Rear setback</option>
+    </select>
+    <div class="zc-legend" id="zcLegend" aria-label="Map legend"></div>
+  </div>
+  <div class="embed-map" id="zoningMap" role="region" aria-label="Map of RHD lots colored by zoning comparison result. Use the address search above for keyboard access."></div>
+
+  <div id="lotDetail" class="chart-card lot-detail" aria-live="polite" hidden></div>
+
+  <!-- ── Methodology ── -->
+  <div class="section-header">
+    <h2 id="methodology">Methodology &amp; Limitations</h2>
+  </div>
+  <div class="structural-box">
+    <h2>How these estimates were made</h2>
+    <ul class="method-list">
+      <li><strong>Lots:</strong> City of Beverly GIS parcel layer. Condominium records that share one lot were combined, giving <span data-sum="lots">414</span> lots.</li>
+      <li><strong>Buildings:</strong> City of Beverly GIS roofprint layer. Only the largest building on each lot was measured, because accessory buildings such as sheds and garages have separate rules.</li>
+      <li><strong>Frontage:</strong> the longest unbroken lot edge along a single street.</li>
+      <li><strong>Corner lots:</strong> the ordinance allows either street to be designated the front yard (Article II, "Yard, front"). Open Beverly tested each street and used the more favorable result.</li>
+      <li><strong>Tolerance:</strong> setbacks are measured to the foundation (Article II, "Setback"), while roofprints include roof overhangs. Measurements within 3 feet of a requirement, or within 5% for lot area, are shown as too close to call.</li>
+      <li><strong>Not measured:</strong> building height, which the City's data does not include, and the separate rules for semidetached dwellings.</li>
+      <li><strong>Zoning:</strong> Zoning Ordinance text as amended through June 15, 2026 (Ord. No. 119-2026). GIS data accessed September 28, 2026.</li>
+    </ul>
+  </div>
+  <div class="sources">
+    <strong>Data sources</strong><br>
+    Lots, building footprints, and street pavement: City of Beverly GIS (BeverlyGIS), Combined_gdb FeatureServer, layers 5 (Parcels), 70 (Roofprint), and 83 (Street_MasterPoly), accessed September 28, 2026.<br>
+    MBTA Communities Overlay boundary: City of Beverly GIS, Zoning Map, Combined_gdb FeatureServer layer 21.<br>
+    Dimensional requirements: City of Beverly Zoning Ordinance, Chapter 300, <a href="https://ecode360.com/29283605">&sect; 300-37</a>, <a href="https://ecode360.com/46248993">&sect; 300-140</a>, and <a href="https://ecode360.com/29283347">Article II</a>, as amended through June 15, 2026.<br>
+    City estimate of nonconforming parcels: City of Beverly Planning Department, <a href="https://www.beverlyma.gov/1105/MBTA-Communities-Multifamily-Zoning">MBTA Communities Multifamily Zoning</a>.<br>
+    Measurements and comparisons are Open Beverly estimates. See <a href="/sources.html">Sources</a>.<br>
+    Open Beverly is an independent civic project. All data sourced from public records.
+  </div>
+</div>
+</div>
+</main>
+<footer>
+  Open Beverly is an independent civic project and is not affiliated with the City of Beverly. Created with the assistance of AI.
+  <a href="/about.html#feedback">Feedback</a>
+</footer>
+<script src="https://unpkg.com/maplibre-gl@3/dist/maplibre-gl.js"></script>
+<script>
+  const RULES = [
+    { key: 'area',     label: 'Lot area',      unit: ' sq ft', req: p => p.req_lot_sf,  val: p => p.lot_sf },
+    { key: 'frontage', label: 'Frontage',      unit: ' ft',    req: () => 50,           val: p => p.frontage_ft },
+    { key: 'front',    label: 'Front setback', unit: ' ft',    req: () => 15,           val: p => p.front_ft },
+    { key: 'side',     label: 'Side setback',  unit: ' ft',    req: p => p.req_side_ft, val: p => p.side_ft },
+    { key: 'rear',     label: 'Rear setback',  unit: ' ft',    req: () => 20,           val: p => p.rear_ft },
+  ];
+  const SUMMARY_REQ = { area: '6,000 sq ft', frontage: '50 ft', front: '15 ft', side: '10 or 15 ft', rear: '20 ft' };
+  const TIER_LABEL = { meets: 'Meets', close: 'Too close to call', short: 'Short' };
+  const COUNT_CLASSES = [['c0', '0'], ['c1', '1'], ['c2', '2'], ['c3', '3'], ['c4', '4 to 5']];
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+  function titleCase(s) { return s.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()); }
+  function fmtNum(v, unit) { return v == null ? 'Not measured' : Number(v).toLocaleString() + unit; }
+  function pct(n, d) { return d ? Math.round(n / d * 100) + '%' : ''; }
+
+  let LOTS = [];
+
+  function renderSummary(s) {
+    document.querySelectorAll('[data-sum]').forEach(el => {
+      const v = s[el.dataset.sum];
+      if (v != null) el.textContent = v.toLocaleString();
+    });
+    document.getElementById('builtTbody').innerHTML = RULES.map(r => {
+      const t = s.rules[r.key];
+      const n = t.meets + t.close + t.short;
+      const cell = k => `${t[k].toLocaleString()} (${pct(t[k], n)})`;
+      return `<tr><th scope="row">${r.label} (${SUMMARY_REQ[r.key]})</th>
+        <td>${Number(t.median).toLocaleString()}${r.unit}</td>
+        <td>${cell('meets')}</td><td>${cell('close')}</td><td>${cell('short')}</td></tr>`;
+    }).join('');
+  }
+
+  function badge(t) {
+    return t ? `<span class="condition-badge ${t}">${TIER_LABEL[t]}</span>` : '<span class="lot-detail-na">Not measured</span>';
+  }
+
+  function showLot(p) {
+    const el = document.getElementById('lotDetail');
+    const flags = [];
+    flags.push(p.mbta ? 'MBTA Communities Overlay' : 'Base RHD rules');
+    if (p.corner) flags.push('Corner lot');
+    const unitNote = p.over_unit_cap ? ` Recorded units (${p.units}) exceed the overlay's nine-unit cap.` : '';
+    el.innerHTML = `
+      <div class="lot-detail-head">
+        <h3>${escapeHtml(titleCase(p.addr))}</h3>
+        <div class="lot-detail-meta">RHD &middot; ${flags.join(' &middot; ')} &middot; ${p.units} unit${p.units === 1 ? '' : 's'} on record</div>
+      </div>
+      <div class="table-scroll">
+        <table class="sustain-table">
+          <caption class="sr-only">Required and measured dimensions for ${escapeHtml(titleCase(p.addr))}</caption>
+          <thead><tr><th scope="col">Requirement</th><th scope="col">Required</th><th scope="col">Measured</th><th scope="col">Result</th></tr></thead>
+          <tbody>${RULES.map(r => `<tr><th scope="row">${r.label}</th>
+            <td>${Number(r.req(p)).toLocaleString()}${r.unit}</td>
+            <td>${fmtNum(r.val(p), r.unit)}</td>
+            <td>${badge(p['t_' + r.key])}</td></tr>`).join('')}</tbody>
+        </table>
+      </div>
+      <p class="chart-note-text">Estimated from City GIS data. Not a survey or a zoning determination.${unitNote}${p.measured ? '' : ' Setbacks could not be measured for this lot because no building or street edge was found in the City data.'}</p>`;
+    el.hidden = false;
+  }
+
+  // ── Search ──
+  const searchInput = document.getElementById('lotSearchInput');
+  const searchResults = document.getElementById('lotSearchResults');
+  function norm(s) { return s.toLowerCase().replace(/\./g, '').replace(/\s+/g, ' ').trim(); }
+  searchInput.addEventListener('input', () => {
+    const q = norm(searchInput.value);
+    if (q.length < 2) { searchResults.innerHTML = ''; return; }
+    const hits = LOTS.filter(f => norm(f.properties.addr).includes(q)).slice(0, 8);
+    if (!hits.length) {
+      searchResults.innerHTML = '<div class="street-search-empty">No RHD lot matches that address. This page covers the RHD district only.</div>';
+      return;
+    }
+    searchResults.innerHTML = hits.map((f, i) =>
+      `<button type="button" class="lot-search-hit" data-i="${LOTS.indexOf(f)}">${escapeHtml(titleCase(f.properties.addr))}</button>`).join('');
+  });
+  searchResults.addEventListener('click', e => {
+    const btn = e.target.closest('.lot-search-hit');
+    if (!btn) return;
+    const f = LOTS[+btn.dataset.i];
+    selectLot(f, true);
+    searchResults.innerHTML = '';
+    searchInput.value = titleCase(f.properties.addr);
+  });
+
+  // ── Map ──
+  const map = new maplibregl.Map({
+    container: 'zoningMap',
+    style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+    center: [-70.8795, 42.5475],
+    zoom: 15,
+    minZoom: 12,
+    maxBounds: [[-70.93034, 42.53107], [-70.78528, 42.59951]],
+    cooperativeGestures: true,
+  });
+  map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+  // Legend swatch colors live in styles.css; the map reads them back so both stay in sync.
+  function swatchColor(cls) {
+    const probe = document.createElement('span');
+    probe.className = 'zc-swatch ' + cls;
+    document.body.appendChild(probe);
+    const c = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return c;
+  }
+  const COLORS = {
+    meets: swatchColor('meets'), close: swatchColor('close'), short: swatchColor('short'), na: swatchColor('na'),
+    c0: swatchColor('c0'), c1: swatchColor('c1'), c2: swatchColor('c2'), c3: swatchColor('c3'), c4: swatchColor('c4'),
+  };
+
+  function colorExpr(field) {
+    if (field === 'n_short') {
+      return ['case', ['!', ['get', 'measured']], COLORS.na,
+        ['step', ['get', 'n_short'], COLORS.c0, 1, COLORS.c1, 2, COLORS.c2, 3, COLORS.c3, 4, COLORS.c4]];
+    }
+    return ['match', ['coalesce', ['get', field], 'na'], 'meets', COLORS.meets, 'close', COLORS.close, 'short', COLORS.short, COLORS.na];
+  }
+
+  function renderLegend(field) {
+    const items = field === 'n_short'
+      ? COUNT_CLASSES.map(([c, l]) => [c, l + ' short']).concat([['na', 'Setbacks not measured']])
+      : [['meets', 'Meets'], ['close', 'Too close to call'], ['short', 'Short'], ['na', 'Not measured']];
+    document.getElementById('zcLegend').innerHTML = items.map(([c, l]) =>
+      `<span class="zc-legend-item"><span class="zc-swatch ${c}" aria-hidden="true"></span>${l}</span>`).join('');
+  }
+
+  let selectedId = null;
+  function selectLot(f, fly) {
+    if (selectedId !== null) map.setFeatureState({ source: 'lots', id: selectedId }, { selected: false });
+    selectedId = f.id;
+    map.setFeatureState({ source: 'lots', id: selectedId }, { selected: true });
+    if (fly) {
+      const coords = f.geometry.coordinates.flat(Infinity);
+      const xs = coords.filter((_, i) => i % 2 === 0), ys = coords.filter((_, i) => i % 2 === 1);
+      map.fitBounds([[Math.min(...xs), Math.min(...ys)], [Math.max(...xs), Math.max(...ys)]], { padding: 120, maxZoom: 18 });
+    }
+    showLot(f.properties);
+  }
+
+  const colorBy = document.getElementById('colorBy');
+  renderLegend(colorBy.value);
+
+  Promise.all([
+    fetch('/zoning_rhd.geojson').then(r => r.json()),
+    new Promise(res => map.once('load', res)),
+  ]).then(([geo]) => {
+    geo.features.forEach((f, i) => { f.id = i; });
+    LOTS = geo.features;
+    renderSummary(geo.summary);
+    searchInput.disabled = false;
+    searchInput.placeholder = 'e.g. 24 Roundy St';
+
+    map.addSource('lots', { type: 'geojson', data: geo });
+    map.addLayer({ id: 'lots-fill', type: 'fill', source: 'lots',
+      paint: { 'fill-color': colorExpr(colorBy.value), 'fill-opacity': 0.75 } });
+    map.addLayer({ id: 'lots-line', type: 'line', source: 'lots',
+      paint: {
+        'line-color': ['case', ['boolean', ['feature-state', 'selected'], false], '#1a2744', '#ffffff'],
+        'line-width': ['case', ['boolean', ['feature-state', 'selected'], false], 3, 0.6],
+      } });
+    // Fit to the central 98% of lots so the two outlying North Beverly lots don't zoom the view out to the whole city
+    const centers = geo.features.map(f => {
+      const ring = f.geometry.coordinates[0];
+      return [ring.reduce((s, c) => s + c[0], 0) / ring.length, ring.reduce((s, c) => s + c[1], 0) / ring.length];
+    });
+    const trim = arr => { const a = arr.slice().sort((m, n) => m - n), k = Math.floor(a.length * 0.01); return [a[k], a[a.length - 1 - k]]; };
+    const [x0, x1] = trim(centers.map(c => c[0])), [y0, y1] = trim(centers.map(c => c[1]));
+    map.fitBounds([[x0, y0], [x1, y1]], { padding: 30, duration: 0 });
+
+    map.on('click', 'lots-fill', e => selectLot(LOTS[e.features[0].id], false));
+    map.on('mouseenter', 'lots-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', 'lots-fill', () => { map.getCanvas().style.cursor = ''; });
+    colorBy.addEventListener('change', () => {
+      map.setPaintProperty('lots-fill', 'fill-color', colorExpr(colorBy.value));
+      renderLegend(colorBy.value);
+    });
+  }).catch(() => {
+    searchInput.placeholder = 'Lot data failed to load';
+  });
+</script>
+<script src="/nav.js"></script>
+<script src="/toc.js"></script>
+</body>
+</html>
