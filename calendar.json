@@ -11,17 +11,6 @@
     "agendaDocId": 2919
   },
   {
-    "title": "Deficit Reduction Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3910",
-    "pubDate": "2026-09-21T14:40:03-05:00",
-    "eventDate": "September 28, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-09-28T00:00:00+00:00",
-    "agendaDocId": 2926
-  },
-  {
     "title": "Budget/Managment Analyst Preliminary Screening Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3893",
     "pubDate": "2026-09-18T07:42:18-05:00",
@@ -31,6 +20,17 @@
     "board": "Other",
     "sortDate": "2026-09-28T00:00:00+00:00",
     "agendaDocId": 2918
+  },
+  {
+    "title": "Deficit Reduction Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3910",
+    "pubDate": "2026-09-21T14:40:03-05:00",
+    "eventDate": "September 28, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-09-28T00:00:00+00:00",
+    "agendaDocId": 2926
   },
   {
     "title": "Beverly Regional Airport Subcommittee on Governance and Internal Policy/Committee of the Whole Meeting",
