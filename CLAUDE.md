@@ -34,7 +34,7 @@ Local preview: `python3 -m http.server 8765 --directory /Users/alainapitt/beverl
 
 ## Writing rules (non-negotiable)
 
-- **No em dashes.** Ever. Use a colon, comma, or rewrite. This is a hard rule.
+- **No em dashes.** Ever. Use a colon, comma, or rewrite. This is a hard rule. It applies to sentences, headings, labels, link text, and messages. Three exceptions: direct quotes (keep the source's original punctuation), the page title separator (`<title>Sources — Open Beverly</title>`, og:title), and the `—` no-data placeholder in tables and stat cards.
 - Neutral, factual tone. No editorializing, no advocacy, no unattributed policy conclusions.
 - Every quantitative claim must be sourced or labeled as an estimate.
 - No relative dates ("last year") — use absolute dates ("December 2025").
