@@ -2819,6 +2819,45 @@ blockquote cite {
 }
 
 /* ── zoning.html: embedded map, legend, lot lookup ── */
+.district-switch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0.5rem;
+}
+.district-switch-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-right: 0.25rem;
+}
+.district-btn {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--card-bg);
+  border: 1.5px solid var(--navy);
+  border-radius: 99px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+}
+.district-btn-sub { font-weight: 400; font-size: 0.78rem; }
+.district-btn[aria-pressed="true"] { background: var(--navy); color: white; }
+.district-btn:hover { background: var(--tag-bg); }
+.district-btn[aria-pressed="true"]:hover { background: var(--navy); }
+.district-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.lot-search-district {
+  float: right;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
 .embed-map-controls {
   display: flex;
   flex-wrap: wrap;
