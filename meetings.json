@@ -9,6 +9,24 @@
     "minutes": null
   },
   {
+    "title": "Design Review Board Meeting",
+    "board": "Design Review Board",
+    "date": "2026-10-08",
+    "posted": "2026-09-30T15:54:00-04:00",
+    "docId": 2936,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10082026-2936",
+    "minutes": null
+  },
+  {
+    "title": "Planning Board Meeting October 6 2026",
+    "board": "Planning Board",
+    "date": "2026-10-06",
+    "posted": "2026-09-30T15:05:00-04:00",
+    "docId": 2935,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10062026-2935",
+    "minutes": null
+  },
+  {
     "title": "Budget Management Analyst Preliminary Screening Committee Meeting (PDF",
     "board": "City Council",
     "date": "2026-10-06",
@@ -27,15 +45,6 @@
     "minutes": null
   },
   {
-    "title": "Budget Managment Analyst Preliminary Screening Committee Meeting",
-    "board": "City Council",
-    "date": "2026-10-01",
-    "posted": "2026-09-25T08:41:00-04:00",
-    "docId": 2932,
-    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10012026-2932",
-    "minutes": null
-  },
-  {
     "title": "Beverly License Board Meeting",
     "board": "Licensing Board",
     "date": "2026-10-01",
@@ -51,6 +60,15 @@
     "posted": "2026-09-24T13:28:00-04:00",
     "docId": 2930,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10012026-2930",
+    "minutes": null
+  },
+  {
+    "title": "CANCELLED Budget Managment Analyst Preliminary Screening Committee Meeting",
+    "board": "City Council",
+    "date": "2026-10-01",
+    "posted": "",
+    "docId": 2932,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10012026-2932",
     "minutes": null
   },
   {
