@@ -9,12 +9,30 @@
     "minutes": null
   },
   {
+    "title": "Parks and Recreation Commission Meeting",
+    "board": "Parks & Recreation Commission",
+    "date": "2026-10-08",
+    "posted": "2026-10-01T15:00:00-04:00",
+    "docId": 2939,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10082026-2939",
+    "minutes": null
+  },
+  {
     "title": "Design Review Board Meeting",
     "board": "Design Review Board",
     "date": "2026-10-08",
     "posted": "2026-09-30T15:54:00-04:00",
     "docId": 2936,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10082026-2936",
+    "minutes": null
+  },
+  {
+    "title": "Conservation Commission 10/6/2026 Meeting",
+    "board": "Conservation Commission",
+    "date": "2026-10-06",
+    "posted": "2026-10-01T13:49:00-04:00",
+    "docId": 2937,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10062026-2937",
     "minutes": null
   },
   {
@@ -33,6 +51,15 @@
     "posted": "2026-09-25T08:44:00-04:00",
     "docId": 2934,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10062026-2934",
+    "minutes": null
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-10-05",
+    "posted": "2026-10-01T14:42:00-04:00",
+    "docId": 2938,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10052026-2938",
     "minutes": null
   },
   {
