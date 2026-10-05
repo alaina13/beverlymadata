@@ -55,6 +55,17 @@
     "agendaDocId": 2935
   },
   {
+    "title": "Deficit Reduction Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3931",
+    "pubDate": "2026-10-05T10:53:33-05:00",
+    "eventDate": "October 8, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-08T00:00:00+00:00",
+    "agendaDocId": 2940
+  },
+  {
     "title": "Design Review Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3487",
     "pubDate": "2026-09-30T15:54:56-05:00",
@@ -96,6 +107,28 @@
     "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-10-15T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Joint Meeting Legal Affairs/Public Services/Committee of the Whole Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3911",
+    "pubDate": "2026-09-21T14:52:37-05:00",
+    "eventDate": "October 19, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-19T00:00:00+00:00",
+    "agendaDocId": 2927
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3559",
+    "pubDate": "2025-12-09T15:48:49-05:00",
+    "eventDate": "October 19, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "City Council",
+    "sortDate": "2026-10-19T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
