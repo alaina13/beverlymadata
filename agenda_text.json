@@ -3935,5 +3935,27 @@
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10082026-2940",
     "text": "Beverly Deficit Reduction Committee Agenda\nOctober 8, 2026 6:00\nBarnet Gallery, Beverly Public Library 32 Essex Street\n\n\nAgenda\n\n• Call to Order\n• Committee Member Updates if any\n• Work on Presentation for October 20th Meeting",
     "letterhead_trimmed": true
+  },
+  "2941": {
+    "title": "Public Services Committee of the Whole Meeting",
+    "board": "City Council",
+    "date": "2026-10-26",
+    "transcribed": "2026-10-06",
+    "model": "claude-haiku-4-5-20251001",
+    "pages": 1,
+    "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2941",
+    "text": "Public Services /Committee of the Whole Meeting Agenda\nMonday, October 26, 2026, 6:00 PM\nBarnet Gallery at the Beverly Library\n32 Essex Street\n\nOrder Number | Date to Committee | Description | Action Taken\n#061 | 2/2/2026 | A letter from Councilors Mullady and St. Hilaire-A request to hold a public meeting on the City's utilization and plan for Camp Paradise located at 44 Cole Street. |",
+    "letterhead_trimmed": true
+  },
+  "2942": {
+    "title": "Human Rights Committee Meeting",
+    "board": "Human Rights Committee",
+    "date": "2026-10-08",
+    "transcribed": "2026-10-06",
+    "model": "claude-haiku-4-5-20251001",
+    "pages": 1,
+    "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10082026-2942",
+    "text": "Meeting Notice\nHuman Rights Committee (HRC) Education and Rapid Response Subcommittee\n\nMeeting Location (in-person):\nOctober 8, 2026 7:00-8:30 PM, Beverly Public Library, 32 Essex Street, Sohier Room\n\nMeeting Link (virtual): meet.google.com/stv-bett-snh\n\nAGENDA\n\n1. Call to order/role call. Subcommittee members: Eric Knudsen, Carole Rein\n2. Land acknowledgement\n3. Status of HRC members and quorum (Eric Knudsen)\n4. Subcommittee members to share history and purpose of subcommittee. Public statement template (June/October 2025)\n\n5. Subcommittee members to discuss and make recommendations to the main Beverly HRC body for how to budget for the following education objectives:\n● Share resources to defend human rights and address human and civil rights violations.\n● Host and support community events related to human and civil rights.\n\nThis meeting takes place on the unceded ancestral lands of the NaumKeag and Pawtucket bands of the Massachusett Tribe, from whom the commonwealth of Massachusetts took its name. With deep respect and gratitude, we thank the indigenous caretakers of these lands and waters, who have lived here for thousands of years.",
+    "letterhead_trimmed": true
   }
 }
