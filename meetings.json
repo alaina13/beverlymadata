@@ -18,6 +18,24 @@
     "minutes": null
   },
   {
+    "title": "Beverly Council on Aging Board of Directors Meeting",
+    "board": "Council on Aging",
+    "date": "2026-10-13",
+    "posted": "2026-10-07T11:26:00-04:00",
+    "docId": 2944,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10132026-2944",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Regional Airport Commission Subcommittee on Mission Meeting",
+    "board": "Airport Commission",
+    "date": "2026-10-13",
+    "posted": "2026-10-07T10:26:00-04:00",
+    "docId": 2943,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10132026-2943",
+    "minutes": null
+  },
+  {
     "title": "Human Rights Committee Meeting",
     "board": "Human Rights Committee",
     "date": "2026-10-08",
@@ -357,7 +375,7 @@
     "posted": "2026-09-10T18:27:00-04:00",
     "docId": 2901,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09152026-2901",
-    "minutes": null
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_09152026-2901"
   },
   {
     "title": "Conservation Commission Meeting",
@@ -366,7 +384,7 @@
     "posted": "2026-09-10T14:17:00-04:00",
     "docId": 2899,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09152026-2899",
-    "minutes": null
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_09152026-2899"
   },
   {
     "title": "Beverly Golf and Tennis Commission Meeting",

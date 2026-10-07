@@ -1,38 +1,5 @@
 [
   {
-    "title": "Budget/Managment Analyst Preliminary Screening Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3927",
-    "pubDate": "2026-09-29T09:19:01-05:00",
-    "eventDate": "October 6, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-06T00:00:00+00:00",
-    "agendaDocId": 2934
-  },
-  {
-    "title": "Conservation Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3604",
-    "pubDate": "2026-10-01T13:49:25-05:00",
-    "eventDate": "October 6, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Conservation Commission",
-    "sortDate": "2026-10-06T00:00:00+00:00",
-    "agendaDocId": 2937
-  },
-  {
-    "title": "Planning Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3631",
-    "pubDate": "2026-09-30T15:05:58-05:00",
-    "eventDate": "October 6, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
-    "board": "Planning Board",
-    "sortDate": "2026-10-06T00:00:00+00:00",
-    "agendaDocId": 2935
-  },
-  {
     "title": "Deficit Reduction Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3931",
     "pubDate": "2026-10-05T10:53:33-05:00",
@@ -79,13 +46,35 @@
   {
     "title": "Parking & Traffic Commission Meeting - RESCHEDULED",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3538",
-    "pubDate": "2026-09-30T14:11:27-05:00",
+    "pubDate": "2026-10-06T16:47:49-05:00",
     "eventDate": "October 13, 2026",
     "eventTime": "08:30 AM",
-    "location": "Beverly City Hall, 3rd Floor Council Chambers<br>191 Cabot StreetBeverly, MA 01915",
+    "location": "",
     "board": "Other",
     "sortDate": "2026-10-13T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "Council on Aging Board of Directors Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3935",
+    "pubDate": "2026-10-07T11:26:45-05:00",
+    "eventDate": "October 13, 2026",
+    "eventTime": "02:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-13T00:00:00+00:00",
+    "agendaDocId": 2944
+  },
+  {
+    "title": "Beverly Regional Airport Commission Subcommittee on Mission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3934",
+    "pubDate": "2026-10-07T10:26:57-05:00",
+    "eventDate": "October 13, 2026",
+    "eventTime": "05:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-13T00:00:00+00:00",
+    "agendaDocId": 2943
   },
   {
     "title": "Community Preservation Committee Meeting",
