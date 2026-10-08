@@ -46,13 +46,13 @@
   {
     "title": "Parking & Traffic Commission Meeting - RESCHEDULED",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3538",
-    "pubDate": "2026-10-06T16:47:49-05:00",
+    "pubDate": "2026-10-08T11:41:26-05:00",
     "eventDate": "October 13, 2026",
     "eventTime": "08:30 AM",
-    "location": "",
+    "location": "Temporary Beverly City Hall, 1st Fl. Conference Rm<br>195 Cabot StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-10-13T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2947
   },
   {
     "title": "Council on Aging Board of Directors Meeting",
@@ -75,6 +75,28 @@
     "board": "Other",
     "sortDate": "2026-10-13T00:00:00+00:00",
     "agendaDocId": 2943
+  },
+  {
+    "title": "Beverly Airport Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3936",
+    "pubDate": "2026-10-07T15:38:16-05:00",
+    "eventDate": "October 13, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-13T00:00:00+00:00",
+    "agendaDocId": 2946
+  },
+  {
+    "title": "Beverly Golf and Tennis Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3937",
+    "pubDate": "2026-10-08T11:25:35-05:00",
+    "eventDate": "October 13, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-13T00:00:00+00:00",
+    "agendaDocId": 2948
   },
   {
     "title": "Community Preservation Committee Meeting",
@@ -107,6 +129,17 @@
     "location": "Beverly, MA 01915",
     "board": "City Council",
     "sortDate": "2026-10-19T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Economic and Community Development Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3666",
+    "pubDate": "2026-05-28T11:40:09-05:00",
+    "eventDate": "October 22, 2026",
+    "eventTime": "08:30 AM",
+    "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-22T00:00:00+00:00",
     "agendaDocId": null
   }
 ]

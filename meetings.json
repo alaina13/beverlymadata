@@ -1,5 +1,14 @@
 [
   {
+    "title": "Zoning Board of Appeals Meeting",
+    "board": "Zoning Board of Appeals",
+    "date": "2026-10-28",
+    "posted": "2026-10-07T14:37:00-04:00",
+    "docId": 2945,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10282026-2945",
+    "minutes": null
+  },
+  {
     "title": "Public Services Committee of the Whole Meeting",
     "board": "City Council",
     "date": "2026-10-26",
@@ -15,6 +24,33 @@
     "posted": "2026-09-21T14:52:00-04:00",
     "docId": 2927,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10192026-2927",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Golf and Tennis Commission Meeting",
+    "board": "Beverly Golf & Tennis Club Commission",
+    "date": "2026-10-13",
+    "posted": "2026-10-08T11:25:00-04:00",
+    "docId": 2948,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10132026-2948",
+    "minutes": null
+  },
+  {
+    "title": "Meeting for Parking & Traffic Commission meeting",
+    "board": "Parking & Traffic Commission",
+    "date": "2026-10-13",
+    "posted": "2026-10-07T16:40:00-04:00",
+    "docId": 2947,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10132026-2947",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Regional Airport Commission Meeting",
+    "board": "Airport Commission",
+    "date": "2026-10-13",
+    "posted": "2026-10-07T15:37:00-04:00",
+    "docId": 2946,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10132026-2946",
     "minutes": null
   },
   {
