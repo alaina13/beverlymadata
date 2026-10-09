@@ -1,49 +1,5 @@
 [
   {
-    "title": "Deficit Reduction Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3931",
-    "pubDate": "2026-10-05T10:53:33-05:00",
-    "eventDate": "October 8, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-08T00:00:00+00:00",
-    "agendaDocId": 2940
-  },
-  {
-    "title": "Design Review Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3487",
-    "pubDate": "2026-09-30T15:54:56-05:00",
-    "eventDate": "October 8, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-08T00:00:00+00:00",
-    "agendaDocId": 2936
-  },
-  {
-    "title": "Human Rights Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3933",
-    "pubDate": "2026-10-06T09:00:38-05:00",
-    "eventDate": "October 8, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-08T00:00:00+00:00",
-    "agendaDocId": 2942
-  },
-  {
-    "title": "Parks and Recreation Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3930",
-    "pubDate": "2026-10-01T15:00:23-05:00",
-    "eventDate": "October 8, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-08T00:00:00+00:00",
-    "agendaDocId": 2939
-  },
-  {
     "title": "Parking & Traffic Commission Meeting - RESCHEDULED",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3538",
     "pubDate": "2026-10-08T11:41:26-05:00",
@@ -99,15 +55,59 @@
     "agendaDocId": 2948
   },
   {
+    "title": "Beverly Housing Authority Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3939",
+    "pubDate": "2026-10-08T18:53:59-05:00",
+    "eventDate": "October 14, 2026",
+    "eventTime": "11:00 AM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-14T00:00:00+00:00",
+    "agendaDocId": 2951
+  },
+  {
+    "title": "Budget/Managment Analyst Preliminary Screening Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3940",
+    "pubDate": "2026-10-09T07:19:20-05:00",
+    "eventDate": "October 14, 2026",
+    "eventTime": "02:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-14T00:00:00+00:00",
+    "agendaDocId": 2952
+  },
+  {
+    "title": "Salem and Beverly Water Supply Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3938",
+    "pubDate": "2026-10-08T17:39:42-05:00",
+    "eventDate": "October 15, 2026",
+    "eventTime": "09:00 AM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-15T00:00:00+00:00",
+    "agendaDocId": 2950
+  },
+  {
+    "title": "Deficit Reduction Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3941",
+    "pubDate": "2026-10-09T08:37:33-05:00",
+    "eventDate": "October 15, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-15T00:00:00+00:00",
+    "agendaDocId": 2953
+  },
+  {
     "title": "Community Preservation Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3573",
-    "pubDate": "2026-05-28T11:34:29-05:00",
+    "pubDate": "2026-10-08T13:52:15-05:00",
     "eventDate": "October 15, 2026",
     "eventTime": "07:00 PM",
     "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-10-15T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2949
   },
   {
     "title": "Joint Meeting Legal Affairs/Public Services/Committee of the Whole Meeting",
