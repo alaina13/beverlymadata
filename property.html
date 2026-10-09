@@ -12,7 +12,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3/dist/maplibre-gl.css" />
   <meta property="og:title" content="Property Map | Open Beverly" />
-  <meta property="og:description" content="Beverly parcels mapped by assessed value, tax revenue, and net fiscal contribution per acre." />
+  <meta property="og:description" content="Beverly parcels mapped by assessed value, and tax revenue per acre." />
   <meta property="og:image" content="https://openbeverly.org/preview.png" />
   <meta property="og:url" content="https://openbeverly.org/" />
   <meta property="og:type" content="website" />
@@ -92,8 +92,6 @@
                 <h4>Color by</h4>
                 <button class="color-btn active" data-mode="vpa">Value per acre</button>
                 <button class="color-btn" data-mode="taxpa">Tax per acre</button>
-                <button class="color-btn" data-mode="net">Net revenue (after infrastructure)</button>
-                <button class="color-btn" data-mode="netpa">Net revenue per acre</button>
                 <button class="color-btn" data-mode="v">Total assessed value</button>
                 <button class="color-btn" data-mode="tax">Annual tax revenue</button>
               </div>
@@ -160,7 +158,6 @@
       <div class="map-sources-panel">
         <ul class="map-sources-list">
           <li><span class="map-sources-layer">Parcel value</span><a href="https://gis.data.mass.gov/datasets/massgis::massachusetts-property-tax-parcels/about" target="_blank" rel="noopener">MassGIS Property Tax Parcels</a><span class="map-sources-meta">Massachusetts Office of Geographic Information. FY2026 assessed values, land use, lot size, and parcel boundaries.</span><span class="map-sources-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last accessed June 29, 2026</span></li>
-          <li><span class="map-sources-layer">Net revenue</span><a href="/sources.html#methodology">Open Beverly estimate</a><span class="map-sources-meta">Annual tax minus allocated road, water, and sewer cost. Inputs: MassDOT Road Inventory (2024), MMA statewide road needs survey (reported January 24, 2025), Water and Sewer Enterprise totals from the <a href="https://www.beverlyma.gov/DocumentCenter/View/7440/Proposed-FY-2027-City-Budget" target="_blank" rel="noopener">Proposed FY2027 Budget</a>.</span><span class="map-sources-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last calculated September 23, 2026</span></li>
           <li><span class="map-sources-layer">Zoning, overlay, and historic districts</span><a href="https://beverlyma.maps.arcgis.com/apps/instant/sidebar/index.html?appid=d1979c4c33e14adc8fe8f448b8dcb086" target="_blank" rel="noopener">City of Beverly Zoning Map (BeverlyGIS)</a><span class="map-sources-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last accessed July 16, 2026</span></li>
           <li><span class="map-sources-layer">Basemap</span><a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO Positron</a><span class="map-sources-meta">Map tiles from CARTO; map data from OpenStreetMap contributors.</span></li>
         </ul>
@@ -240,15 +237,11 @@
   const COLOR_STOPS = {
     vpa:   [[0,'#d0ead0'],[500000,'#4caf50'],[2000000,'#cddc39'],[4000000,'#ffc107'],[7000000,'#f44336'],[9400000,'#9c27b0']],
     taxpa: [[0,'#d0ead0'],[12000,'#4caf50'],[34000,'#cddc39'],[55000,'#ffc107'],[80000,'#f44336'],[102409,'#9c27b0']],
-    net:   [[-4500,'#f44336'],[0,'#ffc107'],[3000,'#cddc39'],[10000,'#4caf50'],[50000,'#1a9850'],[200000,'#9c27b0']],
-    netpa: [[-5000,'#f44336'],[0,'#ffc107'],[8000,'#cddc39'],[25000,'#4caf50'],[80000,'#1a9850'],[300000,'#9c27b0']],
     v:     [[0,'#d0ead0'],[200000,'#4caf50'],[800000,'#cddc39'],[2000000,'#ffc107'],[5000000,'#f44336'],[15000000,'#9c27b0']],
     tax:   [[0,'#d0ead0'],[2000,'#4caf50'],[8000,'#cddc39'],[20000,'#ffc107'],[60000,'#f44336'],[200000,'#9c27b0']],
   };
 
   const LEGEND_BAR = {
-    net:   'linear-gradient(to right, #f44336, #ffc107, #4caf50, #9c27b0)',
-    netpa: 'linear-gradient(to right, #f44336, #ffc107, #4caf50, #9c27b0)',
     default: 'linear-gradient(to right, #4caf50, #cddc39, #ffc107, #f44336, #9c27b0)',
   };
 
@@ -468,8 +461,6 @@
         allFeatures = geo.features.filter(f => f.geometry);
         allFeatures.forEach((f, i) => {
           f.id = i;
-          const p = f.properties;
-          p.netpa = (p.ls > 0 && p.net != null) ? Math.round(p.net / p.ls) : null;
         });
 
         map.addSource('parcels', { type: 'geojson', data: geo });
@@ -515,8 +506,6 @@
           map.setFeatureState({ source: 'parcels', id: hoveredId }, { hover: true });
 
           const p = e.features[0].properties;
-          const netVal = p.net != null ? (p.net >= 0 ? '+' : '') + fmt(p.net) : 'N/A';
-          const netColor = p.net > 0 ? '#2e7d32' : p.net < 0 ? '#c62828' : '#999';
 
           const el = document.getElementById('tooltip');
           el.style.display = 'block';
@@ -528,17 +517,12 @@
           const y = (e.point.y - 10 + tipH > mapH) ? e.point.y - tipH + 10 : e.point.y - 10;
           el.style.left = x + 'px';
           el.style.top  = y + 'px';
-          const infraCost = (p.road_cost != null) ? fmt((p.road_cost||0)+(p.water_cost||0)+(p.sewer_cost||0)) : 'N/A';
-          const netpaVal = p.netpa != null ? (p.netpa >= 0 ? '+' : '') + fmt(p.netpa) + '/ac' : 'N/A';
           el.innerHTML = `
             <div class="tooltip-addr">${p.addr || 'Unknown'}</div>
             <div class="tooltip-row"><span>Value / acre</span><span>${fmt(p.vpa)}</span></div>
             <div class="tooltip-row"><span>Tax / acre</span><span>${fmt(p.taxpa)}</span></div>
             <div class="tooltip-row"><span>Total value</span><span>${fmt(p.v)}</span></div>
             <div class="tooltip-row"><span>Annual tax</span><span>${fmt(p.tax)}</span></div>
-            <div class="tooltip-row"><span>Infrastructure cost</span><span>${infraCost}</span></div>
-            <div class="tooltip-row"><span>Net fiscal</span><span style="color:${netColor};font-weight:700">${netVal}</span></div>
-            <div class="tooltip-row"><span>Net / acre</span><span style="color:${netColor};font-weight:700">${netpaVal}</span></div>
             <div class="tooltip-cat">${p.cat || ''}</div>
           `;
           map.getCanvas().style.cursor = 'pointer';
@@ -682,8 +666,6 @@
   searchInput.addEventListener('focus', () => { if (resultsList.children.length) resultsList.hidden = false; });
 
   function showParcelPanel(p, addr) {
-    const netVal = p.net != null ? (p.net >= 0 ? '+' : '') + fmt(p.net) : 'N/A';
-    const netColor = p.net > 0 ? '#2e7d32' : p.net < 0 ? '#c62828' : '#999';
     const panel = document.getElementById('parcel-panel');
     panel.innerHTML = `
       <button class="parcel-panel-close" aria-label="Close" onclick="const _p=document.getElementById('parcel-panel');_p.hidden=true;_p.innerHTML='';clearSelected();">
@@ -695,9 +677,6 @@
       <div class="tooltip-row"><span>Tax / acre</span><span>${fmt(p.taxpa)}</span></div>
       <div class="tooltip-row"><span>Total value</span><span>${fmt(p.v)}</span></div>
       <div class="tooltip-row"><span>Annual tax</span><span>${fmt(p.tax)}</span></div>
-      <div class="tooltip-row"><span>Infrastructure cost</span><span>${(p.road_cost != null) ? fmt((p.road_cost||0)+(p.water_cost||0)+(p.sewer_cost||0)) : 'N/A'}</span></div>
-      <div class="tooltip-row"><span>Net fiscal</span><span style="color:${netColor};font-weight:700">${netVal}</span></div>
-      <div class="tooltip-row"><span>Net / acre</span><span style="color:${netColor};font-weight:700">${p.netpa != null ? (p.netpa >= 0 ? '+' : '') + fmt(p.netpa) + '/ac' : 'N/A'}</span></div>
     `;
     panel.hidden = false;
   }
