@@ -152,5 +152,16 @@
     "board": "Other",
     "sortDate": "2026-10-22T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "Public Services/Committee of the Whole Meeting Agenda",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3932",
+    "pubDate": "2026-10-06T08:56:07-05:00",
+    "eventDate": "October 26, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-26T00:00:00+00:00",
+    "agendaDocId": 2941
   }
 ]
