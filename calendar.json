@@ -1,16 +1,5 @@
 [
   {
-    "title": "Parking & Traffic Commission Meeting - RESCHEDULED",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3538",
-    "pubDate": "2026-10-08T11:41:26-05:00",
-    "eventDate": "October 13, 2026",
-    "eventTime": "08:30 AM",
-    "location": "Temporary Beverly City Hall, 1st Fl. Conference Rm<br>195 Cabot StreetBeverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-13T00:00:00+00:00",
-    "agendaDocId": 2947
-  },
-  {
     "title": "Council on Aging Board of Directors Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3935",
     "pubDate": "2026-10-07T11:26:45-05:00",
@@ -121,6 +110,17 @@
     "agendaDocId": 2949
   },
   {
+    "title": "Beverly Retirement Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3943",
+    "pubDate": "2026-10-13T10:21:39-05:00",
+    "eventDate": "October 16, 2026",
+    "eventTime": "09:00 AM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-16T00:00:00+00:00",
+    "agendaDocId": 2955
+  },
+  {
     "title": "Joint Meeting Legal Affairs/Public Services/Committee of the Whole Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3911",
     "pubDate": "2026-09-21T14:52:37-05:00",
@@ -163,5 +163,27 @@
     "board": "Other",
     "sortDate": "2026-10-26T00:00:00+00:00",
     "agendaDocId": 2941
+  },
+  {
+    "title": "Conservation Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3605",
+    "pubDate": "2026-02-11T15:38:01-05:00",
+    "eventDate": "October 27, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Conservation Commission",
+    "sortDate": "2026-10-27T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Planning Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3632",
+    "pubDate": "2026-05-28T14:02:44-05:00",
+    "eventDate": "October 27, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
+    "board": "Planning Board",
+    "sortDate": "2026-10-27T00:00:00+00:00",
+    "agendaDocId": null
   }
 ]
