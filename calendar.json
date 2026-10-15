@@ -1,85 +1,8 @@
 [
   {
-    "title": "Council on Aging Board of Directors Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3935",
-    "pubDate": "2026-10-07T11:26:45-05:00",
-    "eventDate": "October 13, 2026",
-    "eventTime": "02:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-13T00:00:00+00:00",
-    "agendaDocId": 2944
-  },
-  {
-    "title": "RESCHEDULED to 10-14-Beverly Regional Airport Commission Subcommittee on Mission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3934",
-    "pubDate": "2026-10-10T09:17:32-05:00",
-    "eventDate": "October 13, 2026",
-    "eventTime": "05:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-13T00:00:00+00:00",
-    "agendaDocId": 2943
-  },
-  {
-    "title": "Beverly Airport Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3936",
-    "pubDate": "2026-10-07T15:38:16-05:00",
-    "eventDate": "October 13, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-13T00:00:00+00:00",
-    "agendaDocId": 2946
-  },
-  {
-    "title": "Beverly Golf and Tennis Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3937",
-    "pubDate": "2026-10-08T11:25:35-05:00",
-    "eventDate": "October 13, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-13T00:00:00+00:00",
-    "agendaDocId": 2948
-  },
-  {
-    "title": "Beverly Housing Authority Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3939",
-    "pubDate": "2026-10-08T18:53:59-05:00",
-    "eventDate": "October 14, 2026",
-    "eventTime": "11:00 AM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-14T00:00:00+00:00",
-    "agendaDocId": 2951
-  },
-  {
-    "title": "Budget/Managment Analyst Preliminary Screening Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3940",
-    "pubDate": "2026-10-09T07:19:20-05:00",
-    "eventDate": "October 14, 2026",
-    "eventTime": "02:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-14T00:00:00+00:00",
-    "agendaDocId": 2952
-  },
-  {
-    "title": "Bevery Regional Airport Subcommittee on Mission Meeting Agenda",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3942",
-    "pubDate": "2026-10-10T09:14:20-05:00",
-    "eventDate": "October 14, 2026",
-    "eventTime": "04:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-14T00:00:00+00:00",
-    "agendaDocId": 2954
-  },
-  {
-    "title": "Salem and Beverly Water Supply Board Meeting",
+    "title": "CANCELLED-----Salem and Beverly Water Supply Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3938",
-    "pubDate": "2026-10-08T17:39:42-05:00",
+    "pubDate": "2026-10-15T07:24:43-05:00",
     "eventDate": "October 15, 2026",
     "eventTime": "09:00 AM",
     "location": "Beverly, MA 01915",
@@ -143,6 +66,17 @@
     "agendaDocId": null
   },
   {
+    "title": "Clean Energy Advisory Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3944",
+    "pubDate": "2026-10-14T13:02:48-05:00",
+    "eventDate": "October 21, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-21T00:00:00+00:00",
+    "agendaDocId": 2956
+  },
+  {
     "title": "Economic and Community Development Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3666",
     "pubDate": "2026-05-28T11:40:09-05:00",
@@ -185,5 +119,27 @@
     "board": "Planning Board",
     "sortDate": "2026-10-27T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3527",
+    "pubDate": "2026-10-06T16:55:12-05:00",
+    "eventDate": "October 28, 2026",
+    "eventTime": "07:00 PM",
+    "location": "",
+    "board": "Historic District Commission",
+    "sortDate": "2026-10-28T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Zoning Board of Appeals Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3802",
+    "pubDate": "2026-10-08T17:41:39-05:00",
+    "eventDate": "October 28, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Zoning Board of Appeals",
+    "sortDate": "2026-10-28T00:00:00+00:00",
+    "agendaDocId": 2945
   }
 ]

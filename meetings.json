@@ -18,6 +18,15 @@
     "minutes": null
   },
   {
+    "title": "Clean Energy Advisory Committee Meeting",
+    "board": "Clean Energy Advisory Committee",
+    "date": "2026-10-21",
+    "posted": "2026-10-14T13:02:00-04:00",
+    "docId": 2956,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10212026-2956",
+    "minutes": null
+  },
+  {
     "title": "Joint Meeting Legal Affairs/Public Services/Committee of the Whole Meeting",
     "board": "City Council",
     "date": "2026-10-19",
@@ -45,21 +54,21 @@
     "minutes": null
   },
   {
-    "title": "Salem and Beverly Water Supply Board Meeting",
-    "board": "Salem and Beverly Water Supply Board",
-    "date": "2026-10-15",
-    "posted": "2026-10-08T17:39:00-04:00",
-    "docId": 2950,
-    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10152026-2950",
-    "minutes": null
-  },
-  {
     "title": "Community Preservation Committee Meeting",
     "board": "Community Preservation Committee",
     "date": "2026-10-15",
     "posted": "2026-10-08T13:52:00-04:00",
     "docId": 2949,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10152026-2949",
+    "minutes": null
+  },
+  {
+    "title": "CANCELLED Salem and Beverly Water Supply Board Meeting",
+    "board": "Salem and Beverly Water Supply Board",
+    "date": "2026-10-15",
+    "posted": "",
+    "docId": 2950,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10152026-2950",
     "minutes": null
   },
   {
@@ -645,7 +654,7 @@
     "posted": "2026-08-28T09:27:00-04:00",
     "docId": 2881,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_09032026-2881",
-    "minutes": null
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_09032026-2881"
   },
   {
     "title": "Open Space and Recreation Committee Meeting",
