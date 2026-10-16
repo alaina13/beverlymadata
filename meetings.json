@@ -18,12 +18,48 @@
     "minutes": null
   },
   {
+    "title": "Economic & Community Development Council Meeting",
+    "board": "Economic & Community Development Council",
+    "date": "2026-10-22",
+    "posted": "2026-10-15T12:48:00-04:00",
+    "docId": 2957,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10222026-2957",
+    "minutes": null
+  },
+  {
+    "title": "Board of Health Meeting",
+    "board": "Board of Health",
+    "date": "2026-10-21",
+    "posted": "2026-10-16T10:35:00-04:00",
+    "docId": 2959,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10212026-2959",
+    "minutes": null
+  },
+  {
     "title": "Clean Energy Advisory Committee Meeting",
     "board": "Clean Energy Advisory Committee",
     "date": "2026-10-21",
     "posted": "2026-10-14T13:02:00-04:00",
     "docId": 2956,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10212026-2956",
+    "minutes": null
+  },
+  {
+    "title": "Salem and Beverly Water Supply Board Meeting",
+    "board": "Salem and Beverly Water Supply Board",
+    "date": "2026-10-20",
+    "posted": "2026-10-16T11:00:00-04:00",
+    "docId": 2960,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10202026-2960",
+    "minutes": null
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "board": "City Council",
+    "date": "2026-10-19",
+    "posted": "2026-10-15T13:15:00-04:00",
+    "docId": 2958,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10192026-2958",
     "minutes": null
   },
   {
@@ -726,7 +762,7 @@
     "posted": "2026-08-06T12:17:00-04:00",
     "docId": 2866,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_08202026-2866",
-    "minutes": null
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_08202026-2866"
   },
   {
     "title": "Harbor Management Authority Meeting",
