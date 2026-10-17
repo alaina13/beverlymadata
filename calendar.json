@@ -1,16 +1,5 @@
 [
   {
-    "title": "Beverly Retirement Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3943",
-    "pubDate": "2026-10-13T10:21:39-05:00",
-    "eventDate": "October 16, 2026",
-    "eventTime": "09:00 AM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-16T00:00:00+00:00",
-    "agendaDocId": 2955
-  },
-  {
     "title": "Joint Meeting Legal Affairs/Public Services/Committee of the Whole Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3911",
     "pubDate": "2026-09-21T14:52:37-05:00",
@@ -44,6 +33,17 @@
     "agendaDocId": 2960
   },
   {
+    "title": "Deficit Reduction Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3947",
+    "pubDate": "2026-10-16T11:07:26-05:00",
+    "eventDate": "October 20, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-20T00:00:00+00:00",
+    "agendaDocId": 2961
+  },
+  {
     "title": "Clean Energy Advisory Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3944",
     "pubDate": "2026-10-14T13:02:48-05:00",
@@ -75,6 +75,17 @@
     "board": "Other",
     "sortDate": "2026-10-22T00:00:00+00:00",
     "agendaDocId": 2957
+  },
+  {
+    "title": "Commission on Disabilities Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3949",
+    "pubDate": "2026-10-16T12:57:41-05:00",
+    "eventDate": "October 22, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Commission on Disabilities",
+    "sortDate": "2026-10-22T00:00:00+00:00",
+    "agendaDocId": 2962
   },
   {
     "title": "Public Services/Committee of the Whole Meeting Agenda",
