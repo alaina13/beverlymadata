@@ -1,27 +1,5 @@
 [
   {
-    "title": "Salem and Beverly Water Supply Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3946",
-    "pubDate": "2026-10-16T11:00:33-05:00",
-    "eventDate": "October 20, 2026",
-    "eventTime": "10:00 AM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-20T00:00:00+00:00",
-    "agendaDocId": 2960
-  },
-  {
-    "title": "Deficit Reduction Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3947",
-    "pubDate": "2026-10-16T11:07:26-05:00",
-    "eventDate": "October 20, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-20T00:00:00+00:00",
-    "agendaDocId": 2961
-  },
-  {
     "title": "Clean Energy Advisory Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3944",
     "pubDate": "2026-10-14T13:02:48-05:00",
@@ -77,6 +55,17 @@
     "agendaDocId": 2965
   },
   {
+    "title": "Commission on Disabilities Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3949",
+    "pubDate": "2026-10-21T07:58:47-05:00",
+    "eventDate": "October 22, 2026",
+    "eventTime": "12:00 PM",
+    "location": "90 Colon StreetBeverly, MA 01915",
+    "board": "Commission on Disabilities",
+    "sortDate": "2026-10-22T00:00:00+00:00",
+    "agendaDocId": 2962
+  },
+  {
     "title": "Veterans Advisory Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3953",
     "pubDate": "2026-10-19T12:56:20-05:00",
@@ -88,17 +77,6 @@
     "agendaDocId": 2968
   },
   {
-    "title": "Commission on Disabilities Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3949",
-    "pubDate": "2026-10-16T12:57:41-05:00",
-    "eventDate": "October 22, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Commission on Disabilities",
-    "sortDate": "2026-10-22T00:00:00+00:00",
-    "agendaDocId": 2962
-  },
-  {
     "title": "Public Services/Committee of the Whole Meeting Agenda",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3932",
     "pubDate": "2026-10-06T08:56:07-05:00",
@@ -108,6 +86,39 @@
     "board": "Other",
     "sortDate": "2026-10-26T00:00:00+00:00",
     "agendaDocId": 2941
+  },
+  {
+    "title": "Special City Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3954",
+    "pubDate": "2026-10-20T12:53:17-05:00",
+    "eventDate": "October 26, 2026",
+    "eventTime": "07:15 PM",
+    "location": "Beverly, MA 01915",
+    "board": "City Council",
+    "sortDate": "2026-10-26T00:00:00+00:00",
+    "agendaDocId": 2970
+  },
+  {
+    "title": "Special City Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3955",
+    "pubDate": "2026-10-20T13:14:00-05:00",
+    "eventDate": "October 27, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "City Council",
+    "sortDate": "2026-10-27T00:00:00+00:00",
+    "agendaDocId": 2971
+  },
+  {
+    "title": "Trustees of the Beverly Public Library",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3956",
+    "pubDate": "2026-10-21T09:00:29-05:00",
+    "eventDate": "October 27, 2026",
+    "eventTime": "06:00 PM",
+    "location": "32 Essex StBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-27T00:00:00+00:00",
+    "agendaDocId": 2972
   },
   {
     "title": "Conservation Commission Meeting",
@@ -123,12 +134,23 @@
   {
     "title": "Planning Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3632",
-    "pubDate": "2026-05-28T14:02:44-05:00",
+    "pubDate": "2026-10-20T16:11:20-05:00",
     "eventDate": "October 27, 2026",
     "eventTime": "07:00 PM",
-    "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
+    "location": "Beverly Middle School, Library<br>502 Cabot StreetBeverly, MA 01915",
     "board": "Planning Board",
     "sortDate": "2026-10-27T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3527",
+    "pubDate": "2026-10-06T16:55:12-05:00",
+    "eventDate": "October 28, 2026",
+    "eventTime": "07:00 PM",
+    "location": "",
+    "board": "Historic District Commission",
+    "sortDate": "2026-10-28T00:00:00+00:00",
     "agendaDocId": null
   },
   {
@@ -143,14 +165,25 @@
     "agendaDocId": 2945
   },
   {
-    "title": "Historic Districts Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3527",
-    "pubDate": "2026-10-06T16:55:12-05:00",
-    "eventDate": "October 28, 2026",
-    "eventTime": "07:00 PM",
+    "title": "Parking & Traffic Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3539",
+    "pubDate": "2026-10-06T16:55:42-05:00",
+    "eventDate": "November 4, 2026",
+    "eventTime": "08:30 AM",
     "location": "",
-    "board": "Historic District Commission",
-    "sortDate": "2026-10-28T00:00:00+00:00",
+    "board": "Other",
+    "sortDate": "2026-11-04T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Open Space and Recreation Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3495",
+    "pubDate": "2026-05-28T11:31:34-05:00",
+    "eventDate": "November 4, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-04T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
