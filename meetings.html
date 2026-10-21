@@ -226,8 +226,9 @@
   }
 
   // Past: archive meetings before today, with BevCam summaries attached to the
-  // City Council meeting held the same day. School Committee recordings get
-  // their own rows (their documents are not in the city's Agenda Center).
+  // meeting of the same board held the same day. Recordings with no matching
+  // agenda (e.g. School Committee, whose documents are not in the city's
+  // Agenda Center) get their own rows.
   function recordingDate(title) {
     const m = title.match(/(\d{2})[\/-](\d{2})[\/-](\d{4})/);
     return m ? `${m[3]}-${m[1]}-${m[2]}` : null;
@@ -249,17 +250,15 @@
       if (s.error || !s.headline) continue;
       const date = recordingDate(s.title);
       if (!date) continue;
-      const isCouncil = /city council/i.test(s.title);
-      const sameDay = isCouncil
-        ? items.filter(d => d.board === 'City Council' && d.date === date && !d.summary)
-        : [];
-      const match = sameDay.find(d => /city council meeting/i.test(d.title)) || sameDay[0];
+      const isCouncil = s.body === 'City Council';
+      const sameDay = items.filter(d => d.board === s.body && d.date === date && !d.summary);
+      const match = (isCouncil && sameDay.find(d => /city council meeting/i.test(d.title))) || sameDay[0];
       if (match) {
         match.summary = s;
       } else {
         items.push({
           title: recordingTitle(s.title),
-          board: isCouncil ? 'City Council' : 'School Committee',
+          board: s.body,
           date, docId: null, agenda: null, minutes: null, summary: s,
         });
       }
