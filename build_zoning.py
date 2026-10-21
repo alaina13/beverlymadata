@@ -128,6 +128,22 @@ def tier(actual, required, tol):
     return "close" if actual >= required - tol else "short"
 
 
+STREET_SUFFIXES = {"ST", "AVE", "RD", "DR", "LN", "CT", "PL", "TER", "TERR", "WAY", "CIR", "PARK", "SQ",
+                   "HWY", "PKWY", "BLVD", "ROW", "LANE", "PATH", "PT", "EXT", "BROADWAY"}
+
+
+def strip_condo_unit(addr):
+    """Drop a trailing unit number ("12 MAIN ST 3", "245 ESSEX ST 1-8") from a
+    condo record's address so each building lists once. A trailing street
+    suffix is never treated as a unit."""
+    if not isinstance(addr, str):
+        return addr
+    m = re.search(r"\s+(?:UNIT\s*)?#?(\w{1,4}(?:-\w{1,4})?)$", addr)
+    if not m or m.group(1).upper() in STREET_SUFFIXES:
+        return addr
+    return addr[:m.start()]
+
+
 def garage_sf(row):
     detached = sum(int(a) * int(b) for a, b in re.findall(r"(\d+)\s*[xX]\s*(\d+)", str(row.DET_GARAGE or "")))
     attached = pd.to_numeric(row.ATT_GARAGE, errors="coerce")
@@ -165,7 +181,7 @@ def build_district(code, rules, city):
     recs = pd.DataFrame(city.parcels[city.parcels.ZONE_1 == code])
     recs["story_n"] = pd.to_numeric(recs.STORY.astype(str).str.extract(r"([\d.]+)")[0], errors="coerce")
     is_condo = recs.LUC.astype(str) == "102"
-    recs["addr"] = recs.ASSESSOR_ADD.where(~is_condo, recs.ASSESSOR_ADD.str.replace(r"\s+(UNIT\s*)?#?\w{1,4}$", "", regex=True))
+    recs["addr"] = recs.ASSESSOR_ADD.where(~is_condo, recs.ASSESSOR_ADD.apply(strip_condo_unit))
     recs["garage_sf"] = recs.apply(garage_sf, axis=1)
     recs["bsmt_gar"] = pd.to_numeric(recs.BSMT_GAR, errors="coerce").fillna(0)
     lots = recs.groupby("LOC_ID").agg(
