@@ -32,6 +32,7 @@ from youtube_transcript_api.proxies import GenericProxyConfig, WebshareProxyConf
 CHANNEL_ID   = "UCsloEZrieQqRUqra1diSk1w"   # BevCam Government
 CHANNEL_RSS  = f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL_ID}"
 OUTPUT_FILE  = Path(__file__).parent / "summaries.json"
+MIN_MEETING_DATE = "2026-10-18"   # skip meetings held before this date (YYYY-MM-DD)
 CLAUDE_MODEL = "claude-haiku-4-5-20251001"   # fast + cheap for summarization
 
 # Only include videos whose title matches one of these governing bodies
@@ -49,6 +50,14 @@ def detect_body(title: str) -> str | None:
         if pattern.search(title):
             return name
     return None
+
+def meeting_date(title: str, published: str) -> str:
+    """Meeting date (YYYY-MM-DD) from the title, falling back to the post date."""
+    m = re.search(r"(\d{1,2})[/-](\d{1,2})[/-](\d{4})", title)
+    if m:
+        return f"{m[3]}-{int(m[1]):02d}-{int(m[2]):02d}"
+    return published[:10]
+
 
 def parse_summary(raw: str) -> dict:
     """Parse Claude's markdown response into structured fields."""
@@ -141,7 +150,7 @@ def fetch_channel_videos(max_videos: int) -> list[dict]:
         published = entry.findtext("atom:published", namespaces=ns, default="")
         url       = f"https://www.youtube.com/watch?v={video_id}"
         body = detect_body(title)
-        if body:
+        if body and meeting_date(title, published) >= MIN_MEETING_DATE:
             videos.append({"video_id": video_id, "title": title,
                            "published": published, "url": url, "body": body})
         if len(videos) >= max_videos:
