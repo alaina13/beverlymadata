@@ -18,6 +18,7 @@ import os
 import re
 import sys
 import time
+from datetime import date
 import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -150,7 +151,10 @@ def fetch_channel_videos(max_videos: int) -> list[dict]:
         published = entry.findtext("atom:published", namespaces=ns, default="")
         url       = f"https://www.youtube.com/watch?v={video_id}"
         body = detect_body(title)
-        if body and meeting_date(title, published) >= MIN_MEETING_DATE:
+        # BevCam posts videos before the meeting happens; there is nothing to
+        # summarize until the meeting date arrives.
+        when = meeting_date(title, published)
+        if body and MIN_MEETING_DATE <= when <= date.today().isoformat():
             videos.append({"video_id": video_id, "title": title,
                            "published": published, "url": url, "body": body})
         if len(videos) >= max_videos:
