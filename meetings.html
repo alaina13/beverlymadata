@@ -222,7 +222,9 @@
         items.push({ ...d, time: '', location: '', link: null });
       }
     }
-    return items.sort((a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
+    return items
+      .filter(i => i.date >= today)
+      .sort((a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
   }
 
   // Past: archive meetings before today, with BevCam summaries attached to the
