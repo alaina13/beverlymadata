@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/56a48e0c30.js" crossorigin="anonymous"></script>
+  <title>Lots and Homes Over Time | Open Beverly</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:title" content="Lots and Homes Over Time | Open Beverly" />
+  <meta property="og:description" content="How the size of Beverly's single-family lots and homes has changed by decade built, and how assessed values vary with lot size." />
+  <meta property="og:image" content="https://openbeverly.org/preview.png" />
+  <meta property="og:url" content="https://openbeverly.org/lot-size-time.html" />
+  <meta property="og:type" content="website" />
+</head>
+<body class="data-page">
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+  <a class="logo" href="/">Open <span>Beverly</span></a>
+  <nav>
+    <a href="/meetings.html">Meetings</a>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">
+        Finance
+      </button>
+      <div class="nav-dropdown">
+      <a href="/data.html">City Data</a>
+      <a href="/budget.html">Budget Explorer</a>
+      <a href="/history.html">How We Got Here</a>
+      <a href="/whats-next.html">What's Next</a>
+      <a href="/calculator.html">Override Calculator</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">Infrastructure</button>
+      <div class="nav-dropdown">
+      <a href="/capital.html">Capital Plan</a>
+      <a href="/pavement.html">Pavement Conditions</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button class="nav-group-btn" aria-haspopup="true" aria-expanded="false">Map</button>
+      <div class="nav-dropdown">
+      <a href="/property.html">Property Map</a>
+      <a href="/zoning.html">Zoning Comparison</a>
+      </div>
+    </div>
+    <a href="/sources.html">Sources</a>
+    <a href="/about.html">About</a>
+  </nav>
+  <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+    <i class="fa-solid fa-bars menu-icon-open" aria-hidden="true"></i>
+    <i class="fa-solid fa-xmark menu-icon-close" aria-hidden="true"></i>
+  </button>
+</header>
+<main id="main">
+<div class="data-hero">
+  <h1>Lots and Homes Over Time</h1>
+  <p>How the size of Beverly's single-family lots and homes has changed by decade built, and how assessed values vary with lot size.</p>
+</div>
+
+<div class="page-with-toc">
+<nav class="toc" aria-label="Table of contents">
+  <div class="toc-label">On this page</div>
+  <a href="#overview" class="toc-link">Overview</a>
+  <a href="#homes" class="toc-link">Homes by Decade Built</a>
+  <a href="#lots" class="toc-link">Lot Size by Decade</a>
+  <a href="#same-lot" class="toc-link">Comparing Similar Lots</a>
+  <a href="#value" class="toc-link">Assessed Value by Lot Size</a>
+  <a href="#methodology" class="toc-link">Methodology &amp; Limitations</a>
+</nav>
+<div class="data-container">
+
+  <!-- ── Overview ── -->
+  <div class="section-header">
+    <h2 id="overview">Overview</h2>
+  </div>
+  <p class="body-text">Beverly has <span data-n="homes">8,580</span> single-family properties. This page groups them by the decade the house was built, using City assessor records, and compares how large the homes and lots are in each group. It then shows how assessed values vary with lot size.</p>
+  <p class="body-text">The figures describe the homes standing today, so they include any additions made since a house was built. See "Methodology &amp; Limitations" below.</p>
+
+  <!-- ── Homes ── -->
+  <div class="section-header">
+    <h2 id="homes">Homes by Decade Built</h2>
+    <p>The median home built in the 1950s has <span data-med="1950s">1,474</span> square feet of finished living area. The median home built in the 2000s has <span data-med="2000s">2,982</span>.</p>
+  </div>
+  <div class="chart-card">
+    <h3 class="chart-title" id="homesChart-title">Median finished living area by decade built (square feet)</h3>
+    <div class="chart-wrap tall"><canvas id="homesChart" role="img" aria-labelledby="homesChart-title" aria-describedby="homesChart-data"></canvas></div>
+  </div>
+  <div class="chart-card table-scroll">
+    <table class="sustain-table">
+      <caption class="sr-only">Single-family homes by decade built: count, finished living area, and lot size</caption>
+      <thead>
+        <tr>
+          <th scope="col">Decade built</th>
+          <th scope="col">Homes</th>
+          <th scope="col">Median finished sq ft</th>
+          <th scope="col">Average finished sq ft</th>
+          <th scope="col">Median lot sq ft</th>
+        </tr>
+      </thead>
+      <tbody id="decadeTbody"></tbody>
+    </table>
+  </div>
+
+  <!-- ── Lots ── -->
+  <div class="section-header">
+    <h2 id="lots">Lot Size by Decade</h2>
+    <p><span data-share="1950s-large">7%</span> of homes built in the 1950s are on lots of 20,000 square feet or more. For homes built in the 1990s, the share is <span data-share="1990s-large">57%</span>.</p>
+  </div>
+  <div class="chart-card">
+    <h3 class="chart-title" id="lotsChart-title">Share of homes by lot size and decade built</h3>
+    <div class="chart-wrap tall"><canvas id="lotsChart" role="img" aria-labelledby="lotsChart-title" aria-describedby="lotsChart-data"></canvas></div>
+  </div>
+
+  <!-- ── Same lot ── -->
+  <div class="section-header">
+    <h2 id="same-lot">Comparing Similar Lots</h2>
+    <p>Lot size and home size are related: for every decade built through the 2000s, the median home is larger on larger lots. Comparing decades without accounting for lot size therefore mixes two changes. This table compares median finished living area for homes on lots of similar size.</p>
+  </div>
+  <div class="chart-card table-scroll">
+    <table class="sustain-table">
+      <caption class="sr-only">Median finished living area in square feet by decade built and lot size</caption>
+      <thead>
+        <tr id="stratHead"></tr>
+      </thead>
+      <tbody id="stratTbody"></tbody>
+    </table>
+  </div>
+  <p class="chart-note-text">Lot sizes are in square feet. A dash means fewer than <span data-n="min_n">30</span> homes, too few for a reliable median.</p>
+
+  <p class="body-text">A statistical adjustment for lot size and zoning district together gives a similar picture. Compared with homes built in the 1950s on lots of the same size in the same district, homes built in the 2000s are <span data-reg="2000s">59%</span> larger (95% interval <span data-reg-lo="2000s">51%</span> to <span data-reg-hi="2000s">67%</span>).</p>
+  <div class="chart-card table-scroll">
+    <table class="sustain-table">
+      <caption class="sr-only">Difference in finished living area from homes built in the 1950s, holding lot size and zoning district constant</caption>
+      <thead>
+        <tr>
+          <th scope="col">Decade built</th>
+          <th scope="col">Difference from 1950s homes</th>
+          <th scope="col">95% interval</th>
+        </tr>
+      </thead>
+      <tbody id="regTbody"></tbody>
+    </table>
+  </div>
+
+  <!-- ── Value ── -->
+  <div class="section-header">
+    <h2 id="value">Assessed Value by Lot Size</h2>
+    <p>The median assessed value of a single-family home on a lot under 5,000 square feet is <span data-vb="Under 5,000">$601,500</span>. On a lot of 20,000 square feet or more, it is <span data-vb="20,000 and over">$1,002,700</span>.</p>
+  </div>
+  <div class="chart-card">
+    <h3 class="chart-title" id="valueChart-title">Median assessed value by lot size, FY2026 ($)</h3>
+    <div class="chart-wrap tall"><canvas id="valueChart" role="img" aria-labelledby="valueChart-title" aria-describedby="valueChart-data"></canvas></div>
+  </div>
+  <div class="chart-card table-scroll">
+    <table class="sustain-table">
+      <caption class="sr-only">Median assessed value, land value, and building value of single-family homes by lot size</caption>
+      <thead>
+        <tr>
+          <th scope="col">Lot size (sq ft)</th>
+          <th scope="col">Homes</th>
+          <th scope="col">Median total</th>
+          <th scope="col">Median land</th>
+          <th scope="col">Median building</th>
+          <th scope="col">Median total per finished sq ft</th>
+        </tr>
+      </thead>
+      <tbody id="valueTbody"></tbody>
+    </table>
+  </div>
+  <p class="chart-note-text">Medians of each column are calculated separately, so land and building medians do not add to the total median.</p>
+
+  <div class="structural-box">
+    <h2>What assessed value means</h2>
+    <div class="not-waste">
+      <span class="check"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span>
+      <span>Assessed value is the City Assessor's estimate of a property's value for property tax purposes, here for FY2026. It is not a sale price or an appraisal. Homes on larger lots are also larger homes, so the differences above reflect land and building together.</span>
+    </div>
+  </div>
+
+  <!-- ── Methodology ── -->
+  <div class="section-header">
+    <h2 id="methodology">Methodology &amp; Limitations</h2>
+  </div>
+  <div class="structural-box">
+    <h2>How these figures were made</h2>
+    <ul class="method-list">
+      <li><strong>Homes:</strong> every parcel the Assessor codes as a single-family dwelling (land use code 101) in the City of Beverly GIS parcel layer. Condominiums, two-family, and multi-family properties are not included.</li>
+      <li><strong>Lot size:</strong> the Assessor's recorded land area in acres, converted to square feet.</li>
+      <li><strong>Home size:</strong> finished living area as recorded by the Assessor. Gross building area, which includes unfinished space such as basements and garages, is not used.</li>
+      <li><strong>Decade built:</strong> the Assessor's recorded year built. Homes built before 1900 are grouped together. <span data-n="no_year">4</span> homes with no recorded year are excluded from the decade tables.</li>
+      <li><strong>Medians:</strong> the middle value. Averages are shown beside medians for home size only, because a few very large houses raise averages, most visibly for homes built before 1900.</li>
+      <li><strong>Adjusted comparison:</strong> a regression of the logarithm of finished living area on decade built, the logarithm of lot size, and zoning district (the <span data-n="zone_count">8</span> districts with at least 50 single-family homes), with robust standard errors, fit to <span data-n="reg_n">8,576</span> homes. Open Beverly's own calculation; it describes association, not cause.</li>
+      <li><strong>Renovations:</strong> finished area is the size of the home today. A house that has had an addition appears larger than it was when built, so older homes may show more finished area than they originally had.</li>
+      <li><strong>Replaced homes:</strong> a home that replaced a demolished one appears under its new year built. The data does not show how many homes were demolished.</li>
+      <li><strong>Small groups:</strong> the 2020s include only 2020 through 2026. Groups with fewer than <span data-n="min_n">30</span> homes are not reported.</li>
+      <li><strong>Data:</strong> the City's records were accessed on <span data-n="updated">October 22, 2026</span>. The Assessor's figures are not verified here.</li>
+    </ul>
+  </div>
+  <div class="sources">
+    <strong>Data sources</strong><br>
+    Parcel, land use, lot size, finished area, year built, zoning district, and FY2026 assessed values: City of Beverly GIS (BeverlyGIS), Combined_gdb FeatureServer, layer 5 (Parcels), accessed <span data-n="updated">October 22, 2026</span>.<br>
+    Decade groupings, medians, and the adjusted comparison are Open Beverly calculations. See <a href="/sources.html">Sources</a>.<br>
+    Open Beverly is an independent civic project. All data sourced from public records.
+  </div>
+</div>
+</div>
+</main>
+<footer>
+  Open Beverly is an independent civic project and is not affiliated with the City of Beverly. Created with the assistance of AI.
+  <a href="/about.html#feedback">Feedback</a>
+</footer>
+<script>
+  const NAVY = '#1a2744', BLUE = '#2d5fa8', ACCENT = '#e8813a';
+  const fmt = v => v == null ? '—' : Number(v).toLocaleString();
+  const money = v => '$' + Number(v).toLocaleString();
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  // Builds a visually-hidden data table after a chart's canvas so screen reader
+  // users get the same underlying numbers sighted users get from the chart.
+  function addChartDataTable(id, labelHead, labels, datasets, yFmt) {
+    const canvas = document.getElementById(id);
+    const table = document.createElement('table');
+    table.id = id + '-data';
+    table.className = 'sr-only';
+    table.innerHTML = `<thead><tr><th scope="col">${labelHead}</th>` +
+      datasets.map(d => `<th scope="col">${escapeHtml(d.label)}</th>`).join('') + '</tr></thead><tbody>' +
+      labels.map((l, i) => `<tr><th scope="row">${escapeHtml(l)}</th>` +
+        datasets.map(d => `<td>${d.data[i] == null ? 'Not reported' : yFmt(d.data[i])}</td>`).join('') + '</tr>').join('') + '</tbody>';
+    canvas.insertAdjacentElement('afterend', table);
+  }
+
+  const axisText = { font: { size: 11 }, color: '#5d6472' };
+  const GRID = '#e2e5ea';
+
+  function setText(selector, value) {
+    document.querySelectorAll(selector).forEach(el => { el.textContent = value; });
+  }
+
+  fetch('/lots_homes.json').then(r => r.json()).then(d => {
+    const decades = d.decades;
+    const byDecade = Object.fromEntries(decades.map(x => [x.decade, x]));
+    const labels = decades.map(x => x.decade);
+
+    // Prose figures
+    setText('[data-n="homes"]', fmt(d.homes));
+    setText('[data-n="no_year"]', fmt(d.no_year));
+    setText('[data-n="min_n"]', d.min_n);
+    setText('[data-n="reg_n"]', fmt(d.regression.n));
+    setText('[data-n="zone_count"]', d.regression.zones.length);
+    setText('[data-n="updated"]', new Date(d.updated + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }));
+    document.querySelectorAll('[data-med]').forEach(el => { el.textContent = fmt(byDecade[el.dataset.med].med_fin); });
+    const largeShare = k => { const x = byDecade[k]; return Math.round(100 * x.band_n[3] / x.n) + '%'; };
+    setText('[data-share="1950s-large"]', largeShare('1950s'));
+    setText('[data-share="1990s-large"]', largeShare('1990s'));
+    document.querySelectorAll('[data-vb]').forEach(el => {
+      el.textContent = money(d.value_bands.find(b => b.band === el.dataset.vb).med_total);
+    });
+    const reg = Object.fromEntries(d.regression.rows.map(r => [r.decade, r]));
+    document.querySelectorAll('[data-reg]').forEach(el => { el.textContent = Math.round(reg[el.dataset.reg].pct) + '%'; });
+    document.querySelectorAll('[data-reg-lo]').forEach(el => { el.textContent = Math.round(reg[el.dataset.regLo].lo) + '%'; });
+    document.querySelectorAll('[data-reg-hi]').forEach(el => { el.textContent = Math.round(reg[el.dataset.regHi].hi) + '%'; });
+
+    // Decade table
+    document.getElementById('decadeTbody').innerHTML = decades.map(x =>
+      `<tr><th scope="row">${x.decade}</th><td>${fmt(x.n)}</td><td>${fmt(x.med_fin)}</td><td>${fmt(x.avg_fin)}</td><td>${fmt(x.med_lot)}</td></tr>`).join('');
+
+    // Chart 1: median finished area by decade
+    const homesData = decades.map(x => x.med_fin);
+    new Chart(document.getElementById('homesChart'), {
+      type: 'bar',
+      data: { labels, datasets: [{ label: 'Median finished sq ft', data: homesData, backgroundColor: NAVY, borderRadius: 4 }] },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ' ' + fmt(c.parsed.y) + ' sq ft' } } },
+        scales: {
+          x: { grid: { display: false }, ticks: axisText },
+          y: { beginAtZero: true, grid: { color: GRID }, ticks: { ...axisText, callback: v => fmt(v) } },
+        },
+      },
+    });
+    addChartDataTable('homesChart', 'Decade built', labels, [{ label: 'Median finished sq ft', data: homesData }], v => fmt(v) + ' sq ft');
+
+    // Chart 2: share of homes by lot size band
+    const bandColors = ['rgba(45,95,168,0.25)', 'rgba(45,95,168,0.5)', 'rgba(45,95,168,0.85)', ACCENT];
+    const bandSets = d.bands.map((name, i) => ({
+      label: name + ' sq ft', data: decades.map(x => +(100 * x.band_n[i] / x.n).toFixed(1)),
+      backgroundColor: bandColors[i], borderRadius: 0,
+    }));
+    new Chart(document.getElementById('lotsChart'), {
+      type: 'bar',
+      data: { labels, datasets: bandSets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11 } } },
+          tooltip: { callbacks: { label: c => ` ${c.dataset.label}: ${c.parsed.y.toFixed(1)}%` } },
+        },
+        scales: {
+          x: { stacked: true, grid: { display: false }, ticks: axisText },
+          y: { stacked: true, max: 100, grid: { color: GRID }, ticks: { ...axisText, callback: v => v + '%' } },
+        },
+      },
+    });
+    addChartDataTable('lotsChart', 'Decade built', labels, bandSets, v => v.toFixed(1) + '%');
+
+    // Same-lot table
+    document.getElementById('stratHead').innerHTML = '<th scope="col">Decade built</th>' +
+      d.bands.map(b => `<th scope="col">${b}</th>`).join('');
+    document.getElementById('stratTbody').innerHTML = d.strat.map(row =>
+      `<tr><th scope="row">${row.decade}</th>${row.cells.map(c => `<td>${fmt(c.med)}</td>`).join('')}</tr>`).join('');
+
+    // Regression table
+    const signed = v => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v).toFixed(1) + '%';
+    document.getElementById('regTbody').innerHTML = d.regression.rows.map(r =>
+      `<tr><th scope="row">${r.decade}</th><td>${signed(r.pct)}</td><td>${signed(r.lo)} to ${signed(r.hi)}</td></tr>`).join('');
+
+    // Value chart and table
+    const vLabels = d.value_bins.map(b => b.label);
+    const vData = d.value_bins.map(b => b.med_total);
+    new Chart(document.getElementById('valueChart'), {
+      type: 'bar',
+      data: { labels: vLabels, datasets: [{ label: 'Median assessed value', data: vData, backgroundColor: BLUE, borderRadius: 4 }] },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: {
+            title: items => items[0].label + ' sq ft lot',
+            label: c => ' ' + money(c.parsed.y) + ' (' + fmt(d.value_bins[c.dataIndex].n) + ' homes)',
+          } },
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { ...axisText, maxRotation: 60, minRotation: 45 }, title: { display: true, text: 'Lot size (sq ft)', ...axisText } },
+          y: { beginAtZero: true, grid: { color: GRID }, ticks: { ...axisText, callback: v => v >= 1e6 ? '$' + (v / 1e6) + 'M' : '$' + (v / 1000) + 'K' } },
+        },
+      },
+    });
+    addChartDataTable('valueChart', 'Lot size (sq ft)', vLabels, [{ label: 'Median assessed value', data: vData }], money);
+
+    document.getElementById('valueTbody').innerHTML = d.value_bands.map(b =>
+      `<tr><th scope="row">${b.band}</th><td>${fmt(b.n)}</td><td>${money(b.med_total)}</td><td>${money(b.med_land)}</td><td>${money(b.med_bldg)}</td><td>${money(b.med_per_sf)}</td></tr>`).join('');
+  }).catch(() => {
+    document.querySelectorAll('.chart-wrap').forEach(el => { el.textContent = 'Data failed to load.'; });
+  });
+</script>
+<script src="/nav.js"></script>
+<script src="/toc.js"></script>
+</body>
+</html>
