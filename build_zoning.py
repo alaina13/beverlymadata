@@ -3,7 +3,7 @@
 Open Beverly: Zoning Comparison builder
 Compares every lot in a residential district against the district's
 dimensional requirements and writes zoning_<district>.geojson for each
-district in DISTRICTS (currently RHD and RMD).
+district in DISTRICTS (currently RHD, RMD, and R10).
 
 Sources:
   - City of Beverly GIS (BeverlyGIS), Combined_gdb FeatureServer:
@@ -12,7 +12,7 @@ Sources:
       layer 79 Driveway_Poly, layer 80 Parking_Poly (paved areas)
       layer 83 Street_MasterPoly (street pavement polygons)
   - zoning.geojson (MBTA Communities Overlay boundary; see fetch_zoning_data.py)
-  - Beverly Zoning Ordinance Ch. 300: § 300-36 (RMD), § 300-37 (RHD),
+  - Beverly Zoning Ordinance Ch. 300: § 300-34 (R-10), § 300-36 (RMD), § 300-37 (RHD),
     § 300-140 (MBTA overlay), § 300-59 and § 300-64 (parking), Article II
     definitions ("Frontage", "Setback", "Yard, front")
 
@@ -33,11 +33,13 @@ Method (estimates, not surveys):
 Requires: geopandas, shapely 2.x
 
 Usage:
-    python3 build_zoning.py
+    python3 build_zoning.py          # every district
+    python3 build_zoning.py R10      # only the named districts
 """
 
 import json
 import re
+import sys
 import urllib.parse
 import urllib.request
 from datetime import datetime
@@ -70,11 +72,15 @@ DISTRICTS = {
         "base_lot_sf": 8000, "per_unit_over_two_sf": 4000, "mbta_max_units": 8,
         "frontage": 65, "front": 20, "side": 10, "side_over_3_stories": 10, "rear": 20,
     },
+    "R10": {  # § 300-34: one-family only, flat lot area, no MBTA overlay lots
+        "base_lot_sf": 10000, "per_unit_over_two_sf": 0, "mbta_max_units": None,
+        "frontage": 100, "front": 20, "side": 15, "side_over_3_stories": 15, "rear": 25,
+    },
 }
 
 RULES = ["area", "frontage", "front", "side", "rear"]
 
-# § 300-59 Table E: 2 spaces per unit in RHD/RMD; rooming houses 1 per rental unit
+# § 300-59 Table E: 2 spaces per unit in RHD/RMD/R-10; rooming houses 1 per rental unit
 PARKING_PER_UNIT = 2
 ROOMING_HOUSE_LUC = "121"
 STALL_SF = 162            # § 300-64: 9 ft x 18 ft
@@ -233,7 +239,7 @@ def build_district(code, rules, city):
             "frontage_ft": round(frontage_ft, 1) if fronts else None,
             "req_frontage_ft": rules["frontage"], "req_front_ft": rules["front"],
             "req_side_ft": req_side, "req_rear_ft": rules["rear"],
-            "over_unit_cap": in_mbta and units > rules["mbta_max_units"],
+            "over_unit_cap": bool(in_mbta and rules["mbta_max_units"] and units > rules["mbta_max_units"]),
             "corner": len(fronts) > 1,
             "t_area": area_tier,
             "t_frontage": tier(frontage_ft, rules["frontage"], TOL_FT) if fronts else None,
@@ -322,8 +328,9 @@ def main():
     print("\n🏘️   Open Beverly: Zoning Comparison")
     print(f"    {datetime.now().strftime('%Y-%m-%d %H:%M')}\n")
     city = CityData()
-    for code, rules in DISTRICTS.items():
-        build_district(code, rules, city)
+    wanted = [a.upper() for a in sys.argv[1:]] or list(DISTRICTS)
+    for code in wanted:
+        build_district(code, DISTRICTS[code], city)
 
 
 if __name__ == "__main__":

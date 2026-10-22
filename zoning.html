@@ -12,7 +12,7 @@
   <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:title" content="Zoning Comparison: Rules vs. What's Built | Open Beverly" />
-  <meta property="og:description" content="How lots in Beverly's two multifamily districts, RHD and RMD, compare to each district's lot size, frontage, and setback requirements." />
+  <meta property="og:description" content="How lots in three of Beverly's residential districts, RHD, RMD, and R-10, compare to each district's lot size, frontage, and setback requirements." />
   <meta property="og:image" content="https://openbeverly.org/preview.png" />
   <meta property="og:url" content="https://openbeverly.org/zoning.html" />
   <meta property="og:type" content="website" />
@@ -61,7 +61,7 @@
 <main id="main">
 <div class="data-hero">
   <h1>Zoning Comparison: Rules vs. What&rsquo;s Built</h1>
-  <p>How lots in Beverly's two multifamily districts, RHD and RMD, compare to each district's lot size, frontage, and setback requirements.</p>
+  <p>How lots in three of Beverly's residential districts, RHD, RMD, and R-10, compare to each district's lot size, frontage, and setback requirements.</p>
 </div>
 
 <div class="page-with-toc">
@@ -79,13 +79,14 @@
   <div class="section-header">
     <h2 id="overview">Overview</h2>
   </div>
-  <p class="body-text">Beverly's Zoning Ordinance sets minimum dimensions for every lot in the RHD (Multifamily High Density) and RMD (Multifamily Medium Density) districts: how large a lot must be, how much of it must face a street, and how far a building must sit from each lot line. Many of the buildings in these districts were built before these rules existed.</p>
+  <p class="body-text">Beverly's Zoning Ordinance sets minimum dimensions for every lot in the RHD (Multifamily High Density), RMD (Multifamily Medium Density), and R-10 (One-Family) districts: how large a lot must be, how much of it must face a street, and how far a building must sit from each lot line. Many of the buildings in these districts were built before these rules existed.</p>
   <p class="body-text">This page compares each lot against those requirements using the City's own map data. The results are estimates from GIS measurements, not surveys, and they do not indicate whether any property is in violation of zoning. See "What nonconforming means" below.</p>
 
   <div class="district-switch" role="group" aria-label="Choose a district">
     <span class="district-switch-label">District</span>
     <button type="button" class="district-btn" data-set-district="RHD" aria-pressed="true">RHD <span class="district-btn-sub">Multifamily High Density</span></button>
     <button type="button" class="district-btn" data-set-district="RMD" aria-pressed="false">RMD <span class="district-btn-sub">Multifamily Medium Density</span></button>
+    <button type="button" class="district-btn" data-set-district="R10" aria-pressed="false">R-10 <span class="district-btn-sub">One-Family</span></button>
   </div>
 
   <!-- ── Rules ── -->
@@ -93,6 +94,7 @@
     <h2 id="rules">What the Rules Require</h2>
     <p data-district="RHD">RHD requirements come from &sect; 300-37 of the Zoning Ordinance. <span data-sum="mbta">412</span> of the district's <span data-sum="lots">414</span> lots are also inside the MBTA Communities Overlay District (&sect; 300-140), which keeps the same frontage, setback, and height rules but changes how lot area is calculated.</p>
     <p data-district="RMD" hidden>RMD requirements come from &sect; 300-36 of the Zoning Ordinance. <span data-sum="mbta">171</span> of the district's <span data-sum="lots">694</span> lots are also inside the MBTA Communities Overlay District (&sect; 300-140), which keeps the same frontage, setback, and height rules but replaces the per-unit lot area requirement with a cap of eight units per lot.</p>
+    <p data-district="R10" hidden>R-10 requirements come from &sect; 300-34 of the Zoning Ordinance. The district allows detached one-family dwellings by right and sets a flat minimum lot area. None of its <span data-sum="lots">6,226</span> lots are inside the MBTA Communities Overlay District (&sect; 300-140).</p>
   </div>
   <div class="chart-card table-scroll" data-district="RHD">
     <table class="sustain-table">
@@ -137,6 +139,26 @@
     </table>
   </div>
 
+  <div class="chart-card table-scroll" data-district="R10" hidden>
+    <table class="sustain-table">
+      <caption class="sr-only">R-10 dimensional requirements</caption>
+      <thead>
+        <tr>
+          <th scope="col">Requirement</th>
+          <th scope="col">R-10 (&sect; 300-34)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Minimum lot area</th><td>10,000 sq ft</td></tr>
+        <tr><th scope="row">Minimum frontage</th><td>100 ft</td></tr>
+        <tr><th scope="row">Front setback</th><td>20 ft</td></tr>
+        <tr><th scope="row">Side setback</th><td>15 ft</td></tr>
+        <tr><th scope="row">Rear setback</th><td>25 ft</td></tr>
+        <tr><th scope="row">Maximum height</th><td>35 ft</td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <!-- ── What's built ── -->
   <div class="section-header">
     <h2 id="built">What's on the Ground</h2>
@@ -157,9 +179,9 @@
       <tbody id="builtTbody"></tbody>
     </table>
   </div>
-  <p class="body-text"><span data-sum="meets_all_within_tolerance">12</span> of the <span data-sum="measured">394</span> measured lots meet or come within 3 feet of all five requirements. <span data-sum="over_unit_cap">6</span> lots in the MBTA overlay have more than <span data-cap>nine</span> units.</p>
-  <p class="body-text"><strong>Parking.</strong> RHD and RMD require two off-street parking spaces per dwelling unit (&sect; 300-59). Based on mapped driveways, parking areas, and garages recorded by the Assessor, Open Beverly estimates that between <span data-park="low">46%</span> and <span data-park="high">57%</span> of <span data-dist-name>RHD</span> lots have enough off-street space to meet that requirement. This estimate is shown for the district only, not for individual lots, because paved area does not translate reliably into usable parking spaces. The requirement applies to new or expanded uses; existing parking shortfalls may continue under &sect; 300-85.</p>
-  <p class="body-text">For comparison, the City's Planning Department estimated in 2024 that "approximately 80%" of parcels in the RHD and RMD districts combined were nonconforming. By Open Beverly's measurements, <span data-combined="short_pct">98%</span> of the <span data-combined="measured">1,053</span> measured lots in the two districts fall clearly short of at least one requirement, and <span data-combined="area_pct">82%</span> of all lots fall short on lot area alone. The City has not published its method, so the figures are not directly comparable.</p>
+  <p class="body-text"><span data-sum="meets_all_within_tolerance">12</span> of the <span data-sum="measured">394</span> measured lots meet or come within 3 feet of all five requirements. <span data-mbta-only><span data-sum="over_unit_cap">6</span> lots in the MBTA overlay have more than <span data-cap>nine</span> units.</span><span data-district="R10" hidden><span data-multi>430</span> lots have more than one dwelling unit on record. The district allows only detached one-family dwellings by right, and the Assessor's unit counts do not show whether a multi-unit use is legally established.</span></p>
+  <p class="body-text"><strong>Parking.</strong> RHD, RMD, and R-10 require two off-street parking spaces per dwelling unit (&sect; 300-59). Based on mapped driveways, parking areas, and garages recorded by the Assessor, Open Beverly estimates that between <span data-park="low">46%</span> and <span data-park="high">57%</span> of <span data-dist-name>RHD</span> lots have enough off-street space to meet that requirement. This estimate is shown for the district only, not for individual lots, because paved area does not translate reliably into usable parking spaces. The requirement applies to new or expanded uses; existing parking shortfalls may continue under &sect; 300-85.</p>
+  <p class="body-text">For comparison, the City's Planning Department estimated in 2024 that "approximately 80%" of parcels in the RHD and RMD districts combined were nonconforming. By Open Beverly's measurements, <span data-combined="short_pct">98%</span> of the <span data-combined="measured">1,053</span> measured lots in those two districts fall clearly short of at least one requirement, and <span data-combined="area_pct">82%</span> of all lots fall short on lot area alone. The City has not published its method, so the figures are not directly comparable. The City's estimate does not cover R-10.</p>
 
   <div class="structural-box">
     <h2>What nonconforming means</h2>
@@ -172,7 +194,7 @@
   <!-- ── Lookup ── -->
   <div class="section-header">
     <h2 id="lookup">Look Up a Lot</h2>
-    <p>Search for an RHD or RMD address, or select a lot on the map, to see its required and measured dimensions.</p>
+    <p>Search for an RHD, RMD, or R-10 address, or select a lot on the map, to see its required and measured dimensions.</p>
   </div>
   <div class="street-search">
     <label for="lotSearchInput" class="street-search-label">Search an Address</label>
@@ -181,7 +203,7 @@
       <input type="text" id="lotSearchInput" placeholder="Loading lots&hellip;" autocomplete="off" aria-describedby="lotSearchHint" aria-controls="lotSearchResults" disabled>
     </div>
     <div id="lotSearchResults" class="street-search-results" aria-live="polite"></div>
-    <p class="street-search-hint" id="lotSearchHint">Covers the <span data-combined="lots">1,108</span> lots in the RHD and RMD districts. Condominium buildings are listed once, by street address.</p>
+    <p class="street-search-hint" id="lotSearchHint">Covers the <span data-combined="lots">1,108</span> lots in the RHD, RMD, and R-10 districts. Condominium buildings are listed once, by street address.</p>
   </div>
 
   <div class="embed-map-controls">
@@ -196,7 +218,7 @@
     </select>
     <div class="zc-legend" id="zcLegend" aria-label="Map legend"></div>
   </div>
-  <div class="embed-map" id="zoningMap" role="region" aria-label="Map of RHD and RMD lots colored by zoning comparison result. Use the address search above for keyboard access."></div>
+  <div class="embed-map" id="zoningMap" role="region" aria-label="Map of RHD, RMD, and R-10 lots colored by zoning comparison result. Use the address search above for keyboard access."></div>
 
   <div id="lotDetail" class="chart-card lot-detail" aria-live="polite" hidden></div>
 
@@ -207,7 +229,7 @@
   <div class="structural-box">
     <h2>How these estimates were made</h2>
     <ul class="method-list">
-      <li><strong>Lots:</strong> City of Beverly GIS parcel layer. Condominium records that share one lot were combined, giving <span data-sum-rhd="lots">414</span> RHD lots and <span data-sum-rmd="lots">694</span> RMD lots.</li>
+      <li><strong>Lots:</strong> City of Beverly GIS parcel layer. Condominium records that share one lot were combined, giving <span data-sum-rhd="lots">414</span> RHD lots, <span data-sum-rmd="lots">694</span> RMD lots, and <span data-sum-r10="lots">6,226</span> R-10 lots.</li>
       <li><strong>Buildings:</strong> City of Beverly GIS roofprint layer. Only the largest building on each lot was measured, because accessory buildings such as sheds and garages have separate rules.</li>
       <li><strong>Frontage:</strong> the longest unbroken lot edge along a single street. On corner lots, each street is measured separately.</li>
       <li><strong>Corner lots:</strong> the ordinance allows either street to be designated the front yard (Article II, "Yard, front"). Open Beverly tested each street and used the more favorable result.</li>
@@ -215,14 +237,14 @@
       <li><strong>Parking:</strong> mapped driveway and parking area on each lot, converted to spaces using the ordinance's 9-by-18-foot stall (&sect; 300-64), with and without room for drive aisles, plus garages recorded by the Assessor. Reported as a range for each district.</li>
       <li><strong>RMD rear setback:</strong> the City's MBTA Communities summary page lists the current RMD rear setback as 10 feet. The Zoning Ordinance text (&sect; 300-36) specifies 20 feet, which is used here.</li>
       <li><strong>Not measured:</strong> building height, which the City's data does not include, and the separate rules for semidetached dwellings.</li>
-      <li><strong>Zoning:</strong> Zoning Ordinance text as amended through June 15, 2026 (Ord. No. 119-2026). GIS data accessed September 28, 2026.</li>
+      <li><strong>Zoning:</strong> Zoning Ordinance text as amended through June 15, 2026 (Ord. No. 119-2026). GIS data for RHD and RMD accessed September 28, 2026, and for R-10 on October 22, 2026.</li>
     </ul>
   </div>
   <div class="sources">
     <strong>Data sources</strong><br>
-    Lots, building footprints, paved areas, and street pavement: City of Beverly GIS (BeverlyGIS), Combined_gdb FeatureServer, layers 5 (Parcels), 70 (Roofprint), 79 (Driveway_Poly), 80 (Parking_Poly), and 83 (Street_MasterPoly), accessed September 28, 2026.<br>
+    Lots, building footprints, paved areas, and street pavement: City of Beverly GIS (BeverlyGIS), Combined_gdb FeatureServer, layers 5 (Parcels), 70 (Roofprint), 79 (Driveway_Poly), 80 (Parking_Poly), and 83 (Street_MasterPoly), accessed September 28, 2026 (RHD and RMD) and October 22, 2026 (R-10).<br>
     MBTA Communities Overlay boundary: City of Beverly GIS, Zoning Map, Combined_gdb FeatureServer layer 21.<br>
-    Dimensional and parking requirements: City of Beverly Zoning Ordinance, Chapter 300, <a href="https://ecode360.com/29283605">&sect;&sect; 300-36 and 300-37</a>, <a href="https://ecode360.com/46248993">&sect; 300-140</a>, <a href="https://ecode360.com/29284746">&sect;&sect; 300-59 and 300-64</a>, <a href="https://ecode360.com/29285037">&sect; 300-85</a>, and <a href="https://ecode360.com/29283347">Article II</a>, as amended through June 15, 2026.<br>
+    Dimensional and parking requirements: City of Beverly Zoning Ordinance, Chapter 300, <a href="https://ecode360.com/29283605">&sect;&sect; 300-34, 300-36, and 300-37</a>, <a href="https://ecode360.com/46248993">&sect; 300-140</a>, <a href="https://ecode360.com/29284746">&sect;&sect; 300-59 and 300-64</a>, <a href="https://ecode360.com/29285037">&sect; 300-85</a>, and <a href="https://ecode360.com/29283347">Article II</a>, as amended through June 15, 2026.<br>
     City estimate of nonconforming parcels: City of Beverly Planning Department, <a href="https://www.beverlyma.gov/1105/MBTA-Communities-Multifamily-Zoning">MBTA Communities Multifamily Zoning</a>.<br>
     Measurements and comparisons are Open Beverly estimates. See <a href="/sources.html">Sources</a>.<br>
     Open Beverly is an independent civic project. All data sourced from public records.
@@ -241,7 +263,11 @@
            req: { area: '6,000 sq ft', frontage: '50 ft', front: '15 ft', side: '10 or 15 ft', rear: '20 ft' } },
     RMD: { file: '/zoning_rmd.geojson', cap: 'eight',
            req: { area: '8,000 sq ft', frontage: '65 ft', front: '20 ft', side: '10 ft', rear: '20 ft' } },
+    R10: { file: '/zoning_r10.geojson', cap: null, label: 'R-10',
+           req: { area: '10,000 sq ft', frontage: '100 ft', front: '20 ft', side: '15 ft', rear: '25 ft' } },
   };
+  const MULTIFAMILY = ['RHD', 'RMD'];
+  function label(code) { return DISTRICTS[code].label || code; }
   const RULES = [
     { key: 'area',     label: 'Lot area',      unit: ' sq ft', req: p => p.req_lot_sf,      val: p => p.lot_sf },
     { key: 'frontage', label: 'Frontage',      unit: ' ft',    req: p => p.req_frontage_ft, val: p => p.frontage_ft },
@@ -269,8 +295,12 @@
     const d = DISTRICTS[code];
     document.querySelectorAll('[data-district]').forEach(el => { el.hidden = el.dataset.district !== code; });
     document.querySelectorAll('[data-set-district]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.setDistrict === code)));
-    document.querySelectorAll('[data-dist-name]').forEach(el => { el.textContent = code; });
+    document.querySelectorAll('[data-dist-name]').forEach(el => { el.textContent = label(code); });
     document.querySelectorAll('[data-cap]').forEach(el => { el.textContent = d.cap; });
+    document.querySelectorAll('[data-mbta-only]').forEach(el => { el.hidden = !d.cap; });
+    document.querySelectorAll('[data-multi]').forEach(el => {
+      el.textContent = LOTS.filter(f => f.properties.district === code && f.properties.units > 1).length.toLocaleString();
+    });
     if (!s) return;
     document.querySelectorAll('[data-sum]').forEach(el => {
       const v = s[el.dataset.sum];
@@ -290,14 +320,15 @@
 
   function renderCombined() {
     const all = LOTS.map(f => f.properties);
-    const measured = all.filter(p => p.measured);
+    const mf = all.filter(p => MULTIFAMILY.includes(p.district));
+    const measured = mf.filter(p => p.measured);
     const shortAny = measured.filter(p => RULES.some(r => p['t_' + r.key] === 'short')).length;
-    const areaShort = all.filter(p => p.t_area === 'short').length;
+    const areaShort = mf.filter(p => p.t_area === 'short').length;
     const set = (k, v) => document.querySelectorAll(`[data-combined="${k}"]`).forEach(el => { el.textContent = v; });
     set('measured', measured.length.toLocaleString());
     set('lots', all.length.toLocaleString());
     set('short_pct', pct(shortAny, measured.length));
-    set('area_pct', pct(areaShort, all.length));
+    set('area_pct', pct(areaShort, mf.length));
     Object.keys(DISTRICTS).forEach(code => {
       document.querySelectorAll(`[data-sum-${code.toLowerCase()}]`).forEach(el => {
         const v = SUMMARY[code][el.getAttribute(`data-sum-${code.toLowerCase()}`)];
@@ -312,13 +343,13 @@
 
   function showLot(p) {
     const el = document.getElementById('lotDetail');
-    const flags = [p.mbta ? 'MBTA Communities Overlay' : `Base ${p.district} rules`];
+    const flags = [p.mbta ? 'MBTA Communities Overlay' : `Base ${label(p.district)} rules`];
     if (p.corner) flags.push('Corner lot');
     const unitNote = p.over_unit_cap ? ` Recorded units (${p.units}) exceed the overlay's ${DISTRICTS[p.district].cap}-unit cap.` : '';
     el.innerHTML = `
       <div class="lot-detail-head">
         <h3>${escapeHtml(titleCase(p.addr))}</h3>
-        <div class="lot-detail-meta">${p.district} &middot; ${flags.join(' &middot; ')} &middot; ${p.units} unit${p.units === 1 ? '' : 's'} on record</div>
+        <div class="lot-detail-meta">${label(p.district)} &middot; ${flags.join(' &middot; ')} &middot; ${p.units} unit${p.units === 1 ? '' : 's'} on record</div>
       </div>
       <div class="table-scroll">
         <table class="sustain-table">
@@ -343,11 +374,11 @@
     if (q.length < 2) { searchResults.innerHTML = ''; return; }
     const hits = LOTS.filter(f => norm(f.properties.addr).includes(q)).slice(0, 8);
     if (!hits.length) {
-      searchResults.innerHTML = '<div class="street-search-empty">No RHD or RMD lot matches that address. This page covers the RHD and RMD districts only.</div>';
+      searchResults.innerHTML = '<div class="street-search-empty">No RHD, RMD, or R-10 lot matches that address. This page covers those three districts only.</div>';
       return;
     }
     searchResults.innerHTML = hits.map(f =>
-      `<button type="button" class="lot-search-hit" data-i="${f.id}">${escapeHtml(titleCase(f.properties.addr))} <span class="lot-search-district">${f.properties.district}</span></button>`).join('');
+      `<button type="button" class="lot-search-hit" data-i="${f.id}">${escapeHtml(titleCase(f.properties.addr))} <span class="lot-search-district">${label(f.properties.district)}</span></button>`).join('');
   });
   searchResults.addEventListener('click', e => {
     const btn = e.target.closest('.lot-search-hit');
