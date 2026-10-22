@@ -9,6 +9,24 @@
     "minutes": null
   },
   {
+    "title": "Beverly Regional Airport Commission Meeting Subcommittee on Access and Badging",
+    "board": "Airport Commission",
+    "date": "2026-10-27",
+    "posted": "2026-10-22T10:50:00-04:00",
+    "docId": 2974,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10272026-2974",
+    "minutes": null
+  },
+  {
+    "title": "Planning Board Meeting",
+    "board": "Planning Board",
+    "date": "2026-10-27",
+    "posted": "2026-10-21T16:26:00-04:00",
+    "docId": 2973,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10272026-2973",
+    "minutes": null
+  },
+  {
     "title": "Board of Trustees Beverly Public Library Meeting",
     "board": "Board of Library Trustees",
     "date": "2026-10-27",
@@ -18,21 +36,12 @@
     "minutes": null
   },
   {
-    "title": "Special City Council Meeting",
+    "title": "Revised Special City Council Meeting",
     "board": "City Council",
     "date": "2026-10-27",
-    "posted": "2026-10-20T13:13:00-04:00",
+    "posted": "",
     "docId": 2971,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10272026-2971",
-    "minutes": null
-  },
-  {
-    "title": "Special City Council Meeting",
-    "board": "City Council",
-    "date": "2026-10-26",
-    "posted": "2026-10-20T12:53:00-04:00",
-    "docId": 2970,
-    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2970",
     "minutes": null
   },
   {
@@ -42,6 +51,15 @@
     "posted": "2026-10-06T08:53:00-04:00",
     "docId": 2941,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2941",
+    "minutes": null
+  },
+  {
+    "title": "Revised Special City Council Meeting",
+    "board": "City Council",
+    "date": "2026-10-26",
+    "posted": "",
+    "docId": 2970,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2970",
     "minutes": null
   },
   {

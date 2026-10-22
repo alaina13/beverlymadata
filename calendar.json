@@ -1,49 +1,5 @@
 [
   {
-    "title": "Clean Energy Advisory Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3944",
-    "pubDate": "2026-10-14T13:02:48-05:00",
-    "eventDate": "October 21, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-21T00:00:00+00:00",
-    "agendaDocId": 2956
-  },
-  {
-    "title": "Board of Health Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3945",
-    "pubDate": "2026-10-16T10:35:49-05:00",
-    "eventDate": "October 21, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Board of Health",
-    "sortDate": "2026-10-21T00:00:00+00:00",
-    "agendaDocId": 2959
-  },
-  {
-    "title": "Harbor Management Authority Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3950",
-    "pubDate": "2026-10-18T08:35:12-05:00",
-    "eventDate": "October 21, 2026",
-    "eventTime": "06:45 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Harbor Management Authority",
-    "sortDate": "2026-10-21T00:00:00+00:00",
-    "agendaDocId": 2963
-  },
-  {
-    "title": "Economic and Community Development Council Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3666",
-    "pubDate": "2026-10-15T13:00:15-05:00",
-    "eventDate": "October 22, 2026",
-    "eventTime": "08:30 AM",
-    "location": "Temporary Beverly City Hall, 1st Floor Conf. Rm. <br>175 Cabot StreetBeverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-22T00:00:00+00:00",
-    "agendaDocId": 2957
-  },
-  {
     "title": "Northeast Massachusetts Mosquito Control Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3952",
     "pubDate": "2026-10-19T11:23:15-05:00",
@@ -90,7 +46,7 @@
   {
     "title": "Special City Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3954",
-    "pubDate": "2026-10-20T12:53:17-05:00",
+    "pubDate": "2026-10-21T15:03:28-05:00",
     "eventDate": "October 26, 2026",
     "eventTime": "07:15 PM",
     "location": "Beverly, MA 01915",
@@ -99,9 +55,20 @@
     "agendaDocId": 2970
   },
   {
+    "title": "Beverly Regional Airport Commission Meeting Subcommittee on Access and Badging",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3958",
+    "pubDate": "2026-10-22T10:50:27-05:00",
+    "eventDate": "October 27, 2026",
+    "eventTime": "10:00 AM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-27T00:00:00+00:00",
+    "agendaDocId": 2974
+  },
+  {
     "title": "Special City Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3955",
-    "pubDate": "2026-10-20T13:14:00-05:00",
+    "pubDate": "2026-10-21T15:09:17-05:00",
     "eventDate": "October 27, 2026",
     "eventTime": "06:00 PM",
     "location": "Beverly, MA 01915",
@@ -134,24 +101,13 @@
   {
     "title": "Planning Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3632",
-    "pubDate": "2026-10-20T16:11:20-05:00",
+    "pubDate": "2026-10-21T16:26:32-05:00",
     "eventDate": "October 27, 2026",
     "eventTime": "07:00 PM",
     "location": "Beverly Middle School, Library<br>502 Cabot StreetBeverly, MA 01915",
     "board": "Planning Board",
     "sortDate": "2026-10-27T00:00:00+00:00",
-    "agendaDocId": null
-  },
-  {
-    "title": "Historic Districts Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3527",
-    "pubDate": "2026-10-06T16:55:12-05:00",
-    "eventDate": "October 28, 2026",
-    "eventTime": "07:00 PM",
-    "location": "",
-    "board": "Historic District Commission",
-    "sortDate": "2026-10-28T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2973
   },
   {
     "title": "Zoning Board of Appeals Meeting",
@@ -163,6 +119,17 @@
     "board": "Zoning Board of Appeals",
     "sortDate": "2026-10-28T00:00:00+00:00",
     "agendaDocId": 2945
+  },
+  {
+    "title": "Historic Districts Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3527",
+    "pubDate": "2026-10-06T16:55:12-05:00",
+    "eventDate": "October 28, 2026",
+    "eventTime": "07:00 PM",
+    "location": "",
+    "board": "Historic District Commission",
+    "sortDate": "2026-10-28T00:00:00+00:00",
+    "agendaDocId": null
   },
   {
     "title": "Parking & Traffic Commission Meeting",
@@ -184,6 +151,17 @@
     "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-11-04T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Design Review Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3488",
+    "pubDate": "2026-05-28T11:16:22-05:00",
+    "eventDate": "November 5, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-05T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
