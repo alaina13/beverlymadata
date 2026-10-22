@@ -127,6 +127,27 @@
     return parseIso(iso).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
   }
 
+  // "07:00 PM" -> minutes since midnight; missing times sort last within a day.
+  function timeMinutes(t) {
+    const m = /^(\d{1,2}):(\d{2})\s*([AP]M)$/i.exec(t || '');
+    if (!m) return Infinity;
+    return (Number(m[1]) % 12 + (m[3].toUpperCase() === 'PM' ? 12 : 0)) * 60 + Number(m[2]);
+  }
+
+  // The city sometimes posts the same meeting twice; keep the latest posting
+  // and carry over minutes if only the other copy has them.
+  function dedupeDocs(docs) {
+    const byKey = new Map();
+    for (const d of docs) {
+      const key = `${d.board}|${d.date}|${d.title}`;
+      const prev = byKey.get(key);
+      if (!prev) { byKey.set(key, { ...d }); continue; }
+      const [keep, other] = (d.posted || '') > (prev.posted || '') ? [d, prev] : [prev, d];
+      byKey.set(key, { ...keep, minutes: keep.minutes || other.minutes });
+    }
+    return [...byKey.values()];
+  }
+
   function pastDate(iso) {
     return parseIso(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   }
@@ -224,7 +245,7 @@
     }
     return items
       .filter(i => i.date >= today)
-      .sort((a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
+      .sort((a, b) => a.date.localeCompare(b.date) || timeMinutes(a.time) - timeMinutes(b.time));
   }
 
   // Past: archive meetings before today, with BevCam summaries attached to the
@@ -436,7 +457,7 @@
       if (!docsRes.ok) throw new Error(`meetings.json HTTP ${docsRes.status}`);
       const events = await calRes.json();
       const overrides = ovRes && ovRes.ok ? await ovRes.json() : [];
-      const docs = await docsRes.json();
+      const docs = dedupeDocs(await docsRes.json());
       if (textRes && textRes.ok) agendaText = await textRes.json();
       const summaries = sumRes && sumRes.ok ? await sumRes.json() : [];
 
