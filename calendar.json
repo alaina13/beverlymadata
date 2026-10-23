@@ -1,38 +1,5 @@
 [
   {
-    "title": "Northeast Massachusetts Mosquito Control Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3952",
-    "pubDate": "2026-10-19T11:23:15-05:00",
-    "eventDate": "October 22, 2026",
-    "eventTime": "09:00 AM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-22T00:00:00+00:00",
-    "agendaDocId": 2965
-  },
-  {
-    "title": "Commission on Disabilities Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3949",
-    "pubDate": "2026-10-21T07:58:47-05:00",
-    "eventDate": "October 22, 2026",
-    "eventTime": "12:00 PM",
-    "location": "90 Colon StreetBeverly, MA 01915",
-    "board": "Commission on Disabilities",
-    "sortDate": "2026-10-22T00:00:00+00:00",
-    "agendaDocId": 2962
-  },
-  {
-    "title": "Veterans Advisory Council Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3953",
-    "pubDate": "2026-10-19T12:56:20-05:00",
-    "eventDate": "October 22, 2026",
-    "eventTime": "05:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-22T00:00:00+00:00",
-    "agendaDocId": 2968
-  },
-  {
     "title": "Public Services/Committee of the Whole Meeting Agenda",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3932",
     "pubDate": "2026-10-06T08:56:07-05:00",
@@ -90,13 +57,13 @@
   {
     "title": "Conservation Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3605",
-    "pubDate": "2026-02-11T15:38:01-05:00",
+    "pubDate": "2026-10-22T15:48:50-05:00",
     "eventDate": "October 27, 2026",
     "eventTime": "06:30 PM",
     "location": "Beverly, MA 01915",
     "board": "Conservation Commission",
     "sortDate": "2026-10-27T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2976
   },
   {
     "title": "Planning Board Meeting",
@@ -123,13 +90,13 @@
   {
     "title": "Historic Districts Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3527",
-    "pubDate": "2026-10-06T16:55:12-05:00",
+    "pubDate": "2026-10-22T12:01:21-05:00",
     "eventDate": "October 28, 2026",
     "eventTime": "07:00 PM",
     "location": "",
     "board": "Historic District Commission",
     "sortDate": "2026-10-28T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2975
   },
   {
     "title": "Parking & Traffic Commission Meeting",
