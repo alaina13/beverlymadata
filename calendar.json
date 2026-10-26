@@ -90,13 +90,24 @@
   {
     "title": "Historic Districts Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3527",
-    "pubDate": "2026-10-22T12:01:21-05:00",
+    "pubDate": "2026-10-26T12:56:09-05:00",
     "eventDate": "October 28, 2026",
     "eventTime": "07:00 PM",
-    "location": "",
+    "location": "Beverly City Hall (Temp.), 1st Fl Conference Rm<br>175 Cabot StreetBeverly, MA 01915",
     "board": "Historic District Commission",
     "sortDate": "2026-10-28T00:00:00+00:00",
     "agendaDocId": 2975
+  },
+  {
+    "title": "Beverly Retirement Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3959",
+    "pubDate": "2026-10-26T11:23:04-05:00",
+    "eventDate": "October 29, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-10-29T00:00:00+00:00",
+    "agendaDocId": 2977
   },
   {
     "title": "Parking & Traffic Commission Meeting",
@@ -129,6 +140,17 @@
     "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-11-05T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Regular City Council Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3560",
+    "pubDate": "2025-12-09T15:49:12-05:00",
+    "eventDate": "November 9, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "City Council",
+    "sortDate": "2026-11-09T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
