@@ -1,27 +1,5 @@
 [
   {
-    "title": "Public Services/Committee of the Whole Meeting Agenda",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3932",
-    "pubDate": "2026-10-06T08:56:07-05:00",
-    "eventDate": "October 26, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-26T00:00:00+00:00",
-    "agendaDocId": 2941
-  },
-  {
-    "title": "Special City Council Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3954",
-    "pubDate": "2026-10-21T15:03:28-05:00",
-    "eventDate": "October 26, 2026",
-    "eventTime": "07:15 PM",
-    "location": "Beverly, MA 01915",
-    "board": "City Council",
-    "sortDate": "2026-10-26T00:00:00+00:00",
-    "agendaDocId": 2970
-  },
-  {
     "title": "Beverly Regional Airport Commission Meeting Subcommittee on Access and Badging",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3958",
     "pubDate": "2026-10-22T10:50:27-05:00",
@@ -141,6 +119,17 @@
     "board": "Other",
     "sortDate": "2026-11-05T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "City Council Budget Analyst Screening Committee Meeting Agenda",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3960",
+    "pubDate": "2026-10-27T08:47:30-05:00",
+    "eventDate": "November 9, 2026",
+    "eventTime": "06:45 PM",
+    "location": "Beverly, MA 01915",
+    "board": "City Council",
+    "sortDate": "2026-11-09T00:00:00+00:00",
+    "agendaDocId": 2978
   },
   {
     "title": "Regular City Council Meeting",

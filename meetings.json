@@ -1,5 +1,14 @@
 [
   {
+    "title": "City Council Budget Analyst Screening Committee Meeting",
+    "board": "City Council",
+    "date": "2026-11-09",
+    "posted": "2026-10-27T08:47:00-04:00",
+    "docId": 2978,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11092026-2978",
+    "minutes": null
+  },
+  {
     "title": "Beverly Retirment Board Meeting",
     "board": "Contributory Retirement Board",
     "date": "2026-10-29",
@@ -222,7 +231,7 @@
     "posted": "2026-10-09T08:37:00-04:00",
     "docId": 2953,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10152026-2953",
-    "minutes": null
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_10152026-2953"
   },
   {
     "title": "Community Preservation Committee Meeting",
