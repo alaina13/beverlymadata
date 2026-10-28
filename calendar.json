@@ -1,71 +1,5 @@
 [
   {
-    "title": "Beverly Regional Airport Commission Meeting Subcommittee on Access and Badging",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3958",
-    "pubDate": "2026-10-22T10:50:27-05:00",
-    "eventDate": "October 27, 2026",
-    "eventTime": "10:00 AM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-27T00:00:00+00:00",
-    "agendaDocId": 2974
-  },
-  {
-    "title": "Special City Council Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3955",
-    "pubDate": "2026-10-21T15:09:17-05:00",
-    "eventDate": "October 27, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "City Council",
-    "sortDate": "2026-10-27T00:00:00+00:00",
-    "agendaDocId": 2971
-  },
-  {
-    "title": "Trustees of the Beverly Public Library",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3956",
-    "pubDate": "2026-10-21T09:00:29-05:00",
-    "eventDate": "October 27, 2026",
-    "eventTime": "06:00 PM",
-    "location": "32 Essex StBeverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-27T00:00:00+00:00",
-    "agendaDocId": 2972
-  },
-  {
-    "title": "Conservation Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3605",
-    "pubDate": "2026-10-22T15:48:50-05:00",
-    "eventDate": "October 27, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Conservation Commission",
-    "sortDate": "2026-10-27T00:00:00+00:00",
-    "agendaDocId": 2976
-  },
-  {
-    "title": "Planning Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3632",
-    "pubDate": "2026-10-21T16:26:32-05:00",
-    "eventDate": "October 27, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly Middle School, Library<br>502 Cabot StreetBeverly, MA 01915",
-    "board": "Planning Board",
-    "sortDate": "2026-10-27T00:00:00+00:00",
-    "agendaDocId": 2973
-  },
-  {
-    "title": "Zoning Board of Appeals Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3802",
-    "pubDate": "2026-10-08T17:41:39-05:00",
-    "eventDate": "October 28, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Zoning Board of Appeals",
-    "sortDate": "2026-10-28T00:00:00+00:00",
-    "agendaDocId": 2945
-  },
-  {
     "title": "Historic Districts Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3527",
     "pubDate": "2026-10-26T12:56:09-05:00",
@@ -75,6 +9,17 @@
     "board": "Historic District Commission",
     "sortDate": "2026-10-28T00:00:00+00:00",
     "agendaDocId": 2975
+  },
+  {
+    "title": "Zoning Board of Appeals Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3802",
+    "pubDate": "2026-10-27T17:33:32-05:00",
+    "eventDate": "October 28, 2026",
+    "eventTime": "07:00 PM",
+    "location": "175 Elliott Street, Police StationBeverly, MA 01915",
+    "board": "Zoning Board of Appeals",
+    "sortDate": "2026-10-28T00:00:00+00:00",
+    "agendaDocId": 2945
   },
   {
     "title": "Beverly Retirement Board Meeting",
@@ -123,7 +68,7 @@
   {
     "title": "City Council Budget Analyst Screening Committee Meeting Agenda",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3960",
-    "pubDate": "2026-10-27T08:47:30-05:00",
+    "pubDate": "2026-10-28T08:49:45-05:00",
     "eventDate": "November 9, 2026",
     "eventTime": "06:45 PM",
     "location": "Beverly, MA 01915",
