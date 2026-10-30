@@ -9,6 +9,42 @@
     "minutes": null
   },
   {
+    "title": "Beverly License Board",
+    "board": "Licensing Board",
+    "date": "2026-11-05",
+    "posted": "2026-10-30T10:39:00-04:00",
+    "docId": 2981,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11052026-2981",
+    "minutes": null
+  },
+  {
+    "title": "Design Review Board Meeting",
+    "board": "Design Review Board",
+    "date": "2026-11-05",
+    "posted": "2026-10-29T15:06:00-04:00",
+    "docId": 2980,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11052026-2980",
+    "minutes": null
+  },
+  {
+    "title": "Parks and Recreation Commission Meeting",
+    "board": "Parks & Recreation Commission",
+    "date": "2026-11-05",
+    "posted": "2026-10-29T13:53:00-04:00",
+    "docId": 2979,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11052026-2979",
+    "minutes": null
+  },
+  {
+    "title": "Parking and Traffic Commission Meeting",
+    "board": "Parking & Traffic Commission",
+    "date": "2026-11-04",
+    "posted": "2026-10-30T12:33:00-04:00",
+    "docId": 2982,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11042026-2982",
+    "minutes": null
+  },
+  {
     "title": "Beverly Retirment Board Meeting",
     "board": "Contributory Retirement Board",
     "date": "2026-10-29",
@@ -375,7 +411,7 @@
     "posted": "2026-09-30T15:05:00-04:00",
     "docId": 2935,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10062026-2935",
-    "minutes": null
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_10062026-2935"
   },
   {
     "title": "Budget Management Analyst Preliminary Screening Committee Meeting (PDF",

@@ -1,25 +1,14 @@
 [
   {
-    "title": "Beverly Retirement Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3959",
-    "pubDate": "2026-10-26T11:23:04-05:00",
-    "eventDate": "October 29, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-10-29T00:00:00+00:00",
-    "agendaDocId": 2977
-  },
-  {
     "title": "Parking & Traffic Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3539",
-    "pubDate": "2026-10-06T16:55:42-05:00",
+    "pubDate": "2026-10-30T12:34:07-05:00",
     "eventDate": "November 4, 2026",
     "eventTime": "08:30 AM",
     "location": "",
     "board": "Other",
     "sortDate": "2026-11-04T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2982
   },
   {
     "title": "Open Space and Recreation Committee Meeting",
@@ -35,13 +24,35 @@
   {
     "title": "Design Review Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3488",
-    "pubDate": "2026-10-29T11:15:02-05:00",
+    "pubDate": "2026-10-29T15:06:49-05:00",
     "eventDate": "November 5, 2026",
     "eventTime": "06:30 PM",
     "location": "Temporary City Hall - First Floor Large Conference<br>175 Cabot StreetBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-11-05T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2980
+  },
+  {
+    "title": "Beverly License Board Meeting - November 5, 2026",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3962",
+    "pubDate": "2026-10-30T10:40:00-05:00",
+    "eventDate": "November 5, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-05T00:00:00+00:00",
+    "agendaDocId": 2981
+  },
+  {
+    "title": "Parks and Recreation Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3961",
+    "pubDate": "2026-10-29T13:53:57-05:00",
+    "eventDate": "November 5, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-05T00:00:00+00:00",
+    "agendaDocId": 2979
   },
   {
     "title": "City Council Budget Analyst Screening Committee Meeting Agenda",
