@@ -86,5 +86,27 @@
     "board": "City Council",
     "sortDate": "2026-11-09T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "Conservation Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3606",
+    "pubDate": "2026-02-11T15:38:34-05:00",
+    "eventDate": "November 17, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Conservation Commission",
+    "sortDate": "2026-11-17T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Planning Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3633",
+    "pubDate": "2026-05-28T14:03:10-05:00",
+    "eventDate": "November 17, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly Police Department<br>175 Elliott StreetBeverly, MA 01915",
+    "board": "Planning Board",
+    "sortDate": "2026-11-17T00:00:00+00:00",
+    "agendaDocId": null
   }
 ]
