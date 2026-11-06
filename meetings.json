@@ -1,11 +1,65 @@
 [
   {
+    "title": "Financial Forecast Committee Meeting",
+    "board": "Financial Forecasting Committee",
+    "date": "2026-12-10",
+    "posted": "2026-11-06T12:29:00-05:00",
+    "docId": 2998,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_12102026-2998",
+    "minutes": null
+  },
+  {
+    "title": "Financial Forecast Committee Meeting",
+    "board": "Financial Forecasting Committee",
+    "date": "2026-11-30",
+    "posted": "2026-11-06T12:29:00-05:00",
+    "docId": 2996,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11302026-2996",
+    "minutes": null
+  },
+  {
     "title": "Community Preservation Committee Regular Meeting",
     "board": "Community Preservation Committee",
     "date": "2026-11-19",
     "posted": "2026-11-04T11:19:00-05:00",
     "docId": 2985,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-2985",
+    "minutes": null
+  },
+  {
+    "title": "Financial Forecast Committee Meeting",
+    "board": "Financial Forecasting Committee",
+    "date": "2026-11-17",
+    "posted": "2026-11-06T12:28:00-05:00",
+    "docId": 2995,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11172026-2995",
+    "minutes": null
+  },
+  {
+    "title": "City Clerk Meeting",
+    "board": "Board of Registrars of Voters",
+    "date": "2026-11-16",
+    "posted": "2026-11-05T16:02:00-05:00",
+    "docId": 2993,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11162026-2993",
+    "minutes": null
+  },
+  {
+    "title": "Commisison on Disabilities Meeting",
+    "board": "Commission on Disabilities",
+    "date": "2026-11-12",
+    "posted": "2026-11-06T12:29:00-05:00",
+    "docId": 2997,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11122026-2997",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Bicycle and Pedestrian Advisory Committee Meeting",
+    "board": "Bicycle and Pedestrian Advisory Committee",
+    "date": "2026-11-12",
+    "posted": "2026-11-06T12:24:00-05:00",
+    "docId": 2994,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11122026-2994",
     "minutes": null
   },
   {
@@ -3366,42 +3420,6 @@
     "minutes": null
   },
   {
-    "title": "Financial Forecast Committee Meeting",
-    "board": "Financial Forecasting Committee",
-    "date": "2025-12-09",
-    "posted": "2025-11-07T08:37:00-05:00",
-    "docId": 2519,
-    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_12092025-2519",
-    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_12092025-2519"
-  },
-  {
-    "title": "Financial Forecast Committee Meeting",
-    "board": "Financial Forecasting Committee",
-    "date": "2025-12-02",
-    "posted": "2025-11-07T08:36:00-05:00",
-    "docId": 2518,
-    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_12022025-2518",
-    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_12022025-2518"
-  },
-  {
-    "title": "Financial Forecast Committee Meeting",
-    "board": "Financial Forecasting Committee",
-    "date": "2025-11-13",
-    "posted": "2025-11-07T08:33:00-05:00",
-    "docId": 2517,
-    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11132025-2517",
-    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_11132025-2517"
-  },
-  {
-    "title": "Board of Registrars of Voters Meeting",
-    "board": "Board of Registrars of Voters",
-    "date": "2025-10-20",
-    "posted": "2025-10-07T13:05:00-04:00",
-    "docId": 2480,
-    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10202025-2480",
-    "minutes": null
-  },
-  {
     "title": "Municipal Planting Study Committee Meeting",
     "board": "Municipal Planting Study Committee",
     "date": "2025-06-18",
@@ -3409,15 +3427,6 @@
     "docId": 2332,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_06182025-2332",
     "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_06182025-2332"
-  },
-  {
-    "title": "Board of Registrar of Voters Meeting",
-    "board": "Board of Registrars of Voters",
-    "date": "2025-04-30",
-    "posted": "2025-04-24T14:43:00-04:00",
-    "docId": 2269,
-    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_04302025-2269",
-    "minutes": null
   },
   {
     "title": "REVISED Municipal Planting Study Committee Meeting",
