@@ -1,38 +1,5 @@
 [
   {
-    "title": "Beverly Airport Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3964",
-    "pubDate": "2026-11-04T14:26:33-05:00",
-    "eventDate": "November 9, 2026",
-    "eventTime": "06:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-11-09T00:00:00+00:00",
-    "agendaDocId": 2986
-  },
-  {
-    "title": "City Council Budget Analyst Screening Committee Meeting Agenda",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3960",
-    "pubDate": "2026-10-28T08:49:45-05:00",
-    "eventDate": "November 9, 2026",
-    "eventTime": "06:45 PM",
-    "location": "Beverly, MA 01915",
-    "board": "City Council",
-    "sortDate": "2026-11-09T00:00:00+00:00",
-    "agendaDocId": 2978
-  },
-  {
-    "title": "Regular City Council Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3560",
-    "pubDate": "2026-11-05T13:09:56-05:00",
-    "eventDate": "November 9, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "City Council",
-    "sortDate": "2026-11-09T00:00:00+00:00",
-    "agendaDocId": 2991
-  },
-  {
     "title": "Council on Aging Board of Grant Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3966",
     "pubDate": "2026-11-04T15:59:16-05:00",
@@ -110,6 +77,17 @@
     "agendaDocId": 2990
   },
   {
+    "title": "Human Rights Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3976",
+    "pubDate": "2026-11-10T10:00:23-05:00",
+    "eventDate": "November 12, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-12T00:00:00+00:00",
+    "agendaDocId": 2999
+  },
+  {
     "title": "Board of Registrars Meeting/City Clerk",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3970",
     "pubDate": "2026-11-05T16:02:15-05:00",
@@ -173,6 +151,17 @@
     "location": "Beverly, MA 01915",
     "board": "City Council",
     "sortDate": "2026-11-23T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Zoning Board of Appeals Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3803",
+    "pubDate": "2026-11-09T10:27:00-05:00",
+    "eventDate": "November 24, 2026",
+    "eventTime": "07:00 PM",
+    "location": "175 Elliott Street (Police Station)Beverly, MA 01915",
+    "board": "Zoning Board of Appeals",
+    "sortDate": "2026-11-24T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
