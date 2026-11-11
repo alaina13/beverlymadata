@@ -1,38 +1,5 @@
 [
   {
-    "title": "Council on Aging Board of Grant Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3966",
-    "pubDate": "2026-11-04T15:59:16-05:00",
-    "eventDate": "November 10, 2026",
-    "eventTime": "02:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-11-10T00:00:00+00:00",
-    "agendaDocId": 2987
-  },
-  {
-    "title": "Council on Aging Board of Directors Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3965",
-    "pubDate": "2026-11-04T16:00:43-05:00",
-    "eventDate": "November 10, 2026",
-    "eventTime": "02:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-11-10T00:00:00+00:00",
-    "agendaDocId": 2988
-  },
-  {
-    "title": "Beverly Golf and Tennis Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3968",
-    "pubDate": "2026-11-05T10:53:45-05:00",
-    "eventDate": "November 10, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-11-10T00:00:00+00:00",
-    "agendaDocId": 2989
-  },
-  {
     "title": "Commission on Disabilities Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3975",
     "pubDate": "2026-11-06T12:29:26-05:00",
@@ -77,9 +44,9 @@
     "agendaDocId": 2990
   },
   {
-    "title": "Human Rights Committee Meeting",
+    "title": "Human Rights Committee Meeting-CANCELLED",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3976",
-    "pubDate": "2026-11-10T10:00:23-05:00",
+    "pubDate": "2026-11-10T16:17:48-05:00",
     "eventDate": "November 12, 2026",
     "eventTime": "07:00 PM",
     "location": "Beverly, MA 01915",

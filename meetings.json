@@ -45,15 +45,6 @@
     "minutes": null
   },
   {
-    "title": "Human Rights Committee Meeting",
-    "board": "Human Rights Committee",
-    "date": "2026-11-12",
-    "posted": "2026-11-10T09:58:00-05:00",
-    "docId": 2999,
-    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11122026-2999",
-    "minutes": null
-  },
-  {
     "title": "Commisison on Disabilities Meeting",
     "board": "Commission on Disabilities",
     "date": "2026-11-12",
@@ -87,6 +78,15 @@
     "posted": "2026-11-05T10:54:00-05:00",
     "docId": 2990,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11122026-2990",
+    "minutes": null
+  },
+  {
+    "title": "Human Rights Committee Meeting - CANCELLED",
+    "board": "Human Rights Committee",
+    "date": "2026-11-12",
+    "posted": "",
+    "docId": 2999,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11122026-2999",
     "minutes": null
   },
   {
