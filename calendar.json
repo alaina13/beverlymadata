@@ -33,17 +33,6 @@
     "agendaDocId": 2992
   },
   {
-    "title": "Parks and Recreation Commission Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3967",
-    "pubDate": "2026-11-05T10:54:52-05:00",
-    "eventDate": "November 12, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-11-12T00:00:00+00:00",
-    "agendaDocId": 2990
-  },
-  {
     "title": "Human Rights Committee Meeting-CANCELLED",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3976",
     "pubDate": "2026-11-10T16:17:48-05:00",
@@ -53,6 +42,17 @@
     "board": "Other",
     "sortDate": "2026-11-12T00:00:00+00:00",
     "agendaDocId": 2999
+  },
+  {
+    "title": "Parks and Recreation Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3967",
+    "pubDate": "2026-11-05T10:54:52-05:00",
+    "eventDate": "November 12, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-12T00:00:00+00:00",
+    "agendaDocId": 2990
   },
   {
     "title": "Board of Registrars Meeting/City Clerk",
@@ -79,24 +79,24 @@
   {
     "title": "Conservation Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3606",
-    "pubDate": "2026-02-11T15:38:34-05:00",
+    "pubDate": "2026-11-12T12:44:45-05:00",
     "eventDate": "November 17, 2026",
     "eventTime": "06:30 PM",
     "location": "Beverly, MA 01915",
     "board": "Conservation Commission",
     "sortDate": "2026-11-17T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 3001
   },
   {
     "title": "Planning Board Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3633",
-    "pubDate": "2026-11-05T08:55:23-05:00",
+    "pubDate": "2026-11-12T10:08:32-05:00",
     "eventDate": "November 17, 2026",
     "eventTime": "07:00 PM",
     "location": "Beverly Middle School Library<br>502 Cabot StreetBeverly, MA 01915",
     "board": "Planning Board",
     "sortDate": "2026-11-17T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 3000
   },
   {
     "title": "Community Preservation Committee Meeting",
