@@ -11,17 +11,6 @@
     "agendaDocId": 2993
   },
   {
-    "title": "Financial Forecast Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3971",
-    "pubDate": "2026-11-06T12:28:34-05:00",
-    "eventDate": "November 17, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-11-17T00:00:00+00:00",
-    "agendaDocId": 2995
-  },
-  {
     "title": "Conservation Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3606",
     "pubDate": "2026-11-12T12:44:45-05:00",
@@ -33,15 +22,15 @@
     "agendaDocId": 3001
   },
   {
-    "title": "Planning Board Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3633",
-    "pubDate": "2026-11-12T10:08:32-05:00",
+    "title": "Financial Forecast Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3971",
+    "pubDate": "2026-11-06T12:28:34-05:00",
     "eventDate": "November 17, 2026",
-    "eventTime": "07:00 PM",
-    "location": "Beverly Middle School Library<br>502 Cabot StreetBeverly, MA 01915",
-    "board": "Planning Board",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
     "sortDate": "2026-11-17T00:00:00+00:00",
-    "agendaDocId": 3000
+    "agendaDocId": 2995
   },
   {
     "title": "Historic Districts Commission",
@@ -53,6 +42,17 @@
     "board": "Historic District Commission",
     "sortDate": "2026-11-17T00:00:00+00:00",
     "agendaDocId": 3002
+  },
+  {
+    "title": "Planning Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3633",
+    "pubDate": "2026-11-12T10:08:32-05:00",
+    "eventDate": "November 17, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly Middle School Library<br>502 Cabot StreetBeverly, MA 01915",
+    "board": "Planning Board",
+    "sortDate": "2026-11-17T00:00:00+00:00",
+    "agendaDocId": 3000
   },
   {
     "title": "South Essex Sewerage District Meeting",
@@ -88,6 +88,61 @@
     "agendaDocId": 3004
   },
   {
+    "title": "Salem and Beverly Water Supply Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3987",
+    "pubDate": "2026-11-16T10:48:00-05:00",
+    "eventDate": "November 19, 2026",
+    "eventTime": "08:30 AM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-19T00:00:00+00:00",
+    "agendaDocId": 3010
+  },
+  {
+    "title": "Beverly Housing Authority Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3996",
+    "pubDate": "2026-11-16T14:57:10-05:00",
+    "eventDate": "November 19, 2026",
+    "eventTime": "11:00 AM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-19T00:00:00+00:00",
+    "agendaDocId": 3013
+  },
+  {
+    "title": "Board of Assessors Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3985",
+    "pubDate": "2026-11-16T10:35:42-05:00",
+    "eventDate": "November 19, 2026",
+    "eventTime": "04:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-19T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Veterans Council Advisory Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3986",
+    "pubDate": "2026-11-16T10:45:15-05:00",
+    "eventDate": "November 19, 2026",
+    "eventTime": "05:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-19T00:00:00+00:00",
+    "agendaDocId": 3009
+  },
+  {
+    "title": "Beverly Retirement Board Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3988",
+    "pubDate": "2026-11-16T12:35:27-05:00",
+    "eventDate": "November 19, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-19T00:00:00+00:00",
+    "agendaDocId": 3011
+  },
+  {
     "title": "Community Preservation Committee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3574",
     "pubDate": "2026-11-04T11:22:18-05:00",
@@ -121,6 +176,17 @@
     "agendaDocId": 3005
   },
   {
+    "title": "Human Rights Committee Meeting Agenda",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3995",
+    "pubDate": "2026-11-16T14:53:46-05:00",
+    "eventDate": "November 19, 2026",
+    "eventTime": "07:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-19T00:00:00+00:00",
+    "agendaDocId": 3012
+  },
+  {
     "title": "Special City Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3983",
     "pubDate": "2026-11-12T18:24:20-05:00",
@@ -152,5 +218,16 @@
     "board": "Zoning Board of Appeals",
     "sortDate": "2026-11-24T00:00:00+00:00",
     "agendaDocId": null
+  },
+  {
+    "title": "Financial Forecast Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3972",
+    "pubDate": "2026-11-06T12:29:25-05:00",
+    "eventDate": "November 30, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-30T00:00:00+00:00",
+    "agendaDocId": 2996
   }
 ]

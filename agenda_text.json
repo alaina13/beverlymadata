@@ -4650,5 +4650,65 @@
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11172026-3002",
     "text": "CITY of BEVERLY\nHISTORIC DISTRICTS COMMISSION\n191 Cabot Street\nBeverly, Massachusetts 01915\nPhone (978) 921-6000\nFax (978) 921-6187\n\nMayor\nMichael P. Cahill\nChairperson\nWilliam Finch\nVice Chairperson\nSuzanne LaMont\n\nMembers\nChristian Heath\nEmily Hutchings\nJohn Leahy\nWendy Pearl\n\nMEETING AGENDA\n\nTuesday, November 17, 2026 at 7:00 PM\nTemporary Beverly City Hall\n1st Floor Conference Room\n175 Cabot Street, Beverly, MA\nThis is an in-person meeting\n\n• Call to Order\n\n1. Public Hearing: Demolition Delay Application (DD-26-14) – 14 Summit Ave – Nick Noon, Right Whale Development, contractor\n\n• Reconvene Meeting\n\n2. Discussion / Decision: Demolition Delay Application (DD-26-14) – 14 Summit Ave – Nick Noon, Right Whale Development, contractor\n\n3. CPA Application Review: Beverly Golf & Tennis Club Window Rehabilitation Project – Bill Lowd and Catherine Barrett\n\n4. Review Request from the Planning Board: Open Space Residential Design Site Plan (OSRD 26-1) – 38 Standley Street – Jesse Blanchette, Griffin Engineering\n\n5. Administrative Approvals: As permitted by the regulations, the following properties/projects have been approved administratively and will not be discussed at this meeting.\n   a. Demo-26-25 – 20 Roundy Street, detached garage\n\n6. Project / Committee Updates, if any:\n   a. Update from Community Preservation Committee representative Wendy Pearl\n   b. Update from Design Review Board representative Emily Hutchings\n\n7. New business, other business, or topics for future meeting agendas, if any†\n\n8. Approval of Minutes, as available\n\n9. Adjournment\n\n† The listing of the foregoing matters are those reasonably anticipated by the Chair up to 48 hours prior to the scheduled meeting time. It is possible that not all items listed on the agenda will be discussed or reached. Matters may be discussed, and added to the agenda accordingly, that are submitted or arise within 48 hours of the scheduled meeting of they were not reasonably anticipated by the Chair.",
     "letterhead_trimmed": true
+  },
+  "3013": {
+    "title": "Beverly Housing Authority Meeting",
+    "board": "Beverly Housing Authority",
+    "date": "2026-11-19",
+    "transcribed": "2026-11-16",
+    "model": "claude-haiku-4-5-20251001",
+    "pages": 1,
+    "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3013",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch7FztyBk7CcCGoymqrEb'}"
+  },
+  "3012": {
+    "title": "Human Rights Committee Meeting",
+    "board": "Human Rights Committee",
+    "date": "2026-11-19",
+    "transcribed": "2026-11-16",
+    "model": "claude-haiku-4-5-20251001",
+    "pages": 1,
+    "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3012",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch7FzwMK7gZRes69Pnr4L'}"
+  },
+  "3011": {
+    "title": "Beverly Retirement Board Meeting",
+    "board": "Contributory Retirement Board",
+    "date": "2026-11-19",
+    "transcribed": "2026-11-16",
+    "model": "claude-haiku-4-5-20251001",
+    "pages": 2,
+    "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3011",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch7FzyLdSApB5sacMuMNg'}"
+  },
+  "3010": {
+    "title": "Salem and Beverly Water Supply Board Meeting",
+    "board": "Salem and Beverly Water Supply Board",
+    "date": "2026-11-19",
+    "transcribed": "2026-11-16",
+    "model": "claude-haiku-4-5-20251001",
+    "pages": 1,
+    "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3010",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch7G11FUHVJFvaA2ERj3p'}"
+  },
+  "3009": {
+    "title": "Board of Assessors Meeting",
+    "board": "Board of Assessors",
+    "date": "2026-11-19",
+    "transcribed": "2026-11-16",
+    "model": "claude-haiku-4-5-20251001",
+    "pages": 1,
+    "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3009",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch7G12vS1QSjt4rFXQzzJ'}"
+  },
+  "3008": {
+    "title": "Veterans Advisory Council Meeting",
+    "board": "Veterans Advisory Committee",
+    "date": "2026-11-19",
+    "transcribed": "2026-11-16",
+    "model": "claude-haiku-4-5-20251001",
+    "pages": 5,
+    "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3008",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch7G14jKhDPkWujGh27jX'}"
   }
 }

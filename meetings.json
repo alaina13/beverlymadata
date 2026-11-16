@@ -18,6 +18,60 @@
     "minutes": null
   },
   {
+    "title": "Beverly Housing Authority Meeting",
+    "board": "Beverly Housing Authority",
+    "date": "2026-11-19",
+    "posted": "2026-11-16T14:57:00-05:00",
+    "docId": 3013,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3013",
+    "minutes": null
+  },
+  {
+    "title": "Human Rights Committee Meeting",
+    "board": "Human Rights Committee",
+    "date": "2026-11-19",
+    "posted": "2026-11-16T14:53:00-05:00",
+    "docId": 3012,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3012",
+    "minutes": null
+  },
+  {
+    "title": "Beverly Retirement Board Meeting",
+    "board": "Contributory Retirement Board",
+    "date": "2026-11-19",
+    "posted": "2026-11-16T12:35:00-05:00",
+    "docId": 3011,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3011",
+    "minutes": null
+  },
+  {
+    "title": "Salem and Beverly Water Supply Board Meeting",
+    "board": "Salem and Beverly Water Supply Board",
+    "date": "2026-11-19",
+    "posted": "2026-11-16T10:47:00-05:00",
+    "docId": 3010,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3010",
+    "minutes": null
+  },
+  {
+    "title": "Board of Assessors Meeting",
+    "board": "Board of Assessors",
+    "date": "2026-11-19",
+    "posted": "2026-11-16T10:45:00-05:00",
+    "docId": 3009,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3009",
+    "minutes": null
+  },
+  {
+    "title": "Veterans Advisory Council Meeting",
+    "board": "Veterans Advisory Committee",
+    "date": "2026-11-19",
+    "posted": "2026-11-16T10:42:00-05:00",
+    "docId": 3008,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3008",
+    "minutes": null
+  },
+  {
     "title": "Finance and Property Subcommittee Meeting",
     "board": "City Council",
     "date": "2026-11-19",
@@ -72,15 +126,6 @@
     "minutes": null
   },
   {
-    "title": "Historic Districts Commission",
-    "board": "Historic District Commission",
-    "date": "2026-11-17",
-    "posted": "2026-11-12T14:03:00-05:00",
-    "docId": 3002,
-    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11172026-3002",
-    "minutes": null
-  },
-  {
     "title": "Conservation Commission Meeting",
     "board": "Conservation Commission",
     "date": "2026-11-17",
@@ -105,6 +150,15 @@
     "posted": "2026-11-06T12:28:00-05:00",
     "docId": 2995,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11172026-2995",
+    "minutes": null
+  },
+  {
+    "title": "Historic Districts Commission",
+    "board": "Historic District Commission",
+    "date": "2026-11-17",
+    "posted": "",
+    "docId": 3002,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11172026-3002",
     "minutes": null
   },
   {
