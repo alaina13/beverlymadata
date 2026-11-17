@@ -1,16 +1,5 @@
 [
   {
-    "title": "Board of Registrars Meeting/City Clerk",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3970",
-    "pubDate": "2026-11-05T16:02:15-05:00",
-    "eventDate": "November 16, 2026",
-    "eventTime": "08:00 AM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-11-16T00:00:00+00:00",
-    "agendaDocId": 2993
-  },
-  {
     "title": "Conservation Commission Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3606",
     "pubDate": "2026-11-12T12:44:45-05:00",
@@ -35,7 +24,7 @@
   {
     "title": "Historic Districts Commission",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3977",
-    "pubDate": "2026-11-12T14:10:47-05:00",
+    "pubDate": "2026-11-17T14:25:30-05:00",
     "eventDate": "November 17, 2026",
     "eventTime": "07:00 PM",
     "location": "Beverly, MA 01915",
@@ -112,13 +101,13 @@
   {
     "title": "Board of Assessors Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3985",
-    "pubDate": "2026-11-16T10:35:42-05:00",
+    "pubDate": "2026-11-17T10:12:52-05:00",
     "eventDate": "November 19, 2026",
     "eventTime": "04:00 PM",
     "location": "Beverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-11-19T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 3009
   },
   {
     "title": "Veterans Council Advisory Board Meeting",
@@ -154,17 +143,6 @@
     "agendaDocId": 2985
   },
   {
-    "title": "Clean Energy Advisory Committee Meeting",
-    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3978",
-    "pubDate": "2026-11-12T14:39:07-05:00",
-    "eventDate": "November 19, 2026",
-    "eventTime": "06:30 PM",
-    "location": "Beverly, MA 01915",
-    "board": "Other",
-    "sortDate": "2026-11-19T00:00:00+00:00",
-    "agendaDocId": 3003
-  },
-  {
     "title": "Finance & Property Subcommittee Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3980",
     "pubDate": "2026-11-13T12:45:40-05:00",
@@ -174,6 +152,17 @@
     "board": "Other",
     "sortDate": "2026-11-19T00:00:00+00:00",
     "agendaDocId": 3005
+  },
+  {
+    "title": "Clean Energy Advisory Committee Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3978",
+    "pubDate": "2026-11-12T14:39:07-05:00",
+    "eventDate": "November 19, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-11-19T00:00:00+00:00",
+    "agendaDocId": 3003
   },
   {
     "title": "Human Rights Committee Meeting Agenda",
@@ -189,13 +178,13 @@
   {
     "title": "Special City Council Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3983",
-    "pubDate": "2026-11-12T18:24:20-05:00",
+    "pubDate": "2026-11-17T12:58:32-05:00",
     "eventDate": "November 23, 2026",
     "eventTime": "06:00 PM",
     "location": "Beverly, MA 01915",
     "board": "City Council",
     "sortDate": "2026-11-23T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 3014
   },
   {
     "title": "Regular City Council Meeting",
@@ -211,13 +200,13 @@
   {
     "title": "Zoning Board of Appeals Meeting",
     "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3803",
-    "pubDate": "2026-11-09T10:27:00-05:00",
+    "pubDate": "2026-11-17T13:04:53-05:00",
     "eventDate": "November 24, 2026",
     "eventTime": "07:00 PM",
     "location": "175 Elliott Street (Police Station)Beverly, MA 01915",
     "board": "Zoning Board of Appeals",
     "sortDate": "2026-11-24T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 3015
   },
   {
     "title": "Financial Forecast Committee Meeting",
@@ -229,5 +218,16 @@
     "board": "Other",
     "sortDate": "2026-11-30T00:00:00+00:00",
     "agendaDocId": 2996
+  },
+  {
+    "title": "Parking & Traffic Commission Meeting",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3540",
+    "pubDate": "2026-10-06T16:56:15-05:00",
+    "eventDate": "December 1, 2026",
+    "eventTime": "08:30 AM",
+    "location": "",
+    "board": "Other",
+    "sortDate": "2026-12-01T00:00:00+00:00",
+    "agendaDocId": null
   }
 ]

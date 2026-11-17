@@ -18,6 +18,24 @@
     "minutes": null
   },
   {
+    "title": "Zoning Board of Appeals Meting",
+    "board": "Zoning Board of Appeals",
+    "date": "2026-11-24",
+    "posted": "2026-11-17T13:04:00-05:00",
+    "docId": 3015,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11242026-3015",
+    "minutes": null
+  },
+  {
+    "title": "Special City Council Meeting",
+    "board": "City Council",
+    "date": "2026-11-23",
+    "posted": "2026-11-17T12:58:00-05:00",
+    "docId": 3014,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11232026-3014",
+    "minutes": null
+  },
+  {
     "title": "Beverly Housing Authority Meeting",
     "board": "Beverly Housing Authority",
     "date": "2026-11-19",
@@ -54,15 +72,6 @@
     "minutes": null
   },
   {
-    "title": "Board of Assessors Meeting",
-    "board": "Board of Assessors",
-    "date": "2026-11-19",
-    "posted": "2026-11-16T10:45:00-05:00",
-    "docId": 3009,
-    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3009",
-    "minutes": null
-  },
-  {
     "title": "Veterans Advisory Council Meeting",
     "board": "Veterans Advisory Committee",
     "date": "2026-11-19",
@@ -96,6 +105,15 @@
     "posted": "2026-11-04T11:19:00-05:00",
     "docId": 2985,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-2985",
+    "minutes": null
+  },
+  {
+    "title": "Board of Assessors Meeting",
+    "board": "Board of Assessors",
+    "date": "2026-11-19",
+    "posted": "",
+    "docId": 3009,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3009",
     "minutes": null
   },
   {
