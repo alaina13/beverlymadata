@@ -2,7 +2,7 @@
 """
 Beverly Data — Meeting Summarizer
 Fetches City Council, School Committee, Planning Board, Deficit Reduction
-Committee, and joint/special meeting videos from BevCam's YouTube channel,
+Committee, Financial Forecast Committee, and joint/special meeting videos from BevCam's YouTube channel,
 pulls transcripts, summarizes with Claude, and writes summaries.json.
 
 Usage:
@@ -42,6 +42,7 @@ BODY_FILTERS = [
     ("School Committee", re.compile(r"school committee", re.IGNORECASE)),
     ("Planning Board",   re.compile(r"planning board", re.IGNORECASE)),
     ("Deficit Reduction Committee", re.compile(r"deficit reduction", re.IGNORECASE)),
+    ("Financial Forecast Committee", re.compile(r"financial forecast", re.IGNORECASE)),
     ("Joint and Special Meetings",
      re.compile(r"joint meeting|public involvement plan", re.IGNORECASE)),
 ]
