@@ -61,7 +61,7 @@
 <main id="main">
 <div class="calc-hero">
   <h1>Override Calculator</h1>
-  <p>Beverly faces a projected $7.1M structural deficit in FY2028, nearly double the current-year gap. Explore what different override amounts would mean for the city's budget and for your tax bill.</p>
+  <p>A preliminary Financial Forecasting Committee projection shows a $1.6M deficit in FY2028, growing to $9.2M by FY2031. Explore what different override amounts would mean for the city's budget and for your tax bill.</p>
 </div>
 
 <div class="calc-container">
@@ -117,7 +117,7 @@
     <div class="impact-card">
       <div class="impact-label">Years until gap returns</div>
       <div class="impact-num" id="years-out">—</div>
-      <div class="impact-sub">at 6% exp. / 2.5% rev. growth</div>
+      <div class="impact-sub">FFC forecast to FY31, then 4.3% exp. / 3.1% rev.</div>
     </div>
   </div>
 
@@ -147,12 +147,11 @@
     <details>
       <summary class="disclosure-summary"><strong>Assumptions &amp; methodology</strong><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
       <ul>
-        <li>FY2027 base levy: $139.6M; total revenues $178.9M; total expenditures $182.8M (City of Beverly Financial Forecast FY2026–2030, December 2025)</li>
+        <li>FY2027 base levy: $139.6M (City of Beverly Financial Forecast FY2026–2030, December 2025)</li>
+        <li>Revenues and expenditures, FY2027 to FY2031: the Financial Forecasting Committee's preliminary forecast presented November 17, 2026. FY2027 is the adopted budget ($180.8M each). Preliminary FY2028 deficit without action: $1,628,672, growing to $9,194,101 in FY2031. The committee vote on these figures is scheduled for November 30, 2026.</li>
         <li>FY2027 total assessed value: ~$12.1B (estimated based on FY2026 actuals; FY2027 residential rate estimated at $10.97/$1,000 AV)</li>
-        <li>FY2028 projected deficit without action: $7,107,323, drawn directly from FFC five-year forecast</li>
-        <li>Expenditure growth: 6%/yr, a constant rate simplification based on the FFC's stated estimate; actual growth will vary by year depending on health insurance, SPED placements, debt service, and collective bargaining outcomes</li>
-        <li>Revenue growth without override: ~2.5%/yr (Prop 2½ limit); new growth and state aid are assumed to roughly offset each other, a simplification that may not hold every year</li>
-        <li>Override permanently raises the levy limit; future growth still capped at 2.5%/yr above the new base</li>
+                <li>FY2032 to FY2036: the FY2031 growth rates of the preliminary forecast are extended (expenditures +4.3%/yr, revenues +3.1%/yr), a constant-rate simplification; actual growth will vary by year depending on health insurance, SPED placements, debt service, and collective bargaining outcomes</li>
+        <li>Override permanently raises the levy limit; the override amount is added to the forecast revenue each year and grows at 2.5%/yr (Prop 2½ cap)</li>
         <li>Assessed value assumed to grow ~4%/yr; residential tax rate impact calculated on projected AV</li>
         <li>Beverly has ~15,400 housing units (2020 Census); tax bill impact uses your selected home value and the calculated residential rate change</li>
       </ul>
@@ -175,17 +174,24 @@
   const TOTAL_AV     = 12.1e9;     // FY2027 total assessed value (estimated based on FY2026 actuals)
   const RES_AV       = 10.25e9;    // FY2027 residential AV (estimated)
   const RES_RATE_27  = 10.97;      // $/1,000 AV FY2027 (estimated)
-  const EXP_GROWTH   = 0.06;       // expenditure growth rate
-  const REV_GROWTH   = 0.025;      // total revenue growth rate (Prop 2½ + state aid + receipts)
+  const REV_GROWTH   = 0.025;      // Prop 2½ levy growth (levy, rate, and override growth)
   const AV_GROWTH    = 0.04;       // assessed value growth rate
-  const BASE_REVENUE = 178.870e6;  // FY2027 total revenues (FFC report)
-  const BASE_EXP     = 182.792e6;  // FY2027 total expenditures (FFC report); gap = -$3.92M
+  // FFC preliminary forecast, November 17, 2026: FY27 budget, FY28 to FY31 forecast ($)
+  const FFC_REV = [180.791296e6, 186.712332e6, 192.498187e6, 198.335773e6, 204.529020e6];
+  const FFC_EXP = [180.791296e6, 188.341005e6, 196.365732e6, 204.817778e6, 213.723120e6];
+  // FY32 and later extend the FY31 year-over-year growth rates
+  const EXT_REV_GROWTH = FFC_REV[4] / FFC_REV[3] - 1;
+  const EXT_EXP_GROWTH = FFC_EXP[4] / FFC_EXP[3] - 1;
   const HOUSING_UNITS = 15400;
 
-  // FY2028 expenditure anchored to FFC forecast so gap = exactly $7.107M at 0 override
-  const FY28_DEFICIT = 7.107e6;
-  const FY28_REV_NO_OVERRIDE = BASE_REVENUE * (1 + REV_GROWTH);
-  const FY28_EXP = FY28_REV_NO_OVERRIDE + FY28_DEFICIT;
+  // Baseline (no override) revenue and expenditure by year index (0 = FY27), 22 years
+  const BASE_REV = FFC_REV.slice(), BASE_EXPS = FFC_EXP.slice();
+  while (BASE_REV.length < 22) {
+    BASE_REV.push(BASE_REV[BASE_REV.length - 1] * (1 + EXT_REV_GROWTH));
+    BASE_EXPS.push(BASE_EXPS[BASE_EXPS.length - 1] * (1 + EXT_EXP_GROWTH));
+  }
+  // Override raises revenue permanently from FY28 (index 1), growing at the 2.5% levy cap
+  function overrideIn(i, overrideAmt) { return i < 1 ? 0 : overrideAmt * Math.pow(1 + REV_GROWTH, i - 1); }
 
   // FY2027 is now the base year (index 0); override kicks in FY2028 (index 1)
   const YEARS = ['FY27','FY28','FY29','FY30','FY31','FY32','FY33','FY34','FY35','FY36'];
@@ -201,38 +207,20 @@
 
   function project(overrideAmt) {
     const revenues = [], exps = [], gaps = [];
-
-    // FY27 (i=0): known base year
-    revenues.push(BASE_REVENUE / 1e6);
-    exps.push(BASE_EXP / 1e6);
-    gaps.push((BASE_REVENUE - BASE_EXP) / 1e6);
-
-    // FY28 (i=1): anchored to FFC forecast expenditure, override applied here
-    let rev28 = FY28_REV_NO_OVERRIDE + overrideAmt;
-    revenues.push(rev28 / 1e6);
-    exps.push(FY28_EXP / 1e6);
-    gaps.push((rev28 - FY28_EXP) / 1e6);
-
-    // FY29+ (i=2+): grow from FY28 figures
-    let revenue = rev28, exp = FY28_EXP;
-    for (let i = 2; i < N; i++) {
-      revenue = revenue * (1 + REV_GROWTH);
-      exp     = exp     * (1 + EXP_GROWTH);
-      revenues.push(revenue / 1e6);
-      exps.push(exp / 1e6);
-      gaps.push((revenue - exp) / 1e6);
+    for (let i = 0; i < N; i++) {
+      const rev = BASE_REV[i] + overrideIn(i, overrideAmt);
+      revenues.push(rev / 1e6);
+      exps.push(BASE_EXPS[i] / 1e6);
+      gaps.push((rev - BASE_EXPS[i]) / 1e6);
     }
     return { revenues, exps, gaps };
   }
 
   function yearsUntilGap(overrideAmt) {
-    let revenue = FY28_REV_NO_OVERRIDE + overrideAmt;
-    let exp = FY28_EXP;
-    if (revenue < exp) return 0;
-    for (let i = 1; i <= 20; i++) {
-      revenue = revenue * (1 + REV_GROWTH);
-      exp     = exp     * (1 + EXP_GROWTH);
-      if (revenue < exp) return i;
+    // Years after FY28 until revenue falls below expenditures (0 if FY28 already has a gap)
+    if (BASE_REV[1] + overrideIn(1, overrideAmt) < BASE_EXPS[1]) return 0;
+    for (let k = 1; k <= 20; k++) {
+      if (BASE_REV[1 + k] + overrideIn(1 + k, overrideAmt) < BASE_EXPS[1 + k]) return k;
     }
     return 20;
   }
