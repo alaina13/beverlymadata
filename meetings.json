@@ -9,6 +9,24 @@
     "minutes": null
   },
   {
+    "title": "Parks and Recreation Commission Meeting",
+    "board": "Parks & Recreation Commission",
+    "date": "2026-12-03",
+    "posted": "2026-11-24T12:11:00-05:00",
+    "docId": 3017,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_12032026-3017",
+    "minutes": null
+  },
+  {
+    "title": "Parking and Traffic Commission Meeting",
+    "board": "Parking & Traffic Commission",
+    "date": "2026-12-01",
+    "posted": "2026-11-24T15:01:00-05:00",
+    "docId": 3018,
+    "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_12012026-3018",
+    "minutes": null
+  },
+  {
     "title": "Financial Forecast Committee Meeting",
     "board": "Financial Forecasting Committee",
     "date": "2026-11-30",
@@ -420,7 +438,7 @@
     "posted": "",
     "docId": 2971,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10272026-2971",
-    "minutes": null
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_10272026-2971"
   },
   {
     "title": "Public Services Committee of the Whole Meeting",
@@ -438,7 +456,7 @@
     "posted": "",
     "docId": 2970,
     "agenda": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_10262026-2970",
-    "minutes": null
+    "minutes": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Minutes/_10262026-2970"
   },
   {
     "title": "Veterans Advisory Council Meeting",
