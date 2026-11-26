@@ -55,6 +55,17 @@
     "agendaDocId": null
   },
   {
+    "title": "Legal Affairs / Committee of the Whole Meeting",
+    "link": "https://www.beverlyma.gov/m/calendar/event/detail/4023",
+    "pubDate": "2026-11-25T16:06:16-05:00",
+    "eventDate": "December 7, 2026",
+    "eventTime": "06:00 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-12-07T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
     "title": "Regular City Council Meeting",
     "link": "https://www.beverlyma.gov/m/calendar/event/detail/3562",
     "pubDate": "2025-12-09T15:50:27-05:00",
@@ -85,6 +96,28 @@
     "location": "175 Cabot Street (Temp. City Hall)<br>1st Floor Conference RoomBeverly, MA 01915",
     "board": "Historic District Commission",
     "sortDate": "2026-12-09T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Economic and Community Development Council Meeting",
+    "link": "https://www.beverlyma.gov/m/calendar/event/detail/3774",
+    "pubDate": "2026-05-28T11:43:55-05:00",
+    "eventDate": "December 10, 2026",
+    "eventTime": "08:30 AM",
+    "location": "Beverly Regional Airport<br>50 L. P. Henderson RoadBeverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-12-10T00:00:00+00:00",
+    "agendaDocId": null
+  },
+  {
+    "title": "Financial Forecast Committee Meeting",
+    "link": "https://www.beverlyma.gov/m/calendar/event/detail/3973",
+    "pubDate": "2026-11-06T12:30:01-05:00",
+    "eventDate": "December 10, 2026",
+    "eventTime": "06:30 PM",
+    "location": "Beverly, MA 01915",
+    "board": "Other",
+    "sortDate": "2026-12-10T00:00:00+00:00",
     "agendaDocId": null
   }
 ]
