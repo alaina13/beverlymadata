@@ -1,51 +1,51 @@
 [
   {
     "title": "Financial Forecast Committee Meeting",
-    "link": "https://www.beverlyma.gov/m/calendar/event/detail/3972",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3972",
     "pubDate": "2026-11-06T12:29:25-05:00",
     "eventDate": "November 30, 2026",
     "eventTime": "06:30 PM",
     "location": "Beverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-11-30T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2996
   },
   {
     "title": "Parking & Traffic Commission Meeting",
-    "link": "https://www.beverlyma.gov/m/calendar/event/detail/3540",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3540",
     "pubDate": "2026-11-24T15:01:57-05:00",
     "eventDate": "December 1, 2026",
     "eventTime": "08:30 AM",
     "location": "175 Cabot Street (Temp. City Hall)<br>1st Floor Conference RoomBeverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-12-01T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 3018
   },
   {
     "title": "South Essex Sewerage District Meeting",
-    "link": "https://www.beverlyma.gov/m/calendar/event/detail/4022",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=4022",
     "pubDate": "2026-11-25T14:34:20-05:00",
     "eventDate": "December 2, 2026",
     "eventTime": "01:00 PM",
     "location": "Beverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-12-02T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 3019
   },
   {
     "title": "Parks and Recreation Commission Meeting",
-    "link": "https://www.beverlyma.gov/m/calendar/event/detail/4021",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=4021",
     "pubDate": "2026-11-24T12:11:55-05:00",
     "eventDate": "December 3, 2026",
     "eventTime": "06:30 PM",
     "location": "Beverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-12-03T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 3017
   },
   {
     "title": "Design Review Board Meeting",
-    "link": "https://www.beverlyma.gov/m/calendar/event/detail/3489",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3489",
     "pubDate": "2026-11-05T08:56:18-05:00",
     "eventDate": "December 3, 2026",
     "eventTime": "06:30 PM",
@@ -56,18 +56,18 @@
   },
   {
     "title": "Legal Affairs / Committee of the Whole Meeting",
-    "link": "https://www.beverlyma.gov/m/calendar/event/detail/4023",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=4023",
     "pubDate": "2026-11-25T16:06:16-05:00",
     "eventDate": "December 7, 2026",
     "eventTime": "06:00 PM",
     "location": "Beverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-12-07T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 3020
   },
   {
     "title": "Regular City Council Meeting",
-    "link": "https://www.beverlyma.gov/m/calendar/event/detail/3562",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3562",
     "pubDate": "2025-12-09T15:50:27-05:00",
     "eventDate": "December 7, 2026",
     "eventTime": "07:00 PM",
@@ -78,7 +78,7 @@
   },
   {
     "title": "Conservation Commission Meeting",
-    "link": "https://www.beverlyma.gov/m/calendar/event/detail/3607",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3607",
     "pubDate": "2026-02-11T15:39:06-05:00",
     "eventDate": "December 8, 2026",
     "eventTime": "06:30 PM",
@@ -89,7 +89,7 @@
   },
   {
     "title": "Historic Districts Commission Meeting",
-    "link": "https://www.beverlyma.gov/m/calendar/event/detail/3528",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3528",
     "pubDate": "2026-11-19T13:04:39-05:00",
     "eventDate": "December 9, 2026",
     "eventTime": "07:00 PM",
@@ -100,7 +100,7 @@
   },
   {
     "title": "Economic and Community Development Council Meeting",
-    "link": "https://www.beverlyma.gov/m/calendar/event/detail/3774",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3774",
     "pubDate": "2026-05-28T11:43:55-05:00",
     "eventDate": "December 10, 2026",
     "eventTime": "08:30 AM",
@@ -111,13 +111,13 @@
   },
   {
     "title": "Financial Forecast Committee Meeting",
-    "link": "https://www.beverlyma.gov/m/calendar/event/detail/3973",
+    "link": "https://www.beverlyma.gov/Calendar.aspx?EID=3973",
     "pubDate": "2026-11-06T12:30:01-05:00",
     "eventDate": "December 10, 2026",
     "eventTime": "06:30 PM",
     "location": "Beverly, MA 01915",
     "board": "Other",
     "sortDate": "2026-12-10T00:00:00+00:00",
-    "agendaDocId": null
+    "agendaDocId": 2998
   }
 ]

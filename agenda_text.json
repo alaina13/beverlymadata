@@ -4655,130 +4655,130 @@
     "title": "Beverly Housing Authority Meeting",
     "board": "Beverly Housing Authority",
     "date": "2026-11-19",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 1,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3013",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8cthDirwhXShQzGUPb'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1HMxgpWv15NPKV2d69'}"
   },
   "3012": {
     "title": "Human Rights Committee Meeting",
     "board": "Human Rights Committee",
     "date": "2026-11-19",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 1,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3012",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8cveXwLYmsQtXqjhdt'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1HQvmwmnawyHkUuU6H'}"
   },
   "3011": {
     "title": "Beverly Retirement Board Meeting",
     "board": "Contributory Retirement Board",
     "date": "2026-11-19",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 2,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3011",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8cxk3hc4vmpU3j25Jh'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1HTVKZDmSo8LsUVsEP'}"
   },
   "3010": {
     "title": "Salem and Beverly Water Supply Board Meeting",
     "board": "Salem and Beverly Water Supply Board",
     "date": "2026-11-19",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 1,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3010",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8czg8hTxa8xsm3m2kb'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1HVzPRTXRJxrFBFwmV'}"
   },
   "3009": {
     "title": "Board of Assessors Meeting",
     "board": "Board of Assessors",
     "date": "2026-11-19",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 1,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3009",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8d4udc1bEtqWpg97nT'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1HbRZg932FFbMJvdBJ'}"
   },
   "3008": {
     "title": "Veterans Advisory Council Meeting",
     "board": "Veterans Advisory Committee",
     "date": "2026-11-19",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 5,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11192026-3008",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8d3ATTBL92mLbDnEUu'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1HYUhRLVEyAR2dee8D'}"
   },
   "3015": {
     "title": "Zoning Board of Appeals Meting",
     "board": "Zoning Board of Appeals",
     "date": "2026-11-24",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 3,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11242026-3015",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8ckGTnKZ5Yngk7orS9'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1HCfbB5TwE8xUuTZ6v'}"
   },
   "3014": {
     "title": "Special City Council Meeting",
     "board": "City Council",
     "date": "2026-11-23",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 1,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11232026-3014",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8crPK653RYHdNjcJQE'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1HK91zAey4rCt5zaKt'}"
   },
   "3016": {
     "title": "Regular City Council Meeting",
     "board": "City Council",
     "date": "2026-11-23",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 152,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_11232026-3016",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8cpCr8kvaHryfUqETg'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1HGiRJRfkGaXbNsnRe'}"
   },
   "3017": {
     "title": "Parks and Recreation Commission Meeting",
     "board": "Parks & Recreation Commission",
     "date": "2026-12-03",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 1,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_12032026-3017",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8cdVAcjMm9MKNFcdLF'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1H4JnyPdbK7AirZbNu'}"
   },
   "3018": {
     "title": "Parking and Traffic Commission Meeting",
     "board": "Parking & Traffic Commission",
     "date": "2026-12-01",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 2,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_12012026-3018",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8chhRRx9EgnHaxXbxv'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1H9wsPuDiApp6fgBCh'}"
   },
   "3019": {
     "title": "South Essex Sewerage District Meeting",
     "board": "South Essex Sewerage Board",
     "date": "2026-12-02",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 2,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_12022026-3019",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8cfnqMr29hDPSvYfAe'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1H6ktojdiFVWRi9azW'}"
   },
   "3020": {
     "title": "Legal Affairs / Committee of the Whole Meeting",
     "board": "City Council",
     "date": "2026-12-07",
-    "transcribed": "2026-11-26",
+    "transcribed": "2026-11-27",
     "model": "claude-haiku-4-5-20251001",
     "pages": 1,
     "pdf": "https://www.beverlyma.gov/AgendaCenter/ViewFile/Agenda/_12072026-3020",
-    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChS8cb4oquoGQpvxUoo2a'}"
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChU1H1iXhhogbtj8Ruz1s'}"
   }
 }
